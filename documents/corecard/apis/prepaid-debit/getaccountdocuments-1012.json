@@ -1,0 +1,307 @@
+{
+    "metadata": {
+        "name": "GetAccountDocuments",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetAccountDocuments",
+        "description": "This API is Used to Get the Document Details of the Account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values: 0-9 Format:XXXXXXXXXXXX Example:123654789632 Condition:At least one of AccountNumber/AdminNumber/AccountID is required. Allowable Values: 19"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Valid Values: 0-9 Example:12345 Condition:At least one of AccountNumber/AdminNumber/AccountID is required."
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values: 0-9 Example:12345 Condition:At least one of AccountNumber/AdminNumber/AccountID is required."
+        },
+        {
+            "name": "DisputeCaseID",
+            "type": "int64",
+            "required": null,
+            "description": "Case ID assigned to a Dispute Case. Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 23654789"
+        },
+        {
+            "name": "SKeyList",
+            "type": "string",
+            "required": false,
+            "description": "System Unique ID, to be Used as Input while Deleting or Updating Account Documents. Valid Values: 0-9 Example: 17852"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ListAccountDocument",
+                    "type": "array",
+                    "required": null,
+                    "description": "Details of Documents available for the Account.",
+                    "children": [
+                        {
+                            "name": "SUID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "System Unique ID, to be Used as Input while Deleting or Updating Account Documents. Valid Values: 0-9 Example: 17852",
+                            "children": []
+                        },
+                        {
+                            "name": "DocumentType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of the Document Valid Values: a-z Example: Bankruptcy Paper Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "DocumentName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Document. Valid Values: a-z, 0-9 Example: abc Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "UploadBy",
+                            "type": "string",
+                            "required": null,
+                            "description": "UserID of the User Created/Uploaded the Document Valid Values: a-z Example: abc Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Valid Values: 0-9 Example: 12345",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account number of cardholder. Valid Values: 0-9 Example: 100785265566444 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Id of the Merchant Under which the Account is Created. Valid Values: 0-9 Example: 147852",
+                            "children": []
+                        },
+                        {
+                            "name": "CreatedDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "The Date and Time if New Document Uploaded Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 01/07/2020 11:05:05",
+                            "children": []
+                        },
+                        {
+                            "name": "UpdateDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "The Date and Time If Existing Document Updated Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 01/07/2020 11:05:05",
+                            "children": []
+                        },
+                        {
+                            "name": "IsDeleted",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Indicates if the Document is deleted or Not. Valid Values: True,False Example: False",
+                            "children": []
+                        },
+                        {
+                            "name": "BinaryData",
+                            "type": "byte[]",
+                            "required": null,
+                            "description": "Depending on the 'SUID' system will convert the Document data into binary data and populate in this Tag.",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeDocumentCategory",
+                            "type": "string",
+                            "required": null,
+                            "description": "Category of Dispute Document to be Upload",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeCaseID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "CaseID of Dispute",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeDocumentSource",
+                            "type": "string",
+                            "required": null,
+                            "description": "Dispute Document Source 1=CoreCredit 2=MasterCom",
+                            "children": []
+                        },
+                        {
+                            "name": "FileSize",
+                            "type": "string",
+                            "required": null,
+                            "description": "Size of File in KB",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "8110000000000109",
+        "AccountID": null,
+        "AdminNumber": null,
+        "DisputeCaseID": null,
+        "SKeyList": null
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "ListAccountDocument": [
+                {
+                    "SUID": 1,
+                    "DocumentType": "Bankruptcy Paper",
+                    "DocumentName": "adhar_07232020085039.PNG",
+                    "UploadBy": "portalsuperuser",
+                    "AccountID": 167615,
+                    "AccountNumber": "8110000000000380",
+                    "MerchantID": 11617,
+                    "CreatedDate": "03/15/2020 00:00:00",
+                    "UpdateDate": null,
+                    "IsDeleted": false,
+                    "BinaryData": "ICAgICAgIA==",
+                    "DisputeDocumentCategory": null,
+                    "DisputeCaseID": null,
+                    "DisputeDocumentSource": null,
+                    "FileSize": null
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1012&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1001"
+    }
+}

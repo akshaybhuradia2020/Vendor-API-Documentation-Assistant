@@ -1,0 +1,368 @@
+{
+    "metadata": {
+        "name": "GetLoanPlanSchedule",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetLoanPlanSchedule",
+        "description": "The Purpose of this API is to get the plan schedule of Equal Payment Plan"
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Format: XXXXXXXXXX Example: 8000000000000110 Condition: At least one account identifier is required. Allowable Values: 16"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values: 0-9 Format: XXXXX Example:12345 Condition: At least one account identifier is required."
+        },
+        {
+            "name": "PlanID",
+            "type": "integer",
+            "required": false,
+            "description": "ID of the plan whose information is required.This API is for Equal Payment Plan only. Valid Values:0-9 Format: xxxx Example:72456"
+        },
+        {
+            "name": "ScheduleType",
+            "type": "string",
+            "required": false,
+            "description": "Schedule type of Institution Reports. Valid Values: 0 = Dynamic, 1 = Static Allowable Values: 2"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account number of cardholder. Valid Values:0-9 Format: XXXXXXXXXX Example:8000000000000110 Allowable Values: 16",
+                    "children": []
+                },
+                {
+                    "name": "PlanList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Array for plan details.",
+                    "children": [
+                        {
+                            "name": "PlanSequence",
+                            "type": "integer",
+                            "required": null,
+                            "description": "It will return plan sequence in array. Valid Values: 0 - 9 Format: xx Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "PlanID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "ID of the plan. Valid Values: 0 - 9 Format: xxxx Example: 72456",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Current balance of account/Debtor Owing. Valid Values:0-9 Format: XXXX.XX Example: 500.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LoanCreationDate",
+                            "type": "DateTime",
+                            "required": null,
+                            "description": "Loan Creation Date and Time. Valid Values: 0-9 Format: MM/DD/YYYY Example: 01/01/2020",
+                            "children": []
+                        },
+                        {
+                            "name": "OriginalLoanTerm",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag will return the original loan term. Valid Values:0-9 Example: 24",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentTerm",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Current term will be equal to the original loan term till loan is not rescheduled, otherwise it will be different than original loan term. Valid Values:0-9 Example: 24",
+                            "children": []
+                        },
+                        {
+                            "name": "OriginalTotalPrincipal",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Principal amount on the statement. Valid Values:0-9 Format: XXXX.XX Example: 2000.00",
+                            "children": []
+                        },
+                        {
+                            "name": "OriginalTotalInterest",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Interest charged on account in amount. Valid Values:0-9 Format: XXX Example: 369.28",
+                            "children": []
+                        },
+                        {
+                            "name": "OriginalEqualPayment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Equal Amount of Payment which has been identified for the plan. Valid Values:0-9 Format: XXX.XX Example: 86.84",
+                            "children": []
+                        },
+                        {
+                            "name": "RevisedEqPmtAfterReschedule",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Revised Equal Amount of Payment which has been identified for the plan. Valid Values:0-9 Format: XXX.XX Example: 100.00",
+                            "children": []
+                        },
+                        {
+                            "name": "PrincipalPaidToDate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Principal considered till date. Valid Values:0-9 Format: XX.XX Example: 1000.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPaidToDate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total sum of transaction amount for Interest Charged till date. Valid Values:0-9 Format: XX.XX Example: 10.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InvoiceID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Invoice Number for Transaction. Valid Values: 0-9 Format: XXXXXXXXXX Example: 170116014612199",
+                            "children": []
+                        },
+                        {
+                            "name": "PlanPaymentList",
+                            "type": "array",
+                            "required": null,
+                            "description": "PlanPaymentList .",
+                            "children": [
+                                {
+                                    "name": "PaymentNumber",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Defines Number of Installment against the Payment Due date. Valid Values:1-9 Format:  X Example: '7', which indicates 7th Installment for the Payment",
+                                    "children": []
+                                },
+                                {
+                                    "name": "StatementDate",
+                                    "type": "DateTime",
+                                    "required": null,
+                                    "description": "Statement generation date. Valid Values: 0-9 Format: MM/DD/YYYY Example: 12/27/2020",
+                                    "children": []
+                                },
+                                {
+                                    "name": "PaymentDueDate",
+                                    "type": "DateTime",
+                                    "required": null,
+                                    "description": "Due date as to by when payment needs to be made to avoid late fees. Valid Values: 0-9 Format: MM/DD/YYYY Example: 12/27/2020",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AmountDue",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total amount due as on statement date. Valid Values:0-9 Format: XXX.XX Example: 86.84",
+                                    "children": []
+                                },
+                                {
+                                    "name": "PrincipalPayment",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Amount of Principal Payment for the Installment Payment Number. Valid Values:0-9 Format: XXX.XX Example: 86.84",
+                                    "children": []
+                                },
+                                {
+                                    "name": "InterestPayment",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Amount of Interest Payment for the Installment Payment Number. Interest Earned by the Loan Provider. Valid Values:0-9 Format: XXX.XX Example: 10.00",
+                                    "children": []
+                                },
+                                {
+                                    "name": "InterestLeftOver",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "This tag will return interest left over amount. Valid Values:0-9 Format: XXX.XX Example: 20.00",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number indicates that API responded.Response ID is unique. This value will be null if no authentication information was passed.Response ID can be used for tracking. Valid Values:0-9, a-z Format: xxx Example:56886590",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "9110000000000040",
+        "AdminNumber": null,
+        "PlanID": null,
+        "ScheduleType": "0"
+    },
+    "sample_response": {
+        "Message": "Return Successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01093",
+        "ResponseData": {
+            "AccountNumber": "2020040000000016",
+            "PlanList": [
+                {
+                    "PlanSequence": 1,
+                    "PlanID": 101441,
+                    "CurrentBalance": 7500.0,
+                    "LoanCreationDate": "01/18/2017",
+                    "OriginalLoanTerm": 24,
+                    "CurrentTerm": 24,
+                    "OriginalTotalPrincipal": 1000.0,
+                    "OriginalTotalInterest": 129.14,
+                    "OriginalEqualPayment": 562.96,
+                    "RevisedEqPmtAfterReschedule": 421.22,
+                    "PrincipalPaidToDate": 2500.0,
+                    "InterestPaidToDate": 0.0,
+                    "InvoiceID": "170118170216982",
+                    "PlanPaymentList": [
+                        {
+                            "PaymentNumber": 1,
+                            "StatementDate": "01/18/2017",
+                            "PaymentDueDate": "02/18/2017",
+                            "AmountDue": 0.0,
+                            "PrincipalPayment": 0.0,
+                            "InterestPayment": 0.0,
+                            "InterestLeftOver": 2.05
+                        }
+                    ]
+                }
+            ],
+            "ResponseID": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1120&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1001"
+    }
+}

@@ -1,0 +1,299 @@
+{
+    "metadata": {
+        "name": "GetMerchantStatementList",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/MerchantManagement/GetMerchantStatementList",
+        "description": "This API will provide list of historical generated PDF statement Merchant based on Monthly Cycle range."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": true,
+            "description": "Specific ID Assigned to a Merchant, Mandatory If Merchant Number not Inputted in API Request Valid Values: 0-9 Format: XXXX Example: 562489"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": null,
+            "description": "Specific ID Assigned to a Merchant, Mandatory If Merchant Number not Inputted in API Request Valid Values: 0-9 Format: XXXX Example: 562489"
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Number which is assigned to a Merchant, Mandatory If Merchant ID not Inputted in API Request. Valid Values:0-9 Format: XXXXXXXXX Example: 99999999 Allowable Values: 9"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "ListStatementHistory",
+            "type": "array",
+            "required": null,
+            "description": "Array of Historical Statements this Will contain statement year and below statement year array of statements details for the Statement Year.",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ListStatementHistory",
+                    "type": "array",
+                    "required": null,
+                    "description": "Array of Historical Statements this Will contain statement year and below statement year array of statements details for the Statement Year.",
+                    "children": [
+                        {
+                            "name": "MerchantStatementYear",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Year of the Merchant Statement Generated Valid Values: 0-9 Format: YYYY Example: 2019",
+                            "children": []
+                        },
+                        {
+                            "name": "ListStatement",
+                            "type": "array",
+                            "required": null,
+                            "description": "Array of Statements.",
+                            "children": [
+                                {
+                                    "name": "FilePath",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "This tag will contain the URL to download the Statement PDF. Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MerchantStatementID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Unique Identifier for Merchant Statement Valid Values: 0-9 Format: XX Example: 12345",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MerchantStatementDate",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "Date for which Merchant statement is  generated. Valid Values: 0-9 Format: MM/DD/YYYY HH:mm:ss Example: 05/01/2020 23:00:02",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MerchantID": 11642,
+        "MerchantNumber": null
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "ListStatementHistory": [
+                {
+                    "MerchantStatementYear": 2017,
+                    "ListStatement": [
+                        {
+                            "FilePath": "?Path=output/6-1332/1341/Statements/2018-07-31/Normal/5000000000000033_2018-07-31_439554_4.pdf",
+                            "MerchantStatementDate": "01/13/2017 23:00:02"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1008",
+        "document_id": "131",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=131&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1008&regionId=1"
+    }
+}

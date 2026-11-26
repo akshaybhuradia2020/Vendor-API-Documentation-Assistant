@@ -1,0 +1,234 @@
+{
+    "metadata": {
+        "name": "UpdateMerchantReserveParameters",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/MerchantManagement/UpdateMerchantReserveParameters",
+        "description": "This API is used to update the Merchant Reserve Parameters."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique number of merchant account Valid Values:0-9 Format:XXXXX Example:12345 Condition: Mandatory If MerchantNumber not Inputted in API Request"
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Merchant Number which is assgined to a Merchant Valid Values:0-9 Format:XXXXX Example:12345 Condition: Mandatory If MerchantID not Inputted in API Request Allowable Values: 10"
+        },
+        {
+            "name": "AddPastDue90ToReserve",
+            "type": "integer",
+            "required": false,
+            "description": "Determines Past Due 90 to be Added to the Merchant Reserve or Not Valid Values: '0' = Yes and '1' = No Format: X Example: 0 Condition: If kept Blank Default Value will be considered as '0' = Yes"
+        },
+        {
+            "name": "PastDue",
+            "type": "integer",
+            "required": false,
+            "description": "Determines if the Past Due is on Amount or on Balance Amount = Reserve Calculation will be Done on 3 cycle (to 7 cycle past due) past due amount Balance = Reserve calculation on Current Balance Default Value will be '1' = Amount Valid Values: Amount = '1', Balance = '0' Format: X Example: 0 Condition: Functional only if 'AddPastDue90ToReserve'  is set to 'Yes'"
+        },
+        {
+            "name": "AddUnmailedtoReserve",
+            "type": "integer",
+            "required": false,
+            "description": "if Set as Yes then Reserve Calculations will be done for the Accounts with statuses as set in the fields 'IncludedAccountStatus1,2,3, 4 and 5', depending the same statuses must be set on Merchant Account Parameters in Fields 'Hold Account Status 1,2,3 and 4' Valid Values: '0' = Yes and '1' = No Format: X Example: 0 Condition: If kept Blank Default Value will be considered as '0' = Yes"
+        },
+        {
+            "name": "AddCreditBalancestoReserve",
+            "type": "integer",
+            "required": false,
+            "description": "Determines Credit Balances  to be Added to the Merchant Reserve or Not Valid Values: '0' = Yes and '1' = No Format: X Example: 0 Condition: If kept Blank Default Value will be considered as '0' = Yes"
+        },
+        {
+            "name": "AddnoFinanceChargeAccountstoReserve",
+            "type": "integer",
+            "required": false,
+            "description": "Determines No Finance Charge Accounts to be Added to the Merchant Reserve or Not Valid Values: '0' = Yes and '1' = No Format: X Example: 0 Condition: If kept Blank Default Value will be considered as '0' = Yes"
+        },
+        {
+            "name": "PercentOfNewBalanceAddToReserve",
+            "type": "decimal",
+            "required": false,
+            "description": "Determines percentage of New Balance to be Added to the Merchant Reserve Valid Values:0-9 Format: XX.XX Example: 10.00%"
+        },
+        {
+            "name": "IncludedAccountStatus1",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates that Account with status will be Included for Reserve Calculations, condition only if the same status is also set in 'HoldAccountStatus' fields in Merchant Account Parameters Valid Values: Refer Appendix Section 5.49 Include/Hold Account Statuses Format: XXX"
+        },
+        {
+            "name": "IncludedAccountStatus2",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates that Account with status will be Included for Reserve Calculations, condition only if the same status is also set in 'HoldAccountStatus' fields in Merchant Account Parameters Valid Values: Refer Appendix Section 5.49 Include/Hold Account Statuses Format: XXX"
+        },
+        {
+            "name": "IncludedAccountStatus3",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates that Account with status will be Included for Reserve Calculations, condition only if the same status is also set in 'HoldAccountStatus' fields in Merchant Account Parameters Valid Values: Refer Appendix Section 5.49 Include/Hold Account Statuses Format: XXX"
+        },
+        {
+            "name": "IncludedAccountStatus4",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates that Account with status will be Included for Reserve Calculations, condition only if the same status is also set in 'HoldAccountStatus' fields in Merchant Account Parameters Valid Values: Refer Appendix Section 5.49 Include/Hold Account Statuses Format: XXX"
+        },
+        {
+            "name": "IncludedAccountStatus5",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates that Account with status will be Included for Reserve Calculations, condition only if the same status is also set in 'HoldAccountStatus' fields in Merchant Account Parameters Valid Values: Refer Appendix Section 5.49 Include/Hold Account Statuses Format: XXX"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": []
+        }
+    ],
+    "sample_request": {
+        "Source": "WEB",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MerchantID": 11389,
+        "MerchantNumber": null,
+        "AddPastDue90ToReserve": 1,
+        "PastDue": 0,
+        "AddUnmailedtoReserve": 1,
+        "AddCreditBalancestoReserve": 0,
+        "AddnoFinanceChargeAccountstoReserve": 1,
+        "PercentOfNewBalanceAddToReserve": 25.25,
+        "IncludedAccountStatus1": 5202,
+        "IncludedAccountStatus2": 19,
+        "IncludedAccountStatus3": 22,
+        "IncludedAccountStatus4": null,
+        "IncludedAccountStatus5": null
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": null
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1008",
+        "document_id": "1056",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1056&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1008&regionId=1"
+    }
+}

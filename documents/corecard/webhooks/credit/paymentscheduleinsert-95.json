@@ -1,0 +1,212 @@
+{
+    "metadata": {
+        "name": "PaymentScheduleInsert",
+        "http_method": "POST",
+        "endpoint": "/api/WebHookNotification/UpdateNotification/PaymentScheduleInsert",
+        "description": "This webhook is triggered when a new payment schedule is added for an account."
+    },
+    "request_fields": [
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number associated with the event. The Account Number is consistently maintained at the Account level (one-to-one Mapping).\nValid Values: 0-9\nFormat: XXXXXXXXXXXXXXXX\nExample: 8000000000000037 Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Admin Number associated with the event. Admin Number is always associated with a Card (Can be Primary or Secondary)\nValid Values:0-9\nFormat:XXXXX\nExample:12345"
+        },
+        {
+            "name": "RequestID",
+            "type": "string",
+            "required": null,
+            "description": "Primary Key for API\nFormat:XXXXXXXXXXXXXXXX\nExample:12345 Allowable Values: 19"
+        },
+        {
+            "name": "Mode",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the type of activity performed which triggered this webhook Possible Value: Alert, Insert, Transaction Allowable Values: 10"
+        },
+        {
+            "name": "AccountUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID of Account\nFormat:XXXXXXXXXX\nExample:7408f969-6e0c-4a3f-8fba-3316f6f77db6 Allowable Values: 64"
+        },
+        {
+            "name": "CardUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID of Card\nFormat:XXXXXXXXXX\nExample:fbe61b75-6751-4add-9c44-7832ccf399e9 Allowable Values: 64"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": null,
+            "description": "Corecard's Client ID Allowable Values: 64"
+        },
+        {
+            "name": "RequestUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID Request\nExample: 8638-b87b-48d0-8e13-0ebb5643577 Allowable Values: 64"
+        },
+        {
+            "name": "UpdateCallList",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "User",
+            "type": "string",
+            "required": null,
+            "description": "User ID of the user who triggered the webhook event. \nValid Values: CoreCredit user, API user, System Allowable Values: 40"
+        },
+        {
+            "name": "DateandTime",
+            "type": "DateTime",
+            "required": null,
+            "description": "Timestamp when notification was sent\nYYYY-MM-DD hh:mm:ss:sss\n(24-hour Format)"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the source from where the activity was performed by user or triggered by system.\nValid Values: CoreCredit, External API, Self Service, CoreCollect, IVR, System, CoreIssue Allowable Values: 20"
+        },
+        {
+            "name": "ServiceName",
+            "type": "string",
+            "required": null,
+            "description": "Name of API service (webhook) triggered Allowable Values: 40"
+        },
+        {
+            "name": "AlertType",
+            "type": "string",
+            "required": null,
+            "description": "Indicates type of Alert \nPossible values:\nReal-Time or Re Try(due to time-out) Allowable Values: 15"
+        },
+        {
+            "name": "TransactionSource",
+            "type": "string",
+            "required": null,
+            "description": "Transaction Source of transaction, IPM, Retail Manual Auth-Installment, Retail Manual Auth-Revolver etc. Allowable Values: 40"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by CoreCard for Institution"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by CoreCard for Product"
+        },
+        {
+            "name": "AlertRecipientType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of recipient to which alert needs to be sent\nValid Values:1=Primary Applicant,2=Cosigner,3=Applicant and Cosigner,4=Auth User,5=Applicant and Auth User"
+        },
+        {
+            "name": "MonetaryLog",
+            "type": "",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "InfoAlert",
+            "type": "array",
+            "required": null,
+            "description": "Group of fields passed in webhook."
+        },
+        {
+            "name": "RewardsRedemption",
+            "type": "array",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "Reward",
+            "type": "array",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "RewardInfo",
+            "type": "array",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "InfoCollectionAlert",
+            "type": "array",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "InfoAgeOffAlert",
+            "type": "array",
+            "required": null,
+            "description": "Group of fields passed in webhook."
+        }
+    ],
+    "response_fields": null,
+    "sample_request": {
+        "AccountNumber": "9000000500294419",
+        "AdminNumber": 689281,
+        "RequestID": "1043049432",
+        "Mode": "Insert",
+        "AccountUniversalUniqueID": "9e614718-cde7-4ca5-b762-bf35b6325a59",
+        "CardUniversalUniqueID": "6b664ad8-7f6c-4c5f-98be-36be19229da9",
+        "ClientId": null,
+        "RequestUniversalUniqueID": "db89a6c5-f5a4-429e-be11-b59baa82ada1",
+        "UpdateCallList": {
+            "Category": {
+                "CategoryName": "Payment Schedule",
+                "CategoryID": 1690930,
+                "CategoryFieldList": [
+                    {
+                        "ModifiedFieldName": "Fixed Amount",
+                        "OldValue": null,
+                        "NewValue": "115.44"
+                    }
+                ]
+            }
+        },
+        "MonetaryLog": null,
+        "InfoAlert": null,
+        "RewardsRedemption": null,
+        "Reward": null,
+        "RewardInfo": null,
+        "InfoCollectionAlert": null,
+        "InfoAgeOffAlert": null,
+        "User": "adminuser",
+        "DateandTime": "2021-08-16 00:11:01",
+        "Source": "External API",
+        "ServiceName": "svcPaymentSchedule",
+        "AlertType": "RealTime",
+        "TransactionSource": null,
+        "InstitutionId": 5949,
+        "ProductId": 5907,
+        "AlertRecipientType": 1
+    },
+    "sample_response": null,
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "webhook",
+        "section": "webhooks/credit",
+        "category": "Update Notification",
+        "category_id": "6",
+        "document_id": "95",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/WEBHookPageApiDetail?id=95&type=ApiDetail&menuid=1&regionId=1"
+    }
+}

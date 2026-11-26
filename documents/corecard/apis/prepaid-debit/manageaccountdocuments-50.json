@@ -1,0 +1,315 @@
+{
+    "metadata": {
+        "name": "ManageAccountDocuments",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/AddUpdateDelAccountDocuments",
+        "description": "This API is used for Adding, Updating and Deleting Account Document Name only,Document Physical Copy Upload or Deleting can only be done via panel."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "SUID",
+            "type": "int64",
+            "required": null,
+            "description": "System Unique ID Mandatory only If DecisionFlag is Either '1'  Or '2'"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Valid Values: 0-9 Format: XXXXX Example: 12345 Condition: At least one of AccountNumber\\ AccountID is required."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 8000000000000037 Condition: At least one of AccountNumber\\ AccountID is required. Allowable Values: 19"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": false,
+            "description": "Unique number of merchant account Valid Values: 0-9 Format: XXXXX Example: 12345"
+        },
+        {
+            "name": "DocumentType",
+            "type": "string",
+            "required": null,
+            "description": "Type of the Document - BankRuptcy Paper, Debt Management Plan or Other (Types as Per Panel). No Restriction User can provide any name for Document Type. Condition: This Tag is Mandatory only If DecisionFlag   is  Either '0' or '2'. Allowable Values: 50"
+        },
+        {
+            "name": "DocumentName",
+            "type": "string",
+            "required": null,
+            "description": "User must input the Name of the Document with Extension. Extensions allowed are .pdf, .png, .jpg and .jpeg Condition: This Tag is Mandatory only If DecisionFlag is  Either '0' or '2'. Valid Values: a-z, 0-9 Format:| Example:Identity Info.pdf Allowable Values: 100"
+        },
+        {
+            "name": "FileSize",
+            "type": "string",
+            "required": null,
+            "description": "Size of the file in bytes. It can be used only via Panel, where Upload file Size will be Validated as per allowed in the System and if exceeds the file size will throw an error on Application Panel. Example: 85138 Condition: This Tag is Mandatory only If DecisionFlag is  Either '0' or '2'. Allowable Values: 100"
+        },
+        {
+            "name": "UploadBy",
+            "type": "string",
+            "required": null,
+            "description": "UserID of the User Creating/Uploading the Document Example: User1 Condition: This Tag is Mandatory only If DecisionFlag is '0' Allowable Values: 50"
+        },
+        {
+            "name": "UpdateBy",
+            "type": "string",
+            "required": null,
+            "description": "UserID of the User Updating the Document Condition: This Tag is Mandatory only If DecisionFlag   is  Either '1' or '2'. Allowable Values: 50"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "integer",
+            "required": true,
+            "description": "Decision Flag must accept three values '0', '1' and '2' If User Inputs '0' then the API must Add the Document If User Inputs '1' then the API must Delete the Document If User Inputs '2' then the API must Update the Document Valid Values: 0, 1, 2 Example: 0 - Add, 1 - Delete, 2 - Update"
+        },
+        {
+            "name": "FileLocation",
+            "type": "string",
+            "required": null,
+            "description": "It can be used only Via Panel, where Upload location of the file will be auto populated as per the System Or via API user may input the actual loaction of File saved in User System for Reference. Example: \\\\\\CoreCredit\\\\\\DocumentUpload\\\\\\Screenshot58_05222020053109.png"
+        },
+        {
+            "name": "ImageThumbLocation",
+            "type": "string",
+            "required": false,
+            "description": "It can be used only Via Panel, where Upload location of the file will be auto populated as per the System Or via API user may input the actual loaction of File saved in User System for Reference. Example: \\\\\\CoreCredit\\\\\\DocumentUpload\\\\\\ThumbImage\\\\\\Screenshot58_05222020053109.png"
+        },
+        {
+            "name": "HashFile",
+            "type": "string",
+            "required": false,
+            "description": "It can be used only via Panel, where Document Content is duplicate or not, will be checked if duplicate will throw an error on Panel It is a hash of the File, which Client System must generate to Check for Document Content Duplicacy."
+        },
+        {
+            "name": "BinaryData",
+            "type": "byte[]",
+            "required": null,
+            "description": "User must input the Binary data of the document to be uploaded Condition: Mandatory only if Decision Flag is '0' or '2'. Valid Values:  a-z, 0-9 Format: Example:Identity Info.pdf"
+        },
+        {
+            "name": "DisputeDocumentCategory",
+            "type": "string",
+            "required": null,
+            "description": "category of the dispute document Condition: Mandatory only If DocumentType = 14 Example: 1=Cardholder Dispute Form, 2=Merchant Communication Letter/email Allowable Values: 3"
+        },
+        {
+            "name": "DisputeCaseID",
+            "type": "int64",
+            "required": null,
+            "description": "Dispute Case ID Condition: Mandatory only If DocumentType = 14 Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 23654789"
+        },
+        {
+            "name": "DisputeDocumentSource",
+            "type": "string",
+            "required": null,
+            "description": "Source of the document Valid Values: 01=CoreCredit, 02=MasterCom Condition : Mandatory only if DocumentType = 14"
+        },
+        {
+            "name": "Comment",
+            "type": "string",
+            "required": false,
+            "description": "Comment"
+        },
+        {
+            "name": "LoginUserId",
+            "type": "string",
+            "required": false,
+            "description": "LoginUserId"
+        },
+        {
+            "name": "TemplateId",
+            "type": "integer",
+            "required": false,
+            "description": "TemplateId"
+        },
+        {
+            "name": "SMSTemplateId",
+            "type": "integer",
+            "required": false,
+            "description": "SMSTemplateId"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "SUID",
+                    "type": "int64",
+                    "required": null,
+                    "description": "System Unique ID, to be Used as Input while Deleting or Updating Account Documents",
+                    "children": []
+                },
+                {
+                    "name": "UploadBy",
+                    "type": "string",
+                    "required": null,
+                    "description": "UserID of the User Creating/Uploading the Document Valid Values:USER1 Format:XXXX Example:USER1 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "UpdateBy",
+                    "type": "string",
+                    "required": null,
+                    "description": "UserID of the User Updating the Document Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CreatedDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "the Date and Time if New Document Uploaded Valid Values: 0-9 Format: MM/dd/yyyy HH:mm:ss Example: 02/20/2020 20:20:20",
+                    "children": []
+                },
+                {
+                    "name": "UpdateDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "the Date and Time If Existing Document Updated Valid Values: 0-9 Format: MM/dd/yyyy HH:mm:ss Example: 02/20/2020 20:20:20",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "WEB",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "SUID": null,
+        "AccountID": null,
+        "AccountNumber": "1000000700000271",
+        "MerchantID": null,
+        "DocumentType": "Other",
+        "DocumentName": "Screenshot_05222020053109.png",
+        "DecisionFlag": 0,
+        "BinaryData": "ICAgICAgIA==",
+        "DisputeDocumentCategory": null,
+        "DisputeCaseID": null,
+        "DisputeDocumentSource": null,
+        "Comment": null,
+        "LoginUserId": null,
+        "TemplateId": null,
+        "SMSTemplateId": null
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": null
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Documents",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=50&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=7"
+    }
+}

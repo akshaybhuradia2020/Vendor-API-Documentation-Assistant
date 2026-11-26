@@ -1,0 +1,195 @@
+{
+    "metadata": {
+        "name": "ManageDispute",
+        "http_method": "POST",
+        "endpoint": "/api/ManageDispute",
+        "description": "Use this API to update the dispute against a Transaction."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CaseID",
+            "type": "Int64",
+            "required": true,
+            "description": "ID which is generated against the Dispute request. Valid Values: 0-9 Format: XXXXXXX Example:9856198 Allowable Values: 10"
+        },
+        {
+            "name": "ReasonCodeCategory",
+            "type": "string",
+            "required": false,
+            "description": "Reason Code Category for Dispute. Please refer appendix Section : Reason Code Category Allowable Values: 2"
+        },
+        {
+            "name": "ReasonCode",
+            "type": "string",
+            "required": false,
+            "description": "Reason Code for Dispute. Please refer appendix Section : Reason Code Allowable Values: 4"
+        },
+        {
+            "name": "ChargebackType",
+            "type": "Int32",
+            "required": false,
+            "description": "Chargeback Type shows the Dispute Amount should be Full or Partial. Valid Values: 1 and 2 Example: 1 = Full and 2 = partial Allowable Values: 1"
+        },
+        {
+            "name": "DisputeAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Disputed amount on the card. Example:600.30 Condition: If the value in ‘Chargeback Type’ field is given as 2, then this field should become Mandatory."
+        },
+        {
+            "name": "Notes",
+            "type": "string",
+            "required": false,
+            "description": "Notes entered by the user Valid Values : A-Z,0-9 Example : Card found Allowable Values: 2000"
+        },
+        {
+            "name": "DisputeStatusCode",
+            "type": "string",
+            "required": false,
+            "description": "Status of the Dispute. Please refer appendix Section : Dispute Status. Valid Values: 0-9"
+        },
+        {
+            "name": "FraudLabel",
+            "type": "Int32",
+            "required": null,
+            "description": "Fraud Label of a Transaction. Valid Value:- 1 - Fraudulent 0 - Not Fraudulent Example:- 1 Condition:- Mandatory if the Feedzai system is active for that product but optional if the product is not enrolled in Feedzai. Allowable Values: 1"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "CaseID",
+                    "type": "Int64",
+                    "required": null,
+                    "description": "ID which is generated against the Dispute request. Valid Values: 0-9 Format: XXXXXXX Example:9856198",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CaseID": 9856198,
+        "ReasonCodeCategory": "5",
+        "ReasonCode": "3",
+        "ChargebackType": 1,
+        "DisputeAmount": 6.33,
+        "Notes": "",
+        "DisputeStatusCode": "1",
+        "FraudLabel": 1
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "CaseID": 9856198
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Dispute",
+        "category_id": "1046",
+        "document_id": "1270",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1270&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1046&regionId=1"
+    }
+}

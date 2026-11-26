@@ -1,0 +1,939 @@
+{
+    "metadata": {
+        "name": "GetStatusDefinition",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/GetStatusDefinition",
+        "description": "The purpose of this API is to get the configuration for the mentioned status."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountStatus",
+            "type": "integer",
+            "required": true,
+            "description": "Credit Report Details Status Code Valid Values: 0-9 Format: xx Example: 12"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": true,
+            "description": "Specific ID Assigned to a Merchant, Mandatory If Merchant Number not Inputted in API Request. Valid Values: 0-9 Format: XXXX Example: 562489"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "StatusDefinition",
+                    "type": "",
+                    "required": null,
+                    "description": "The list of parameters configured for mentioned status.",
+                    "children": [
+                        {
+                            "name": "AccountID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition:At least one of CardNumber / AdminNumber / AccountNumber / AccountID is required.",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of status Valid Values:A-Z, 0-9 Format:XXXXXX Example: Active Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusPriority",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Denotes Status priority Valid Values: 0-9 Format: XX Example: 7 Condition: If request type  = 1 then priority can be set",
+                            "children": []
+                        },
+                        {
+                            "name": "SelfServiceAccess",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Access to Self Service Portal Valid Values: Yes, No Format: XXX Example: No Condition: If request type  = 1 then priority can be set",
+                            "children": []
+                        },
+                        {
+                            "name": "IssueReissueAction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Valid Values: 0 =Issue or Reissue 1 = Do not Issue or Reissue 2 = Do not Issue or Reissue and report Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "FinanceChargeAction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Finance Charge Valid Values: 0 = Normal finance charge calculation 1 = Defer finance charge 2 = Waive finance charge Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "RevolvingPaymentAction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Revolving Payment Valid Values: 0 = No effect 1 = Bill account for entire outstanding balance 2 = Cancel any outstanding deferments 3 = Skip payment Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "InsuranceCancellationAction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Insurance Cancellation Valid Values: \t0 = No effect 1 = Cancel insurance; No block, reinstatement automatic 2 = Cancel insurance; Reinstatement will be manual Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditBureauStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description CBR of status Valid Values:Refer Appendix Format:XXXXXX Example: Active Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "CheckOpenToBuy",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Check Open To Buy Valid Values: 0 = Do not Check OTB when posting purchases 1 = Check OTB when posting purchases Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "PostingOfTransactions",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Posting Of Transactions Valid Values: \t0 = Post normally 1 = Post normally and report 2 = Non post all transactions 3 = Non post all transactions, report on Reject Report 4 = Non post debits and report 5 = Non post debits 6 = Divert debits, post credits to Plan segment 7 = Non post transactions not defined for Charged-off accounts 8 = Non Post Purchases Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyPointsDeduction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Loyalty Points Deduction Method Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyPointsAccumulation",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Loyalty Points Accumulation Method Valid Values: Refer Appendix Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "InsuranceEligibility",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Insurance Eligibility Valid Values: 0 = No - Not Eligible for Insurance Products 1 = Yes - Eligible For Insurance Products Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "PostingReason",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Posting Reason Valid Values:  Refer Appendix Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldStatement",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Hold Statement Valid Values: \t1 = Print Statement 2 = Hold Paper Statement Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveLateChargeAction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Waive Late Charge Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveLateChargeFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Waive Late Charge For Valid Values: Refer Appendix Format: XX Example: 1 Condition: NA Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveLateChargeCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Late Charge Cycles From Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveAnnualFeeAction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Waive Annual Fee Valid Values: 0 = No - Do not waive membership fees 1 = Yes - Waive membership fees Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveAnnualFeeActionFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Waive Annual Fee Valid Values: Refer Appendix Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveAnnualFeeActionCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Waive Annual Fee Cycles From Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveOverlimitFeeAction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Waive Over limit Fee Valid Values: \t0 = No - Do not waive overlimit fees 1 = Yes - Waive overlimit fees Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveOverlimitFeeActionFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Waive Over limit Fee Valid Values: Refer Appendix Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveOverlimitFeeActionCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInsufficientFundsAction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Waive Insufficient Funds Valid Values: 0 = No - Do not waive NSF check charges 1 = Yes - Waive NSF check charges Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInsufficientFundsActionFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Waive Insufficient Funds Valid Values: Refer Appendix Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInsufficientFundsActionCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Waive Insufficient FundsCycles From Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "StatementDelivery",
+                            "type": "string",
+                            "required": null,
+                            "description": "Configuration for Statement Delivery Valid Values: 0 = Mail to Account holder 1 = Mail to Merchant 2 = No Action Required Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveMinimumDue",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Minimum Due Valid Values: 0 = Calculate Minimum Due and Age Delinquency 1 = Waive Minimum Due and Do NOT Age Delinquency 2 = Calculate Minimum Due and Do NOT Age Delinquency Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveMinimumDueFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Minimum Due Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveMinimumDueCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Minimum Due Cycles From Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInsurancePremiums",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Insurance Premiums Valid Values: \t0 = No - Do not waive insurance premiums 1 = Yes - Waive insurance premiums Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInsurancePremiumsFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Insurance Premiums Valid Values: Refer Appendix Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInsurancePremiumsCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Insurance Premiums Cycles From Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInterest",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Interest Valid Values: 0 = No - Do not waive interest 1 = Yes - Waive interest Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInterestFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Waive Transaction Fees For at Fee Flags Panel. Valid Values:0-9 Format:XX Example:12,36",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInterestCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Interest Cycles From Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveTransactionFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Waive Transaction Fees at Fee Flags Panel. Valid Values:0 = No - Do not waive Transaction Fees 1 = Yes - Waive Transaction Fees Format:X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveTransactionFeesFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Waive Transaction Fees at Fee Flags Panel. Valid Values: Refer Appendix Format:X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveTransactionFeesCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Transaction Fees Cycles From Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveAuthorizationFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Authorization Fees Valid Values: \t0 = No - Do not waive Authorization Fees 1 = Yes - Waive Authorization Fees Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveAuthorizationFeesFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Authorization Fees Valid Values: Refer Appendix Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveAuthorizationFeesCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Authorization Fees Cycles From Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveCardFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Card Fees Valid Values: 0 = No - Do not waive Card Fees 1 = Yes - Waive Card Fees Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveCardFeesFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Waive Card Fees For at Fee Flags Panel. Valid Values:0-9 Format:XX Example:12,36",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveCardFeesCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Card Fees Cycles From Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveActiveInactiveFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Authorization Fees Valid Values: Refer Appendix Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveActiveInactiveFeesFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Active Inactive Fees For Valid Values: Refer Appendix Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveActiveInactiveFeesCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Active Inactive Fees Cycles From Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveServiceFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Service Fees Valid Values: \t0 = No - Do not waive Service Fees 1 = Yes - Waive Service Fees Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveServiceFeesFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Waive Service Fees For at Fee Flags Panel. Valid Values:0-9 Format:XX Example:12,36",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveServiceFeesCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Service Fees Cycles From Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveMessageFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Waive Message Fees at Fee Flags Panel. Valid Values:\t0 = No - Do not waive Message Fees 1 = Yes - Waive Message Fees Format:X Example:No/Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveMessageFeesFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Waive Message Fees For at Fee Flags Panel. Valid Values:0-9 Format:XX Example:12,36",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveMessageFeesCyclesFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Waive Message Fees Cycles From Valid Values: 1 = Account opening 2 = Previous cycle date 3 = Status Setting Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SchedulePayments",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Schedule Payments Valid Values: Refer Appendix Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "NegativeRewardBalanceToCharge",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Negative Reward Balance To Charge Valid Values: 1 = Clear Negative Points 2 = Clear Negative Points and Post Debit Transaction Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "TrigRewardRedemption",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Trig Reward Redemption Valid Values: 0 = No 1 = Yes Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "ExRedemptionMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Ex Redemption Method Valid Values:  1 = ACH 2 = Credit Account 3 = Statement Credit 4 = Gift Certificate 5 = Partner Pay 6 = Manual Check 9 = Loan Pay Down Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "RetainGraceStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Action configured for Retain Grace Status Valid Values: 0 = No 1 = Yes Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "AfterNumberOfCycles",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for After Number Of Cycles Valid Values: 0-9 Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "COReasonCode",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Charge Off Reason Code Valid Values: 0 = None 1 = Credit Losses 2 = Bankruptcy 3 = Fraud 4 = Other 6 = Deceased 7 = Contarctual Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "NewManualStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Configuration for New Manual Status Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "InitiateChargeOffAtZeroBalance",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Description: Indicates either initiating Charge Off at Zero or Negative Balance is allowed or not. Valid Values: Blank, 0 = No 1 = Yes Format: XX Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "CardStatusAction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for CardStatusAction Valid Values: 0-9 Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "PartnerStatusCateogry",
+                            "type": "string",
+                            "required": null,
+                            "description": "Configuration for PartnerStatusCateogry Valid Values:A-Z, 0-9 Format:XXXXXX Example:ABC Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoPlan",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for PromoPlan Valid Values: 0-9 Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoPlanTurnOffMsg",
+                            "type": "string",
+                            "required": null,
+                            "description": "Configuration for PromoPlanTurnOffMsg Valid Values:A-Z, 0-9 Format:XXXXXX Example:ABC Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AlertSuppress",
+                            "type": "string",
+                            "required": null,
+                            "description": "Configuration for AlertSuppress Valid Values:A-Z, 0-9 Format:XXXXXX Example:ABC Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "SendToFraud",
+                            "type": "string",
+                            "required": null,
+                            "description": "Configuration for SendToFraud Valid Values:A-Z, 0-9 Format:XXXXXX Example:ABC Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowDebitWriteOff",
+                            "type": "string",
+                            "required": null,
+                            "description": "Configuration for AllowDebitWriteOff Valid Values:A-Z, 0-9 Format:XXXXXX Example:ABC Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowCashTransaction",
+                            "type": "string",
+                            "required": null,
+                            "description": "Allow Cash Transactions Valid Values:A-Z, 0-9 Format:XXXXXX Example:ABC Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusDueToOptingOutOfPenaltyPricing",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the status to be applicable on account if Penalty Pricing is Opted Out. Valid Values: ‘1’ = Yes when checkbox check and ‘0’ = No when checkbox uncheck Format: X Example: 0   Status due to Opting-Out of Penalty Pricing",
+                            "children": []
+                        },
+                        {
+                            "name": "IssuerFileUpdateProfile",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description:This field will hold the value set up in Issuer File Update Profile of Status Definition. Valid Values:  Integer values.(ID of the Profile) minLength: 0 maxLength: 6 Format: NNNN Example: 5000",
+                            "children": []
+                        },
+                        {
+                            "name": "NYMandateRewardRedemption",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Description: Indicates if the 90-day Reward Redemption is allowed as per NY Mandate when account falls in the given status. Valid Values:  Integer values.(ID of the Profile) 0 = No 1 = Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusGroup",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Status Group Valid Values: Refer Appendix Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "ExcludeFromCBR",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Exclude From CBR Valid Values: 0 = No 1 = Yes Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "CBRSpecialComment",
+                            "type": "string",
+                            "required": null,
+                            "description": "Configuration for CBRSpecialComment Valid Values:A-Z, 0-9 Format:XXXXXX Example:ABC Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ComplianceConditionCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Configuration for ComplianceConditionCode Valid Values:A-Z, 0-9 Format:XXXXXX Example:ABC Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ConsiderasClosed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description: Indicates if status is considered as Closed to populate the Date account closed. Valid Values: 1=Yes and 0=No Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "SendToCollections",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Send account To Collections Valid Values: 0 = No - Not for this Status Code 1 = Yes - High Priority 2 = Yes - Low Priority 3 = Yes - Force 4 = No - Not for any Collection Reason Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SetDunSuppress",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Set Dun Suppress Valid Values: 0 = No - Do not effect Dun suppress indicator 1 = Yes - Set Dun suppress indicator Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "RestructureActionCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Action configured for Restructure Action Code Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "CloseCaseActionCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Action configured for Close Case Action Code Format: XX Example: 1 Condition: NA",
+                            "children": []
+                        },
+                        {
+                            "name": "OverridePriority",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Override Priority Valid Values: 0 = No 1 = Yes Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "GenerateEmail",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Generate Email Valid Values: 0 = No 1 = Yes Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "GenerateSMS",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Generate SMS Valid Values: 0 = No 1 = Yes Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "GenerateLetter",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Generate Letter Valid Values: 0 = No 1 = Yes Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowCustomerServiceReage",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Will determine that Special Re-age to bypass the counter will be applicable or not on accounts associated with defined status. Valid Values: 0-No,1-Yes Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountActivationAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "will determine whether account activation process is allowed or not. Valid Values: 1-No,0-Yes Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowChangeInBillingCycle",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag indicates either change in the billing cycle of the account is allowed or not. Valid Values: 0-No,1-Yes Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "UpdateSameStatusForLinkedCustomerAccount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag indicates either status of all linked customer account should be updated or not. Valid Values: 0-No,1-Yes Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "CustomerStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag indicates either status of all linked customer account should be updated or not. Valid Values: 0-No,1-Yes Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowNewAccountCreation",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag indicates whether new account or application creation is allowed based on Customer Statuses on Linked Accounts. Valid Values: 0-No,1-Yes Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "Allow1099CReporting",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Determines if 1099C reporting is required at this status or not. Valid Values: 0 = No,1 = Yes Format: XX Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "UpdateableFromCoreAdmin",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag indicates that Coreadmin user is able to update status or not . Valid Values: 0-No,1-Yes Example: 1",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountStatus": 1,
+        "MerchantID": 11268
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "StatusDefinition": {
+                "AccountID": 10804,
+                "StatusDescription": "Template Record",
+                "StatusPriority": 310,
+                "SelfServiceAccess": 0,
+                "IssueReissueAction": 1,
+                "FinanceChargeAction": 2,
+                "RevolvingPaymentAction": 3,
+                "InsuranceCancellationAction": 2,
+                "CreditBureauStatus": "0 ",
+                "CheckOpenToBuy": 1,
+                "PostingOfTransactions": 7,
+                "LoyaltyPointsDeduction": null,
+                "LoyaltyPointsAccumulation": 1,
+                "InsuranceEligibility": 0,
+                "PostingReason": 6,
+                "HoldStatement": null,
+                "WaiveLateChargeAction": 1,
+                "WaiveLateChargeFor": 0,
+                "WaiveLateChargeCyclesFrom": null,
+                "WaiveAnnualFeeAction": 1,
+                "WaiveAnnualFeeActionFor": 0,
+                "WaiveAnnualFeeActionCyclesFrom": null,
+                "WaiveOverlimitFeeAction": 1,
+                "WaiveOverlimitFeeActionFor": 0,
+                "WaiveOverlimitFeeActionCyclesFrom": null,
+                "WaiveInsufficientFundsAction": 1,
+                "WaiveInsufficientFundsActionFor": 0,
+                "WaiveInsufficientFundsActionCyclesFrom": null,
+                "StatementDelivery": "2",
+                "WaiveMinimumDue": 0,
+                "WaiveMinimumDueFor": null,
+                "WaiveMinimumDueCyclesFrom": null,
+                "WaiveInsurancePremiums": 0,
+                "WaiveInsurancePremiumsFor": null,
+                "WaiveInsurancePremiumsCyclesFrom": null,
+                "WaiveInterest": 1,
+                "WaiveInterestFor": 0,
+                "WaiveInterestCyclesFrom": null,
+                "WaiveTransactionFees": 1,
+                "WaiveTransactionFeesFor": 0,
+                "WaiveTransactionFeesCyclesFrom": null,
+                "WaiveAuthorizationFees": null,
+                "WaiveAuthorizationFeesFor": null,
+                "WaiveAuthorizationFeesCyclesFrom": null,
+                "WaiveCardFees": 0,
+                "WaiveCardFeesFor": null,
+                "WaiveCardFeesCyclesFrom": null,
+                "WaiveActiveInactiveFees": null,
+                "WaiveActiveInactiveFeesFor": null,
+                "WaiveActiveInactiveFeesCyclesFrom": null,
+                "WaiveServiceFees": 1,
+                "WaiveServiceFeesFor": 0,
+                "WaiveServiceFeesCyclesFrom": null,
+                "WaiveMessageFees": 0,
+                "WaiveMessageFeesFor": null,
+                "WaiveMessageFeesCyclesFrom": null,
+                "SchedulePayments": null,
+                "NegativeRewardBalanceToCharge": null,
+                "TrigRewardRedemption": null,
+                "ExRedemptionMethod": null,
+                "RetainGraceStatus": null,
+                "AfterNumberOfCycles": null,
+                "COReasonCode": null,
+                "NewManualStatus": null,
+                "InitiateChargeOffAtZeroBalance": null,
+                "CardStatusAction": null,
+                "PartnerStatusCateogry": null,
+                "PromoPlan": null,
+                "PromoPlanTurnOffMsg": null,
+                "AlertSuppress": null,
+                "SendToFraud": null,
+                "AllowDebitWriteOff": null,
+                "AllowCashTransaction": null,
+                "StatusDueToOptingOutOfPenaltyPricing": null,
+                "IssuerFileUpdateProfile": null,
+                "NYMandateRewardRedemption": null,
+                "StatusGroup": 0,
+                "ExcludeFromCBR": null,
+                "CBRSpecialComment": null,
+                "ComplianceConditionCode": null,
+                "ConsiderasClosed": "0",
+                "SendToCollections": 0,
+                "SetDunSuppress": 1,
+                "RestructureActionCode": null,
+                "CloseCaseActionCode": null,
+                "OverridePriority": null,
+                "GenerateEmail": null,
+                "GenerateSMS": null,
+                "GenerateLetter": null,
+                "AllowCustomerServiceReage": null,
+                "AccountActivationAllowed": null,
+                "AllowChangeInBillingCycle": null,
+                "CustomerStatus": null,
+                "AllowNewAccountCreation": null,
+                "Allow1099CReporting": null,
+                "UpdateableFromCoreAdmin": null
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Control Parameters",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1039&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005"
+    }
+}

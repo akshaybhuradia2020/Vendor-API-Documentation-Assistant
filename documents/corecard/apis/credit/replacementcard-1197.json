@@ -1,0 +1,324 @@
+{
+    "metadata": {
+        "name": "ReplacementCard",
+        "http_method": "POST",
+        "endpoint": "/api/ReplacementCard",
+        "description": "Use this API to replace a card by marking it  Lost/Stolen/Damage/Other/Re-Issue/Personalize and providing a replacement card by generating a new card or using a preprinted card from inventory."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition:At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893 Condition:At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition:At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "Reason",
+            "type": "string",
+            "required": true,
+            "description": "Reason for  card replacement Valid  values: 1 = Stolen 2 = Lost 3 = Damage 4 = Other 5 = Reissue 6 = Personalize 11 = Issue Physical Card Example : 2 Allowable Values: 2"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "string",
+            "required": true,
+            "description": "Used for performing various operations when respective flag values defined below are passed. Valid values: 0 = Do not Generate new Embossing 1 = Generate New Embossing Note: When 'Reason' = 5 (Reissue) then Value of DecisionFlag would be '0' Allowable Values: 2"
+        },
+        {
+            "name": "CardFee",
+            "type": "Int32",
+            "required": false,
+            "description": "Note :- Even if the user provides the tag value '1 = fee should be charged,' this tag will not be used to charge the fee. The fee needs to be charged separately."
+        },
+        {
+            "name": "DeliveryMechanism",
+            "type": "string",
+            "required": true,
+            "description": "Description:Shipment delivery mechanism. By Default Setting must be for standard Delivery Valid Values: 0-9 Example: 0 = Standard , 1 = Priority, 2 = Overnight 3 = USPS Mail (First Class) 4 = FedEx Economy 5 = 2nd business day Allowable Values: 40"
+        },
+        {
+            "name": "CardType",
+            "type": "Int32",
+            "required": true,
+            "description": "Type of card Valid Values : 0 = Card from Shelf 1 = Print New Card Condition: Required, if value of DecisionFlag tag is 1"
+        },
+        {
+            "name": "NewCardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of New/Personalized card. Ex: *********1234567[For Compliance masked BIN and Extended BIN] Valid values are  0-9 Clear Card Number Condition: NewCardNumber is required, if value of CardType tag is 0. Allowable Values: 16"
+        },
+        {
+            "name": "NameOnCard",
+            "type": "string",
+            "required": null,
+            "description": "Name to be Embossed on Card Valid values are A-Z, a-z, 0-9. Example: Hudson M Charles Condition: Mandatory when setup is Automatic/Mandatory Allowable Values: 28"
+        },
+        {
+            "name": "IsCardMasked",
+            "type": "string",
+            "required": false,
+            "description": "This tag indicates whether CardNumber should be returned in masked form or in clear form. Valid Values: 0= Card Number without Masked in Resonse. 1= Card Number with Masked in Resonse. 2= No Card Number in Resonse. Condition:If No value is given then by default it returns Card Number with Masked in Response. Allowable Values: 1"
+        },
+        {
+            "name": "MemoFlag",
+            "type": "string",
+            "required": null,
+            "description": "Possible Values: 1:Card Replacement on Legitimate Address 0:Card Replacement on Fraudulent Address Example : 1 Condition : when On Product, ReplaceWarningChangeAddr not null or zero and  DecisionFlag = 1 and ReissueReason = 1 or 2 Allowable Values: 1"
+        },
+        {
+            "name": "MemoDesc",
+            "type": "string",
+            "required": null,
+            "description": "Description for Memo Condition : when On Product, ReplaceWarningChangeAddr not null or zero and  DecisionFlag = 1 and ReissueReason = 1 or 2 Allowable Values: 2000"
+        },
+        {
+            "name": "ShippingAddressFlag",
+            "type": "string",
+            "required": null,
+            "description": "Decision flag to select Shipping Address Valid Values: '0'  Ship to Existing Address '1' Ship to Other Address Example: 1 Condition: When Reason = 1 or 2 and DecisionFlag = 0 it will become optional else mandatory Allowable Values: 1"
+        },
+        {
+            "name": "ShipToFirstName",
+            "type": "string",
+            "required": false,
+            "description": "First Name  for Shipping address Valid Values: A-Z,a-z. Example: TestName Condition:It is mandatory when value of ShippingAddressFlag =1 Allowable Values: 50"
+        },
+        {
+            "name": "ShipToMiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Middle Name  for Shipping address Valid Values: A-Z,a-z. Example: MName Allowable Values: 50"
+        },
+        {
+            "name": "ShipToLastName",
+            "type": "string",
+            "required": false,
+            "description": "Last Name  for Shipping address Valid Values: A-Z,a-z. Example: LastName Condition:It is mandatory when value of ShippingAddressFlag =1 Allowable Values: 50"
+        },
+        {
+            "name": "ShipToAddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Address Line 1 for Shipping address Valid values:A-Z, a-z, 0-9 Example: 1 Meca Way Condition:It is mandatory when value of ShippingAddressFlag =1 Allowable Values: 50"
+        },
+        {
+            "name": "ShipToAddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Address Line 2 for Shipping address Valid values:A-Z, a-z, 0-9 Example:15 Penang Street Point Allowable Values: 50"
+        },
+        {
+            "name": "ShipToCity",
+            "type": "string",
+            "required": null,
+            "description": "City for Shipping address Valid values:A-Z, a-z, 0-9 Example:Norcross Condition:It is mandatory when value of ShippingAddressFlag =1 Allowable Values: 25"
+        },
+        {
+            "name": "ShipToState",
+            "type": "string",
+            "required": null,
+            "description": "State for Shipping address Valid Values:A-Z,a-z Example:NY Condition:It is mandatory when value of ShippingAddressFlag =1 Refer Appendix Section: State Codes (US) Allowable Values: 3"
+        },
+        {
+            "name": "ShipToPostalCode",
+            "type": "string",
+            "required": null,
+            "description": "ZIP code for Shipping address Valid values:A-Z, a-z,0-9 Example: 30093 Condition:It is mandatory when value of ShippingAddressFlag =1 Allowable Values: 10"
+        },
+        {
+            "name": "ShipToCountry",
+            "type": "string",
+            "required": null,
+            "description": "Country Code for Shipping address Valid values are A-Z, a-z Example: US Condition:It is mandatory when value of ShippingAddressFlag =1 Refer Appendix Section : Country Code Values Allowable Values: 2"
+        },
+        {
+            "name": "HoldEmbossing",
+            "type": "Int32",
+            "required": false,
+            "description": "Tag to decide physical card or virtual card by holding embossing file. Valid Values: 0 - No (Physical card) 1 - Yes (Virtual card) Note : field will be ignored with reason = 6 and 11"
+        },
+        {
+            "name": "PlasticCode",
+            "type": "string",
+            "required": false,
+            "description": "Plastic Code Valid values: A-Z, a-z, 0-9 Example: 32 Allowable Values: 100"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "CardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Allowable Values: 16",
+                    "children": []
+                },
+                {
+                    "name": "ProxyNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "PlasticCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Plastic Code of Card Valid Values: a to z, A to Z, 0 to 9 Example:- Chicksaw Nation Grant Card - Clothing (50)",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.4",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "CardNumber": "4066850001000935",
+        "AccountNumber": "",
+        "ProxyNumber": "1316728",
+        "Reason": "1",
+        "DecisionFlag": "1",
+        "CardFee": 120,
+        "DeliveryMechanism": "1",
+        "CardType": 1,
+        "NewCardNumber": "",
+        "NameOnCard": "",
+        "IsCardMasked": "1",
+        "MemoFlag": "1",
+        "MemoDesc": "Stolen",
+        "ShippingAddressFlag": "",
+        "ShipToFirstName": "",
+        "ShipToMiddleName": "",
+        "ShipToLastName": "",
+        "ShipToAddressLine1": "",
+        "ShipToAddressLine2": "",
+        "ShipToCity": "",
+        "ShipToState": "",
+        "ShipToPostalCode": "",
+        "ShipToCountry": "",
+        "HoldEmbossing": 1,
+        "PlasticCode": "32"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "CardNumber": "406683******6085",
+            "ProxyNumber": "1316756",
+            "PlasticCode": "NCP"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Card Replacement",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1197&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1021"
+    }
+}

@@ -1,0 +1,630 @@
+{
+    "metadata": {
+        "name": "GetISTWATCHScore",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetISTWATCHScore",
+        "description": "This API returns data when queried for records related to IST Watch."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "SysOrgId",
+            "type": "integer",
+            "required": false,
+            "description": "Used for authentication and issued by Core Card. This is a static value to represent institution."
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": false,
+            "description": "First name of individual for query"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Middle name of individual for query"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": false,
+            "description": "Last name of individual for query"
+        },
+        {
+            "name": "StreetAddress",
+            "type": "string",
+            "required": false,
+            "description": "Street address of individual for query"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": false,
+            "description": "City of individual for query"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": false,
+            "description": "State Name of individual for query"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": false,
+            "description": "Country Name of individual for query"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "SysOrgId",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Used for authentication and issued by Core Card. This is a static value to represent institution.",
+                    "children": []
+                },
+                {
+                    "name": "FirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "First name of individual for query",
+                    "children": []
+                },
+                {
+                    "name": "MiddleName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Middle name of individual for query",
+                    "children": []
+                },
+                {
+                    "name": "LastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last name of individual for query",
+                    "children": []
+                },
+                {
+                    "name": "StreetAddress",
+                    "type": "string",
+                    "required": null,
+                    "description": "Street address of individual for query",
+                    "children": []
+                },
+                {
+                    "name": "City",
+                    "type": "string",
+                    "required": null,
+                    "description": "City of individual for query",
+                    "children": []
+                },
+                {
+                    "name": "State",
+                    "type": "string",
+                    "required": null,
+                    "description": "State Name of individual for query",
+                    "children": []
+                },
+                {
+                    "name": "Country",
+                    "type": "string",
+                    "required": null,
+                    "description": "Country Name of individual for query",
+                    "children": []
+                },
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Unique response identifier",
+                    "children": []
+                },
+                {
+                    "name": "MatchingRecords",
+                    "type": "array",
+                    "required": null,
+                    "description": "Array to hold matching SDN records (if any)",
+                    "children": [
+                        {
+                            "name": "ISTWatchName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Terrorist or denied person’s name/organization",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Values: 0 : Politically Exposed Persons Match Non- Zero: Database identification number OFAC Match",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchStreet",
+                            "type": "string",
+                            "required": null,
+                            "description": "Street address",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchCity",
+                            "type": "string",
+                            "required": null,
+                            "description": "City",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchState",
+                            "type": "string",
+                            "required": null,
+                            "description": "State",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchCountry",
+                            "type": "string",
+                            "required": null,
+                            "description": "Country",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchDuplicateID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "duplicate database identification number",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchDate",
+                            "type": "string",
+                            "required": null,
+                            "description": "Record Date",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchPhoneNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Phone Number",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchMemo",
+                            "type": "string",
+                            "required": null,
+                            "description": "Additional personal Information",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchBALKANS",
+                            "type": "string",
+                            "required": null,
+                            "description": "Western Balkans Stabilization Regulations",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchBPI_PA",
+                            "type": "string",
+                            "required": null,
+                            "description": "Blocked Pending Investigation",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchCUBA",
+                            "type": "string",
+                            "required": null,
+                            "description": "Cuban Assets Control Regulations",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchDPL",
+                            "type": "string",
+                            "required": null,
+                            "description": "Listed as Denied Person",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchFRYM",
+                            "type": "string",
+                            "required": null,
+                            "description": "affiliation with FRYM terrorist program",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchFTO",
+                            "type": "string",
+                            "required": null,
+                            "description": "Foreign Terrorist Organizations Sanctions Regulations",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchIRAN",
+                            "type": "string",
+                            "required": null,
+                            "description": "Iranian Transactions and Sanctions Regulations",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchIRAQ",
+                            "type": "string",
+                            "required": null,
+                            "description": "Affiliation with IRAQ terrorist program",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchLIBYA",
+                            "type": "string",
+                            "required": null,
+                            "description": "affiliation with LIBYA terrorist program.",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchNKOREA",
+                            "type": "string",
+                            "required": null,
+                            "description": "Affiliation with NKOREA terrorist program",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchSDNT",
+                            "type": "string",
+                            "required": null,
+                            "description": "\"Narcotics Trafficking Sanctions Regulations. Listed as a Specially Designated Narcotics Trafficker (SDNT)\"",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchSDNTK",
+                            "type": "string",
+                            "required": null,
+                            "description": "Listed as a SDNT under the Kingpin Act",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchSDGT",
+                            "type": "string",
+                            "required": null,
+                            "description": "Listed as a Specially Designated Global Terrorist",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchSDT",
+                            "type": "string",
+                            "required": null,
+                            "description": "Terrorism Sanctions Regulations",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchSUDAN",
+                            "type": "string",
+                            "required": null,
+                            "description": "Sudanese Sanctions Regulations",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchTALIBAN",
+                            "type": "string",
+                            "required": null,
+                            "description": "Affiliation with TALIBAN terrorist program",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchUNITA",
+                            "type": "string",
+                            "required": null,
+                            "description": "Affiliation with UNITA terrorist program",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchSDN_Type",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of a specially designated national",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchProgram",
+                            "type": "string",
+                            "required": null,
+                            "description": "Sanctions programs that list this entity",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchTitle",
+                            "type": "string",
+                            "required": null,
+                            "description": "Title or Position",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchCall_Sign",
+                            "type": "string",
+                            "required": null,
+                            "description": "Vessel call sign",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchVess_Type",
+                            "type": "string",
+                            "required": null,
+                            "description": "Vessel Type",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchTonnage",
+                            "type": "string",
+                            "required": null,
+                            "description": "Vessel Tonnage",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchGRT",
+                            "type": "string",
+                            "required": null,
+                            "description": "Gross registered tonnage",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchVess_flag",
+                            "type": "string",
+                            "required": null,
+                            "description": "Vessel Flag",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchVess_Owner",
+                            "type": "string",
+                            "required": null,
+                            "description": "Vessel Owner",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchAdd_Num",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Additional Identifier",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchAdd_remarks",
+                            "type": "string",
+                            "required": null,
+                            "description": "Additional Remarks",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchPostal_Code",
+                            "type": "string",
+                            "required": null,
+                            "description": "Postal Code(denied persons only)",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchEffective_Date",
+                            "type": "string",
+                            "required": null,
+                            "description": "Entry Effective Date(Denied persons only)",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchExpiration_Date",
+                            "type": "string",
+                            "required": null,
+                            "description": "Entry Expiration Date(denied persons only)",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchStandard_Order",
+                            "type": "string",
+                            "required": null,
+                            "description": "Standard order(denied persons only)",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchNameSearch_Key",
+                            "type": "string",
+                            "required": null,
+                            "description": "Key used to search queried entity",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWATCHScore",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Percentage Match with SDN Entry",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "WEB",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "SysOrgId": 6,
+        "FirstName": "John"
+    },
+    "sample_response": {
+        "Message": "OK",
+        "Status": true,
+        "ErrorCode": "ERR01528",
+        "ResponseData": {
+            "SysOrgId": 7,
+            "FirstName": "Osama",
+            "MiddleName": "",
+            "LastName": "",
+            "StreetAddress": "",
+            "State": "",
+            "Country": "",
+            "ResponseID": "56784587",
+            "MatchingRecords": [
+                {
+                    "ISTWatchName": "OSAMA, Abu",
+                    "ISTWatchID": 11697,
+                    "ISTWatchStreet": "",
+                    "ISTWatchCity": "",
+                    "ISTWatchState": "",
+                    "ISTWatchCountry": "",
+                    "ISTWatchDuplicateID": 12411,
+                    "ISTWatchDate": "01/19/2010",
+                    "ISTWatchPhoneNumber": "",
+                    "ISTWatchMemo": "DOB 12 Sep 1973; nationality Saudi Arabia; a.k.a. ABU-SAYYAF ; a.k.a. SALAH ; a.k.a.AZIBK, Nut Al-Din Afghani a.k.a. SUL",
+                    "ISTWatchBALKANS": "False",
+                    "ISTWatchBPI_PA": "False",
+                    "ISTWatchCUBA": "False",
+                    "ISTWatchDPL": "False",
+                    "ISTWatchFRYM": "False",
+                    "ISTWatchFTO": "False",
+                    "ISTWatchIRAN": "False",
+                    "ISTWatchIRAQ": "False",
+                    "ISTWatchLIBYA": "False",
+                    "ISTWatchNKOREA": "False",
+                    "ISTWatchSDNT": "False",
+                    "ISTWatchSDNTK": "False",
+                    "ISTWatchSDGT": "True",
+                    "ISTWatchSDT": "False",
+                    "ISTWatchSUDAN": "False",
+                    "ISTWatchTALIBAN": "False",
+                    "ISTWatchUNITA": "False",
+                    "ISTWatchSDN_Type": "individual",
+                    "ISTWatchProgram": "SDGT",
+                    "ISTWatchTitle": "",
+                    "ISTWatchCall_Sign": "",
+                    "ISTWatchVess_Type": "",
+                    "ISTWatchTonnage": "",
+                    "ISTWatchGRT": "",
+                    "ISTWatchVess_flag": "",
+                    "ISTWatchVess_Owner": "",
+                    "ISTWatchAdd_Num": 17649,
+                    "ISTWatchAdd_remarks": "",
+                    "ISTWatchPostal_Code": "",
+                    "ISTWatchEffective_Date": "",
+                    "ISTWatchExpiration_Date": "",
+                    "ISTWatchStandard_Order": "",
+                    "ISTWatchNameSearch_Key": "OSNAAAAAAA",
+                    "ISTWATCHScore": 91.0
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "External Parties",
+        "category_id": "5",
+        "document_id": "15",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=15&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=5&regionId=1"
+    }
+}

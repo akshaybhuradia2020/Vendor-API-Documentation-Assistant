@@ -1,0 +1,1316 @@
+{
+    "metadata": {
+        "name": "GetSendAccountLetter",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetSendAccountLetter",
+        "description": "Purpose of this API is to view and send manual account letters."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "integer",
+            "required": true,
+            "description": "Decide if Letter need to view or send. Valid Values:  8 = ViewLetter 0 = Send Letter Example: 8"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one account identifier is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values: 0-9 Example:12345 Condition: At least one account identifier is required."
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition: At least one account identifier is required."
+        },
+        {
+            "name": "LetterTemplateID",
+            "type": "integer",
+            "required": true,
+            "description": "ID assigned to a Letter Template Valid Values:0-9 Format:XXXX Example:Fixed value provided by CoreCard."
+        },
+        {
+            "name": "LetterTemplateVersion",
+            "type": "integer",
+            "required": true,
+            "description": "Version of the Letter Template Valid Values:0-9 Format:XXXX Example:Fixed value provided by CoreCard."
+        },
+        {
+            "name": "LetterTemplateStatus",
+            "type": "integer",
+            "required": true,
+            "description": "Status of the letter template status. Valid Values: 1= Active, 2=Inactive Format: x Example: 1"
+        },
+        {
+            "name": "LetterTemplateIDDesc",
+            "type": "string",
+            "required": true,
+            "description": "Description of Letter template ID Valid Values: A-Z, 0-9 Example: L210 = Change of Address Allowable Values: 150"
+        },
+        {
+            "name": "ApplicantType",
+            "type": "string",
+            "required": true,
+            "description": "Selects the type of Applicants. Valid Values: Applicant or Co-Applicant Example:  Applicant Allowable Values: 15"
+        },
+        {
+            "name": "TextFieldName1",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue1",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 50"
+        },
+        {
+            "name": "DateFieldName1",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 8"
+        },
+        {
+            "name": "DateFieldValue1",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName1",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue1",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName2",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue2",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 50"
+        },
+        {
+            "name": "DateFieldName2",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 8"
+        },
+        {
+            "name": "DateFieldValue2",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName2",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue2",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName3",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue3",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName3",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 8"
+        },
+        {
+            "name": "DateFieldValue3",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName3",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue3",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName4",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue4",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName4",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 8"
+        },
+        {
+            "name": "DateFieldValue4",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName4",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue4",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName5",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue5",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName5",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 20"
+        },
+        {
+            "name": "DateFieldValue5",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName5",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue5",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName6",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue6",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName6",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 20"
+        },
+        {
+            "name": "DateFieldValue6",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName6",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue6",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName7",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue7",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName7",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 20"
+        },
+        {
+            "name": "DateFieldValue7",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName7",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue7",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName8",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue8",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName8",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 20"
+        },
+        {
+            "name": "DateFieldValue8",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName8",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue8",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName9",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue9",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName9",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 20"
+        },
+        {
+            "name": "DateFieldValue9",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName9",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue9",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName10",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue10",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName10",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 20"
+        },
+        {
+            "name": "DateFieldValue10",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName10",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue10",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "Reason1",
+            "type": "string",
+            "required": false,
+            "description": "Reason 1 involved for rejecting application. Valid Values: A-Z, 0-9 Example: Lack of Credit history Allowable Values: 100"
+        },
+        {
+            "name": "Reason2",
+            "type": "string",
+            "required": false,
+            "description": "Reason 2 involved for rejecting application. Valid Values: A-Z, 0-9 Example: Over-utilization of available credit Allowable Values: 100"
+        },
+        {
+            "name": "Reason3",
+            "type": "string",
+            "required": false,
+            "description": "Reason 3 involved for rejecting application. Valid Values: A-Z, 0-9 Example: Late payments Allowable Values: 100"
+        },
+        {
+            "name": "Reason4",
+            "type": "string",
+            "required": false,
+            "description": "Reason 4 involved for rejecting application. Valid Values: A-Z, 0-9 Example: Delinquency or default Allowable Values: 100"
+        },
+        {
+            "name": "Factor1",
+            "type": "string",
+            "required": false,
+            "description": "Factor affecting credit bureau (1) Valid Values:0-9, a-z Example:01 Allowable Values: 100"
+        },
+        {
+            "name": "Factor2",
+            "type": "string",
+            "required": false,
+            "description": "Factor affecting credit bureau (2) Valid Values:0-9, a-z Example:01 Allowable Values: 100"
+        },
+        {
+            "name": "Factor3",
+            "type": "string",
+            "required": false,
+            "description": "Factor affecting credit bureau (3) Valid Values:0-9, a-z Example:01 Allowable Values: 100"
+        },
+        {
+            "name": "Factor4",
+            "type": "string",
+            "required": false,
+            "description": "Factor affecting credit bureau (4) Valid Values:0-9, a-z Example:01 Allowable Values: 100"
+        },
+        {
+            "name": "Factor5",
+            "type": "string",
+            "required": false,
+            "description": "Factor affecting credit bureau (5) Valid Values:0-9, a-z Example:01 Allowable Values: 100"
+        },
+        {
+            "name": "CreditScore",
+            "type": "string",
+            "required": false,
+            "description": "Credit score of card holder. Valid Values: 0-9 Example:700 Allowable Values: 5"
+        },
+        {
+            "name": "CreditReportDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Date of credit report. Valid Values: 0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "integer",
+            "required": true,
+            "description": "Decide if Letter need to view or send. Valid Values: 8 = View Letter 0 = Send Letter Example: 8"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one of AccountNumber/AccountID/AdminNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values: 0-9 Example:12345 Condition: At least one of AccountNumber/AccountID/AdminNumber is required."
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment entity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition: At least one of AccountNumber/AccountID/AdminNumber is required."
+        },
+        {
+            "name": "LetterTemplateID",
+            "type": "integer",
+            "required": true,
+            "description": "ID assigned to a Letter Template Valid Values:0-9 Format:XXXX Example:Fixed value provided by CoreCard."
+        },
+        {
+            "name": "LetterTemplateVersion",
+            "type": "integer",
+            "required": true,
+            "description": "Version of the Letter Template Valid Values:0-9 Format:XXXX Example:Fixed value provided by CoreCard."
+        },
+        {
+            "name": "LetterTemplateStatus",
+            "type": "integer",
+            "required": true,
+            "description": "Status of the letter template status. Valid Values: 1= Active, 2=Inactive Format: x Example: 1"
+        },
+        {
+            "name": "LetterTemplateIDDesc",
+            "type": "string",
+            "required": true,
+            "description": "Description of Letter template ID Valid Values: A-Z, 0-9 Example: L210 = Change of Address Allowable Values: 150"
+        },
+        {
+            "name": "ApplicantType",
+            "type": "string",
+            "required": true,
+            "description": "Selects the type of Applicants. Valid Values: Applicant or Co-Applicant Example:  Applicant Allowable Values: 15"
+        },
+        {
+            "name": "TextFieldName1",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue1",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 50"
+        },
+        {
+            "name": "DateFieldName1",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 8"
+        },
+        {
+            "name": "DateFieldValue1",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName1",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue1",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName2",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue2",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 50"
+        },
+        {
+            "name": "DateFieldName2",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 8"
+        },
+        {
+            "name": "DateFieldValue2",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName2",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue2",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName3",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue3",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName3",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 8"
+        },
+        {
+            "name": "DateFieldValue3",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName3",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue3",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName4",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue4",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName4",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 8"
+        },
+        {
+            "name": "DateFieldValue4",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName4",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue4",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName5",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue5",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName5",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 20"
+        },
+        {
+            "name": "DateFieldValue5",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName5",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue5",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName6",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue6",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName6",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 20"
+        },
+        {
+            "name": "DateFieldValue6",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName6",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue6",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName7",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue7",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName7",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 20"
+        },
+        {
+            "name": "DateFieldValue7",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName7",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue7",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName8",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue8",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName8",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 20"
+        },
+        {
+            "name": "DateFieldValue8",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName8",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue8",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName9",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue9",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName9",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 20"
+        },
+        {
+            "name": "DateFieldValue9",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName9",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue9",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "TextFieldName10",
+            "type": "string",
+            "required": false,
+            "description": "Text Field Name as per configuration on letter template. Valid Values: 0-9, A-Z Example: Reason Allowable Values: 20"
+        },
+        {
+            "name": "TextFieldValue10",
+            "type": "string",
+            "required": false,
+            "description": "Manual text value for the text field. Valid Values: 0-9, A-Z Allowable Values: 40"
+        },
+        {
+            "name": "DateFieldName10",
+            "type": "string",
+            "required": false,
+            "description": "Date field name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Date Allowable Values: 20"
+        },
+        {
+            "name": "DateFieldValue10",
+            "type": "datetime",
+            "required": false,
+            "description": "Manual date for the date field. Valid Values:0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        },
+        {
+            "name": "AmountFieldName10",
+            "type": "string",
+            "required": false,
+            "description": "Amount field Name as per configuration on letter template. Valid Value: 0-9, A-Z Example: Due Amount Allowable Values: 20"
+        },
+        {
+            "name": "AmountFieldValue10",
+            "type": "decimal",
+            "required": false,
+            "description": "Manual amount for the amount field. Valid Values:0-9 Format:XXX.XX Example: 200.00"
+        },
+        {
+            "name": "Reason1",
+            "type": "string",
+            "required": false,
+            "description": "Reason 1 involved for rejecting application. Valid Values: A-Z, 0-9 Example: Lack of Credit history Allowable Values: 100"
+        },
+        {
+            "name": "Reason2",
+            "type": "string",
+            "required": false,
+            "description": "Reason 2 involved for rejecting application. Valid Values: A-Z, 0-9 Example: Over-utilization of available credit Allowable Values: 100"
+        },
+        {
+            "name": "Reason3",
+            "type": "string",
+            "required": false,
+            "description": "Reason 3 involved for rejecting application. Valid Values: A-Z, 0-9 Example: Late payments Allowable Values: 100"
+        },
+        {
+            "name": "Reason4",
+            "type": "string",
+            "required": false,
+            "description": "Reason 4 involved for rejecting application. Valid Values: A-Z, 0-9 Example: Delinquency or default Allowable Values: 100"
+        },
+        {
+            "name": "Factor1",
+            "type": "string",
+            "required": false,
+            "description": "Factor affecting credit bureau (1) Valid Values:0-9, a-z Example:01 Allowable Values: 100"
+        },
+        {
+            "name": "Factor2",
+            "type": "string",
+            "required": false,
+            "description": "Factor affecting credit bureau (2) Valid Values:0-9, a-z Example:01 Allowable Values: 100"
+        },
+        {
+            "name": "Factor3",
+            "type": "string",
+            "required": false,
+            "description": "Factor affecting credit bureau (3) Valid Values:0-9, a-z Example:01 Allowable Values: 100"
+        },
+        {
+            "name": "Factor4",
+            "type": "string",
+            "required": false,
+            "description": "Factor affecting credit bureau (4) Valid Values:0-9, a-z Example:01 Allowable Values: 100"
+        },
+        {
+            "name": "Factor5",
+            "type": "string",
+            "required": false,
+            "description": "Factor affecting credit bureau (5) Valid Values:0-9, a-z Example:01 Allowable Values: 100"
+        },
+        {
+            "name": "CreditScore",
+            "type": "string",
+            "required": false,
+            "description": "Credit score of card holder. Valid Values: 0-9 Example:700 Allowable Values: 5"
+        },
+        {
+            "name": "CreditReportDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Date of credit report. Valid Values: 0-9 Format: MM/DD/YYYY Example: 01/02/2020"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "LetterID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique ID provided by corecard for the generated letter. Valid Values:  0-9 Example: 1234",
+            "children": []
+        },
+        {
+            "name": "LetterFile",
+            "type": "",
+            "required": null,
+            "description": "Group of Letter details.",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "LetterID",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Unique ID provided by corecard for the generated letter. Valid Values:  0-9 Example: 1234",
+                    "children": []
+                },
+                {
+                    "name": "LetterFile",
+                    "type": "",
+                    "required": null,
+                    "description": "Group of Letter details.",
+                    "children": [
+                        {
+                            "name": "LetterFileName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Generated letter. Valid Values:  A-Z, 0-9, Special Character Example: L1214-Payoff_Amount Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "LetterFileData",
+                            "type": "byte[]",
+                            "required": null,
+                            "description": "Detail of letter in byte.",
+                            "children": []
+                        },
+                        {
+                            "name": "MIMEType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Mime type. Valid Values: application/pdf Allowable Values: 127",
+                            "children": []
+                        },
+                        {
+                            "name": "LetterFileExtension",
+                            "type": "string",
+                            "required": null,
+                            "description": "File extension Valid Values: pdf Allowable Values: 5",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "DecisionFlag": 8,
+        "AccountNumber": "8000000000000078",
+        "AdminNumber": null,
+        "AccountID": 167499,
+        "LetterTemplateID": 397,
+        "LetterTemplateVersion": 1,
+        "LetterTemplateStatus": 1,
+        "LetterTemplateIDDesc": "L1214-Payoff_Amount",
+        "ApplicantType": "Applicant",
+        "TextFieldName1": null,
+        "TextFieldValue1": null,
+        "DateFieldName1": null,
+        "DateFieldValue1": "03/31/2016 00:00:00",
+        "AmountFieldName1": null,
+        "AmountFieldValue1": 10.0,
+        "TextFieldName2": null,
+        "TextFieldValue2": null,
+        "DateFieldName2": null,
+        "DateFieldValue2": null,
+        "AmountFieldName2": null,
+        "AmountFieldValue2": null,
+        "TextFieldName3": null,
+        "TextFieldValue3": null,
+        "DateFieldName3": null,
+        "DateFieldValue3": null,
+        "AmountFieldName3": null,
+        "AmountFieldValue3": null,
+        "TextFieldName4": null,
+        "TextFieldValue4": null,
+        "DateFieldName4": null,
+        "DateFieldValue4": null,
+        "AmountFieldName4": null,
+        "AmountFieldValue4": null,
+        "TextFieldName5": null,
+        "TextFieldValue5": null,
+        "DateFieldName5": null,
+        "DateFieldValue5": null,
+        "AmountFieldName5": null,
+        "AmountFieldValue5": null,
+        "TextFieldName6": null,
+        "TextFieldValue6": null,
+        "DateFieldName6": null,
+        "DateFieldValue6": null,
+        "AmountFieldName6": null,
+        "AmountFieldValue6": null,
+        "TextFieldName7": null,
+        "TextFieldValue7": null,
+        "DateFieldName7": null,
+        "DateFieldValue7": null,
+        "AmountFieldName7": null,
+        "AmountFieldValue7": null,
+        "TextFieldName8": null,
+        "TextFieldValue8": null,
+        "DateFieldName8": null,
+        "DateFieldValue8": null,
+        "AmountFieldName8": null,
+        "AmountFieldValue8": null,
+        "TextFieldName9": null,
+        "TextFieldValue9": null,
+        "DateFieldName9": null,
+        "DateFieldValue9": null,
+        "AmountFieldName9": null,
+        "AmountFieldValue9": null,
+        "TextFieldName10": null,
+        "TextFieldValue10": null,
+        "DateFieldName10": null,
+        "DateFieldValue10": null,
+        "AmountFieldName10": null,
+        "AmountFieldValue10": null,
+        "Reason1": null,
+        "Reason2": null,
+        "Reason3": null,
+        "Reason4": null,
+        "Factor1": null,
+        "Factor2": null,
+        "Factor3": null,
+        "Factor4": null,
+        "Factor5": null,
+        "CreditScore": null,
+        "CreditReportDate": null
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "LetterID": 1231,
+            "LetterFile": {
+                "LetterFileName": "L1214-Payoff_Amount",
+                "LetterFileData": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+                "MIMEType": "application/pdf",
+                "LetterFileExtension": "pdf"
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1010&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1001"
+    }
+}

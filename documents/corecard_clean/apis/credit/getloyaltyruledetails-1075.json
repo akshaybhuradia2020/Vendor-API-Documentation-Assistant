@@ -1,0 +1,849 @@
+{
+    "metadata": {
+        "name": "GetLoyaltyRuleDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/GetLoyaltyRuleDetails",
+        "description": "This API is used to Get Details of  Loyalty Rule via RuleID.\nNote: Rule ID can be Retreived using the 'SearchLoyaltyRuleDetails' API."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "RuleID",
+            "type": "integer",
+            "required": true,
+            "description": "ID of Loyalty Rule. Valid Values: 0-9(Value provided by Corecard) Format: XXXX Example:1234"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "LoyaltyRule",
+                    "type": "",
+                    "required": null,
+                    "description": "LoyaltyRule",
+                    "children": [
+                        {
+                            "name": "RuleID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "ID of Loyalty Rule. Valid Values: 0-9(Value provided by Corecard) Format: XXXX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Loyalty Rule. Valid Values:A-Z,a-z,0-9 Example:Base Rule Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleType",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag to decide the type of Loyalty Rule Valid Values: Refer Appendix Section 5.39 Loyalty: Rule Type 0: Base 1:Promotional 2:Advance Promotional 3:Exclusion Format:X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleTypeDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Displays the Description of the Rule Type Valid Values: Base, Promotional, Advance Promotional and Exclusion Example: Advance Promotional Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the Loyalty Rule Valid Values:A-Z,a-z,0-9 Example: 2% Reward on All Purchases Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleDetailDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Displays the Detail Description of the Rule. Valid Values: a-z Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleApplication",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Type of transaction on which the Loyalty rule should trigger for the Account. Valid Values:Refer Appendix Section 5.40 Loyalty: Rule Application. Format:X Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleApplicationDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Displays the Description of the Type of Transaction on which the Loyalty rule should trigger for the Account. Valid Values: a-z Example: Purchase Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleSetUpOn",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Addtional criteria on which Loyalty rule should trigger for the Account. Valid Values:Refer Appendix Section 5.41 Loyalty: Rule Setup On Format:X Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleSetUpOnDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the Addtional criteria on which Loyalty rule should trigger for the Account. Valid Values: a-z Example: None Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Status of Loyalty Rule. Valid Values: 0: Active 1: Inactive Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleStatusDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of Loyalty Rule. Valid Values: Active or  Inactive Example: Active Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleCalculationMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates method used to calculate the loyalty transaction. Valid Values: '0' = None '1' = Use Amount '2' = Use Percent '3' = Use Tiers Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "CalculationBase",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the Calulation Base used for Calculations. Valid Values: '1' = Txn Amount '2' = Base Reward '3' = Promo Reward '4' = Total Reward Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "CalculationAmountPoints",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The fixed number of points that is earned each time the corresponding transaction is posted against a loyalty participating amount. This field is only valid if the Calculation Method field is set to Use Amount. Valid Values: 0-9 Example: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "CalculationPercent",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The percent of the loyalty transaction. This field is only valid if the Calculation Method field is set to Use Percent.",
+                            "children": []
+                        },
+                        {
+                            "name": "RoundingMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Defines how fractional transaction amounts are rounded into the point amount. Valid Values: '0' - None '1' - Round up to next rounding unit '2' - Round down to next rounding unit '3' - Round up or down to next rounding unit Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "RoundingUnit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "When Rounding Method is set a value other than None, this field is used to indicate the number of decimal places that is acknowledged for the points. Valid Values: 0-9 Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantGroupInEx",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if this Tag Group is Included or Excluded for this Loyalty Rule Valid Values: 0-Include or 1-Exclude Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "MccCategoryInEx",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if this Tag Group is Included or Excluded for this Loyalty Rule Valid Values:  0-Include or 1-Exclude Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "MccCodeInEx",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if this Tag Group is Included or Excluded for this Loyalty Rule Valid Values:  0-Include or 1-Exclude Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "EntryModeInEx",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if this Tag Group is Included or Excluded for this Loyalty Rule Valid Values:  0-Include or 1-Exclude Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "StateProvinceInEx",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if this Tag Group is Included or Excluded for this Loyalty Rule Valid Values:  0-Include or 1-Exclude Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductCodeGroupInEx",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if this Tag Group is Included or Excluded for this Loyalty Rule Valid Values:  0-Include or 1-Exclude Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductCodeInEx",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if this Tag Group is Included or Excluded for this Loyalty Rule Valid Values:  0-Include or 1-Exclude Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "CardIndicatorInEx",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if this Tag Group is Included or Excluded for this Loyalty Rule Valid Values:  0-Include or 1-Exclude Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "NonMonetaryInEx",
+                            "type": "integer",
+                            "required": null,
+                            "description": "NonMonetaryInEx",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantNameInEx",
+                            "type": "integer",
+                            "required": null,
+                            "description": "MerchantNameInEx",
+                            "children": []
+                        },
+                        {
+                            "name": "AcquiringInstitutionIdGroupInEx",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if this Tag Group is Included or Excluded for this Loyalty Rule Valid Values:  0-Include or 1-Exclude Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "SkuGroupInEx",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if this Tag Group is Included or Excluded for this Loyalty Rule Valid Values:  0-Include or 1-Exclude Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "PurchaseHistoryFound",
+                            "type": "integer",
+                            "required": null,
+                            "description": "In case 'Yes' is selected then, system looks back the transaction history for X months of the merchant from where return is received and further claw back logic would be evaluated to calculate the loyalty points. All other group boxes would be disabled as we do not want user to setup any value as in this condition hardcoded logic would be applied. In case 'No is selected then, the system looks back for the transaction history for X months from the merchant where transaction is received and assess the loyalty points based on percentage set under the calculation method parameters on the same panel.It means that Calculation Method parameters should be enabled where the fixed percentage value can be defined as per requirement. Valid Values: 1 = Yes and 0 = No Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "XMonths",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Displays the Number of Months for Purchase History Found. If Displayed 1 means that system would need to look back at the history from merchant for the past one month and 2 means two months and so on. Valid Values: 0-9 Example: 6 Condition: Will be displayed/Populated only if Purchase History Found is Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalSpendThresholdAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the Maximum Total Transactions Amount on which this Loyalty Rule must be applicable. Valid Values: 0-9 Example: 100.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalPercentCap",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates that upto what Percent the Rewards can be redeemed Valid Values: 0-9 Example: 10.00",
+                            "children": []
+                        },
+                        {
+                            "name": "RecurringReward",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag indicates either the rule is a recurring reward or not. Valid Values: 1 = Yes, 0 = No Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "RecurringRewardApplicableAfter",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag shows the applicable duration after a particular time period. Valid Values: 4: Month 6: Billing Period Example: 6",
+                            "children": []
+                        },
+                        {
+                            "name": "RecurringRewardApplicableFrom",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag indicates the instance from which Reward will be Applicable. Valid Values: 0: None 1: Card Provisioning 2: Account Open Date 3: From First Purchase Date Example: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "ThresholdSpendCTD",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indidates Maximum spend during 1 cycle Period in which Rewards will be Earned. Example: 400.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MaxLoyaltyAmountEarningLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the Maximum Amount that can be Earned by the Card/Account Holder under this Loyalty Rule Valid Values: 0-9 Example: 100.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionSizeThresholdAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the Minimum Transaction Amount the Card/Account Holder needs to do for qualifying for this Loyalty Rule Valid Values: 0-9 Example: 100.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionCountThreshold",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the Maximum number of Purchase Transactions till which this Loyalty Rule will be applicable Valid Values: 0-9 Example: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "RewardNextToXTransactions",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This field indicates the number of transactions i.e. X after which reward would start being applicable on incoming transactions. Valid Values: 0-9 Example: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "RewardApplicableFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the applicable date from a particular time period. Valid Values: 0: None 1: Card Provisioning 2: Account Open Date 3: From First Purchase Date 4: Wallet Enrollment and Spend 5: Auto Pay Enrollment Date Example: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "RewardApplicableTo",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the applicable date to a particular time period. Valid Values: 1: Hour 2: Day 3: Week 4: Month 5: Year 6: Billing Period Example: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "ApplicableToXPeriod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag indicates the number of counts of the value set in 'RewardApplicableto'. Valid Values: 0-9 Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactiontocheckforThreshold",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This Tag indicates what  incoming transaction is required to be checked against the threshold defined in Reward Next To X Transactions. The values are: Authorization – If selected as authorization, it means if an incoming authorization comes it would participate in counting of transactions against the threshold value.It won’t matter whether the incoming authorization request is cleared or not. Clearing – If selected then unless the incoming transaction gets cleared and posted in the CC system, it won’t be counted against the threshold value. Valid Values: 1 - Authorization and 2 - Clearing Format: X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumCalculation",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates If Minimum amount to be considered for Reward Calculation or Not. Valid Values: 1 = Yes or 0 = No Format:X Example: 1 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "OneTimeReward",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the loyalty Rule is applicable only once or not. Valid Values: 1 = Yes or 0 = No Format:X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "CalculatedRewardsOnOldTransactionsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if Rewards is Calculated on Transactions Count that occurred while reaching the Count Threshold. Valid Values: 1 = Yes or 0 = No Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "CalculatedRewardsOnOldTransactionsSpend",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if Rewards is Calculated on Total  Transactions Amount that occurred while Reaching the Amount Threshold Valid Values: 1 = Yes or 0 = No Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "NumberofConsecutiveGoodPayments",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates after what number of Good Payments, Reward will be Applicable. Valid Values:0-9 Example: 6 Condition: only Valid if Rule Setup is on Good Payments.",
+                            "children": []
+                        },
+                        {
+                            "name": "ChecktopSpending",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates on how many of Top Spendings with a particular MCC reward is applicable. Valid Values:0-9 Example: 6",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleTypeInAlert",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates what Rule Type in Alert Notification will be sent. Valid Values: 0 = Exlcusion 1 = Base 2 = Bonus 3 = Activation Example: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleReQualification",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Rule is Eligible for Re-qualification or Not. Valid Values: 1 = Yes or 0 = No Format:X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "DisbursementPeriod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "DisbursementPeriod",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "DynamicQualificationLogicList",
+                    "type": "array",
+                    "required": null,
+                    "description": "DynamicQualificationLogic list, will be populated only if Rule Type is Advance Promotional.",
+                    "children": [
+                        {
+                            "name": "ParameterName",
+                            "type": "string",
+                            "required": null,
+                            "description": "This group contains all the parameter s names set under this loyalty rule. The different parameter subgroups are enabled based on the value selected for the 'Rule Setup On'. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "OperatorConditon",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field indicates the calculation sign so while setting up an advance loyalty rule paramete. this field would define whether the number of transactions to consider for loyalty reward should be equal to or less than or greater than the specified number. Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "AmountOrCount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag displays the Amount or Count depending on the Paraneter name Valid Values: 0-9 Example: 1000 or 5 Condition: Depends on the Parameter",
+                            "children": []
+                        },
+                        {
+                            "name": "LogicalOperator",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field decides whether the rule will run independently, or more additional rules or logic is required to be run. Valid Values: AND =  If displays AND then the Rule will check conditions of following rows also, OR = If Displays OR then the Rule will check if condition satisfies of any One row END = If Displays END, then rule will not check any row beyond this Row Example: AND Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "AddtionalLogicalOperator",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field has an additional logical operator which would check another row for rule qualification. Valid Values: AND and OR Example: AND Allowable Values: 10",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "IndividualQualificationSetupList",
+                    "type": "array",
+                    "required": null,
+                    "description": "IndividualQualificationSetup list, will be populated only if Rule Type is Advance Promotional",
+                    "children": [
+                        {
+                            "name": "ParameterName",
+                            "type": "string",
+                            "required": null,
+                            "description": "This group contains all the parameter s names set under this loyalty rule. The different parameter subgroups are enabled based on the value selected for the 'Rule Setup On' Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "OperatorConditon",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field indicates the calculation sign so while setting up an advance loyalty rule paramete. this field would define whether the number of transactions to consider for loyalty reward should be equal to or less than or greater than the specified number. Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "AmountOrCount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag displays the Amount or Count depending on the Paraneter name Valid Values: 0-9 Example: 1000 or 5 Condition: Depends on the Parameter",
+                            "children": []
+                        },
+                        {
+                            "name": "LogicalOperator",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field decides whether the rule will run independently, or more additional rules or logic is required to be run. Valid Values: AND =  If displays AND then the Rule will check conditions of following rows also, OR = If Displays OR then the Rule will check if condition satisfies of any One row END = If Displays END, then rule will not check any row beyond this Row Example: AND Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "AddtionalLogicalOperator",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field has an additional logical operator which would check another row for rule qualification. Valid Values: AND and OR Example: AND Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "MIDGroup",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field will Indicate The Group Name of Merchants Valid Values: a-z Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MccCategory",
+                            "type": "string",
+                            "required": null,
+                            "description": "This would be applicable when the parameter name is selected as MCC Category. Valid Values: a-z Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MCC",
+                            "type": "string",
+                            "required": null,
+                            "description": "This would be applicable when the parameter name is selected as MCC. Any Transaction from the defined MCC code will qualify for the Reward Valid Values: a-z Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PurchaseMethod",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field indicates the purchase method to qualify for an advanced promotion. Valid Values: - Virtual Card - Digital Card Device - Digital Card In-App or Online - Physical Card. Allowable Values: 50",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "MerchantGroupList",
+                    "type": "array",
+                    "required": null,
+                    "description": "MerchantGroup list Condition: This block is applicable only when Rule Setup On = [Merchant ID Group] OR [All/Multiple].",
+                    "children": []
+                },
+                {
+                    "name": "AcquiringInstitutionIdGroupList",
+                    "type": "array",
+                    "required": null,
+                    "description": "AcquiringInstitutionIdGroup list Condition: This block is applicable only when Rule Setup On = [AcqInstIdGrp] OR [All/Multiple]",
+                    "children": []
+                },
+                {
+                    "name": "MerchantCategoryList",
+                    "type": "array",
+                    "required": null,
+                    "description": "MerchantCategoryList Condition: This block is applicable only when Rule Setup On = [Merchant Category] OR [All/Multiple].",
+                    "children": []
+                },
+                {
+                    "name": "MCCList",
+                    "type": "array",
+                    "required": null,
+                    "description": "MCC List Condition: This block is applicable only when Rule Setup On = [MCC] OR [All/Multiple]",
+                    "children": []
+                },
+                {
+                    "name": "SkuGroupList",
+                    "type": "array",
+                    "required": null,
+                    "description": "SKU Group List Condition: This block is applicable only when Rule Setup On = [SKU] OR [All/Multiple]",
+                    "children": []
+                },
+                {
+                    "name": "EntryModeList",
+                    "type": "array",
+                    "required": null,
+                    "description": "EntryModeList Condition: This block is applicable only when Rule Setup On = [Entry Mode] OR [All/Multiple]",
+                    "children": []
+                },
+                {
+                    "name": "ProductCodeList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Product Code List Condition: This block is applicable only when Rule Setup On = [Product Code] OR [All/Multiple]",
+                    "children": []
+                },
+                {
+                    "name": "ProductCodeGroupList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Product Code Group List Condition: This block is applicable only when Rule Setup On = [Product Code Group] OR [All/Multiple]",
+                    "children": []
+                },
+                {
+                    "name": "StateProvienceList",
+                    "type": "array",
+                    "required": null,
+                    "description": "State/Province List Condition: This block is applicable only when Rule Setup On = [State/Province] OR [All/Multiple]",
+                    "children": []
+                },
+                {
+                    "name": "CardPresentIndicatorList",
+                    "type": "array",
+                    "required": null,
+                    "description": "CardPresentIndicatorList Condition: This block is applicable only when Rule Setup On = [Card Present/Not Present] OR [All/Multiple]",
+                    "children": []
+                },
+                {
+                    "name": "NonMonetaryActivityList",
+                    "type": "array",
+                    "required": null,
+                    "description": "NonMonetaryActivityList Condition: NonMonetaryActivityList",
+                    "children": []
+                },
+                {
+                    "name": "MerchantList",
+                    "type": "array",
+                    "required": null,
+                    "description": "MerchantList Condition: MerchantList",
+                    "children": [
+                        {
+                            "name": "ParameterType",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This Tag will Display the Name of the Parameter Type. Example: MerchantGroup or MCC or ProductCode",
+                            "children": []
+                        },
+                        {
+                            "name": "ParameterValues",
+                            "type": "string",
+                            "required": null,
+                            "description": "This Tag will Display the Values of its Parameter type. Example: if Parameter Type is Merchant Group, it will display all list of names of Merchant Groups Allowable Values: 40",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "TierBasedQualificationSetupList",
+                    "type": "array",
+                    "required": null,
+                    "description": "MerchantList Condition: MerchantList",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "RuleID": 1
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "LoyaltyRule": {
+                "RuleID": 79,
+                "RuleName": "ruletest",
+                "RuleType": 3,
+                "RuleTypeDesc": "Advance Promotional",
+                "RuleDescription": "test rule",
+                "RuleDetailDescription": "test",
+                "RuleApplication": 1,
+                "RuleApplicationDesc": "Purchase",
+                "RuleSetUpOn": 10,
+                "RuleSetUpOnDesc": "All",
+                "RuleStatus": 0,
+                "RuleStatusDesc": "Active",
+                "RuleCalculationMethod": 1,
+                "CalculationBase": 2,
+                "CalculationAmountPoints": 100.0,
+                "CalculationPercent": null,
+                "RoundingMethod": 0,
+                "RoundingUnit": null,
+                "MerchantGroupInEx": null,
+                "MccCategoryInEx": null,
+                "MccCodeInEx": null,
+                "EntryModeInEx": null,
+                "StateProvinceInEx": null,
+                "ProductCodeGroupInEx": null,
+                "ProductCodeInEx": null,
+                "CardIndicatorInEx": null,
+                "NonMonetaryInEx": null,
+                "MerchantNameInEx": null,
+                "AcquiringInstitutionIdGroupInEx": null,
+                "SkuGroupInEx": null,
+                "PurchaseHistoryFound": 1,
+                "XMonths": 6,
+                "TotalSpendThresholdAmount": 10.0,
+                "TotalPercentCap": 10.0,
+                "RecurringReward": null,
+                "RecurringRewardApplicableAfter": null,
+                "RecurringRewardApplicableFrom": null,
+                "ThresholdSpendCTD": 10.0,
+                "MaxLoyaltyAmountEarningLimit": 10.0,
+                "TransactionSizeThresholdAmount": 10.0,
+                "TransactionCountThreshold": 10,
+                "RewardNextToXTransactions": 10,
+                "RewardApplicableFrom": 3,
+                "RewardApplicableTo": 5,
+                "ApplicableToXPeriod": 1,
+                "TransactiontocheckforThreshold": 2,
+                "MinimumCalculation": "1",
+                "OneTimeReward": 1,
+                "CalculatedRewardsOnOldTransactionsCount": 1,
+                "CalculatedRewardsOnOldTransactionsSpend": 0,
+                "NumberofConsecutiveGoodPayments": 1,
+                "ChecktopSpending": 1,
+                "RuleTypeInAlert": 3,
+                "RuleReQualification": 1,
+                "DisbursementPeriod": null
+            },
+            "DynamicQualificationLogicList": null,
+            "IndividualQualificationSetupList": [
+                {
+                    "ParameterName": "4 = MID Group",
+                    "OperatorConditon": "=",
+                    "AmountOrCount": null,
+                    "LogicalOperator": "AND",
+                    "AddtionalLogicalOperator": "AND",
+                    "MIDGroup": null,
+                    "MccCategory": null,
+                    "MCC": null,
+                    "PurchaseMethod": null
+                }
+            ],
+            "MerchantGroupList": null,
+            "AcquiringInstitutionIdGroupList": null,
+            "MerchantCategoryList": null,
+            "MCCList": null,
+            "SkuGroupList": null,
+            "EntryModeList": null,
+            "ProductCodeList": null,
+            "ProductCodeGroupList": null,
+            "StateProvienceList": null,
+            "CardPresentIndicatorList": null,
+            "NonMonetaryActivityList": null,
+            "MerchantList": null,
+            "TierBasedQualificationSetupList": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Control Parameters",
+        "category_id": "1005",
+        "document_id": "1075",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1075&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005&regionId=1"
+    }
+}

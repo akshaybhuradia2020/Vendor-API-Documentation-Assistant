@@ -1,0 +1,1026 @@
+{
+    "metadata": {
+        "name": "GetAccountDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetAccountDetails",
+        "description": "Fetches account details to be displayed on panel."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition:At least one of AccountNumber/AccountID is required. Allowable Values: 19"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition:At least one of AccountNumber/AccountID is required."
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format: XXXXX Example:12345 Condition:At least one of AdminNumber/AccountNumber/AccountID is required."
+        },
+        {
+            "name": "IdentifierToken",
+            "type": "string",
+            "required": null,
+            "description": "A generated token that is not expired can be used as an input field to access API. If we are passing this field in input, user should not pass any other account identifier. Condition:At least one account identifier is required. Allowable Values: 800"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AccountDetails",
+                    "type": "",
+                    "required": null,
+                    "description": "AccountDetails",
+                    "children": [
+                        {
+                            "name": "AccountID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345",
+                            "children": []
+                        },
+                        {
+                            "name": "CycleSpendLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the applicable Cycle Spend Limit or Upgraded Cycle Spend limit of the Account for the current billing cycle. Format:XXXXX Example:12345",
+                            "children": []
+                        },
+                        {
+                            "name": "RemainingCycleSpendLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the remaining of Cycle Spend Limit or Upgraded Cycle Spend limit of the Account for the current billing cycle. Format:XXXXX Example:12345",
+                            "children": []
+                        },
+                        {
+                            "name": "SystemStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "System generated status of account Valid Values: Please refer appendix section 5.21 Card/Account Statuses for a valid set of values.Valid . Format: XX Example: 2 (Active)",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Product ID Valid Values:0-9 Format:XXXX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductName",
+                            "type": "string",
+                            "required": null,
+                            "description": "The tag reflects the product name Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ClientID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "ID of Client/Partner/Merchant",
+                            "children": []
+                        },
+                        {
+                            "name": "ClientName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of client / institution Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PrimaryCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag reflects the primary currency code Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Current balance of account",
+                            "children": []
+                        },
+                        {
+                            "name": "ManualAccountStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Manually assigned status on account Valid Values: Active, Closed etc. Format: XXXX Example: Active Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StoreID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Store ID",
+                            "children": []
+                        },
+                        {
+                            "name": "StoreName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Store Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputesAmountNS",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount logged in any Dispute in system",
+                            "children": []
+                        },
+                        {
+                            "name": "AvailableBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Available Balance to make new transactions.",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalAmountDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total amount to be paid on the account",
+                            "children": []
+                        },
+                        {
+                            "name": "PendingOTB",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Open to Buy amount pending to be used",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentDueDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Due date as to by when payment needs to be made to avoid late fees Valid Values:0-9 Format:MM/dd/yyyy Example:01/15/2022",
+                            "children": []
+                        },
+                        {
+                            "name": "LastPurchaseAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Last Purchase Amount as on statement date.",
+                            "children": []
+                        },
+                        {
+                            "name": "BeginningBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Balance on account at beginning of statement period",
+                            "children": []
+                        },
+                        {
+                            "name": "LastPaymentAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Last payment amount on the account",
+                            "children": []
+                        },
+                        {
+                            "name": "Principal",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Principal amount of the loan",
+                            "children": []
+                        },
+                        {
+                            "name": "DaysInCycle",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of days in billing cycle of account",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitCredit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Limit on account over the assigned credit limit Valid Values: 0-9 Format: $XX.XX Example: $100.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Total Due as on Statement Date",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Credit Limit of account",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumCreditLine",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Minimum  credit line applicable o account",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountState",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of account assigned manually Valid Values: Active, Deceased etc. Format: XXXXXX Example: Active Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "BillingCycle",
+                            "type": "string",
+                            "required": null,
+                            "description": "Cycle Reporting -- BLANK in CB Reporting Valid Values:0-9 Format: x Example:1 Allowable Values: 9",
+                            "children": []
+                        },
+                        {
+                            "name": "DateOfApplication",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when application was received in system",
+                            "children": []
+                        },
+                        {
+                            "name": "DateAccountOpened",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when account opened",
+                            "children": []
+                        },
+                        {
+                            "name": "DateAccountClosed",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when account was closed",
+                            "children": []
+                        },
+                        {
+                            "name": "DateOfFirstOrder",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when first order was placed Valid Values: valid date Format: mmddyyyy Example: 02012020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount currently due on account",
+                            "children": []
+                        },
+                        {
+                            "name": "PastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount due not paid as per last cycle of statement Valid Values: 0-9 Format:$XX.XX Example:$100.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalPastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total amount past due on account, it excludes current due amount on account Valid Values: 0-9 Format: xx Example:50",
+                            "children": []
+                        },
+                        {
+                            "name": "OriginalCreditLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Credit limit initially assigned on account",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalOutStandingAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total amount outstanding on account as on statement date. Valid Values:0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "CashOutStandingAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total outstanding cash amount as on statement date.",
+                            "children": []
+                        },
+                        {
+                            "name": "PurchaseOutStandingAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total outstanding purchase amount as on statement date. Valid Values:0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "ReturnOutStandingAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total outstanding return amount as on statement date.",
+                            "children": []
+                        },
+                        {
+                            "name": "ApplicationNumber",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Unique ID assigned to application when received in system",
+                            "children": []
+                        },
+                        {
+                            "name": "HighBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates high end of balance range",
+                            "children": []
+                        },
+                        {
+                            "name": "BalanceCO",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Balance on account at charge off",
+                            "children": []
+                        },
+                        {
+                            "name": "CashBalanceCO",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Cash Balance on account at account charge off",
+                            "children": []
+                        },
+                        {
+                            "name": "PrincipalATCO",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Principal amount of loan at time of account charge off",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFeesATBNPCO",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Pending fees on bill not paid at account charge off",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeesBNPATCO",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Late fees on billing not paid at account charge off",
+                            "children": []
+                        },
+                        {
+                            "name": "InsuranceFeesBNPATCO",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Insurance fees on bill not paid on account at charge off",
+                            "children": []
+                        },
+                        {
+                            "name": "CollectionFeesBNPATCO",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Collection fees on bill not paid on account at charge off",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestBNPATCO",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Interest on bill not paid on account at charge off",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFeesBNPATCO",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Transaction fees on bill not paid on account at charge off",
+                            "children": []
+                        },
+                        {
+                            "name": "AnnualFeesBNPATCO",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Annual fees on bill not paid at charge off of account",
+                            "children": []
+                        },
+                        {
+                            "name": "RecoveryFeesBNPATCO",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Recovery fees on bill not paid at charge off on account",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeesBNPATCO",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Overlimit fees on bill not paid on account at account charge off",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Name Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Number Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CorporateAccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Corporate Account Number Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "LastCreditAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Last amount credited in account.",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountCategory",
+                            "type": "string",
+                            "required": null,
+                            "description": "Category of account as in individual or corporate entity etc Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "LastDebitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount last debited from account",
+                            "children": []
+                        },
+                        {
+                            "name": "LastStatementDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when last statement was initiated",
+                            "children": []
+                        },
+                        {
+                            "name": "NextStatementDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Next Date for Statement Generation",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of Account Example: Savings or Current Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "CashCreditLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Cash Credit Limit of account",
+                            "children": []
+                        },
+                        {
+                            "name": "PendingBillingCycle",
+                            "type": "string",
+                            "required": null,
+                            "description": "Days remaining in current billing cycle Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CashBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Cash amount balance on account",
+                            "children": []
+                        },
+                        {
+                            "name": "CashOpenToBuy",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Cash available out of assigned credit cash limit",
+                            "children": []
+                        },
+                        {
+                            "name": "StatementProduction",
+                            "type": "string",
+                            "required": null,
+                            "description": "Statement production to be process normally, online only or hold statement Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "PartnerID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Partner Id Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRAEffectiveDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when SCRA regulation was effective on account",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRAEndDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Period ending date of SCRA on account",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoPurchaseAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates if Promo plans are eligible for the Account or not. Valid Values: 0-No 1-Yes Example: 1 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "StatementRunningBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Balance on account at statement day end time while running statements",
+                            "children": []
+                        },
+                        {
+                            "name": "StatementRemainingBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Balance pending out of due payment from statement",
+                            "children": []
+                        },
+                        {
+                            "name": "TestAccount",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicator showing is account is a test account Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "RequestedLoanAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Loan amount requested on account by customer",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumRunningDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Currrent Minimum Due on the account to be paid to avoid late fees",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumRemainingDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Pending amount out of minimum due on account",
+                            "children": []
+                        },
+                        {
+                            "name": "UniversalUniqueID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Universal Unique Identification Number generated by system From StatementHeader Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "BillingTableName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of Billing table assigned to account from system Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "DebitWriteOffDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when Debit was written off on account",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditWriteOnDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when Credit Write on happened on account",
+                            "children": []
+                        },
+                        {
+                            "name": "ExceededPastDueDaysPermitted",
+                            "type": "string",
+                            "required": null,
+                            "description": "Days permitted on account for payment after Due days Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "RegulationOFlag",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Regulation O flag of account.",
+                            "children": []
+                        },
+                        {
+                            "name": "RegulationOFlagEffectiveDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when Regulation O was effective on account",
+                            "children": []
+                        },
+                        {
+                            "name": "AutoPayIndicator",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicator showing if account is registered for Autopay for payment Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "CoOwnerExists",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the Secondary Card Co-Owner exists in relation to the Primary Card Valid Values: 0 - No and 1 -Yes Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldDaysApplicableonAccount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Payment Hold days applicable on account Valid Values:0-9 Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "BypassExistingPaymentHoldLogic",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account Payment Hold days set up by bypassing the existing payment hold days logic Valid Values: 0-No, 1-Yes Example: yes/No",
+                            "children": []
+                        },
+                        {
+                            "name": "OptOutofPenaltyPricing",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates if customer has opted to out of penalty pricing or not. If it is set to ‘Yes’, it means penalty pricing was applied but customer has opted out of it. ‘No’ means customer has not opted out of it. Null means account is not in penalty pricing. Valid Values: Yes/No/Null Example: Yes Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "AssociationProductType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the Association Product Type, if its MC or some value and what sub type of association product For entire list of valid values, please refer to Appendix document Example:MWE (Mastercard World Elite Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "RewardID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates Reward Program ID Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "GracePaymentDueDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Adjusted payment due date when Payment due date falls on a Weekend. Valid Values:0-9 Format:MM/dd/yyyy Example:01/15/2022",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumPaymentDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag Indicates the minimum payment due for the card Valid Values:0-9 Example:100.05",
+                            "children": []
+                        },
+                        {
+                            "name": "LastStatementBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the last statement balance for the card Valid Values:0-9 Example:100.05",
+                            "children": []
+                        },
+                        {
+                            "name": "DaysDelinquent",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the days delinquent Valid Values:0-9 Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "StatementRemainingBalanceWithMonthlyInstallment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It gives 100% revolving balance + monthly installment due Valid Values:0-9 Example:100.05",
+                            "children": []
+                        },
+                        {
+                            "name": "RevolvingCreditLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the credit limit capping for revolving plans, when revolving plan capping is defined on the program. Valid Values:0-9 Example:$500.00",
+                            "children": []
+                        },
+                        {
+                            "name": "RevolvingPlanOpenToBuy",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the open to buy for revolving plans,when revolving plan capping is defined on the program. Valid Values:0-9 Example:$500.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LinkedAccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Desciption: Indicates the linked account number having the same CustomerID. Valid Values:0-9, a-z Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "CustomerID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Desciption: Unique ID associated with customer. Valid Values: 0-9, a-z Format: XXXXXXXX Example:ABC2123 Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "IsTemporaryCreditLimitActive",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag specifies if a Temporary Credit Limit is Active on an Account or not. Valid Values : 0 - No 1 - Yes Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "TemporaryCreditLimitExpirationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "The ExpirationDate on which the credit limit will reset to original credit limit. If no temporary credit limit is active, this field will be blank. Valid Values: Format: MM/dd/yyyy hh:mm:ss Example:02/11/2017 23:59:58",
+                            "children": []
+                        },
+                        {
+                            "name": "FallbackCreditLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The credit limit to which the Account will revert to post expiration date. Valid Values:0-9 Format: XXXX.XX Example: 500.00",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "5000000000014059",
+        "AccountID": 161563,
+        "AdminNumber": null,
+        "IdentifierToken": null
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "AccountDetails": {
+                "AccountID": 0,
+                "CycleSpendLimit": 0.0,
+                "RemainingCycleSpendLimit": 0.0,
+                "SystemStatus": 2,
+                "AccountNumber": "5000000000014059",
+                "ProductID": 0,
+                "ProductName": "abc V1.0",
+                "ClientID": 7031,
+                "ClientName": "abc",
+                "PrimaryCurrencyCode": "US Dollar",
+                "CurrentBalance": 19.99,
+                "ManualAccountStatus": "Active",
+                "StoreID": 0,
+                "StoreName": "abcd",
+                "DisputesAmountNS": 0.0,
+                "AvailableBalance": 0.0,
+                "TotalAmountDue": 0.0,
+                "PendingOTB": 0.0,
+                "PaymentDueDate": null,
+                "LastPurchaseAmount": 19.99,
+                "BeginningBalance": 138.65,
+                "LastPaymentAmount": 206.69,
+                "Principal": 19.99,
+                "DaysInCycle": 17,
+                "OverlimitCredit": 0.0,
+                "TotalDue": 0.0,
+                "CreditLimit": 6000.0,
+                "MinimumCreditLine": 100.0,
+                "AccountState": "NORMAL",
+                "BillingCycle": "30",
+                "DateOfApplication": "12/31/2016 00:00:00",
+                "DateAccountOpened": null,
+                "DateAccountClosed": null,
+                "DateOfFirstOrder": "12/31/2016 00:00:00",
+                "CurrentDue": 0.0,
+                "PastDue": 0.0,
+                "TotalPastDue": 0.0,
+                "OriginalCreditLimit": 0.0,
+                "TotalOutStandingAmount": 0.0,
+                "CashOutStandingAmount": 0.0,
+                "PurchaseOutStandingAmount": 0.0,
+                "ReturnOutStandingAmount": 0.0,
+                "ApplicationNumber": 9105381735,
+                "HighBalance": 345.34,
+                "BalanceCO": 0.0,
+                "CashBalanceCO": 0.0,
+                "PrincipalATCO": 0.0,
+                "InsufficientFeesATBNPCO": 0.0,
+                "LateFeesBNPATCO": 0.0,
+                "InsuranceFeesBNPATCO": 0.0,
+                "CollectionFeesBNPATCO": 0.0,
+                "InterestBNPATCO": 0.0,
+                "TransactionFeesBNPATCO": 0.0,
+                "AnnualFeesBNPATCO": 0.0,
+                "RecoveryFeesBNPATCO": 0.0,
+                "OverlimitFeesBNPATCO": 0.0,
+                "CompanyName": null,
+                "CompanyNumber": null,
+                "CorporateAccountNumber": null,
+                "LastCreditAmount": 206.69,
+                "AccountCategory": null,
+                "LastDebitAmount": 19.99,
+                "LastStatementDate": "12/31/2016 00:00:00",
+                "NextStatementDate": "12/31/2016 00:00:00",
+                "AccountType": "Cardholder",
+                "CashCreditLimit": null,
+                "PendingBillingCycle": null,
+                "CashBalance": 0.0,
+                "CashOpenToBuy": 0.0,
+                "StatementProduction": "Process normally",
+                "PartnerID": null,
+                "SCRAEffectiveDate": null,
+                "SCRAEndDate": null,
+                "PromoPurchaseAllowed": null,
+                "StatementRunningBalance": null,
+                "StatementRemainingBalance": null,
+                "TestAccount": "NO",
+                "RequestedLoanAmount": 0.0,
+                "MinimumRunningDue": null,
+                "MinimumRemainingDue": null,
+                "UniversalUniqueID": null,
+                "BillingTableName": "abc_001",
+                "DebitWriteOffDate": null,
+                "CreditWriteOnDate": null,
+                "ExceededPastDueDaysPermitted": "NO",
+                "RegulationOFlag": false,
+                "RegulationOFlagEffectiveDate": null,
+                "AutoPayIndicator": "NO",
+                "CoOwnerExists": null,
+                "HoldDaysApplicableonAccount": 0,
+                "BypassExistingPaymentHoldLogic": null,
+                "OptOutofPenaltyPricing": "Yes",
+                "AssociationProductType": null,
+                "RewardID": null,
+                "GracePaymentDueDate": null,
+                "MinimumPaymentDue": null,
+                "LastStatementBalance": null,
+                "DaysDelinquent": null,
+                "StatementRemainingBalanceWithMonthlyInstallment": null,
+                "RevolvingCreditLimit": null,
+                "RevolvingPlanOpenToBuy": null,
+                "LinkedAccountNumber": null,
+                "CustomerID": null,
+                "IsTemporaryCreditLimitActive": null,
+                "TemporaryCreditLimitExpirationDate": null,
+                "FallbackCreditLimit": null
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=72&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4"
+    }
+}

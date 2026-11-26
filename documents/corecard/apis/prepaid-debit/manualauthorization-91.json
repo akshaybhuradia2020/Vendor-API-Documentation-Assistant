@@ -1,0 +1,459 @@
+{
+    "metadata": {
+        "name": "ManualAuthorization",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Authorizations/ManualAuth",
+        "description": "This API is used to post manual auth."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of account holder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card number of account holder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19"
+        },
+        {
+            "name": "CardExpirationDate",
+            "type": "string",
+            "required": false,
+            "description": "Expiration date of card. Valid Values: 0-9 Format:YYMM Example:2012 Allowable Values: 4"
+        },
+        {
+            "name": "ProcessingCode",
+            "type": "string",
+            "required": false,
+            "description": "This Tag refer the Processing code Valid Values:0-9 Format:XXXX Example:1234"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": true,
+            "description": "Amount of Transaction Valid Values:0-9 Format:XXX.XX Example:200.00"
+        },
+        {
+            "name": "MerchantName",
+            "type": "string",
+            "required": false,
+            "description": "Name of the Merchant Valid Values:A-Z, 0-9 Format:XXXXXX Example:ABC LLC Allowable Values: 40"
+        },
+        {
+            "name": "CardAcceptorNameLocation",
+            "type": "string",
+            "required": false,
+            "description": "Merchant name and location Valid Values:A-Z, 0-9 Allowable Values: 40"
+        },
+        {
+            "name": "CardAcceptorIDCode",
+            "type": "string",
+            "required": false,
+            "description": "Merchant Number. Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896541236 Allowable Values: 16"
+        },
+        {
+            "name": "CardAcceptorTerminalID",
+            "type": "string",
+            "required": false,
+            "description": "Merchant's Terminal Number. Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896541236 Allowable Values: 8"
+        },
+        {
+            "name": "TransmissionDateTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Time of transaction. Valid Values:0-9 Format:MM/DD/YYYY HH:MM:SS Example:12/11/2019 11:00:00"
+        },
+        {
+            "name": "CoreAuthTranIdRev",
+            "type": "int64",
+            "required": false,
+            "description": "Transaction id received in response of manual Auth API which is used to locate the transaction to be reversed."
+        },
+        {
+            "name": "PreAuthorizationAging",
+            "type": "string",
+            "required": false,
+            "description": "Number to signify when the preauth will be aged off Numeric value. Allowable Values: 10"
+        },
+        {
+            "name": "PreAuthorizationAgingFrame",
+            "type": "string",
+            "required": false,
+            "description": "Signifies the time to age off the Preauthorization i.e. Mins,Hours,days etc. Allowable Values: 40"
+        },
+        {
+            "name": "ResponseCode",
+            "type": "string",
+            "required": false,
+            "description": "Response code to be stamped on Transaction, if in input then used for response of declined or approved transaction. Allowable Values: 8"
+        },
+        {
+            "name": "ApprovalCode",
+            "type": "string",
+            "required": false,
+            "description": "Approval Code of a transaction Valid Values: 0-9 Format:XXXXXX Example:632563 Allowable Values: 6"
+        },
+        {
+            "name": "ClientName",
+            "type": "string",
+            "required": true,
+            "description": "Specifies the client name for which the API is used. Allowable Values: 40"
+        },
+        {
+            "name": "InvoiceNumber",
+            "type": "string",
+            "required": false,
+            "description": "User entered identification number captured in request and echoed in response. Allowable Values: 40"
+        },
+        {
+            "name": "TransactionDescription",
+            "type": "string",
+            "required": true,
+            "description": "Any informatory text user can enter in this field. Allowable Values: 16"
+        },
+        {
+            "name": "CardSequenceNumber",
+            "type": "integer",
+            "required": false,
+            "description": "Physical Card order can be uniquely identified by combination of Admin Number and Card Sequence Number. Valid Values: 0-9 Example: 1"
+        },
+        {
+            "name": "CreditPlanNumber",
+            "type": "string",
+            "required": false,
+            "description": "Signifies the CPM on which the Transaction needs to be posted ,in response the CPM where transaction was posted. Allowable Values: 15"
+        },
+        {
+            "name": "TransactionType",
+            "type": "string",
+            "required": false,
+            "description": "Type of transaction should be text describing the type of transaction which can be provided by Client Valid Values: 0100: Purchase Auth or Pre-Auth is a Pre-Authorization that places a hold on your customer's credit card for a specified dollar amount based on a projected sale amount. This guarantees you access to their credit limit for the specified amount instead of actually debiting funds from the cardholder it just put a temporary hold on the funds that lasts for a particulate time period depending on the configuration. 0220 Completion: Completion Matches the Pre-Authorization and releases then fund put on hold and posts the actual transaction for which the purchase is done.The Completion is matched to Pre-Auth on the basis of CardNumber, Approval code, Merchant details, Date time of transaction etc.If a Completion request is initiated without a valid Approval code(no valid Pre-Auth present) then it will post an independent purchase of the specified amount forcefully on the Card. 0420 Reversal: This process is used to negate a transaction which is done on a cardholder's account. This can be used to negate any transaction based on matching data like Card Number , date time, Transaction id generated for the original transaction. Allowable Values: 8"
+        },
+        {
+            "name": "MerchantType",
+            "type": "string",
+            "required": false,
+            "description": "MerchantType MerchantType Valid Values: 5812 Allowable Values: 4"
+        },
+        {
+            "name": "AmexCardRequest",
+            "type": "integer",
+            "required": false,
+            "description": "Through this tag system identifies whether the card number belongs to AMEX. Valid Values: 0 = No, 1 = Yes Example: 0"
+        },
+        {
+            "name": "TransactionCurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency code corresponding to the Transaction Amount. Valid Values:0-9 Format:XXX Example:840 Allowable Values: 3"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ResponseCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Response code generated by Corecard application in transaction processing. Allowable Values: 8",
+                    "children": []
+                },
+                {
+                    "name": "ApprovalCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Approval Code of a transaction Valid Values: 0-9 Format:XXXXXX Example:632563 Allowable Values: 6",
+                    "children": []
+                },
+                {
+                    "name": "PostingReference",
+                    "type": "string",
+                    "required": null,
+                    "description": "Posting reference (Like -Transaction Posted Successfully) Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "InternalResponseCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Response code generated by Corecard application for internal identification in transaction processing. Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "RetrievalReferenceNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Unique identification number captured in request used for identification of transaction. Allowable Values: 12",
+                    "children": []
+                },
+                {
+                    "name": "SystemTraceAuditNumber",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Unique identification number captured in request used for identification of transaction.",
+                    "children": []
+                },
+                {
+                    "name": "AuthStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Autorization Status Valid Values:Decline , Partial Approve, Approve Example:Decline , Partial Approve, Approve Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "CalculatedOTB",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Calculated Open to Buy Amount Valid Values:500.00 Format:XXX.XX Example:500.00",
+                    "children": []
+                },
+                {
+                    "name": "AdminNumber",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345",
+                    "children": []
+                },
+                {
+                    "name": "TranType",
+                    "type": "string",
+                    "required": null,
+                    "description": "Type of transaction like purchase,Cash withdrawel etc. Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "PurgeDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date after which transaction will not be displayed in return of serch requests.",
+                    "children": []
+                },
+                {
+                    "name": "TranCodeInternal",
+                    "type": "string",
+                    "required": null,
+                    "description": "Transaction code generated by Corecard application. Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "TransactionAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Transaction Amount. Valid Values:0-9 Format:XXX.XX Example:200.00",
+                    "children": []
+                },
+                {
+                    "name": "InvoiceNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "User entered identification number captured in request and echoed in response. Allowable Values: 28",
+                    "children": []
+                },
+                {
+                    "name": "CreditPlanMaster",
+                    "type": "string",
+                    "required": null,
+                    "description": "Plan name associated with the card account. Valid Values:A-Z, 0-9 Format:XXXXXX Example:6 Months No Interest if Paid in Full Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "TransactionID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Transaction Number for transaction being posted. Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:23654789",
+                    "children": []
+                },
+                {
+                    "name": "DateTimeLocalTransaction",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date time of the system when transaction was initiated.",
+                    "children": []
+                },
+                {
+                    "name": "CardSequenceNumber",
+                    "type": "integer",
+                    "required": null,
+                    "description": "This tag reflects the Sequence Number of the Card. Valid Values: 0-9 Example: 1",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AdminNumber": null,
+        "AccountNumber": "9000000800001217",
+        "CardNumber": "",
+        "CardExpirationDate": null,
+        "ProcessingCode": null,
+        "TransactionAmount": 100.0,
+        "TransactionCurrencyCode": null,
+        "MerchantName": "",
+        "CardAcceptorNameLocation": null,
+        "CardAcceptorIDCode": null,
+        "CardAcceptorTerminalID": "test",
+        "TransmissionDateTime": null,
+        "CoreAuthTranIdRev": null,
+        "PreAuthorizationAging": null,
+        "PreAuthorizationAgingFrame": null,
+        "ResponseCode": null,
+        "ApprovalCode": null,
+        "ClientName": "MA",
+        "InvoiceNumber": "12345",
+        "TransactionDescription": "test data",
+        "CreditPlanNumber": "5911",
+        "TransactionType": "0100",
+        "MerchantType": null,
+        "AmexCardRequest": null,
+        "CardSequenceNumber": null
+    },
+    "sample_response": {
+        "Message": "Transaction has been authorized successfully.",
+        "Status": true,
+        "ErrorCode": "ERR0000",
+        "ResponseData": {
+            "ResponseCode": null,
+            "ApprovalCode": "840537",
+            "PostingReference": null,
+            "InternalResponseCode": null,
+            "RetrievalReferenceNumber": null,
+            "SystemTraceAuditNumber": 0,
+            "AuthStatus": null,
+            "CalculatedOTB": 0.0,
+            "AdminNumber": 0,
+            "TranType": null,
+            "PurgeDate": null,
+            "TranCodeInternal": null,
+            "TransactionAmount": 100.0,
+            "InvoiceNumber": null,
+            "CreditPlanMaster": null,
+            "TransactionID": "1927112",
+            "DateTimeLocalTransaction": "12/31/2099 00:00:00",
+            "CardSequenceNumber": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Manual Authorization",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=91&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=9"
+    }
+}

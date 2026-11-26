@@ -1,0 +1,305 @@
+{
+    "metadata": {
+        "name": "CardholderRegistration",
+        "http_method": "POST",
+        "endpoint": "/api/CardholderRegistration",
+        "description": "Use this API to register user by capturing PII data , Pin information, Security question's answers and password."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition: At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition: At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "NewUserID",
+            "type": "string",
+            "required": true,
+            "description": "New User ID Valid Values as A-Z, 0-9. Example: NewUser123 Allowable Values: 100"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Address Line 1 of the Cardholder Valid values : A-Z, a-z, 0-9 Example: 15 Penang Street Point Condition: Mandatory if required for user registration else Optional Allowable Values: 40"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": null,
+            "description": "Address Line 2 of the Cardholder Valid values: A-Z, a-z, 0-9 Example: 1 mecca way Condition: Mandatory if required for user registration else Optional Allowable Values: 40"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": false,
+            "description": "This tag indicates the country of the cardholder. It should be 2 character code. Valid values :A-Z, a-z Example: US Appendix Section: Country Code Values Allowable Values: 10"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder's City of residence Valid values: A-Z, a-z, 0-9 Example: Norcross Condition : Mandatory if required for user registration else Optional Allowable Values: 25"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder Postal Code of Residence Valid Values:A-Z,a-z,0-9 Example: 30093 Condition : Mandatory if required for user registration else Optional Allowable Values: 10"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder State of residence Valid values are A-Z, a-z Example: GA Please refer Appendix Section : State Codes(US) Condition : Mandatory if required for user registration else Optional Allowable Values: 5"
+        },
+        {
+            "name": "EmailAddress",
+            "type": "string",
+            "required": null,
+            "description": "E Mail Address of Cardholder Valid Values: A-Z, a-z, 0-9 @ . Example: ansh @gmail.com Condition : Mandatory if required for user registration else Optional Allowable Values: 100"
+        },
+        {
+            "name": "CurrentPassword",
+            "type": "string",
+            "required": null,
+            "description": "Current Password of Cardholder. Valid Values: A-Z, a-z,0-9, Special characters. Example: Test123! Condition : Mandatory if required for user registration else Optional Allowable Values: 15"
+        },
+        {
+            "name": "NewPassword",
+            "type": "string",
+            "required": null,
+            "description": "New Password of Cardholder. Valid Values: A-Z, a-z,0-9, Special characters. Example: Test123! Condition : Mandatory if required for user registration else Optional Allowable Values: 15"
+        },
+        {
+            "name": "CurrentPIN",
+            "type": "string",
+            "required": null,
+            "description": "Four Digit Current PIN Valid Values: 0-9 Example: 1346 Condition : Mandatory if required for user registration else Optional Allowable Values: 4"
+        },
+        {
+            "name": "NewPIN",
+            "type": "string",
+            "required": null,
+            "description": "Four Digit New PIN of the card Valid Values: 0-9 Example:1346 Condition : Mandatory if required for user registration else Optional Allowable Values: 4"
+        },
+        {
+            "name": "SSNLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Last 4 digits of Social Security Number of a Cardholder Valid values :0-9 Example: 6789 Condition : Mandatory if required for user registration else Optional Allowable Values: 9"
+        },
+        {
+            "name": "DateOfBirth",
+            "type": "string",
+            "required": null,
+            "description": "Date of Birth of cardholder Format: MM/DD/YYYY Valid Values: 0-9 Example: 03/26/1986 Condition : Mandatory if required for user registration else Optional Allowable Values: 10"
+        },
+        {
+            "name": "CVCorCVV",
+            "type": "string",
+            "required": null,
+            "description": "CVV of the card Example : 546 Condition : Mandatory if required for user registration else Optional Allowable Values: 3"
+        },
+        {
+            "name": "CardExpirationDate",
+            "type": "string",
+            "required": null,
+            "description": "Expiration Date of the card. Valid Values: 0-9 DateFormat : MMYY Example : 0925 Condition : Mandatory if required for user registration else Optional Allowable Values: 8"
+        },
+        {
+            "name": "ReadDisclosure",
+            "type": "string",
+            "required": false,
+            "description": "Disclosure value indicating the user has read terms and conditions. Allowable Values: 1"
+        },
+        {
+            "name": "SecurityQuestionAnswers",
+            "type": "array",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "SACValue",
+            "type": "string",
+            "required": null,
+            "description": "Used to hold SAC Value passed by user in input. Condition : Mandatory if required for user registration else Optional Allowable Values: 14"
+        },
+        {
+            "name": "ID",
+            "type": "string",
+            "required": true,
+            "description": "ID of question asked Allowable Values: 32"
+        },
+        {
+            "name": "Question",
+            "type": "string",
+            "required": true,
+            "description": "Security question which will be asked during forgot pin or forgot password Allowable Values: 100"
+        },
+        {
+            "name": "Answer",
+            "type": "string",
+            "required": true,
+            "description": "Answer of the security question Allowable Values: 100"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "IsSecurityQuestionAsked",
+                    "type": "string",
+                    "required": null,
+                    "description": "Security questions should be asked or not to the user. Valid values : Yes , No",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "4066836120006028",
+        "ProxyNumber": "1316619",
+        "NewUserID": "",
+        "AddressLine1": "23 PLANT LN",
+        "AddressLine2": "",
+        "Country": "US",
+        "City": "LA MESA",
+        "PostalCode": "91942",
+        "State": "CA",
+        "EmailAddress": " [email protected] ",
+        "CurrentPassword": "",
+        "NewPassword": "",
+        "CurrentPIN": "6028",
+        "NewPIN": "0142",
+        "SSNLast4Digits": "8759",
+        "DateOfBirth": "",
+        "CVCorCVV": "152",
+        "CardExpirationDate": "0825",
+        "ReadDisclosure": "",
+        "SecurityQuestionAnswers": [
+            {
+                "ID": "",
+                "Question": "",
+                "Answer": ""
+            }
+        ],
+        "SACValue": ""
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "IsSecurityQuestionAsked": "No"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1264&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1045"
+    }
+}

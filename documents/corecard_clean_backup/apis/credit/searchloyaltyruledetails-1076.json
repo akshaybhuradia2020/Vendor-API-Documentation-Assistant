@@ -1,0 +1,279 @@
+{
+    "metadata": {
+        "name": "SearchLoyaltyRuleDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/SearchLoyaltyRuleDetails",
+        "description": "The Purpose of this API is fecth all the Loyalty Rules available for the Institution."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique identification number for Institution. Valid Values:0-9 Format:XXXX Example:Fixed value needs to pass which is provided by Corecard."
+        },
+        {
+            "name": "RuleId",
+            "type": "integer",
+            "required": false,
+            "description": "ID of Loyalty Rule. Valid Values: 0-9(Value provided by Corecard) Format: XXXX Example:1234"
+        },
+        {
+            "name": "RuleType",
+            "type": "integer",
+            "required": false,
+            "description": "Flag to decide the type of Loyalty Rule. Valid Values: 0: Base 1:Promotional 2:Advance Promotional 3:Exclusion Format:X Example:1"
+        },
+        {
+            "name": "RuleStatus",
+            "type": "integer",
+            "required": false,
+            "description": "Status of Loyalty Rule. Valid Values: 0: Active 1: Inactive Format: X Example: 1"
+        },
+        {
+            "name": "RuleApplication",
+            "type": "integer",
+            "required": false,
+            "description": "Type of transaction on which the Loyalty rule should trigger for the Account. Valid Values:Refer Appendix Section Format:X Example: Example:3"
+        },
+        {
+            "name": "RuleSetupOn",
+            "type": "integer",
+            "required": false,
+            "description": "Addtional criteria on which Loyalty rule should trigger for the Account. Valid Values:Refer Appendix Section Format:X Example:5"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "LoyaltyRulesList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Must return List of Loyalty Rules for the Institituion in an array, if a specifc parameter is selected in Input, then as per that Loyalty Rules must be returned as a list.",
+                    "children": [
+                        {
+                            "name": "RuleID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "ID of LoyaltyRule. Valid Values: 0-9(Value provided by Corecard) Format: XXXX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Loyalty Rule. Valid Values:A-Z,a-z,0-9 Example:Base Rule Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Flag to decide the type of Loyalty Rule. Valid Values: 0: Base 1:Promotional 2:Advance Promotional 3:Exclusion Format:X Example:Base Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the Loyalty Rule Valid Values:A-Z,a-z,0-9 Example: 2% Reward on All Purchases Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleApplication",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Type of transaction on which the Loyalty rule should trigger for the Account. Valid Values:Refer Appendix Section 5.40 Loyalty: Rule Application Format:X Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleApplicationDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Displays the Description of the Type of Transaction on which the Loyalty rule should trigger for the Account. Valid Values:A-Z Example: Purchase Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleSetUpOn",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Addtional criteria on which Loyalty rule should trigger for the Account. Valid Values:Refer Appendix Section 5.41 Loyalty: Rule Setup On Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleSetUpOnDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the Addtional criteria on which Loyalty rule should trigger for the Account. Valid Values: Loyalty: Rule Setup On Format:X Example:5 Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Status of Loyalty Rule. Valid Values: 0: Active 1: Inactive Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleStatusDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the Status of Loyalty Rule. Valid Values: Active and Inactive Format: XXXXX Example: Active Allowable Values: 30",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "InstitutionID": 3241,
+        "RuleId": null,
+        "RuleType": null,
+        "RuleStatus": null,
+        "RuleApplication": null,
+        "RuleSetupOn": null
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "LoyaltyRulesList": [
+                {
+                    "RuleID": 1,
+                    "RuleName": "Student Card Base Reward Rule",
+                    "RuleType": "Base",
+                    "RuleDescription": "1%  Reward on All Purchases",
+                    "RuleApplication": null,
+                    "RuleApplicationDesc": "Purchase",
+                    "RuleSetUpOn": 0,
+                    "RuleSetUpOnDesc": null,
+                    "RuleStatus": 0,
+                    "RuleStatusDesc": null
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Control Parameters",
+        "category_id": "1005",
+        "document_id": "1076",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1076&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005&regionId=1"
+    }
+}

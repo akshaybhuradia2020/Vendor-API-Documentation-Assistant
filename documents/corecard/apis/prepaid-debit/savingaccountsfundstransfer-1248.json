@@ -1,0 +1,205 @@
+{
+    "metadata": {
+        "name": "SavingAccountsFundsTransfer",
+        "http_method": "POST",
+        "endpoint": "/api/SavingAccountsFundsTransfer",
+        "description": "Use this API to transfer funds from prepaid card account to its saving account and vice a versa. User should provide prepaid card account and saving account information to get the funds transferred."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition:At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition:At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893 Condition:At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "TransferType",
+            "type": "string",
+            "required": true,
+            "description": "Type of  money transfer. Valid values: 0 = From Prepaid Account to Saving Account 1= From Saving Account To prepaid Account Example: 0 Condition : with 0 , At least one of Card Number/ProxyNumber/Account Number is required with 1 , Only Saving Account Number is required. Allowable Values: 1"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": true,
+            "description": "Transaction Amount to be posted Valid value 0-9 Example: 300, 3.5"
+        },
+        {
+            "name": "SavingAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Saving Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893 Condition: When account is supporting multiple saving accounts. Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "PrepaidAccountBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Balance of Prepaid Account Example: 55.56",
+                    "children": []
+                },
+                {
+                    "name": "SavingAccountBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Balance of  Saving Account Example: 87.56",
+                    "children": []
+                },
+                {
+                    "name": "DebitTransactionID",
+                    "type": "string",
+                    "required": null,
+                    "description": "ID of Debit Transaction Example: 9876543210 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "CreditTransactionID",
+                    "type": "string",
+                    "required": null,
+                    "description": "ID of Credit Transaction Example: 9876543211 Allowable Values: 19",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "",
+        "ProxyNumber": "1311037",
+        "AccountNumber": "",
+        "TransferType": "0",
+        "TransactionAmount": 2.0,
+        "SavingAccountNumber": "60000000087608"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "PrepaidAccountBalance": 43.33,
+            "SavingAccountBalance": 23.05,
+            "DebitTransactionID": "2153643866",
+            "CreditTransactionID": "2153643892"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1044",
+        "document_id": "1248",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1248&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1044&regionId=1"
+    }
+}

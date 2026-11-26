@@ -1,0 +1,352 @@
+{
+    "metadata": {
+        "name": "ManualReageAdjusted",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/ManualReageAdjusted",
+        "description": "This API indicates amount adjusted or delinquency cycle adjusted based on type of reage and method of reage."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "TypeOfManualReage",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates if Reage is Full or Partial Valid Values: 0 - Full / 1 - Partial Format: Numeric Example: 0"
+        },
+        {
+            "name": "TotalDueMethod",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates total amount due adjusted as reage Valid Values: 0-9 Format: Numeric Example: $150.00 Condition: Either TotalDueMethod or CycleDueMethod must be provided  // Fixed TD 240579"
+        },
+        {
+            "name": "CycleDueMethod",
+            "type": "string",
+            "required": null,
+            "description": "Indicates if method used to reage is Cycle Due Method and what is the delinquency level used to reage account 0 - Nothing Due 1 - Current Due 10 - No Payments 2 - Past Due 3 - 1 Cycle Past Due 4 - 2 Cycles Past Due 5 - 3 Cycles Past Due 6 - 4 Cycles Past Due 7 - 5 Cycles Past Due 8 - 6 Cycles Past Due 9 - 7 Cycles Past Due Valid Values: 0-10 Format: X Example: 0 Condition: Either TotalDueMethod or CycleDueMethod must be provided. Allowable Values: 25"
+        },
+        {
+            "name": "CurrentCycleDue",
+            "type": "string",
+            "required": null,
+            "description": "Amount currently due on account Valid Values: 0-9 Format: $XX.XX Example: $100.00 Allowable Values: 25"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one account identifier is required. Allowable Values: 19"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition:At least one of CardNumber/AdminNumber/AccountNumber/AccountID is required."
+        },
+        {
+            "name": "TotalDue",
+            "type": "decimal",
+            "required": false,
+            "description": "Total Amount Due as on account Valid Values: 0-9 Format: $XX.XX Example: $150.99"
+        },
+        {
+            "name": "MrSevenCyclesPastDue",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount Seven Cycle past due on the account Valid Values: 0-9 Format: $XX.XX Example: $100.50"
+        },
+        {
+            "name": "MrSixCyclesPastDue",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount Six Cycle past due on the account Valid Values: 0-9 Format: $XX.XX Example: $100.50"
+        },
+        {
+            "name": "MrFiveCyclesPastDue",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount Five Cycle past due on the account Valid Values: 0-9 Format: $XX.XX Example: $100.50"
+        },
+        {
+            "name": "MrFourCyclesPastDue",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount Four Cycle past due on the account Valid Values: 0-9 Format: $XX.XX Example: $100.50"
+        },
+        {
+            "name": "MrThreeCyclesPastDue",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount Three Cycle past due on the account Valid Values: 0-9 Format: $XX.XX Example: $100.50"
+        },
+        {
+            "name": "MrTwoCyclesPastDue",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount Two Cycle past due on the account Valid Values: 0-9 Format: $XX.XX Example: $100.50"
+        },
+        {
+            "name": "MrOneCyclesPastDue",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount One Cycle past due on the account Valid Values: 0-9 Format: $XX.XX Example: $100.50"
+        },
+        {
+            "name": "MrPastDue",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount past due on the account Valid Values: 0-9 Format: $XX.XX Example: $100.50"
+        },
+        {
+            "name": "MrCurrentDue",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount current due on the account Valid Values: 0-9 Format: $XX.XX Example: $100.50"
+        },
+        {
+            "name": "MrTotalPastDue",
+            "type": "decimal",
+            "required": false,
+            "description": "Total amount past due on the account Valid Values: 0-9 Format: $XX.XX Example: $100.50"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "TotalDueAdjusted",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Total amount due on the account after adjustment in account reaging Valid Values: 0-9 Format: $XX.XX Example: $100.00",
+                    "children": []
+                },
+                {
+                    "name": "TotalPastDueAdjusted",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Total past due amount on the account  after adjustment in account reaging Valid Values: 0-9 Format: $XX.XX Example: $100.00",
+                    "children": []
+                },
+                {
+                    "name": "CurrentDueAdjusted",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Current amount due on the account  after adjustment in account reaging Valid Values: 0-9 Format: $XX.XX Example: $100.00",
+                    "children": []
+                },
+                {
+                    "name": "PastDueAdjusted",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Past due amount on the account  after adjustment in account reaging Valid Values: 0-9 Format: $XX.XX Example: $100.00",
+                    "children": []
+                },
+                {
+                    "name": "OneCyclePastDueAdjusted",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Amount in One cycle past due on the account adjusted in account reaging Valid Values: 0-9 Format: $XX.XX Example: $100.00",
+                    "children": []
+                },
+                {
+                    "name": "TwoCyclesPastDueAdjusted",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Amount in Two cycle past due on the account adjusted in account reaging Valid Values: 0-9 Format: $XX.XX Example: $100.00",
+                    "children": []
+                },
+                {
+                    "name": "ThreeCyclesPastDueAdjusted",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Amount in Three cycle past due on the account adjusted in account reaging Valid Values: 0-9 Format: $XX.XX Example: $100.00",
+                    "children": []
+                },
+                {
+                    "name": "FourCyclesPastDueAdjusted",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Amount in Four cycle past due on the account adjusted in account reaging Valid Values: 0-9 Format: $XX.XX Example: $100.00",
+                    "children": []
+                },
+                {
+                    "name": "FiveCyclesPastDueAdjusted",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Amount in Five cycle past due on the account adjusted in account reaging Valid Values: 0-9 Format: $XX.XX Example: $100.00",
+                    "children": []
+                },
+                {
+                    "name": "SixCyclesPastDueAdjusted",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Amount in Six cycle past due on the account adjusted in account reaging Valid Values: 0-9 Format: $XX.XX Example: $100.00",
+                    "children": []
+                },
+                {
+                    "name": "SevenCyclesPastDueAdjusted",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Amount in Seven cycle past due on the account adjusted in account reaging Valid Values: 0-9 Format: $XX.XX Example: $100.00 Condition:H1497",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "TypeOfManualReage": 0,
+        "TotalDueMethod": null,
+        "CycleDueMethod": null,
+        "CurrentCycleDue": null,
+        "AccountNumber": "0000000000052069",
+        "AccountID": 167484,
+        "TotalDue": null,
+        "MrSevenCyclesPastDue": null,
+        "MrSixCyclesPastDue": null,
+        "MrFiveCyclesPastDue": null,
+        "MrFourCyclesPastDue": null,
+        "MrThreeCyclesPastDue": null,
+        "MrTwoCyclesPastDue": null,
+        "MrOneCyclesPastDue": null,
+        "MrPastDue": null,
+        "MrCurrentDue": null,
+        "MrTotalPastDue": null
+    },
+    "sample_response": {
+        "Message": "Re-age request has been processed successfully",
+        "Status": true,
+        "ErrorCode": "ERR01041",
+        "ResponseData": {
+            "TotalDueAdjusted": 0.0,
+            "TotalPastDueAdjusted": 0.0,
+            "CurrentDueAdjusted": 0.0,
+            "PastDueAdjusted": 0.0,
+            "OneCyclePastDueAdjusted": 0.0,
+            "TwoCyclesPastDueAdjusted": 0.0,
+            "ThreeCyclesPastDueAdjusted": 0.0,
+            "FourCyclesPastDueAdjusted": 0.0,
+            "FiveCyclesPastDueAdjusted": 0.0,
+            "SixCyclesPastDueAdjusted": 0.0,
+            "SevenCyclesPastDueAdjusted": 0.0
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Account Details",
+        "category_id": "4",
+        "document_id": "66",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=66&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4&regionId=1"
+    }
+}

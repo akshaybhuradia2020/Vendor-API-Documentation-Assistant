@@ -1,0 +1,1548 @@
+{
+    "metadata": {
+        "name": "GetMSRBalances",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/MerchantManagement/GetMSRBalances",
+        "description": "This API is to get all the balances for the mentioned MSR."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MSRNumber",
+            "type": "string",
+            "required": true,
+            "description": "Description - Identifier for Merchant/Store/Register Account to be created Valid Values: 0-9 Format: XXXX Example: 562489 Allowable Values: 12"
+        },
+        {
+            "name": "MSRLevel",
+            "type": "integer",
+            "required": null,
+            "description": "Description - Type of Account to be created Valid Values: 0: Merchant, 1: Store 2: Register Format: XXXXXX Example: 1"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MSRNumber",
+            "type": "string",
+            "required": true,
+            "description": "Identifier for Merchant/Store/Register Account to be created Valid Values: 0-9 Format: XXXX Example: 562489 Allowable Values: 12"
+        },
+        {
+            "name": "MSRLevel",
+            "type": "integer",
+            "required": true,
+            "description": "Type of Account to be created Valid Values: 0: Merchant, 1: Store 2: Register Format: XXXXXX Example: 1"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Account",
+            "type": "",
+            "required": null,
+            "description": "MerchantPLAccountModel",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "Account",
+                    "type": "",
+                    "required": null,
+                    "description": "MerchantPLAccountModel",
+                    "children": [
+                        {
+                            "name": "MerchantID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specific ID Assigned to a Merchant, Mandatory If Merchant Number not Inputted in API Request Valid Values: 0-9 Format: XXXX Example: 562489",
+                            "children": []
+                        },
+                        {
+                            "name": "InstitutionID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Unique identification number for Institution Valid Values: 0-9 Format: XXXX Example: Fixed value needs to pass which is provided by Corecard.",
+                            "children": []
+                        },
+                        {
+                            "name": "InstitutionName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Institution Valid Values: A-Z, 0-9 Format: XXXXX Example: Company Name Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Name which is assigned to a Merchant Valid Values:A-Z Format: XXXXXX Example: ABCD LLC Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "StoreName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Store Valid Values: Wallmart Format: A-Z, 0-9 Example: ABCD LLC Condition: Core Card will provide the value for this field after the Program is setup. Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "RegisterName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Register Name in a merchant hierarchy Valid Values: a-z, 0-9 Format: xxxx Example: abc 123 Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of Account Required for Merchant Ignored for Stored/Register Valid Values: A-Z, 0-9 Format: XXXXXX Example: Company LLC Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Number which is assgined to a Merchant, Mandatory If MerchantID not Inputted in API  Request Valid Values: 0-9 Format: XXXXXXXXX Example: 205136549 Allowable Values: 9",
+                            "children": []
+                        },
+                        {
+                            "name": "NetworkName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Network Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "NetworkID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "System generated ID Assigned on the Network",
+                            "children": []
+                        },
+                        {
+                            "name": "SplitFee",
+                            "type": "string",
+                            "required": null,
+                            "description": "Split fees Valid Values: Amount Format: XXXXXX Example: 455.77 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "TemplateName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of Template of MSR Valid Values: A-Z, 0-9 Format: XXXXXX Example: Noun Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductMapping",
+                            "type": "string",
+                            "required": null,
+                            "description": "List of products with which this MSR is mapped Valid Values: A-Z, 0-9 Format: XXXXXX Example: Revolving, Installment Allowable Values: 8000",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillBalanceBroughtForward",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Balance Brought Forward (Since Last Bill) Valid Values: 0-9. Format:XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillAdjustments",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Adjustments (Since Last Bill) Valid Values: 0-9. Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalNumberOfAccounts",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of accounts under this MSR Valid Values: 0-9 Format: XXXXXXXXXX Example: 7895463214",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillPreviousBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Previous Balance (At Last Bill) Valid Values: 0-9. Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillPreviousBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Previous Balance (Since Last Bill) Valid Values: 0-9. Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillInStorePayments",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Direct Payments (At Last Bill) Valid Values: 0-9. Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillInStorePayments",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Direct Payments (Since Last Bill) Valid Values: 0-9. Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillDirectPayments",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Returns (At Last Bill) Valid Values: 0-9. Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillDirectPayments",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Sales (Since Last Bill) Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillReturns",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Finance Charge (At Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillReturns",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Returns(Since Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillSales",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Sales (At Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillSales",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Sales(Since Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillFinanceCharge",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Finance Charge (At Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillFinanceCharge",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Finance Charge (Since Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillNSFFees",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "NSF Fee (At Last Bill) Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillNSFFees",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "NSF Fee(Since Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillNSFFeeCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "NSF Fee Credits (At Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillNSFFeeCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "NSF Fee Credits (Since Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillOtherDebits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "NSF Fee Credits(Since Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillOtherDebits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Other Debits (Since Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillOtherCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Other Debits(Since Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillOtherCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Other Debits(Since Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillInStoreOtherCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "In Store Other Credits(At Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillInStoreOtherCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "In Store Other Credits(Since Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillInStoreOtherDebits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "In Store Other Debits (At Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillInStoreOtherDebits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "In Store Other Debits (Since Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AtLastBillNetOutstanding",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Net Outstanding (At Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SinceBillNetOutstanding",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Net Outstanding(Since Last Bill) Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklySalesCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Weekly Sales Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklySalesAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Weekly Sales Amount for the MSR Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyReturnsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Weekly Returns Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyReturnsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Weekly Returns Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyDirectPaymentsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Weekly Direct Payments Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyDirectPaymentsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Weekly Direct Payments Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyInStorePaymentsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Weekly In-Store Payment Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyInStorePaymentsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Weekly In-Store Payment Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyTotalPaymentsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Weekly In-Store Payment Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyTotalPaymentsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Weekly In-Store Payment Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyGrossVolumeCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Total Weekly Payments Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyGrossVolumeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Total Weekly Payments Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyNetVolumeCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Weekly Nett Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyNetVolumeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Weekly Nett Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyDiscount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Weekly Discount of the MSR Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlyActiveAccounts",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Monthly Active Accounts Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlyActiveAccountsLastCycle",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Monthly Active Accounts Last Cycle. Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlyAccountsFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Monthly Accounts Fee Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlyCurrentReserve",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Monthly Current Reserve Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlyPreviousReserve",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Monthly Previous Reserve Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlyMerchantFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Monthly Merchant Fee Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlyPrimeRateAdjustment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Monthly Prime Rate Adjustment Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlyOtherCharges",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Monthly Other Charges Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlyOutstandingBalanceAccounts",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Monthly Outstanding Balance of Merchant Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SettlementAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Settlement Amount of the Merchant Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "PreviousSettlementAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Previous Settlement Amount of the Merchant Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Get or Set DisputeAmount",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Amount which is in Dispute Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailySalesCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Daily Sales Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "DailySalesAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the daily sales Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyReturnsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the daily returns Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyReturnsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Count of the daily returns Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyDirectPaymentsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Daily Direct Payments Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyDirectPaymentsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Daily Direct Payments Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyInStorePaymentsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Daily InStore Payments Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyInStorePaymentsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Daily InStore Payments Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyTotalPaymentsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Daily Total Payments Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyTotalPaymentsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Daily Total Payments Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyGrossVolumeCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Daily Gross Volume Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyGrossVolumeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Daily Gross Volume Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyNetVolumeCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Daily Net Volume Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyNetVolumeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Daily Net Volume Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyNSFFees",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Daily NSF Fees Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyNSFFeeCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Daily NSF Fee Credit amount Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyOtherCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Daily Other Credits Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyOtherDebits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Daily Other Debits Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyDiscount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Daily Discount Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlySalesCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Yearly Sales Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlySalesAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Yearly Sales Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyReturnsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Yearly Sales Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyReturnsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Yearly Returns Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyDirectPaymentsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Yearly Direct Payments Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyDirectPaymentsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Yearly Direct Payments Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyInStorePaymentsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Yearly Direct Payments Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyInStorePaymentsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Yearly InStore Payments Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyTotalPaymentsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Yearly InStore Payments Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyTotalPaymentsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Yearly Total Payments Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyDisputesCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Yearly Disputes Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyDisputesAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Yearly Disputes Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyGrossVolumeCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Yearly Gross Volume Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyGrossVolumeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Yearly Gross Volume Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyNetVolumeCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Yearly Net Volume Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyNetVolumeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Yearly Net Volume Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyFinanceCharge",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Yearly Finance Charge Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyNSFFeeCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Yearly NSF Fee Credits Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyNSFFees",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Yearly NSF Fee Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyOtherDebits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Yearly Other Debits Valid Values: 0-9 Format:XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyOtherCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Yearly Other Credits Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyDiscount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Yearly Discount Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyBaseFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Yearly Base Fee Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyAccountsFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Yearly Accounts Fee Valid Values: 0-9. Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyPrimeRateAdjustment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Yearly Prime Rate Adjustment Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyMerchantFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Yearly Merchant Fee Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlySettlementAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Yearly Settlement Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyOtherCharges",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Yearly Other Charges Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeSalesCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Lifetime Sales Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeSalesAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Lifetime Sales Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeReturnsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Lifetime Returns Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeReturnsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Lifetime Returns Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeDirectPaymentsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Lifetime Direct Payments Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeDirectPaymentsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Lifetime Direct Payments Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeInStorePaymentsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Lifetime InStore Payments Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeInStorePaymentsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Lifetime InStore Payments Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeTotalPaymentsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Lifetime Total Payments Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeTotalPaymentsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Lifetime Total Payments Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeDisputesCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Lifetime Disputes Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeDisputesAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Lifetime Disputes Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeGrossVolumeCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Lifetime Gross Volume Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeGrossVolumeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Lifetime Gross Volume Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeNetVolumeCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of the Lifetime Gross Volume Valid Values: 0-9 Format: XXXXXXXXXX Example: 123",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeNetVolumeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Lifetime Net Volume Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeFinanceCharge",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Lifetime Finance Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeNSFFees",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Lifetime NSF Fees Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeNSFFeeCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Lifetime NSF Fee Credits Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeOtherDebits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Lifetime Other Debits Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeOtherCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Lifetime Other Credits Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeDiscount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Lifetime Discount Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeBaseFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Lifetime Base Fee Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeAccountsFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Lifetime Accounts Fee Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimePrimeRateAdjustment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Lifetime Prime Rate Adjustment Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeMerchantFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Lifetime Merchant Fee Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeSettlementAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of the Lifetime Settlement Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LifetimeOtherCharges",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Lifetime Other Charges Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinquencyTotalDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Delinquency Total Due Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinquencyCurrentDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Delinquency Current Due Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinquencyPastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Delinquency Past Due Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinquencyOneCyclePastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Delinquency One Cycle Past Due Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinquencyTwoCyclesPastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Delinquency Two Cycle Past Due Valid Values: 0-9 Format:XXX.XX Example:200.01",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinquencyThreeCyclesPastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Delinquency Three Cycle Past Due Valid Values: 0-9 Format:XXX.XX Example:200.02",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinquencyFourCyclesPastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Delinquency Four Cycle Past Due Valid Values: 0-9 Format:XXX.XX Example:200.03",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinquencyFiveCyclesPastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Delinquency Five Cycle Past Due Valid Values: 0-9 Format:XXX.XX Example:200.04",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinquencySixCyclesPastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Delinquency Six Cycle Past Due Valid Values: 0-9 Format:XXX.XX Example:200.05",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinquencySevenCyclesPastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Delinquency Seven Cycle Past Due Valid Values: 0-9 Format:XXX.XX Example:200.06",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinquencyTotalPastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Delinquency Total Cycle Past Due Valid Values: 0-9 Format:XXX.XX Example:200.06",
+                            "children": []
+                        },
+                        {
+                            "name": "MPLMerchantStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Get or Set MPLMerchantStatus",
+                            "children": []
+                        },
+                        {
+                            "name": "PolicyIdentifier",
+                            "type": "string",
+                            "required": null,
+                            "description": "Get or Set PolicyIdentifier Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "LineAssignedPolicy",
+                            "type": "string",
+                            "required": null,
+                            "description": "Policy applicable for MSR Valid Values: A-Z, 0-9 Format: XXXXXX Example: Policy Name Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "IsChildFlag",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates whetherthe MSR is a child of any other Parent or not. Valid Values: 1 = Yes 0= No Format: X Example: 1,0",
+                            "children": []
+                        },
+                        {
+                            "name": "MPLMerchantStatusName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the MPL status Valid Values: A-Z, 0-9 Format: XXXXXX Example: Noun Allowable Values: 100",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MSRNumber": "8831",
+        "MSRLevel": 1
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "Account": {
+                "MerchantID": 11639,
+                "InstitutionID": 3235,
+                "InstitutionName": "ABC, LLC",
+                "MerchantName": "Merchant 6",
+                "StoreName": null,
+                "RegisterName": null,
+                "MerchantDescription": "Desc",
+                "MerchantNumber": "666666666",
+                "NetworkName": null,
+                "NetworkID": 0,
+                "SplitFee": null,
+                "TemplateName": null,
+                "ProductMapping": "ABC Patient Solutions Revolving",
+                "SinceBillBalanceBroughtForward": 0.0,
+                "SinceBillAdjustments": 0.0,
+                "TotalNumberOfAccounts": 0,
+                "AtLastBillPreviousBalance": 0.0,
+                "SinceBillPreviousBalance": 0.0,
+                "AtLastBillInStorePayments": 0.0,
+                "SinceBillInStorePayments": 0.0,
+                "AtLastBillDirectPayments": 0.0,
+                "SinceBillDirectPayments": 0.0,
+                "AtLastBillReturns": 0.0,
+                "SinceBillReturns": 0.0,
+                "AtLastBillSales": 0.0,
+                "SinceBillSales": 0.0,
+                "AtLastBillFinanceCharge": 0.0,
+                "SinceBillFinanceCharge": 0.0,
+                "AtLastBillNSFFees": 0.0,
+                "SinceBillNSFFees": 0.0,
+                "AtLastBillNSFFeeCredits": 0.0,
+                "SinceBillNSFFeeCredits": 0.0,
+                "AtLastBillOtherDebits": 0.0,
+                "SinceBillOtherDebits": 0.0,
+                "AtLastBillOtherCredits": 0.0,
+                "SinceBillOtherCredits": 0.0,
+                "AtLastBillInStoreOtherCredits": 0.0,
+                "SinceBillInStoreOtherCredits": 0.0,
+                "AtLastBillInStoreOtherDebits": 0.0,
+                "SinceBillInStoreOtherDebits": 0.0,
+                "AtLastBillNetOutstanding": 0.0,
+                "SinceBillNetOutstanding": 0.0,
+                "WeeklySalesCount": 0,
+                "WeeklySalesAmount": 0.0,
+                "WeeklyReturnsCount": 0,
+                "WeeklyReturnsAmount": 0.0,
+                "WeeklyDirectPaymentsCount": 0,
+                "WeeklyDirectPaymentsAmount": 0.0,
+                "WeeklyInStorePaymentsCount": 0,
+                "WeeklyInStorePaymentsAmount": 0.0,
+                "WeeklyTotalPaymentsCount": 0,
+                "WeeklyTotalPaymentsAmount": 0.0,
+                "WeeklyGrossVolumeCount": 0,
+                "WeeklyGrossVolumeAmount": 0.0,
+                "WeeklyNetVolumeCount": 0,
+                "WeeklyNetVolumeAmount": 0.0,
+                "WeeklyDiscount": 0.0,
+                "MonthlyActiveAccounts": 0,
+                "MonthlyActiveAccountsLastCycle": 0,
+                "MonthlyAccountsFee": 0.0,
+                "MonthlyCurrentReserve": 0.0,
+                "MonthlyPreviousReserve": 0.0,
+                "MonthlyMerchantFee": 0.0,
+                "MonthlyPrimeRateAdjustment": 0.0,
+                "MonthlyOtherCharges": 0.0,
+                "MonthlyOutstandingBalanceAccounts": 0.0,
+                "SettlementAmount": 0.0,
+                "PreviousSettlementAmount": 0.0,
+                "DisputeAmount": 0.0,
+                "DisputeCount": 0,
+                "DailySalesCount": 0,
+                "DailySalesAmount": 0.0,
+                "DailyReturnsCount": 0,
+                "DailyReturnsAmount": 0.0,
+                "DailyDirectPaymentsCount": 0,
+                "DailyDirectPaymentsAmount": 0.0,
+                "DailyInStorePaymentsCount": 0,
+                "DailyInStorePaymentsAmount": 0.0,
+                "DailyTotalPaymentsCount": 0,
+                "DailyTotalPaymentsAmount": 0.0,
+                "DailyGrossVolumeCount": 0,
+                "DailyGrossVolumeAmount": 0.0,
+                "DailyNetVolumeCount": 0,
+                "DailyNetVolumeAmount": 0.0,
+                "DailyNSFFees": 0.0,
+                "DailyNSFFeeCredits": 0.0,
+                "DailyOtherCredits": 0.0,
+                "DailyOtherDebits": 0.0,
+                "DailyDiscount": 0.0,
+                "YearlySalesCount": 0,
+                "YearlySalesAmount": 0.0,
+                "YearlyReturnsCount": 0,
+                "YearlyReturnsAmount": 0.0,
+                "YearlyDirectPaymentsCount": 0,
+                "YearlyDirectPaymentsAmount": 0.0,
+                "YearlyInStorePaymentsCount": 0,
+                "YearlyInStorePaymentsAmount": 0.0,
+                "YearlyTotalPaymentsCount": 0,
+                "YearlyTotalPaymentsAmount": 0.0,
+                "YearlyDisputesCount": 0,
+                "YearlyDisputesAmount": 0.0,
+                "YearlyGrossVolumeCount": 0,
+                "YearlyGrossVolumeAmount": 0.0,
+                "YearlyNetVolumeCount": 0,
+                "YearlyNetVolumeAmount": 0.0,
+                "YearlyFinanceCharge": 0.0,
+                "YearlyNSFFeeCredits": 0.0,
+                "YearlyNSFFees": 0.0,
+                "YearlyOtherDebits": 0.0,
+                "YearlyOtherCredits": 0.0,
+                "YearlyDiscount": 0.0,
+                "YearlyBaseFee": 0.0,
+                "YearlyAccountsFee": 0.0,
+                "YearlyPrimeRateAdjustment": 0.0,
+                "YearlyMerchantFee": 0.0,
+                "YearlySettlementAmount": 0.0,
+                "YearlyOtherCharges": 0.0,
+                "LifetimeSalesCount": 0,
+                "LifetimeSalesAmount": 0.0,
+                "LifetimeReturnsCount": 0,
+                "LifetimeReturnsAmount": 0.0,
+                "LifetimeDirectPaymentsCount": 0,
+                "LifetimeDirectPaymentsAmount": 0.0,
+                "LifetimeInStorePaymentsCount": 0,
+                "LifetimeInStorePaymentsAmount": 0.0,
+                "LifetimeTotalPaymentsCount": 0,
+                "LifetimeTotalPaymentsAmount": 0.0,
+                "LifetimeDisputesCount": 0,
+                "LifetimeDisputesAmount": 0.0,
+                "LifetimeGrossVolumeCount": 0,
+                "LifetimeGrossVolumeAmount": 0.0,
+                "LifetimeNetVolumeCount": 0,
+                "LifetimeNetVolumeAmount": 0.0,
+                "LifetimeFinanceCharge": 0.0,
+                "LifetimeNSFFees": 0.0,
+                "LifetimeNSFFeeCredits": 0.0,
+                "LifetimeOtherDebits": 0.0,
+                "LifetimeOtherCredits": 0.0,
+                "LifetimeDiscount": 0.0,
+                "LifetimeBaseFee": 0.0,
+                "LifetimeAccountsFee": 0.0,
+                "LifetimePrimeRateAdjustment": 0.0,
+                "LifetimeMerchantFee": 0.0,
+                "LifetimeSettlementAmount": 0.0,
+                "LifetimeOtherCharges": 0.0,
+                "DelinquencyTotalDue": 0.0,
+                "DelinquencyCurrentDue": 0.0,
+                "DelinquencyPastDue": 0.0,
+                "DelinquencyOneCyclePastDue": 0.0,
+                "DelinquencyTwoCyclesPastDue": 0.0,
+                "DelinquencyThreeCyclesPastDue": 0.0,
+                "DelinquencyFourCyclesPastDue": 0.0,
+                "DelinquencyFiveCyclesPastDue": 0.0,
+                "DelinquencySixCyclesPastDue": 0.0,
+                "DelinquencySevenCyclesPastDue": 0.0,
+                "DelinquencyTotalPastDue": 0.0,
+                "MPLMerchantStatus": 1000,
+                "PolicyIdentifier": "Grandfathered",
+                "LineAssignedPolicy": "Grandfathered",
+                "IsChildFlag": 0,
+                "MPLMerchantStatusName": null
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Merchant/Store/Register",
+        "category_id": "18",
+        "document_id": "133",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=133&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=18&regionId=1"
+    }
+}

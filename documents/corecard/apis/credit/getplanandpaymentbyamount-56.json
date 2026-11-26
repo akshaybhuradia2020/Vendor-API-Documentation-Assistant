@@ -1,0 +1,296 @@
+{
+    "metadata": {
+        "name": "GetPlanAndPaymentByAmount",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetPlanAndPaymentByAmount",
+        "description": "This API is to get the plan details as per the transaction amount provided by the user."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "string",
+            "required": true,
+            "description": "Number which is assgined to a Merchant. Valid Values- 0-9 Format:XXXXXX Example: 92234 Allowable Values: 9"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": true,
+            "description": "Amount of Transaction Valid Values:0-9 Format:XXX.XX Example:200.00"
+        },
+        {
+            "name": "ProductMapping",
+            "type": "string",
+            "required": true,
+            "description": "Product Mapping Code Valid Values: 0-9, A-Z Format: XXXX Example: 3399 Allowable Values: 100"
+        },
+        {
+            "name": "PreQualID",
+            "type": "string",
+            "required": false,
+            "description": "This tag refers to Pre-qualification ID of corecard Application Valid Values: 0-9, A-Z Format: XXXX Example: 3399 Allowable Values: 100"
+        },
+        {
+            "name": "ApplicationID",
+            "type": "int64",
+            "required": false,
+            "description": "This tag reflects the Application ID of an application. Valid Values: 0-9 Format: XXXX Example: 3399 Allowable Values: 100"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number will ensure that API hit our internal servers. This will always be unique.API is returned from our external server Valid Values:0-9,a-z Format: XXX Example:200 Allowable Values: 10",
+                    "children": []
+                },
+                {
+                    "name": "CreditPlanMasterAndPaymentInformationDetails",
+                    "type": "array",
+                    "required": null,
+                    "description": "",
+                    "children": [
+                        {
+                            "name": "CreditPlanMaster",
+                            "type": "string",
+                            "required": null,
+                            "description": "Plan name associated with the card account. Valid Values: A-z,0-9 Format: XXX Example:6 Months No Interest if Paid in Full Allowable Values: 6",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditPlanDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "CreditPlanMaster Description Valid Values: A-z,0-9 Format: XXX Example: 6 Months No Interest if Paid in Full Allowable Values: 255",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditPlanType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Credit Plan Type i.e. EPP for ILP and Deferred for deferred plan. Example: Deferred Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "LoanTerm",
+                            "type": "string",
+                            "required": null,
+                            "description": "Total tenure of loan in months. Example:48 Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "LowRate",
+                            "type": "string",
+                            "required": null,
+                            "description": "Low Rate of CreditPlanMaster (This will contain APR for Deferred plan if this is Deferred Plan) Valid Values:A-z,0-9 Format:XXX Example:29.9900 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "HighRate",
+                            "type": "string",
+                            "required": null,
+                            "description": "High Rate of CreditPlanMaster (This will not have any value if it is a deferred plan) Example:29.9900 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestRate",
+                            "type": "string",
+                            "required": null,
+                            "description": "Rate of Interest (ILP only) It will show LowRate-High rate(1.00-1.75) for ILP Example: 14.99 - 28.99 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalInterestAmount",
+                            "type": "string",
+                            "required": null,
+                            "description": "Total Interest Amount for ILP Example: 369.28 - 770.08 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "EMIAmount",
+                            "type": "string",
+                            "required": null,
+                            "description": "EMI Amount (ILP only) It will show LowRateEMIAmt – HighRateEMIAmt(10.00 – 29.999) for ILP Format: XXX Example: \"30.61 - 38.96\" Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "DefermentPeriod",
+                            "type": "string",
+                            "required": null,
+                            "description": "Deferment Period For Interest Deferment Format: XXX Example: 12 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "OptionalPaymentToAvoidInterest",
+                            "type": "string",
+                            "required": null,
+                            "description": "Optional Payment To Avoid Interest For Interest Deferment. Example:91.6700 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlyMinimumRequiredPayment",
+                            "type": "string",
+                            "required": null,
+                            "description": "Required Payment For Interest Deferment. Valid Values:A-z,0- Format:XXX Example:35.7500 Allowable Values: 20",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MerchantNumber": "11111111",
+        "TransactionAmount": 1000.0,
+        "ProductMapping": "ABC Patient Solutions Revolving",
+        "PreQualID": "",
+        "ApplicationID": null
+    },
+    "sample_response": {
+        "Message": "Processed Successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01149",
+        "ResponseData": {
+            "ResponseID": "56882604",
+            "CreditPlanMasterAndPaymentInformationDetails": [
+                {
+                    "CreditPlanMaster": "6071",
+                    "CreditPlanDescription": "Fixed APR of 5.99%-28.99% for 48 Months",
+                    "CreditPlanType": "EPP",
+                    "LoanTerm": "48",
+                    "LowRate": "5.99%",
+                    "HighRate": "28.99%",
+                    "InterestRate": "5.99% - 28.99%",
+                    "TotalInterestAmount": "$127.04 - $700.16",
+                    "EMIAmount": "$23.48 - $35.42",
+                    "DefermentPeriod": null,
+                    "OptionalPaymentToAvoidInterest": null,
+                    "MonthlyMinimumRequiredPayment": null
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Account Details",
+        "category_id": "4",
+        "document_id": "56",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=56&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4&regionId=1"
+    }
+}

@@ -1,0 +1,1458 @@
+{
+    "metadata": {
+        "name": "Token",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Token/Token",
+        "description": "This API is used to Generate Access token and Refresh Token for given user."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "UserID",
+            "type": "string",
+            "required": false,
+            "description": "This Tage reflects User ID provided by CoreCARD to login in CoreCard System. Allowable Values: 128"
+        },
+        {
+            "name": "Password",
+            "type": "string",
+            "required": false,
+            "description": "This Tage reflects User Password used for login purpose. Allowable Values: 32"
+        },
+        {
+            "name": "GrantType",
+            "type": "string",
+            "required": true,
+            "description": "This Tage reflects Grant Type. Grant Type values are 'AccessToekn','RefreshToken' default value should be AccessToken. Allowable Values: 20"
+        },
+        {
+            "name": "RefreshToken",
+            "type": "string",
+            "required": false,
+            "description": "This Tage reflects Refresh Token. It is used to re generate Access Token when the GrantType value is RefreshToken."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "Token",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflects Access Token which is used to access CoreCard API's.",
+                    "children": []
+                },
+                {
+                    "name": "RefreshToken",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflects Refresh Token. It is used to re generate Access Token when the GrantType value is RefreshToken.",
+                    "children": []
+                },
+                {
+                    "name": "IssuedAt",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "This tag reflects the IssuedAt. It is the time when token provided to access CoreCard API.",
+                    "children": []
+                },
+                {
+                    "name": "Expires",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "This tag reflects the Expires. It is the time when provided Access Token has been expired.",
+                    "children": []
+                },
+                {
+                    "name": "RefreshTokenExpires",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "This tag reflects the Expires. It is the time when provided Refresh Token has been expired.",
+                    "children": []
+                },
+                {
+                    "name": "AdditionalUserLoginResponseModel",
+                    "type": "",
+                    "required": null,
+                    "description": "AdditionalUserLoginResponseModel",
+                    "children": [
+                        {
+                            "name": "UserLoginResponseModel",
+                            "type": "",
+                            "required": null,
+                            "description": "",
+                            "children": [
+                                {
+                                    "name": "FirstName",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "LastName",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ClientLoginExpired",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AllowChangeUserId",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "PasswordExpired",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "SecretQAExpired",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "LastLoginDate",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AllowUseOfTerms",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "UserStatus",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "NeedLoginValidation",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "UserType",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Category",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "IsFirstTimeLogin",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "HasPasswordExpired",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "IsPasswordReset",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "IsUserAutoLocked",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "IsSecurityQReset",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "IsSecurityAReset",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "NeedUnknownIPLoginValidation",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "NeedDisplayUseOfTerms",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ThemeSetup",
+                                    "type": "",
+                                    "required": null,
+                                    "description": "",
+                                    "children": [
+                                        {
+                                            "name": "RowId",
+                                            "type": "decimal",
+                                            "required": null,
+                                            "description": "Get or Set RowId",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ClientID",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set ClientID",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "UserID",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  UserID",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ClientName",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  ClientName",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ThemeType",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  ThemeType",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "MerSupportNo",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  MerSupportNo",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LogoFilePath",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  LogoFilePath",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LeftImgBottom",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  LeftImgBottom",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LeftFilePath",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  LeftFilePath",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LogoFilePathCA",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  LogoFilePathCA",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LeftImgBottomCA",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  LeftImgBottomCA",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LeftFilePathCA",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  LeftFilePathCA",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LogoFilePathCC",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  LogoFilePathCC",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LeftImgBottomCC",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  LeftImgBottomCC",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LeftFilePathCC",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  LeftFilePathCC",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "UpdateDate",
+                                            "type": "datetime",
+                                            "required": null,
+                                            "description": "Get or Set UpdateDate",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "InsertDate",
+                                            "type": "datetime",
+                                            "required": null,
+                                            "description": "Get or Set InsertDate",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "MerchantSupportLabelName",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  MerchantSupportLabelName",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ThemeName",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  ThemeName",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ThemeID",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set ThemeID",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "InstitutionInfo",
+                                            "type": "array",
+                                            "required": null,
+                                            "description": "Get or Set InstitutionInfo",
+                                            "children": [
+                                                {
+                                                    "name": "LutCode",
+                                                    "type": "string",
+                                                    "required": null,
+                                                    "description": "Get or Set  LutCode",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "LutDescription",
+                                                    "type": "string",
+                                                    "required": null,
+                                                    "description": "Get or Set  LutDescription",
+                                                    "children": []
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Flag",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  Flag",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ThemeIdRes",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  ThemeIdRes",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "IsBinaryImage",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set  IsBinaryImage",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LogoImageCoreCredit",
+                                            "type": "byte[]",
+                                            "required": null,
+                                            "description": "Get or Set  LogoImageCoreCredit",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "RightTopImageCoreCredit",
+                                            "type": "byte[]",
+                                            "required": null,
+                                            "description": "Get or Set  RightTopImageCoreCredit",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "RightBottomImageCoreCredit",
+                                            "type": "byte[]",
+                                            "required": null,
+                                            "description": "Get or Set  RightBottomImageCoreCredit",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LogoImageCoreAPP",
+                                            "type": "byte[]",
+                                            "required": null,
+                                            "description": "Get or Set  LogoImageCoreAPP",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "RightTopImageCoreAPP",
+                                            "type": "byte[]",
+                                            "required": null,
+                                            "description": "Get or Set  RightTopImageCoreAPP",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "RightBottomImageCoreAPP",
+                                            "type": "byte[]",
+                                            "required": null,
+                                            "description": "Get or Set  RightBottomImageCoreAPP",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LogoImageCoreCollection",
+                                            "type": "byte[]",
+                                            "required": null,
+                                            "description": "Get or Set  LogoImageCoreCollection",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "RightTopImageCoreCollection",
+                                            "type": "byte[]",
+                                            "required": null,
+                                            "description": "Get or Set  RightTopImageCoreCollection",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "RightBottomImageCoreCollection",
+                                            "type": "byte[]",
+                                            "required": null,
+                                            "description": "Get or Set  RightBottomImageCoreCollection",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ThemeCustomData",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "ThemeData",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ChartCustomData",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "ChartData",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "AccessibleIPAddresses",
+                                    "type": "",
+                                    "required": null,
+                                    "description": "",
+                                    "children": [
+                                        {
+                                            "name": "IPAddresses",
+                                            "type": "array",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "AccessibleUserMenus",
+                                    "type": "",
+                                    "required": null,
+                                    "description": "",
+                                    "children": [
+                                        {
+                                            "name": "MenuPermissions",
+                                            "type": "array",
+                                            "required": null,
+                                            "description": "",
+                                            "children": [
+                                                {
+                                                    "name": "PageId",
+                                                    "type": "string",
+                                                    "required": null,
+                                                    "description": "Get or Set  PageId",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "MenuId",
+                                                    "type": "decimal",
+                                                    "required": null,
+                                                    "description": "Get or Set MenuId",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "MenuName",
+                                                    "type": "string",
+                                                    "required": null,
+                                                    "description": "Get or Set  MenuName",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "PageName",
+                                                    "type": "string",
+                                                    "required": null,
+                                                    "description": "Get or Set  PageName",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "SUPageName",
+                                                    "type": "string",
+                                                    "required": null,
+                                                    "description": "Get or Set  SUPageName",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "PageUsedBy",
+                                                    "type": "string",
+                                                    "required": null,
+                                                    "description": "Get or Set  PageUsedBy",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "MenuParentID",
+                                                    "type": "integer",
+                                                    "required": null,
+                                                    "description": "Get or Set MenuParentID",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "DisplayOrder",
+                                                    "type": "decimal",
+                                                    "required": null,
+                                                    "description": "Get or Set DisplayOrder",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "IsChecked",
+                                                    "type": "boolean",
+                                                    "required": null,
+                                                    "description": "Get or Set IsChecked",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "IsCheckedSecondary",
+                                                    "type": "boolean",
+                                                    "required": null,
+                                                    "description": "Get or Set IsCheckedSecondary",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "IsEditable",
+                                                    "type": "boolean",
+                                                    "required": null,
+                                                    "description": "Get or Set IsEditable",
+                                                    "children": []
+                                                },
+                                                {
+                                                    "name": "CanBeLandingPage",
+                                                    "type": "boolean",
+                                                    "required": null,
+                                                    "description": "Get or Set CanBeLandingPage",
+                                                    "children": []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "CoreCollectionsAccess",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CoreCreditAccess",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CoreCreditV2Access",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "SSUserLoginDetails",
+                                    "type": "",
+                                    "required": null,
+                                    "description": "",
+                                    "children": [
+                                        {
+                                            "name": "UserID",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  UserID",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "CustomerName",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  CustomerName",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "NameOnCard",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  NameOnCard",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ProductID",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set  ProductID",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "InstitutionID",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set  InstitutionID",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "SysorgID",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set  SysorgID",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AccountID",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set  AccountID",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AdminNumber",
+                                            "type": "int64",
+                                            "required": null,
+                                            "description": "Get or Set  AdminNumber",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ClientID",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  ClientID",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AccountNumber",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  AccountNumber",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "CurrentBalance",
+                                            "type": "decimal",
+                                            "required": null,
+                                            "description": "Get or Set  CurrentBalance",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "CardHolderSince",
+                                            "type": "datetime",
+                                            "required": null,
+                                            "description": "Get or Set  CardHolderSince",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "NextAction",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set  NextAction",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "IsLinkMultipleAccounts",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  IsLinkMultipleAccounts",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "CollateralID",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  CollateralID",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AllowESignTerms",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set public string AllowESignTerms",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "DateFormate",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set public string DateFormate",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ESECCardType",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set public int ESECCardType",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "FeedzaiOptIn",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set FeedzaiOptIn",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "SubProductType",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set public int SubProductType",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "CustomerId",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set public string CustomerId",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "TransactingEntity",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set public string TransactingEntity",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "InstitutePhoneFormat",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set public string InstitutePhoneFormat",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AuthenticationForPinChange",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set public string AuthenticationForPinChange",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "CreditSelfServiceV2Access",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CoreAPPAccess",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CoreAdminAccess",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "LstMultiCurrencyDisplayParameters",
+                                    "type": "array",
+                                    "required": null,
+                                    "description": "",
+                                    "children": [
+                                        {
+                                            "name": "InstitutionId",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set InstitutionId",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ProductId",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set ProductId",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ClientId",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set ClientId",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "DateFormat",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  DateFormat",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "CurrencySymbol",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  CurrencySymbol",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "PrimaryCurrencyCodeAlphabetic",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  PrimaryCurrencyCodeAlphabetic",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "PrimaryCurrencyCodeNumeric",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set  PrimaryCurrencyCodeNumeric",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "SysOrgId",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set SysOrgId",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "UserLoginDetails",
+                                    "type": "",
+                                    "required": null,
+                                    "description": "",
+                                    "children": [
+                                        {
+                                            "name": "RowId",
+                                            "type": "decimal",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "UserId",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "CheckDay",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AllowCookies",
+                                            "type": "boolean",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ByPassIPAddress",
+                                            "type": "boolean",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "SubUserType",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "DOB",
+                                            "type": "datetime",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Email",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AddressLine1",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AddressLine2",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AddressCity",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AddressState",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Country",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Postalcode",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "SMSAddress",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "MobileNumber",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AllowAlertsApproval",
+                                            "type": "boolean",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ShowTransactionsLog",
+                                            "type": "boolean",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "OverrideShadowLimit",
+                                            "type": "boolean",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "IsLandingPagePermission",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "SysOrgIDs",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LockAfterInactivityDays",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "InactivityNotificationTemplate",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "LandingPage",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AllowForcePost",
+                                            "type": "boolean",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "ApproveBulkRequest",
+                                            "type": "boolean",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "CreateDate",
+                                            "type": "datetime",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "UserType",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "BusinessAdminAlertsAllowed",
+                                            "type": "boolean",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "OverrideShippmentHold",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "NotesCaptureMandatory",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "NotesCaptureMandatory",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "MTAEnabled",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "MTAEnabled",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "UserLevel",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "UserLevel",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "InstituteDateFormat",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "InstituteDateFormat",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "CurrencySymbolType",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get CurrenySymbolType",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "RLSKey1SecurityLevel",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get RLSKey1SecurityLevel",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "InstitutePhoneFormat",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "InstituteMobileFormat",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "InstituteCountry",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "InstituteCountry",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AllowOwnUserModification",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "AllowOwnUserModification",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "DisplayUserID",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "DisplayUserID used for display single business actual UserID Valid Values: 0-9 A-Z Format:XXXXXX Example: DemoAdmin",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "AllowProgramParameterMenuCheck",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "AllowProgramParameterMenuCheck",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "VerifyyourIdentity",
+                                            "type": "string",
+                                            "required": null,
+                                            "description": "Get or Set VerifyyourIdentity",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "CreateBusinessSetup",
+                                            "type": "integer",
+                                            "required": null,
+                                            "description": "Get or Set CreateBusinessSetup",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Info_Code",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "The information code",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Info_Message",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "The information message",
+                                    "children": []
+                                },
+                                {
+                                    "name": "IsOperation_Successful",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "Gets or sets a value indicating whether this instance is operation successful.",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AllowIdentifierToken",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "AllowIdentifierToken",
+                                    "children": []
+                                },
+                                {
+                                    "name": "IdentifierTokenExpiry",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "IdentifierTokenExpiry",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CurrentLoginDate",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "Current Login Date Time of User Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23",
+                                    "children": []
+                                },
+                                {
+                                    "name": "BaseTimeZone",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "BaseTimeZone",
+                                    "children": []
+                                },
+                                {
+                                    "name": "VirtualCardReplacementAllowed",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "VirtualCardReplacementAllowed",
+                                    "children": []
+                                },
+                                {
+                                    "name": "SelectedTimeZone",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "SelectedTimeZone",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MFA",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "Get or Set MFA",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MFAMode",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Get or Set CommunicationMode",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CommunicationMode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Get or Set CommunicationMode",
+                                    "children": []
+                                },
+                                {
+                                    "name": "IsMFAEnable",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Get or Set MFAEnable CCP-164590",
+                                    "children": []
+                                },
+                                {
+                                    "name": "HasMultipleInstID",
+                                    "type": "boolean",
+                                    "required": null,
+                                    "description": "HasMultipleInstID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CoreCollectionsV2Access",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CoreAppV2Access",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "",
+                                    "children": []
+                                },
+                                {
+                                    "name": "PreferredLanguage",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "PreferredLanguage",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "UserID": "TestUser",
+        "Password": null,
+        "GrantType": "AccessToken",
+        "RefreshToken": null
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "Token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "RefreshToken": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "IssuedAt": "03/31/2016 00:00:00",
+            "Expires": "03/31/2016 00:00:00",
+            "RefreshTokenExpires": "03/31/2016 00:00:00",
+            "AdditionalUserLoginResponseModel": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Token",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=155&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=32"
+    }
+}

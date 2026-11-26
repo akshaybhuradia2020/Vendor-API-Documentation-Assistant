@@ -1,0 +1,371 @@
+{
+    "metadata": {
+        "name": "GetUserRegistrationParameters",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/UserManagement/GetUserRegistrationParameters",
+        "description": "This API is used to get User Registration Parameters Set in the System."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of account holder Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Condition:At least one of CardNumber/AdminNumber/AccountNumber is required. Allowable Values: 16"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder/AccountHolder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition:At least one of CardNumber/AdminNumber/AccountNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Admin number. Valid Values: 0-9 Example: 12345 Condition:At least one of CardNumber/AdminNumber/AccountNumber is required."
+        },
+        {
+            "name": "InstitutionID",
+            "type": "string",
+            "required": false,
+            "description": "Unique identification number for Institution Valid Values:0-9 Format:XXXX Example:Fixed value needs to pass which is provided by Corecard."
+        },
+        {
+            "name": "ProductID",
+            "type": "string",
+            "required": false,
+            "description": "ID assigned to a Program Valid Values:0-9 Format:XXXX Example:Fixed value provided by CoreCard."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "SecurityQuestionsList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Get or Set listSecurityQuestions",
+                    "children": [
+                        {
+                            "name": "SecurityQuestionID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "ID of the Security Questions set Valid Values: 0-9 Format:X Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "SecurityQuestionDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the Security Question ID Valid Values: a-z Example: What is your Pet Name? Allowable Values: 100",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "RegistrationParameterList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Get or Set listSecurityQuestions",
+                    "children": [
+                        {
+                            "name": "ParameterID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "SelfService User Registration Parameter, must return the Parameter Name set in Registration Fields in System on Product Valid Values: '1' - Address Line 1 '2' - Address Line 2 '3' - Country '4' - City '5'- Zip '6' - State '7' - Email ID '8' - Last Four Digits Of Primary ID '14' - DOB '16' - CVV2 '18' - OTPFormat:XX Example: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "IsRequired",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Defines SelfService Registration Parameter Set in  Registration Fields in System is Mandatory or Optional Valid Values: '0' - Optional, '1' - Mandatory Example: 1",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "NumberOfQuestionsOffered",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Number of Questions Offered Set in System Example: 1,5,10 etc",
+                    "children": []
+                },
+                {
+                    "name": "OTPMode",
+                    "type": "integer",
+                    "required": null,
+                    "description": "The Mode of OTP Email ID or Mobile Number or Both Valid Values: '1' = Mobile Number, '2' = Email ID and '3' = Both Format:X Example:1",
+                    "children": []
+                },
+                {
+                    "name": "AdminNumber",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345",
+                    "children": []
+                },
+                {
+                    "name": "CardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card Number of account holder Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Allowable Values: 16",
+                    "children": []
+                },
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account number of cardholder/AccountHolder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "MinPasswordLength",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Minimum Password Length  Required As per password Policy Valid Values:- 0-9 Format:XX Example:5",
+                    "children": []
+                },
+                {
+                    "name": "MaxPasswordLength",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Maximum Password Length  allowed As per password Policy Valid Values:- 0-9 Format:XX Example:5",
+                    "children": []
+                },
+                {
+                    "name": "NoOfUppCaseReq",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Number of Upper Case letters Required in a Password As per the password Policy Valid Values:- 0-9 Format:XX Example:5",
+                    "children": []
+                },
+                {
+                    "name": "NoOfLowCaseReq",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Number of Lower Case letters Required in a Password As per the password Policy Valid Values:- 0-9 Format:XX Example:5",
+                    "children": []
+                },
+                {
+                    "name": "NoOfDigitReq",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Number of Digits Required in a Password As per the password Policy Valid Values:- 0-9 Format:XX Example:5",
+                    "children": []
+                },
+                {
+                    "name": "NoOfSymbolReq",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Number of Symbols Required in a Password As per the password Policy Valid Values:- 0-9 Format:XX Example:5",
+                    "children": []
+                },
+                {
+                    "name": "MinAlphaReq",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Number of Alphabets Required in a Password As per the password Policy Valid Values:- 0-9 Format:XX Example:5",
+                    "children": []
+                },
+                {
+                    "name": "CompSameConsecutive",
+                    "type": "integer",
+                    "required": null,
+                    "description": "If Setting Same Consecutive Passwords is allowed or not as per the password policy Valid Values: 0 = No, 1 = Yes",
+                    "children": []
+                },
+                {
+                    "name": "PartialUserName",
+                    "type": "integer",
+                    "required": null,
+                    "description": "If Partial UserName is allowed or not as per the password policy Valid Values: 0 = No, 1 = Yes",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "CardNumber": null,
+        "AccountNumber": "8000000000000219",
+        "AdminNumber": null,
+        "InstitutionID": null,
+        "ProductID": null
+    },
+    "sample_response": {
+        "Message": "Return Successfully",
+        "Status": false,
+        "ErrorCode": "ERR01093",
+        "ResponseData": {
+            "SecurityQuestionsList": [
+                {
+                    "SecurityQuestionID": 1216,
+                    "SecurityQuestionDescription": "Which city were you born in?"
+                },
+                {
+                    "SecurityQuestionID": 1217,
+                    "SecurityQuestionDescription": "What is the name of your best friend?"
+                },
+                {
+                    "SecurityQuestionID": 1218,
+                    "SecurityQuestionDescription": "What is the name of your pet?"
+                },
+                {
+                    "SecurityQuestionID": 1219,
+                    "SecurityQuestionDescription": "What is your Mothers Maiden Name ?"
+                },
+                {
+                    "SecurityQuestionID": 1220,
+                    "SecurityQuestionDescription": "What was the name of your favorite childhood pet?"
+                },
+                {
+                    "SecurityQuestionID": 1221,
+                    "SecurityQuestionDescription": "What was the make of your first car?"
+                },
+                {
+                    "SecurityQuestionID": 1222,
+                    "SecurityQuestionDescription": "What was the first name of your closest childhood friend?"
+                },
+                {
+                    "SecurityQuestionID": 1223,
+                    "SecurityQuestionDescription": "What is the name of the elementary school you attended?"
+                }
+            ],
+            "RegistrationParameterList": [
+                {
+                    "ParameterID": 14,
+                    "IsRequired": 1
+                }
+            ],
+            "NumberOfQuestionsOffered": 1,
+            "OTPMode": null,
+            "AdminNumber": 129382,
+            "CardNumber": "8888010000000215",
+            "AccountNumber": "8000000000000219",
+            "MinPasswordLength": 8,
+            "MaxPasswordLength": 32,
+            "NoOfUppCaseReq": 1,
+            "NoOfLowCaseReq": 1,
+            "NoOfDigitReq": 1,
+            "NoOfSymbolReq": 1,
+            "MinAlphaReq": null,
+            "CompSameConsecutive": 0,
+            "PartialUserName": 1
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "SS User Management",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=179&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1011"
+    }
+}

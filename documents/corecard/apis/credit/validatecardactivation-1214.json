@@ -1,0 +1,622 @@
+{
+    "metadata": {
+        "name": "ValidateCardActivation",
+        "http_method": "POST",
+        "endpoint": "/api/ValidateCardActivation",
+        "description": "Use this API to get validation parameters defined on the program to activate and register card."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition: At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition: At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "LinkedExistingUserID",
+            "type": "string",
+            "required": null,
+            "description": "If a card is Linked Card or not. Valid Values: 0 :Pre-Login Activation 1 :Link Card Condition:While link new card required to pass Allowable Values: 25"
+        },
+        {
+            "name": "LoginUserProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of logged in user Valid Values:0-9 Example: 123456 Condition:Required when LinkedExistingUserID passed in input Allowable Values: 19"
+        },
+        {
+            "name": "CurrentPIN",
+            "type": "string",
+            "required": false,
+            "description": "Current Card PIN of four digits. Valid Values: 0-9"
+        },
+        {
+            "name": "CVV2",
+            "type": "string",
+            "required": false,
+            "description": "Three digit printed on  the back of  the card . Valid Values - 0-9 Example: 213"
+        },
+        {
+            "name": "CardExpiryDate",
+            "type": "string",
+            "required": false,
+            "description": "Expiration Date of the card.  Format is (MMYYYY). Valid Values: 0-9 Example : 092020"
+        },
+        {
+            "name": "FlowSessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "CardActivationValidation1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'Card Activation-SelfService' parameters which is set as '1st Validation Field' on Product. Valid Values: Refer Appendix s section \"Card Activation Validation Parameter\". Example: 7 (Birth Date) Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "CardActivationValidation2",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'Card Activation-SelfService' parameters which is set as '2nd Validation Field' on Product. Valid Values: Refer Appendix s section \"Card Activation Validation Parameter\". Example: 7 (Birth Date) Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "CardActivationValidation3",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'Card Activation-SelfService' parameters which is set as '3rd Validation Field' on Product. Valid Values: Refer Appendix s section \"Card Activation Validation Parameter\". Example: 7 (Birth Date) Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "CardActivationValidation4",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'Card Activation-SelfService' parameters which is set as '4th Validation Field' on Product. Valid Values: Refer Appendix s section \"Card Activation Validation Parameter\". Example: 7 (Birth Date) Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "CardActivationValidation5",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'Card Activation-SelfService' parameters which is set as '5th Validation Field' on Product. Valid Values: Refer Appendix s section \"Card Activation Validation Parameter\". Example: 7 (Birth Date) Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "CardActivationValidation6",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'Card Activation-SelfService' parameters which is set as '6th Validation Field' on Product. Valid Values:1-23 Example:14 , New PIN Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistered",
+                    "type": "string",
+                    "required": null,
+                    "description": "Display whether card is registered or not. Valid Values: 0- Card not registered in Self Service 1- Card registered in Self Service Example: 0 Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardLinked",
+                    "type": "string",
+                    "required": null,
+                    "description": "Display whether card is linked with any self service user or not. Valid Values: 0- Card not Linked with any Self Service User 1- Card Linked with Self Service User Example: 0 Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "RegistrationFlag",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns whether registraion is allowed for this card or not. Valid Values: Yes or No Example: Yes Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '1st registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation2",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '2nd registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation3",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '3rd registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation4",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '4th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation5",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '5th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation6",
+                    "type": "string",
+                    "required": null,
+                    "description": "It Returns the 'User Registration' parameters which is set as '6th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation7",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '7th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation8",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as 8th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation9",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '9th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation10",
+                    "type": "string",
+                    "required": null,
+                    "description": "It Returns the 'User Registration' parameters which is set as '10th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation11",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '11th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation12",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '12th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation13",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '13th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation14",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '14th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidation15",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '15th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardActivationValidationDisp1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Display/Entry for the 'Card Activation' parameters which is set as '1st Validation  Field' on Product. Valid Values: 0=Display 1-Entry",
+                    "children": []
+                },
+                {
+                    "name": "CardActivationValidationDisp2",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Display/Entry for the 'Card Activation' parameters which is set as '2nd Validation  Field' on Product. Valid Values: 0=Display 1-Entry",
+                    "children": []
+                },
+                {
+                    "name": "CardActivationValidationDisp3",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Display/Entry for the 'Card Activation' parameters which is set as '3rd Validation  Field' on Product. Valid Values: 0=Display 1-Entry",
+                    "children": []
+                },
+                {
+                    "name": "CardActivationValidationDisp4",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Display/Entry for the 'Card Activation' parameters which is set as '4th Validation  Field' on Product. Valid Values: 0=Display 1-Entry",
+                    "children": []
+                },
+                {
+                    "name": "CardActivationValidationDisp5",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Display/Entry for the 'Card Activation' parameters which is set as '5th Validation  Field' on Product. Valid Values: 0=Display 1-Entry",
+                    "children": []
+                },
+                {
+                    "name": "CardActivationValidationDisp6",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Display/Entry for the 'Card Activation' parameters which is set as '6th Validation  Field' on Product. Valid Values: 0=Display 1-Entry",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '1st registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp2",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '2nd registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp3",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '3rd registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp4",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '4th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp5",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '5th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp6",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '6th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp7",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '7th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp8",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '8th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp9",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '9th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp10",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '10th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp11",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '11th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp12",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '12th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp13",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '13th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp14",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the property in terms of Mandatory/Optional for the 'User Registration' parameters which is set as '14th registration Field' on Product. Valid Values : 0=Mandatory 1-Optional Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardRegistrationValidationDisp15",
+                    "type": "string",
+                    "required": null,
+                    "description": "Returns the 'User Registration' parameters which is set as '15th registration Field' on Product. Allowable Values: 0",
+                    "children": []
+                },
+                {
+                    "name": "RemainingLinkedCardAttempts",
+                    "type": "string",
+                    "required": null,
+                    "description": "Number of attempts left to link card. Valid Values: 0-9 Example: 4",
+                    "children": []
+                },
+                {
+                    "name": "FlowSessionID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Reserved for future use",
+                    "children": []
+                },
+                {
+                    "name": "LongFormDisclosureENPDF",
+                    "type": "string",
+                    "required": null,
+                    "description": "Long form disclosure agreement in English language in PDF format.",
+                    "children": []
+                },
+                {
+                    "name": "LongFormDisclosureESPDF",
+                    "type": "string",
+                    "required": null,
+                    "description": "Long form disclosure agreement in Spanish language in PDF format.",
+                    "children": []
+                },
+                {
+                    "name": "LongFormDisclosureENJPG",
+                    "type": "string",
+                    "required": null,
+                    "description": "Long form disclosure agreement in English language in JPG format.",
+                    "children": []
+                },
+                {
+                    "name": "LongFormDisclosureESJPG",
+                    "type": "string",
+                    "required": null,
+                    "description": "Long form disclosure agreement in Spanish language in JPG format.",
+                    "children": []
+                },
+                {
+                    "name": "ShortFormDisclosureENPDF",
+                    "type": "string",
+                    "required": null,
+                    "description": "Short form disclosure agreement in English language in PDF format.",
+                    "children": []
+                },
+                {
+                    "name": "ShortFormDisclosureESPDF",
+                    "type": "string",
+                    "required": null,
+                    "description": "Short form disclosure agreement in Spanish language in PDF format.",
+                    "children": []
+                },
+                {
+                    "name": "ShortFormDisclosureENJPG",
+                    "type": "string",
+                    "required": null,
+                    "description": "Short form disclosure agreement in English language in JPG format.",
+                    "children": []
+                },
+                {
+                    "name": "ShortFormDisclosureESJPG",
+                    "type": "string",
+                    "required": null,
+                    "description": "Short form disclosure agreement in Spanish language in JPG format.",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "",
+        "ProxyNumber": "1316315",
+        "LinkedExistingUserID": "",
+        "LoginUserProxyNumber": "",
+        "CurrentPIN": "0149",
+        "CVV2": "152",
+        "CardExpiryDate": "08/23",
+        "FlowSessionID": ""
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "CardActivationValidation1": "",
+            "CardActivationValidation2": "",
+            "CardActivationValidation3": "",
+            "CardActivationValidation4": "",
+            "CardActivationValidation5": "",
+            "CardActivationValidation6": "",
+            "CardRegistered": "0",
+            "CardLinked": "YES",
+            "RegistrationFlag": "Yes",
+            "CardRegistrationValidation1": "",
+            "CardRegistrationValidation2": "",
+            "CardRegistrationValidation3": "",
+            "CardRegistrationValidation4": "",
+            "CardRegistrationValidation5": "",
+            "CardRegistrationValidation6": "",
+            "CardRegistrationValidation7": "",
+            "CardRegistrationValidation8": "",
+            "CardRegistrationValidation9": "",
+            "CardRegistrationValidation10": "",
+            "CardRegistrationValidation11": "",
+            "CardRegistrationValidation12": "",
+            "CardRegistrationValidation13": "",
+            "CardRegistrationValidation14": "",
+            "CardRegistrationValidation15": "",
+            "CardActivationValidationDisp1": "",
+            "CardActivationValidationDisp2": "",
+            "CardActivationValidationDisp3": "",
+            "CardActivationValidationDisp4": "",
+            "CardActivationValidationDisp5": "",
+            "CardActivationValidationDisp6": "",
+            "CardRegistrationValidationDisp1": "",
+            "CardRegistrationValidationDisp2": "",
+            "CardRegistrationValidationDisp3": "",
+            "CardRegistrationValidationDisp4": "",
+            "CardRegistrationValidationDisp5": "",
+            "CardRegistrationValidationDisp6": "",
+            "CardRegistrationValidationDisp7": "",
+            "CardRegistrationValidationDisp8": "",
+            "CardRegistrationValidationDisp9": "",
+            "CardRegistrationValidationDisp10": "",
+            "CardRegistrationValidationDisp11": "",
+            "CardRegistrationValidationDisp12": "",
+            "CardRegistrationValidationDisp13": "",
+            "CardRegistrationValidationDisp14": "",
+            "CardRegistrationValidationDisp15": "",
+            "RemainingLinkedCardAttempts": "",
+            "FlowSessionID": "",
+            "LongFormDisclosureENPDF": "TnC_1739_20210107_191704.pdf",
+            "LongFormDisclosureESPDF": "",
+            "LongFormDisclosureENJPG": "",
+            "LongFormDisclosureESJPG": "",
+            "ShortFormDisclosureENPDF": "",
+            "ShortFormDisclosureESPDF": "",
+            "ShortFormDisclosureENJPG": "",
+            "ShortFormDisclosureESJPG": ""
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Card Activation",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1214&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1017"
+    }
+}

@@ -1,0 +1,318 @@
+{
+    "metadata": {
+        "name": "CardActivationRequest",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/UserManagement/CardActivationRequest",
+        "description": "This API is used to activate a card with the help of activation Parameter."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of account holder. Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Condition:At least one of CardNumber/AdminNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values:0-9 Example:7485122 Condition:At least one of CardNumber/AdminNumber is required."
+        },
+        {
+            "name": "CardType",
+            "type": "integer",
+            "required": false,
+            "description": "Type of the card as Visa, Master etc. Valid Values: 0 - MASTER 1 - DISCOVER 2 - STAR 3 - OTHER 4 - VISA 6 - AMEX Example: 4 - VISA"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's First Name. Valid Values:A-Z Example:John Condition : Required when Card Activation Validation Parameters on Product include First Name. Allowable Values: 50"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's Middle Name. Valid Values: A-Z Example: LEE Condition : Required when Card Activation Validation Parameters on Product include Middle Name. Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's Last Name. Valid Values: A-Z Example: Smith Condition : Required when Card Activation Validation Parameters on Product include Last Name. Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's Address Line 1. Valid Values:A-Z, 0-9 Example:123 HWY Condition : Required when Card Activation Validation Parameters on Product include AddressLine1. Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's Address Line 2. Valid Values:A-Z, 0-9 Example:Park Avenue Condition : Required when Card Activation Validation Parameters on Product include AddressLine2. Allowable Values: 50"
+        },
+        {
+            "name": "EmailID",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's Email Address. Valid Values: [email protected] Format: [email protected] Example: [email protected] Condition : Required when Card Activation Validation Parameters on Product include EmailID. Allowable Values: 100"
+        },
+        {
+            "name": "HomePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's Home Phone number. Valid Values:0-9 Example:7895463214 Condition : Required when Card Activation Validation Parameters on Product include Home Phone Number. Allowable Values: 20"
+        },
+        {
+            "name": "WorkPhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's Work Phone number. Valid Values:0-9 Example:5678909876 Condition : Required when Card Activation Validation Parameters on Product include Work Phone Number. Allowable Values: 20"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Postal Code of the Card Holder's Address. Valid Values:0-9 Example:46206 Condition : Required when Card Activation Validation Parameters on Product include Postal Code. Allowable Values: 10"
+        },
+        {
+            "name": "DateOfBirth",
+            "type": "datetime",
+            "required": null,
+            "description": "Card Holder's Date of Birth. Valid Values:01/12/1990 Format: MM/dd/yyyy Example:07/25/1991 Condition : Required when Card Activation Validation Parameters on Product include DateOfBirth."
+        },
+        {
+            "name": "LanguageIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Language Indicator. Valid Values:en,es Example:es Condition : Required when Card Activation Validation Parameters on Product include LanguageIndicator. Allowable Values: 5"
+        },
+        {
+            "name": "SocialSecurityNumber",
+            "type": "string",
+            "required": null,
+            "description": "Social Security Number. Valid Values:0-9 Example: 678051120 Condition : Required when Card Activation Validation Parameters on Product include SocialSecurityNumber. Allowable Values: 9"
+        },
+        {
+            "name": "CardExpirationDate",
+            "type": "string",
+            "required": null,
+            "description": "Card Expiration Date of requested card. Valid Values:0-9 Format:MMYYYY Example: 012020 Condition : Required when Card Activation Validation Parameters on Product include CardExpirationDate. Allowable Values: 8"
+        },
+        {
+            "name": "SSNLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's last four digit of SSN. Valid Values:0-9 Example:1120 Condition : Required when Card Activation Validation Parameters on Product include SSNLast4Digits. Allowable Values: 4"
+        },
+        {
+            "name": "ActivationCode",
+            "type": "string",
+            "required": null,
+            "description": "Code which is provided at the time of Account Creation/Registration should be pass as a user validation for card. Valid Values:0-9 Example:1120 Condition : Required when Card Activation Validation Parameters include Activation Code. Allowable Values: 50"
+        },
+        {
+            "name": "IdentifierToken",
+            "type": "string",
+            "required": null,
+            "description": "A generated token that is not expired can be used as an input field to access API. If we are passing this field in input, user should not pass any other account identifier. Condition:At least one account identifier is required. Allowable Values: 800"
+        },
+        {
+            "name": "PIN",
+            "type": "string",
+            "required": null,
+            "description": "Current PIN of the newly embossed card. Example:1234 Condition:Required when Card Activation Validation Parameters on Product include PIN."
+        },
+        {
+            "name": "CVC2",
+            "type": "string",
+            "required": null,
+            "description": "CVC2 number of the card generated. Example:123 Condition:Required when Card Activation Validation Parameters on Product include CVC."
+        },
+        {
+            "name": "EmployeeID",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's EmployeeID Example:123 Condition:Required when Card Activation Validation Parameters on Product include EmployeeID. Allowable Values: 25"
+        },
+        {
+            "name": "Last4ID",
+            "type": "string",
+            "required": null,
+            "description": "Last 4 characters of ID except SSN. Valid Values:0-9, a-z, A-Z. Example:2234, 2ze8, AbcD. Allowable Values: 4"
+        },
+        {
+            "name": "IDtype",
+            "type": "string",
+            "required": null,
+            "description": "ID type. Valid Values: 02 - Drivers license # 03 - Matricular Consular Number 04 - Passport 05 - Visa 06 - Green Card 07 - State ID 08 - Military ID 09 - Voters Registration Card 10 - Government ID 11 - Tax Identification Number Example: 01,11,02. Allowable Values: 2"
+        },
+        {
+            "name": "CardActivationviaTap",
+            "type": "integer",
+            "required": false,
+            "description": "This tag determines whether the card was activated by the customer tapping it on an NFC-enabled phone to confirm possession or not. Client needs to provide Yes/No basis the Activation method used by Customer. Valid Values: 0 - No 1 - Yes Example: 1"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": []
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "CardNumber": null,
+        "AdminNumber": 100989,
+        "CardType": 0,
+        "FirstName": null,
+        "MiddleName": null,
+        "LastName": null,
+        "AddressLine1": null,
+        "AddressLine2": null,
+        "EmailID": null,
+        "HomePhoneNumber": null,
+        "WorkPhoneNumber": null,
+        "PostalCode": "43633615",
+        "DateOfBirth": "03/31/1990 00:00:00",
+        "LanguageIndicator": null,
+        "SocialSecurityNumber": null,
+        "CardExpirationDate": null,
+        "SSNLast4Digits": null,
+        "ActivationCode": null,
+        "IdentifierToken": null,
+        "PIN": null,
+        "CVC2": null,
+        "EmployeeID": null,
+        "Last4ID": null,
+        "IDtype": null,
+        "CardActivationviaTap": 0
+    },
+    "sample_response": {
+        "Message": "Card activated successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01008",
+        "ResponseData": null
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "SS User Management",
+        "category_id": "1011",
+        "document_id": "171",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=171&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1011&regionId=1"
+    }
+}

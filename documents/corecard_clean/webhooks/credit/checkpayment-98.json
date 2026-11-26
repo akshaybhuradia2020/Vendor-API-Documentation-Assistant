@@ -1,0 +1,313 @@
+{
+    "metadata": {
+        "name": "CheckPayment",
+        "http_method": "POST",
+        "endpoint": "/api/WebHookNotification/UpdateNotification/CheckPayment",
+        "description": "This webhook is triggered when a check payment is processed on an account."
+    },
+    "request_fields": [
+        {
+            "name": "MonetaryLog",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "Category",
+            "type": "string",
+            "required": null,
+            "description": "Category"
+        },
+        {
+            "name": "SubCategory",
+            "type": "string",
+            "required": null,
+            "description": "Category"
+        },
+        {
+            "name": "TranId",
+            "type": "int64",
+            "required": null,
+            "description": "Transaction ID, a unique identifier for transaction which is available on panel in CoreCredit"
+        },
+        {
+            "name": "TransactionType",
+            "type": "integer",
+            "required": null,
+            "description": "The logic module to which this transaction belongs"
+        },
+        {
+            "name": "TransactionCode",
+            "type": "integer",
+            "required": null,
+            "description": "The actual transaction code used to map this transaction."
+        },
+        {
+            "name": "TransactionDescription",
+            "type": "string",
+            "required": null,
+            "description": "Description of transaction code Allowable Values: 100"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Amount for which transaction occurred"
+        },
+        {
+            "name": "TransactionDateTime",
+            "type": "DateTime",
+            "required": null,
+            "description": "Will show date time when transaction was posted"
+        },
+        {
+            "name": "CurrentBalanceAfterTran",
+            "type": "decimal",
+            "required": null,
+            "description": "Updated Current Balance on account after recent transaction"
+        },
+        {
+            "name": "TransactionLifeCycleUniqueID",
+            "type": "decimal",
+            "required": null,
+            "description": "Unique identifier created during pre-auth to identify transaction across multiple phases like pre-auth, reversal, completion"
+        },
+        {
+            "name": "BalanceIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Indicates type of balance which is getting impacted by this transaction\nPossible values:Chargeoff Balance,Active Balance(current balance) Allowable Values: 20"
+        },
+        {
+            "name": "DBIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Indicates if this is a debit or credit type of transaction for the account\nPossible values:Credit,Debit Allowable Values: 10"
+        },
+        {
+            "name": "InstallmentsBalance",
+            "type": "decimal",
+            "required": null,
+            "description": "Current unpaid balance of all installment plans on the account"
+        },
+        {
+            "name": "InstallmentsPendingPurchases",
+            "type": "decimal",
+            "required": null,
+            "description": "Sum of all installment purchases that are in confirmed state and holding OTB (e.g. an auth), but are not yet active (e.g. posted)"
+        },
+        {
+            "name": "StatementRemainingBalanceWithInstallmentDue",
+            "type": "decimal",
+            "required": null,
+            "description": "The remaining amount a customer needs to pay to remain or become a transactor. (for installment plans only)"
+        },
+        {
+            "name": "CardnumLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Last 4 digits of card number on which the Transaction was posted Allowable Values: 4"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number associated with the event. The Account Number is consistently maintained at the Account level (one-to-one Mapping).\nValid Values: 0-9\nFormat: XXXXXXXXXXXXXXXX\nExample: 8000000000000037 Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Admin Number associated with the event. Admin Number is always associated with a Card (Can be Primary or Secondary)\nValid Values:0-9\nFormat:XXXXX\nExample:12345"
+        },
+        {
+            "name": "RequestID",
+            "type": "string",
+            "required": null,
+            "description": "Primary Key for API\nFormat:XXXXXXXXXXXXXXXX\nExample:12345 Allowable Values: 19"
+        },
+        {
+            "name": "Mode",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the type of activity performed which triggered this webhook Allowable Values: 10"
+        },
+        {
+            "name": "ClientId",
+            "type": "string",
+            "required": null,
+            "description": "Corecard’s Client ID\nValid Values: 0-9\nFormat: XXXXX\nExample: 578455 Allowable Values: 64"
+        },
+        {
+            "name": "RequestUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID Request\nValid Values: 0-9 A-Z\nExample: 8638-b87b-48d0-8e13-0ebb5643577 Allowable Values: 64"
+        },
+        {
+            "name": "UpdateCallList",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "RewardsRedemption",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "Reward",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "InfoCollectionAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "InfoAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "InfoAgeOffAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "User",
+            "type": "string",
+            "required": null,
+            "description": "User ID of the user who triggered the webhook event. \nValid Values: CoreCredit user, API user, System Allowable Values: 40"
+        },
+        {
+            "name": "DateandTime",
+            "type": "DateTime",
+            "required": null,
+            "description": "Timestamp when notification was sent\nMM-DD-YYYY hh:mm:ss:sss \n(24-hour Format) \nException: For Auth Age Off alert the format of this tag is \"YYYY-MM-DD \nhh:mm:ss.SSS"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the source from where the activity was performed by user or triggered by system.\nValid Values: CoreCredit, External API, Self Service, CoreCollect, IVR, System, CoreIssue Allowable Values: 20"
+        },
+        {
+            "name": "ServiceName",
+            "type": "string",
+            "required": null,
+            "description": "Name of API service (webhook) triggered\nExample: svcName Allowable Values: 40"
+        },
+        {
+            "name": "AccountUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Universal Unique ID for Account\nFormat:XXXXXXXXXX\nExample:9894f28b-d051-4eaa-9e48-a3a7d5b4a6f7 Allowable Values: 64"
+        },
+        {
+            "name": "CardUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Universal Unique ID for Admin\nFormat:XXXXXXXXXX\nExample:9894f28b-d051-4eaa-9e48-a3a7d5b4a6f7 Allowable Values: 64"
+        },
+        {
+            "name": "AlertType",
+            "type": "string",
+            "required": null,
+            "description": "Indicates type of Alert\nValid Values:RealTime or Re Try (due to time-out) Allowable Values: 15"
+        },
+        {
+            "name": "TransactionSource",
+            "type": "string",
+            "required": null,
+            "description": "Transaction Source of transaction\nValid Values:IPM, Retail Manual Auth-Installment, Retail Manual Auth-Revolver etc. Allowable Values: 40"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by Corecard for Institution"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by Corecard for Product"
+        },
+        {
+            "name": "AlertRecipientType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of recipient to which alert needs to be sent\nValid Values:1=Primary Applicant,2=Cosigner,3=Applicant and Cosigner,4=Auth User,5=Applicant and Auth User"
+        },
+        {
+            "name": "RewardInfo",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        }
+    ],
+    "response_fields": null,
+    "sample_request": {
+        "AccountNumber": "9000000500080257",
+        "AdminNumber": 1194548,
+        "RequestID": "1039346040",
+        "Mode": "Transaction",
+        "AccountUniversalUniqueID": null,
+        "CardUniversalUniqueID": "d027f20f-aa51-4bc3-88d9-80f713bcba5",
+        "ClientId": null,
+        "RequestUniversalUniqueID": "616f19a3-92c5-488c-9478-ce807dac30b7",
+        "UpdateCallList": null,
+        "MonetaryLog": {
+            "Category": "Monetary",
+            "SubCategory": null,
+            "TranId": 1166971407,
+            "TransactionType": 21,
+            "TransactionCode": 37022,
+            "TransactionDescription": "37022 = CHECK PAYMENT",
+            "TransactionAmount": 2000.0,
+            "TransactionDateTime": "2021-08-12 17:41:32",
+            "CurrentBalanceAfterTran": 1191.67,
+            "TransactionLifeCycleUniqueID": 1166971407.0,
+            "BalanceIndicator": "Active Balance",
+            "DBIndicator": "Debit",
+            "InstallmentsBalance": 0.0,
+            "InstallmentsPendingPurchases": 0.0,
+            "StatementRemainingBalanceWithInstallmentDue": 0.0,
+            "CardnumLast4Digits": null
+        },
+        "InfoAlert": null,
+        "RewardsRedemption": null,
+        "Reward": null,
+        "RewardInfo": null,
+        "InfoCollectionAlert": null,
+        "InfoAgeOffAlert": null,
+        "User": "cardholder",
+        "DateandTime": "2021-08-12 17:41:32",
+        "Source": "CoreIssue",
+        "ServiceName": "System",
+        "AlertType": "RealTime",
+        "TransactionSource": null,
+        "InstitutionId": 5949,
+        "ProductId": 5907,
+        "AlertRecipientType": 1
+    },
+    "sample_response": null,
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "webhook",
+        "section": "webhooks/credit",
+        "category": "Update Notification",
+        "category_id": "6",
+        "document_id": "98",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/WEBHookPageApiDetail?id=98&type=ApiDetail&menuid=1&regionId=1"
+    }
+}

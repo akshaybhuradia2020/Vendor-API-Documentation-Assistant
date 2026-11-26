@@ -1,0 +1,295 @@
+{
+    "metadata": {
+        "name": "GetBillPayPayee",
+        "http_method": "POST",
+        "endpoint": "/api/GetBillPayPayee",
+        "description": "Use this API to return all Payees and Transfer accounts for a particular product and subscriber."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "SubscriberID",
+            "type": "Int64",
+            "required": true,
+            "description": "This is the Service Provider's (iPay Solutions) identifier  for the Cardholder User. Example : 12345678"
+        },
+        {
+            "name": "IsDetailInfo",
+            "type": "boolean",
+            "required": false,
+            "description": "This is the decision flag to fetch detail information from IPAY or not. Valid values: true, false. Example: true, false."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "BillPayPayeeList",
+                    "type": "array",
+                    "required": null,
+                    "description": "This is the List of the Payees.",
+                    "children": [
+                        {
+                            "name": "PayeeId",
+                            "type": "Int64",
+                            "required": null,
+                            "description": "This is the Payee identifier associated with the Payee or Transfer account for the Bill Pay Services API. Valid Values: 0-9 Example: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeName",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the name of the Payee Example: Andrew Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeNickName",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the nickname for the Payee. Example: Andy Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeClassification",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the classification of a Payee. Valid Values: Comp(Company), Indv(Individual/Person) Example: Indv Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeePaymentMethod",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the type of Payment Method . Valid Values: Chk - Check Elec - Electronic Example: Chk,Elec Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the status of the Payee. Valid Values:                                                                                                                                                                                                                                                                                                                                                                                                               Act  : Activated(payments can be scheduledand processed for this Payee) NotAct : Not activated(Pending; payments cannot bescheduled) Dlt : Deleted(Payee is not available scheduling payments) Example: Act Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstAvailableProccessDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This is the first available process or transfer date for a payment to the Payee. This date is affected by the Institution’s Payment Cutoff Time and required Lag Days, as well as applicable Non-Processing days Example :2015-12-11T00:00:00 Format : YYYY-MM-DDTHH:mm:ss",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstAvailableEstimateArrivalDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This is the first available estimated arrival date for a payment or Transfer to the Payee. This date is affected by the Payee’s Payment Method, as well as transit days. Example :2015-12-11T00:00:00 Format : YYYY-MM-DDTHH:mm:ss",
+                            "children": []
+                        },
+                        {
+                            "name": "EstimatedArrivalDay",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "This is the number of transit days required for a check payment to be delivered to this Payee. This is affected by the Payee’s payment method and ZIP Code, as well as applicable Non-Processing Days. This value is added to the First Available Process Date to determine an Estimated Arrival Date. Example : 2, 5, 7, etc.",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the individual Payee's bank account number. Valid Values:0-9 Example: 3002151478 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "RoutingNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the Bank Routing Number (ABA number) of the Individual Payee's bank (deposit) account Valid Values:0-9 Example: 0110000015 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "LastPaymentDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This is the date of the last payment or Transfer paid to the Payee by the subscriber. Example :2015-12-11T00:00:00 Format : YYYY-MM-DDTHH:mm:ss",
+                            "children": []
+                        },
+                        {
+                            "name": "NextScheduledPaymentDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This is the Bill Pay subscriber to maintain the Scheduled Payment Date by the Cardholder User. Example :2015-12-11T00:00:00 Format : YYYY-MM-DDTHH:mm:ss",
+                            "children": []
+                        },
+                        {
+                            "name": "LastPaymentAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This is the amount of the last payment or transfer paid to the Payee by the subscriber. Example : 10.02",
+                            "children": []
+                        },
+                        {
+                            "name": "SubscriberId",
+                            "type": "Int64",
+                            "required": null,
+                            "description": "This is the Service Provider's (iPay Solutions) identifier for the Cardholder User. Example : 12345678",
+                            "children": []
+                        },
+                        {
+                            "name": "IsRecurring",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "This is the type of Payment like One Time or Recurring/Scheduled type. Valid Values: true, false. Example: true",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentID",
+                            "type": "Int64",
+                            "required": null,
+                            "description": "This is the payment ID which is generated by Bill Payment Services. Valid Values:0-9 Example: 120 Note:PaymentID will be generated for only recurring payments.",
+                            "children": []
+                        },
+                        {
+                            "name": "CategoryId",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "This is the name of the category assigned to the Payee or Transfer account Valid Values:0-9 Example: 2",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "SubscriberID": 1468196126,
+        "IsDetailInfo": true
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "",
+        "ResponseData": {
+            "BillPayPayeeList": [
+                {
+                    "PayeeId": 1,
+                    "PayeeName": "JOHN SMITH",
+                    "PayeeNickName": "JS",
+                    "PayeeClassification": "Indv",
+                    "PayeePaymentMethod": "Elec",
+                    "PayeeStatus": "Act",
+                    "FirstAvailableProccessDate": "2021-10-22T00:00:00",
+                    "FirstAvailableEstimateArrivalDate": "2021-10-26T00:00:00",
+                    "EstimatedArrivalDay": 2,
+                    "AccountNumber": "90000000456",
+                    "RoutingNumber": "061120084",
+                    "LastPaymentDate": "0001-01-01T00:00:00",
+                    "NextScheduledPaymentDate": "2021-01-01T00:00:00",
+                    "LastPaymentAmount": 10.2,
+                    "SubscriberId": 1468196126,
+                    "PaymentID": 120,
+                    "CategoryId": 1
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "BillPay",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1174&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1039"
+    }
+}

@@ -1,0 +1,254 @@
+{
+    "metadata": {
+        "name": "GetDualAuthDetails",
+        "http_method": "POST",
+        "endpoint": "/api/GetDualAuthDetails",
+        "description": "Use this API to get Dual Authentication setup details."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "ActivityPanel",
+            "type": "string",
+            "required": true,
+            "description": "Decision flag to get Dual Authentication details on the below mentioned activity. 1 = Card to Card Transfer 2 = Card to Bank Transfer 3 = Bank to Card Transfer 4 = Lost / Stolen 5 = Edit my Info 6 = Login 7 = Dual Authentication 8 = To register dual authentication details on card level Allowable Values: 1"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition: At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProductID",
+            "type": "string",
+            "required": true,
+            "description": "ID of the Account's Product Valid Values:0-9 Example: 1739,1758 Allowable Values: 10"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition: At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "AuthParameter1",
+                    "type": "string",
+                    "required": null,
+                    "description": "1st Dual authentication parameter. Valid Values: 1 = DateOfBirth 2 = Last4DigitsSSN 3 = CVVCVC2 4 = CurrentPIN 5 = ProfilePassword 6 = AuthenticationCode Example: 1",
+                    "children": []
+                },
+                {
+                    "name": "AuthParameter2",
+                    "type": "string",
+                    "required": null,
+                    "description": "2nd Dual authentication parameter. Valid Values: 1 = DateOfBirth 2 = Last4DigitsSSN 3 = CVVCVC2 4 = CurrentPIN 5 = ProfilePassword 6 = AuthenticationCode Example: 2",
+                    "children": []
+                },
+                {
+                    "name": "AuthParameter3",
+                    "type": "string",
+                    "required": null,
+                    "description": "3rd Dual authentication parameter. Valid Values: 1 = DateOfBirth 2 = Last4DigitsSSN 3 = CVVCVC2 4 = CurrentPIN 5 = ProfilePassword 6 = AuthenticationCode Example: 3",
+                    "children": []
+                },
+                {
+                    "name": "DualAuthenticationOnCard",
+                    "type": "boolean",
+                    "required": null,
+                    "description": "whether dual authentication is required or not. Valid values : Yes , No",
+                    "children": []
+                },
+                {
+                    "name": "DualRegistrationRequired",
+                    "type": "boolean",
+                    "required": null,
+                    "description": "whether registration of parameters is required. Valid values : Yes and No",
+                    "children": []
+                },
+                {
+                    "name": "NotificationTypeRequired",
+                    "type": "string",
+                    "required": null,
+                    "description": "Displays whether notification source value is present on database or not. Valid values: 1 = Mobile(Indicate mobile number is not updated in database.) 2 = Email(Indicate Email ID is not updated in database.) 3 = Both(Indicate both mobile and email id is not updated in database) Condition: This tag will only reflect when 'ActivitiyPanel' value would be '8' and Email, Mobile or Both are not available in system.",
+                    "children": []
+                },
+                {
+                    "name": "NotificationType",
+                    "type": "string",
+                    "required": null,
+                    "description": "Source to receive the authentication Valid values : 1 = SMS 2 = Email address 3 = Both",
+                    "children": []
+                },
+                {
+                    "name": "AuthCodeExpiration",
+                    "type": "Int32",
+                    "required": null,
+                    "description": "Expiration time of Authentication code.",
+                    "children": []
+                },
+                {
+                    "name": "AuthCodeLockoutDuration",
+                    "type": "Int32",
+                    "required": null,
+                    "description": "The time after which user will be automatically unlocked.",
+                    "children": []
+                },
+                {
+                    "name": "DualAuthCodeDefinition",
+                    "type": "string",
+                    "required": null,
+                    "description": "Flag for Dual Authentication Code definition. Valid values : 1 = System Defined 2 = User Defined",
+                    "children": []
+                },
+                {
+                    "name": "Email",
+                    "type": "string",
+                    "required": null,
+                    "description": "E Mail Address of Cardholder Valid Values: A-Z, a-z, 0-9 @ . Example: ansh @gmail.com",
+                    "children": []
+                },
+                {
+                    "name": "MobileNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder's Mobile Phone Number Valid Values: 0-9 Example: 9876543210",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "ActivityPanel": "6",
+        "CardNumber": "",
+        "ProductID": "1111",
+        "ProxyNumber": "1311010"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "AuthParameter1": "1",
+            "AuthParameter2": "2",
+            "AuthParameter3": "6",
+            "DualAuthenticationOnCard": true,
+            "NotificationTypeRequired": "3",
+            "NotificationType": "1",
+            "AuthCodeExpiration": 1,
+            "AuthCodeLockoutDuration": 1,
+            "DualAuthCodeDefinition": "1",
+            "Email": "[email protected]",
+            "MobileNumber": "1234567890"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1045",
+        "document_id": "1256",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1256&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1045&regionId=1"
+    }
+}

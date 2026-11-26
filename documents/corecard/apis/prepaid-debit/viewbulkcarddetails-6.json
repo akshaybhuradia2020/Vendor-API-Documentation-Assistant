@@ -1,0 +1,443 @@
+{
+    "metadata": {
+        "name": "ViewBulkCardDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountHolders/ViewBulkCardDetails",
+        "description": "This API is to view details of created Bulk Card order."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique number of merchant account. Valid Values: 0-9 Format: XXXXX Example: 12345 Condition: Either of one identifier is mandatory from: MerchantID, OrderID, BulkCardUUID, ProductID, StoreID"
+        },
+        {
+            "name": "OrderID",
+            "type": "integer",
+            "required": null,
+            "description": "Order ID of the Bulk card order Valid Values: 0-9 Format: XXXXX Example: 12345 Condition: Either of one identifier is mandatory from: MerchantID, OrderID, BulkCardUUID, ProductID, StoreID"
+        },
+        {
+            "name": "BulkCardUUID",
+            "type": "string",
+            "required": null,
+            "description": "Unique number Bulk card order Valid Values: 0-9 Format: XXXXX Example: 12345 Condition: Either of one identifier is mandatory from: MerchantID, OrderID, BulkCardUUID, ProductID, StoreID Allowable Values: 64"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": null,
+            "description": "ID assigned to a Program Valid Values: 0-9 Format: XXXX Example: Fixed value provided by CoreCard. Condition: Either of one identifier is mandatory from: MerchantID, OrderID, BulkCardUUID, ProductID, StoreID"
+        },
+        {
+            "name": "StoreID",
+            "type": "integer",
+            "required": null,
+            "description": "Store ID Valid Values: XXX Format: 0-9 Example: 1234 Condition: Either of one identifier is mandatory from: MerchantID, OrderID, BulkCardUUID, ProductID, StoreID"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card Number of account holder Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 1236547896541236 Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": false,
+            "description": "Debtor File # or Client Account # Valid Values: 0-9 Format: XXXXXXXXXX Example: 7314145404 Condition: At least one account identifier is required. Allowable Values: 19"
+        },
+        {
+            "name": "DeliveryMechanism",
+            "type": "string",
+            "required": false,
+            "description": "Shipment delivery mechanism. By Default Setting must be for standard Delivery Valid Values: a-z Format: xxxx Example: (Overnight, Priority or Standard) Allowable Values: 50"
+        },
+        {
+            "name": "OderStatus",
+            "type": "string",
+            "required": false,
+            "description": "It has values as Approval pending, Approved, Cards Created, Rejected. Valid Values: A-Z Format: XXXXXXXXX Example: Approval pending Allowable Values: 50"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "BulkRequestDetails",
+            "type": "array",
+            "required": null,
+            "description": "List of the following Bulk card tags",
+            "children": []
+        },
+        {
+            "name": "ResponseID",
+            "type": "int64",
+            "required": null,
+            "description": "This number indicates that API responded.Response ID is unique.This value will be null if no authentication information was passed.Response ID can be used for tracking Valid Values: 0-9,a-z Format: xxx Example: 200",
+            "children": []
+        },
+        {
+            "name": "CurrencySymbol",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the currency symbol",
+            "children": []
+        },
+        {
+            "name": "CurrencySymbol",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the currency symbol",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "BulkRequestDetails",
+                    "type": "array",
+                    "required": null,
+                    "description": "List of the following Bulk card tags",
+                    "children": [
+                        {
+                            "name": "OrderID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Order ID of the Bulk card order Valid Values: 0-9 Format: XXXXX Example: 12345",
+                            "children": []
+                        },
+                        {
+                            "name": "RequestID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Unique identifier for request made Valid Values: 0-9 Format: XXXX Example: 5467",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique number of merchant account Valid Values: 0-9 Format: XXXXX Example: 12345",
+                            "children": []
+                        },
+                        {
+                            "name": "RequestDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date of Request Valid Values: 0-9 Format: mmddyyyyhhmmss Example: 02202020202020",
+                            "children": []
+                        },
+                        {
+                            "name": "NumberOFCard",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Embossing quantity for request made Valid Values: 0-9 Format: XXXX Example: 5467",
+                            "children": []
+                        },
+                        {
+                            "name": "Status",
+                            "type": "string",
+                            "required": null,
+                            "description": "Get or set Status Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CreateDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date of creation Valid Values: 0-9 Format: mmddyyyyhhmmss Example: 02202020202020",
+                            "children": []
+                        },
+                        {
+                            "name": "AddressLine1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Debtor Address Line 1 Valid Values: A-Z, 0-9 Example: 123 HWY Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "AddressLine2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's address line 2. Valid Values: A-Z, 0-9 Example: Park Avenue Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "City",
+                            "type": "string",
+                            "required": null,
+                            "description": "Debtor City Example: Los Angeles Condition: CBR Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "PostalCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Postal code of the card holder's address. Valid Values: 0-9 Format: XXXXX Example: 46206 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "Country",
+                            "type": "string",
+                            "required": null,
+                            "description": "Country name of the Card holder's address Example: USA Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "State",
+                            "type": "string",
+                            "required": null,
+                            "description": "Primary Applicant's State Format: XXXXXXX Example: Alabama Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductID",
+                            "type": "string",
+                            "required": null,
+                            "description": "ID assigned to a Program Valid Values: 0-9 Format: XXXX Example: Fixed value provided by CoreCard.",
+                            "children": []
+                        },
+                        {
+                            "name": "StoreName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Store Valid Values: Wallmart Format: A-Z, 0-9 Example: Wallmart Condition: Core Card will provide the value for this field after the Program is setup.",
+                            "children": []
+                        },
+                        {
+                            "name": "Title",
+                            "type": "string",
+                            "required": null,
+                            "description": "Title of the cardholder Format: A-Z Example:Mr Allowable Values: 9",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's First name. Valid Values: A-Z Format: XXXXX Example: User1 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MiddleName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's Middle Name Valid Values: A-Z Format: XXX Example: LEE Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "LastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's last name. Valid Values: A-Z Format: XXXXX Example: Smith Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "NameOnCard",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name to be printed on the card. Valid Values: A-Z, 0-9 Format: XXXX Example: John J Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "ApprovedBy",
+                            "type": "string",
+                            "required": null,
+                            "description": "Approval person Name Valid Values: A-Z Format: XXX Example: LEE Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "EmbossingLine4",
+                            "type": "string",
+                            "required": null,
+                            "description": "Content on Embossing line4 Valid Values: A-Z Format: XXX Example: LEE Allowable Values: 26",
+                            "children": []
+                        },
+                        {
+                            "name": "InstitutionID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Unique identification number for Institution Valid Values: 0-9 Format: XXXX Example: Fixed value needs to pass which is provided by Corecard.",
+                            "children": []
+                        },
+                        {
+                            "name": "DeliveryMechanism",
+                            "type": "string",
+                            "required": null,
+                            "description": "Shipment delivery mechanism. Be Default Setting must be for standard Delivery. Valid Values: a-z dev should pass valid values Format: xxxx Example: (Overnight, Priority or Standard)",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "ResponseID",
+                    "type": "int64",
+                    "required": null,
+                    "description": "This number indicates that API responded.Response ID is unique.This value will be null if no authentication information was passed.Response ID can be used for tracking Valid Values: 0-9,a-z Format: xxx Example: 200",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MerchantID": null,
+        "OrderID": 1001,
+        "BulkCardUUID": null,
+        "ProductID": null,
+        "StoreID": null,
+        "CardNumber": null,
+        "AccountNumber": null,
+        "DeliveryMechanism": null,
+        "OderStatus": null
+    },
+    "sample_response": {
+        "Message": "Search Successful",
+        "Status": true,
+        "ErrorCode": "ERR01124",
+        "ResponseData": {
+            "BulkRequestDetails": [
+                {
+                    "OrderID": 1001,
+                    "RequestID": 1001,
+                    "MerchantID": "0",
+                    "RequestDate": null,
+                    "NumberOFCard": 50,
+                    "Status": "Approved",
+                    "CreateDate": null,
+                    "AddressLine1": "A3",
+                    "AddressLine2": "Canal Kinship",
+                    "City": "Indore",
+                    "PostalCode": "46502",
+                    "Country": "US",
+                    "State": "AL",
+                    "ProductID": "0",
+                    "StoreName": "7020=ABC_Store",
+                    "Title": "01",
+                    "FirstName": "Aditya",
+                    "MiddleName": "",
+                    "LastName": "Arya",
+                    "NameOnCard": "Abhishek",
+                    "ApprovedBy": "",
+                    "EmbossingLine4": "Aditya Abhishek Arya",
+                    "InstitutionID": 1320,
+                    "DeliveryMechanism": "0"
+                }
+            ],
+            "ResponseID": 56816607
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "New Cards",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=6&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1"
+    }
+}

@@ -1,0 +1,263 @@
+{
+    "metadata": {
+        "name": "GetDisputeTransactionDetail",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Dispute/GetDisputeTransactionDetail",
+        "description": "This API is used to fetch the Dispute Transaction Details."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "TransactionID",
+            "type": "int64",
+            "required": true,
+            "description": "Transaction Number for the transaction being posted. Valid Values: 0-9 a-z Format: XXXXXXXXXXXXXXXX Example: 23654789"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "DisputeTransactionDetailList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Get or Set DisputeTransaction_List",
+                    "children": [
+                        {
+                            "name": "CaseID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "ID which is generated against the Dispute  request. Valid Values: 0-9 Format: XXXXXXX Example: 9856198",
+                            "children": []
+                        },
+                        {
+                            "name": "PurchaseTransactionID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Transaction ID generated for The Purchase Transaction Valid Values:0-9 Format:XXXXXX Example:122390308",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeInitiateAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Initial disputed amount. Valid Values: 0-9 Format: xxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "DispteResolveAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The amount for which dispute is resolved. Valid Values: 0-9 Format: xxx Example: 300",
+                            "children": []
+                        },
+                        {
+                            "name": "PurchaseTransactionTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Time of Purchase Transaction. Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 02/02/2020 08:20:25",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeInitiationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date on which dispute is raised for the transaction. Valid Values: 0-9 Format:MM/DD/YYYY HH:MM:SS Example:  01/01/2020 08:25:54",
+                            "children": []
+                        },
+                        {
+                            "name": "LastDisputeStage",
+                            "type": "string",
+                            "required": null,
+                            "description": "Code of Last stage of Dispute case. Valid Values: 0-9 A-Z Example: Dispute Reversal in favor of Bank/Merchant without Finance Charge Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "PurchaseTransactionAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The amount of purchase transaction. Valid Values: 0-9 Format: xxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeStage",
+                            "type": "string",
+                            "required": null,
+                            "description": "Code of the stage of Dispute case. Valid Values: 0-9 A-Z Example: Initiate Dispute Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeID",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Specific ID assigned to the Dispute. Valid Values: 0-9 Format: xxxxx Example: 670906",
+                            "children": []
+                        },
+                        {
+                            "name": "ApplicantType",
+                            "type": "string",
+                            "required": null,
+                            "description": "The type of Applicants. Example: Applicant-Rikky Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "FraudDisputeCounter",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the counter of raising a dispute with fraud reason within a single cycle as per the product setup. Valid Value: 0-99 Format: X Example: 35",
+                            "children": []
+                        },
+                        {
+                            "name": "ClaimStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description: The purpose of this tag to show the claim status. Valid Values: A-z Example: Open/Closed",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "TransactionID": 123372036854817814
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "DisputeTransactionDetailList": [
+                {
+                    "CaseID": 4450,
+                    "PurchaseTransactionID": 123372036854817810,
+                    "DisputeInitiateAmount": 200.8,
+                    "DispteResolveAmount": 200.8,
+                    "PurchaseTransactionTime": "01/16/2017 00:00:00",
+                    "DisputeInitiationDate": "01/17/2017 00:00:00",
+                    "LastDisputeStage": "Initiate Chargeback",
+                    "PurchaseTransactionAmount": 200.8,
+                    "DisputeStage": "Initiate Dispute",
+                    "DisputeID": 1055.0,
+                    "ApplicantType": null,
+                    "FraudDisputeCounter": 0,
+                    "ClaimStatus": null
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1085&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1007"
+    }
+}

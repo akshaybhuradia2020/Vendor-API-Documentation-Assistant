@@ -1,0 +1,1104 @@
+{
+    "metadata": {
+        "name": "UpdateDemographic",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/CardManagement/UpdateDemographic",
+        "description": "This API is used to update the cardholder information Under account information as mentioned in the API request tags."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition:At least one of CardNumber/AdminNumber/AccountID is required."
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values:0-9 Format:XXXXX Example:12345 Condition:At least one of CardNumber/AdminNumber/AccountID is required."
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflect the card number Valid Values:0-9 Example:1236547896541236 Condition:At least one of CardNumber/AdminNumber/AccountID is required. Allowable Values: 19"
+        },
+        {
+            "name": "HomePhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's Home Phone number. Valid Values:0-9 Example:7895463241 Allowable Values: 15"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": false,
+            "description": "Card Holder's address line 1. Valid Values:A-Z, 0-9 Example:123 HWY Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. //Fixed TD 238735 Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's address line 2. Valid Values:A-Z, 0-9 Example:Park Avenue Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": false,
+            "description": "City name of the Card holder's address. Example:Los Angeles Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 25"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": false,
+            "description": "This tag reflects the Country code. Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": false,
+            "description": "State of the card holder address. Example:Virginia Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": false,
+            "description": "Postal code of the card holder address. Valid Values:0-9 Example:46206 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "ClientID",
+            "type": "integer",
+            "required": false,
+            "description": "Client ID of the client. Valid Values: 1422245 Example: 5558547"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's First name. Valid Values:A-Z Example:User1 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's Middle Name. Valid Values: A-Z Example: LEE Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's last name. Valid Values:A-Z Example:Smith Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "Title",
+            "type": "string",
+            "required": false,
+            "description": "Title of the card holder. Valid Values: Refer Appendix Section - Title Values Example: Mr Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "WorkPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's Work phone number. Valid Values:0-9 Example:5678909876 Allowable Values: 15"
+        },
+        {
+            "name": "MobilePhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card holder Mobile Phone Number. Valid Values:0-9 Example:987567757 Allowable Values: 15"
+        },
+        {
+            "name": "CreditFilePhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card holder Credit file phone number. Valid Values:0-9 Example:987567757 Allowable Values: 20"
+        },
+        {
+            "name": "AlternatePhone",
+            "type": "string",
+            "required": false,
+            "description": "Card holder alternate phone number Valid Values:0-9 Example:987567757 Allowable Values: 20"
+        },
+        {
+            "name": "EmailID",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's Email ID. Format: [email protected] Example: [email protected] Condition: Email id is not mandatory but user can not set it blank if it is having some value in Core. But user can update with new.Email ID can not be duplicate between card holder’s. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 256"
+        },
+        {
+            "name": "MobileCarrier",
+            "type": "string",
+            "required": false,
+            "description": "Carrier of Mobile Phone number. Valid Values:a-z,0-9 Example: BSNL Allowable Values: 50"
+        },
+        {
+            "name": "DateOfBirth",
+            "type": "datetime",
+            "required": false,
+            "description": "Card Holder's Date of Birth. Format:MM/dd/YYYY Example:11/23/1980"
+        },
+        {
+            "name": "SSN",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's Social Security Number. Format:AAAGGSSSS Example::078051120 Allowable Values: 9"
+        },
+        {
+            "name": "GovernmentID",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's Government ID. Valid Values:A-Z Example:CDDT9741Q Allowable Values: 30"
+        },
+        {
+            "name": "IDNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's Government ID Number. Format:AAAGGSSSS Example:078051120 Condition:This field is mandatory when government id type other than Other ID is used for cardholder identification. Allowable Values: 40"
+        },
+        {
+            "name": "IDCountry",
+            "type": "string",
+            "required": null,
+            "description": "Country of Identification proof. Valid Values:a-z, 0-9 Example: Canada Condition:This field is mandatory when government id Type other than Other ID is used for cardholder identification.Two character country code should be passed in the request and not country name. Allowable Values: 5"
+        },
+        {
+            "name": "IDState",
+            "type": "string",
+            "required": null,
+            "description": "Government identification issued state. Condition: GovernmentID issue state is mandatory, when Government id type is 'Drivers license' Or 'State ID' and ID issue country is US. Allowable Values: 50"
+        },
+        {
+            "name": "IDIssueDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Issue date of ID card. Valid Values: 0-9 Format: MM/DD/YYYY Example: 02/01/2020 Condition: GovernmentID issue date is mandatory when governmentID type is 'Drivers license' and ID issue country is US and Id issue state is other than Massachusetts, Michigan, Missouri, Texas."
+        },
+        {
+            "name": "IDExpirationDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Government issued identification expiration date. Valid Values: MM/DD/YYYY Example: 02012020 Condition: This field is mandatory when government id type other than Other ID is used for cardholder identification."
+        },
+        {
+            "name": "BankruptcyNotificationDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Date when bankruptcy is notified. Format: MM/dd/YYYY Example: 07/25/1991 Condition: Mandatory for bankruptcy account"
+        },
+        {
+            "name": "Education",
+            "type": "string",
+            "required": false,
+            "description": "Educational details of the applicant Valid Values: a-z,0-9 Example: B.E Allowable Values: 50"
+        },
+        {
+            "name": "Deceased",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for card holder is deceased or not Valid Values: 0,1 Example: 0 - No, 1 - Yes"
+        },
+        {
+            "name": "MaritalStatus",
+            "type": "integer",
+            "required": false,
+            "description": "Card holder's Marital Status Valid Values: 0,1 Example: 0 - No, 1 - Yes"
+        },
+        {
+            "name": "LanguageIndicator",
+            "type": "string",
+            "required": false,
+            "description": "Language indicator Allowable Values: 35"
+        },
+        {
+            "name": "Gender",
+            "type": "string",
+            "required": false,
+            "description": "Gender of card holder Valid Values: 1=Male and 2=Female Example: 1-2 Allowable Values: 20"
+        },
+        {
+            "name": "SurnameSuffix",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder's surname-suffix Example:SR Allowable Values: 5"
+        },
+        {
+            "name": "MotherMaidenName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's mother Maiden Name Valid Values:a-z,0-9 Example:Johnson Allowable Values: 50"
+        },
+        {
+            "name": "OtherPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's other Phone Number Valid Values:0-9 Example:987567757 Allowable Values: 15"
+        },
+        {
+            "name": "ResidenceType",
+            "type": "string",
+            "required": false,
+            "description": "Type of Residince that cardholder lives in. Valid Values:A-Z Example:Own Allowable Values: 35"
+        },
+        {
+            "name": "MonthsAtAddress",
+            "type": "integer",
+            "required": false,
+            "description": "Duration on residence in months Valid Values: 0-9 Example:9"
+        },
+        {
+            "name": "SupressEmailIndicator",
+            "type": "boolean",
+            "required": false,
+            "description": "Flag to suppress emails Valid Values: 0,1 Example: 0-no, 1-yes"
+        },
+        {
+            "name": "OptOutForEmailMarketing",
+            "type": "integer",
+            "required": false,
+            "description": "Flag to Opt out for email marketing Valid Values: 0- Enabled,1- Disabled Example: 0-no, 1-yes"
+        },
+        {
+            "name": "AdditionalAddressFirstName",
+            "type": "string",
+            "required": false,
+            "description": "First Name provided in additional address section. Valid Values:A-Z, 0-9 Format: xxxx Example:abcd 01234 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "AdditionalAddressMiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Middle Name provided in additional address section. Valid Values: 0-9 A-Z Format: xxxx Example:abcd 01234 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "AdditionalAddressLastName",
+            "type": "string",
+            "required": false,
+            "description": "Last Name provided in additional address section. Valid Values: 0-9 A-Z Format: xxxx Example:abcd 01234 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "AdditionalAddressLine1",
+            "type": "string",
+            "required": false,
+            "description": "Address line 1 of cardholder's additional address. Valid Values:A-Z, 0-9 Example:123 HWY Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "AdditionalAddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Address line 2 of cardholder's additional address. Valid Values:A-Z, 0-9 Example:123 HWY Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "AdditionalAddressCity",
+            "type": "string",
+            "required": false,
+            "description": "City of cardholder's additional address Valid Values:a-z Format:XXXX Example: Atlanta Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 25"
+        },
+        {
+            "name": "AdditionalAddressState",
+            "type": "string",
+            "required": false,
+            "description": "State of cardholder's additional address Valid Values:a-z Format:XXXX Example: Georgia Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30"
+        },
+        {
+            "name": "AdditionalAddressPostalCode",
+            "type": "string",
+            "required": false,
+            "description": "Postal Code of cardholder's additional address. Valid Values:46077 Example:46077 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "AdditionalAddressCountry",
+            "type": "string",
+            "required": false,
+            "description": "Country of cardholder's additional address Valid Values:a-z Example: France Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "AdditionalAddressPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Phone number of cardholder's additional address Valid Values:0-9 Example:7895463214 Allowable Values: 12"
+        },
+        {
+            "name": "AdditionalAddressEmailID",
+            "type": "string",
+            "required": false,
+            "description": "Additional Address  Email ID Valid Values: a-z Format: xx @xx.com Example:ABC @gmail.com Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 256"
+        },
+        {
+            "name": "POATitle",
+            "type": "string",
+            "required": false,
+            "description": "Title of the POA Valid Values: Mr Example:Mr Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "POAWorkPhone",
+            "type": "string",
+            "required": false,
+            "description": "Work Phone of POA Valid Values:0-9 Example:7895463214 Allowable Values: 12"
+        },
+        {
+            "name": "POAMI",
+            "type": "string",
+            "required": false,
+            "description": "Middle name. Valid Values: a-z Allowable Values: 50"
+        },
+        {
+            "name": "POAHomePhone",
+            "type": "string",
+            "required": false,
+            "description": "POA Home Phone number Valid Values:0-9 Example:7895463214 Allowable Values: 12"
+        },
+        {
+            "name": "POAFirstName",
+            "type": "string",
+            "required": false,
+            "description": "Power Of Attorney First name. Valid Values:A-Z Example:User1 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "POAMobilePhone",
+            "type": "string",
+            "required": false,
+            "description": "POA mobile Phone number Valid Values:0-9 Example:7895463214 Allowable Values: 12"
+        },
+        {
+            "name": "POALastName",
+            "type": "string",
+            "required": false,
+            "description": "Power Of Attorney Last name. Valid Values:A-Z Example:User1 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "POAOtherPhonePhone",
+            "type": "string",
+            "required": false,
+            "description": "POA other Phone number Valid Values:0-9 Example:7895463214 Allowable Values: 12"
+        },
+        {
+            "name": "POALanguage",
+            "type": "string",
+            "required": false,
+            "description": "Language indicatior for POA Valid Values: A-Z Example: French Allowable Values: 50"
+        },
+        {
+            "name": "POAAlternatePhone",
+            "type": "string",
+            "required": false,
+            "description": "POA alternate Phone number Valid Values:0-9 Example:7895463214 Allowable Values: 12"
+        },
+        {
+            "name": "POAEmailAddress",
+            "type": "string",
+            "required": false,
+            "description": "POA Email ID Valid Values: a-z Format: xx @xx.com Example:ABC @gmail.com Allowable Values: 50"
+        },
+        {
+            "name": "POAFromTime1",
+            "type": "string",
+            "required": false,
+            "description": "Preferred time 1 to call POA contact Valid Values:0-9 Format:HH:MM:SS Example:12:15:09 Allowable Values: 10"
+        },
+        {
+            "name": "POAToTime1",
+            "type": "string",
+            "required": false,
+            "description": "Preffered time to call POA contact Valid Values:1215090000 Format:HH:MM:SS Example:12:15:09 Allowable Values: 10"
+        },
+        {
+            "name": "POAFromTime2",
+            "type": "string",
+            "required": false,
+            "description": "Preffered time to call POA contact Valid Values:1215090000 Format:HH:MM:SS Example:12:15:09 Allowable Values: 10"
+        },
+        {
+            "name": "POAToTime2",
+            "type": "string",
+            "required": false,
+            "description": "Preffered time to call POA contact Valid Values:1215090000 Format:HH:MM:SS Example:12:15:09 Allowable Values: 10"
+        },
+        {
+            "name": "ConsumerInfoIndicator",
+            "type": "string",
+            "required": false,
+            "description": "Customer related indications Valid Values: A-Z, 0-9 Example:2A = Lease Assumption Allowable Values: 150"
+        },
+        {
+            "name": "HomePhoneNumberPOATechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of HomePhoneNumberPOATechType. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "HomePhoneNumberPOAValid",
+            "type": "integer",
+            "required": null,
+            "description": "Description: Tech Type of HomePhoneNumberPOAValid. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "POAHomePhoneInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for POA Home phone number Invalid Valid Values: Invalid, blank"
+        },
+        {
+            "name": "MobileNumberPOATechType",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for POA Mobile phone number Tech type consent. Valid Values: 0 / 1 Format: Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "MobileNumberPOAValid",
+            "type": "integer",
+            "required": null,
+            "description": "Description: Tech Type of MobileNumberPOAValid. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "WorkPhoneNumberPOATechType",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for POA work phone number Tech type consent. Valid Values: Mobile,Landline Example: 0 = Mobile, 1 = Landline"
+        },
+        {
+            "name": "WorkPhoneNumberPOAValid",
+            "type": "integer",
+            "required": null,
+            "description": "Description: Tech Type of WorkPhoneNumberPOAValid. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "OtherPhoneNumberPOATechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of OtherPhoneNumberPOATechType. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "OtherPhoneNumberPOAValid",
+            "type": "integer",
+            "required": null,
+            "description": "Description: Tech Type of OtherPhoneNumberPOAValid. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "AlternatePhonePOATechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of AlternatePhonePOATechType. Valid Values: 0 / 1 Example: 0 = Mobile, 1 = Landline"
+        },
+        {
+            "name": "AlternatePhonePOAValid",
+            "type": "integer",
+            "required": null,
+            "description": "Description: Tech Type of AlternatePhonePOAValid. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "HomePhoneNumberTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of HomePhoneNumberTechType. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "HomePhoneNumberAutoDialConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of HomePhoneNumberAutoDialConsent. Valid Values: Yes, No, N/A Format: x Example: 0 , 1"
+        },
+        {
+            "name": "HomePhoneNumberTextMessageConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of HomePhoneNumberTextMessageConsent. Valid Values: Yes, No, N/A Example: 0 , 1"
+        },
+        {
+            "name": "MobileNumberTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of MobileNumberTechType. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "MobileNumberAutoDialConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of MobileNumberAutoDialConsent. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "MobileNumberValid",
+            "type": "integer",
+            "required": null,
+            "description": "Description: Tech Type of MobileNumberValid. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "WorkPhoneNumberTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of WorkPhoneNumberTechType. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "WorkPhoneNumberAutoDialConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of WorkPhoneNumberAutoDialConsent. Valid Values:Yes, No, N/A Format: x Example: 0 , 1 Condition:I6129"
+        },
+        {
+            "name": "WorkPhoneNumberTextMessageConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of WorkPhoneNumberTextMessageConsent. Valid Values:Yes, No, N/A Format: x Example: 0 , 1 Condition:I6129"
+        },
+        {
+            "name": "WorkPhoneNumberValid",
+            "type": "integer",
+            "required": null,
+            "description": "Description: Tech Type of WorkPhoneNumberValid. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "OtherPhoneNumberTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of OtherPhoneNumberTechType. Valid Values:Yes, No, N/A Format: x Example: 0 , 1"
+        },
+        {
+            "name": "OtherPhoneNumberAutoDialConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of OtherPhoneNumberAutoDialConsent. Valid Values:Yes, No, N/A Format: x Example: 0 , 1 Condition:I6129"
+        },
+        {
+            "name": "OtherPhoneNumberTextMessageConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of OtherPhoneNumberTextMessageConsent. Valid Values:Yes, No, N/A Format: x Example: 0 , 1 Condition:I6129"
+        },
+        {
+            "name": "OtherPhoneNumberValid",
+            "type": "integer",
+            "required": null,
+            "description": "Description: Tech Type of OtherPhoneNumberValid. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "FaxNumberTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Fax NumberTech type consent Valid Values: Mobile,Landline"
+        },
+        {
+            "name": "FaxNumberAutoDialConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of FaxNumberAutoDialConsent. Valid Values:Yes, No, N/A Format: x Example: 0 , 1 Condition:I6129"
+        },
+        {
+            "name": "FaxNumberTextMessageConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of FaxNumberTextMessageConsent. Valid Values:Yes, No, N/A Format: x Example: 0 , 1 Condition:I6129"
+        },
+        {
+            "name": "MobileNumberTextMessageConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of MobileNumberTextMessageConsent. Valid Values:Yes, No, N/A Format: x Example: 0 , 1 Condition:I6129"
+        },
+        {
+            "name": "WorkPhoneTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Work Phone number Tech type consent Valid Values: Mobile,Landline"
+        },
+        {
+            "name": "WorkPhoneInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Work Phone number Invalid Valid Values: Invalid, blank"
+        },
+        {
+            "name": "OtherPhoneTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Other Phone number Tech type consent Valid Values: Mobile,Landline"
+        },
+        {
+            "name": "OtherPhoneAutoDial",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Other Phone number Auto dial consent Valid Values: Yes, No, N/A"
+        },
+        {
+            "name": "OtherPhoneTextMessage",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Other Phone number Text Message consent Valid Values: Yes, No, N/A"
+        },
+        {
+            "name": "OtherPhoneInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Other Phone number Invalid Valid Values: Invalid, blank"
+        },
+        {
+            "name": "FaxNumberAutoDial",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Fax Number Auto dial consent Valid Values: Yes, No, N/A"
+        },
+        {
+            "name": "FaxNumberTextMessage",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Fax  Number Text Message consent Valid Values: Yes, No, N/A"
+        },
+        {
+            "name": "AlternatePhoneValid",
+            "type": "integer",
+            "required": null,
+            "description": "Description: Flag for Alternate Phone number Invalid. Valid Values: Invalid, blank Example: 0,1 ///"
+        },
+        {
+            "name": "FaxNumberInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Fax NumberInvalid alid Values: Invalid, blank Example: 0,1"
+        },
+        {
+            "name": "CreditFilePhoneTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of CreditFilePhoneTechType. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline"
+        },
+        {
+            "name": "CreditFilePhoneAutoDialConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of CreditFilePhoneAutoDialConsent. Valid Values: Yes, No, N/A Format: x Example: 0 , 1 Condition:I6129"
+        },
+        {
+            "name": "CreditFilePhoneTextMessageConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of CreditFilePhoneTextMessageConsent. Valid Values: Yes, No, N/A Format: x Example: 0 , 1 Condition:I6129"
+        },
+        {
+            "name": "CreditFilePhoneInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Credit File Phone number Invalid . Valid Values: Invalid, blank Example: 0,1"
+        },
+        {
+            "name": "AlternatePhoneTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of AlternatePhoneTechType. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "AlternatePhoneAutoDialConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of AlternatePhoneAutoDialConsent. Valid Values: 0 / 1 Format: x Example: 0 = No, 1 = Yes Condition:I6129"
+        },
+        {
+            "name": "AlternatePhoneTextMessageConsent",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of AlternatePhoneTextMessageConsent. Valid Values: Yes, No, N/A Format: x Example: 0 , 1 Condition:I6129"
+        },
+        {
+            "name": "CeaseAndDesistIndicator",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for card holder Cease And Desist Valid Values: 0,1 Example: 0-no, 1-yes"
+        },
+        {
+            "name": "Bankruptcy",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Bankruptcy Valid Values:0,1 Example:0-no, 1-yes"
+        },
+        {
+            "name": "ThirdPDM",
+            "type": "integer",
+            "required": false,
+            "description": "Third party debt management Valid Values: 0,1 Example: 0-no, 1-yes"
+        },
+        {
+            "name": "NameOnCard",
+            "type": "string",
+            "required": false,
+            "description": "Name to be printed on the card. Valid Values:a-z Example:John J Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "FaxNumber",
+            "type": "string",
+            "required": false,
+            "description": "This tag reflects the Fax number. Valid Values:0-9 Example:5678909876 Allowable Values: 50"
+        },
+        {
+            "name": "DeceasedNotificationDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Date when deceased is notified Format:MM/DD/YYYY Example:02/20/2020 Condition: Mandatory for deceased account"
+        },
+        {
+            "name": "FraudVictim",
+            "type": "integer",
+            "required": false,
+            "description": "Flag to identify any individual that is victim of Fraud Valid Values: 0,1 Format: x Example: 0-no, 1-yes"
+        },
+        {
+            "name": "MailMarketingPermission",
+            "type": "string",
+            "required": false,
+            "description": "Flag to get the permission for mail marketing. Valid Values: 0- Enabled, 1- Disabled Format: x Example: 0, 1"
+        },
+        {
+            "name": "MailCommunicationsPermission",
+            "type": "string",
+            "required": false,
+            "description": "MailCommunicationsPermission Valid Values: 0- Enabled, 1- Disabled Format: x Example: 0, 1"
+        },
+        {
+            "name": "EmailCommunicationsPermission",
+            "type": "string",
+            "required": false,
+            "description": "Flag to get the permission for Email Communication Valid Values: 0- Enabled, 1- Disabled Format: x Example: 0, 1"
+        },
+        {
+            "name": "PaperlessStatementsPermission",
+            "type": "string",
+            "required": false,
+            "description": "Flag to get the permission for Paperless Statement Valid Values: 0- Enabled, 1- Disabled Format: x Example: 0, 1"
+        },
+        {
+            "name": "PushNotificationPermission",
+            "type": "string",
+            "required": false,
+            "description": "Flag to get the permission for Push Notifications Valid Values: 0 - No,1-Yes Format: x Example: 0, 1"
+        },
+        {
+            "name": "HomePhoneNumberPOAInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for POA Home phone number Invalid Valid Values: Invalid, blank Example: 0,1"
+        },
+        {
+            "name": "MobileNumberPOAInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for POA Mobile phone number Invalid . Valid Values: Invalid, blank Example: 0,1"
+        },
+        {
+            "name": "WorkPhoneNumberPOAInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for POA Other Phone number Invalid . Valid Values: Invalid, blank Example: 0,1"
+        },
+        {
+            "name": "OtherPhoneNumberPOAInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of OtherPhoneNumberPOAInvalid. Valid Values: Invalid, blank Example: 0,1"
+        },
+        {
+            "name": "AlternatePhonePOAInValid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for POA alternate phone number Invalid . Valid Values: Invalid, blank Example: 0,1 Condition:I6129"
+        },
+        {
+            "name": "HomePhoneNumberInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Home phone number Invalid . Valid Values: Invalid, blank Example:  0,1"
+        },
+        {
+            "name": "MobileNumberInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Mobile number Invalid . Valid Values: Invalid, blank Example: 0,1"
+        },
+        {
+            "name": "WorkPhoneNumberInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "flag for Work Phone number Invalid Valid Values: Invalid, blank Example: 0,1"
+        },
+        {
+            "name": "OtherPhoneNumberInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Other Phone number Invalid. Valid Values:Invalid, blank Example: 0 , 1"
+        },
+        {
+            "name": "AlternatePhoneInvalid",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Alternate Phone number Invalid. Valid Values: Invalid, blank Example: 0,1"
+        },
+        {
+            "name": "EmailMarketingPermission",
+            "type": "string",
+            "required": false,
+            "description": "Flag to get the permission for email marketing. Valid Values: 0- Enabled, 1- Disabled Format: x Example: 0, 1"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflects the account number. Valid Values:0-9 Example:8000000000000037 Allowable Values: 19",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": "840",
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountID": 21991,
+        "AdminNumber": 24429,
+        "CardNumber": null,
+        "HomePhoneNumber": null,
+        "AddressLine1": "test",
+        "AddressLine2": null,
+        "City": "AK",
+        "Country": "US",
+        "State": "AK",
+        "PostalCode": "85645",
+        "ClientID": null,
+        "FirstName": "Test",
+        "MiddleName": "H",
+        "LastName": "Test",
+        "Title": "03",
+        "WorkPhoneNumber": null,
+        "MobilePhoneNumber": null,
+        "CreditFilePhoneNumber": null,
+        "AlternatePhone": null,
+        "EmailID": null,
+        "MobileCarrier": null,
+        "DateOfBirth": null,
+        "SSN": null,
+        "GovernmentID": null,
+        "IDNumber": null,
+        "IDCountry": null,
+        "IDState": null,
+        "IDIssueDate": null,
+        "IDExpirationDate": null,
+        "BankruptcyNotificationDate": null,
+        "Education": null,
+        "Deceased": null,
+        "MaritalStatus": null,
+        "LanguageIndicator": null,
+        "Gender": null,
+        "SurnameSuffix": "II",
+        "MotherMaidenName": null,
+        "OtherPhoneNumber": null,
+        "ResidenceType": null,
+        "MonthsAtAddress": null,
+        "SupressEmailIndicator": false,
+        "OptOutForEmailMarketing": null,
+        "AdditionalAddressFirstName": null,
+        "AdditionalAddressMiddleName": null,
+        "AdditionalAddressLastName": null,
+        "AdditionalAddressLine1": null,
+        "AdditionalAddressLine2": null,
+        "AdditionalAddressCity": null,
+        "AdditionalAddressState": null,
+        "AdditionalAddressPostalCode": null,
+        "AdditionalAddressCountry": null,
+        "AdditionalAddressPhoneNumber": null,
+        "AdditionalAddressEmailID": null,
+        "POATitle": null,
+        "POAWorkPhone": null,
+        "POAMI": null,
+        "POAHomePhone": null,
+        "POAFirstName": null,
+        "POAMobilePhone": null,
+        "POALastName": null,
+        "POAOtherPhonePhone": null,
+        "POALanguage": null,
+        "POAAlternatePhone": null,
+        "POAEmailAddress": null,
+        "POAFromTime1": null,
+        "POAToTime1": null,
+        "POAFromTime2": null,
+        "POAToTime2": null,
+        "ConsumerInfoIndicator": null,
+        "HomePhoneNumberPOATechType": null,
+        "HomePhoneNumberPOAInvalid": null,
+        "MobileNumberPOATechType": null,
+        "MobileNumberPOAInvalid": null,
+        "WorkPhoneNumberPOATechType": null,
+        "WorkPhoneNumberPOAInvalid": null,
+        "OtherPhoneNumberPOATechType": null,
+        "OtherPhoneNumberPOAInvalid": null,
+        "AlternatePhonePOATechType": null,
+        "AlternatePhonePOAInValid": null,
+        "HomePhoneNumberTechType": null,
+        "HomePhoneNumberAutoDialConsent": null,
+        "HomePhoneNumberTextMessageConsent": null,
+        "HomePhoneNumberInvalid": null,
+        "MobileNumberTechType": null,
+        "MobileNumberAutoDialConsent": null,
+        "MobileNumberInvalid": null,
+        "WorkPhoneNumberTechType": null,
+        "WorkPhoneNumberAutoDialConsent": null,
+        "WorkPhoneNumberTextMessageConsent": null,
+        "WorkPhoneNumberInvalid": null,
+        "OtherPhoneNumberTechType": null,
+        "OtherPhoneNumberAutoDialConsent": null,
+        "OtherPhoneNumberTextMessageConsent": null,
+        "OtherPhoneNumberInvalid": null,
+        "FaxNumberTechType": null,
+        "FaxNumberAutoDialConsent": null,
+        "FaxNumberTextMessageConsent": null,
+        "MobileNumberTextMessageConsent": null,
+        "WorkPhoneTechType": null,
+        "WorkPhoneInvalid": null,
+        "OtherPhoneTechType": null,
+        "OtherPhoneAutoDial": null,
+        "OtherPhoneTextMessage": null,
+        "OtherPhoneInvalid": null,
+        "FaxNumberAutoDial": null,
+        "FaxNumberTextMessage": null,
+        "FaxNumberInvalid": null,
+        "CreditFilePhoneTechType": null,
+        "CreditFilePhoneAutoDialConsent": null,
+        "CreditFilePhoneTextMessageConsent": null,
+        "CreditFilePhoneInvalid": null,
+        "AlternatePhoneTechType": null,
+        "AlternatePhoneAutoDialConsent": null,
+        "AlternatePhoneTextMessageConsent": null,
+        "AlternatePhoneInvalid": null,
+        "CeaseAndDesistIndicator": null,
+        "Bankruptcy": null,
+        "ThirdPDM": null,
+        "NameOnCard": null,
+        "FaxNumber": null,
+        "DeceasedNotificationDate": null,
+        "FraudVictim": null,
+        "MailMarketingPermission": null,
+        "EmailMarketingPermission": null,
+        "MailCommunicationsPermission": null,
+        "EmailCommunicationsPermission": null,
+        "PaperlessStatementsPermission": null,
+        "PushNotificationPermission": null
+    },
+    "sample_response": {
+        "Message": "Card Updated Successfully",
+        "Status": true,
+        "ErrorCode": "Msgcu01",
+        "ResponseData": {
+            "AccountNumber": "0000000010048695"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1099&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1004"
+    }
+}

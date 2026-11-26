@@ -1,0 +1,893 @@
+{
+    "metadata": {
+        "name": "GetPlanDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetPlanDetails",
+        "description": "This API is to get the plan segment details of an account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition:At least one of AdminNumber/AccountNumber/AccountID is required."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition:At least one of AdminNumber/AccountNumber/AccountID is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition:At least one of AdminNumber/AccountNumber/AccountID is required."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "PlanSegments",
+                    "type": "array",
+                    "required": null,
+                    "description": "PlanSegments",
+                    "children": [
+                        {
+                            "name": "PlanName",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field describe the name of the Plan Valid Values: a-z,0-9 Format:XXXXX Example: XYZ_Revolving Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the unique ID generated for each plan segment added to an account. Valid Values : 0-9 Format:XXXXXXXX Example:98756775 Condition:At least one of CardNumber/AdminNumber/AccountNumber/AccountID is required.\"",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditPlanMaster",
+                            "type": "string",
+                            "required": null,
+                            "description": "Plan name associated with the card account. Valid Values:A-z,0-9 Format:XXX Example:6051 Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditPlanMasterName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Credit Plan Master Name Valid Values:0-9,A-Z Format:XXXXX Example:ABC_revolving Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditPlanType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Credit Plan Type i.e. EPP for ILP and Defered for defered plan. 0 Purchase 2Cash 7Misc 10Fees 11Installment Loan Type 1 Valid Values:A-z,0-9 Format:XXX Example:Deferred Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PlanSegmentCreationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "PlanSegmentCreationDate",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Current balance of account/Debtor Owing Valid Values:0-9 Format:XXXX.XX Example:500.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount Of Total Due as on Statement Date Valid Values: 0-9 Format: $XX.XX Example: $150.99",
+                            "children": []
+                        },
+                        {
+                            "name": "CyclesDue",
+                            "type": "string",
+                            "required": null,
+                            "description": "Number of Billing Cycle due. Valid Values:0-9 Format:XX Example:2 Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "InvoiceNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Incoice Number for Transaction Valid Values:0-9 Format:XXXXXXXXXX Example:987567757 Allowable Values: 28",
+                            "children": []
+                        },
+                        {
+                            "name": "OpenToBuy",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Remaining Credit Limit which can be used for further posting. Valid Values:0-9 Format: XXXXXXX.XX Example:120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "EqualPaymentAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Equal Amount of Payment which has been identified for the plan. Valid Values:0-9 Format:XXX.XX Example:120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "CashBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Cash amount balance on account Valid Values: 0-9 Format: $XXXX Example: $10.00",
+                            "children": []
+                        },
+                        {
+                            "name": "PrepaymentAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This field reflects the pre payment amount. Valid Values:0-9 Format:XXX.XX Example:120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "PrePaymentCounter",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This field reflect number of pre payement Valid Values:0-9 Format:XXX Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "BeginningBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "On plan details panel under \"Plan Balances\", the amount in \"Beginning balance\" field. Valid Values:0-9 Format:XXX.XX Example:400.00",
+                            "children": []
+                        },
+                        {
+                            "name": "Principal",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This Tag reflect Principal amount. Valid Values:0-9 Format:XXX.XX Example: 120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "BilledPrincipal",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Principal amount of loan From  Summary header Valid Values: 0-9 Format: $XXX.XX Example: $120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "HighBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates highest value of balance on account Valid Values: 0-9 Format: $XX.XX Example: $120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "MultiplePlanAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Flag to check if multiple plans are allowed to the plan which has been added in the account. Valid Values:0-9 Format:XXX Example:Yes/No Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "FixedPaymentAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Fixed amount define for Bill Fixed amount payment type. Valid Values:0-9 Format:XXXX.XX Example:1000.00 Condition: This field is mandatory when Payment type is Bill Fixed amount.",
+                            "children": []
+                        },
+                        {
+                            "name": "MultipleSalesAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "MultipleSalesAllowed Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "FixedPaymentPercentage",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Percent of principal define for Bill Fix Percent payment type. Valid Values:0-9 Format:XX.XX Example:1.00 Condition: This field is mandatory when Payment type is Bill Fix Percent.",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of the Payment. Valid Values: 0 = Bill Balance 1 = Bill Fixed Amount 2 = Bill Fixed Percent 3 = Bill Invoice 4 = Bill Fixed Percent Of High Balance Example:0 = Bill Balance Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "EqualPayments",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Defines the number of payment can be done when Payment Type selected as Use Equal Payment. Valid Values : 1-60 Format:X Example:1-60",
+                            "children": []
+                        },
+                        {
+                            "name": "AnnuityPaymentMethod",
+                            "type": "string",
+                            "required": null,
+                            "description": "AnnuityPaymentMethod",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Interest Plan Valid Values:0-9,A-Z Format:XX Example:SM Ignite PURCH_1074",
+                            "children": []
+                        },
+                        {
+                            "name": "InternalRateOfReturn",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "InternalRateOfReturn",
+                            "children": []
+                        },
+                        {
+                            "name": "NewTransactionBSFC",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "NewTransactionsBSFC From  Summary header creditcard Valid Values: 0-9 Format: XX.XX Example: 15.99",
+                            "children": []
+                        },
+                        {
+                            "name": "RevolvingTransactionBSFC",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "RevolvingBSFC From  Summaryheadercreditcard Valid Values: 0-9 Format: XX.XX Example: 15.99",
+                            "children": []
+                        },
+                        {
+                            "name": "NewTransactionAccruedInterest",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Accured Interest for the New transaction Valid Values:0-9 Format:XX Example:12.99",
+                            "children": []
+                        },
+                        {
+                            "name": "RevolvingTransactionAccruedInterest",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Accured interest for Revolving Transaction Valid Values: 0-9 Format: XX.XX Example: 15.99",
+                            "children": []
+                        },
+                        {
+                            "name": "NewTransactionAggregate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Aggergate amount for all the new transaction Valid Values:0-9 Format:XX Example:12.00",
+                            "children": []
+                        },
+                        {
+                            "name": "RevolvingTransactionAggregate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Aggregate amount for Revlviing Transaction. Valid Values: 0-9 Format: XX.XX Example: 15.99",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalAccruedInterest",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Accured Interest Valid Values:0-9 Format:XXX.XX$ Example:500.00$",
+                            "children": []
+                        },
+                        {
+                            "name": "AfterCycleRevolvingBSFC",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag reflects the revolving BSFC(Balance subjetct to Finance charge) Valid Values:0-9 Format:XXX.XX Example:500.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AccrueInterestonChargedOffAccounts",
+                            "type": "string",
+                            "required": null,
+                            "description": "Accured Interest on charged off account Valid Values:0-9 Format:XX.X Example:15.99 Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "AnticipatedAccruedInterest",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "On Plan detials panel under \"\"Interest/Deferment\"\", value showin in \"\"Anitcipated Accrued interest\"\" field. Valid Values:0-9 Format:XXX.XX Example:200..",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestStartDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when actual interest starts Valid Values: 0-9 Format: MMDDYYYY Example: 01012020",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestDisposition",
+                            "type": "string",
+                            "required": null,
+                            "description": "Disposition of Interest by User Valid Values:0-9,A-Z Format:XX Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentDefermentStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Deferement Status of Payment Valid Values:0-9,A-Z Format:XX Example:Paid Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "PayOffDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when Pay off has been made. Note: 1.If a payment is received with a backdated transaction(Date less than PayOffDate) and the amount is greater than or equal to the PayOffAmount returned by the PayOff API, the system will automatically adjust the payment date to the current date. 2.If the payment amount is less than the PayOffAmount, the payment can be posted with the backdated date. Valid Values:12/20/2019 Format: MMDDYYYY Example:12/20/2019",
+                            "children": []
+                        },
+                        {
+                            "name": "DeferredAggregate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Aggregated amount of Deferment Balance Valid Values:0-9 Format:XX.X Example:120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "DeferredAccruedInterest",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Accured Interest Amount on Deferment Balance Valid Values:0-9 Format:XX.X Example:120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestDefermentStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of Interest on Deferment Balance Valid Values:0-9,A-Z Format:XX Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentStartDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Start Date of Payment on Deferment Balance Valid Values:12/20/2019 Format: MMDDYYYY Example:12/20/2019",
+                            "children": []
+                        },
+                        {
+                            "name": "DefermentRollOverDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when Deferment payment has been rollover. Valid Values:0-9 Format:MMDDYYYY HH:MM:SS Example:01012020 10:15:09",
+                            "children": []
+                        },
+                        {
+                            "name": "CancellationNotificationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date of cancellation notification on Deferment Blance Valid Values: Format:MMDDYYYY Example:12202019",
+                            "children": []
+                        },
+                        {
+                            "name": "DeferredAggregateDays",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Total number of Aggergated Days on Deferment Balance Valid Values:0-9 Format:XX Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "DeferredAccruedFinalInterest",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Accured Final Interest on Deferment Balance Valid Values:0-9 Format:XX.X Example:120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Interest Billed Not Paid atBilled not paid details. Valid Values:0-9 Format:XXX.XX Example: 300.12",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Late Fees Outstanding Example: $20.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MembershipFeePendingBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Annual Fees Billed Not Paid at Billed Not Paid Details Valid Values:0-9 Format:XXX.XX Example: 300.12",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundFeeBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Insufficient Fund Fee Outstanding Example: $20.00",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Overlimit Fees Outstanding Example: $20.00",
+                            "children": []
+                        },
+                        {
+                            "name": "CollectionFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Collection Fees Outstanding Example: $20.00",
+                            "children": []
+                        },
+                        {
+                            "name": "RecoveryFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Recovery Fees Outstanding Example: $20.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InsuranceFeeBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Insurance Fees Outstanding Example: $20.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPendingBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Interest Billed Not Paid at Pending Billed Not Paid Balances Valid Values:0-9 Format:XXX.XX Example:120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeesPendingBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Revolving Late Fees Outstanding Example: $5.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundFeePendingBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Revolving Insufficient Fund Fees Outstanding Example: $5.00",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeesPendingBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Revolving Overlimit Fees Outstanding Example: $5.00",
+                            "children": []
+                        },
+                        {
+                            "name": "RecoveryFeesPendingBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Revolving Recovery Fees Outstanding Example: $5.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InsuranceFeesPendingBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Revolving Insurance Fees Outstanding Example: $5.00",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargeOffBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Charge Off Balance Valid Values:0-9 Format:XXX.XX$ Example:500.00$",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargeOffPrincipal",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag reflects the principal at   charged-off Balances Valid Values:0-9 Format:XXX.XX Example:120.23.",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargeOffTransactionFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Transaction Fees Billed Not Paid Charge-Off Valid Values:0-9 Format:XX.xx Example:120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargeOffAnnuaFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "On plan details Panel under Charge -off balances, value shown in Annual Fees billed not paid charge-off. Valid Values:0-9 Format:XXX.XX Example:120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargeOffLateFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Late Fees Billed Not Paid Charge-Off Valid Values:0-9 Format:XXX.XX Example: 300.12",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargeOffOverlimitFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Overlimit Fees Billed Not Paid Charge-Off Valid Values:0-9 Format:XX.X Example:120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargeOffInsufficientFundsFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Insufficient Funds Fees Billed Not Paid Charge-Off: Valid Values:0-9 Format:XXX.XX Example: 300.12",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargeOffCollectionFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "CollectionFeesBNPCO",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargeOffInterestBilledBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Insurance Billed Not Paid Charge-Off at Charge Off Balance Valid Values:0-9 Format:XXX.XX Example: 300.12",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargeOffInsuranceBilledBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Insurance and GST Fee Billed Not Paid Charge-Off Valid Values:0-9 Format:XXX.XX Example: 300.12",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargeOffRecoveryFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Recovery Fees Billed Not Paid Charge-Off Valid Values:0-9 Format:XX.X Example:120.23",
+                            "children": []
+                        },
+                        {
+                            "name": "PortfolioID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Portfolio Id assigned on account Valid Values: Valid Portfolio ID value Format: XXXX Example: Midland",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestRate1",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Interest Defined on the Plan as InterestRate 1 (Margin+Index) Valid Values:0-9 Format:X Example:5.12",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestRate2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Interest Defined on the Plan as InterestRate 2 (Margin+Index) Valid Values:0-9 Format:X Example:5.12",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestRate3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Interest Defined on the Plan as InterestRate 3 (Margin+Index) Valid Values:0-9 Format:X Example:5.12",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestRate4",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Interest Defined on the Plan as InterestRate 4 (Margin+Index) Valid Values:0-9 Format:X Example:5.12",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoStartDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It reflect the starting date of promotional plan Valid Values: Format: MM/DD/YYYY Example:12/24/2019",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoEndDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It reflect the date on which promotional rate ends. Valid Values: Format: MM/DD/YYY Example:12/24/2019",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoTransactionStartDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Promotional Plan Transaction Start Date Valid Values: 0-9 Format: MM/dd/yyyy Example:01/02/2020",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoTransactionEndDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Promotional Plan Transaction End Date Valid Values: 0-9 Format: MM/dd/yyyy Example:01/02/2020",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoPlanStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicator for active promo plan Valid Values: 0-1 Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoRateDuration",
+                            "type": "integer",
+                            "required": null,
+                            "description": "it reflect the duration of promotional plan in months. Valid Values:0-9 Format:XX Example:4",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Transaction Fees Outstanding Example: $20.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MembershipFeesBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Membership/Annual Fees Outstanding Example: $20.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFeesPendingBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Revolving Transaction Fees Outstanding Example: $5.00",
+                            "children": []
+                        },
+                        {
+                            "name": "CollectionFeesPendingBNP",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Revolving Collection Fees Outstanding Example: $5.00",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountID": 167414,
+        "AccountNumber": null,
+        "AdminNumber": null
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "PlanSegments": [
+                {
+                    "PlanName": "ABC Invoice_USA",
+                    "AccountID": 101241,
+                    "CreditPlanMaster": "5570",
+                    "CreditPlanMasterName": "ABC Invoice_USA",
+                    "CreditPlanType": "Purchase",
+                    "PlanSegmentCreationDate": "01/15/2017 00:00:00",
+                    "CurrentBalance": 0.0,
+                    "TotalDue": 0.0,
+                    "CyclesDue": "Nothing Due",
+                    "InvoiceNumber": "0016741400000001",
+                    "OpenToBuy": 0.0,
+                    "EqualPaymentAmount": 0.0,
+                    "CashBalance": 0.0,
+                    "PrepaymentAmount": 0.0,
+                    "PrePaymentCounter": 0.0,
+                    "BeginningBalance": 0.0,
+                    "Principal": 0.0,
+                    "BilledPrincipal": 0.0,
+                    "HighBalance": 0.0,
+                    "MultiplePlanAllowed": null,
+                    "FixedPaymentAmount": 0.0,
+                    "MultipleSalesAllowed": "Create new plan segment for each invoice period",
+                    "FixedPaymentPercentage": 1.0,
+                    "PaymentType": "Bill Invoice",
+                    "EqualPayments": null,
+                    "AnnuityPaymentMethod": null,
+                    "InterestPlan": "ABC001_USA",
+                    "InternalRateOfReturn": 0.0,
+                    "NewTransactionBSFC": 0.0,
+                    "RevolvingTransactionBSFC": 0.0,
+                    "NewTransactionAccruedInterest": 0.0,
+                    "RevolvingTransactionAccruedInterest": 0.0,
+                    "NewTransactionAggregate": 0.0,
+                    "RevolvingTransactionAggregate": 0.0,
+                    "TotalAccruedInterest": 0.0,
+                    "AfterCycleRevolvingBSFC": 0.0,
+                    "AccrueInterestonChargedOffAccounts": "Do not accrue interest",
+                    "AnticipatedAccruedInterest": 0.0,
+                    "InterestStartDate": null,
+                    "InterestDisposition": null,
+                    "PaymentDefermentStatus": null,
+                    "PayOffDate": null,
+                    "DeferredAggregate": 0.0,
+                    "DeferredAccruedInterest": 0.0,
+                    "InterestDefermentStatus": null,
+                    "PaymentStartDate": null,
+                    "DefermentRollOverDate": null,
+                    "CancellationNotificationDate": null,
+                    "DeferredAggregateDays": 0,
+                    "DeferredAccruedFinalInterest": 0.0,
+                    "InterestBNP": 0.0,
+                    "LateFeesBNP": 0.0,
+                    "MembershipFeePendingBNP": 0.0,
+                    "InsufficientFundFeeBNP": 0.0,
+                    "TransactionFeesBNP": null,
+                    "OverlimitFeesBNP": 0.0,
+                    "MembershipFeesBNP": null,
+                    "CollectionFeesBNP": 0.0,
+                    "RecoveryFeesBNP": 0.0,
+                    "InsuranceFeeBNP": 0.0,
+                    "InterestPendingBNP": 0.0,
+                    "LateFeesPendingBNP": 0.0,
+                    "InsufficientFundFeePendingBNP": 0.0,
+                    "OverlimitFeesPendingBNP": 0.0,
+                    "TransactionFeesPendingBNP": null,
+                    "CollectionFeesPendingBNP": null,
+                    "RecoveryFeesPendingBNP": 0.0,
+                    "InsuranceFeesPendingBNP": 0.0,
+                    "ChargeOffBalance": 0.0,
+                    "ChargeOffPrincipal": 0.0,
+                    "ChargeOffTransactionFeesBNP": 0.0,
+                    "ChargeOffAnnuaFeesBNP": 0.0,
+                    "ChargeOffLateFeesBNP": 0.0,
+                    "ChargeOffOverlimitFeesBNP": 0.0,
+                    "ChargeOffInsufficientFundsFeesBNP": 0.0,
+                    "ChargeOffCollectionFeesBNP": 0.0,
+                    "ChargeOffInterestBilledBNP": 0.0,
+                    "ChargeOffInsuranceBilledBNP": 0.0,
+                    "ChargeOffRecoveryFeesBNP": 0.0,
+                    "PortfolioID": null,
+                    "InterestRate1": 0.0,
+                    "InterestRate2": 0.0,
+                    "InterestRate3": 0.0,
+                    "InterestRate4": 0.0,
+                    "PromoStartDate": null,
+                    "PromoEndDate": null,
+                    "PromoTransactionStartDate": null,
+                    "PromoTransactionEndDate": null,
+                    "PromoPlanStatus": 0,
+                    "PromoRateDuration": 0
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=76&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4"
+    }
+}

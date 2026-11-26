@@ -1,0 +1,923 @@
+{
+    "metadata": {
+        "name": "ThirdPartyFraudDetection",
+        "http_method": "POST",
+        "endpoint": "/api/WebHookNotification/AlertNotification/ThirdPartyFraudDetection",
+        "description": "This webhook is triggered when third party fraud detection."
+    },
+    "request_fields": [
+        {
+            "name": "UpdateCallList",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "InfoAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "Tab",
+            "type": "string",
+            "required": null,
+            "description": "Indicates tab in system under which this webhook is available Possible value: Status, Period, Monetary, Security and Cards Allowable Values: 40"
+        },
+        {
+            "name": "Category",
+            "type": "string",
+            "required": null,
+            "description": "Indicates category of alert triggered Allowable Values: 40"
+        },
+        {
+            "name": "SubCategory",
+            "type": "string",
+            "required": null,
+            "description": "Indicates subcategory of Category of alert triggered Allowable Values: 40"
+        },
+        {
+            "name": "CaseID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique ID assigned to each Dispute case\nValid Values:0-9\nFormat:XXXXXXX\nExample:9856198"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": null,
+            "description": "First name of the cardholder associated with the transaction being disputed. Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": null,
+            "description": "Last Name of the cardholder associated with the transaction being disputed. Allowable Values: 50"
+        },
+        {
+            "name": "Status",
+            "type": "string",
+            "required": null,
+            "description": "Current Status of card Allowable Values: 100"
+        },
+        {
+            "name": "CardExpiryMonthAndYear",
+            "type": "string",
+            "required": null,
+            "description": "Month and Year details when Card will expire Allowable Values: 30"
+        },
+        {
+            "name": "Xmonths",
+            "type": "string",
+            "required": null,
+            "description": "No activity was performed on this card for X number of months, which triggered this webhook Allowable Values: 20"
+        },
+        {
+            "name": "AvailableBalance",
+            "type": "decimal",
+            "required": null,
+            "description": "Available Balance to make new transactions."
+        },
+        {
+            "name": "StatementMonth",
+            "type": "string",
+            "required": null,
+            "description": "Denote month for which statement is generated \nValid values: 1 to 12 Allowable Values: 20"
+        },
+        {
+            "name": "XAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Amount Due on the account which was to be paid before payment due date"
+        },
+        {
+            "name": "TransactionCurrencyCode",
+            "type": "string",
+            "required": null,
+            "description": "Currency code in which transaction was performed   \nExample: USD Allowable Values: 20"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Total amount for which transaction occurred"
+        },
+        {
+            "name": "PrimaryCurrencyCode",
+            "type": "string",
+            "required": null,
+            "description": "Primary currency defined for the client during setup. Allowable Values: 20"
+        },
+        {
+            "name": "LoyaltyPointsExpirationDate",
+            "type": "datetime",
+            "required": null,
+            "description": "The expiration date of the loyalty points."
+        },
+        {
+            "name": "LoyaltyPoints",
+            "type": "integer",
+            "required": null,
+            "description": "The total number of loyalty points accumulated by the user."
+        },
+        {
+            "name": "PaymentDueDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Due date as to by when payment needs to be made to avoid late fees\nValid Values: 0-9\nFormat: mmddyyyy\nExample: 02012020"
+        },
+        {
+            "name": "CardnumLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Last 4 digits of card number associated with the transaction being disputed. Allowable Values: 4"
+        },
+        {
+            "name": "LifeCycleID",
+            "type": "string",
+            "required": null,
+            "description": "Unique identifier to identify transaction across multiple phases like pre-auth, reversal, completion Allowable Values: 8"
+        },
+        {
+            "name": "AuthTranID",
+            "type": "string",
+            "required": null,
+            "description": "A unique identifier value for authorization transaction Allowable Values: 8"
+        },
+        {
+            "name": "POSCardPresenceIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Indicates if Card was present for the transaction or not.\nValid Value:0 - Not Present,1 - Present,9 - Token Transaction Allowable Values: 1"
+        },
+        {
+            "name": "CardAcceptorNameLocation",
+            "type": "string",
+            "required": null,
+            "description": "Name and Location of Merchant where transaction occurred Allowable Values: 40"
+        },
+        {
+            "name": "ResponseCode",
+            "type": "string",
+            "required": null,
+            "description": "Indicates transaction response status. 00 for Approved otherwise declined Allowable Values: 5"
+        },
+        {
+            "name": "AmountCurrencyConversionAssessment",
+            "type": "string",
+            "required": null,
+            "description": "The details of the amount involved in a currency conversion."
+        },
+        {
+            "name": "CrossBorderIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Indicates if the transaction occurred was international or not \nValid Value: Y/N Allowable Values: 2"
+        },
+        {
+            "name": "LocalTransactionDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Local date and time of transaction\n(FORMAT: MMDDYYYYhhnnss)"
+        },
+        {
+            "name": "InterchangeFee",
+            "type": "decimal",
+            "required": null,
+            "description": "For processing a credit or debit card payment."
+        },
+        {
+            "name": "InFavorOf",
+            "type": "string",
+            "required": null,
+            "description": "Indicates party in favor of which dispute was reversed Allowable Values: 50"
+        },
+        {
+            "name": "ReasonCode",
+            "type": "string",
+            "required": null,
+            "description": "Dispute reason code that is sent to/from Mastercard\nValid Value: 0 - Merchandise Not Ordered,1 - Merchandise Not Received - To Customer ,2 - Merchandise Not Received - From Customer,3 - Sent Payment Not Applied,4 - Product not as described,5 - Defective Merchandise ,6 - Billing Error,7 - Duplicate Processing ,8 - Clarification ,9 -Other ,10 -Fraud  ,11 -Authorization  ,12 -Processing Errors ,13 -Cardholder Disputes Allowable Values: 5"
+        },
+        {
+            "name": "ReasonDescription",
+            "type": "string",
+            "required": null,
+            "description": "Dispute reason description that is sent to/from Network\nValid Value: 0 - Merchandise Not Ordered,1 - Merchandise Not Received - To Customer ,2 - Merchandise Not Received - From Customer,3 - Sent Payment Not Applied,4 - Product not as described,5 - Defective Merchandise ,6 - Billing Error,7 - Duplicate Processing ,8 - Clarification ,9 -Other ,10 -Fraud  ,11 -Authorization  ,12 -Processing Errors ,13 -Cardholder Disputes Allowable Values: 60"
+        },
+        {
+            "name": "PaymentScheduleType",
+            "type": "string",
+            "required": null,
+            "description": "Indicates type of payment for payment schedule which triggered payment \nValid values: Statement Balance or Minimum Due or Fixed Amount or Current Balance Allowable Values: 20"
+        },
+        {
+            "name": "PaymentScheduleDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Date when payment schedule was Added(FORMAT: YYYYMMDD)"
+        },
+        {
+            "name": "OldCreditLimit",
+            "type": "decimal",
+            "required": null,
+            "description": "Previous Credit Limit on account."
+        },
+        {
+            "name": "NewCreditLimit",
+            "type": "decimal",
+            "required": null,
+            "description": "New Credit Limit on account."
+        },
+        {
+            "name": "AvailableOTB",
+            "type": "decimal",
+            "required": null,
+            "description": "Amount available for further purchases on card"
+        },
+        {
+            "name": "BankName",
+            "type": "string",
+            "required": null,
+            "description": "Name of bank whose account was used to create payment schedule Allowable Values: 70"
+        },
+        {
+            "name": "ScheduleID",
+            "type": "string",
+            "required": null,
+            "description": "Unique identifier assigned by the system for the added payment schedule Allowable Values: 10"
+        },
+        {
+            "name": "PaymentTransactionID",
+            "type": "string",
+            "required": null,
+            "description": "Unique identifier for Transaction ID of Payment made - Reversed Payment or Original ? Allowable Values: 50"
+        },
+        {
+            "name": "PaymentScheduleFrequency",
+            "type": "string",
+            "required": null,
+            "description": "Indicates Frequency with which paymentschedule was added \nPossible values: Monthly Specific Day, Payment Due Date, One Time, Weekly Allowable Values: 30"
+        },
+        {
+            "name": "AuthStatus",
+            "type": "string",
+            "required": null,
+            "description": "Indicates whether the transaction is authorized, declined, or in another state."
+        },
+        {
+            "name": "CheckNumber",
+            "type": "string",
+            "required": null,
+            "description": "The check number associated with the transaction."
+        },
+        {
+            "name": "BaseCommerceErrorMessages",
+            "type": "string",
+            "required": null,
+            "description": "Contains details of any issues or errors encountered during the processing of the transaction."
+        },
+        {
+            "name": "OldAdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Previous Admin Number associated with card."
+        },
+        {
+            "name": "BankAccountLast4Digit",
+            "type": "string",
+            "required": null,
+            "description": "Last 4 digits of bank account number involved in this Transaction Allowable Values: 4"
+        },
+        {
+            "name": "AccountGraceFlag",
+            "type": "string",
+            "required": null,
+            "description": "This flag shows if the account holder is temporarily exempt from penalties or restrictions."
+        },
+        {
+            "name": "OverdueNoSpend",
+            "type": "string",
+            "required": null,
+            "description": "Indicates whether the account is restricted from spending due to overdue payments."
+        },
+        {
+            "name": "GraceFlagChangeDate",
+            "type": "string",
+            "required": null,
+            "description": "The date when the grace period flag was last updated or changed."
+        },
+        {
+            "name": "PaymentReferenceId",
+            "type": "string",
+            "required": null,
+            "description": "Unique identifier for Payment Transaction Allowable Values: 8"
+        },
+        {
+            "name": "OTBReleaseAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Amount released which impacts Open-To-Buy ability of account"
+        },
+        {
+            "name": "HoldOTBReleaseDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Date, when Open-To-Buy payment held, is to be released"
+        },
+        {
+            "name": "ReleaseStatus",
+            "type": "string",
+            "required": null,
+            "description": "Indicates if Payment hold release is manual or auto-release Allowable Values: 20"
+        },
+        {
+            "name": "BankMethodName",
+            "type": "string",
+            "required": null,
+            "description": "Unique Identifier for the bank account in CoreCard system Allowable Values: 25"
+        },
+        {
+            "name": "CancellationReason",
+            "type": "string",
+            "required": null,
+            "description": "String 'Active' will be mentioned in this field Allowable Values: 100"
+        },
+        {
+            "name": "UnpostedInterestOwed",
+            "type": "string",
+            "required": null,
+            "description": "The amount of interest that has been accrued but not yet posted to the account."
+        },
+        {
+            "name": "TimeStamp",
+            "type": "string",
+            "required": null,
+            "description": "The date and time at which an event or transaction occurred, formatted as a timestamp."
+        },
+        {
+            "name": "TransactionUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Unique identifier created during pre-auth to identify transaction across multiple phases like pre-auth, reversal, completion"
+        },
+        {
+            "name": "ReferenceUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "A universally unique identifier used as a reference for the transaction or entity."
+        },
+        {
+            "name": "CurrentBalance",
+            "type": "decimal",
+            "required": null,
+            "description": "Updated Current Balance of Account"
+        },
+        {
+            "name": "RevTxnUUID",
+            "type": "string",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "NextSchedulePaymentdate",
+            "type": "string",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "AccountClosedReason",
+            "type": "string",
+            "required": null,
+            "description": "Reason provided for Card closure Allowable Values: 70"
+        },
+        {
+            "name": "BTStatusCode",
+            "type": "string",
+            "required": null,
+            "description": "Status Code for Balance Transfer process\nValid values: 0, null Allowable Values: 19"
+        },
+        {
+            "name": "PayeeAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of Payee Account\nValid Values:0-9\nFormat:XXXXXXXXXX\nExample:7314145404 Allowable Values: 19"
+        },
+        {
+            "name": "PayeeAccountType",
+            "type": "string",
+            "required": null,
+            "description": "Account Type of Payee account Allowable Values: 10"
+        },
+        {
+            "name": "PaymentProcessDate",
+            "type": "string",
+            "required": null,
+            "description": "This is the date when the BillpaymentSource(IPAY) initiated the payment to the subscriber system.\nFormat: MM/dd/yyyy HH:mm:ss\nExample:01/15/2020 10:05:23"
+        },
+        {
+            "name": "ObjectUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "RequestedBalanceTransferAmount",
+            "type": "string",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "BTStatusMessage",
+            "type": "string",
+            "required": null,
+            "description": "Status message for Balance Transfer Allowable Values: 100"
+        },
+        {
+            "name": "DateOfCancellation",
+            "type": "datetime",
+            "required": null,
+            "description": "Date when initiated Balance Transfer process is reversed or canceled \nFormat: - dd/mm/yyyy hh:mm:ss"
+        },
+        {
+            "name": "StatementID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique identifier for Statement\nValid Values:0-9\nFormat: XX"
+        },
+        {
+            "name": "StatementDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Date when statement was generated\nFormat: YYYYMMDDHHMMSS"
+        },
+        {
+            "name": "Addressline1",
+            "type": "string",
+            "required": null,
+            "description": "Debtor Address Line 1.\nValid Values:A-Z, 0-9\nFormat:\nExample:123 HWY\nCondition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. \nCondition:"
+        },
+        {
+            "name": "Addressline2",
+            "type": "string",
+            "required": null,
+            "description": "Debtor Address Line 2.\n Valid Values: A-Z, 0-9\n Format:\n Example:Park Avenue\n Condition:This is mandatory only when HoldEmbossing tag value is 0(NO) and Country selected as Non-US.\nCondition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor."
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": null,
+            "description": "Debtor City\nValid Values:\nFormat:\nExample:Los Angeles\nCondition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. \nCondition: CBR"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": null,
+            "description": "A State of the card holder address.\nCondition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor."
+        },
+        {
+            "name": "Zipcode",
+            "type": "string",
+            "required": null,
+            "description": "Postal code of the card holder's address.\nCondition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor."
+        },
+        {
+            "name": "PrimaryEmail",
+            "type": "string",
+            "required": null,
+            "description": "Email ID of Primary cardholder. This field is available only when AlertRecipientType is 1 or 3 or 5 Allowable Values: 50"
+        },
+        {
+            "name": "SecondaryCardUserFirstName",
+            "type": "string",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "SecondaryCardUserLastName",
+            "type": "string",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "CIPFailReason",
+            "type": "string",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "CosignerEmailID",
+            "type": "string",
+            "required": null,
+            "description": "Email ID of Cosigner on account. This field is available only when AlertRecipientType is 2 or 3 Allowable Values: 50"
+        },
+        {
+            "name": "AuthUserEmailID",
+            "type": "string",
+            "required": null,
+            "description": "Email ID of Secondary cardholder. This field is available only when AlertRecipientType is 4 or 5 Allowable Values: 50"
+        },
+        {
+            "name": "TranIDForDisputedTransaction",
+            "type": "int64",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "GracePaymentDueDate",
+            "type": "datetime",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "PaymentEffectiveDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Indicates actual payment schedule date considering the bank holidays and weekends.\nFormat: MM/dd/yyyy HH:mm:mm \nExample: 01/01/2020 11:05:05"
+        },
+        {
+            "name": "MinimumPaymentDue",
+            "type": "datetime",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "StatementBalance",
+            "type": "decimal",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "FraudLabel",
+            "type": "string",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "TransactionID",
+            "type": "int64",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "NotAppliedDisputeStage",
+            "type": "string",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "NotAppliedDisputeMatchedFlag",
+            "type": "string",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "CC Action",
+            "type": "string",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "Third Party Fraud Response",
+            "type": "",
+            "required": null,
+            "description": "Array Data element to hold Third Party Fraud Response data."
+        },
+        {
+            "name": "Lifecycle_id",
+            "type": "string",
+            "required": null,
+            "description": "Unique identifier to identify transaction across multiple phases like pre-auth, reversal, completion"
+        },
+        {
+            "name": "Event_external_id",
+            "type": "string",
+            "required": null,
+            "description": "The unique identifier, on the client's platform, of this event. This field has the same value as the one on the request and it will not be present on the response if it's not present on the request."
+        },
+        {
+            "name": "Score",
+            "type": "integer",
+            "required": null,
+            "description": "The risk engine score, which measures the probability of a transfer being legitimate or not. Possible values range from 0 to 1000, where 1000 represents the highest probability of being illegitimate."
+        },
+        {
+            "name": "Decision",
+            "type": "string",
+            "required": null,
+            "description": "Feedzai's suggestion of whether to approve or decline the transfer based on the decision outcome of the Pulse workflow."
+        },
+        {
+            "name": "Alert",
+            "type": "boolean",
+            "required": null,
+            "description": "Identifies whether or not the request has generated an alert in Feedzai Case Manager."
+        },
+        {
+            "name": "First Fraud Rule and Action",
+            "type": "string",
+            "required": null,
+            "description": "Actions that are activated when the first rule is triggered."
+        },
+        {
+            "name": "Other Fraud Rules and Actions",
+            "type": "string",
+            "required": null,
+            "description": "Actions that are activated by every other triggering rule except the first."
+        },
+        {
+            "name": "Fraud SCA Required",
+            "type": "string",
+            "required": null,
+            "description": "Identifies whether the strong customer authentication (SCA) is needed or not."
+        },
+        {
+            "name": "Message Type",
+            "type": "string",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number associated with the event. The Account Number is consistently maintained at the Account level (one-to-one Mapping).\nValid Values: 0-9\nFormat: XXXXXXXXXXXXXXXX\nExample: 8000000000000037 Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Admin Number associated with the event. Admin Number is always associated with a Card (Can be Primary or Secondary)\nValid Values:0-9\nFormat:XXXXX\nExample:12345"
+        },
+        {
+            "name": "RequestID",
+            "type": "string",
+            "required": null,
+            "description": "Primary Key for API\nFormat:XXXXXXXXXXXXXXXX\nExample:12345 Allowable Values: 19"
+        },
+        {
+            "name": "Mode",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the type of activity performed which triggered this webhook Possible Value: Alert, Insert, Transaction Allowable Values: 10"
+        },
+        {
+            "name": "AccountUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID of Account\nFormat:XXXXXXXXXX\nExample:7408f969-6e0c-4a3f-8fba-3316f6f77db6 Allowable Values: 64"
+        },
+        {
+            "name": "CardUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID of Card\nFormat:XXXXXXXXXX\nExample:fbe61b75-6751-4add-9c44-7832ccf399e9 Allowable Values: 64"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": null,
+            "description": "Corecard's Client ID Allowable Values: 64"
+        },
+        {
+            "name": "RequestUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID Request\nExample: 8638-b87b-48d0-8e13-0ebb5643577 Allowable Values: 64"
+        },
+        {
+            "name": "User",
+            "type": "string",
+            "required": null,
+            "description": "User ID of the user who triggered the webhook event. \nValid Values: CoreCredit user, API user, System Allowable Values: 40"
+        },
+        {
+            "name": "DateandTime",
+            "type": "DateTime",
+            "required": null,
+            "description": "Timestamp when notification was sent\nYYYY-MM-DD hh:mm:ss:sss\n(24-hour Format)"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the source from where the activity was performed by user or triggered by system.\nValid Values: CoreCredit, External API, Self Service, CoreCollect, IVR, System, CoreIssue Allowable Values: 20"
+        },
+        {
+            "name": "ServiceName",
+            "type": "string",
+            "required": null,
+            "description": "Name of API service (webhook) triggered Allowable Values: 40"
+        },
+        {
+            "name": "AlertType",
+            "type": "string",
+            "required": null,
+            "description": "Indicates type of Alert \nPossible values:\nReal-Time or Re Try(due to time-out) Allowable Values: 15"
+        },
+        {
+            "name": "TransactionSource",
+            "type": "string",
+            "required": null,
+            "description": "Transaction Source of transaction, IPM, Retail Manual Auth-Installment, Retail Manual Auth-Revolver etc. Allowable Values: 40"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by CoreCard for Institution"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by CoreCard for Product"
+        },
+        {
+            "name": "AlertRecipientType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of recipient to which alert needs to be sent\nValid Values:1=Primary Applicant,2=Cosigner,3=Applicant and Cosigner,4=Auth User,5=Applicant and Auth User"
+        },
+        {
+            "name": "MonetaryLog",
+            "type": "",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "RewardsRedemption",
+            "type": "array",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "Reward",
+            "type": "array",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "RewardInfo",
+            "type": "array",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "InfoCollectionAlert",
+            "type": "array",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "InfoAgeOffAlert",
+            "type": "array",
+            "required": null,
+            "description": "Group of fields passed in webhook."
+        }
+    ],
+    "response_fields": null,
+    "sample_request": {
+        "UpdateCallList": null,
+        "InfoAlert": {
+            "Tab": "Monetary",
+            "Category": "Third-Party Fraud Detection",
+            "SubCategory": null,
+            "CaseID": 15406,
+            "FirstName": "John",
+            "LastName": "Doe",
+            "Status": null,
+            "CardExpiryMonthAndYear": null,
+            "Xmonths": null,
+            "AvailableBalance": null,
+            "StatementMonth": null,
+            "XAmount": null,
+            "TransactionCurrencyCode": "USD",
+            "TransactionAmount": 10.21,
+            "PrimaryCurrencyCode": "USD",
+            "LoyaltyPointsExpirationDate": null,
+            "LoyaltyPoints": null,
+            "PaymentDueDate": null,
+            "CardnumLast4Digits": "9198",
+            "LifeCycleID": "29462226",
+            "AuthTranID": "29462226",
+            "POSCardPresenceIndicator": "1",
+            "CardAcceptorNameLocation": "Merchant name Merchant city USA",
+            "ResponseCode": "00",
+            "AmountCurrencyConversionAssessment": null,
+            "CrossBorderIndicator": "N",
+            "LocalTransactionDate": "",
+            "InterchangeFee": null,
+            "InFavorOf": null,
+            "ReasonCode": null,
+            "ReasonDescription": null,
+            "PaymentScheduleType": null,
+            "PaymentScheduleDate": null,
+            "OldCreditLimit": null,
+            "NewCreditLimit": null,
+            "AvailableOTB": 7436.0,
+            "BankName": null,
+            "ScheduleID": null,
+            "PaymentTransactionID": null,
+            "PaymentScheduleFrequency": null,
+            "AuthStatus": null,
+            "CheckNumber": null,
+            "BaseCommerceErrorMessages": null,
+            "OldAdminNumber": null,
+            "BankAccountLast4Digit": null,
+            "AccountGraceFlag": null,
+            "OverdueNoSpend": null,
+            "GraceFlagChangeDate": null,
+            "PaymentReferenceId": null,
+            "OTBReleaseAmount": null,
+            "HoldOTBReleaseDate": null,
+            "ReleaseStatus": null,
+            "BankMethodName": null,
+            "CancellationReason": null,
+            "UnpostedInterestOwed": null,
+            "TimeStamp": null,
+            "TransactionUniversalUniqueID": null,
+            "ReferenceUniversalUniqueID": null,
+            "CurrentBalance": 563.0,
+            "RevTxnUUID": null,
+            "NextSchedulePaymentdate": null,
+            "AccountClosedReason": null,
+            "BTStatusCode": null,
+            "PayeeAccountNumber": null,
+            "PayeeAccountType": null,
+            "PaymentProcessDate": null,
+            "ObjectUniversalUniqueID": null,
+            "RequestedBalanceTransferAmount": null,
+            "BTStatusMessage": null,
+            "DateOfCancellation": null,
+            "StatementID": null,
+            "StatementDate": null,
+            "Addressline1": null,
+            "Addressline2": null,
+            "City": null,
+            "State": null,
+            "Zipcode": null,
+            "PrimaryEmail": "[email protected]",
+            "SecondaryCardUserFirstName": null,
+            "SecondaryCardUserLastName": null,
+            "CIPFailReason": null,
+            "CosignerEmailID": null,
+            "AuthUserEmailID": null,
+            "TranIDForDisputedTransaction": null,
+            "CC Action": "None",
+            "Third Party Fraud Response": {
+                "Lifecycle_id": "29462226",
+                "Event_external_id": "29462226",
+                "Score": 17,
+                "Decision": "decline",
+                "First Fraud Rule and Action": "Cards-PN1",
+                "Other Fraud Rules and Actions": null,
+                "Alert": true,
+                "Fraud SCA Required": null
+            },
+            "Message Type": "Information",
+            "GracePaymentDueDate": null,
+            "PaymentEffectiveDate": null,
+            "MinimumPaymentDue": null,
+            "StatementBalance": null,
+            "FraudLabel": null,
+            "TransactionID": null,
+            "NotAppliedDisputeStage": null,
+            "NotAppliedDisputeMatchedFlag": null
+        },
+        "AccountNumber": "9000000500679197",
+        "AdminNumber": 1361088,
+        "RequestID": "1042987139",
+        "Mode": "ALERT",
+        "AccountUniversalUniqueID": "a12b7279-4e90-4b38-8af5-e7da41ae59d0",
+        "CardUniversalUniqueID": "75c14f8d-c692-4e6c-9a94-437edbe0caa8",
+        "ClientId": null,
+        "RequestUniversalUniqueID": "d02e2edd-adda-49b2-a2da-0299642011d8",
+        "MonetaryLog": null,
+        "RewardsRedemption": null,
+        "Reward": null,
+        "RewardInfo": null,
+        "InfoCollectionAlert": null,
+        "InfoAgeOffAlert": null,
+        "User": "System",
+        "DateandTime": "2021-08-16 00:11:01",
+        "Source": "CoreIssue",
+        "ServiceName": null,
+        "AlertType": "RealTime",
+        "TransactionSource": null,
+        "InstitutionId": 5949,
+        "ProductId": 5907,
+        "AlertRecipientType": 1
+    },
+    "sample_response": null,
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "webhook",
+        "section": "webhooks/credit",
+        "category": "Alert Notification",
+        "category_id": "1",
+        "document_id": "57",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/WEBHookPageApiDetail?id=57&type=ApiDetail&menuid=1&regionId=1"
+    }
+}

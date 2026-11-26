@@ -1,0 +1,1255 @@
+{
+    "metadata": {
+        "name": "GetCardholderTransactionHistory",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Transactions/GetCHTransactionHistory",
+        "description": "This API is used to get Transaction History based on history type."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's Account Number. Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Condition:At least one of AccountNumber/AccountID is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": false,
+            "description": "Admin Number. Valid Values:0-9 Example:7485122"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Valid Values:0-9 Example:7485122 Condition:At least one of AccountNumber/AccountID is required."
+        },
+        {
+            "name": "FromDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Starting date of Transaction search. Valid Values:01/15/2020 Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "ToDate",
+            "type": "datetime",
+            "required": false,
+            "description": "End date of Transaction search. Valid Values:01/15/2020 Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "TransactionType",
+            "type": "string",
+            "required": false,
+            "description": "Type of Transaction. Valid Values:0 = All,1 = ATM,3 = Fees,4 = Purchase,7 = Transfers,8 = Disputed,9 = Payments,10 = Payment Reversals Example:Fees/Purchase/ATM. Allowable Values: 2"
+        },
+        {
+            "name": "TransactionID",
+            "type": "int64",
+            "required": false,
+            "description": "Transaction ID of a Transaction. Example:8574152."
+        },
+        {
+            "name": "TransactionHistoryType",
+            "type": "integer",
+            "required": true,
+            "description": "Type of Transaction's History. Valid Values:1,2,3,4,5 Example:0=All,1 = Settled, 2 = OutStanding , 3 = Expired, 4 = Warehoused , 5 = Unbilled"
+        },
+        {
+            "name": "Merchant",
+            "type": "string",
+            "required": false,
+            "description": "Name of the Merchant. Valid Values:a-z,0-9 Example:Wallmart Allowable Values: 50"
+        },
+        {
+            "name": "MinTransactionAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Minimum Transaction Amount on the Account. Valid Values:0-9 Example:200.00"
+        },
+        {
+            "name": "MaxTransactionAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Maximum Transaction Amount on the Account. Valid Values:0-9 Example:200.00"
+        },
+        {
+            "name": "BatchSize",
+            "type": "integer",
+            "required": false,
+            "description": "Number of Transaction which can be view in one Batch. BatchSize can have value 1-100,On the basis of PageIndex and BatchSize paging will be done. BatchSize can not exceed 100. Default Batch Size should be 100. Valid Values:0-100 Example:10,50."
+        },
+        {
+            "name": "PageIndex",
+            "type": "integer",
+            "required": false,
+            "description": "Number of page. PageIndex can not exceed 999. Valid Values:0-999 Example:1."
+        },
+        {
+            "name": "IdentifierToken",
+            "type": "string",
+            "required": null,
+            "description": "A generated token that is not expired can be used as an input field to access API. If we are passing this field in input, user should not pass any other account identifier. Condition:At least one account identifier is required. Allowable Values: 800"
+        },
+        {
+            "name": "AMEXTID",
+            "type": "string",
+            "required": false,
+            "description": "A unique number given by the Network to identify a Cardmember Transaction throughout its life cycle. Valid Values: 0-9 Format: 999999999999999 Example: 253652365985632 Allowable Values: 15"
+        },
+        {
+            "name": "TransactionLifeCycleUniqueID",
+            "type": "string",
+            "required": false,
+            "description": "Lifecycle Transaction ID of a Transaction.This is the unique id for all types of transactions including dispute, clearing, reversal etc. Valid Values: 0 - 9,a-z Format:  0000xxxx Example: ABC8574152 Allowable Values: 25"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "TotalRecordCount",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Total No of records.",
+                    "children": []
+                },
+                {
+                    "name": "TransactionHistoryList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Transaction History List.",
+                    "children": [
+                        {
+                            "name": "ReturnReasonCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Return Reason Code For ACH payment Reversal Transactions. Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "CardAcceptorNameAndLocation",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card Acceptor Name and Location. Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantNameAndLocation",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Name And Location. Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "TimeZone",
+                            "type": "string",
+                            "required": null,
+                            "description": "Time Zone. Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Transaction ID of a Transaction. Example:8574152.",
+                            "children": []
+                        },
+                        {
+                            "name": "AuthTranID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Authorization Transaction ID, to identify we need to decline it or approve it.",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date and Time of Transaction. Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionPostTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Time of Transaction Posted. Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAmountCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Currency code of Transaction Amount. Example:840 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Transaction. Example:500.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card Holder's Account Number. Example:1236547896325874 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "PostingFlag",
+                            "type": "string",
+                            "required": null,
+                            "description": "It tells whether transaction Posted or Rejected. There are 2 values for posting flag 1 means posted and 2 means rejected. Example:1,2 Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "PostingReference",
+                            "type": "string",
+                            "required": null,
+                            "description": "Posting Reference. Example:Transaction Posted Successfully. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionSource",
+                            "type": "string",
+                            "required": null,
+                            "description": "Source of the Transaction. Example:ACH,PULSE,MasterCard,MDS Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of transaction code. Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Current Balance of Account. Example:2000.00",
+                            "children": []
+                        },
+                        {
+                            "name": "ExternalResponseCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "External Response Code on ADC. Allowable Values: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "IsDeclined",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Represents Declined type of transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount hold by Outstanding Authorization",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionHistoryType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of Transaction's History. Example:Settled,OutStanding Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "ReverseFlag",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Reverse Transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "ResubmitChargebackFlag",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Resubmit Chargeback Flag.",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNumberLast4Digit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Last 4 digits of Card Number. Allowable Values: 4",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductBIN",
+                            "type": "string",
+                            "required": null,
+                            "description": "Product BIN. Allowable Values: 6",
+                            "children": []
+                        },
+                        {
+                            "name": "EffectiveDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Effective Date of Trnsaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "AdminNumber",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Admin Number",
+                            "children": []
+                        },
+                        {
+                            "name": "ServiceResponsecode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service response code of the Transaction. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ServicepostingReference",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service posting Reference of the Transaction. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "InternalTranCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Internal Transaction code use to generate the Transaction fee. Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "InternalTranCodeDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Internal Transaction code description. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "RaiseDisputeFlag",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Use to Raise Dispute on a Transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of Disputed Transaction. Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeStatusDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of Disputed Transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowOutstandingClearing",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Clear outstanding authorization.",
+                            "children": []
+                        },
+                        {
+                            "name": "CardType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of the card as Primary or Secondary. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AuthCategory",
+                            "type": "string",
+                            "required": null,
+                            "description": "Manual Authorization Category. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of Merchant. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of Merchant. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantCategoryCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of Merchant. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PlanMaster",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Credit Plan Master.",
+                            "children": []
+                        },
+                        {
+                            "name": "InvoiceNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Invoice Number. Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "ChangePlanFlag",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Flag for change plan on transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "ADCInternalResponseCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Response code set on ADC. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ApprovalCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Approval Code of a Transaction. Allowable Values: 6",
+                            "children": []
+                        },
+                        {
+                            "name": "AVSDataindicator",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Address Verification System information on the Transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "SentResponseCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "SentResponseCode. Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "BatchNumber",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Transaction Batch Number.",
+                            "children": []
+                        },
+                        {
+                            "name": "TransmissionDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Local Transaction Time.",
+                            "children": []
+                        },
+                        {
+                            "name": "IsDisputedTransaction",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Disputed type of Transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeAllowedViaSS",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "DisputeAllowedViaSS.",
+                            "children": []
+                        },
+                        {
+                            "name": "IsFees",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Fees type of transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "IsCharges",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Charges type of transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "IsCredit",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Credit type of transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "IsDebit",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Debit type of transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "TokenWalletID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Wallet which requested the token. Allowable Values: 4",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Disputed Amount.",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentTranId",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Payment Tran ID.",
+                            "children": []
+                        },
+                        {
+                            "name": "TokenTransaction",
+                            "type": "string",
+                            "required": null,
+                            "description": "Token transaction. Allowable Values: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "TokenRequesterID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Token transaction requester id. Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "RewardPoints",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Reward calculated on Transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "AuthRewardPoints",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Auth Reward Points.",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentReferenceID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Reference ID of the Payment. Allowable Values: 36",
+                            "children": []
+                        },
+                        {
+                            "name": "BankNameAccount",
+                            "type": "string",
+                            "required": null,
+                            "description": "Bank name and Account. Allowable Values: 80",
+                            "children": []
+                        },
+                        {
+                            "name": "SendChargebackFlag",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Flag for Chargeback.",
+                            "children": []
+                        },
+                        {
+                            "name": "ResolveDispute",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Flag is use to Resolve disputed transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "CancelDispute",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Flag is use to Cancel Dispute transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeReason",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is use to DisputRegon.",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeOTBReleaseFlag",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Release OTB for Disputed Amount.",
+                            "children": []
+                        },
+                        {
+                            "name": "VROLCaseNumber",
+                            "type": "int64",
+                            "required": null,
+                            "description": "CaseNumber stamped to a Dispute case by VROL system. Valid Values: 0-9 Example: 12121",
+                            "children": []
+                        },
+                        {
+                            "name": "CardPresenceIndicator",
+                            "type": "integer",
+                            "required": null,
+                            "description": "It shows if the Card is present at the time of transaction or not. Valid Values: 0-Card Not Present, 1-Card Present Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "PreAuthTimestamp",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date and Time when cardholder swipe the card to make transaction. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 10:11:01",
+                            "children": []
+                        },
+                        {
+                            "name": "LocalTransactionCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the local currency Code of the acquirer or source location of the transaction. It specifies the currency used in DE 4 (Amount, Transaction). Example:840-USD Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CardholderBillingCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Cardholder Billing currency code. Example:840-USD Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "SettlementCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Settlement Currency Code. Example:840-USD Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CardholderBillingAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Cardholder Billing Amount. Example:100.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionSourceAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Transaction Amount at Source. Example:100.00",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Status of the Hold Payment. Valid Values: 0 = On-Hold 1 = Released Automatically 2 = Released Manually 3 = Payment Reversed Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldReleaseDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Actual date and time when the payment hold is released. Format: MM/DD/YYYY HH:MM:SS Example:01/01/2021 12:00:01",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionLifeCycleUniqueID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "A unique ID for Transaction Lifecycle. Valid Values: 0-9 Example: 123456",
+                            "children": []
+                        },
+                        {
+                            "name": "AcquirerReferenceNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "ARN (Acquirer Reference Number) is a unique number that tags a credit card transaction when it goes from the merchenats bank (the acquiring bank) through the card scheme to the cardholder. Valid Values: 0-99",
+                            "children": []
+                        },
+                        {
+                            "name": "SchemeTransactionID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Scheme Transaction Id is a special set of numbers that defines each transaction",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantFraudScore",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Description: This Tag Determines the Fraud Score of the Merchant through which the Transaction Occurred. Valid Values: 0-9 Format: XXX Example: 60",
+                            "children": []
+                        },
+                        {
+                            "name": "STIPTransaction",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description: Whenever a Transaction decisioning is done by association STIP Service, for such Transactions, this Tag must return as “Yes” and if Transaction decisioning is done by issuer then this Tag must return as “No”. Valid Values: Yes and No Format: XXX Example: Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "AMEXTID",
+                            "type": "string",
+                            "required": null,
+                            "description": "A unique number given by the Network to identify a Cardmember Transaction throughout its life cycle. Valid Values: 0-9 Format: 999999999999999 Example: 253652365985632 Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "ECIUCAFIndicator",
+                            "type": "string",
+                            "required": null,
+                            "description": "This displays the Auth transaction type as per ISO Standard i.e., ECI/UCAF Valid Values: 05 - Secure electronic commerce transaction Format: ECI/UCAF Code with Description of code Example: 01 = Final Authorization",
+                            "children": []
+                        },
+                        {
+                            "name": "CardSequenceNumber",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag reflects the SequenceNumber of the Card.Example: 02 Valid Values: 0-9 Format: 99 Example: 02",
+                            "children": []
+                        },
+                        {
+                            "name": "IsSafeReported",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates if for Fraudulent disputed transaction safe is reported or not.Only applicable to MasterCard/AMEX disputed transaction with Fraud reason. Valid Values:  0=No, 1= Yes, 2= Not Applicable Example:  1 Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFraudStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Represent Transaction status either Fraudulent or Non-Fraudulent. Valid Values: 1 = Fraudulent and 0 = Not Fraudulent Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "ThirdPartyFraudAction",
+                            "type": "string",
+                            "required": null,
+                            "description": "Represent Feedzai Action recieved from Feedzai Example: Approve",
+                            "children": []
+                        },
+                        {
+                            "name": "ThirdPartyFraudScore",
+                            "type": "string",
+                            "required": null,
+                            "description": "Represent Feedzai Score recieved from Feedzai Example: 189",
+                            "children": []
+                        },
+                        {
+                            "name": "DateTimeLocalTransaction",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This tag should display the local transaction date and time received in the authorization request. Valid Values: 0-9 Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23",
+                            "children": []
+                        },
+                        {
+                            "name": "EnrichedMerchantName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of Merchant. Valid Values: 0-9,A-Z Example: Revolution 12 Store Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "EnrichedMerchantLogo",
+                            "type": "string",
+                            "required": null,
+                            "description": "Logo of Merchant.",
+                            "children": []
+                        },
+                        {
+                            "name": "EnrichedMerchantLocationLatitude",
+                            "type": "string",
+                            "required": null,
+                            "description": "The latitude coordinates of the merchant store location. This is enriched data coming from the Network. Valid Values: 0-9 Example: 37.7661 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "EnrichedMerchantLocationLongitude",
+                            "type": "string",
+                            "required": null,
+                            "description": "The longitude coordinates of merchant store location. This is enriched data coming from the Network. Valid Values: 0-9 Example: -122.3958 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "EnrichedMerchantStreetAddress",
+                            "type": "string",
+                            "required": null,
+                            "description": "Street Address of the merchant. This is enriched data coming from the Network. Valid Values: 0-9 and A-Z Example: 1814 Central Ave Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "EnrichedMerchantCity",
+                            "type": "string",
+                            "required": null,
+                            "description": "The city of the merchant store location. This is enriched data coming from the Network. Valid Values: A-Z Example: Albany Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "EnrichedMerchantPostalCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "The postal code of the merchant store location. This is enriched data coming from the Network. Valid Values: 0-9 Example: 12345 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "EnrichedMerchantCountry",
+                            "type": "string",
+                            "required": null,
+                            "description": "The country of the merchant store location. This is enriched data coming from the Network. Valid Values: A-Z Example: United States Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "EnrichedMerchantWebsite",
+                            "type": "string",
+                            "required": null,
+                            "description": "Website of the merchant store location. This is enriched data coming from the Network. Valid Values: 0-9, A-Z and period characters Example: www.abc.com Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstFraudRuleAndAction",
+                            "type": "string",
+                            "required": null,
+                            "description": "Feedzai Primary action Code and Rule Example: PSD2-Art-18",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherFraudRuleAndAction",
+                            "type": "string",
+                            "required": null,
+                            "description": "Feedzai Secondary action Code and Rule Example: txn as rnt of lim",
+                            "children": []
+                        },
+                        {
+                            "name": "SecondaryCardUsageLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The SecondaryCardUsageLimit is a predefined spending cap assigned to a specific card, typically used to restrict the card's spending to a certain limit. This tag will return value if the Product Type is Commercial Card Type and history is filtered for a Specific Card. Valid Values: 0-9 Example: 125.50",
+                            "children": []
+                        },
+                        {
+                            "name": "UtilizedCardLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The UtilizedCardLimit is the total amount of transactions made on a specific card. This feature is available for Commercial Card Type products when transactions are filtered by Card. For cards with limits that reset periodically, the UtilizedCardLimit will reset to zero at the start of each defined period. Valid Values: 0-9 Example: 125.50",
+                            "children": []
+                        },
+                        {
+                            "name": "FraudSystemActionCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Action code setup on the Product. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ThreeDSAuthResultsCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "3-D Secure Authentication Results Code (padded with a leading zero). Example: \"07\" Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "AuthenticationMethod",
+                            "type": "string",
+                            "required": null,
+                            "description": "Method used by Issuer ACS for authentication. Example: \"08\" for OOB with App login Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CavvKeyIndicator",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates which CAVV key was used (padded with leading zero). Example: \"01\" Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CavvValue",
+                            "type": "string",
+                            "required": null,
+                            "description": "3-digit code generated by ACS. Example: \"123\" Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "SeedValue",
+                            "type": "string",
+                            "required": null,
+                            "description": "4-digit value created by the ACS. Example: \"8354\" Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "AuthenticationAmount",
+                            "type": "string",
+                            "required": null,
+                            "description": "Amount from Authentication Request, converted to 5-byte value. Example: \"000123\" Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "AuthenticationCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "3-digit currency code from Authentication Request. Example: \"840\" (USD) Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "AuthenticationDateJulian",
+                            "type": "string",
+                            "required": null,
+                            "description": "Julian Day of authentication date (based on UTC/GMT, no year). Example: \"056\" for Feb 25 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CavvVersion3dsProtocolVersion",
+                            "type": "string",
+                            "required": null,
+                            "description": "Composite nibble of CAVV Version and 3DS Protocol Version. Example: \"75\" (Version 7 CAVV with EMV 3DS 2.2.x) Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "InformationalData",
+                            "type": "string",
+                            "required": null,
+                            "description": "Optional field: Merchant ID, IP address (in hex), or zero-filled. Example: \"0000000000\" or \"4D45524348414E54\" Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "AuthTransmissionDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date and Time when Auth was Transmitted. Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "AvailableBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "The available balance",
+                    "children": []
+                },
+                {
+                    "name": "CurrentBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "The current balance",
+                    "children": []
+                },
+                {
+                    "name": "LastTransactionDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "The last transaction date",
+                    "children": []
+                },
+                {
+                    "name": "LastCreditDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "The last credit date",
+                    "children": []
+                },
+                {
+                    "name": "LastCreditAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "The last credit amount",
+                    "children": []
+                },
+                {
+                    "name": "LastPaymentDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "The last payment date",
+                    "children": []
+                },
+                {
+                    "name": "LastPaymentAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "The last payment amt",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "9000000900000010",
+        "AdminNumber": null,
+        "AccountID": 87307,
+        "FromDate": null,
+        "ToDate": null,
+        "TransactionType": null,
+        "TransactionID": null,
+        "TransactionHistoryType": 1,
+        "Merchant": null,
+        "MinTransactionAmount": null,
+        "MaxTransactionAmount": null,
+        "BatchSize": 50,
+        "PageIndex": 0,
+        "IdentifierToken": null,
+        "AMEXTID": "253652365985632",
+        "TransactionLifeCycleUniqueID": "123372036855012417"
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "AvailableBalance": 0.0,
+            "CurrentBalance": 0.0,
+            "LastTransactionDate": null,
+            "LastCreditDate": null,
+            "LastCreditAmount": 0.0,
+            "LastPaymentDate": null,
+            "LastPaymentAmount": 0.0,
+            "TotalRecordCount": 1,
+            "TransactionHistoryList": [
+                {
+                    "ReturnReasonCode": "",
+                    "CardAcceptorNameAndLocation": "",
+                    "MerchantNameAndLocation": "Demo A",
+                    "TimeZone": "",
+                    "TransactionID": "117675465",
+                    "AuthTranID": null,
+                    "TransactionDateTime": "03/31/2016 00:00:00",
+                    "TransactionPostTime": "03/31/2016 00:00:00",
+                    "TransactionAmountCurrencyCode": "840",
+                    "TransactionAmount": -5.0,
+                    "AccountNumber": "9000000900000010",
+                    "PostingFlag": "",
+                    "PostingReference": "Transaction posted successfully",
+                    "TransactionSource": "Clearing",
+                    "TransactionDescription": "454304 = DISPUTE RELEASE - (NO INTEREST/CHG FEE)",
+                    "CurrentBalance": -679.79,
+                    "ExternalResponseCode": "",
+                    "IsDeclined": false,
+                    "HoldAmount": 0.0,
+                    "TransactionHistoryType": "Settled",
+                    "ReverseFlag": true,
+                    "ResubmitChargebackFlag": 0,
+                    "CardNumberLast4Digit": "6392",
+                    "ProductBIN": "525751",
+                    "EffectiveDate": null,
+                    "AdminNumber": 98385,
+                    "ServiceResponsecode": "",
+                    "ServicepostingReference": "",
+                    "InternalTranCode": "454304",
+                    "InternalTranCodeDesc": "DISPUTE RELEASE - (NO INTEREST/CHG FEE)",
+                    "RaiseDisputeFlag": false,
+                    "DisputeStatus": "",
+                    "DisputeStatusDesc": null,
+                    "AllowOutstandingClearing": false,
+                    "CardType": "Primary Card",
+                    "AuthCategory": "",
+                    "MerchantType": "",
+                    "MerchantName": null,
+                    "MerchantCategoryCode": null,
+                    "PlanMaster": 21701,
+                    "InvoiceNumber": "",
+                    "ChangePlanFlag": false,
+                    "ADCInternalResponseCode": "",
+                    "ApprovalCode": "",
+                    "AVSDataindicator": false,
+                    "SentResponseCode": "",
+                    "BatchNumber": 0,
+                    "TransmissionDateTime": "03/31/2016 00:00:00",
+                    "IsDisputedTransaction": false,
+                    "DisputeAllowedViaSS": false,
+                    "IsFees": false,
+                    "IsCharges": false,
+                    "IsCredit": true,
+                    "IsDebit": false,
+                    "TokenWalletID": "",
+                    "DisputeAmount": null,
+                    "PaymentTranId": null,
+                    "TokenTransaction": "",
+                    "TokenRequesterID": "",
+                    "RewardPoints": 0.0,
+                    "AuthRewardPoints": null,
+                    "PaymentReferenceID": "",
+                    "BankNameAccount": "",
+                    "SendChargebackFlag": false,
+                    "ResolveDispute": false,
+                    "CancelDispute": false,
+                    "DisputeReason": null,
+                    "DisputeOTBReleaseFlag": 0,
+                    "VROLCaseNumber": null,
+                    "CardPresenceIndicator": 1,
+                    "PreAuthTimestamp": null,
+                    "LocalTransactionCurrencyCode": "840",
+                    "CardholderBillingCurrencyCode": "840",
+                    "SettlementCurrencyCode": "840",
+                    "CardholderBillingAmount": 100.0,
+                    "TransactionSourceAmount": 100.0,
+                    "HoldStatus": null,
+                    "HoldReleaseDate": null,
+                    "TransactionLifeCycleUniqueID": null,
+                    "AcquirerReferenceNumber": null,
+                    "SchemeTransactionID": null,
+                    "MerchantFraudScore": null,
+                    "STIPTransaction": null,
+                    "AMEXTID": "253652365985632",
+                    "ECIUCAFIndicator": null,
+                    "CardSequenceNumber": 12,
+                    "IsSafeReported": null,
+                    "TransactionFraudStatus": null,
+                    "ThirdPartyFraudAction": null,
+                    "ThirdPartyFraudScore": null,
+                    "FraudSystemActionCode": null,
+                    "DateTimeLocalTransaction": null,
+                    "EnrichedMerchantName": null,
+                    "EnrichedMerchantLogo": null,
+                    "EnrichedMerchantWebsite": null,
+                    "FirstFraudRuleAndAction": null,
+                    "OtherFraudRuleAndAction": null,
+                    "SecondaryCardUsageLimit": 0.0,
+                    "UtilizedCardLimit": 0.0,
+                    "ThreeDSAuthResultsCode": null,
+                    "AuthenticationMethod": null,
+                    "CavvKeyIndicator": null,
+                    "CavvValue": null,
+                    "SeedValue": null,
+                    "AuthenticationAmount": null,
+                    "AuthenticationCurrencyCode": null,
+                    "AuthenticationDateJulian": null,
+                    "CavvVersion3dsProtocolVersion": null,
+                    "InformationalData": null,
+                    "AuthTransmissionDateTime": "01/01/2020 10:11:01"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1010",
+        "document_id": "156",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=156&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1010&regionId=1"
+    }
+}

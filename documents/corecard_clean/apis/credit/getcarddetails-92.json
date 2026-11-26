@@ -1,0 +1,841 @@
+{
+    "metadata": {
+        "name": "GetCardDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/CardManagement/GetCardDetails",
+        "description": "This API is used to retrieve card embossing details by providing the account\\admin number and card sequence number in input. Details like card limit, expiry date, manual status, card type, etc. are returned.."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's Account number. Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 8000000000000037 Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Admin number. Valid Values: 0-9 Example: 12345 Condition: Either of AdminNumber or AccountID is required."
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "This tag reflects the Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Valid Values: 0-9 Example: 12345 Condition: Either of AdminNumber or AccountID is required."
+        },
+        {
+            "name": "CardSequenceNumber",
+            "type": "integer",
+            "required": false,
+            "description": "This tag reflects the Sequence Number of the Card. Valid Values: 0-9 Example: 2"
+        },
+        {
+            "name": "IdentifierToken",
+            "type": "string",
+            "required": null,
+            "description": "A generated token that is not expired can be used as an input field to access API. If we are passing this field in input, user should not pass any other account identifier. Condition:At least one account identifier is required. Allowable Values: 800"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "EmbossingGroup",
+                    "type": "",
+                    "required": null,
+                    "description": "This is a group of Embossing related fields.",
+                    "children": [
+                        {
+                            "name": "AdminNumber",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Admin number. Example: 12345",
+                            "children": []
+                        },
+                        {
+                            "name": "CardExpirationDate",
+                            "type": "string",
+                            "required": null,
+                            "description": "Date when card is be expired. Format: MM/YYYY Example: 02/2020 Allowable Values: 7",
+                            "children": []
+                        },
+                        {
+                            "name": "PendingCardExpirationDate",
+                            "type": "string",
+                            "required": null,
+                            "description": "Date when pending card is expired. Format: MM/YYYY Example: 02/2020 Allowable Values: 7",
+                            "children": []
+                        },
+                        {
+                            "name": "CardSequenceNumber",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag reflects the Sequence Number of the Card. Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "VirtualCardLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Card limit of Secondary Cards, both Physical and Virtual. Valid Values:0-9 Format:XXXX.XX Example:1000.00",
+                            "children": []
+                        },
+                        {
+                            "name": "NewCardTransactionsSpendLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates New Card spend limit for CNP or Contactless transactions as per set up. Valid Values:0-9 Format:XXXX.XX Example:500.00",
+                            "children": []
+                        },
+                        {
+                            "name": "VirtualCardAvailableLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Usage Limit available on Secondary Cards, both Physical and Virtual. Valid Values: 0-9 (Dollar Amount) Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "PINAttempts",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of PIN Attempts. Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "NameOnCard",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name to be printed on the card. Example: John J Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "IssueStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of the Card Issue. Example: Activated Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CardType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of the card as Primary or Secondary. Example: Primary Card Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CardActivationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when card is activated. Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card Holder's Account number. Format: XXXXXXXXXXXXXXXX Example: 8000000000000037 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "CancellationStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of the Card Cancellation. Example: Cancelled Lost Card Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "DateIssued",
+                            "type": "DateTime",
+                            "required": null,
+                            "description": "Date when card is issued. Format: MM/dd/yyyy Example: 01/25/2020",
+                            "children": []
+                        },
+                        {
+                            "name": "CustomerType",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag reflects the customer type, like Individual, organisation etc. Example: Individual Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CardClosedDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when card is closed. Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "ReissueReportDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when card is reissued. Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "PreissueReportDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when card is preissued. Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "SSNLast4Digits",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's last four digit of SSN. Example: 1120 Allowable Values: 4",
+                            "children": []
+                        },
+                        {
+                            "name": "AssociatedAddress",
+                            "type": "string",
+                            "required": null,
+                            "description": "Associated address of the card holder. Example: 12th Street Road Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "DateOfBirth",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Card Holder's Date of Birth Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldPlastic",
+                            "type": "string",
+                            "required": null,
+                            "description": "Field which determines if a plastic card is to be created or not. Valid Values: No/Yes Format: XXX Example: No/Yes Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "DeliveryMechanism",
+                            "type": "string",
+                            "required": null,
+                            "description": "Delivery Mechanism (Overnight, Priority or Standard) Example: Standard, Priority, Overnight Standard Exp, Priority Exp, Overnight Exp(Condition:Standard Exp, Priority Exp, Overnight Exp are only applicable for Perfect Plastic Card Vendor) Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DeliveryDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when card is delivered to the card holder. Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalOutStandingAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total outstanding amount as on statement date. Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalOutStandingCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of Total Outstandings. Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "CashOutStandingAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total outstanding cash amount as on statement date. Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "CashOutStandingCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of Cash Outstandings. Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "PurchaseOutStandingAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total outstanding purchase amount as on statement date. Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "PurchaseOutStandingCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of Purchase Outstandings. Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "ReturnOutStandingAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total outstanding return amount as on statement date. Valid Values:0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "ReturnOutStandingCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of return Outstandings. Valid Values:0-9 Format:XXXX Example: 12",
+                            "children": []
+                        },
+                        {
+                            "name": "EmbossingManualStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Manual status of card. Valid Values: Please refer appendix section \"5.21 Card/Account Statuses\" for a valid set of values. Example: 2 - Active, 3 - Delinquent, 4 - Overlimit, 7 - Fraud, 10 - Blocked, 11 - Closed",
+                            "children": []
+                        },
+                        {
+                            "name": "EmbossingManualStatusText",
+                            "type": "string",
+                            "required": null,
+                            "description": "Text for the Manual Embossing Status. Example: Active Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "EmbossingGeneratedStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Generated Status of the Embossing. Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "EmbossingGeneratedStatusText",
+                            "type": "string",
+                            "required": null,
+                            "description": "Generated Status for Card Embossing in text description. Valid Values:0-9 A-Z Format:XXXX Example: Active Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "VirtualCardExpiryDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when Virtual Card will be Expired. Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "VirtualCardExpiryOptions",
+                            "type": "string",
+                            "required": null,
+                            "description": "Expiry options provided for selection for Virtual Card. E.g. Same as Primary card or any customized date. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "VirtualCardLimitMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Method on which Virtual Card limit is applied e.g. Account / Card Example: 0 - Account, 1 - Card",
+                            "children": []
+                        },
+                        {
+                            "name": "UsageRestriction",
+                            "type": "string",
+                            "required": null,
+                            "description": "Usage restrictions applied on the card. E.g. International Usage restriction. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CardActivationInvalidAttempts",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of Invalid Attempts for Card Activation. Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "AvailableDeliveryMechanisms",
+                            "type": "array",
+                            "required": null,
+                            "description": "Available Delivery Mechanisms",
+                            "children": [
+                                {
+                                    "name": "LutCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Lookup Code.",
+                                    "children": []
+                                },
+                                {
+                                    "name": "LutDescription",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Lookup Description.",
+                                    "children": []
+                                },
+                                {
+                                    "name": "StatusApplicable",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Lookup StatusApplicable.",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "SameAsParentAddress",
+                            "type": "string",
+                            "required": null,
+                            "description": "A flag which will refer the same address as parent address. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowReissueCancelledCard",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "A flag which if marked will allow reissuance of cancelled card. Example: 0 - false, 1 - true",
+                            "children": []
+                        },
+                        {
+                            "name": "UserID",
+                            "type": "string",
+                            "required": null,
+                            "description": "User ID provided by CoreCARD Example: Newuser123 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowSecurityAnswerReset",
+                            "type": "integer",
+                            "required": null,
+                            "description": "If the flag \"AllowSecurityAnswerReset\" is true then we display the button \"Reset Security Answer\" on the panel. Example: 0 - false, 1 - true",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowPasswordReset",
+                            "type": "integer",
+                            "required": null,
+                            "description": "If the flag \"AllowPasswordReset\" is true then we display the button \"Reset Password\" on the panel. Example: 0 - false, 1 - true",
+                            "children": []
+                        },
+                        {
+                            "name": "TokenStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Token status of a card number e.g. Active / Inactive. Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "CardImageID",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the card image type number which is already decided for embossing them. Example: 12 Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "UniversalUniqueID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Universal Unique Identification Number generated by system From StatementHeader Example: 233d6bc3-9242-11e8-82e3-509a4c38ceea Allowable Values: 64",
+                            "children": []
+                        },
+                        {
+                            "name": "ActivationCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Code which is provided at the time of Account Creation/Registration should be pass as a user validation. Example: 123456 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AdditionalCardActivationCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Code which is provided at the time of Account Creation/Registration should be pass as a user validation for additional card. Example: 123456 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "RegistrationStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "User ID Enrolled for SelfService registration status. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "UserStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Status of the user. Example: 1 - Deceased",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowResetVirtualCardLimit",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Checks that account is allowed to reset Virtual Card Limit or not. Example: 0 - false, 1 - true",
+                            "children": []
+                        },
+                        {
+                            "name": "NumberOfPINTry",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of Pin Try. Example: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowedTxnsOnVirtualCard",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of allowed transactions on Virtual Card. Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "RemainingAllowedTxnOnVirtualCard",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of transactions remaining on the virtual card. Valid Values: 0-9 Example: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowResetTxnOnVirtualCard",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "If this account allow to reset transaction on Virtual Card. Example: 0 - false, 1 - true",
+                            "children": []
+                        },
+                        {
+                            "name": "MaskedCardNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Masked Card Number. Format: XXXX XXXX XXXX XXXX Example: 4567 89XX XXXX 0123 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowResetPINAttempts",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "This tag reflects if it is allowed to Reset PIN Attempts. Example: 0 - false, 1 - true",
+                            "children": []
+                        },
+                        {
+                            "name": "CustomerID",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag reflects the customer ID. Example: 12345 Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "ManualCardStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Manual Status of the Card. Example: Active Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "LastStandInFileAction",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field will hold the value displayed on Embossing Details panel as described in section 3.2.1. Embossing Details panel. Valid Values: String minLength: 0 maxLength: 1 Format: NNNN Example: 1 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "StandInFilePurgeDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This field will hold the value displayed on Embossing Details panel as described in section 3.2.1. Embossing Details panel. Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowCashTransactions",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Indicates if cash transactions are allowed on this card or not Example: True, False",
+                            "children": []
+                        },
+                        {
+                            "name": "UsageLimitResetFrequency",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Displays applicable usage limit reset frequency for secondary card. Valid Values: 0-1 0 = None 1 = Billing Cycle",
+                            "children": []
+                        },
+                        {
+                            "name": "CashUsageLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Cash Usage Limit on the secondary card. Valid Values:0-9 (Dollar Amount) Format:XXXX.XX Example:1000.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AvailableCashUsageLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Cash Usage Limit available on Secondary Cards Valid Values: 0-9 (Dollar Amount) Format:XXXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SSFailedLoginAttempts",
+                            "type": "integer",
+                            "required": null,
+                            "description": "The number of failed login attempts by a SelfService user. It will reset to 0 after a successful login. Example: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "SSUserStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Self Service User’s status. Possible Values: 0,1,2,3,4,5. Code Description: 0=Active 1=Locked 2=Closed 3=Suspended 5=Auto Locked",
+                            "children": []
+                        },
+                        {
+                            "name": "EmbossingLine4",
+                            "type": "string",
+                            "required": null,
+                            "description": "Embossing line4 Valid Values: A-Z Example: XYZ Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "CardLocked",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates whether to lock or unlock the card through the API: 'Yes' locks and 'No' unlocks. Valid Values: 0- No,1- Yes Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "IsTemporaryCardLimitActive",
+                            "type": "integer",
+                            "required": null,
+                            "description": "BusinessName Example: 0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TemporaryCardLimitExpirationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "BusinessName Example: 0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "FallbackCardLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "BusinessName Example: 0,1",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "9000000900001547",
+        "AdminNumber": 100720,
+        "AccountID": null,
+        "CardSequenceNumber": null,
+        "IdentifierToken": null
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "EmbossingGroup": {
+                "AdminNumber": 100720,
+                "CardLocked": 1,
+                "CardExpirationDate": "01/2024",
+                "PendingCardExpirationDate": null,
+                "CardSequenceNumber": 1,
+                "VirtualCardLimit": 0.0,
+                "NewCardTransactionsSpendLimit": 0.0,
+                "VirtualCardAvailableLimit": 0.0,
+                "PINAttempts": 0,
+                "NameOnCard": "Alberta Charleson",
+                "IssueStatus": "Activated",
+                "CardType": "Primary Card",
+                "CardActivationDate": "03/20/2019 00:00:00",
+                "AccountNumber": "9000000900001547",
+                "CancellationStatus": null,
+                "DateIssued": "01/25/2020",
+                "CustomerType": "Individual",
+                "CardClosedDate": null,
+                "ReissueReportDate": null,
+                "PreissueReportDate": null,
+                "SSNLast4Digits": "9008",
+                "AssociatedAddress": "2992 Cameron Road, Malakoff, US  14236",
+                "DateOfBirth": "06/25/1984 00:00:00",
+                "HoldPlastic": null,
+                "DeliveryMechanism": "Standard",
+                "DeliveryDate": null,
+                "TotalOutStandingAmount": 0.0,
+                "TotalOutStandingCount": 0,
+                "CashOutStandingAmount": 0.0,
+                "CashOutStandingCount": 0,
+                "PurchaseOutStandingAmount": 0.0,
+                "PurchaseOutStandingCount": 0,
+                "ReturnOutStandingAmount": 0.0,
+                "ReturnOutStandingCount": 0,
+                "EmbossingManualStatus": 2,
+                "EmbossingManualStatusText": "Active",
+                "EmbossingGeneratedStatus": 2,
+                "EmbossingGeneratedStatusText": "Active",
+                "VirtualCardExpiryDate": null,
+                "VirtualCardExpiryOptions": null,
+                "VirtualCardLimitMethod": null,
+                "UsageRestriction": "0",
+                "CardActivationInvalidAttempts": 0,
+                "AvailableDeliveryMechanisms": [
+                    {
+                        "LutCode": "0",
+                        "LutDescription": "Standard"
+                    },
+                    {
+                        "LutCode": "1",
+                        "LutDescription": "Priority"
+                    },
+                    {
+                        "LutCode": "2",
+                        "LutDescription": "Overnight"
+                    }
+                ],
+                "SameAsParentAddress": null,
+                "AllowReissueCancelledCard": false,
+                "UserID": "100720",
+                "AllowSecurityAnswerReset": 1,
+                "AllowPasswordReset": 1,
+                "TokenStatus": 1,
+                "CardImageID": "abc123",
+                "UniversalUniqueID": "df55eb4b-e2bd-42cf-8a91-c14f623a39c9",
+                "ActivationCode": "123456",
+                "AdditionalCardActivationCode": null,
+                "RegistrationStatus": null,
+                "UserStatus": 0,
+                "AllowResetVirtualCardLimit": false,
+                "NumberOfPINTry": 0,
+                "AllowedTxnsOnVirtualCard": 0,
+                "RemainingAllowedTxnOnVirtualCard": 0,
+                "AllowResetTxnOnVirtualCard": false,
+                "MaskedCardNumber": "525751XXXXXX9219",
+                "AllowResetPINAttempts": false,
+                "CustomerID": "76701",
+                "ManualCardStatus": "Active",
+                "LastStandInFileAction": "Add",
+                "StandInFilePurgeDate": "03/20/2019 00:00:00",
+                "AllowCashTransactions": false,
+                "UsageLimitResetFrequency": null,
+                "CashUsageLimit": 200.0,
+                "AvailableCashUsageLimit": 1000.0,
+                "SSFailedLoginAttempts": null,
+                "SSUserStatus": null,
+                "EmbossingLine4": "ABC",
+                "IsTemporaryCardLimitActive": null,
+                "TemporaryCardLimitExpirationDate": null,
+                "FallbackCardLimit": null
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Card Details",
+        "category_id": "12",
+        "document_id": "92",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=92&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=12&regionId=1"
+    }
+}

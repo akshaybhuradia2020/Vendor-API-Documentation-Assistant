@@ -1,0 +1,231 @@
+{
+    "metadata": {
+        "name": "GetListStatementDate",
+        "http_method": "POST",
+        "endpoint": "/api/GetListStatementDate",
+        "description": "Use this API to fetch the list of dates on which statement of cardholder is generated previously."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "IsCardMasked",
+            "type": "string",
+            "required": false,
+            "description": "Flag to indicate CardNumber should be returned in masked form or in clear form. Valid Values: 0= Clear Card Number in Response. 1= Masked Card Number in Response. 2= No Card Number in Response. Note : Default value is 0 Allowable Values: 1"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "CardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Note: Clear card number is depend upon value provided in IsCardMasked tag.",
+                    "children": []
+                },
+                {
+                    "name": "ProxyNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005",
+                    "children": []
+                },
+                {
+                    "name": "StatementDates",
+                    "type": "array",
+                    "required": null,
+                    "description": "This property is used to Get OR Set STATEMENTDATE",
+                    "children": [
+                        {
+                            "name": "StatementDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Statement Date. Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalDebits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total of all the debit transactions.",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total of all the credit transactions",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "DisplayAnnualErrorResolutionNotice",
+                    "type": "string",
+                    "required": null,
+                    "description": "Annual Error Resolution Notice",
+                    "children": []
+                },
+                {
+                    "name": "AnnualErrorResolutionText",
+                    "type": "string",
+                    "required": null,
+                    "description": "This property is used to Get OR Set AnnualErrorResolutionText",
+                    "children": []
+                },
+                {
+                    "name": "institutionName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name of Financial Institution Valid Values:A-Z,a-z Example:FEDERAL RESERVE BANK",
+                    "children": []
+                },
+                {
+                    "name": "nextStatementDate",
+                    "type": "string",
+                    "required": null,
+                    "description": "Next Statement Date Format: MM/DD/YYYY HH:MM:SS:SSS Example: 09/26/2017 23:59:59:000",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "",
+        "ProxyNumber": "1314932",
+        "IsCardMasked": "1"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "CardNumber": "406683******6085",
+            "ProxyNumber": "1316756",
+            "StatementDates": [
+                {
+                    "StatementDate": "2020-12-01T00:00:00",
+                    "TotalDebits": 120.0,
+                    "TotalCredits": 520.0
+                }
+            ],
+            "DisplayAnnualErrorResolutionNotice": "0",
+            "AnnualErrorResolutionText": "",
+            "institutionName": "First Century Bank",
+            "nextStatementDate": "05/01/2021 23:59:59:000"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Statement List",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1231&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1030"
+    }
+}

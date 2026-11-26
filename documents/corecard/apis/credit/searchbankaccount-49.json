@@ -1,0 +1,305 @@
+{
+    "metadata": {
+        "name": "SearchBankAccount",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/SearchBankAccount",
+        "description": "To get bank account details of an account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Condition:At least one of CardNumber/AccountNumber/AdminNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of account holder Valid Values:0-9 Format:XXXXXXXXXXXX Example:123654789654 Condition:At least one of CardNumber/AccountNumber/AdminNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values:0-9 Format:XXXXX Example:12345 Condition:At least one of CardNumber/AdminNumber/AccountNumber is required."
+        },
+        {
+            "name": "ApplicantType",
+            "type": "string",
+            "required": false,
+            "description": "Selects the type of Applicants. Valid Values:Valid Values: 1, 2, 3, 4 Example: 1= \"Applicant\", 2 =\"Co-Applicant\", 3= \"Cosigner\", 4 = Secondary Card Condition:Applicant Type is optional field. Allowable Values: 50"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "BankAccountsList",
+                    "type": "array",
+                    "required": null,
+                    "description": "BankAccountsList",
+                    "children": [
+                        {
+                            "name": "BankAccountType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of Bank account added by customer for card payment,Checking Or Saving. Valid Values:Checking Or Saving Example:Saving Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "BankName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Bank. Example:JPMorgan Chase Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "BankRoutingNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Bank Rrouting number identifies the location of the bank's branch. Valid Values:111000038 Example: 111000038 Allowable Values: 9",
+                            "children": []
+                        },
+                        {
+                            "name": "MethodStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payment Method Status for PreNote transaction. Possible Values 0 = Awaiting Validation 1 = PreNote Sent 2 = Validated 3 = Validation Rejected 4 = Deleted 5 = MicroDeposit Sent 6 = Active Valid Values:0,1,2,3,4,5,6 Example:0 Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "MethodName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Method Name uniquely identifies bank accounts in Core card system. Whenever user adds any bank account. This is required If User wants to send transaction in ACH. Valid Values:0-9 Example:4092 Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditBalanceRefund",
+                            "type": "string",
+                            "required": null,
+                            "description": "Falg to describe credit balance refund,Only and Only one Bank Account can be 1 (Yes)  of an Account. Valid Values: Yes/No Example : Yes Allowable Values: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "BAMLast4Digit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Last 4 digit of bank account number. Example: 2495 Allowable Values: 4",
+                            "children": []
+                        },
+                        {
+                            "name": "BankAccountCreationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "BankAccountCreationDate Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyRedemptions",
+                            "type": "string",
+                            "required": null,
+                            "description": "Whether Loyalty redemption is allowed on bank account or not. Possible values: 1=YES 0=NO Example:0,1 Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountUniversalUniqueID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Basesegment's Universal Unique Id.",
+                            "children": []
+                        },
+                        {
+                            "name": "ApplicantType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Selects the type of Applicants. Valid Values: Applicant/Co-Applicant/Cosigner Example: Applicant Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "SuccessfulPaymentCounter",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the counter of successful payments based on the Payment Hold logic definition set on product. Valid Values: 0-9 Example: 3 Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "UserIdCreated",
+                            "type": "string",
+                            "required": null,
+                            "description": "ser ID of user created the bank account. Valid Values: 0-9, A-Z",
+                            "children": []
+                        },
+                        {
+                            "name": "UserIdDeleted",
+                            "type": "string",
+                            "required": null,
+                            "description": "ser ID of user created the bank account. Valid Values: 0-9, A-Z",
+                            "children": []
+                        },
+                        {
+                            "name": "BankAccountDeletionDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when bank account was deleted. Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "8110000000000125",
+        "CardNumber": null,
+        "AdminNumber": 167550,
+        "ApplicantType": null
+    },
+    "sample_response": {
+        "Message": "Bank account details retrieved successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01071",
+        "ResponseData": {
+            "BankAccountsList": [
+                {
+                    "BankAccountType": "Saving",
+                    "BankName": "JPMorgan Chase",
+                    "BankRoutingNumber": "4843546546",
+                    "MethodStatus": "3",
+                    "MethodName": "4039",
+                    "CreditBalanceRefund": "No",
+                    "BAMLast4Digit": "2741",
+                    "BankAccountCreationDate": "02/15/2020 00:00:00",
+                    "LoyaltyRedemptions": "1",
+                    "AccountUniversalUniqueID": null,
+                    "ApplicantType": null,
+                    "SuccessfulPaymentCounter": null,
+                    "UserIdCreated": "User",
+                    "UserIdDeleted": "User",
+                    "BankAccountDeletionDate": "02/02/2020 00:00:00"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Account Details",
+        "category_id": "4",
+        "document_id": "49",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=49&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4&regionId=1"
+    }
+}

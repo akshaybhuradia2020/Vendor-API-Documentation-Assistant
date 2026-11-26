@@ -1,0 +1,444 @@
+{
+    "metadata": {
+        "name": "SearchedInventoryDetails",
+        "http_method": "POST",
+        "endpoint": "/api/SearchedInventoryDetails",
+        "description": "Use this API to fetch details of the inventory using orderID."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "OrderID",
+            "type": "string",
+            "required": true,
+            "description": "Order number for an inventory. Valid values : 0-9 Example : 3478 Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "OrderId",
+                    "type": "Int32",
+                    "required": null,
+                    "description": "Order number for an inventory. Valid values : 0-9 Example : 3478",
+                    "children": []
+                },
+                {
+                    "name": "RequestedOn",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Request date time of activity Format: yyyy-mm-ddTHH:mm:ss:msi Example:2017-09-26T00:00:00:000",
+                    "children": []
+                },
+                {
+                    "name": "NumberOfCards",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Total number of cards. Valid values: 0-9 Example: 17",
+                    "children": []
+                },
+                {
+                    "name": "OrderStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Status of the inventory Valid values : Approval Pending Approved Cards Created Inventory Dispatch Received Inventory Received with return Lost in Transit Damaged in Transit Transfer Received Transfer Received with return Transfer - In Transit Transfer - Lost in Transit Transfer - Damaged in Transit Error Rejected",
+                    "children": []
+                },
+                {
+                    "name": "BulkShipaddress1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Address Line 1 of the cardholder. Valid values: A-Z, a-z, 0-9 Example: 15 Penang Street Point",
+                    "children": []
+                },
+                {
+                    "name": "BulkShipaddress2",
+                    "type": "string",
+                    "required": null,
+                    "description": "Address Line 2 of the cardholder. Valid values: A-Z, a-z, 0-9 Example : 1 mecca way",
+                    "children": []
+                },
+                {
+                    "name": "City",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder's City of residence Valid values: A-Z, a-z, 0-9 Example: Norcross",
+                    "children": []
+                },
+                {
+                    "name": "PostalCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder Postal Code of Residence Valid Values:A-Z,a-z,0-9 Example: 30093",
+                    "children": []
+                },
+                {
+                    "name": "Country",
+                    "type": "string",
+                    "required": null,
+                    "description": "Two Character Country Code Valid values :A-Z, a-z Example: US Refer Appendix section : Country Code Values",
+                    "children": []
+                },
+                {
+                    "name": "State",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder State of residence Valid values are A-Z, a-z Example: GA Please refer Appendix Section : State Codes(US)",
+                    "children": []
+                },
+                {
+                    "name": "FICompanyName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Company name",
+                    "children": []
+                },
+                {
+                    "name": "AttnName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Attention name, can be used to store additional information.",
+                    "children": []
+                },
+                {
+                    "name": "AcctYesNo",
+                    "type": "string",
+                    "required": null,
+                    "description": "whether Account number should be printed  in embossing file or not. Valid Values : 1 ,2 1= Yes 2= No",
+                    "children": []
+                },
+                {
+                    "name": "SubAgentID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Sub-Agent ID associated with the Bank for the Card Program-type. Valid Values: A-Z,a-z,0-9 Example:Test123",
+                    "children": []
+                },
+                {
+                    "name": "Title",
+                    "type": "string",
+                    "required": null,
+                    "description": "Title for the customer Valid Values:  Refer Appendix Section : Title Values Example: Mr.",
+                    "children": []
+                },
+                {
+                    "name": "FirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "First Name for Shipping address Valid Values: A-Z,a-z. Example: TestName Condition: It is mandatory when value of DifferentShipToAddress =2",
+                    "children": []
+                },
+                {
+                    "name": "MiddleName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder Middle Name values are A-Z, a-z, 0-9 Example: Charles",
+                    "children": []
+                },
+                {
+                    "name": "LastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder Last Name Valid values: A-Z, a-z Example: Hudson",
+                    "children": []
+                },
+                {
+                    "name": "NameOnCard",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name to be Embossed on Card Valid values are A-Z, a-z, 0-9. Example: Hudson M Charles",
+                    "children": []
+                },
+                {
+                    "name": "RequestedBy",
+                    "type": "string",
+                    "required": null,
+                    "description": "User id of the user who requested the inventory. Example : abc.cc.admin",
+                    "children": []
+                },
+                {
+                    "name": "ProductName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name of the Account's Product Valid Values:0-9, A-Z Example: Cash card",
+                    "children": []
+                },
+                {
+                    "name": "ApprovedBy",
+                    "type": "string",
+                    "required": null,
+                    "description": "UserID  of the person who approved the inventory order. Valid Values:0-9, A-Z, a-z Example:abcd.admin",
+                    "children": []
+                },
+                {
+                    "name": "ApprovedOn",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date on which the inventory order was approved Format: yyyy-mm-ddTHH:mm:ss:msi Example:2017-09-26T00:00:00:000",
+                    "children": []
+                },
+                {
+                    "name": "SourceLocation",
+                    "type": "string",
+                    "required": null,
+                    "description": "Source location of the inventory",
+                    "children": []
+                },
+                {
+                    "name": "DestinationLocation",
+                    "type": "string",
+                    "required": null,
+                    "description": "Destination Address",
+                    "children": []
+                },
+                {
+                    "name": "AWBNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Indicates the Air Way Bill Number of an inventory transfer Example 156463",
+                    "children": []
+                },
+                {
+                    "name": "DispatchDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date of inventory dispatch Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                    "children": []
+                },
+                {
+                    "name": "InvoiceNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Invoice Number Valid Values: A-Z 0-9 Example: AB987567757",
+                    "children": []
+                },
+                {
+                    "name": "BranchCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Branch code from where the card was issued. Valid Values:0-9, A-Z Example:C1006",
+                    "children": []
+                },
+                {
+                    "name": "EmbossingLine4",
+                    "type": "string",
+                    "required": null,
+                    "description": "Text to be print on Line 4 of a plastic. Valid Values:a-z, A-Z",
+                    "children": []
+                },
+                {
+                    "name": "ClientName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name of the client Valid values: A-Z, a-z, 0-9 Example : FirstSearch",
+                    "children": []
+                },
+                {
+                    "name": "BranchStoreName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Store Name of the branch Valid values  : A-Z Example - head office.",
+                    "children": []
+                },
+                {
+                    "name": "PlasticList",
+                    "type": "array",
+                    "required": null,
+                    "description": "",
+                    "children": [
+                        {
+                            "name": "Quantity",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Number of cards ordered in inventory Valid values : 0-9 Example : 850",
+                            "children": []
+                        },
+                        {
+                            "name": "PlasticCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Plastic Code Valid values: 0-9 Example: 32",
+                            "children": []
+                        },
+                        {
+                            "name": "PlasticDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the plastic card.",
+                            "children": []
+                        },
+                        {
+                            "name": "LogoID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Logo ID printed on the cards. Valid value:  0-9, A-Z Example : Cash187",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "OrderID": "194468"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "OrderId": 194469,
+            "RequestedOn": "2020-08-17T00:00:00",
+            "NumberOfCards": 9.0,
+            "OrderStatus": "Approved",
+            "BulkShipaddress1": "Addrress1",
+            "BulkShipaddress2": "Addresss2",
+            "City": "New York City",
+            "PostalCode": "30093",
+            "Country": "United States",
+            "State": "New York",
+            "FICompanyName": "TEST CompanyName",
+            "AttnName": "Test Attn",
+            "AcctYesNo": "1",
+            "SubAgentID": "Test123",
+            "Title": "DR.",
+            "FirstName": "Gangadhar",
+            "MiddleName": "Vidyadhar",
+            "LastName": "Shashtri",
+            "NameOnCard": "Gangadhar V Shashtri",
+            "RequestedBy": "abcd.admin",
+            "ProductName": "Convenient Access Visa Prepaid Card - AC155",
+            "ApprovedBy": "abcd.admin",
+            "ApprovedOn": "2021-02-20T00:00:00",
+            "SourceLocation": "Convenient Card Top branch",
+            "DestinationLocation": "Convenient Card Top branch",
+            "AWBNumber": "156463",
+            "DispatchDate": "2021-02-21T00:00:00",
+            "InvoiceNumber": "AB987567757",
+            "BranchCode": "CC10000",
+            "EmbossingLine4": "Access The World",
+            "ClientName": "Convenient Cards Inc",
+            "BranchStoreName": "Convenient Card Top branch (CC10000)",
+            "PlasticList": [
+                {
+                    "Quantity": 2.0,
+                    "PlasticCode": "002",
+                    "PlasticDescription": "Red (002)",
+                    "LogoID": "123"
+                },
+                {
+                    "Quantity": 3.0,
+                    "PlasticCode": "32",
+                    "PlasticDescription": "Access Card/Valid (32)",
+                    "LogoID": "456"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Inventory",
+        "category_id": "1043",
+        "document_id": "1224",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1224&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1043&regionId=1"
+    }
+}

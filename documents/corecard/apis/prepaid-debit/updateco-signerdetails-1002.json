@@ -1,0 +1,613 @@
+{
+    "metadata": {
+        "name": "UpdateCo-signerDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountHolders/UpdateCosignerDetails",
+        "description": "Purpose of this API is used to update the Cosigner's details."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345 Condition:At least one of AdminNumber/AccountNumber/CustomerID is required."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Condition:At least one of AdminNumber/AccountNumber/CustomerID is required. Allowable Values: 19"
+        },
+        {
+            "name": "CustomerID",
+            "type": "string",
+            "required": null,
+            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123 Condition:At least one of AdminNumber/AccountNumber/CustomerID is required. Allowable Values: 25"
+        },
+        {
+            "name": "CosignerTitle",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Title like MR or MRS. Valid Values:Refer Appendix section 5.7 Format: xx Example: 01 = MR, 16 = Col, 17 = Judge Allowable Values: 10"
+        },
+        {
+            "name": "CosignerFirstName",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner's First Name Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s First Name is set as non-mandatory on product, then this tag is Optional. valid Values:A-Z,0-9 Example:John Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerMiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Middle Name valid Values:A-Z,0-9 Example:User1 Allowable Values: 50"
+        },
+        {
+            "name": "CosignerLastName",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner's Last Name Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Last Name is set as non-mandatory on product, then this tag is Optional. valid Values:A-Z,0-9 Example:Davis Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerAddressLine1",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner’s Address Line 1 Condition: If CosignerFlag = 1 then mandatory but if Cosigner’s Address Line 1 is set as non-mandatory on product, then this tag is Optional. valid Values:A-Z, 0-9 Example:123 HWY Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerAddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Address Line 2 valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 50"
+        },
+        {
+            "name": "CosignerCity",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner's City valid Values:A-Z,0-9 Condition: If CosignerFlag = 1 then mandatory but if Cosigner’s City is set as non-mandatory on product, then this tag is Optional. Format:XXXXX Example:Chicago Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 20"
+        },
+        {
+            "name": "CosignerState",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner's State valid Values: Refer Appendix Section State Codes Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s State is set as non-mandatory on product, then this tag is Optional. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerPostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Postal Code Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Postal Code is set as non-mandatory on product, then this tag is Optional. valid Values:0-9 Format:XXXXX Example:99501 Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerCountry",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Country Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Country is set as non-mandatory on product, then this tag is Optional. Valid Values: Refer appendix section Country Code Values Example:US Allowable Values: 50"
+        },
+        {
+            "name": "CosignerEmailID",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Email ID Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Email ID is set as non-mandatory on product, then this tag is Optional. Valid Values: 0-9 a-z Format: [email protected] Example: [email protected] Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerHomePhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Home Phone Number valid Values:0-9 Format:XXXXXXXXXX Example:9974865836 Allowable Values: 15"
+        },
+        {
+            "name": "CosignerWorkPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Work Phone Number valid Values:0-9 Format:XXXXXXXXXX Example:9758356383 Allowable Values: 15"
+        },
+        {
+            "name": "CosignerMobilePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Mobile Phone Number. Condition: If CosignerFlag = 1 then mandatory but if Cosigner’s Mobile Phone Number is set as non-mandatory on product, then this tag is Optional. valid Values:0-9 Format:XXXXXXXXXX Example:784565412 Allowable Values: 11"
+        },
+        {
+            "name": "CosignerOtherPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Other Phone Number. valid Values:0-9 Format:XXXXXXXXXX Example:784565412 Allowable Values: 11"
+        },
+        {
+            "name": "CosignerFaxNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Fax number. valid Values:0-9 Format:XXXXXXXXXX Example:784565412 Allowable Values: 11"
+        },
+        {
+            "name": "CosignerCreditFilePhone",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Credit File Phone Number. valid Values:0-9 Format:XXXXXXXXXX Example:784565412 Allowable Values: 11"
+        },
+        {
+            "name": "CosignerAlternatePhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Alternate Phone Number valid Values:0-9 Example:9738758349 Allowable Values: 15"
+        },
+        {
+            "name": "CosignerMobileCarrier",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Mobile carrier company Valid Values:A-z, 0-9 Format:XXXXXXXX Example: c.vodafone.ne.jp, csouth1.com, m1.com.sg Allowable Values: 50"
+        },
+        {
+            "name": "CosignerDateOfBirth",
+            "type": "DateTime",
+            "required": false,
+            "description": "Cosigner's date of birth valid Values:0-9 Format: MM/dd/YYYY Example:11/23/1980"
+        },
+        {
+            "name": "CosignerResidenceType",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Residence Type Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Residence Type is set as non-mandatory on product, then this tag is Optional. Valid Values:ReferAppendix Section -Residence Ownership Code Allowable Values: 25"
+        },
+        {
+            "name": "CosignerDurationatAddress",
+            "type": "string",
+            "required": false,
+            "description": "Identifies the Cosigner's provided address is a bad address. Valid Values: 0-9 Format: xxx Example: 12 Allowable Values: 4"
+        },
+        {
+            "name": "CosignerBadAddress",
+            "type": "integer",
+            "required": false,
+            "description": "Identifies the Cosigner's provided address is a bad address. Valid Values:0 or 1 Format: x Example: 1"
+        },
+        {
+            "name": "CosignerMaritalStatus",
+            "type": "integer",
+            "required": false,
+            "description": "Cosigner's Marital Status Valid Values: 0,1 Format: x Example: 0- No, 1 - Yes"
+        },
+        {
+            "name": "CosignerSSN",
+            "type": "int64",
+            "required": null,
+            "description": "Cosigner’s Social Security Number Condition: If CosignerFlag = 1 then mandatory but if Cosigner’s Social Security Number is set as non-mandatory on product, then this tag is Optional. Valid Values:0-9 Format:XXXXXXXXX Example:987456321"
+        },
+        {
+            "name": "CosignerGender",
+            "type": "string",
+            "required": false,
+            "description": "Gender of Cosigner. Valid Values: 0 - No information available 1 -Male 2-Female Format:X Example:1 Allowable Values: 5"
+        },
+        {
+            "name": "CosignerCeaseandDesist",
+            "type": "integer",
+            "required": false,
+            "description": "This tag reflects whenever Cosigner is ceased or desist the CoreCOLLECT user need not follow up the mapped account holder thus all the credentials of the mapped account holders are erased from the dialer file using this flag. Valid Values:0 or 1 Format:X Example:1"
+        },
+        {
+            "name": "CeaseDesistCommunication",
+            "type": "integer",
+            "required": null,
+            "description": "Cosigner's Cease and Desist communication Valid Values: Available in Appendix section 5.36 Format: xxxxxx Example: litigation, Phone and Mail etc"
+        },
+        {
+            "name": "CosignerBankruptcy",
+            "type": "integer",
+            "required": false,
+            "description": "Cosigner's Flag for Bankruptcy Valid Values: 0,1 Format: x Example: 0-no, 1-yes"
+        },
+        {
+            "name": "CosignerBankruptcyNotificationDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Cosigner's bankruptcy notification date. Valid Values: 0-9 Format:MM/DD/YYYY HH:MM:SS Example:12/20/2019 12:18:19 Condition: This field is mandatory when CosignerBankruptcy is checked."
+        },
+        {
+            "name": "CosignerDeceased",
+            "type": "integer",
+            "required": false,
+            "description": "This tag reflects whether the Cosigner is deceased or not . Valid Values: 0-9 Format: 0 or 1 Example: 0"
+        },
+        {
+            "name": "CosignerDeceasedNotificationDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Date when deceased is notified. Format:MM/DD/YYYY Example:02/20/2020 Condition:This field is mandatory when CosignerDeceased tag is checked."
+        },
+        {
+            "name": "CosignerEmploymentType",
+            "type": "int64",
+            "required": null,
+            "description": "Type of employement of Cosigner. Condition:If CosignerFlag = 1 then mandatory but if Cosigner Employment Type is set as non-mandatory on product, then this tag is Optional. Valid Values: Refer Appendix section 5.35 Format: xxxxx Example: 1"
+        },
+        {
+            "name": "CosignerCombinedTotalIncome",
+            "type": "decimal",
+            "required": null,
+            "description": "Cosigner’s Combined Total Income valid Values:0-9 Example:10000 Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Combined Total Income is set as non-mandatory on product, then this tag is Optional."
+        },
+        {
+            "name": "CosignerMonthsOfEmployment",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Number on months in current employment Valid Values:0-9 Format:XX Example:32"
+        },
+        {
+            "name": "CosignerPosition",
+            "type": "string",
+            "required": false,
+            "description": "Employement position of the Cosigner. valid Values:A-Z,0-9 Example:Manager Allowable Values: 50"
+        },
+        {
+            "name": "CosignerEmployeeNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Employee Number Valid Values: 0-9 Format: XXXXXXXXXX Example: 7895463214 Allowable Values: 25"
+        },
+        {
+            "name": "CosignerEmployerName",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Employer Name. Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Employer Name is set as non-mandatory on product, then this tag is Optional. valid Values:A-Z,0-9 Example:john Condition:Report the name of the employer for the consumer reported in the Base Segment in CBR Allowable Values: 50"
+        },
+        {
+            "name": "CosignerEmployerAddressLine1",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Employer Address Line 1 Valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 50"
+        },
+        {
+            "name": "CosignerEmployerAddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Employer Address Line 2 Valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 50"
+        },
+        {
+            "name": "CosignerEmployerPostalCode",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Employer PostalCode. valid Values:0-9 Format:xxxx Example:123456 Allowable Values: 9"
+        },
+        {
+            "name": "CosignerEmployerPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Employer phone number Valid Values:0-9 Format:XXXXXXXXX Example:784565412 Allowable Values: 20"
+        },
+        {
+            "name": "CosignerEmployerFaxNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Employer Fax number Valid Values:0-9 Format:XXXXXXXXXX Example:7895463214 Allowable Values: 10"
+        },
+        {
+            "name": "CosignerEmployerCity",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Employer City. valid Values:A-Z,0-9 Example:kansas Allowable Values: 25"
+        },
+        {
+            "name": "CosignerEmployerCountry",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Employer Country. valid Values:A-Z,0-9 Example:US Allowable Values: 25"
+        },
+        {
+            "name": "CosignerEmployerState",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Employer State. valid Values:A-Z,0-9 Example:CA Allowable Values: 25"
+        },
+        {
+            "name": "CosignerGovernmentIDType",
+            "type": "string",
+            "required": null,
+            "description": "Government issued identification Type. Government Id Type Code should be passed in the request and not the description. Condition: If CosignerFlag = 1 then mandatory but if CosignerGovernmentIDType is set as non-mandatory on product, then this tag is Optional. Valid Values:Refer Appendix section ID Type Values Example:03 Allowable Values: 25"
+        },
+        {
+            "name": "CosignerIDNumber",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Government ID Number. Valid Values:A-Z Format:XXXXXXXX Example::CDDT9741Q Condition:If CosignerFlag = 1 and ‘CosignerGovernmentIDType’ has any value, then it is mandatory but if CosignerIDNumber is set as non-mandatory on product, then this tag is Optional. Allowable Values: 20"
+        },
+        {
+            "name": "CosignerIDIssueCountry",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner's ID Issue Country valid Values:A-Z,a-z Example:US Condition:If CosignerFlag = 1 and ‘CosignerGovernmentIDType’ has any value, then it is mandatory but if Cosigner’s ID Issue Country is set as non-mandatory on product, then this tag is Optional. Allowable Values: 20"
+        },
+        {
+            "name": "CosignerIDIssueState",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s ID Issue State valid Values:A-Z,a-z Example:Alabama Condition:If CosignerFlag = 1 and ‘CosignerGovernmentIDType’ has any value, then it is mandatory but if Cosigner’s ID Issue State is set as non-mandatory on product, then this tag is Optional. Allowable Values: 20"
+        },
+        {
+            "name": "CosignerIDIssueDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Cosigner’s Government ID Issue Date Valid Values:0-9 Format:MM/DD/YYYY Example:02/01/2020 Condition:If CosignerFlag = 1 and ‘CosignerGovernmentIDType’ has any value, then it is mandatory but if Cosigner’s Government ID Issue Date is set as non-mandatory on product, then this tag is Optional"
+        },
+        {
+            "name": "CosignerIDExpirationDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Cosigner’s Government ID Expiry Date. Format:MM/DD/YYYY Example:02/01/2025 Condition:If CosignerFlag = 1 and ‘CosignerGovernmentIDType’ has any value, then it is mandatory but if Cosigner’s Government ID Expiry Date is set as non-mandatory on product, then this tag is Optional."
+        },
+        {
+            "name": "CosignerHomePhoneNumberTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of Home Phone Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "CosignerMobileNumberTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of Mobile Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "CosignerWorkPhoneNumberTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of Work Phone Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "CosignerOtherPhoneNumberTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of other  Phone Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "CosignerFaxNumberTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of Fax Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "CosignerCreditFilePhoneTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of Credit File Phone Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "CosignerAlternatePhoneTechType",
+            "type": "integer",
+            "required": false,
+            "description": "Tech Type of Alternate Phone Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129"
+        },
+        {
+            "name": "CosignerFraudVictim",
+            "type": "string",
+            "required": false,
+            "description": "Identifies the Cosigner as Fraud victim. Valid Values:0 or 1 Format: x Example: 1 Allowable Values: 2"
+        },
+        {
+            "name": "CosignerStatus",
+            "type": "string",
+            "required": false,
+            "description": "Status of Cosigner. Valid Values: 1 = Active / 0 = Inactive Format: x Example: Condition:"
+        },
+        {
+            "name": "CosignerSNSuffix",
+            "type": "string",
+            "required": null,
+            "description": "CosignerSNSuffix Condition:If CosignerFlag = 1 then mandatory but if CosignerSNSuffix is set as non-mandatory on product, then this tag is Optional. valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 50"
+        },
+        {
+            "name": "CosignerLanguageIndicator",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's preferred language. valid Values:A-Z,a-z Format: xx Example:Eng Allowable Values: 5"
+        },
+        {
+            "name": "CosignerSuppressEmail",
+            "type": "string",
+            "required": false,
+            "description": "CosignerSuppressEmail valid Values: 0/1 Example:0"
+        },
+        {
+            "name": "OptoutForEmailMarketing",
+            "type": "string",
+            "required": false,
+            "description": "OptoutForEmailMarketing Valid Values: 0/1 Example: 0"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": []
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": "",
+        "APIVersion": "2.0",
+        "CallerID": "",
+        "CalledID": "",
+        "RequestTime": null,
+        "AdminNumber": null,
+        "AccountNumber": "8110000000000224",
+        "CustomerID": "",
+        "CosignerTitle": null,
+        "CosignerFirstName": "Ravi",
+        "CosignerMiddleName": null,
+        "CosignerLastName": "Kumar",
+        "CosignerSNSuffix": "ii",
+        "CosignerAddressLine1": "hgyuergegik",
+        "CosignerAddressLine2": "klkdhshkjb",
+        "CosignerCity": "Sweden",
+        "CosignerState": "AK",
+        "CosignerPostalCode": "125433",
+        "CosignerCountry": "US",
+        "CosignerLanguageIndicator": null,
+        "CosignerEmailID": " [email protected] ",
+        "CosignerHomePhoneNumber": "3652140524",
+        "CosignerWorkPhoneNumber": "7412547894",
+        "CosignerMobilePhoneNumber": "3214589134",
+        "CosignerOtherPhoneNumber": "258747251",
+        "CosignerFaxNumber": "7896541204",
+        "CosignerCreditFilePhone": "8524169674",
+        "CosignerAlternatePhoneNumber": "1256417484",
+        "CosignerMobileCarrier": "",
+        "CosignerDateOfBirth": "11/02/1977",
+        "CosignerResidenceType": "",
+        "CosignerDurationatAddress": "",
+        "CosignerBadAddress": null,
+        "CosignerMaritalStatus": null,
+        "CosignerSSN": null,
+        "CosignerGender": null,
+        "CosignerCeaseandDesist": null,
+        "CeaseDesistCommunication": null,
+        "CosignerBankruptcy": null,
+        "CosignerBankruptcyNotificationDate": null,
+        "CosignerDeceased": null,
+        "CosignerDeceasedNotificationDate": null,
+        "CosignerEmploymentType": null,
+        "CosignerCombinedTotalIncome": null,
+        "CosignerMonthsOfEmployment": "",
+        "CosignerPosition": "",
+        "CosignerEmployeeNumber": "",
+        "CosignerEmployerName": "",
+        "CosignerEmployerAddressLine1": "",
+        "CosignerEmployerAddressLine2": "",
+        "CosignerEmployerPostalCode": "",
+        "CosignerEmployerPhoneNumber": "",
+        "CosignerEmployerFaxNumber": "",
+        "CosignerEmployerCity": "",
+        "CosignerEmployerCountry": "",
+        "CosignerEmployerState": "",
+        "CosignerGovernmentIDType": "",
+        "CosignerIDNumber": "",
+        "CosignerIDIssueCountry": "",
+        "CosignerIDIssueState": "",
+        "CosignerIDIssueDate": "",
+        "CosignerIDExpirationDate": "",
+        "CosignerHomePhoneNumberTechType": null,
+        "CosignerMobileNumberTechType": null,
+        "CosignerWorkPhoneNumberTechType": null,
+        "CosignerOtherPhoneNumberTechType": null,
+        "CosignerFaxNumberTechType": null,
+        "CosignerCreditFilePhoneTechType": null,
+        "CosignerAlternatePhoneTechType": null,
+        "CosignerFraudVictim": null,
+        "CosignerSuppressEmail": "0",
+        "OptoutForEmailMarketing": "0"
+    },
+    "sample_response": {
+        "Message": "Account updated successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01003",
+        "ResponseData": null
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "New Cards",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1002&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1"
+    }
+}

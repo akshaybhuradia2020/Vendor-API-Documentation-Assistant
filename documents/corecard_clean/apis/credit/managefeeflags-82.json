@@ -1,0 +1,793 @@
+{
+    "metadata": {
+        "name": "ManageFeeFlags",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/ManageFeeFlags",
+        "description": "This API is to manage different Fee flags."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "SearchCriteria",
+            "type": "",
+            "required": true,
+            "description": "SearchCriteria"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid  Values:0-9 Format: XXXXXXXXXX Example: 7314145404 Condition: At least one account identifier is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values: 0-9 Format: XXXXX Example: 12345 Condition: At least one account identifier is required."
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition: At least one account identifier is required."
+        },
+        {
+            "name": "WaiveInterest",
+            "type": "integer",
+            "required": false,
+            "description": "Flag to  Waive Interest  as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveInterestFor",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the duration for which Interest can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveInterestFrom",
+            "type": "integer",
+            "required": false,
+            "description": "Starting range from which Interest should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Interest is Yes. Valid Values:1,2 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveLateFee",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for LateFee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveLateFeeFor",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the duration for which Late Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveLateFeeFrom",
+            "type": "integer",
+            "required": false,
+            "description": "Starting range from which Late Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Late Fee  is Yes. Valid Values:1,2 Format:X Example:1,2"
+        },
+        {
+            "name": "SendLateNotice",
+            "type": "integer",
+            "required": false,
+            "description": "Current Late Notice send setting as  0 = Send Notice, 1 = Waive Notice Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveAnnualFee",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Annual Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveAnnualFeeFor",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the duration for which Annual Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveAnnualFeeFrom",
+            "type": "integer",
+            "required": false,
+            "description": "Starting range from which Annual Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Annual Fee  is Yes. Valid Values:1,2 Format:X Example:1,2"
+        },
+        {
+            "name": "WaiveInsufficientFundFee",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for InsufficientFund Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveInsufficientFundFeeFor",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the duration for which Insufficient Fund Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveInsufficientFundFeeFrom",
+            "type": "integer",
+            "required": false,
+            "description": "Starting range from which InsufficientFund Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive InsufficientFund Fee  is Yes. Valid Values:1,2 Format:X Example:1,2"
+        },
+        {
+            "name": "WaiveOverlimitFee",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Overlimit Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveOverlimitFeeFor",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the duration for which Overlimit Fee For can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveOverlimitFeeFrom",
+            "type": "integer",
+            "required": false,
+            "description": "Starting range from which Overlimit Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Overlimit Fee  is Yes. Valid Values:1,2 Format:X Example:1,2"
+        },
+        {
+            "name": "SendOverlimitNotice",
+            "type": "integer",
+            "required": false,
+            "description": "It shows Over limit notice should send or not in the form 0 = Send Notice, 1 = Waive Notice Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveTransactionFee",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Transaction Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveTransactionFeeFor",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the duration for which Transaction Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveTransactionFeeFrom",
+            "type": "integer",
+            "required": false,
+            "description": "Starting range from which Transaction Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Transaction Fee  is Yes. Valid Values:1,2 Format:X Example:1,2"
+        },
+        {
+            "name": "WaiveAuthorizationFee",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Authorization Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveAuthorizationFeeFor",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the duration for which Authorization Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveAuthorizationFeeFrom",
+            "type": "integer",
+            "required": false,
+            "description": "Starting range from which Authorization Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Authorization Fee  is Yes. Valid Values:1,2 Format:X Example:1,2"
+        },
+        {
+            "name": "WaiveCardFee",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Card Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveCardFeeFor",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the duration for which Card Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveCardFeeFrom",
+            "type": "integer",
+            "required": false,
+            "description": "Starting range from which Card Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Card Fee  is Yes. Valid Values:1,2 Format:X Example:1,2"
+        },
+        {
+            "name": "WaiveActiveInactiveFee",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Active/Inactive Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveActiveInactiveFeeFor",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the duration for which Inactive Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveActiveInactiveFeeFrom",
+            "type": "integer",
+            "required": false,
+            "description": "Starting range from which Active Inactive Fees should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Active Inactive Fee is Yes. Valid Values:1,2 Format:X Example:1,2"
+        },
+        {
+            "name": "WaiveServiceFee",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Service Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveServiceFeeFor",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the duration for which Service Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveServiceFeeFrom",
+            "type": "integer",
+            "required": false,
+            "description": "Starting range from which Service Fees should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Service Fees  is Yes. Valid Values:1,2 Format:X Example:1,2"
+        },
+        {
+            "name": "WaiveMessageFee",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for MessageFee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveMessageFeeFor",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the duration for which Message Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveMessageFeeFrom",
+            "type": "integer",
+            "required": false,
+            "description": "Starting range from which MessageFee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive MessageFee is Yes. Valid Values:1,2 Format:X Example:1,2"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "integer",
+            "required": false,
+            "description": "It indicates operation mode to be perform that is 1 = View and 2 = Update Valid Values:1,2 Format:X Example:1,2"
+        },
+        {
+            "name": "LastStatementDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Date when last statement was initiated Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00"
+        },
+        {
+            "name": "WaiveMonthlyFee",
+            "type": "integer",
+            "required": false,
+            "description": "Flag for Monthly Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1"
+        },
+        {
+            "name": "WaiveMonthlyFeeFor",
+            "type": "integer",
+            "required": false,
+            "description": "Specifies the duration for which Monthly Fee can be waived.A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2"
+        },
+        {
+            "name": "WaiveMonthlyFeeFrom",
+            "type": "integer",
+            "required": false,
+            "description": "Starting range from which Monthly Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if WaiveMonthlyFee is Yes. Valid Values:1,2 Format:X Example:1,2"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "FeeFlagResult",
+                    "type": "array",
+                    "required": null,
+                    "description": "FeeFlagResult",
+                    "children": [
+                        {
+                            "name": "AccountID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition: At least one account identifier is required.",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInterest",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag to  Waive Interest  as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInterestFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies the duration for which Interest can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInterestFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Starting range from which Interest should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Interest is Yes. Valid Values:1,2 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveLateFee",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for LateFee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveLateFeeFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies the duration for which Late Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveLateFeeFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Starting range from which Late Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Late Fee  is Yes. Valid Values:1,2 Format:X Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "SendLateNotice",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Current Late Notice send setting as  0 = Send Notice, 1 = Waive Notice Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveAnnualFee",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for Annual Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveAnnualFeeFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies the duration for which Annual Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveAnnualFeeFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Starting range from which Annual Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Annual Fee  is Yes. Valid Values:1,2 Format:X Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInsufficientFundFee",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for InsufficientFund Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInsufficientFundFeeFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies the duration for which Insufficient Fund Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveInsufficientFundFeeFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Starting range from which InsufficientFund Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive InsufficientFund Fee  is Yes. Valid Values:1,2 Format:X Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveOverlimitFee",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for Overlimit Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveOverlimitFeeFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies the duration for which Overlimit Fee For can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveOverlimitFeeFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Starting range from which Overlimit Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Overlimit Fee  is Yes. Valid Values:1,2 Format:X Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "SendOverlimitNotice",
+                            "type": "integer",
+                            "required": null,
+                            "description": "It shows Over limit notice should send or not in the form 0 = Send Notice, 1 = Waive Notice Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveTransactionFee",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for Transaction Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveTransactionFeeFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies the duration for which Transaction Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveTransactionFeeFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Starting range from which Transaction Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Transaction Fee  is Yes. Valid Values:1,2 Format:X Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveAuthorizationFee",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for Authorization Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveAuthorizationFeeFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies the duration for which Authorization Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveAuthorizationFeeFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Starting range from which Authorization Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Authorization Fee  is Yes. Valid Values:1,2 Format:X Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveCardFee",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for Card Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveCardFeeFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies the duration for which Card Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveCardFeeFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Starting range from which Card Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Card Fee  is Yes. Valid Values:1,2 Format:X Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveActiveInactiveFee",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for Active/Inactive Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveActiveInactiveFeeFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies the duration for which Inactive Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveActiveInactiveFeeFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Starting range from which Active Inactive Fees should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Active Inactive Fee is Yes. Valid Values:1,2 Format:X Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveServiceFee",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for Service Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveServiceFeeFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies the duration for which Service Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveServiceFeeFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Starting range from which Service Fees should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive Service Fees  is Yes. Valid Values:1,2 Format:X Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveMessageFee",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for MessageFee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveMessageFeeFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies the duration for which Message Fee can be waived. A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveMessageFeeFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Starting range from which MessageFee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if Waive MessageFee is Yes. Valid Values:1,2 Format:X Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "DecisionFlag",
+                            "type": "integer",
+                            "required": null,
+                            "description": "It indicates operation mode to be perform that is 1 = View and 2 = Update Valid Values:1,2 Format:X Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "LastStatementDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when last statement was initiated Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveMonthlyFee",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for Monthly Fee waive as Yes or No 0 = No, 1 = Yes Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveMonthlyFeeFor",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies the duration for which Monthly Fee can be waived.A value of 0 indicates a permanent waiver(forever), while values from 1 to 36 represent the number of billing cycles the waiver will apply. Valid Values:0-9 Format:XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveMonthlyFeeFrom",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Starting range from which Monthly Fee should waive, Possible values are 1 = Account Opening, 2 = Previous Cycle Date. Mandatory if WaiveMonthlyFee is Yes. Valid Values:1,2 Format:X Example:1,2",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "WEB",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "SearchCriteria": {
+            "AccountNumber": null,
+            "AdminNumber": null,
+            "AccountID": 161563,
+            "WaiveInterest": null,
+            "WaiveInterestFor": null,
+            "WaiveInterestFrom": null,
+            "WaiveLateFee": null,
+            "WaiveLateFeeFor": null,
+            "WaiveLateFeeFrom": null,
+            "SendLateNotice": null,
+            "WaiveAnnualFee": null,
+            "WaiveAnnualFeeFor": null,
+            "WaiveAnnualFeeFrom": null,
+            "WaiveInsufficientFundFee": null,
+            "WaiveInsufficientFundFeeFor": null,
+            "WaiveInsufficientFundFeeFrom": null,
+            "WaiveOverlimitFee": null,
+            "WaiveOverlimitFeeFor": null,
+            "WaiveOverlimitFeeFrom": null,
+            "SendOverlimitNotice": null,
+            "WaiveTransactionFee": null,
+            "WaiveTransactionFeeFor": null,
+            "WaiveTransactionFeeFrom": null,
+            "WaiveAuthorizationFee": null,
+            "WaiveAuthorizationFeeFor": null,
+            "WaiveAuthorizationFeeFrom": null,
+            "WaiveCardFee": null,
+            "WaiveCardFeeFor": null,
+            "WaiveCardFeeFrom": null,
+            "WaiveActiveInactiveFee": null,
+            "WaiveActiveInactiveFeeFor": null,
+            "WaiveActiveInactiveFeeFrom": null,
+            "WaiveServiceFee": null,
+            "WaiveServiceFeeFor": null,
+            "WaiveServiceFeeFrom": null,
+            "WaiveMessageFee": null,
+            "WaiveMessageFeeFor": null,
+            "WaiveMessageFeeFrom": null,
+            "DecisionFlag": 1,
+            "WaiveMonthlyFee": null,
+            "WaiveMonthlyFeeFor": null,
+            "WaiveMonthlyFeeFrom": null
+        }
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "Err00",
+        "ResponseData": {
+            "FeeFlagResult": [
+                {
+                    "AccountID": 161563,
+                    "WaiveInterest": null,
+                    "WaiveInterestFor": null,
+                    "WaiveInterestFrom": null,
+                    "WaiveLateFee": 0,
+                    "WaiveLateFeeFor": null,
+                    "WaiveLateFeeFrom": null,
+                    "SendLateNotice": null,
+                    "WaiveAnnualFee": 0,
+                    "WaiveAnnualFeeFor": null,
+                    "WaiveAnnualFeeFrom": null,
+                    "WaiveInsufficientFundFee": 0,
+                    "WaiveInsufficientFundFeeFor": null,
+                    "WaiveInsufficientFundFeeFrom": null,
+                    "WaiveOverlimitFee": 0,
+                    "WaiveOverlimitFeeFor": null,
+                    "WaiveOverlimitFeeFrom": null,
+                    "SendOverlimitNotice": null,
+                    "WaiveTransactionFee": 0,
+                    "WaiveTransactionFeeFor": null,
+                    "WaiveTransactionFeeFrom": null,
+                    "WaiveAuthorizationFee": null,
+                    "WaiveAuthorizationFeeFor": null,
+                    "WaiveAuthorizationFeeFrom": null,
+                    "WaiveCardFee": null,
+                    "WaiveCardFeeFor": null,
+                    "WaiveCardFeeFrom": null,
+                    "WaiveActiveInactiveFee": null,
+                    "WaiveActiveInactiveFeeFor": null,
+                    "WaiveActiveInactiveFeeFrom": null,
+                    "WaiveServiceFee": 0,
+                    "WaiveServiceFeeFor": null,
+                    "WaiveServiceFeeFrom": null,
+                    "WaiveMessageFee": null,
+                    "WaiveMessageFeeFor": null,
+                    "WaiveMessageFeeFrom": null,
+                    "DecisionFlag": null,
+                    "LastStatementDate": "12/31/2016 23:59:57",
+                    "WaiveMonthlyFee": null,
+                    "WaiveMonthlyFeeFor": null,
+                    "WaiveMonthlyFeeFrom": null
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Account Details",
+        "category_id": "4",
+        "document_id": "82",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=82&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4&regionId=1"
+    }
+}

@@ -1,0 +1,215 @@
+{
+    "metadata": {
+        "name": "DecryptAccountData",
+        "http_method": "POST",
+        "endpoint": "/api/DecryptAccountData",
+        "description": "Use this API to decrypt either card number or SSN or both  or card number along with CVV based on decision flag."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893 Condition:At least one of Account Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition:At least one of Account Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "Int32",
+            "required": true,
+            "description": "Used for performing various operations when respective flag values defined below are passed. Valid values are : 0 = To Show Full CardNumber. 1 = To Show Full SSN. 2 = To Show Full CardNumber and SSN. 3 = To Show Full CardNumber and CVV."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "DecryptAccountDetails",
+                    "type": "array",
+                    "required": null,
+                    "description": "",
+                    "children": [
+                        {
+                            "name": "SocialSecurityNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Social Security Number of Card Holder Valid Value:0-9 Ex: 123456789 Allowable Values: 9",
+                            "children": []
+                        },
+                        {
+                            "name": "NameOnCard",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name to be Embossed on Card Valid values are A-Z, a-z, 0-9. Example: Hudson M Charles Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Allowable Values: 16",
+                            "children": []
+                        },
+                        {
+                            "name": "CVC",
+                            "type": "string",
+                            "required": null,
+                            "description": "Three digit printed on  the back of  the card. Valid Values = 0-9 Example: 213 Allowable Values: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "CardExpiryDate",
+                            "type": "string",
+                            "required": null,
+                            "description": "Expiration Date of created card Format: YY/MM Example: 21/01 Allowable Values: 4",
+                            "children": []
+                        },
+                        {
+                            "name": "CardStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card Plastic Status Example : New Card Pending Activation Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "CardSequenceNumber",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Card Sequence Number Valid Values:0-9 Example: 3",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "AccountNumber": "",
+        "ProxyNumber": "1316728",
+        "DecisionFlag": 2
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "DecryptAccountDetails": [
+                {
+                    "SocialSecurityNumber": "433334343",
+                    "NameOnCard": "shailab gupta",
+                    "CardNumber": "4066850001000935",
+                    "CVC": "",
+                    "CardExpiryDate": "24/08",
+                    "CardStatus": "Active",
+                    "CardSequenceNumber": 1
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1202&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1041"
+    }
+}

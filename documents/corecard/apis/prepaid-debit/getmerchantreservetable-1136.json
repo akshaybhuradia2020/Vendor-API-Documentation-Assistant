@@ -1,0 +1,242 @@
+{
+    "metadata": {
+        "name": "GetMerchantReserveTable",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/MerchantManagement/GetMerchantReserveTable",
+        "description": "This API returns the merchant reserve table details"
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": false,
+            "description": "Unique identification number for Institution. Example:Fixed value needs to pass which is provided by Corecard."
+        },
+        {
+            "name": "MerchantReserveTableID",
+            "type": "integer",
+            "required": true,
+            "description": "MerchantReserveTableID Format:XXXXX Example:12345"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AddPastDue90ToReserve",
+                    "type": "string",
+                    "required": null,
+                    "description": "Add Past Due 90 To Reserve Valid Values:A-Z Example:Yes/No Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "PastDueAmountOrBalance",
+                    "type": "string",
+                    "required": null,
+                    "description": "Past Due Amount Or Balance Valid Values:A-Z Example:Yes/No Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "AddUnMailed",
+                    "type": "string",
+                    "required": null,
+                    "description": "Add Un-Mailed To Reserve Valid Values:A-Z Example:Yes/No Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "AddCreditBalance",
+                    "type": "string",
+                    "required": null,
+                    "description": "Add Credit Balance To Reserve Valid Values:A-Z, O-9 Example:Yes/No Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "AddNoFinanceChargeAccount",
+                    "type": "string",
+                    "required": null,
+                    "description": "Add No Finance Charge Accounts To Reserve Valid Values:A-Z Example:Yes/No Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "PercentOfNewBalanceAdd",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Percent Of New Balance Add To Reserve Valid Values:O-9 Format: XXX.XX Example: 500.00",
+                    "children": []
+                },
+                {
+                    "name": "AccountStatus1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account Status 1 Valid Values:A-Z, O-9 Example:D - Dispute Account/E - Employee Account   /None Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "AccountStatus2",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account Status 2 Valid Values:A-Z, O-9 Example:D - Dispute Account/E - Employee Account   /None Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "AccountStatus3",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account Status 3 Valid Values:A-Z, O-9 Example:D - Dispute Account/E - Employee Account   /None Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "AccountStatus4",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account Status 4 Valid Values:A-Z, O-9 Example:D - Dispute Account/E - Employee Account   /None Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "AccountStatus5",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account Status 5 Valid Values:A-Z, O-9 Example:D - Dispute Account/E - Employee Account   /None Allowable Values: 100",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "InstitutionID": 3225,
+        "MerchantReserveTableID": 436
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "AddPastDue90ToReserve": "Yes",
+            "PastDueAmountOrBalance": "Amount",
+            "AddUnMailed": "Yes",
+            "AddCreditBalance": "Yes",
+            "AddNoFinanceChargeAccount": "AddCreditBalDesc",
+            "PercentOfNewBalanceAdd": 5.0,
+            "AccountStatus1": "D - Dispute Account",
+            "AccountStatus2": "E - Employee Account",
+            "AccountStatus3": "None",
+            "AccountStatus4": "None",
+            "AccountStatus5": "None"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1136&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1008"
+    }
+}

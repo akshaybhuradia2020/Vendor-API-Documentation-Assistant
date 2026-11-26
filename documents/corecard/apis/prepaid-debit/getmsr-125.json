@@ -1,0 +1,1108 @@
+{
+    "metadata": {
+        "name": "GetMSR",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/MerchantManagement/GetMSR",
+        "description": "The purpose of this API is to fetch details of a Merchant, Store or Register."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": false,
+            "description": "Unique identification number for Institution. Example:Fixed value needs to pass which is provided by Corecard."
+        },
+        {
+            "name": "MSRLevel",
+            "type": "string",
+            "required": false,
+            "description": "Type of Account to be created Valid Values: 0 = Merchant,1 = Store,2 = Register Example:1 Allowable Values: 1"
+        },
+        {
+            "name": "MSRNumber",
+            "type": "string",
+            "required": false,
+            "description": "Identifier for Merchant/Store/Register Account to be created Valid Values:A-Z, 0-9 Allowable Values: 12"
+        },
+        {
+            "name": "GetSubTree",
+            "type": "string",
+            "required": false,
+            "description": "GetSubTree Possible Values 0: No(default)  To get only Matching  Store/Merchant/Registers 1: Yes, To get All Stores, Merchants, Registers under the merchant.Will display all Store and register hierarchy. Allowable Values: 5"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number will ensure that API hit our internal servers. This will always be unique. It can also be null when API is returned from our external servers example – If we pass blank User Id and Password in input then this will be null. This ID can be used for tracking purpose of any request hit the corecard internal servers. Example:12365478 Allowable Values: 15",
+                    "children": []
+                },
+                {
+                    "name": "MSRList",
+                    "type": "array",
+                    "required": null,
+                    "description": "List Containing matching records",
+                    "children": [
+                        {
+                            "name": "InstitutionID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Unique identification number for Institution. Example:Fixed value needs to pass which is provided by Corecard.",
+                            "children": []
+                        },
+                        {
+                            "name": "ParentMSRNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Identifier for Parent account under which Merchant/Store/Register Account to be created. Valid Values:A-Z,0-9 Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRLevel",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of Account to be created Valid Values: 0 = Merchant,1 = Store,2 = Register Example:1 Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Identifier for Merchant/Store/Register Account to be created Valid Values:A-Z, 0-9 Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Merchant. Valid Values:A-Z,0-9 Example:ABC LLC Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of Account Valid Values:A-Z,0-9 Example:ABC LLC Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantRateTable",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag refers  to the Rate table of that plan. Valid Values:A-Z,0-9 Example:6 Months No Interest if Paid in Full Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "BillingCycle",
+                            "type": "string",
+                            "required": null,
+                            "description": "Biiling cycle Valid Values:Monthly1 - Monthly28 Example:Monthly10 Allowable Values: 9",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantReserveTable",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Merchant Reserve Table Account Id Valid Values:0-9 Format:XXXXXXXXXXXX Example:547896865689",
+                            "children": []
+                        },
+                        {
+                            "name": "ContactType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of contact of Merchant Valid Values: 0 =\tNone 1 =\tBilling 2 =\tSettlement 3 =\tAdministration 4 =\tDepartment 5 =\tDivision Example:3 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's First name. Valid Values:A-Z Example:User Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "LastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's Last name. Valid Values:A-Z Example:Smith Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AddressLine1",
+                            "type": "string",
+                            "required": null,
+                            "description": "MSR Address Line 1. Valid Values:A-Z,0-9 Example:123 HWY Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AddressLine2",
+                            "type": "string",
+                            "required": null,
+                            "description": "MSR Address Line 1. Valid Values:A-Z,0-9 Example:Park Avenue Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "City",
+                            "type": "string",
+                            "required": null,
+                            "description": "City Name of the MSR address Example:Los Angeles Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "State",
+                            "type": "string",
+                            "required": null,
+                            "description": "State Valid Values:A-Z,0-9 Example:Alabama Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "PostalCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Postal code of MSR address Valid Values:0-9 Format:XXXXXX Example:5478968 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "County",
+                            "type": "string",
+                            "required": null,
+                            "description": "County of MSR Valid Values:0-9 Format:XXXXX Example:54789 Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "Country",
+                            "type": "string",
+                            "required": null,
+                            "description": "Country Name of the MSR address Example:USA Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "CustomerID",
+                            "type": "string",
+                            "required": null,
+                            "description": "This Tag reflects the customer ID Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRNumber1",
+                            "type": "string",
+                            "required": null,
+                            "description": "MSR Contact number Valid Values:0-9 Format:XXXXXXXXX Example:547896865 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRNumber2",
+                            "type": "string",
+                            "required": null,
+                            "description": "MSR Contact number Valid Values:0-9 Format:XXXXXXXXX Example:547896865 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRNumber3",
+                            "type": "string",
+                            "required": null,
+                            "description": "MSR Contact number Valid Values:0-9 Format:XXXXXXXXXXXX Example:547896865689 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRFaxNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "MSR Fax Number Valid Values:0-9 Format:XXXXXXXXXXXX Example:547896865689 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MSREmail1",
+                            "type": "string",
+                            "required": null,
+                            "description": "MSR Email1 Format: [email protected] Example: [email protected] Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MSREmail2",
+                            "type": "string",
+                            "required": null,
+                            "description": "MSR Email2 Format: [email protected] Example: [email protected] Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRLegalEntityName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Legal Entity Valid Values:A-Z,0-9 Example:ABC LLC Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRDBAName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Do Business As Name Valid Values:A-Z,0-9 Example:ABC LLC Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "Position",
+                            "type": "string",
+                            "required": null,
+                            "description": "Employement position of the card holder Valid Values:A-Z,0-9 Example:Manager",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRTaxIdentificationNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Organization’s Tax Id Number Valid Values:0-9 Format:XXXXXXXXXXXX Example:547896865689 Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRACHRoutingNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "ABA Routing Number Valid Values:0-9 Format:XXXXXX Example:5478968 Allowable Values: 9",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRACHCheckingAccnum",
+                            "type": "string",
+                            "required": null,
+                            "description": "Bank Account Number Valid Values:0-9 Format:XXXXXXXXXXXX Example:547896865689 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRACHAccName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account Name Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "LastUpdateDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Last Update Date of the MSR Derived from LOG",
+                            "children": []
+                        },
+                        {
+                            "name": "LastUpdateUserID",
+                            "type": "string",
+                            "required": null,
+                            "description": "User Who Performed Last Update. Derived from LOG Allowable Values: 128",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRTermOverrideInd",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant TermOverride Indicator Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRWebServicesPassword",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Web Services Password. Allowable Values: 120",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRCreationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Merchant Creation Date. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                            "children": []
+                        },
+                        {
+                            "name": "MSROverrideFeeRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Override Fee Rate",
+                            "children": []
+                        },
+                        {
+                            "name": "MSROverrideReserveRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Override Reserve Rate",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRCreditFirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Credit First Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRCreditLastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Credit Last Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRCreditWorkPhone",
+                            "type": "string",
+                            "required": null,
+                            "description": "Credit Work Phone Valid Values:0-9 Format:XXXXXX Example:5478968 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRCreditMobilePhone",
+                            "type": "string",
+                            "required": null,
+                            "description": "Credit Mobile Phone Valid Values:0-9 Format:XXXXXXXXXXXX Example:547896865689 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRCreditEmail1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Credit Email 1 Valid Values:A-Z,0-9 Format: [email protected] Example: [email protected] Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRAccountingFirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Accounting First Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRAccountingLastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Accounting Last Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRAccountingWorkPhone",
+                            "type": "string",
+                            "required": null,
+                            "description": "Accounting Work Phone Valid Values:0-9 Format:XXXXXXXX Example:54789686 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRAccountingMobilePhone",
+                            "type": "string",
+                            "required": null,
+                            "description": "Accounting Mobile Phone Valid Values:0-9 Format:XXXXXXXXX Example:547896865 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRAccountingEmail1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Accounting Email1 Valid Values:A-Z,0-9 Format: [email protected] Example: [email protected] Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRSalesFirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Sales First Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRSalesLastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Sales Last Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRSalesWorkPhone",
+                            "type": "string",
+                            "required": null,
+                            "description": "Sales Work Phone Valid Values:0-9 Format:XXXXXXXXX Example:547896865 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRSalesMobilePhone",
+                            "type": "string",
+                            "required": null,
+                            "description": "Sales Mobile Phone Valid Values:0-9 Format:XXXXXXXXX Example:547896865 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRSalesEmail1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Sales Email1 Valid Values:A-Z,0-9 Format: [email protected] Example: [email protected] Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRSponserID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Sponser ID Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRArrangementID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Arrangement ID Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRAccountManagerFirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account Manager First Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRAccountManagerLastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account Manager Last Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ParentMSRSalesFirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Merchant Sales First Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ParentMSRSalesLastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Merchant Sales Last Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRExternalID",
+                            "type": "string",
+                            "required": null,
+                            "description": "External MerchantID Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRExternalCustomerID",
+                            "type": "string",
+                            "required": null,
+                            "description": "External CustomerID Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRPIN",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant PIN Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSREnrollmentDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Enrollment Date Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantCategory",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Category Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRCreditLimitInd",
+                            "type": "string",
+                            "required": null,
+                            "description": "Credit Limit Indicator Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRCreditLimitMaxAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Credit Limit Max Amount",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRDirectBatchInd",
+                            "type": "string",
+                            "required": null,
+                            "description": "Direct Batch Indicator Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRApplicationTypeOverride",
+                            "type": "string",
+                            "required": null,
+                            "description": "Application Type Override Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRFeeWaiver",
+                            "type": "string",
+                            "required": null,
+                            "description": "Fee Waiver Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRFeeDays",
+                            "type": "string",
+                            "required": null,
+                            "description": "Fee Days Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRBillingFrequency",
+                            "type": "string",
+                            "required": null,
+                            "description": "Billing Frequency Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRGSDInd",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant GSD Indicator Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRExternalInd",
+                            "type": "string",
+                            "required": null,
+                            "description": "External Merchant Indicator Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRExtCompanyID",
+                            "type": "string",
+                            "required": null,
+                            "description": "External Company ID Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRConsumerDirectOptIn",
+                            "type": "string",
+                            "required": null,
+                            "description": "Consumer Direct Opt-In Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRMemail2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Email 2 Valid Values:A-Z,0-9 Format: [email protected] Example: [email protected] Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRContactPhone",
+                            "type": "string",
+                            "required": null,
+                            "description": "ContactPhone Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRServiceAreaAddLine1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service Area Address Line1 Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRServiceAreaAddLine2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service Area Address Line2 Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRServiceAreaCity",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service Area City Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRServiceAreaState",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service Area State Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRServiceAreaZip",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service Area Zip Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ServiceDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service Description Allowable Values: 256",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRServiceWebsite",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service Website Allowable Values: 300",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRServiceAreaRadius",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service Area Radius Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRServiceLocationLongitude",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service Location Longitude Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRServiceLocationLatitude",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service Location Latitude Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRLogoID",
+                            "type": "string",
+                            "required": null,
+                            "description": "ProductID (Logo ID) of Merchant. Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRServiceLocationPoint",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service Location Point Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRServiceLocationRadiusMiles",
+                            "type": "string",
+                            "required": null,
+                            "description": "Service Location Radius Miles Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRProgram",
+                            "type": "string",
+                            "required": null,
+                            "description": "Program (ProductName) Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRVersion",
+                            "type": "string",
+                            "required": null,
+                            "description": "Version Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRSettlementLevel",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Merchant Settlement Level. Only one merchant can have settlement level 'Yes' in any hierarchy tree. Possible Values:0 = No , 1 = Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRPolicyIdentifier",
+                            "type": "string",
+                            "required": null,
+                            "description": "PolicyIdentifier, will result in digits only Ie. 1 or 2. Possible Value: 1=Grandfathered,2=Standard Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRHighLinePolicy",
+                            "type": "string",
+                            "required": null,
+                            "description": "HighLinePolicy, will result in digits only Ie. 0 or 1. Possible Values:0 = No , 1 = Yes Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRLineAssignmentPolicy",
+                            "type": "string",
+                            "required": null,
+                            "description": "Line Assigned Policy of Merchant Possible Value: 1=Grandfathered,2=Standard",
+                            "children": []
+                        },
+                        {
+                            "name": "NetworkID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "NetworkID of Network from which Merchant needed to be associated Valid Values:0-9 Format:XXXXXXXXXXXX Example:547896865689",
+                            "children": []
+                        },
+                        {
+                            "name": "NetworkName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of Network from which Merchant needed to be associated Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRSplitFee",
+                            "type": "string",
+                            "required": null,
+                            "description": "SplitFee for Merchant Settlement 1= YES “or seperate credit and debit amount” 0 =  NO/NULL ”for combine credit and debit amount” Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantLogo",
+                            "type": "string",
+                            "required": null,
+                            "description": "File Name for the Logo File Valid Values:0-1 A-Z Format:XXXX Example:LogoFile1 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "WeekDayHours",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description: Weekday hours Valid Values:0-9, a-z Example:Weekdays 6 AM to 7 PM PST Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "WeekendHours",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description: Weekend hours Valid Values:0-9, a-z Example:Saturday 7 AM to 12 PM PST Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "SiteURL",
+                            "type": "string",
+                            "required": null,
+                            "description": "URL of the site Valid Values:0-1 A-Z Format:XXXX Example:mysite.com/card Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "Motto",
+                            "type": "string",
+                            "required": null,
+                            "description": "Motto Valid Values:0-1 A-Z Format:XXXX Example:Be Independent Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "CardActivationSiteURL",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card Activation URL Valid Values:0-1 A-Z Format:XXXX Example:mysite.com/card/activation Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "Disclosure",
+                            "type": "string",
+                            "required": null,
+                            "description": "Disclosure Valid Values:0-1 A-Z Example: John Smith Allowable Values: 1500",
+                            "children": []
+                        },
+                        {
+                            "name": "MTAcode",
+                            "type": "string",
+                            "required": null,
+                            "description": "MTA Code will determine if Transaction Authorization is required for the Purchase posted under this Merchant or not Valid Values:\"0000\" – MTA not applicable, \"3000\" – MTA Applicable default value should be \"0000\" Format:XXXX Example:0000 Allowable Values: 4",
+                            "children": []
+                        },
+                        {
+                            "name": "CardDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the Card Valid Values:0-1 A-Z Example: Platinum Card Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "NameOnCard",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name on the Card Valid Values:0-1 A-Z Example: John Smith Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ContactNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Contact Number of the Distribution Partner Valid Values: 0-1 Example: 02245879654 Allowable Values: 11",
+                            "children": []
+                        },
+                        {
+                            "name": "Tran_CompanyID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique ID of Company Valid Values: 0-9 Example: 1234 Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "Tran_CompanyName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Name Valid Values: A-Z Example: abc Allowable Values: 50",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "InstitutionID": null,
+        "MSRLevel": null,
+        "MSRNumber": null,
+        "GetSubTree": null
+    },
+    "sample_response": {
+        "Message": "Request processed successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01155",
+        "ResponseData": {
+            "ResponseID": "65687878",
+            "MSRList": [
+                {
+                    "InstitutionID": null,
+                    "ParentMSRNumber": null,
+                    "MSRLevel": null,
+                    "MSRNumber": null,
+                    "MSRName": null,
+                    "MerchantDescription": null,
+                    "MerchantRateTable": null,
+                    "BillingCycle": null,
+                    "MerchantReserveTable": null,
+                    "ContactType": null,
+                    "FirstName": null,
+                    "LastName": null,
+                    "AddressLine1": null,
+                    "AddressLine2": null,
+                    "City": null,
+                    "State": null,
+                    "PostalCode": null,
+                    "County": null,
+                    "Country": null,
+                    "CustomerID": null,
+                    "MSRNumber1": null,
+                    "MSRNumber2": null,
+                    "MSRNumber3": null,
+                    "MSRFaxNumber": null,
+                    "MSREmail1": null,
+                    "MSREmail2": null,
+                    "MSRLegalEntityName": null,
+                    "MSRDBAName": null,
+                    "CompanyName": null,
+                    "Position": null,
+                    "MSRTaxIdentificationNumber": null,
+                    "MSRACHRoutingNumber": null,
+                    "MSRACHCheckingAccnum": null,
+                    "MSRACHAccName": null,
+                    "LastUpdateDate": null,
+                    "LastUpdateUserID": null,
+                    "MSRTermOverrideInd": null,
+                    "MSRWebServicesPassword": null,
+                    "MSRCreationDate": null,
+                    "MSROverrideFeeRate": null,
+                    "MSROverrideReserveRate": null,
+                    "MSRCreditFirstName": null,
+                    "MSRCreditLastName": null,
+                    "MSRCreditWorkPhone": null,
+                    "MSRCreditMobilePhone": null,
+                    "MSRCreditEmail1": null,
+                    "MSRAccountingFirstName": null,
+                    "MSRAccountingLastName": null,
+                    "MSRAccountingWorkPhone": null,
+                    "MSRAccountingMobilePhone": null,
+                    "MSRAccountingEmail1": null,
+                    "MSRSalesFirstName": null,
+                    "MSRSalesLastName": null,
+                    "MSRSalesWorkPhone": null,
+                    "MSRSalesMobilePhone": null,
+                    "MSRSalesEmail1": null,
+                    "MSRSponserID": null,
+                    "MSRArrangementID": null,
+                    "MSRAccountManagerFirstName": null,
+                    "MSRAccountManagerLastName": null,
+                    "ParentMSRSalesFirstName": null,
+                    "ParentMSRSalesLastName": null,
+                    "MSRExternalID": null,
+                    "MSRExternalCustomerID": null,
+                    "MSRPIN": null,
+                    "MSREnrollmentDate": null,
+                    "MerchantCategory": null,
+                    "MSRCreditLimitInd": null,
+                    "MSRCreditLimitMaxAmount": null,
+                    "MSRDirectBatchInd": null,
+                    "MSRApplicationTypeOverride": null,
+                    "MSRFeeWaiver": null,
+                    "MSRFeeDays": null,
+                    "MSRBillingFrequency": null,
+                    "MSRGSDInd": null,
+                    "MSRExternalInd": null,
+                    "MSRExtCompanyID": null,
+                    "MSRConsumerDirectOptIn": null,
+                    "MSRMemail2": null,
+                    "MSRContactPhone": null,
+                    "MSRServiceAreaAddLine1": null,
+                    "MSRServiceAreaAddLine2": null,
+                    "MSRServiceAreaCity": null,
+                    "MSRServiceAreaState": null,
+                    "MSRServiceAreaZip": null,
+                    "ServiceDescription": null,
+                    "MSRServiceWebsite": null,
+                    "MSRServiceAreaRadius": null,
+                    "MSRServiceLocationLongitude": null,
+                    "MSRServiceLocationLatitude": null,
+                    "MSRLogoID": null,
+                    "MSRServiceLocationPoint": null,
+                    "MSRServiceLocationRadiusMiles": null,
+                    "MSRProgram": null,
+                    "MSRVersion": null,
+                    "MSRSettlementLevel": 0,
+                    "MSRPolicyIdentifier": null,
+                    "MSRHighLinePolicy": null,
+                    "MSRLineAssignmentPolicy": null,
+                    "NetworkID": null,
+                    "NetworkName": null,
+                    "MSRSplitFee": null,
+                    "MerchantLogo": null,
+                    "WeekDayHours": null,
+                    "WeekendHours": null,
+                    "SiteURL": null,
+                    "Motto": null,
+                    "CardActivationSiteURL": null,
+                    "Disclosure": null,
+                    "MTAcode": null,
+                    "CardDescription": null,
+                    "NameOnCard": null,
+                    "ContactNumber": null,
+                    "Tran_CompanyID": null,
+                    "Tran_CompanyName": null
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Merchant/Store/Register",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=125&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=18"
+    }
+}

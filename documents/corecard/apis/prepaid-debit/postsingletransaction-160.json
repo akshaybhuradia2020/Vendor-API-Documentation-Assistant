@@ -1,0 +1,522 @@
+{
+    "metadata": {
+        "name": "PostSingleTransaction",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Transactions/PostSingleTransaction",
+        "description": "This API is used to post Single transaction for an account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "StoreID",
+            "type": "integer",
+            "required": false,
+            "description": "Unique Number which is assgined to a Store. Valid Values:0-9 Example:1234"
+        },
+        {
+            "name": "RegisterID",
+            "type": "string",
+            "required": false,
+            "description": "Unique ID assigned to a Register. Valid Values:a-z 0-9 Example:123456 Allowable Values: 50"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's Account Number. Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Condition:At least one of AdminNumber/AccountNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "TransactionCurrencyCode",
+            "type": "string",
+            "required": true,
+            "description": "Currency code corresponding to the Transaction Amount. Valid Values:840 for US Dollar Example:840 Allowable Values: 3"
+        },
+        {
+            "name": "TransactionDescription",
+            "type": "string",
+            "required": false,
+            "description": "User defined description of transaction if entered by user explicitly. If not entered by the user, then system will generate it. Valid Values:A-Z,0-9 Example:Purchase/Payment. Allowable Values: 100"
+        },
+        {
+            "name": "TransactionCode",
+            "type": "string",
+            "required": true,
+            "description": "A code to identify type of payment. Valid Values: The valid values of Transaction Code can be fetched from GetTranCodeByUserID API. Example:427248 = Principal Adjustment Allowable Values: 20"
+        },
+        {
+            "name": "ProductCode",
+            "type": "string",
+            "required": false,
+            "description": "Specific code assigned to the product. Valid Values: Refer Section 5.47 of Appendix Example: 12456 Allowable Values: 50"
+        },
+        {
+            "name": "SettlementDate",
+            "type": "DateTime",
+            "required": false,
+            "description": "Date of Settlement. Valid Values:0-9 Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": true,
+            "description": "Amount of Transaction. Valid Values:0-9 Format:XXX.XX Example:500.00"
+        },
+        {
+            "name": "CreditPlanMaster",
+            "type": "string",
+            "required": false,
+            "description": "Plan name associated with the card account. Valid Values: 0-9 Example:6051 Allowable Values: 50"
+        },
+        {
+            "name": "PaymentReferenceID",
+            "type": "string",
+            "required": false,
+            "description": "Refernce ID of the Payment. Valid Values:0-9, A-z Format:XXXXXXXXXXX Example:fy76869878gh Allowable Values: 36"
+        },
+        {
+            "name": "TransmissionDateTime",
+            "type": "DateTime",
+            "required": false,
+            "description": "Time of transaction. Valid Values:0-9 Format:MM-DD-YYYTHH:mm:ss Example:12-30-2015T13:05:10"
+        },
+        {
+            "name": "EffectiveDateTime",
+            "type": "DateTime",
+            "required": false,
+            "description": "Effective Date of Transaction Valid Values:01/15/2020 Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantType",
+            "type": "string",
+            "required": false,
+            "description": "Type of Merchant Valid Values:a-z Example: Retail,Hospital Allowable Values: 50"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values:0-9 Example:7485122 Condition:At least one of AdminNumber/AccountNumber is required."
+        },
+        {
+            "name": "ReversalTargetTranID",
+            "type": "string",
+            "required": false,
+            "description": "Transaction number of target transaction which is going to be reversed. Valid Values: 0-9 Example:12345 Allowable Values: 20"
+        },
+        {
+            "name": "ReturnTransactionID",
+            "type": "int64",
+            "required": false,
+            "description": "Transaction ID generated for The Return Transaction. Valid Values:0-9 Example:122390308"
+        },
+        {
+            "name": "MethodName",
+            "type": "string",
+            "required": false,
+            "description": "Method Name uniquely identifies bank accounts in Core card system. Whenever user adds any bank account.This is required If User wants to send transaction in ACH. Valid Values:0-9 Example:4092 Allowable Values: 25"
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "string",
+            "required": false,
+            "description": "Number which is assigned to a Merchant. Valid Values: 0-9 Example:11642 Allowable Values: 9"
+        },
+        {
+            "name": "InvoiceNumber",
+            "type": "string",
+            "required": false,
+            "description": "Incoice Number for Transaction. Valid Values: A-Z 0-9 Example: AB987567757 Allowable Values: 50"
+        },
+        {
+            "name": "FeeReversalReason",
+            "type": "string",
+            "required": false,
+            "description": "Reason for Fee Reversal. Valid Values: 0 - Customers Goodwill , 1- Erroneous charges Example: 0 - Customers Goodwill Allowable Values: 1"
+        },
+        {
+            "name": "CheckNumber",
+            "type": "string",
+            "required": false,
+            "description": "Number of the Payment Check. Valid Values:0-9 Format:XXXXXXXX Example:89874545 Allowable Values: 15"
+        },
+        {
+            "name": "IdentifierToken",
+            "type": "string",
+            "required": null,
+            "description": "A generated token that is not expired can be used as an input field to access API. If we are passing this field in input, user should not pass any other account identifier. Condition:At least one account identifier is required. Allowable Values: 800"
+        },
+        {
+            "name": "AllowForcePost",
+            "type": "string",
+            "required": false,
+            "description": "To Force Post a Transaction. Valid Values: 0,1 Format: X Example: 0 = No, 1 = Yes"
+        },
+        {
+            "name": "UniqueId",
+            "type": "string",
+            "required": false,
+            "description": "Unique ID is a transaction specific unique ID. This ID is unique for every transaction. If multiple calls are made by client for a specific transaction, the value of this tag will always be the same for a specific transaction. (GUID and UUID datatypes are supported for this tag). Valid Values: A-Z, 0-9 Example: F965C56F-C58F-EC11-B80E-A4BF010A357E Condition:For API user, if API Idempotency Applicable is set as Yes on CoreCredit, field is mandatory. The UniqueId is valid for 7 days from first submission of the request. Same request can be retried for 7 days without performing the same action twice.Idempotency will be checked at the belongingOwning Partner and Merchant Level. Allowable Values: 40"
+        },
+        {
+            "name": "InterestPlanID",
+            "type": "integer",
+            "required": false,
+            "description": "Interest Plan Id defined on Interest Tables. Valid Values :0-9, A-z Example: 1233 Condition: Interest Plan Override setup should be enabled at Plan"
+        },
+        {
+            "name": "PortfolioID",
+            "type": "string",
+            "required": false,
+            "description": "Description: Indicates details of lender institution mapped on account. Valid Values: Under special characters only Hypen (-) and Underscore () are allowed. No spaces allowed in between strings. Example: Under special characters only Hypen (-) and Underscore () are allowed. No spaces allowed in between strings."
+        },
+        {
+            "name": "OverpaymentPlansGroup",
+            "type": "integer",
+            "required": false,
+            "description": "The credit Plan Master group ID can be in this field to apply an overpayment to the plans that belongs to that group first. Valid Values: 0-9 Example: 1233"
+        },
+        {
+            "name": "InitialInterest",
+            "type": "decimal",
+            "required": false,
+            "description": "Initial Interest which needs to be posted at the time of Loan creation. Valid Values: 0-9 Format: XXXXXX Example: 5000.00 Condition: This tag is applicable for a Plan Master with a Plan Type of Retail and a Payment Typeclassified as either [Equal Payments with Interest] or [Use Equal Payments]."
+        },
+        {
+            "name": "InitialFee",
+            "type": "decimal",
+            "required": false,
+            "description": "Initial Fee which needs to be posted at the time of Loan creation. Valid Values: 0-9 Format: XXXXXX Example: 5000.00 Condition: This tag is applicable for a Plan Master with a Plan Type of Retail and a Payment Typeclassified as either [Equal Payments with Interest] or [Use Equal Payments]."
+        },
+        {
+            "name": "InitialCurrentAmountDue",
+            "type": "decimal",
+            "required": false,
+            "description": "Initial Current Amount Due which needs to be posted at the time of Loan creation. Valid Values: 0-9 Format: XXXXXX Example: 5000.00 Condition: This tag is applicable for a Plan Master with a Plan Type of Retail and a Payment Typeclassified as either [Equal Payments with Interest] or [Use Equal Payments]."
+        },
+        {
+            "name": "LoanTerm",
+            "type": "integer",
+            "required": false,
+            "description": "Loan terms in months. Valid Values : 1-360 Example: 10"
+        },
+        {
+            "name": "TNPFlag",
+            "type": "integer",
+            "required": false,
+            "description": "TNPFlag Valid Values: 0, 1 Example: 0"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "CurrencySymbol",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the currency symbol",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "CreditPlanMaster",
+                    "type": "string",
+                    "required": null,
+                    "description": "Plan name associated with the card account. Valid Values: 0-9 Example:6051 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "PostingReference",
+                    "type": "string",
+                    "required": null,
+                    "description": "Posting reference (Like -Transaction Posted Successfully) Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "PostingFlag",
+                    "type": "string",
+                    "required": null,
+                    "description": "With certain IDs in response, It confirms the posting of transaction. Example:1 = Success,0 failed Allowable Values: 1",
+                    "children": []
+                },
+                {
+                    "name": "TransactionAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Amount of Transaction. Valid Values: 0-9 Example:500.00",
+                    "children": []
+                },
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card Holder's Account Number. Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "AdminNumber",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values:0-9 Example:7485122",
+                    "children": []
+                },
+                {
+                    "name": "TransactionID",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Transaction Number for the transaction being posted. Valid Values:0-9 Example:23654789",
+                    "children": []
+                },
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number indicates that API responded. Response ID is unique. This value will be null if no authentication information was passed. Response ID can be used for tracking Valid Values:0-9 Example:478585 Allowable Values: 15",
+                    "children": []
+                },
+                {
+                    "name": "StoreID",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Specific code assigned to a Store. Valid Values:0-9 Example:1234",
+                    "children": []
+                },
+                {
+                    "name": "TransactionCurrencyCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Currency code corresponding to the Transaction Amount. Valid Values:840 for US Dollar Example:840 Allowable Values: 3",
+                    "children": []
+                },
+                {
+                    "name": "PostingDateTime",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date and Time of posting of the transaction. Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23",
+                    "children": []
+                },
+                {
+                    "name": "TransactionDescription",
+                    "type": "string",
+                    "required": null,
+                    "description": "User defined description of transaction if entered by user explicitly. If not entered by the user, then system will generate it. Valid Values:A-Z,0-9 Example:Purchase/Payment. Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "TransactionCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "A code to identify type of payment. Valid Values: A-Z 0-9 Example:427248 = Principal Adjustment Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "TransmissionDateTime",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Time of transaction. Valid Values:0-9 Format:MM-DD-YYYTHH:mm:ss Example:12-30-2015T13:05:10",
+                    "children": []
+                },
+                {
+                    "name": "InterestPlanID",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Displays the applicable Interest Plan Id. Valid Values:0-9 Example:9875",
+                    "children": []
+                },
+                {
+                    "name": "PlanSegmentID",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Indicates the unique ID generated for each plan segment added to an account. Valid Values:0-9 Example:98756775",
+                    "children": []
+                },
+                {
+                    "name": "FeeTransactionID",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Transaction number for the posted fee transaction during loan creation. Valid Values:0-9 Example:9875677543",
+                    "children": []
+                },
+                {
+                    "name": "InterestTransactionID",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Transaction number for the posted Interest transaction during loan creation. Valid Values:0-9 Example:9875677542",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MerchantNumber": "25636",
+        "StoreID": 25637,
+        "RegisterID": null,
+        "TransactionCode": "34292",
+        "EffectiveDateTime": null,
+        "AccountNumber": "9000000900001737",
+        "AdminNumber": 101055,
+        "TransactionAmount": 53.21,
+        "CreditPlanMaster": "21701",
+        "TransactionDescription": null,
+        "TransactionCurrencyCode": "840",
+        "MerchantType": null,
+        "InvoiceNumber": null,
+        "ReversalTargetTranID": "0",
+        "ProductCode": null,
+        "ReturnTransactionID": null,
+        "MethodName": "0",
+        "SettlementDate": null,
+        "FeeReversalReason": null,
+        "PaymentReferenceID": null,
+        "CheckNumber": null,
+        "TransmissionDateTime": null,
+        "IdentifierToken": null,
+        "AllowForcePost": "0",
+        "UniqueId": null,
+        "InterestPlanID": 1233,
+        "PortfolioID": null,
+        "OverpaymentPlansGroup": 1,
+        "InitialInterest": null,
+        "InitialFee": null,
+        "InitialCurrentAmountDue": null,
+        "LoanTerm": null,
+        "TNPFlag": 0
+    },
+    "sample_response": {
+        "Message": "Transaction posted successfully",
+        "Status": true,
+        "ErrorCode": "ERR01058",
+        "ResponseData": {
+            "CreditPlanMaster": "21701",
+            "PostingReference": null,
+            "PostingFlag": null,
+            "TransactionAmount": 53.21,
+            "AccountNumber": "9000000900001737",
+            "AdminNumber": 101055,
+            "TransactionID": null,
+            "ResponseID": "108410544",
+            "StoreID": 25637,
+            "TransactionCurrencyCode": "840",
+            "PostingDateTime": null,
+            "TransactionDescription": "45454 = INITIAL CHARGE OFF REVERSAL",
+            "TransactionCode": "34292",
+            "TransmissionDateTime": null,
+            "InterestPlanID": null,
+            "PlanSegmentID": null,
+            "FeeTransactionID": null,
+            "InterestTransactionID": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Adjustments",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=160&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=29"
+    }
+}

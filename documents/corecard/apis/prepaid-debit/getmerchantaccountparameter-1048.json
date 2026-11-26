@@ -1,0 +1,894 @@
+{
+    "metadata": {
+        "name": "GetMerchantAccountParameter",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/MerchantManagement/GetMerchantAccountParameter",
+        "description": "This API is Used to get the Merchant Account Parameters."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique number of merchant account Valid Values:0-9 Format:XXXXX Example:12345 Condition: Mandatory If MerchantNumber not Inputted in API Request"
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Number which is assgined to a Merchant Valid Values:0-9 Format:XXXXX Example:12345 Condition: Mandatory If MerchantID not Inputted in API Request Allowable Values: 10"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "AccountProcessingControls",
+            "type": "",
+            "required": null,
+            "description": "AccountProcessingControls",
+            "children": []
+        },
+        {
+            "name": "CurrencySymbol",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the currency symbol",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AccountProcessingControls",
+                    "type": "",
+                    "required": null,
+                    "description": "AccountProcessingControls",
+                    "children": [
+                        {
+                            "name": "MerchantID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Unique number of merchant account Valid Values:0-9 Format:XXXXX Example:12345",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Number which is assgined to a Merchant Valid Values:0-9 Format:XXXXX Example:205136549",
+                            "children": []
+                        },
+                        {
+                            "name": "BillingCycle",
+                            "type": "string",
+                            "required": null,
+                            "description": "The Billing Cycle Assigned for the Merchant",
+                            "children": []
+                        },
+                        {
+                            "name": "StatementPrintingSequence",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates in what Sequence/order the Statement must be Printed Valid Values: '0' = Account Number Order and '1' = ZIP Code Order Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "StatementForm",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the Statement printed will be as a Form or Custom Made Valid Values: '0' = Form and '1' = Custom Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditLimitOTBDisplay",
+                            "type": "string",
+                            "required": null,
+                            "description": "Determines if the Credit Limit and OTB will be Displayed on Merchant Statement or Not. Valid Values: 0-Display on Statement 1-Do not display on Statement Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "DefaultCreditLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Default Credit Limit Assigned for the Merchant Valid Values: 0-9 Format: XXX.XX Example: 1000.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SumofAllCredits",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates Sum of All Credits Valid Values: 0-9 Format: XXX.XX Example: 1000.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InventoryGroupCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Inventory Group Code for the Merchant Valid Values: a-z Format: X Example: abc xyz",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRPolicyIdentifier",
+                            "type": "string",
+                            "required": null,
+                            "description": "Credit Policy on the Merchant Valid Values: '1' = Grandfathered and '2' = Standard Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "MSRLineAssignmentPolicy",
+                            "type": "string",
+                            "required": null,
+                            "description": "Line Assignment Policy on the Merchant Valid Values: '1' = Grandfathered and '2' = Standard Format: X Example: 0 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductMapping",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the Products Mapped on the Merchant, Multiple Products can be mapped on the Merchant by Inputting Product IDs comma Seperated Check the Product IDs provided by CoreCARD Valid Values: 0-9 Format:XXXXXX,XXXXX Example:12345,54321 Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldAccountStatus1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account with status set on the Field, will be eligible of Reserve Calculation, conditon, the same status must be in the Included Status Field and also 'Add Unmailed to Reserve' Filed must be set to Yes in Merchant Reserve Parameters Valid Values: Status Code refer the Appendix Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldAccountStatus2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account with status set on the Field, the Statement generated for Account with this Status will be Sent to the Merchant and Not the Account Holder and such Accounts will be eligible of Reserve Calculation, Reserve Calculation conditon, the same status must be in the Included Status Field and also \"Add Unmailed to Reserve\" Filed must be set to Yes in Merchant Reserve Parameters Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldAccountStatus3",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account with status set on the Field, the Statement generated for Account with this Status will be Sent to the Merchant and Not the Account Holder and such Accounts will be eligible of Reserve Calculation, Reserve Calculation conditon, the same status must be in the Included Status Field and also \"Add Unmailed to Reserve\" Filed must be set to Yes in Merchant Reserve Parameters Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldAccountStatus4",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account with status set on the Field, the Statement generated for Account with this Status will be Sent to the Merchant and Not the Account Holder and such Accounts will be eligible of Reserve Calculation, Reserve Calculation conditon, the same status must be in the Included Status Field and also \"Add Unmailed to Reserve\" Filed must be set to Yes in Merchant Reserve Parameters Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldCreditBalances",
+                            "type": "string",
+                            "required": null,
+                            "description": "If Set to Yes then if All account available under the Merchant with Negative Current Balance will be Eligible for Reserve calculations, Condition this field will be honoured for the Account only if the status of the Account is not in one of the \"HoldAccountStatus\" fields in Merchant Account Parameters and also in \"IncludedStatus\" fields in Merchant Reserve Parameters Valid Values: '0' = Yes and '1' = No Format: X Example: 0 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "DebitBalancesUnder",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "If any Account has Current Balance Greater than 0 and Lower than the Amount set this field/tag, then it will be Eligible for Reserve calculations, Condition this field will be honoured if 'HoldCreditBalances' is set to 'No' and if the status of the Account is not in one of the 'HoldAccountStatus' fields in Merchant Account Parameters and also in 'IncludedStatus' fields in Merchant Reserve Parameters. Valid Values:0-9 Format: XXX.XX Example: 500.00",
+                            "children": []
+                        },
+                        {
+                            "name": "FromAccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "If any Account Number falls between from This Account Number to Account Number set in \"ToAccountNumber\", it will be eligible for Reserve calculations, Condition this field will be honoured if \"HoldCreditBalances\" is set to 'No' and if the status of the Account is not in one of the \"HoldAccountStatus\" fields in Merchant Account Parameters and also in \"IncludedStatus\" fields in Merchant Reserve Parameters Valid Values:0-9 Format: XXXXXXXXXXXXXXXXXXXX Example: 9000000111111222222333 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "ToAccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "If any Account Number falls between the  Account Number in \"FromAccountNUmber\" to Account Number set in \"ToAccountNumber\", it will be eligible for Reserve calculations, Condition this field will be honoured if \"HoldCreditBalances\" is set to 'No' and if the status of the Account is not in one of the \"HoldAccountStatus\" fields in Merchant Account Parameters and also in \"IncludedStatus\" fields in Merchant Reserve Parameters Valid Values:0-9 Format: XXXXXXXXXXXXXXXXXXXX Example: 9000000111111222222333 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumberGenerationFlag",
+                            "type": "string",
+                            "required": null,
+                            "description": "If Set To Yes then Account Number will be Auto Generated for the Accounts Created Under this Merchant Valid Values: '0' = Yes and '1' = No Format: X Example: 0 Allowable Values: 4",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumberBegin",
+                            "type": "string",
+                            "required": null,
+                            "description": "For internally-generated account numbers, this is the first account number that can be issued for this Merchant. This number is added to the number in the Increment By field to generate the first account number. Valid Values:0-9 Format: XXXXXXXXXXXXXXX Example: 0000000000001000 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumberEnd",
+                            "type": "string",
+                            "required": null,
+                            "description": "For internally-generated card numbers, this is the last account number that can be issued for this Merchant Valid Values:0-9 Format: XXXXXXXXXXXXXXX Example: 0000000000001000 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumberIncrementBy",
+                            "type": "integer",
+                            "required": null,
+                            "description": "The Begin Number is added to this number to generate the first account number. Subsequent account numbers are generated by adding the Last Used Account Number to this number.",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumberLastUsed",
+                            "type": "string",
+                            "required": null,
+                            "description": "The last generated account number displays in this field/Tag, which is used to generate the next account number by adding the value in the Increment By field to this number. Valid Values:0-9 Format: XXXXXXXXXXXXXXX Example: 0000000000001000 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumberCheckDigitRoutine",
+                            "type": "string",
+                            "required": null,
+                            "description": "Determines the Modulous formula applied for Check Digit Routine Valid Values: '0'= Mod10, '1' = Mod11 and '2' = None Format: X Example: 2 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "IsForwardedToUCA",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Field : MerchantPLAccounts.IsForwardedToUCA LookUp: CCardLookup; LutId = 'IsForwardedToUCA '",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDescriptionMandatory",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Field : MerchantPLAccounts.TransactionDescriptionMandatory",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountActivationEnabled",
+                            "type": "string",
+                            "required": null,
+                            "description": "will determine whether account activation process is enabled for the merchant or not. Valid Values: 1-No,0-Yes Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "ExcludeFlashScreen",
+                            "type": "string",
+                            "required": null,
+                            "description": "Field : MerchantPLAccounts.ExcludeFlashScreen",
+                            "children": []
+                        },
+                        {
+                            "name": "SuppressPrequalReminderMails",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Field : MerchantPLAccounts.SuppressPrequalReminderMails LookUp: CCardLookup; LutId = 'SuppressPrequalReminderMails '",
+                            "children": []
+                        },
+                        {
+                            "name": "ActivationMTAConsolidationEnabled",
+                            "type": "string",
+                            "required": null,
+                            "description": "will determine whether Activation MTA Consolidation process is applicable or not. Valid Values:  1=Yes and 0=No Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantLogo",
+                            "type": "string",
+                            "required": null,
+                            "description": "File Name for the Logo File Valid Values:0-1 A-Z Format:XXXX Example:LogoFile1 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "WeekDayHours",
+                            "type": "string",
+                            "required": null,
+                            "description": "Contact Number of the Distribution Partner Valid Values:0-1 Format:XXXX Example:8:30 Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "WeekendHours",
+                            "type": "string",
+                            "required": null,
+                            "description": "Contact Number of the Distribution Partner Valid Values:0-1 Format:XXXX Example:6 Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "SiteURL",
+                            "type": "string",
+                            "required": null,
+                            "description": "URL of the site Valid Values:0-1 A-Z Format:XXXX Example:mysite.com/card Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "Motto",
+                            "type": "string",
+                            "required": null,
+                            "description": "Motto Valid Values:0-1 A-Z Format:XXXX Example:Be Independent Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "CardDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the Card Valid Values:0-1 A-Z Example: Platinum Card Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "CardActivationURL",
+                            "type": "string",
+                            "required": null,
+                            "description": "Motto Valid Values:0-1 A-Z Format:XXXX Example:Be Independent Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "Disclosure",
+                            "type": "string",
+                            "required": null,
+                            "description": "Motto Valid Values:0-1 A-Z Format:XXXX Example:Be Independent Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "ContactNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Contact Number of the Distribution Partner Valid Values:0-1 Format:XXXX Example:02245879654 Allowable Values: 11",
+                            "children": []
+                        },
+                        {
+                            "name": "DaystoDisplaySplashPage",
+                            "type": "string",
+                            "required": null,
+                            "description": "Will determine for how many days splash page will bedisplayed to user Valid Values:0-9 Format:XX Example:30",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Will determine Unique ID of Company Valid Values:0-9 Example:1234 Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Name Valid Values:A-Z Example: abc Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "destination",
+                            "type": "string",
+                            "required": null,
+                            "description": "Destination Details. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "DestinationRoutingAndTransit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Destination Routing Details. Valid Values: A-Z, 0-9 Format: XXX Example: Destination Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "origination",
+                            "type": "string",
+                            "required": null,
+                            "description": "Origination Details. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "OriginationRoutingAndTransit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Origination Routing Details. Valid Values: A-Z, 0-9 Format: XXX Example: Destination Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "Prenote",
+                            "type": "string",
+                            "required": null,
+                            "description": "Prenote. Valid Values: 0-3 Format: XXX Example: 0 Not Active 1 Eligible 2 Mandatory Generation",
+                            "children": []
+                        },
+                        {
+                            "name": "delayDes",
+                            "type": "string",
+                            "required": null,
+                            "description": "Delay days. Valid Values: 1-31 Format: XX Example: 14",
+                            "children": []
+                        },
+                        {
+                            "name": "MultipleFileIdentifier",
+                            "type": "string",
+                            "required": null,
+                            "description": "Multiple file identifier Description. Valid Values: A-Z, 0-9 Format: XXX Example: File Identifier Description Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "TaxIdentificationNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Tax Identification Number Valid Values: 0-9 Format: XXXXXXXXX Example: 081408477 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ImmediateDestinationName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Immediate Destination. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "DestRoutingTransitRefund",
+                            "type": "string",
+                            "required": null,
+                            "description": "DestRoutingTransitRefund. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHIdRefund",
+                            "type": "string",
+                            "required": null,
+                            "description": "ACHIdRefund. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "OrigRoutingTransitRefund",
+                            "type": "string",
+                            "required": null,
+                            "description": "OrigRoutingTransitRefund. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyIdRefund",
+                            "type": "string",
+                            "required": null,
+                            "description": "CompanyIdRefund. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "DestRoutingTransitReward",
+                            "type": "string",
+                            "required": null,
+                            "description": "DestRoutingTransitReward. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHIdReward",
+                            "type": "string",
+                            "required": null,
+                            "description": "ACHIdReward Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "OrigRoutingTransitReward",
+                            "type": "string",
+                            "required": null,
+                            "description": "OrigRoutingTransitReward Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyIdReward",
+                            "type": "string",
+                            "required": null,
+                            "description": "CompanyIdReward Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "SecondaryCurrencyDestination",
+                            "type": "string",
+                            "required": null,
+                            "description": "Secondary Currency Destination Valid Values: 0-9 a-z Format:xxxxxx.xxx Example: xyz.llc Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "SecondaryCurrencyOrigination",
+                            "type": "string",
+                            "required": null,
+                            "description": "Secondary Currency Origination Valid Values: 0-9 a-z Format: xxxxx.xxx Example: xyz.llc Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantOriginationRoutingandTransit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Origination Routing and Transit Valid Values: Format: Example:",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantDestinationRoutingandTransit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Destination Routing and Transit Valid Values: Format: Example:",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantDestinationName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Destination Name Valid Values: 0-9 a-z Format: xxxxx.xxx Example: xyz.llc Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantOriginationName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Origination Name Valid Values: 0-9 a-z Format: xxxxx.xxx Example: xyz.llc Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantTaxIdentificationNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Tax Identification Number. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "OriginatorsRFIID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Originators RFI ID Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "DestinationName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Destination Name. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "BankABA",
+                            "type": "string",
+                            "required": null,
+                            "description": "Bank ABA Valid Values: Format: Example:",
+                            "children": []
+                        },
+                        {
+                            "name": "BankName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Bank Name Valid Values: Format: Example: Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "HolidayConsideration",
+                            "type": "string",
+                            "required": null,
+                            "description": "Holiday Consideration Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHFileContent",
+                            "type": "string",
+                            "required": null,
+                            "description": "ACH File Content. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC",
+                            "children": []
+                        },
+                        {
+                            "name": "BankVerificationMethod",
+                            "type": "string",
+                            "required": null,
+                            "description": "Bank Verification Method. Valid Values: 1- None, 2-Prenote , 3-Micro Deposit , 4-Third party validation Format: XXXX Example: None",
+                            "children": []
+                        },
+                        {
+                            "name": "NoOfTxnInACHFile",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of Transactions in ACH File Valid Values: 0-9 Format: xxxx Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHCutoffTimeforInstantPayments",
+                            "type": "string",
+                            "required": null,
+                            "description": "ACH Cutoff Time for Instant Payments Valid Values:0-9 Format:HH:mm:ss Example:12:00:00 Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHCutoffTimeforPaymentScheduling",
+                            "type": "string",
+                            "required": null,
+                            "description": "ACH Cutoff Time for Payment Scheduling Valid Values:0-9 Format:HH:mm:ss Example:12:00:00 Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyEntryDescriptionCredit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Entry Description (Credit). Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyNameCCD",
+                            "type": "string",
+                            "required": null,
+                            "description": "CompanyNameCCD Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 16",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyIdCCD",
+                            "type": "string",
+                            "required": null,
+                            "description": "CompanyIdCCD. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyEntryDescCCDDebit",
+                            "type": "string",
+                            "required": null,
+                            "description": "CompanyEntryDescCCDDebit. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyEntryDescCCDCredit",
+                            "type": "string",
+                            "required": null,
+                            "description": "CompanyEntryDescCCDCredit Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyEntryDescriptionDebit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Entry Description (Debit). Valid Values: A-Z, 0-9 Format: XXX Example: XYZ Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHProcessing",
+                            "type": "string",
+                            "required": null,
+                            "description": "Activation of the ACH feature. Valid Values: 0-1 Format: X Example: 0 Active,1 Inactive",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHformat",
+                            "type": "string",
+                            "required": null,
+                            "description": "ACH Format of the institution Valid values are 1) Without Offset Record 2) With Offset Record Allowable Values: 18",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHCompanyAccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Client provided Company Account Number Valid Values 0-9 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHCompanyAccountDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Client provided name of the bank account as Company Account Description Valid Values a-z, A-Z, 0-9 Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "SecCodeasperNACHA",
+                            "type": "string",
+                            "required": null,
+                            "description": "SecCode as per NACHA Valid Values: 1-Yes and 2-No Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "SendPortfolioIDinACHfile",
+                            "type": "string",
+                            "required": null,
+                            "description": "Send Portfolio ID in ACH file Valid Values:1-Yes and 2-No Allowable Values: 30",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MerchantID": 11510,
+        "MerchantNumber": null
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "AccountProcessingControls": {
+                "MerchantID": 0,
+                "MerchantNumber": null,
+                "BillingCycle": "Monthly 5",
+                "StatementPrintingSequence": "Account Number order",
+                "StatementForm": "Form",
+                "CreditLimitOTBDisplay": "Do not display on Statement",
+                "DefaultCreditLimit": 5000.0,
+                "SumofAllCredits": 0.0,
+                "InventoryGroupCode": "Benjamins Custom",
+                "MSRPolicyIdentifier": null,
+                "MSRLineAssignmentPolicy": null,
+                "ProductMapping": null,
+                "HoldAccountStatus1": "H - Hold Statements",
+                "HoldAccountStatus2": "E - Employee Account",
+                "HoldAccountStatus3": "B-Bankruptcy",
+                "HoldAccountStatus4": "U - Undeliverable",
+                "HoldCreditBalances": "Yes",
+                "DebitBalancesUnder": 1.0,
+                "FromAccountNumber": null,
+                "ToAccountNumber": null,
+                "AccountNumberGenerationFlag": "Yes",
+                "AccountNumberBegin": "0000000000001000",
+                "AccountNumberEnd": "0000099999999999",
+                "AccountNumberIncrementBy": 1,
+                "AccountNumberLastUsed": null,
+                "AccountNumberCheckDigitRoutine": "Mod10",
+                "AccountActivationEnabled": null,
+                "ActivationMTAConsolidationEnabled": "0",
+                "MerchantLogo": null,
+                "WeekDayHours": null,
+                "WeekendHours": null,
+                "SiteURL": null,
+                "Motto": null,
+                "CardDescription": null,
+                "CardActivationURL": null,
+                "Disclosure": null,
+                "ContactNumber": null,
+                "DaystoDisplaySplashPage": null,
+                "CompanyID": null,
+                "CompanyName": null,
+                "destination": null,
+                "DestinationRoutingAndTransit": null,
+                "origination": null,
+                "OriginationRoutingAndTransit": null,
+                "Prenote": null,
+                "delayDes": null,
+                "MultipleFileIdentifier": null,
+                "TaxIdentificationNumber": null,
+                "ImmediateDestinationName": null,
+                "DestRoutingTransitRefund": null,
+                "ACHIdRefund": null,
+                "OrigRoutingTransitRefund": null,
+                "CompanyIdRefund": null,
+                "DestRoutingTransitReward": null,
+                "ACHIdReward": null,
+                "OrigRoutingTransitReward": null,
+                "CompanyIdReward": null,
+                "SecondaryCurrencyDestination": null,
+                "SecondaryCurrencyOrigination": null,
+                "MerchantOriginationRoutingandTransit": null,
+                "MerchantDestinationRoutingandTransit": null,
+                "MerchantDestinationName": null,
+                "MerchantOriginationName": null,
+                "MerchantTaxIdentificationNumber": null,
+                "OriginatorsRFIID": null,
+                "DestinationName": null,
+                "BankABA": null,
+                "BankName": null,
+                "HolidayConsideration": null,
+                "ACHFileContent": null,
+                "BankVerificationMethod": null,
+                "NoOfTxnInACHFile": null,
+                "ACHCutoffTimeforInstantPayments": null,
+                "ACHCutoffTimeforPaymentScheduling": null,
+                "CompanyEntryDescriptionCredit": null,
+                "CompanyNameCCD": null,
+                "CompanyIdCCD": null,
+                "CompanyEntryDescCCDDebit": null,
+                "CompanyEntryDescCCDCredit": null,
+                "CompanyEntryDescriptionDebit": null,
+                "ACHProcessing": null,
+                "ACHformat": null,
+                "ACHCompanyAccountNumber": null,
+                "ACHCompanyAccountDescription": null,
+                "SecCodeasperNACHA": null,
+                "SendPortfolioIDinACHfile": null
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1048&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1008"
+    }
+}

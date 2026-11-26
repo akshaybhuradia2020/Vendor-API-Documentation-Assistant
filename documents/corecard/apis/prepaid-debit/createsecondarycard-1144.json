@@ -1,0 +1,745 @@
+{
+    "metadata": {
+        "name": "CreateSecondaryCard",
+        "http_method": "POST",
+        "endpoint": "/api/CreateSecondaryCard",
+        "description": "Use this API to create a secondary or virtual card in a single step. Certain information is required depending upon the card type, such as cardholder details, a shipping address, and card expiry date (if applicable)."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893 Condition:At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition:At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition:At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "Title",
+            "type": "string",
+            "required": false,
+            "description": "Title for the customer Valid Values:  Refer Appendix Section : Title Values Example: Mr. Allowable Values: 9"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": true,
+            "description": "Cardholder First Name Valid Values: A-Z,a-z,special characters ( !@#$%^*()_+=-.) and Ampersand Example: Andrew Allowable Values: 50"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder Middle Name Valid Values: A-Z,a-z,special characters ( !@#$%^*()_+=-.) and Ampersand Example: Charles Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": true,
+            "description": "Cardholder Last Name Valid values: A-Z,a-z,special characters ( !@#$%^*()_+=-.) and Ampersand Example: Hudson Allowable Values: 50"
+        },
+        {
+            "name": "DOB",
+            "type": "datetime",
+            "required": true,
+            "description": "Date of Birth of cardholder Format: MM/DD/YYYY Valid Values: 0-9 Example:- 03/26/1986"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": true,
+            "description": "Address Line 1 of the Cardholder Valid values : A-Z, a-z, 0-9 Example: 15 Penang Street Point Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Address Line 2 of the Cardholder Valid values: A-Z, a-z, 0-9 Example: 1 mecca way Allowable Values: 50"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": true,
+            "description": "Cardholder's City of residence Valid values: A-Z, a-z, 0-9 Example: Norcross Allowable Values: 25"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": true,
+            "description": "Two Character Country Code Valid values :A-Z, a-z Example: US Refer Appendix section : Country Code Values Allowable Values: 2"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": true,
+            "description": "Cardholder Postal Code of Residence Valid Values:A-Z,a-z,0-9 Example: 30093 Allowable Values: 10"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": true,
+            "description": "Cardholder State of residence Valid values are A-Z, a-z Example: GA Please refer Appendix Section : State Codes (US) Allowable Values: 3"
+        },
+        {
+            "name": "HomePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Home Phone Number. Valid Values: 0-9 Example: 9812338769 Condition: It is Mandatory when Card Account Parameters is Set as Yes on Product. Allowable Values: 10"
+        },
+        {
+            "name": "WorkPhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder  Work Phone Number Valid values:0-9 Example:9632581470 Condition:If validation parameter set on product as Work Phone) Allowable Values: 10"
+        },
+        {
+            "name": "MobilePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder's Mobile Phone Number Valid Values: 0-9 Example: 9876543210 Condition:If validation parameter set on product as Work Phone) Allowable Values: 10"
+        },
+        {
+            "name": "EmailID",
+            "type": "string",
+            "required": null,
+            "description": "E Mail Address 1 of Cardholder Valid Values: A-Z, a-z, 0-9. Example: [email protected] Condition: If validation parameter set on the product for Primary Email Address then it will be mandatory. Allowable Values: 100"
+        },
+        {
+            "name": "SocialSecurityNumber",
+            "type": "string",
+            "required": true,
+            "description": "Social Security Number of Cardholder Valid Values:0-9 Example:123456789 Condition:At least one of SocialSecurityNumber, TaxID or IDName field should be passed in the input as Identification details Allowable Values: 9"
+        },
+        {
+            "name": "IDNumber",
+            "type": "string",
+            "required": true,
+            "description": "Last 4 Digits of Primary ID Valid Values: 0-9 Example: 4586 Allowable Values: 18"
+        },
+        {
+            "name": "MotherMaidenName",
+            "type": "string",
+            "required": false,
+            "description": "Mother’s Maiden Name Valid Values: A-Z,a-z Allowable Values: 40"
+        },
+        {
+            "name": "IDTypeCode",
+            "type": "string",
+            "required": null,
+            "description": "Identification Type Code Valid Values: 02- Driver’s license 03- Matricular 04- Passport 05- Visa 06- Green Card 07- State ID 08- Military ID 09- Voters Registration Card 10- government ID 11- Tax identification number 12 - Cedula ID Example:05 Allowable Values: 2"
+        },
+        {
+            "name": "IDIssueDate",
+            "type": "datetime",
+            "required": null,
+            "description": "ID Issue Date Format: MM/DD/YYYY Valid Values:0-9 Example: 03/26/1998 Condition: This field is mandatory when IDTypeCode is \"2\"."
+        },
+        {
+            "name": "IDExpirationDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Expiration date of ID. Format: MM/DD/YYYY Valid Values:0-9 Example:03/26/1998"
+        },
+        {
+            "name": "IDIssueState",
+            "type": "string",
+            "required": null,
+            "description": "ID Issue State Valid Values:A-Z,a-z Example:GA Refer Appendix section : State Codes (US) Condition: This field is mandatory when IDIssuingAuthority = 'US',IDTypeCode = '07' or IDTypeCode='02'. Allowable Values: 3"
+        },
+        {
+            "name": "NameOnCard",
+            "type": "string",
+            "required": true,
+            "description": "Name to be Embossed on Card Valid values are A-Z, a-z, and all special characters Example: Hudson M Charles Allowable Values: 28"
+        },
+        {
+            "name": "EmbossingLine4",
+            "type": "string",
+            "required": false,
+            "description": "Embossing line4. Allowable Values: 26"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": false,
+            "description": "Indicate Client Id and echo in embossing file Valid Values: 1422245 Format:XXXXX Allowable Values: 50"
+        },
+        {
+            "name": "VirtualCardExpiryOption",
+            "type": "string",
+            "required": null,
+            "description": "Virtual Card Expiry Option Valid values are 0,1,2 0 = Card will expire after n number of transaction 1 = Card will expire  after n number of days/hour/Minutes/Month/Weeks/years 2 = Card will expire on particular  date Condition : SecondaryCardType = 1 then this options will be applicable. Allowable Values: 50"
+        },
+        {
+            "name": "LanguageIndicator",
+            "type": "string",
+            "required": false,
+            "description": "Language Indicator Valid Values:A-Z,a-z. Example: en, where en represents 'English' Allowable Values: 10"
+        },
+        {
+            "name": "SecondaryCardType",
+            "type": "string",
+            "required": true,
+            "description": "Type of secondary card Valid Values:0-2 0 = Regular Card 1 = Virtual Card 2 = Family Card Example: 0 (Regular Card) Allowable Values: 5"
+        },
+        {
+            "name": "IssuanceCardType",
+            "type": "Int32",
+            "required": false,
+            "description": "Secondary card  type Valid Values : Blank = New card created (Default value) 2 = Issue from Inventory (Future use) Example : 2"
+        },
+        {
+            "name": "SecondaryCardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card number of the card  from inventory Valid values: 0-9 Example: 123456******0001 Condition: This field is mandatory when IssuanceCardType is 2(Issue from Inventory). Allowable Values: 16"
+        },
+        {
+            "name": "SecondaryProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy number of the card  from inventory Valid values:0-9 Example:1005 Condition: This field is mandatory when IssuanceCardType is 2(Issue from Inventory). Allowable Values: 19"
+        },
+        {
+            "name": "VirtualCardLimit",
+            "type": "string",
+            "required": null,
+            "description": "Virtual Card Limit allocates for Virtual Card it can be greater than available balance of primary card but can not be greater than the primary card limit which is set on product. Condition : SecondaryCardType = 1 then this options will be applicable Example 100,200 When SecondaryCardType = 2, then it will display the Family Card Usage Limit Allowable Values: 11"
+        },
+        {
+            "name": "VirtualCardResetAllow",
+            "type": "string",
+            "required": null,
+            "description": "Virtual Card Reset Allowed or not Valid Values  0:Yes, 1 : No Example : 1 Condition: This field is mandatory when SecondaryCardType is 1(Virtual Card). Allowable Values: 5"
+        },
+        {
+            "name": "VirtualCardExpiresNumberOfTransaction",
+            "type": "string",
+            "required": null,
+            "description": "Number of transaction allowed from the virtual card Valid Values : 0-9 Example : 10 Condition : Mandatory When VirtualCardExpiryOption = 0 Allowable Values: 4"
+        },
+        {
+            "name": "VirtualCardExpiryDuration",
+            "type": "string",
+            "required": null,
+            "description": "Duration Valid Values are 0 = Minutes 1 = Hour 2 = Day 3 = Week 4 = Month 5 = Year Example : 3 Condition:Mandatory  When VirtualCardExpiryOption is 1 Allowable Values: 5"
+        },
+        {
+            "name": "VirtualCardExpiresExpiryDate",
+            "type": "string",
+            "required": null,
+            "description": "Date of expiration for virtual card Format: mmddyyyy Condition : Mandatory When VirtualCardExpiryOption is 2. Allowable Values: 8"
+        },
+        {
+            "name": "VirtualCardExpiryValue",
+            "type": "string",
+            "required": null,
+            "description": "Duration Valid Values : 1-999 Condition: Mandatory When VirtualCardExpiryOption = 1 Allowable Values: 5"
+        },
+        {
+            "name": "IDIssuingAuthority",
+            "type": "string",
+            "required": null,
+            "description": "ID Issuing Authority (country) Condition : This field is mandatory when IDName is provided. Example : AE =  United Arab Emirates Allowable Values: 5"
+        },
+        {
+            "name": "CIPCheck",
+            "type": "string",
+            "required": false,
+            "description": "CIP check for secondary card Should be performed or not. Valid Values: 0 (No) 1 (Yes) Condition: 1 should only be accepted when on product 'CIP/LN checkfor Secondary Card' is YES. By default it should go as 1 (Yes) Allowable Values: 2"
+        },
+        {
+            "name": "RelationwithPrimary",
+            "type": "string",
+            "required": false,
+            "description": "RelationwithPrimary card holder Valid Values: 0=Wife, 1=Husband, 2=Son, 3=Daughter, 4=Brother, 5=Sister, 6=Father, 7=Mother, 8=Partner, 9=Other. Allowable Values: 2"
+        },
+        {
+            "name": "CreateCIPFailedAccount",
+            "type": "string",
+            "required": false,
+            "description": "Action to be taken when CIP check is failed Possible value are 'Y' and 'N' Y- Create Account N- Do not create Account Allowable Values: 1"
+        },
+        {
+            "name": "LinkWithExistingCustomer",
+            "type": "Int32",
+            "required": false,
+            "description": "To link new account with existing customer using customer ID Valid Values: 0 = No(default) and 1 = Yes Format: x Example: 0=No,"
+        },
+        {
+            "name": "CustomerID",
+            "type": "string",
+            "required": null,
+            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123 Condition: Mandatory when 'Link With Existing Customer' = Yes Allowable Values: 25"
+        },
+        {
+            "name": "IsCardMasked",
+            "type": "string",
+            "required": null,
+            "description": "Flag to indicate Card Number should be returned in masked form or in clear form. Valid Values: 0= Clear Card Number in Response. 1= Masked Card Number in Response. 2= No Card Number in Response. Note : Default value is 1 Allowable Values: 1"
+        },
+        {
+            "name": "HoldEmbossing",
+            "type": "Int32",
+            "required": false,
+            "description": "Tag to decide physical card or virtual card by holding embossing file. Valid Values: 0 - No (Physical card) 1 - Yes (Virtual card)"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893",
+                    "children": []
+                },
+                {
+                    "name": "FirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder First Name Valid Values: A-Z, a-z Example: Andrew",
+                    "children": []
+                },
+                {
+                    "name": "LastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder Last Name Valid values:A-Z, a-z Example: Hudson",
+                    "children": []
+                },
+                {
+                    "name": "CardStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card Plastic Status Example : New Card Pending Activation",
+                    "children": []
+                },
+                {
+                    "name": "ValidFrom",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card Creation Date of requested card. Format:MM/YY Example:03/21",
+                    "children": []
+                },
+                {
+                    "name": "ValidTo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card Expiration Date of requested card. Format:MM/dd/yyyy HH:mm:ss Example:01/01/2022",
+                    "children": []
+                },
+                {
+                    "name": "CurrentCardBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Current Balance of Account Example: 5425.00",
+                    "children": []
+                },
+                {
+                    "name": "ActivationRequired",
+                    "type": "string",
+                    "required": null,
+                    "description": "Activation required or not. Valid Values : Yes , No Example : Yes",
+                    "children": []
+                },
+                {
+                    "name": "NameOnCard",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name to be Embossed on Card Valid values are A-Z, a-z, 0-9. Example: Hudson M Charles",
+                    "children": []
+                },
+                {
+                    "name": "ProxyNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005",
+                    "children": []
+                },
+                {
+                    "name": "CloseDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Close or cancellation Date of requested card. Format: yyyy-mm-ddThh:mm:ss Example: 2017-09-26T00:00:00",
+                    "children": []
+                },
+                {
+                    "name": "CardExpirationDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Expiration Date of the card. Format: yyyy-mm-ddThh:mm:ss Valid Values: 0-9 Example: 2021-09-26T00:00:00",
+                    "children": []
+                },
+                {
+                    "name": "CardExpirationDateISO",
+                    "type": "string",
+                    "required": null,
+                    "description": "Expiration Date of created card as per ISO format. Format: MMYY Example: 0121",
+                    "children": []
+                },
+                {
+                    "name": "CustomerID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Unique ID linked to the customer Valid Values:0-9 Example: 3212212",
+                    "children": []
+                },
+                {
+                    "name": "SecondaryCardType",
+                    "type": "string",
+                    "required": null,
+                    "description": "Type of secondary card Valid Values:0-2 0 = Regular Card 1 = Virtual Card 2 = Family Card Example: 0 (Regular Card)",
+                    "children": []
+                },
+                {
+                    "name": "CardGeneratedStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Generated Status of Card Example :New Card Pending Activation",
+                    "children": []
+                },
+                {
+                    "name": "CVC",
+                    "type": "string",
+                    "required": null,
+                    "description": "Three digit printed on  the back of  the card. Valid Values - 0-9 Example: 213",
+                    "children": []
+                },
+                {
+                    "name": "LNResultsGroup",
+                    "type": "",
+                    "required": null,
+                    "description": "LNResultsGroup",
+                    "children": [
+                        {
+                            "name": "LexNexList",
+                            "type": "array",
+                            "required": null,
+                            "description": "This will have RiskCodes in Array",
+                            "children": [
+                                {
+                                    "name": "RiskCodes",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Risk Codes triggered on the card Example: 28 Unable to verify date-of-birth",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "CVICheckValue",
+                            "type": "string",
+                            "required": null,
+                            "description": "score of Comprehensive Verification Index Example: 0,10,20",
+                            "children": []
+                        },
+                        {
+                            "name": "NASCheckValue",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name Address SSN (NAS) Check tag shows Reason Codes triggered on the card Example: 10 Input First name, Address, and SSN matched",
+                            "children": []
+                        },
+                        {
+                            "name": "LexNexInquiryDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Lexis Nexis Inquiry Date Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "RequestedProxyNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Proxy number of the card which requested the secondary card Valid values:0-9 Example:100556",
+                    "children": []
+                },
+                {
+                    "name": "CardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001",
+                    "children": []
+                },
+                {
+                    "name": "OFACResultsGroup",
+                    "type": "",
+                    "required": null,
+                    "description": "OFACResultsGroup",
+                    "children": [
+                        {
+                            "name": "OFACInquiryDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "OFAC Inquiry Date Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACScore",
+                            "type": "string",
+                            "required": null,
+                            "description": "Score received after OFAC Checks. Example : 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SDNEntry1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Value imposed to an Account after OFAC Check via third party Example:85",
+                            "children": []
+                        },
+                        {
+                            "name": "SDNEntry2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Value imposed to an Account after OFAC Check via third party Example:85",
+                            "children": []
+                        },
+                        {
+                            "name": "SDNEntry3",
+                            "type": "string",
+                            "required": null,
+                            "description": "Value imposed to an Account after OFAC Check via third party Example:85",
+                            "children": []
+                        },
+                        {
+                            "name": "SDNEntry4",
+                            "type": "string",
+                            "required": null,
+                            "description": "Value imposed to an Account after OFAC Check via third party Example:85",
+                            "children": []
+                        },
+                        {
+                            "name": "SDNEntry5",
+                            "type": "string",
+                            "required": null,
+                            "description": "Value imposed to an Account after OFAC Check via third party Example:85",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "PlasticCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Plastic Code of Card Valid Values: a to z, A to Z, 0 to 9 Example:- Chicksaw Nation Grant Card - Clothing (50)",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.6",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "AccountNumber": "",
+        "ProxyNumber": "1316614",
+        "CardNumber": "",
+        "Title": "DR.",
+        "FirstName": "Sanjay",
+        "MiddleName": "",
+        "LastName": "V",
+        "DOB": "1986-03-26T00:00:00",
+        "AddressLine1": "add1",
+        "AddressLine2": "add2",
+        "City": "fsf",
+        "Country": "US",
+        "PostalCode": "98767",
+        "State": "GA",
+        "HomePhoneNumber": "",
+        "WorkPhoneNumber": "",
+        "MobilePhoneNumber": "9896767678",
+        "EmailID": "[email protected]",
+        "SocialSecurityNumber": "111111111",
+        "IDNumber": "",
+        "MotherMaidenName": "",
+        "IDTypeCode": "02",
+        "IDIssueDate": "2017-05-17T00:00:00",
+        "IDExpirationDate": "2024-12-24T00:00:00",
+        "IDIssueState": "SA",
+        "NameOnCard": "Sanjay V",
+        "EmbossingLine4": "",
+        "ClientID": "",
+        "VirtualCardExpiryOption": "0",
+        "LanguageIndicator": "",
+        "SecondaryCardType": "0",
+        "IssuanceCardType": 0,
+        "SecondaryCardNumber": "",
+        "SecondaryProxyNumber": "",
+        "VirtualCardLimit": "",
+        "VirtualCardResetAllow": "",
+        "VirtualCardExpiresNumberOfTransaction": "",
+        "VirtualCardExpiryDuration": "",
+        "VirtualCardExpiresExpiryDate": "",
+        "VirtualCardExpiryValue": "",
+        "IDIssuingAuthority": "AU",
+        "CIPCheck": "",
+        "RelationwithPrimary": "",
+        "CreateCIPFailedAccount": "Y",
+        "LinkWithExistingCustomer": 1,
+        "CustomerID": "1031716",
+        "IsCardMasked": "1",
+        "HoldEmbossing": 1
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "AccountNumber": "60000000031747",
+            "CardNumber": "4066846120022456",
+            "FirstName": "Sanjay",
+            "LastName": "V",
+            "CardStatus": "INACTIVE",
+            "ValidFrom": "12/20",
+            "CurrentCardBalance": 250.0,
+            "ActivationRequired": "YES",
+            "NameOnCard": "Sanjay V",
+            "ProxyNumber": "1316750",
+            "CloseDate": "2024-10-24T00:00:00",
+            "CardExpirationDate": "2024-10-24T00:00:00",
+            "CardExpirationDateISO": "0425",
+            "CustomerID": "1031716",
+            "SecondaryCardType": "",
+            "CardGeneratedStatus": "",
+            "CVC": "",
+            "LNResultsGroup": {
+                "LexNexList": [
+                    {
+                        "RiskCodes": "11: The input address may be invalid according to postal specifications"
+                    }
+                ],
+                "CVICheckValue": "10",
+                "NASCheckValue": "4",
+                "LexNexInquiryDate": "2024-08-31T00:00:00"
+            },
+            "OFACResultsGroup": {
+                "OFACInquiryDate": "2024-08-31T00:00:00",
+                "OFACScore": "10",
+                "SDNEntry1": "83",
+                "SDNEntry2": "83",
+                "SDNEntry3": "83",
+                "SDNEntry4": "83",
+                "SDNEntry5": "83"
+            },
+            "PlasticCode": "NCP"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "New Cards",
+        "category_id": "1014",
+        "document_id": "1144",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1144&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1014&regionId=1"
+    }
+}

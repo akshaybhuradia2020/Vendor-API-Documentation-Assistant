@@ -1,0 +1,367 @@
+{
+    "metadata": {
+        "name": "GetLoanSchedule",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetLoanSchedule",
+        "description": "This API is used to get the Scehdule of a Specific Loan for an Account Holder."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "PlanSegmentID",
+            "type": "integer",
+            "required": false,
+            "description": "Unique ID generated for Each Plan Segment also known as Loan Schedule ID. Valid Values:0-9 Example:9875677574 Condition:Any one of PlanSegmentID and Loan Account Number is Mandatory. Allowable Values: 10"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "LoanScheduleList",
+                    "type": "array",
+                    "required": null,
+                    "description": "List of Individual Loan Installment Details in an array.",
+                    "children": [
+                        {
+                            "name": "PaymentDueDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Due date as to by when payment needs to be made to avoid late fees. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                            "children": []
+                        },
+                        {
+                            "name": "InstallmentPaymentNumber",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Defines Number of Installment against the Payment Due date Valid Values:0-9 Example:'7', which indicates 7 th Installment for the Payment",
+                            "children": []
+                        },
+                        {
+                            "name": "PIPayment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Principal + Interest Payment Amount for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPayment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Interest Payment for the Installment Payment Number, Intersest Earned by the Loan Provider. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "PrincipalPayment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Principal Payment for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LoanRemainingBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Remaining Balance after the Installment amount is paid for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestEarned3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Interest Payment for the Installment Payment Number, Intersest Earned 3 by the Loan Provider. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestRebate2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Interest Rebate 2 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestRebate3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Interest Rebate 3 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InsuranceEarned2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Insurance Earned 2 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InsuranceEarned3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Insurance Earned 3 for the Installment Payment Number Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InsuranceRebate2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Insurance Rebate 2 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InsuranceRebate3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Insurance Rebate 3 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFee1Earned2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of User Fee 1 Earned 2 for the Installment Payment Number Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFee1Earned3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of User Fee 1 Earned 3 for the Installment Payment Number Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFee1Rebate2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of User Fee 1 Rebate 2 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFee1Rebate3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of User Fee 1 Rebate 3 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFee2Earned2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of User Fee 2 Earned 2 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFee2Earned3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of User Fee 2 Earned 3 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFee2Rebate2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of User Fee 2 Rebate 2 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFee2Rebate3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of User Fee 2 Rebate 3 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFee3Earned2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of User Fee 3 Earned 2 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFee3Earned3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of User Fee 3 Earned 3 for the Installment Payment Numberr. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFee3Rebate2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of User Fee 3 Rebate 2 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFee3Rebate3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of User Fee 3 Rebate 3 for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalAmountDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Amount Due for the Installment Payment Number. Valid Values:0-9 Example: 200.00",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "PlanSegmentID": 7482555
+    },
+    "sample_response": {
+        "Message": "Loan Schedule Details have been returned successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01089",
+        "ResponseData": {
+            "LoanScheduleList": [
+                {
+                    "PaymentDueDate": null,
+                    "InstallmentPaymentNumber": 1,
+                    "PIPayment": null,
+                    "InterestPayment": null,
+                    "PrincipalPayment": null,
+                    "LoanRemainingBalance": null,
+                    "InterestEarned3": null,
+                    "InterestRebate2": null,
+                    "InterestRebate3": null,
+                    "InsuranceEarned2": null,
+                    "InsuranceEarned3": null,
+                    "InsuranceRebate2": null,
+                    "InsuranceRebate3": null,
+                    "UserFee1Earned2": null,
+                    "UserFee1Earned3": null,
+                    "UserFee1Rebate2": null,
+                    "UserFee1Rebate3": null,
+                    "UserFee2Earned2": null,
+                    "UserFee2Earned3": null,
+                    "UserFee2Rebate2": null,
+                    "UserFee2Rebate3": null,
+                    "UserFee3Earned2": null,
+                    "UserFee3Earned3": null,
+                    "UserFee3Rebate2": null,
+                    "UserFee3Rebate3": null,
+                    "TotalAmountDue": null
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=45&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4"
+    }
+}

@@ -1,0 +1,428 @@
+{
+    "metadata": {
+        "name": "GetMonetaryTransactionControl",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/GetMonetaryTransactionControl",
+        "description": "Purpose of this API is to review logic module and transaction code parameters."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "LogicModule",
+            "type": "string",
+            "required": true,
+            "description": "Logic module Valid Values:o-9 Format:XX Example:40 Allowable Values: 5"
+        },
+        {
+            "name": "TransactionCode",
+            "type": "string",
+            "required": false,
+            "description": "Payment Transaction Code Valid Values:0-9 Format:XXXXX Example: 86221 = AUTO ACH PAYMENT Allowable Values: 20"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "LogicModule",
+            "type": "string",
+            "required": true,
+            "description": "Logic module Valid Values:o-9 Format:XX Example:40 Allowable Values: 5"
+        },
+        {
+            "name": "TransactionCode",
+            "type": "string",
+            "required": false,
+            "description": "The unique, user-defined number assigned to the transaction Valid Values: 0-9,A-z Example: 1360 = Bad Debit settlement Allowable Values: 20"
+        },
+        {
+            "name": "BatchSize",
+            "type": "integer",
+            "required": false,
+            "description": "Number of Transaction which can be view in one Batch Default Value would be 50. Valid Values:0-9 Format:XX Example:20"
+        },
+        {
+            "name": "PageIndex",
+            "type": "integer",
+            "required": false,
+            "description": "Number of page Default value would be 0 Valid Values:0-9 Format:XX Example:12"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "TranCodesList",
+            "type": "array",
+            "required": null,
+            "description": "get or set TranCodes",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "TranCodesList",
+                    "type": "array",
+                    "required": null,
+                    "description": "get or set TranCodes",
+                    "children": [
+                        {
+                            "name": "LogicModule",
+                            "type": "string",
+                            "required": null,
+                            "description": "Logic module Valid Values:o-9 Format:XX Example:40 Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "The unique, user-defined number assigned to the transaction Valid Values: 0-9,A-z Example: 1360 = Bad Debit settlement Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Display if it is Debit or Credit transaction. Valid Values: - Debit - Credit Example: Debit Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the transaction code. Valid Values: 0-9, A-Z Example: Bad Debit settlement Allowable Values: 80",
+                            "children": []
+                        },
+                        {
+                            "name": "ShortDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "A short description that can be used for reporting, messaging or any other reason Example: PLAN TXFR - DR Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "SendToLedger",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates which posted transactions should be included in the outgoing ledger file. Valid Values: - Yes - No - Send A/R Only - Send P/L Only Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "Commission",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates if the transaction is eligible for commissions Valid Values: Yes and No Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountReceivableDebitLedger",
+                            "type": "string",
+                            "required": null,
+                            "description": "The debit ledger accounts the system should send to the General Ledger when the transaction code posts to a non-charged off account. If the Send to Ledger field is set to Yes or Send A/R Only, a value in this field is made. If the Send to Ledger field is set to No or Send P/L Only, any entry in this field is ignored. Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountReceivableCreditLedger",
+                            "type": "string",
+                            "required": null,
+                            "description": "The credit ledger accounts the system should send to the General Ledger when the transaction code posts to a non-charged off account. If the Send to Ledger field is set to Yes or Send A/R Only, a value in this field is made. If the Send to Ledger field is set to No or Send P/L Only, any entry in this field is ignored. Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "ProfitLossDebitLedger",
+                            "type": "string",
+                            "required": null,
+                            "description": "The Profit and Loss Debit Ledger provided to the Transaction Code. If the Send to Ledger field is set to Yes or Send P/L Only, a value in this field is made. If the Send to Ledger field is set to No or Send A/R Only, any entry in this field is ignored. Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "ProfitLossCreditLedger",
+                            "type": "string",
+                            "required": null,
+                            "description": "The Profit and Loss Credit Ledger provided to the Transaction Code. If the Send to Ledger field is set to Yes or Send P/L Only, a value in this field is made. If the Send to Ledger field is set to No or Send A/R Only, any entry in this field is ignored. Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "BackdatedMethod",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the method to post backdated transactions using this transaction code. Valid Values: 0 = Post all back-dated transactions 1 = Change date to posting date 2 = Post to exception Account 3 = Calculated as prior year-end minus backdate days 4 = Calculated as current date minus backdate days 5 = Post all back-dated transactions except across cycles Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "BackdatedDays",
+                            "type": "string",
+                            "required": null,
+                            "description": "The values are 1 through 120. If set to 1, any transaction coming in through an external source (interface, association, web, etc.) or through the online panels are allowed to post if the effective date is equal to the prior day’s date. If set to 2, any transaction coming in through an external source or through the online panels are allowed to post if the effective date is equal to the date of the prior 2 days. The restriction of 120 days only applies to automatic backdating of original transactions. You still have the ability to manage transactions in standard dispute / chargeback processing timeframes. Allowable Values: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "FuturedatedMethod",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the method used to post future-dated transactions using this transaction code. Valid Values: - Post all future-dated transactions - Change date to posting date - Post to exception Account Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "FuturedatedDays",
+                            "type": "string",
+                            "required": null,
+                            "description": "The values are 1 through 30. If set to 1, any transaction coming in through an external source (interface, association, web, etc.) or through the online panels are placed in the warehouse file if the effective date is equal to tomorrow’s date. If set to 2, any transaction coming in through an external source or through the online panels are placed in the warehouse file if the effective date is equal to tomorrow’s date or the following day’s date. When a transaction is received with a future date greater than 30 days before today’s date, the system rejects the transaction so it can be manually worked via the Monetary Batch panels Valid Values: 1-30 Allowable Values: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "MTCStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of MTC. Active or Inactive Valid Values: Active and Inactive Example: Active Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionCodeType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of Transaction code. Valid Values: Gen Int Fee Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "IncludeInStatementTotals",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates if the transaction should update year-to-date totals. This field is enabled only for transaction codes with a Transaction code type of INT or FEE. Valid Values: - YTD Totals Only - Both YTD and CTD Totals - Neither YTD or CTD Totals Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "AchPushOption",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates No,ye,Yes, with no ACH push. This Ach Push Options. Valid Values: - Yes - No - with no ACH push Allowable Values: 100",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "LogicModule": "02",
+        "TransactionCode": null,
+        "BatchSize": null,
+        "PageIndex": null
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "TranCodesList": [
+                {
+                    "LogicModule": "02 = Billed Interest",
+                    "TransactionCode": "36112 = INTEREST CHARGES",
+                    "TransactionType": "Debit",
+                    "TransactionDescription": "INTEREST CHARGES",
+                    "ShortDescription": null,
+                    "SendToLedger": "No",
+                    "Commission": "No",
+                    "AccountReceivableDebitLedger": null,
+                    "AccountReceivableCreditLedger": null,
+                    "ProfitLossDebitLedger": null,
+                    "ProfitLossCreditLedger": null,
+                    "BackdatedMethod": null,
+                    "BackdatedDays": null,
+                    "FuturedatedMethod": null,
+                    "FuturedatedDays": null,
+                    "MTCStatus": "Active",
+                    "TransactionCodeType": "INT",
+                    "IncludeInStatementTotals": "Both YTD and CTD Totals",
+                    "AchPushOption": null
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Control Parameters",
+        "category_id": "1005",
+        "document_id": "1022",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1022&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005&regionId=1"
+    }
+}

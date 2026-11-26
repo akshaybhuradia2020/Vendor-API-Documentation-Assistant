@@ -1,0 +1,340 @@
+{
+    "metadata": {
+        "name": "AddInventory",
+        "http_method": "POST",
+        "endpoint": "/api/AddInventory",
+        "description": "Use this API to Create/Update/Approve/Reject Inventory based on decision flag."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "BranchCode",
+            "type": "string",
+            "required": true,
+            "description": "Code assigned to branch from where the card was issued. Valid Values:0-9, A-Z Example:1006 Condition : Mandatory when decision flag is 1 Allowable Values: 20"
+        },
+        {
+            "name": "ProductID",
+            "type": "Int32",
+            "required": null,
+            "description": "ID of the Account's Product Valid Values:0-9 Example: 1739,1758 Condition : Mandatory when decision flag is 1 Allowable Values: 10"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": false,
+            "description": "Client Id Valid Values: 1422245 Format:XXXXX Allowable Values: 50"
+        },
+        {
+            "name": "ShippingMode",
+            "type": "string",
+            "required": false,
+            "description": "Shipping Method to send cards valid values 0=Standard 1=Priority 2=Overnight Example : 0 Allowable Values: 50"
+        },
+        {
+            "name": "AcctYesNo",
+            "type": "string",
+            "required": true,
+            "description": "whether Account number should be printed  in embossing file or not. Valid Values : 1 ,2 1= YES 2= NO Condition : Mandatory when decision flag is 1 Allowable Values: 1"
+        },
+        {
+            "name": "Title",
+            "type": "string",
+            "required": false,
+            "description": "Title for the customer Valid Values:  Refer Appendix Section : Title Values Example: Mr. Allowable Values: 9"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder First Name Valid Values:  A-Z, a-z and all special characters Example: Andrew Allowable Values: 50"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder Middle Name Valid Values:  A-Z, a-z and all special characters Example: Charles Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder Last Name Valid Values:  A-Z, a-z and all special characters Example: Hudson Allowable Values: 50"
+        },
+        {
+            "name": "NameOnCard",
+            "type": "string",
+            "required": false,
+            "description": "Name to be Embossed on Card Valid Values:  A-Z, a-z and all special characters Example: Hudson M Charles Allowable Values: 28"
+        },
+        {
+            "name": "EmbossingLine4",
+            "type": "string",
+            "required": false,
+            "description": "Text to be print on Line 4 of a plastic. Valid Values:a-z, A-Z Allowable Values: 26"
+        },
+        {
+            "name": "Addressline1",
+            "type": "string",
+            "required": null,
+            "description": "Address Line 1 of the Cardholder Valid values : A-Z, a-z, 0-9 Example: 15 Penang Street Point Condition : Mandatory when decision flag is 1 Allowable Values: 50"
+        },
+        {
+            "name": "Addressline2",
+            "type": "string",
+            "required": false,
+            "description": "Address Line 2 of the Cardholder Valid values: A-Z, a-z, 0-9 Example: 1 mecca way Allowable Values: 50"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder's City of residence Valid values: A-Z, a-z, 0-9 Example: Norcross Condition : Mandatory when decision flag is 1 Allowable Values: 25"
+        },
+        {
+            "name": "ZIPCode",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder Postal Code of Residence Valid Values:A-Z,a-z,0-9 Example: 30093 Condition : Mandatory when decision flag is 1 Allowable Values: 10"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": null,
+            "description": "Two Character Country Code Valid values :A-Z, a-z Example: US Refer Appendix section : Country Code Value Condition : Mandatory when decision flag is 1 Allowable Values: 2"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder State of residence Valid values are A-Z, a-z Example: GA Please refer Appendix Section : State Codes(US) Condition : Mandatory when decision flag is 1 Allowable Values: 3"
+        },
+        {
+            "name": "UserID",
+            "type": "string",
+            "required": true,
+            "description": "User id of the user performing the activity. Valid Values: A-Z,a-z,0-9. Example : Sam Allowable Values: 128"
+        },
+        {
+            "name": "FICompanyName",
+            "type": "string",
+            "required": null,
+            "description": "Company name Condition : Mandatory when decision flag is 1 Allowable Values: 26"
+        },
+        {
+            "name": "OrderId",
+            "type": "decimal",
+            "required": null,
+            "description": "Order number for an inventory. Valid values : 0-9 Example : 3478 Condition:  Mandatory When decision flag = 2,3, 4"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "string",
+            "required": true,
+            "description": "Flag to decides which operation needs to be performed. Valid Values: 1 = creating an inventory 2 = updating an inventory 3 = Approving an inventory 4 = Rejecting an inventory Allowable Values: 2"
+        },
+        {
+            "name": "PlasticDetailsType",
+            "type": "array",
+            "required": false,
+            "description": ""
+        },
+        {
+            "name": "PlasticCode",
+            "type": "string",
+            "required": null,
+            "description": "Plastic Code Valid values:0-9 Example: 32 Condition  \"Mandatory when decision flag is 1. Optional when decision flag is 2\". Allowable Values: 100"
+        },
+        {
+            "name": "LogoID",
+            "type": "string",
+            "required": false,
+            "description": "Logo ID printed on the cards. Valid value:  0-9, A-Z Example : Cash187 Allowable Values: 10"
+        },
+        {
+            "name": "NumberOfCards",
+            "type": "Int32",
+            "required": null,
+            "description": "Total number of cards. Valid values: 0-9 Example: 17 Condition : Mandatory when decision flag is 1 Note : Maximum allowed limit is 5000 , can be decreased by program manager"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "OrderID",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Order number for an inventory. Valid values : 0-9 Example : 3478",
+                    "children": []
+                },
+                {
+                    "name": "RequestIDList",
+                    "type": "array",
+                    "required": null,
+                    "description": "",
+                    "children": [
+                        {
+                            "name": "RequestID",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Unique Id of the cards which are created from Inventory Valid values : 0-9 Example : 3478",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "BranchCode": "CC10000",
+        "ProductID": 1754,
+        "ClientID": "5617",
+        "ShippingMode": "0",
+        "AcctYesNo": "1",
+        "Title": "",
+        "FirstName": "",
+        "MiddleName": "",
+        "LastName": "",
+        "NameOnCard": "",
+        "EmbossingLine4": "The Perfect Gift",
+        "Addressline1": "Addrress1",
+        "Addressline2": "Addresss2",
+        "City": "New York City",
+        "ZIPCode": "12345",
+        "Country": "US",
+        "State": "NY",
+        "UserID": "ccadmin",
+        "FICompanyName": "isc",
+        "OrderId": 194480.0,
+        "DecisionFlag": "1",
+        "PlasticDetailsType": [
+            {
+                "PlasticCode": "44",
+                "LogoID": "15",
+                "NumberOfCards": 15
+            }
+        ]
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "OrderID": 194480.0,
+            "RequestIDList": [
+                {
+                    "RequestID": 3264.0
+                },
+                {
+                    "RequestID": 3265.0
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Inventory",
+        "category_id": "1043",
+        "document_id": "1230",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1230&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1043&regionId=1"
+    }
+}

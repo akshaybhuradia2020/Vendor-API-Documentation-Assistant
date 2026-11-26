@@ -1,0 +1,2021 @@
+{
+    "metadata": {
+        "name": "GetInstitutionParameters",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/GetInstitutionParameters",
+        "description": "The purpose of this API is to get the configured parameters for an institution and also view the other configurations available."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique identification number for Institution Valid Values:0-9 Format:XXXX Example:Fixed value needs to pass which is provided by Corecard."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "InstitutionAssociations",
+                    "type": "array",
+                    "required": null,
+                    "description": "List of Institution Associations",
+                    "children": [
+                        {
+                            "name": "NetworkType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Network Type Valid Values:0-9,a-z Format: Example:\"MC\" Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessorID",
+                            "type": "string",
+                            "required": null,
+                            "description": "UID for the Processor Valid Values: 0-9,a-z Format: XXXXX Example:15246351 Allowable Values: 50",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "InstitutionReports",
+                    "type": "array",
+                    "required": null,
+                    "description": "List of All InstitutionReports",
+                    "children": [
+                        {
+                            "name": "ReportName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of Institution Reports Valid Values:0-9 ,a-z Format:XXXX Example: GTFESDFH Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "ScheduleType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Schedule type of Institution Reports Valid Values:0-9 ,a-z Format:XXXX Example: GTFESDFH Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "ScheduleTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for Schedule Time Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "DeliveryMechanism",
+                            "type": "string",
+                            "required": null,
+                            "description": "Shipment delivery mechanism. By Default Setting must be for standard Delivery Valid Values: a-z Format:xxxx Example:(Overnight, Priority or Standard) Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "DeliveryFrequency",
+                            "type": "string",
+                            "required": null,
+                            "description": "Frequency of Institution Reports Valid Values: a-z Format:xxxx Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "FTPAddress",
+                            "type": "string",
+                            "required": null,
+                            "description": "File Transfer Protocol Address Valid Values: A_Z, 0-9 Format: XXXXX Example: Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "FTPLogin",
+                            "type": "string",
+                            "required": null,
+                            "description": "File Transfer Protocol login Valid Values: A_Z, 0-9 Format: XXXXX Example: Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "FtpPassword",
+                            "type": "string",
+                            "required": null,
+                            "description": "File Transfer Protocol Address Valid Values: A_Z, 0-9 Format: XXXXX Example: Name Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "EmailAddress",
+                            "type": "string",
+                            "required": null,
+                            "description": "Institutions email ID associated with additional address details Valid Values: 0-9 a-z Format:xxx @xxx.xxx Example:abc @xyz.com Allowable Values: 50",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "InstitutionData",
+                    "type": "",
+                    "required": null,
+                    "description": "IntitutionData",
+                    "children": [
+                        {
+                            "name": "InstitutionName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Institution Valid Values: A-Z, 0-9 Format: XXXXX Example: XYZ LLC Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "InstitutionParentName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Parent Institution Valid Values: A-Z, 0-9 Format: XXXXX Example: XYZ LLC Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "DestinationAlignment",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Alignment of the Destination. Valid Values: 0-Left, 1-Right Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "DestinationRTAlignment",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Alignment of the Destination RT. Valid Values: 0-Left, 1-Right Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "OriginationAlignment",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Alignment of the Origination. Valid Values: 0-Left, 1-Right Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "TINAlignment",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Alignment of the TIN. Valid Values: 0-Left, 1-Right Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyNameAlignment",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Alignment of the Company Name. Valid Values: 0-Left, 1-Right Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyIdAlignment",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Alignment of the Company Id. Valid Values: 0-Left, 1-Right Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "ECCAlignment",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Alignment of the ECC. Valid Values: 0-Left, 1-Right Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "CEDAlignment",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Alignment of the CED. Valid Values: 0-Left, 1-Right Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHCutoffTimeforPaymentScheduling",
+                            "type": "DateTime",
+                            "required": null,
+                            "description": "ACH Cut-off Time considered for Payment Scheduling. Valid Values:0-9 Format:HH:mm:ss Example:12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHCutoffTimeforInstantPayments",
+                            "type": "DateTime",
+                            "required": null,
+                            "description": "Time For ACHCutoffTime Valid Values:0-9 Format:HH:mm:ss Example:12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "NoOfTxnInACHFile",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of Transactions in ACH File Valid Values: 0-9 Format: xxxx Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "BankVerificationMethod",
+                            "type": "string",
+                            "required": null,
+                            "description": "Method of bank account verification. Valid Values: Micro Deposit, None, Pre-note Format: XXXX Example: None Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company ID details. Valid Values: A-Z, 0-9 Format: XXXX Example: Vi0770 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "EntryClassCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "EntryClassCode Valid Values: A-Z, 0-9 Format: XXX Example: VO8 Allowable Values: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyEntryDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Entry Description. Valid Values: A-Z, 0-9 Format: XXX Example: Entry Description Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "INSTEmail",
+                            "type": "string",
+                            "required": null,
+                            "description": "Email ID of Institution Valid Values: a-z 0-9 Format : XX.XX @XX.XXX Example : johnnyLLC @yopmail.com Allowable Values: 255",
+                            "children": []
+                        },
+                        {
+                            "name": "BillingMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "get or set BillingMethod",
+                            "children": []
+                        },
+                        {
+                            "name": "InstitutionAddressLine1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Institution Address Line 1 Valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "InstitutionAddressLine2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Institution address line 2. Valid Values: A-Z, 0-9 Example:Park Avenue Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "INSTCity",
+                            "type": "string",
+                            "required": null,
+                            "description": "Institutions's City in address details Valid Values: 0-9 a-z Format:xxxx Example:kansas Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "Country",
+                            "type": "string",
+                            "required": null,
+                            "description": "Institutions's Country in address details Valid Values:0-9 a-z Format:xxxx Example:USA Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "StateProvince",
+                            "type": "string",
+                            "required": null,
+                            "description": "get or set StateProvince Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "postalcode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Institutions's Postal Code in address details Valid Values:0-9 Format:xxxx Example:123456 Allowable Values: 9",
+                            "children": []
+                        },
+                        {
+                            "name": "TollFreeNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Institution's Phone Number  associated with toll free provider. Valid Values: 0-9 Format: xxxx Example: 1800800912 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "SystemOperatorMail",
+                            "type": "string",
+                            "required": null,
+                            "description": "get or set SystemOperatorMail Allowable Values: 255",
+                            "children": []
+                        },
+                        {
+                            "name": "CustSvcPhoneNmbr",
+                            "type": "string",
+                            "required": null,
+                            "description": "Institution's Phone Number associated with svc provider. Valid Values: 0-9 Format: xxxx Example: 1800800912 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "CollectionPhoneNmbr",
+                            "type": "string",
+                            "required": null,
+                            "description": "Institution's Phone Number associated with Collections agency. Valid Values: 0-9 Format: xxxx Example: 1800800912 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "FaxNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Institution's Fax Number. Valid Values: 0-9 Format: xxxx Example: 1800800912 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditFileEmailAddr",
+                            "type": "string",
+                            "required": null,
+                            "description": "Cardholder's email ID associated with additional address details Valid Values: 0-9 a-z Format:xxx @xxx.xxx Example:abc @xyz.com Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "destination",
+                            "type": "string",
+                            "required": null,
+                            "description": "Destination Details. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "DestinationRoutingAndTransit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Destination Routing Details. Valid Values: A-Z, 0-9 Format: XXX Example: Destination Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "origination",
+                            "type": "string",
+                            "required": null,
+                            "description": "Origination Details. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "OriginationRoutingAndTransit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Origination Routing Details. Valid Values: A-Z, 0-9 Format: XXX Example: Destination Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "Prenote",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Origination Routing Details. Valid Values: 0-3 Format: XXX Example: 0 Not Active 1 Eligible 2 Mandatory Generation",
+                            "children": []
+                        },
+                        {
+                            "name": "delayDes",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Delay days. Valid Values: 1-31 Format: XX Example: 14",
+                            "children": []
+                        },
+                        {
+                            "name": "MultipleFileIdentifier",
+                            "type": "string",
+                            "required": null,
+                            "description": "Multiple file identifier Description. Valid Values: A-Z, 0-9 Format: XXX Example: File Identifier Description Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "TaxIdentificationNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Tax Identification Number Valid Values: 0-9 Format: XXXXXXXXX Example: 081408477 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ImmediateDestinationName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Immediate Destination. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ.LLC Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "SecondaryCurrencyDestination",
+                            "type": "string",
+                            "required": null,
+                            "description": "Secondary Currency Destination Valid Values: 0-9 a-z Format:xxxxxx.xxx Example: xyz.llc Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "SecondaryCurrencyOrigination",
+                            "type": "string",
+                            "required": null,
+                            "description": "Secondary Currency Origination Valid Values: 0-9 a-z Format: xxxxx.xxx Example: xyz.llc Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "SecondaryDestinationRoutingAndTransit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Secondary Destination Routing And Transit details Valid Values: 0-9 a-z Format: xxxxx.xxx Example: xyz.llc Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "SecondaryOriginationRoutingAndTransit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Secondary Origination Routing And Transit details Valid Values: 0-9 a-z Format: xxxxx.xxx Example: xyz.llc Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "SecondaryCurrDestinationName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Secondary Current Destination Name Valid Values: 0-9 a-z Format: xxxxx.xxx Example: xyz.llc Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "SecondaryCurrOriginationName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Secondary Currency Origination Valid Values: 0-9 a-z Format: xxxxx.xxx Example: xyz.llc Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the payment. Valid Values: A-Z, 0-9 Format: XXX Example: XYZ Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHProcessing",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Activation of the ACH feature. Valid Values: 0-1 Format: X Example: 0 Active,1 Inactive",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHformat",
+                            "type": "string",
+                            "required": null,
+                            "description": "ACH Format of the institution Valid Values are 1) Without Offset Record 2) With Offset Record Allowable Values: 18",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHCompanyAccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Client provided Company Account Number Valid Values 0-9 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHCompanyAccountDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Client provided name of the bank account as Company Account Description Valid Values a-z, A-Z, 0-9 Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "VCFIssuerIdentificationNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "VCF Issuer Identification Number provided by VISA. Used in VISA Commercial File Valid Values: 0-9,A-Z,a-z Format: XXXXXXXXXXX Example: ABCDEFG11 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "VCFProcessorIdentificationNumber",
+                            "type": "integer",
+                            "required": null,
+                            "description": "VCF Processor Identification Number provided by VISA. Used in VISA Commercial File Valid Values: 0-9 Format: XXXXXXXXXXX Example: 1231231231",
+                            "children": []
+                        },
+                        {
+                            "name": "CollectionInterface",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Feature toggle indicator. Valid Values:0-No, 1-Yes Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "GenerateStatement",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Feature toggle indicator. Valid Values:0-No, 1-Yes Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "SeparateEmbossingFile",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Feature toggle indicator. Valid Values:0-No, 1-Yes Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "TemporaryCardCreation",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Feature toggle indicator. Valid Values:0-No, 1-Yes Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyActive",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Feature toggle indicator. Valid Values:0-No, 1-Yes Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "ArchivingFrequency",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Archiving frequency. Valid Values: Null Monthly, Bi anually, anually Format: XXX Example:Null",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldStatement",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Feature toggle indicator. Valid Values:0-No, 1-Yes Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "APIIdempotencylevel",
+                            "type": "string",
+                            "required": null,
+                            "description": "level of Idempotency in the API will be displayed Valid Values:a-z, special character ‘+’ will be allowed Format:XXXXX Example: Institution, Owning Partner, Owning Partner + Merchant",
+                            "children": []
+                        },
+                        {
+                            "name": "CardSequenceNumberPosition1Track1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Card sequence number position  1 indicator for track 1. Valid Values: 0-24 Format: XXX Example: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "CardSequenceNumberPosition2Track1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Card sequence number position 2  indicator for track 1. Valid Values: 0-24 Format: XXX Example: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "CVNStartingPositionTrack1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "CVNS tarting Position for Track 1. Valid Values: 0-24 Format: XXX Example: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "PINOffsetStartingPositionTrack1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "CPIN Offset Starting Position for Track 1 Valid Values: 0-13 Format: XXX Example: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "CardSequenceNumberPosition1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Card Sequence Number Position 1 Valid Values: 0-13 Format: XXX Example: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "CardSequenceNumberPosition2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Card Sequence Number Position 2 Valid Values: 0-10 Format: XXX Example: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "CVNStartingPosition",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Card Sequence Number Position 1 Valid Values: 0-13 Format: XXX Example: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "PINOffsetStartingPosition",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Card Sequence Number Position 1 Valid Values: 0-13 Format: XXX Example: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "SysOrgID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This field will specify the SysOrgID Valid Values: 0-9 Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "SysOrgIDDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field will provide the SysOrgIDDescription Valid Values:0-9, a-z Format:XXXXX",
+                            "children": []
+                        },
+                        {
+                            "name": "BillingCycleFrequency",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the Frequency of BillingCycle Valid Values: 0=Monthly,1=BiWeekly,2=Semi-Monthly Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "GenerateCBRFileatProductLevel",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the Frequency of GenerateCBRFileatProductLevel Valid Values: 0-No, 1-Yes Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessOfacChecks",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Options to Process OFAC Checks Valid Values: 1-3 Format: x Example: 1 Yes 2 No 3 Only For Updates",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessOfacCosignerCheck",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Options to Process OFAC Co-Signer Checks Valid Values: 1-3 Format: x Example: 1 Yes 2 No 3 Only For Updates",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACCheckMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Methods to Process OFAC Checks Valid Values: 0-1 Format: x Example: 0 Intern",
+                            "children": []
+                        },
+                        {
+                            "name": "LastBulkOFACCheckDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date for Last Bulk OFAC Check Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "FileUploadFrequency",
+                            "type": "integer",
+                            "required": null,
+                            "description": "OFAC file Upload Frequency in weeks Valid Values: 1-12 Format: x Example: Every 3 Weeks",
+                            "children": []
+                        },
+                        {
+                            "name": "ThresholdIndividual",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Threshold value for OFAC query for individuval Valid Values: 1-100 Format: XXX Example: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ThresholdEntity",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Threshold value for OFAC query for entity Valid Values: 1-100 Format: XXX Example: 75",
+                            "children": []
+                        },
+                        {
+                            "name": "LegalEntity",
+                            "type": "integer",
+                            "required": null,
+                            "description": "OFAC file Upload Frequency in weeks Valid Values: 0,1 Format: X Example: Every 3 Weeks",
+                            "children": []
+                        },
+                        {
+                            "name": "DBAName",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0,1 Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "Surname",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0,1 Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "Firstname",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0,1 Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "Address1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0,1 Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACCity",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0,1 Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACState",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0,1 Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACPostalCode",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0,1 Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACCountry",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0,1 Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "PlaceOfBirth",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0,1 Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "DateOfBirth",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0,1 Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "IDNumber",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0,1 Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "IDCountry",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0,1 Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACNotificationEmail",
+                            "type": "string",
+                            "required": null,
+                            "description": "Email ID for notifying OFAC notifications. Valid Values: 0-9 a-z Format: xxx @xxx.xxx Example: abc @xyz.com Allowable Values: 35",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACSMS",
+                            "type": "string",
+                            "required": null,
+                            "description": "SMS for notifying OFAC notifications. Valid Values: 0-9 a-z Format: xxxxxx.xxx Example: Notification Message Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Status for OFAC suspicious. Valid Values: 0-9 a-z(Refer Appendix) Format: xxxx Example: 1234 Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "OfacRecheckStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Status for OFAC Recheck suspicious. Valid Values: 0-9 a-z(Refer Appendix) Format: xxxx Example: 1234",
+                            "children": []
+                        },
+                        {
+                            "name": "MaxNumberofResults",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Maximum Number of Results Valid Values: 0-9 Format: xxx Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "ExtendedKeysOnOff",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Feature toggle indicator. Valid Values: 0-Off, 1- On Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "ComparisonType",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Type of Comparison Valid Values: 0-Pattern Based, 1- Rule Based Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "SearchRange",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Type of Search Range Valid Values: 0-Loose , 1- Narrow, 2 -  Very Loose Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "MatchingThreshold",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Matching OFAC score Threshold in percentage Valid Values: 0-Loose , 1- Narrow, 2 -  Very Loose Format: X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "SearchType",
+                            "type": "string",
+                            "required": null,
+                            "description": "OFAC Search Type. Valid Values: 0-9 a-z(Refer Appendix) Format: xxxxx Example: 7",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchItmToQryFirstName",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0-No, 1-Yes Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchItmToQryLastName",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0-No, 1-Yes Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchItmToQryMidName",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0-No, 1-Yes Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchItmToQryAddress",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0-No, 1-Yes Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchItmToQryCity",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0-No, 1-Yes Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchItmToQryState",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0-No, 1-Yes Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "ISTWatchItmToQryCountry",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Item to query in OFAC check or not Valid Values: 0-No, 1-Yes Format: X Example: 0- Not included, 1- Included.",
+                            "children": []
+                        },
+                        {
+                            "name": "BillingCycleMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Method of Billing Cycle Valid Values: 2 Set to account creation date 5 Set to first card activation date 1 Set to first purchase transaction date 0 Use selection from application Format:X Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "DaysinBillingCycle",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of days in Billing Cycle. Valid values :0-9 Format:XX Example:2",
+                            "children": []
+                        },
+                        {
+                            "name": "SetBillingCycleTo",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Set Billing Cycle To. Valid Values: 0-1 0 First available cycle date 1 Best available cycle date in range Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessOnSun",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Processing on Sundays Valid Values: 0-No, 1-Yes Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessOnMon",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Processing on Mondays Valid Values: 0-No, 1-Yes Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessOnTues",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Processing on Tuesdays Valid Values: 0-No, 1-Yes Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessOnWed",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Processing on Wednesdays Valid Values: 0-No, 1-Yes Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessOnThur",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Processing on Thursdays Valid Values: 0-No, 1-Yes Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessOnFri",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Processing on Fridays Valid Values: 0-No, 1-Yes Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessOnSat",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Processing on Saturdays Valid Values: 0-No, 1-Yes Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday1",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday2",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday3",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday4",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday5",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday6",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday7",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday8",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday9",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday10",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday11",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday12",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday13",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday14",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday15",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday16",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday17",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday18",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday19",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday20",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday21",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday22",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday23",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "Holiday24",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Place holder for institution Holiday Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "DayLightSaving",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Feature toggle indicator. Valid Values: Yes, No Format: XXX Example: No",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessingDayEndTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Processing Day End Time of the institution Valid Values: 0-9 Format:HH:mm:ss Example: 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentProcessingDayEnd",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Current Processing Day End of the institution Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "NewProcessingDayEnd",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "New Processing Day End of the institution Valid Values:0-9 Format:MM/dd/yyyy HH:mm:ss Example:02/02/2020 12:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "CBLastAppCheck",
+                            "type": "integer",
+                            "required": null,
+                            "description": "CB Last App Check of the institution Valid Values:  0-9 Format: X Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "CBAppPurge",
+                            "type": "integer",
+                            "required": null,
+                            "description": "CB App Purge of the institution Valid Values: 0-9 Format: X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "MemberCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Member Code of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "SubscriberPassword",
+                            "type": "string",
+                            "required": null,
+                            "description": "Subscriber Password of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 4",
+                            "children": []
+                        },
+                        {
+                            "name": "CountryCode",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Debtor Country code Valid Values:List of all contry code Format: Example:CO- Colombia",
+                            "children": []
+                        },
+                        {
+                            "name": "LanguageIndicator",
+                            "type": "string",
+                            "required": null,
+                            "description": "Cardholder's preferred Language Valid Values: a-z Format: xx Example: English Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "BureauMarket",
+                            "type": "string",
+                            "required": null,
+                            "description": "Bureau Market of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "BureauSubmarket",
+                            "type": "string",
+                            "required": null,
+                            "description": "Bureau Sub market of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "IndustryCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Industry Code of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "PrdtCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Product Code of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessingRequest",
+                            "type": "string",
+                            "required": null,
+                            "description": "Processing Request of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "AddonProductCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Addon Product Code of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Product Type of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "EnableCBR",
+                            "type": "integer",
+                            "required": null,
+                            "description": "EnableCBR of the institution Valid Values: 0-NO, 1-Yes Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "ReporterName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Reporter Name of the institution Valid Values: a-z, 0-9 Format: xxxx Example:GDSFS Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "ReporterAddress",
+                            "type": "string",
+                            "required": null,
+                            "description": "Reporter Address of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 96",
+                            "children": []
+                        },
+                        {
+                            "name": "ReporterTelephone",
+                            "type": "string",
+                            "required": null,
+                            "description": "CBRID Number of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CBRIDNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "CBRID Number of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ProgramIdInnovis",
+                            "type": "string",
+                            "required": null,
+                            "description": "Program Id Innovis of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ProgramIdEquifax",
+                            "type": "string",
+                            "required": null,
+                            "description": "Program Id for Equifax of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ProgramIdExperian",
+                            "type": "string",
+                            "required": null,
+                            "description": "Program Id Experian of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "ProgramIdTransUnion",
+                            "type": "string",
+                            "required": null,
+                            "description": "Program Id TransUnion of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CBRReportBy",
+                            "type": "integer",
+                            "required": null,
+                            "description": "CBR Report By of the institution Valid Values: 0-9 Format: xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "DDActiveOrg",
+                            "type": "integer",
+                            "required": null,
+                            "description": "DD Active Orgof the institution Valid Values: a-z, 0-9 Format: xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "DDFrequency",
+                            "type": "integer",
+                            "required": null,
+                            "description": "DD Frequency of the institution Valid Values: a-z, 0-9 Format: xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "DDDaysBeforeCycle",
+                            "type": "integer",
+                            "required": null,
+                            "description": "DD Days Before Cycle of the institution Valid Values: a-z, 0-9 Format: xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "DDMaxNSFAttempts",
+                            "type": "integer",
+                            "required": null,
+                            "description": "DD Max NSF Attempts of the institution Valid Values: a-z, 0-9 Format: xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "DirectDebitResponse",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Direct Debit Response of the institution Valid Values: a-z, 0-9 Format: xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "DDOrigBank",
+                            "type": "string",
+                            "required": null,
+                            "description": "DD Orig Bank of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "DDCompanyName",
+                            "type": "string",
+                            "required": null,
+                            "description": "DD Company Name of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 23",
+                            "children": []
+                        },
+                        {
+                            "name": "RTDestinationNo",
+                            "type": "string",
+                            "required": null,
+                            "description": "RT Destination Number of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "RTOrignationNo",
+                            "type": "string",
+                            "required": null,
+                            "description": "RT Orignation Numberof the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyEntryDD",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Entry DD of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "DDPaymentTranCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "DD Payment TranCode of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "DDDirectPayTranCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "DD Direct Pay Transaction Code of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "DDRevTranCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "DD Rev Transaction Code of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "DDNSFRevTranCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "DD NSF Reverse Transaction Code of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "CSRPaymentTrnCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "CSR Paymen tTransaction Code of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "CSRSSPaymentTrnCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "CSRSS Payment Transaction Code of the institution Format: xxxx Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "CSRMiniPayment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "CSR Minimum Payment for the institution Valid Values: 0-9,. Format: xx.xx Example: 25.5",
+                            "children": []
+                        },
+                        {
+                            "name": "CSRSSMiniPayment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "CSR Self Service Minimum Payment for the the institution Valid Values: 0-9,. Format: xx.xx Example: 25.5",
+                            "children": []
+                        },
+                        {
+                            "name": "CSRMaxPayment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "CSR Maximum Payment of the institution Valid Values: 0-9,. Format: xx.xx Example: 25.5",
+                            "children": []
+                        },
+                        {
+                            "name": "SelfServiceMaxPayment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Self Service Maximum Payment allowable for the institution Valid Values: 0-9,. Format: xx.xx Example: 25.5",
+                            "children": []
+                        },
+                        {
+                            "name": "DCActiveOrg",
+                            "type": "integer",
+                            "required": null,
+                            "description": "DC Active Org of the institution Valid Values: a-z, 0-9 Format: xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "DCPurchaseTranCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "DC Purchase Transaction Code of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "DCRevTranCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "DC Reverse Transaction Code of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "DCReturnTrahnCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "DC Return Transaction Code of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "LockboxNo",
+                            "type": "string",
+                            "required": null,
+                            "description": "Lock box ABA Number of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "LockboxABANo",
+                            "type": "string",
+                            "required": null,
+                            "description": "Lockbox Origin ABA of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "LockboxOriginABA",
+                            "type": "string",
+                            "required": null,
+                            "description": "get or set LockboxOriginABA Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "LockboxAccntNo",
+                            "type": "string",
+                            "required": null,
+                            "description": "Lockbox Account Number of the institution Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "InboundRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Inbound Rate of the institution Valid Values: 0-9,. Format: xx.xx Example: 25.5",
+                            "children": []
+                        },
+                        {
+                            "name": "TransferRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Transfer Rate of the institution Valid Values: 0-9,. Format: xx.xx Example: 25.5",
+                            "children": []
+                        },
+                        {
+                            "name": "ProcessOFACCheckOnCosigner",
+                            "type": "string",
+                            "required": null,
+                            "description": "Decides if the OFAC check is applicable to Cosigner customer record or not Valid Values: 0-No 1-Yes. Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "GenerateCheckNumberInCheckFile",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicate if check number to be populated in check file or not Valid Values: 1=Yes, 0=No Example: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "CheckBeginNumber",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Starting Check number range. Valid Values: 0-9 Format: XXXXXXXXXXX Example: 1111111111",
+                            "children": []
+                        },
+                        {
+                            "name": "CheckIncrementedBy",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Subsequent Check numbers are generated by adding the Last Used Check Number to this number. Valid Values: 0-9 Format: X Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "LastUsedCheckNumber",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The last generated check number displays in this field. Valid Values: 0-9 Format: XXXXXXXXXXX Example: 1111111111",
+                            "children": []
+                        },
+                        {
+                            "name": "AdditionalOFACListToScan",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field will hold the name of the additional list that need to scan from ISTWatch. Valid Values: 00 = PEP 02 = EPLS 002  = PEP + EPLS Format: XXX Example: 00 Allowable Values: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "InitiateConsumerCreditBureauReporting",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is only applicable when credit bureau reporting type is business reporting in Metro 2 format. Indicates if consumer reporting is also applicable for business accounts. Valid Values: 0= No Reporting 1= Delinquency Reporting Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "BusinessReporterName",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is only applicable when credit bureau reporting type is business reporting in Metro 2 format. Indicates the reporter name for business reporting. Valid Values: a-z, 0-9 Format: XXXX Example:GDSFC Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "BusinessReporterAddress",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is only applicable when credit bureau reporting type is business reporting in Metro 2 format. Indicates the reporter address for Business reporting. Valid Values: a-z, 0-9 Format: xxxx Example: 123 HWY Allowable Values: 96",
+                            "children": []
+                        },
+                        {
+                            "name": "BusinessReporterTelephone",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description: This is only applicable when credit bureau reporting type is business reporting in Metro 2 format. Indicates the reporter telephone for business reporting. Valid Values: a-z, 0-9 Format: xxxx Example:7895453241 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "BusinessCBRIDNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description: This is only applicable when credit bureau reporting type is business reporting in Metro 2 format. .Indicates the reporter identification number for business reporting. Valid Values: a-z, 0-9 Format: xxxx Example:1C2G25336666 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "BusinessProgramIDExperian",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is only applicable when credit bureau reporting type is business reporting in Metro 2 format.  Indicates the reporter consumer program identifier of experian for business reporting. Valid Values: a-z, 0-9 Format: xxxx Example:12345 Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "BusinessProgramIDTransUnion",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description: This is only applicable when credit bureau reporting type is business reporting in Metro 2 format. Indicates the reporter consumer program identifier of TransUnion for business reporting. Valid Values: a-z, 0-9 Format: xxxx Example:12345ABC12 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "BusinessProgramIDEquifax",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is only applicable when credit bureau reporting type is business reporting in Metro 2 format. Indicates the reporter consumer program identifier of Equifax for business reporting. Valid Values: a-z, 0-9 Format: xxxx Example:12345ABC12 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "BusinessProgramIDInnovis",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is only applicable when credit bureau reporting type is business reporting in Metro 2 format. Indicates the reporter consumer program identifier of Innovis for business reporting. Valid Values: a-z, 0-9 Format: xxxx Example:12345ABC12 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "AdditionalLoginCredentials",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specifies if any additional login Parameter is required at Self-Service login. Valid Values: 0-No, 9-Business Number Format:X Example:9",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "InstitutionID": 1332
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "InstitutionAssociations": [
+                {
+                    "NetworkType": "MC",
+                    "ProcessorID": "220203"
+                }
+            ],
+            "InstitutionReports": [
+                {
+                    "ReportName": "",
+                    "ScheduleType": "BUSINESSDATE",
+                    "ScheduleTime": null,
+                    "DeliveryMechanism": "Online",
+                    "DeliveryFrequency": "Daily",
+                    "FTPAddress": null,
+                    "FTPLogin": null,
+                    "FtpPassword": null,
+                    "EmailAddress": null
+                },
+                {
+                    "ReportName": "",
+                    "ScheduleType": "BUSINESSDATE",
+                    "ScheduleTime": null,
+                    "DeliveryMechanism": "Hardcopy",
+                    "DeliveryFrequency": "Monthly 31",
+                    "FTPAddress": null,
+                    "FTPLogin": null,
+                    "FtpPassword": null,
+                    "EmailAddress": null
+                }
+            ],
+            "InstitutionData": {
+                "InstitutionName": "abc",
+                "InstitutionParentName": "Template Record",
+                "DestinationAlignment": 1,
+                "DestinationRTAlignment": 1,
+                "OriginationAlignment": 1,
+                "TINAlignment": 1,
+                "CompanyNameAlignment": 0,
+                "CompanyIdAlignment": 1,
+                "ECCAlignment": 0,
+                "CEDAlignment": 0,
+                "ACHCutoffTimeforPaymentScheduling": null,
+                "ACHCutoffTimeforInstantPayments": null,
+                "NoOfTxnInACHFile": null,
+                "BankVerificationMethod": "1",
+                "CompanyID": "F460187030",
+                "EntryClassCode": null,
+                "CompanyEntryDescription": null,
+                "INSTEmail": null,
+                "BillingMethod": 0,
+                "InstitutionAddressLine1": "655 Castro Street #7",
+                "InstitutionAddressLine2": "",
+                "INSTCity": "Mountain View",
+                "Country": "US",
+                "StateProvince": "CA",
+                "postalcode": "94041",
+                "TollFreeNumber": null,
+                "SystemOperatorMail": null,
+                "CustSvcPhoneNmbr": "1-855-552-5375",
+                "CollectionPhoneNmbr": null,
+                "FaxNumber": null,
+                "CreditFileEmailAddr": null,
+                "destination": "FEDERAL RESERVE BANK",
+                "DestinationRoutingAndTransit": "691000134",
+                "origination": "FIRST BANK & TRUST",
+                "OriginationRoutingAndTransit": "91408446 ",
+                "Prenote": 1,
+                "delayDes": 0,
+                "MultipleFileIdentifier": null,
+                "TaxIdentificationNumber": "091408446 ",
+                "ImmediateDestinationName": null,
+                "SecondaryCurrencyDestination": null,
+                "SecondaryCurrencyOrigination": null,
+                "SecondaryDestinationRoutingAndTransit": null,
+                "SecondaryOriginationRoutingAndTransit": null,
+                "SecondaryCurrDestinationName": null,
+                "SecondaryCurrOriginationName": null,
+                "PaymentDescription": "Payment",
+                "ACHProcessing": 0,
+                "ACHformat": "Without Offset Record",
+                "ACHCompanyAccountNumber": null,
+                "ACHCompanyAccountDescription": null,
+                "VCFIssuerIdentificationNumber": null,
+                "VCFProcessorIdentificationNumber": null,
+                "InitiateConsumerCreditBureauReporting": null,
+                "BusinessReporterName": null,
+                "BusinessReporterAddress": null,
+                "BusinessReporterTelephone": null,
+                "BusinessCBRIDNumber": null,
+                "BusinessProgramIDExperian": null,
+                "BusinessProgramIDTransUnion": null,
+                "BusinessProgramIDEquifax": null,
+                "BusinessProgramIDInnovis": null,
+                "CollectionInterface": 0,
+                "GenerateStatement": 0,
+                "SeparateEmbossingFile": 0,
+                "TemporaryCardCreation": 0,
+                "LoyaltyActive": 0,
+                "ArchivingFrequency": null,
+                "HoldStatement": 0,
+                "APIIdempotencylevel": "Institution",
+                "CardSequenceNumberPosition1Track1": 1,
+                "CardSequenceNumberPosition2Track1": 6,
+                "CVNStartingPositionTrack1": 11,
+                "PINOffsetStartingPositionTrack1": 2,
+                "CardSequenceNumberPosition1": 1,
+                "CardSequenceNumberPosition2": 6,
+                "CVNStartingPosition": 11,
+                "PINOffsetStartingPosition": 2,
+                "SysOrgID": null,
+                "SysOrgIDDescription": null,
+                "BillingCycleFrequency": null,
+                "GenerateCBRFileatProductLevel": null,
+                "AdditionalLoginCredentials": 9,
+                "ProcessOfacChecks": 1,
+                "ProcessOfacCosignerCheck": 1,
+                "OFACCheckMethod": 1,
+                "LastBulkOFACCheckDate": null,
+                "FileUploadFrequency": 12,
+                "ThresholdIndividual": 1,
+                "ThresholdEntity": 1,
+                "LegalEntity": null,
+                "DBAName": 0,
+                "Surname": 0,
+                "Firstname": 0,
+                "Address1": 0,
+                "OFACCity": 0,
+                "OFACState": 0,
+                "OFACPostalCode": 0,
+                "OFACCountry": 0,
+                "PlaceOfBirth": 0,
+                "DateOfBirth": 0,
+                "IDNumber": 0,
+                "IDCountry": 0,
+                "OFACNotificationEmail": null,
+                "OFACSMS": null,
+                "OFACStatus": 1010,
+                "OfacRecheckStatus": 1011,
+                "MaxNumberofResults": 30,
+                "ExtendedKeysOnOff": 1,
+                "ComparisonType": 1,
+                "SearchRange": 0,
+                "MatchingThreshold": 80,
+                "SearchType": "0",
+                "ISTWatchItmToQryFirstName": 1,
+                "ISTWatchItmToQryLastName": 1,
+                "ISTWatchItmToQryMidName": 1,
+                "ISTWatchItmToQryAddress": 1,
+                "ISTWatchItmToQryCity": 1,
+                "ISTWatchItmToQryState": 1,
+                "ISTWatchItmToQryCountry": 1,
+                "BillingCycleMethod": 0,
+                "DaysinBillingCycle": 10,
+                "SetBillingCycleTo": 0,
+                "ProcessOnSun": 0,
+                "ProcessOnMon": 1,
+                "ProcessOnTues": 1,
+                "ProcessOnWed": 1,
+                "ProcessOnThur": 1,
+                "ProcessOnFri": 1,
+                "ProcessOnSat": 0,
+                "Holiday1": "01/16/2017 00:00:00",
+                "Holiday2": "02/20/2017 00:00:00",
+                "Holiday3": "05/29/2017 00:00:00",
+                "Holiday4": "07/04/2017 00:00:00",
+                "Holiday5": "09/04/2017 00:00:00",
+                "Holiday6": "10/09/2017 00:00:00",
+                "Holiday7": "11/11/2017 00:00:00",
+                "Holiday8": "11/23/2017 00:00:00",
+                "Holiday9": null,
+                "Holiday10": null,
+                "Holiday11": null,
+                "Holiday12": null,
+                "Holiday13": null,
+                "Holiday14": null,
+                "Holiday15": null,
+                "Holiday16": null,
+                "Holiday17": null,
+                "Holiday18": null,
+                "Holiday19": null,
+                "Holiday20": null,
+                "Holiday21": null,
+                "Holiday22": null,
+                "Holiday23": null,
+                "Holiday24": null,
+                "DayLightSaving": 1,
+                "ProcessingDayEndTime": "07/24/2020 23:59:57",
+                "CurrentProcessingDayEnd": "01/17/2017 23:59:57",
+                "NewProcessingDayEnd": "01/17/2017 23:59:57",
+                "CBLastAppCheck": 0,
+                "CBAppPurge": 0,
+                "MemberCode": null,
+                "SubscriberPassword": null,
+                "CountryCode": 1,
+                "LanguageIndicator": "1",
+                "BureauMarket": null,
+                "BureauSubmarket": null,
+                "IndustryCode": null,
+                "PrdtCode": null,
+                "ProcessingRequest": null,
+                "AddonProductCode": null,
+                "ProductType": "P",
+                "EnableCBR": 1,
+                "ReporterName": "Final, Inc",
+                "ReporterAddress": "PO Box 543000 Omaha, NE 68154",
+                "ReporterTelephone": "8555525375",
+                "CBRIDNumber": "2647210",
+                "ProgramIdInnovis": "",
+                "ProgramIdEquifax": "",
+                "ProgramIdExperian": "DBORX",
+                "ProgramIdTransUnion": "",
+                "CBRReportBy": 0,
+                "DDActiveOrg": 1,
+                "DDFrequency": 0,
+                "DDDaysBeforeCycle": null,
+                "DDMaxNSFAttempts": 3,
+                "DirectDebitResponse": 0,
+                "DDOrigBank": null,
+                "DDCompanyName": null,
+                "RTDestinationNo": null,
+                "RTOrignationNo": null,
+                "CompanyEntryDD": null,
+                "DDPaymentTranCode": null,
+                "DDDirectPayTranCode": null,
+                "DDRevTranCode": null,
+                "DDNSFRevTranCode": null,
+                "CSRPaymentTrnCode": null,
+                "CSRSSPaymentTrnCode": null,
+                "CSRMiniPayment": 0.0,
+                "CSRSSMiniPayment": 0.0,
+                "CSRMaxPayment": 30000.0,
+                "SelfServiceMaxPayment": 30000.0,
+                "DCActiveOrg": 1,
+                "DCPurchaseTranCode": null,
+                "DCRevTranCode": null,
+                "DCReturnTrahnCode": null,
+                "LockboxNo": null,
+                "LockboxABANo": null,
+                "LockboxOriginABA": null,
+                "LockboxAccntNo": null,
+                "InboundRate": null,
+                "TransferRate": null,
+                "ProcessOFACCheckOnCosigner": null,
+                "GenerateCheckNumberInCheckFile": "0",
+                "CheckBeginNumber": 1111111111.0,
+                "CheckIncrementedBy": 1,
+                "LastUsedCheckNumber": 1111111111.0,
+                "AdditionalOFACListToScan": null
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Control Parameters",
+        "category_id": "1005",
+        "document_id": "1033",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1033&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005&regionId=1"
+    }
+}

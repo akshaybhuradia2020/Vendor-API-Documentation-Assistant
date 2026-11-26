@@ -1,0 +1,515 @@
+{
+    "metadata": {
+        "name": "GetTransactionHistory",
+        "http_method": "POST",
+        "endpoint": "/api/GetTransactionHistory",
+        "description": "Use this API to fetch monetary transaction posted on a card account. Combination of multiple filters such as date range, Transaction ID, Minimum Transaction Amount, Maximum Transaction Amount and Transaction type are present to fetch records of all transactions, settled transactions, outstanding transactions, expired transactions."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893 Condition: At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition: At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition: At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "BatchSize",
+            "type": "Int32",
+            "required": false,
+            "description": "Number of records to be returned in a page Valid Values: 0-9 Example:100,50  will return 100 or 50 transactions at once."
+        },
+        {
+            "name": "PageIndex",
+            "type": "Int32",
+            "required": false,
+            "description": "Page Number Valid Values: 0-9 Example: 0,1,2"
+        },
+        {
+            "name": "TransactionId",
+            "type": "string",
+            "required": false,
+            "description": "Unique number assigned to a transaction and is used to track the transaction posted in CoreCard System Example : 147852369 Allowable Values: 19"
+        },
+        {
+            "name": "FromDate",
+            "type": "string",
+            "required": null,
+            "description": "To set transactions boundary 'From Date' Format : YYYY-MM-DD HH:mm:ss Valid Values:0-9 Example : 2015-12-11 00:00:00 Condition:Required only when ToDate is passed in Input"
+        },
+        {
+            "name": "ToDate",
+            "type": "string",
+            "required": null,
+            "description": "To set transactions boundary 'To Date' Format : YYYY-MM-DD HH:mm:ss Valid Values:0-9 Example : 2015-12-11 00:00:00 Condition:Required only when FromDate is passed in Input."
+        },
+        {
+            "name": "MinimumTransactionAmount",
+            "type": "string",
+            "required": false,
+            "description": "Transactions can be searched by Transaction amount greater or equal to Minimum Transaction Amount. Format: XXX.XX Example: 25.00"
+        },
+        {
+            "name": "MaximumTransactionAmount",
+            "type": "string",
+            "required": false,
+            "description": "Transactions can be searched by Transaction amount less than or equal to Maximum Transaction Amount. Format: XXX.XX Example: 25.00"
+        },
+        {
+            "name": "TransactionHistoryType",
+            "type": "string",
+            "required": false,
+            "description": "Type of Transaction’s History. Valid Values: 0 or Null = All Transactions 1 = Settled Transactions 2 = Outstanding Transactions 3 = Expired Transactions 5 = Post Credit Transaction 6 = Saving Transaction Example: 1 Allowable Values: 2"
+        },
+        {
+            "name": "WalletID",
+            "type": "Int32",
+            "required": false,
+            "description": "Wallet ID of wallet mapped on account Valid values:0-9 Example:1005"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "AvailableBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Available balance on the account. Valid values : 0-9 Example: 100.50 Note: In case of the non wallet product, tag will return the account available balance whereas in case of the multi wallet product, tag will return wallet available balance.",
+                    "children": []
+                },
+                {
+                    "name": "CurrentBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "This tag indicates the current balance of the account. Condition: In case of the non wallet product, tag will return the account current balance whereas in case of the multi wallet product, tag will return wallet current balance.",
+                    "children": []
+                },
+                {
+                    "name": "LastTransactionDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date of Last transaction posted on account Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                    "children": []
+                },
+                {
+                    "name": "LastCreditDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last Credit Date of Account/Card. Format: YYYY-MM-DDTHH:mm:ss Example: 2015-12-11T13:05:10",
+                    "children": []
+                },
+                {
+                    "name": "LastCreditAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Last Credited Amount in the card Valid Values: 0-9 Format: XXX.XX Example: 150.00",
+                    "children": []
+                },
+                {
+                    "name": "DisputeAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Disputed amount on the card Example : 100",
+                    "children": []
+                },
+                {
+                    "name": "TransactionHistoryList",
+                    "type": "array",
+                    "required": null,
+                    "description": "",
+                    "children": [
+                        {
+                            "name": "PostingReference",
+                            "type": "string",
+                            "required": null,
+                            "description": "Posting description of transaction Example:Transaction posted successfully",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionSource",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Source field is used to identify the source of transaction in CoreCard System. Valid Values: Refer Appendix section 'Transaction Source Type'",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of transaction Valid Values:A-Z,a-z Example: Load",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag indicates the current balance of the account",
+                            "children": []
+                        },
+                        {
+                            "name": "CardAcceptorNameLocation",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name and location details of merchant Valid Values: a-z A-Z Example: Dental merchant, Nashua",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionReason",
+                            "type": "string",
+                            "required": null,
+                            "description": "Memo reason against transaction Example:Disputed, Dispute Denied, etc.",
+                            "children": []
+                        },
+                        {
+                            "name": "OverLimitFlag",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates whether the transaction has overcome the single transaction limit of a particular transaction type or not. Valid Values: Y or N",
+                            "children": []
+                        },
+                        {
+                            "name": "DeclineIndicator",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicator for Declined Transaction Valid Values: Yes , No Example: Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantCity",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant City Valid Values: a-z, A-Z Example:Atlanta",
+                            "children": []
+                        },
+                        {
+                            "name": "Comment",
+                            "type": "string",
+                            "required": null,
+                            "description": "Additional Comment can be specified for a transaction. Valid values :A-Z, a-z",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Code which indicates type of transaction",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNumber4Digits",
+                            "type": "string",
+                            "required": null,
+                            "description": "Last  4 digits of the card. Valid values : 0-9 Example : 4386",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductBin",
+                            "type": "string",
+                            "required": null,
+                            "description": "It shows bin value of card i.e. first six digits of the card. Example: 406684",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001",
+                            "children": []
+                        },
+                        {
+                            "name": "CustomAccountID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Any custom ID which is used to uniquely identify the Account. Valid values: A-Z, a-z, 0-9 Example:123456789 Condition:Mandatory If Custom Account ID on product as Enabled.",
+                            "children": []
+                        },
+                        {
+                            "name": "WalletID",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "This tag indicates Wallet ID of wallet mapped on account. Valid values:0-9 Example:1005",
+                            "children": []
+                        },
+                        {
+                            "name": "WalletName",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag indicates the name of wallet. Example: HCA",
+                            "children": []
+                        },
+                        {
+                            "name": "ThreeDS",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicate the status of the 3D Secure function. Valid values : - Authenticated - Attempted - Non-Secure - Product not enrolled",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputedTransaction",
+                            "type": "string",
+                            "required": null,
+                            "description": "Shows whether the transaction is Disputed or not. Example: Yes and No",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeCaseID",
+                            "type": "string",
+                            "required": null,
+                            "description": "ID which is generated against the Dispute request. Valid Values: 0-9 Format: XXXXXXX Example:9856198",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeRequestStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Shows the current dispute status. Example:Chargeback Initiated",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Disputed amount on the card Example:600.30",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionLifeCycleUniqueID",
+                            "type": "Int64",
+                            "required": null,
+                            "description": "Returns Unique LifeCycle ID of transaction",
+                            "children": []
+                        },
+                        {
+                            "name": "AvailableBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Available balance on the account Valid values : 0-9 Example: 100.50",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893",
+                            "children": []
+                        },
+                        {
+                            "name": "ProxyNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionId",
+                            "type": "Int64",
+                            "required": null,
+                            "description": "Unique number assigned to a transaction and is used to track the transaction posted in CoreCard System Example :  147852369",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date and Time of Transaction. Format:YYYY-MM-DDTHH:mm:ss Example:2015-12-11T13:05:10",
+                            "children": []
+                        },
+                        {
+                            "name": "PostTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Time of Transaction Posted/requested. Format: YYYY-MM-DDTHH:mm:ss Example: 2015-12-11T13:05:10",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Transaction Amount Valid Values: 0-9 Example:100.11",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "AccountNumber": "60000000031689",
+        "CardNumber": "",
+        "ProxyNumber": "",
+        "BatchSize": 100,
+        "PageIndex": 0,
+        "TransactionId": "",
+        "FromDate": "",
+        "ToDate": "",
+        "MinimumTransactionAmount": "",
+        "MaximumTransactionAmount": "",
+        "TransactionHistoryType": "",
+        "WalletID": 0
+    },
+    "sample_response": {
+        "Message": "Processed Successfully.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "AvailableBalance": 163.01,
+            "CurrentBalance": -152.01,
+            "LastTransactionDate": "2020-05-17T00:00:00",
+            "LastCreditDate": "2020-10-18T00:00:00",
+            "LastCreditAmount": 11.23,
+            "DisputeAmount": 10.23,
+            "TransactionHistoryList": [
+                {
+                    "PostingReference": "Transaction posted successfully",
+                    "TransactionSource": "CoreMoney",
+                    "TransactionDescription": "37 - LOAD",
+                    "CurrentBalance": -152.01,
+                    "CardAcceptorNameLocation": "",
+                    "TransactionReason": "",
+                    "OverLimitFlag": "N",
+                    "DeclineIndicator": "NO",
+                    "MerchantCity": "",
+                    "Comment": "",
+                    "TransactionType": "Settled",
+                    "CardNumber4Digits": "2785",
+                    "ProductBin": "406684",
+                    "CardNumber": "406684******2785",
+                    "CustomAccountID": "",
+                    "WalletID": 0,
+                    "WalletName": "",
+                    "ThreeDS": "Non-Secure",
+                    "DisputedTransaction": "Yes",
+                    "DisputeCaseID": "9856198",
+                    "DisputeRequestStatus": "Initiate Dispute",
+                    "DisputeAmount": 5.0,
+                    "TransactionLifeCycleUniqueID": 0,
+                    "AvailableBalance": 163.01,
+                    "AccountNumber": "60000000031689",
+                    "ProxyNumber": "1316608",
+                    "TransactionId": 2153561714,
+                    "TransactionDateTime": "2020-05-17T00:00:00",
+                    "PostTime": "2020-08-02T00:00:00",
+                    "TransactionAmount": 152.01
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1044",
+        "document_id": "1244",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1244&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1044&regionId=1"
+    }
+}

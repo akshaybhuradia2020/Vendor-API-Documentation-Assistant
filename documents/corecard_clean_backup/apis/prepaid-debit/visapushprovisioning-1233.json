@@ -1,0 +1,290 @@
+{
+    "metadata": {
+        "name": "VISAPUSHProvisioning",
+        "http_method": "POST",
+        "endpoint": "/api/VISAPUSHProvisioning",
+        "description": "Use this API to generate encrypted payload for Push provisioning of a Visa Card details in the Payment APP(Google pay, Samsung pay etc.)."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition : At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition : At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "provider",
+            "type": "",
+            "required": false,
+            "description": ""
+        },
+        {
+            "name": "billingAddress",
+            "type": "",
+            "required": false,
+            "description": "Billing address associated with the payment instrument."
+        },
+        {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "Full Name of Cardholder. Format: lastname/firstname or firstname lastname. Example: Jacob B Jonas Allowable Values: 28"
+        },
+        {
+            "name": "expirationDate",
+            "type": "",
+            "required": false,
+            "description": "Group with details of Expiration of Card"
+        },
+        {
+            "name": "clientAppID",
+            "type": "string",
+            "required": null,
+            "description": "Unique identifier for the client application, used to provide some of the encrypted values. Issuer will configure the clientAppID value during the onboarding as defined in section 2.1 Required if intent is \"0\". Allowable Values: 36"
+        },
+        {
+            "name": "clientDeviceID",
+            "type": "string",
+            "required": null,
+            "description": "\"Stable device identification set by Wallet Provider. Could be computer identifier or ID tied to hardware such as TEE_ID or SE_ID. This field must match the clientDeviceID TWP will send in token provision request Required if intent is \"0\". \" Format: String, alphabetic, numeric, hyphens ( - ), and underscores ( _ ), spaces are not allowed. Allowable Values: 24"
+        },
+        {
+            "name": "clientWalletProvider",
+            "type": "string",
+            "required": true,
+            "description": "Client Wallet Provider is the token requestor’s ID (TRID), which is returned to the WP as part of onboarding. Format: String, alphabetic, numeric, hyphens ( - ), and underscores ( _ ), spaces are not allowed. Allowable Values: 50"
+        },
+        {
+            "name": "clientWalletAccountID",
+            "type": "string",
+            "required": true,
+            "description": "Client provided consumer ID that identifies the wallet account holder entity. When the wallet provider enrolls the PAN, clientDevicetId field should have the same value. Format: String, alphabetic, numeric, hyphens ( - ), and underscores ( _ ), spaces are not allowed. Allowable Values: 24"
+        },
+        {
+            "name": "intent",
+            "type": "integer",
+            "required": true,
+            "description": "The intent of the encryptor, which specifies what the encryptor of the data trying to do. Valid Values: PUSH_PROV_MOBILE=0, (Push the PAN data to a Token Requestor to provision a token for the card holder on a specific device for a specific wallet/account) PUSH_PROV_ONFILE=1 (Push the PAN data to a Card On File merchant/Token Requestor to provision a token for the cardholder) Example : 0"
+        },
+        {
+            "name": "IdentityVerificationRequired",
+            "type": "string",
+            "required": true,
+            "description": "String field to specify if the Issuer wants Identity Verification to be performed. Valid Values: 'true' or 'false' Allowable Values: 10"
+        },
+        {
+            "name": "line1",
+            "type": "string",
+            "required": false,
+            "description": "Address Line 1 for Cardholder Valid values: A-Z, a-z, 0-9 Example: 1 Meca Way Allowable Values: 140"
+        },
+        {
+            "name": "line2",
+            "type": "string",
+            "required": false,
+            "description": "Address Line 2 for Cardholder Valid values: A-Z, a-z, 0-9 Example:15 Penang Street Point Allowable Values: 140"
+        },
+        {
+            "name": "city",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder's City of residence Valid values: A-Z, a-z, 0-9 Example: Norcross Allowable Values: 100"
+        },
+        {
+            "name": "state",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder State of residence Valid values are A-Z, a-z Example: GA Please refer Appendix Section : State Codes (US) Allowable Values: 3"
+        },
+        {
+            "name": "postalCode",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder Postal Code of Residence Valid Values:A-Z,a-z,0-9 Example: 30093 Allowable Values: 9"
+        },
+        {
+            "name": "country",
+            "type": "string",
+            "required": false,
+            "description": "Two Character Country Code Valid values :A-Z, a-z Example: US Refer Appendix section : Country Code Values Allowable Values: 2"
+        },
+        {
+            "name": "month",
+            "type": "string",
+            "required": true,
+            "description": "Expiration Month of the card. Valid Values: 0-9 DateFormat : MM Example : 09 Allowable Values: 2"
+        },
+        {
+            "name": "year",
+            "type": "string",
+            "required": true,
+            "description": "Expiration Year of the card. Valid Values: 0-9 DateFormat : YYYY Example : 2021 Allowable Values: 4"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "ProxyNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005",
+                    "children": []
+                },
+                {
+                    "name": "EncryptedData",
+                    "type": "string",
+                    "required": null,
+                    "description": "Encrypted Payload calculated over a the field values of Input.",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "",
+        "ProxyNumber": "1319647",
+        "provider": {
+            "clientAppID": "MyApp",
+            "clientDeviceID": "ed6abb56323ba656521ac476",
+            "clientWalletProvider": "40000000047",
+            "clientWalletAccountID": "walletid",
+            "intent": 0,
+            "IdentityVerificationRequired": "false"
+        },
+        "billingAddress": {
+            "line1": "801Metro Center Blvd",
+            "line2": "801Metro2",
+            "city": "Foster City",
+            "state": "CA",
+            "postalCode": "94404",
+            "country": "US"
+        },
+        "name": "Your Name",
+        "expirationDate": {
+            "month": "02",
+            "year": "2021"
+        }
+    },
+    "sample_response": {
+        "Message": "Encrypted payload generated successfully.",
+        "Status": true,
+        "ErrorCode": "90057",
+        "ResponseData": {
+            "ProxyNumber": "1319647",
+            "EncryptedData": "eyJhbGciOiJBMjU2R0NNS1ciLCJlbmMiOiJBMjU2R0NNIiwia2lkIjoiODNGNEVFQjIiLCJjaGFubmVsU2VjdXJpdHlDb250ZXh0IjoiU0hBUkVEX1NFQ1JFVCIsInR5cCI6IkpPU0UiLCJpYXQiOjE2MjE5NDg2NzgsIml2IjoickhzUG5QMEZqazB4MXV5ViIsInRhZyI6IncxeFIyRGx0SGR1YWdNa090SFBEMVEifQ.UkUxwwakAMAybneKghkHsNP36E5wVubfOuxqXT-2Ol4.ltxKRYuFSFGlJxpP.5MUBLhfG6Og4GVamW4ifLTUJVF0TbCgGxe_eeBANDQ3N1O_m_WMiohujfRRzRsMdDL3iFzfPAtbGb_8QT_oDkzv1Not2PQCYYcnobn-3j3cT2qNE-v6jtdSUtUhMPbe4cHdFFEdZBWhVftZSAv41bDTxgi7W1YVM_73IL__OtkEAFIEoDhHSbwWSidgFZawSRSB9QykMj92TsUl0zlDworpjt1QVGoQcziFt0FqJTt7b9FXHoEfO2KCBBJhanwpQ2VUrCMOFwyDSdJjrjpjChYXtUkRGucxxJDLDlj9kL4OL1GDtuF5ZpbUksy2Fbi60QrbC07ce8yFiDFNj9yfNYQy9rnFm_VqjDS2FZAUcx8qHKfTUFpmDL-dDeEO_WrXnWLe7sArekcNAxremjOOpiCxE2It34V50zrrcqdwvd-LCUttp01Wur3wG5x6QVLuBeYLr-MWf9QXQv72hM_hqNN6YA4LvlbNrIXo8-6EhK7jVeH6UdoUNU1C0LyUhIFTKyosPM7RNAgb3hOa_Vb0rdfYMiM5bW3_rujNTK_lNqr8upUCBV5tB_bfGr_Lblct-c9CuJyfq-2E.eWwtbRyP2vKNIQMtk97atA"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Push Provisioning",
+        "category_id": "1042",
+        "document_id": "1233",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1233&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1042&regionId=1"
+    }
+}

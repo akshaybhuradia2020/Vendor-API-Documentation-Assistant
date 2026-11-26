@@ -1,0 +1,1685 @@
+{
+    "metadata": {
+        "name": "AccountCreation",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountHolders/AccountCreation",
+        "description": "The purpose of this API is to create a new account under mentioned merchant via any 3rd party or the client itself."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": false,
+            "description": "Product ID of the product for which account is to be created. Valid Values: As provided by CoreCard. Example: 1234"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": false,
+            "description": "Unique number of merchant account. Valid Values: As provided by CoreCard. Example: 35632"
+        },
+        {
+            "name": "StoreID",
+            "type": "integer",
+            "required": null,
+            "description": "ID of the Store where account is to be created. Valid Values: As provided by CoreCard Example: 13432 Condition: If the program configuration requires a Store during account creation, this tag is mandatory; otherwise, it is optional."
+        },
+        {
+            "name": "CreditLimit",
+            "type": "decimal",
+            "required": false,
+            "description": "Credit Limit of account. Valid Values: 0-9 Format: XXXXXX Example: 500.00"
+        },
+        {
+            "name": "Title",
+            "type": "string",
+            "required": false,
+            "description": "Title of the Applicant. Valid Values: Refer Appendix Section - Title Values Example:Mr Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": null,
+            "description": "Applicant's First name. Valid Values: A-Z,0-9,and Special Characters Example: John Condition: If PII information is set as mandatory on product, then this tag is mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Applicant's Middle Name Valid Values: A-Z,0-9,and Special Characters Example: K Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": null,
+            "description": "Applicant's last name. Valid Values: A-Z,0-9,and Special Characters Example:LEE Condition: If PII information is set as mandatory on product, then this tag is mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "SurnameSuffix",
+            "type": "string",
+            "required": false,
+            "description": "Applicant's surname-suffix Allowable Values: 5"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Applicant's address line 1. Valid Values: A-Z, 0-9 Example: 123 HWY Condition: If PII information is set as mandatory on product, then this tag is mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Applicant's address line 2. Valid Values: A-Z,0-9 Example: Park Avenue Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": null,
+            "description": "Applicant's State name. Valid Values: Refer Appendix Section State Codes Example: AK Condition: If PII information is set as mandatory on product, then this tag is mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": null,
+            "description": "City name of the applicant's address. Example: Los Angeles Condition: If PII information is set as mandatory on product, then this tag is mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 25"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Postal code of the applicant's address. Valid Values: 0-9 Example: 46206 Condition: If PII information is set as mandatory on product, then this tag is mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": null,
+            "description": "Country name of the applicant's address. Valid Values: Refer appendix section Country Code Values Example: US Condition: If PII information is set as mandatory on product, then this tag is mandatory. Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "EmailID",
+            "type": "string",
+            "required": null,
+            "description": "Applicant's email id. Valid Values:A-Z, 0-9 Format: [email protected] Example: [email protected] Condition: If email is set as mandatory on product, then this tag is mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 256"
+        },
+        {
+            "name": "LanguageIndicator",
+            "type": "string",
+            "required": false,
+            "description": "Language indicatior Valid Values: 'en' Example: 'en' Allowable Values: 5"
+        },
+        {
+            "name": "HomePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Applicant's Home Phone number. Valid Values: 0-9 Format: XXXXXXXXXX Example: 7895463241 Condition: If Home Phone is set as mandatory on product, then this tag is mandatory. Allowable Values: 15"
+        },
+        {
+            "name": "WorkPhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Applicant's Work phone number Valid Values: 0-9 Format: XXXXXXXXXXX Example: 5678909876 Condition: This is mandatory only for selective products as per value of PID. Allowable Values: 15"
+        },
+        {
+            "name": "MobilePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Applicant's Mobile Phone Number. Valid Values: 0-9 Format: XXXXXXXXXX Example: 987567757 Condition: If Mobile Phone Number is set as mandatory on product, then this tag is mandatory. Allowable Values: 15"
+        },
+        {
+            "name": "OtherPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Applicant's other Phone Number. Valid Values: 0-9 Format: XXXXXXXXXX Example: 987567757 Allowable Values: 15"
+        },
+        {
+            "name": "DateOfBirth",
+            "type": "DateTime",
+            "required": null,
+            "description": "Applicant's Date of Birth. Format: MM/dd/YYYY Example: 07/25/1991 Condition: If PII information is set as mandatory on product, then this tag is mandatory."
+        },
+        {
+            "name": "EmployerName",
+            "type": "string",
+            "required": null,
+            "description": "Applicant's employer name. Valid Values: A-Z, 0-9 Condition: If PII information is set as mandatory on product, then this tag is mandatory. Allowable Values: 100"
+        },
+        {
+            "name": "EmployeeNumber",
+            "type": "string",
+            "required": false,
+            "description": "Applicant's employer number Allowable Values: 15"
+        },
+        {
+            "name": "EmployerPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Applicant's employer Phone number Valid Values: 0-9 Format: XXXXXXXXXX Example: 987567757 Allowable Values: 15"
+        },
+        {
+            "name": "EmployerFaxNumber",
+            "type": "string",
+            "required": false,
+            "description": "Applicant's employer Fax number. Valid Values: A-Z,0-9 Format: XXXXXXXXXX Example: 34232 Allowable Values: 15"
+        },
+        {
+            "name": "MotherMaidenName",
+            "type": "string",
+            "required": false,
+            "description": "Applicant's Mother Maiden Name Valid Values: A-Z Example: Johnson Allowable Values: 50"
+        },
+        {
+            "name": "SocialSecurityNumber",
+            "type": "string",
+            "required": null,
+            "description": "Applicant's Social Security Number Format: AAAGGSSSS Example: 078051120 Condition: If PII information is set as mandatory on product, then this tag is mandatory. Allowable Values: 9"
+        },
+        {
+            "name": "IDType",
+            "type": "string",
+            "required": null,
+            "description": "Type of Government issued identification. Valid Values:Refer Appendix section 5.2 Example: 10 Condition: This field will become mandatory basis following two conditions: 1.For US State Cards This field is mandatory only when ID Type on product is set as Yes for Card Type = Primary. 2.For Non-US State cards This field is mandatory only when ID Type (Non-US) on product is set as Yes for Card Type=Primary. Allowable Values: 25"
+        },
+        {
+            "name": "IDNumber",
+            "type": "string",
+            "required": null,
+            "description": "Government issued identification number. Valid Values:A-Z, 0-9 Example:CDDA97418Q Condition:This field is mandatory when ID Type is having a valid value. Allowable Values: 18"
+        },
+        {
+            "name": "IDIssueDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Issue date of ID card. Valid Values: 0-9 Format: MM/DD/YYYY Example: 02/01/2020 Condition:This field is mandatory when ID Type is having a valid value."
+        },
+        {
+            "name": "IDExpirationDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Government issued identification expiration date. Valid Values: 0-9 Format: MM/DD/YYYY Example: 02/01/2020 Condition: This field is mandatory when ID Type is having a valid value."
+        },
+        {
+            "name": "IDIssueCountry",
+            "type": "string",
+            "required": null,
+            "description": "Government identification issued country. Valid Values: Refer Appendix Section Country Code Values Example: US Condition: This field is mandatory when ID Type is having a valid value. Allowable Values: 3"
+        },
+        {
+            "name": "IDIssueState",
+            "type": "string",
+            "required": null,
+            "description": "Government identification issued state. Valid Values: Refer Appendix Section State Codes Example: AL Condition: This field is mandatory when ID Type is having a valid value. Allowable Values: 30"
+        },
+        {
+            "name": "RegulationOFlag",
+            "type": "string",
+            "required": false,
+            "description": "Regulation O Flag to classify RegO Account Valid Values: 1 = YES, 0 = NO Allowable Values: 2"
+        },
+        {
+            "name": "RegulationOFlagEffectiveDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Date of effective Reg 'O' Valid Values: 0-9 Format: MM/DD/YYYY Example: 02/01/2020 Condition: RegulationOFlagEffectiveDate is mandatory when RegulationOFlag = 1"
+        },
+        {
+            "name": "BillingTable",
+            "type": "integer",
+            "required": false,
+            "description": "ID of the Billing Table to be assigned on account. Valid Values: As provided by CoreCard Example: 1234 Condition:If no value is provided then default Billing Table(basis criteria defined on Billing Group) will get assigned to Account"
+        },
+        {
+            "name": "NumberofCardsRequested",
+            "type": "integer",
+            "required": false,
+            "description": "Number of Cards Requested. Valid Values: 0-9 Format: XX Example: 02"
+        },
+        {
+            "name": "EmbossingLine4",
+            "type": "string",
+            "required": false,
+            "description": "Embossing line4 Valid Values: A-Z Example: abc Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 20"
+        },
+        {
+            "name": "BillingCycle",
+            "type": "string",
+            "required": false,
+            "description": "Biiling cycle Valid Values: 1-31 Example: 10 Allowable Values: 20"
+        },
+        {
+            "name": "NameOnCard",
+            "type": "string",
+            "required": false,
+            "description": "Name to be printed on the card. Name to be embossed on card If there no input for this parameter then API would by default bring First Name +Initial Middle Name+ Last Name Valid Values: A-Z Example: John J Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "TotalAnnualIncome",
+            "type": "decimal",
+            "required": null,
+            "description": "Total Annual Income of applicant. Valid Values: 0-9 Format: XXX.XX Example: 500.00 Condition: If PII information is set as mandatory on product, then this tag is mandatory."
+        },
+        {
+            "name": "CurrentEmploymentMonths",
+            "type": "string",
+            "required": null,
+            "description": "Number of months in current employment. Valid Values: 0-9 Example: 10 Condition: If PII information is set as mandatory on product, then this tag is mandatory. Allowable Values: 10"
+        },
+        {
+            "name": "Position",
+            "type": "string",
+            "required": false,
+            "description": "Employement position of the applicant. Valid Values: A-Z, 0-9 Example: Manager Allowable Values: 100"
+        },
+        {
+            "name": "EmploymentType",
+            "type": "string",
+            "required": null,
+            "description": "Type of employment of applicant Valid Values:Refer Appendix Section - Employment Type Example: 1 Condition: If PII information is set as mandatory on product, then this tag is mandatory. Allowable Values: 5"
+        },
+        {
+            "name": "ResidenceType",
+            "type": "string",
+            "required": false,
+            "description": "Type of Residince that applicant lives in. Valid Values:Refer Appendix Section - Residence Ownership Code Example: 1 Allowable Values: 1"
+        },
+        {
+            "name": "MonthsAtResidence",
+            "type": "integer",
+            "required": null,
+            "description": "Duration on residence in months. Valid Values: 0-9 Example: 50 Condition: If PII information is set as mandatory on product, then this tag is mandatory."
+        },
+        {
+            "name": "YearsAtResidence",
+            "type": "string",
+            "required": null,
+            "description": "Duration on residence in years. Condition: If Years At Residence is set as mandatory on product, then this tag is mandatory. Valid Values: 0-9 Example: 5 Allowable Values: 4"
+        },
+        {
+            "name": "CompanyName",
+            "type": "string",
+            "required": false,
+            "description": "Company Name Valid Values: A-Z Example: abc Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 26"
+        },
+        {
+            "name": "CompanyNumber",
+            "type": "string",
+            "required": false,
+            "description": "Company Number Valid Values: 0-9 Example: 1234 Allowable Values: 7"
+        },
+        {
+            "name": "CompanyPrimaryContact",
+            "type": "string",
+            "required": false,
+            "description": "Company Primary Contact number. Valid Values: 0-9 Example: 4785885585 Allowable Values: 15"
+        },
+        {
+            "name": "CompanyPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Company's Phone number. Valid Values: 0-9 Example: 7895463214 Allowable Values: 15"
+        },
+        {
+            "name": "CompanyFaxNumber",
+            "type": "string",
+            "required": false,
+            "description": "Company's Fax number. Valid Values: 0-9 Example: 7895463214 Allowable Values: 15"
+        },
+        {
+            "name": "CorporateAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Corporate Account Number. Condition: If Corporate Account Number is set as mandatory on product, then this tag is mandatory. Valid Values: 0-9 Example: 10585858444 Allowable Values: 19"
+        },
+        {
+            "name": "QRCode",
+            "type": "string",
+            "required": null,
+            "description": "QRCode Condition: If QR Code is set as mandatory on product, then this tag is mandatory. Allowable Values: 50"
+        },
+        {
+            "name": "CashCreditLimit",
+            "type": "decimal",
+            "required": false,
+            "description": "Cash Credit Limit of account. Valid Values: 0-9 Format: XXX.XX Example: 500.00"
+        },
+        {
+            "name": "ShippingAddressFlag",
+            "type": "string",
+            "required": false,
+            "description": "This flag decides if we want to ship the new card to existing address or alternate address. Valid Values: 0 = Ship to Existing Address 1 = Ship Address Example: 0 Condition: Default value would be 0. Allowable Values: 1"
+        },
+        {
+            "name": "ShippingAddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Shipping address line 1. Valid Values : A-Z, 0-1 Example: 2354 Main road Condition: If ShippingAddressFlag is 1 then it is mandatory Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "ShippingAddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Shipping address line 2. Valid Values : A-Z, 0-1 Example: xyz Avenue Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "ShippingCity",
+            "type": "string",
+            "required": null,
+            "description": "Shipping address city name. Valid Values : A-Z Example: chicago Condition: If ShippingAddressFlag is 1 then it is mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 25"
+        },
+        {
+            "name": "ShippingState",
+            "type": "string",
+            "required": null,
+            "description": "State of the shipping address. Valid Values : Refer Appendix Section State Codes Condition: If ShippingAddressFlag is 1 then it is mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30"
+        },
+        {
+            "name": "ShippingCountry",
+            "type": "string",
+            "required": null,
+            "description": "Shipping address Country name. Valid Values: Refer Appendix Section Country Code Values Condition: If ShippingAddressFlag is 1 then it is mandatory Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "ShippingPostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Zip code of the shipping address. Valid Values : 0-9 Example: 48521 Condition: If ShippingAddressFlag is 1 then it is mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "HoldEmbossing",
+            "type": "string",
+            "required": false,
+            "description": "Hold Embossing. Valid Values: 1= YES, 0 = NO Allowable Values: 2"
+        },
+        {
+            "name": "StatementProduction",
+            "type": "string",
+            "required": null,
+            "description": "Statement production to be process normally, online only or hold statement. Condition: If Statement production is set as mandatory on product, then this tag is mandatory. Valid Values: 0 = Process normally, 1 = Online only, 2 = Hold statement Example: 0 Allowable Values: 2"
+        },
+        {
+            "name": "IsMLAAccount",
+            "type": "string",
+            "required": false,
+            "description": "Identify whether the account is MLA type or not. Valid Values: Yes-1, No-0 Example: 0 Allowable Values: 1"
+        },
+        {
+            "name": "CardImageID",
+            "type": "string",
+            "required": false,
+            "description": "Art/Template ID based on this Card’s Image will be displayed. Valid Values: 0-9, a-z Example: 30abc Allowable Values: 100"
+        },
+        {
+            "name": "SignatureID",
+            "type": "string",
+            "required": null,
+            "description": "This tag is to capture the user signature image file URL. Valid Values: 0-9,A-Z Condition: If Signature ID is set as mandatory on product, then this tag is mandatory. Allowable Values: 50"
+        },
+        {
+            "name": "ActivationCode",
+            "type": "string",
+            "required": false,
+            "description": "Security Code provided at the time of Account Creation/Registration. Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "NameOnTrack",
+            "type": "string",
+            "required": false,
+            "description": "Name to be printed on the card. Valid Values: A-z Example: John J Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 26"
+        },
+        {
+            "name": "PromoPurchaseAllow",
+            "type": "integer",
+            "required": false,
+            "description": "Weather to allow Promo Purchase on account or not. Valid Values: 0=No, 1=Yes Example: 0"
+        },
+        {
+            "name": "CoApplicantFlag",
+            "type": "string",
+            "required": false,
+            "description": "Co-Applicant is required or not. Valid Values: 0-No,1-Yes Allowable Values: 1"
+        },
+        {
+            "name": "CoApplicantFirstName",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicant’s First Name. Valid Values: A-Z,0-9 Example: John Condition: If Co-Applicant Flag = 1 then mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CoApplicantMiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Co-Applicant’s Middle Name Valid Values: A-Z,0-9 Example: Smith Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CoApplicantLastName",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicant’s Last Name Valid Values: A-Z,0-9 Example: Davis Condition: If Co-Applicant Flag = 1 then mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CoApplicantAddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicant’s Address line1 Valid Values: A-Z, 0-9 Example: 123 HWY Condition: If Co-Applicant Flag = 1 then mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CoApplicantAddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Co-Applicant’s Address line2 Example: Park Avenue Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CoApplicantCity",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicant’s city name. Valid Values: A-Z,0-9 Example: Chicago Condition: If Co-Applicant Flag = 1 then mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CoApplicantState",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicant’s State. Valid Values: Refer Appendix Section State Codes. Example: AL Condition: If Co-Applicant Flag = 1 then mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30"
+        },
+        {
+            "name": "CoApplicantPostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicant’s postal code. Valid Values: 0-9 Example: 12345-6789 Condition: If Co-Applicant Flag = 1 then mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "CoApplicantHomePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicant’s Home Phone Number Valid Values: 0-9 Example: 7548264758 Condition: If Co-Applicant Flag = 1 then mandatory. Allowable Values: 15"
+        },
+        {
+            "name": "CoApplicantMobilePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicant’s cell phone number. Valid Values: 0-9 Example: 7548264758 Condition: If Co-Applicant Flag = 1 then mandatory. Allowable Values: 15"
+        },
+        {
+            "name": "CoApplicantEmailID",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicant’s Email id Example: [email protected] Condition: If Co-Applicant Flag = 1 then mandatory. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 256"
+        },
+        {
+            "name": "CoApplicantSSN",
+            "type": "integer",
+            "required": null,
+            "description": "Co-Applicant’s Social Security number. Valid Values: 0-9 Example: 123456789 Condition: If Co-Applicant Flag = 1 then mandatory."
+        },
+        {
+            "name": "CoApplicantDateOfBirth",
+            "type": "datetime",
+            "required": null,
+            "description": "Co-Applicant’s Date of birth. Format: MM/DD/YYYY Example: 12/25/1994 Condition: If Co-Applicant Flag = 1 then mandatory."
+        },
+        {
+            "name": "CoApplicantCombinedTotalIncome",
+            "type": "decimal",
+            "required": null,
+            "description": "Co-Applicant’s Combined Total Income. Valid Values: 0-9 Format: XXX.XX Example: 500.00 Condition: If Co-Applicant Flag = 1 then mandatory."
+        },
+        {
+            "name": "CoApplicantWorkPhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicant’s work phone number. Valid Values:0-9 Example:784565412 Condition: If Co-Applicant Flag = 1 then mandatory. Allowable Values: 20"
+        },
+        {
+            "name": "CoApplicantResidenceType",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicant’s Residence Type Valid Values:Refer Appendix Section - Residence Ownership Code Condition: If Co-Applicant Flag = 1 then mandatory. Allowable Values: 50"
+        },
+        {
+            "name": "CoApplicantRentMortgageAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Co-Applicant’s rent mortgage amount Valid Values: 0-9 Example: 500.00"
+        },
+        {
+            "name": "UserFieldValue1",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 256"
+        },
+        {
+            "name": "UserFieldValue2",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 256"
+        },
+        {
+            "name": "UserFieldValue3",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 256"
+        },
+        {
+            "name": "UserFieldValue4",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 256"
+        },
+        {
+            "name": "UserFieldValue5",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 256"
+        },
+        {
+            "name": "UserFieldValue6",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue7",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue8",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue9",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue10",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue11",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue12",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue13",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue14",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue15",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue16",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue17",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue18",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue19",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "UserFieldValue20",
+            "type": "string",
+            "required": false,
+            "description": "User Defined Tag Allowable Values: 40"
+        },
+        {
+            "name": "IgnoreDuplicateCheck",
+            "type": "integer",
+            "required": false,
+            "description": "To decide if Duplicate Check should honor while Account Creation or not. Valid Values: 1- Duplicate Check 0- By-Pass Duplicate Check Example: 0 Condition: If no value pass in this field then default should be consider as 1-Duplicate Check."
+        },
+        {
+            "name": "IsApplicantMLA",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to identify Applicant as MLA Valid Values: 0-No,1-Yes Format: xx Example: 0/1 Condition: If the Tag IsMLAAccount (Existing Tag) is marked as Yes then either IsApplicantMLA or IsCosignerMLA or Both tag must be marked as Yes."
+        },
+        {
+            "name": "IsCosignerMLA",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to identify Cosigner as MLA Valid Values: 0-No,1-Yes Format: xx Example: 0/1 Condition: If the Tag IsMLAAccount (Existing Tag) is marked as Yes then either IsApplicantMLA or IsCosignerMLA or Both tag must be marked as Yes."
+        },
+        {
+            "name": "CosignerFlag",
+            "type": "integer",
+            "required": false,
+            "description": "Flag to add Cosigner on Account Creation Valid Values:0-No,1-Yes Example: 0"
+        },
+        {
+            "name": "CosignerTitle",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Title. Valid Values:Refer Appendix Section - Title Values Format: xx Example: 01 Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 10"
+        },
+        {
+            "name": "CosignerFirstName",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s First Name Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s First Name is set as non-mandatory on product, then this tag is Optional. valid Values:A-Z,0-9 Example:John Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerMiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Middle Name valid Values:A-Z,0-9 Example:Smith Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerLastName",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Last Name Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Last Name is set as non-mandatory on product, then this tag is Optional. valid Values:A-Z,0-9 Example:Davis Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerAddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Address Line 1 Condition: If CosignerFlag = 1 then mandatory but if Cosigner’s Address Line 1 is set as non-mandatory on product, then this tag is Optional. valid Values:A-Z, 0-9 Example:123 HWY Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerAddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Address Line 2 valid Values:A-Z, 0-9 Example:123 HWY Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerCity",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s City valid Values:A-Z,0-9 Condition: If CosignerFlag = 1 then mandatory but if Cosigner’s City is set as non-mandatory on product, then this tag is Optional. Example:Chicago Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerState",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s State valid Values: Refer Appendix Section State Codes Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s State is set as non-mandatory on product, then this tag is Optional. Allowable Values: 50"
+        },
+        {
+            "name": "CosignerPostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Postal Code Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Postal Code is set as non-mandatory on product, then this tag is Optional. valid Values:0-9 Format:XXXXX Example:99501 Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "CosignerCountry",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Country Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Country is set as non-mandatory on product, then this tag is Optional. Valid Values: Refer appendix section Country Code Values Example:US Allowable Values: 5"
+        },
+        {
+            "name": "CosignerLanguageIndicator",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's preferred language. valid Values:A-Z,a-z Format: xx Example:English Allowable Values: 5"
+        },
+        {
+            "name": "CosignerEmailID",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Email ID Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Email ID is set as non-mandatory on product, then this tag is Optional. Valid Values: 0-9 a-z Format: [email protected] Example: [email protected] Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 256"
+        },
+        {
+            "name": "CosignerHomePhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Home Phone Number valid Values:0-9 Format:XXXXXXXXXX Example:9974865836 Allowable Values: 15"
+        },
+        {
+            "name": "CosignerWorkPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Work Phone Number valid Values:0-9 Format:XXXXXXXXXX Example:9758356383 Allowable Values: 15"
+        },
+        {
+            "name": "CosignerMobilePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Mobile Phone Number. Condition: If CosignerFlag = 1 then mandatory but if Cosigner’s Mobile Phone Number is set as non-mandatory on product, then this tag is Optional. valid Values:0-9 Format:XXXXXXXXXX Example:784565412 Allowable Values: 15"
+        },
+        {
+            "name": "CosignerAlternatePhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Alternate Phone Number valid Values:0-9 Example:9738758349 Allowable Values: 15"
+        },
+        {
+            "name": "CosignerDateOfBirth",
+            "type": "DateTime",
+            "required": false,
+            "description": "Cosigner's date of birth valid Values:0-9 Format: MM/dd/YYYY Example:11/23/1980"
+        },
+        {
+            "name": "CosignerSSN",
+            "type": "int64",
+            "required": null,
+            "description": "Cosigner’s Social Security Number. Condition: If CosignerFlag = 1 then mandatory but if Cosigner’s Social Security Number is set as non-mandatory on product, then this tag is Optional. Valid Values:0-9 Format:XXXXXXXXX Example:987456321"
+        },
+        {
+            "name": "CosignerGovernmentIDType",
+            "type": "string",
+            "required": null,
+            "description": "Government issued identification Type. Government Id Type Code should be passed in the request and not the description. Condition: If CosignerFlag = 1 then mandatory but if CosignerGovernmentIDType is set as non-mandatory on product, then this tag is Optional. Valid Values:Refer Appendix section ID Type Values Example:03 Allowable Values: 25"
+        },
+        {
+            "name": "CosignerIDNumber",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Government ID Number Valid Values:A-Z Format:XXXXXXXX Example::CDDT9741Q Condition:If CosignerFlag = 1 and ‘CosignerGovernmentIDType’ has any value, then it is mandatory but if CosignerIDNumber is set as non-mandatory on product, then this tag is Optional. Allowable Values: 20"
+        },
+        {
+            "name": "CosignerIDIssueDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Cosigner’s Government ID Issue Date. Valid Values:0-9 Format:MM/DD/YYYY Example:02/01/2020 Condition:If CosignerFlag = 1 and ‘CosignerGovernmentIDType’ has any value, then it is mandatory but if Cosigner’s Government ID Issue Date is set as non-mandatory on product, then this tag is Optional."
+        },
+        {
+            "name": "CosignerIDExpirationDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Cosigner’s Government ID Expiry Date Valid Values:0-9 Format:MM/DD/YYYY Example:02/01/2025 Condition:If CosignerFlag = 1 and ‘CosignerGovernmentIDType’ has any value, then it is mandatory but if Cosigner’s Government ID Expiry Date is set as non-mandatory on product, then this tag is Optional."
+        },
+        {
+            "name": "CosignerIDIssueCountry",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s ID Issue Country. valid Values:A-Z,a-z Example:US Condition:If CosignerFlag = 1 and ‘CosignerGovernmentIDType’ has any value, then it is mandatory but if Cosigner’s ID Issue Country is set as non-mandatory on product, then this tag is Optional. Allowable Values: 20"
+        },
+        {
+            "name": "CosignerIDIssueState",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s ID Issue State valid Values:A-Z,a-z Example:Alabama Condition:If CosignerFlag = 1 and ‘CosignerGovernmentIDType’ has any value, then it is mandatory but if Cosigner’s ID Issue State is set as non-mandatory on product, then this tag is Optional. Allowable Values: 20"
+        },
+        {
+            "name": "CosignerCombinedTotalIncome",
+            "type": "decimal",
+            "required": null,
+            "description": "Cosigner’s Combined Total Income valid Values:0-9 Example:10000 Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Combined Total Income is set as non-mandatory on product, then this tag is Optional."
+        },
+        {
+            "name": "CosignerEmployerName",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Employer Name. Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Employer Name is set as non-mandatory on product, then this tag is Optional. valid Values:A-Z,0-9 Example:john Condition:Report the name of the employer for the consumer reported in the Base Segment in CBR Allowable Values: 50"
+        },
+        {
+            "name": "CosignerEmployeeNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Employee Number Valid Values: 0-9 Format: XXXXXXXXXX Example: 7895463214 Allowable Values: 25"
+        },
+        {
+            "name": "CosignerEmploymentType",
+            "type": "int64",
+            "required": null,
+            "description": "Type of employement of Cosigner. Condition:If CosignerFlag = 1 then mandatory but if Cosigner Employment Type is set as non-mandatory on product, then this tag is Optional. Valid Values: Refer Appendix section 5.35 Format: xxxxx Example: 1"
+        },
+        {
+            "name": "CosignerResidenceType",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner’s Residence Type Condition:If CosignerFlag = 1 then mandatory but if Cosigner’s Residence Type is set as non-mandatory on product, then this tag is Optional. Valid Values:Refer Appendix Section - Residence Ownership Code Allowable Values: 25"
+        },
+        {
+            "name": "CosignerEmployerPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Employer Phone Number Valid Values: 0-9 Format: XXXXXXXXXX Example: 789654121 Allowable Values: 15"
+        },
+        {
+            "name": "CosignerStatementProduction",
+            "type": "integer",
+            "required": false,
+            "description": "Statement prduction to be process normally, online only or hold statement Valid Values:0 = Process normally, 1 = Online only, 2 = Hold statement Format: XXXXXXXXXX Example: 0,1,2"
+        },
+        {
+            "name": "CosignerMotherMaidenName",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's mother Maiden Name Valid ValuesA-Z, 0-9 Format:XXXX Example:Johnson Allowable Values: 50"
+        },
+        {
+            "name": "CosignerCurrentEmploymentMonths",
+            "type": "integer",
+            "required": false,
+            "description": "Cosigner's Number of months in current employment valid Values:0-9 Format:XX Example:32"
+        },
+        {
+            "name": "CosignerPosition",
+            "type": "string",
+            "required": false,
+            "description": "Employement position of the Cosigner. valid Values:A-Z,0-9 Example:Manager Allowable Values: 50"
+        },
+        {
+            "name": "CosignerRentMortgageAmt",
+            "type": "decimal",
+            "required": false,
+            "description": "Cosigner’s rent mortgage amount valid Values:0-9 Format:XXX.XX Example:500.00"
+        },
+        {
+            "name": "CosignerMobileCarrier",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Mobile carrier company Valid Values:A-z, 0-9 Format:XXXXXXXX Example: c.vodafone.ne.jp, csouth1.com, m1.com.sg Allowable Values: 50"
+        },
+        {
+            "name": "DeliveryMechanism",
+            "type": "string",
+            "required": false,
+            "description": "Method through which card shipment to be deliver by embossing vendor. Valid Values: 0-Standard 1-Priority 2-Overnight 3-Standard Exp 4-Priority Exp 5-Overnight Exp Example:0 Condition:i. Default value for this tag is '0-Standard'. ii. If a new method is added then Corecard will communicate the code of it. iii.Condition:Values3,4,5 are only applicable for Perfect Plastic Card Vendor Allowable Values: 5"
+        },
+        {
+            "name": "CustomerID",
+            "type": "string",
+            "required": false,
+            "description": "Unique ID associated with Customer. Valid Values:0-9 a-z Format:XXXXXXXX Example:abc2123 Allowable Values: 25"
+        },
+        {
+            "name": "ReferenceAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Existing account number of cardholder/AccountHolder. Valid Values:0-9 Example:7314145404 Condition: Mandatory when PartnerID value is provided. Allowable Values: 19"
+        },
+        {
+            "name": "PartnerID",
+            "type": "string",
+            "required": null,
+            "description": "Entity created for MID mapping and used for validation of pre-purchase. Valid Values: 0-9,A-Z Example : abc2123 Condition: Mandatory when flag 'Allow New Account Creation by validating Partner ID' on Loan product is Yes. Allowable Values: 250"
+        },
+        {
+            "name": "PlanID",
+            "type": "string",
+            "required": null,
+            "description": "ID of the plan for which account is to be created (CPM ID). Valid Values:0-9 a-z Example:abc2123 Condition: Mandatory when PartnerID value is provided. Allowable Values: 100"
+        },
+        {
+            "name": "RelationshipFlag",
+            "type": "integer",
+            "required": false,
+            "description": "Flag to identify if the customer is existing customer or not. Based on this flag any extra benefit can be provide to Cardholder like Relationship bonus to existing customer. Valid Values: 0 - No 1 – Yes Format: X Example: 0"
+        },
+        {
+            "name": "RewardRuleID",
+            "type": "integer",
+            "required": false,
+            "description": "Reward Rule ID to be mapped on the Account. Valid Values: 0-9 (Value provided by Corecard) Example:1234"
+        },
+        {
+            "name": "PortfolioID",
+            "type": "string",
+            "required": false,
+            "description": "Indicates details of lender institution mapped on account. Valid Values: Under special characters only Hyphen (-) and Underscore (_) are allowed. No spaces allowed in between strings Example: Under special characters only Hyphen (-) and Underscore (_) are allowed. No spaces allowed in between strings"
+        },
+        {
+            "name": "CosignerSNSuffix",
+            "type": "string",
+            "required": null,
+            "description": "CosignerSNSuffix Condition:If CosignerFlag = 1 then mandatory but if CosignerSNSuffix is set as non-mandatory on product, then this tag is Optional. valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 50"
+        },
+        {
+            "name": "PromoBTAllow",
+            "type": "string",
+            "required": null,
+            "description": "PromoBTAllow. Valid Values:0 = No, 1 = Yes Example: 0"
+        },
+        {
+            "name": "StandardBTAllow",
+            "type": "string",
+            "required": null,
+            "description": "StandardBTAllow. Valid Values: 0 = No, 1 = Yes Example: 0"
+        },
+        {
+            "name": "CardLevelUserFieldValue1",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value Valid Values: A-Z,0-9 Example: Primary Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue2",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value Valid Values: A-Z,0-9 Example: Primary Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue3",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value Valid Values: A-Z,0-9 Example: Primary Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue4",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value Valid Values: A-Z,0-9 Example: Primary Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue5",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value Valid Values: A-Z,0-9 Example: Primary Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue6",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value, When Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue7",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value, When Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue8",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value, When Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue9",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value, When Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue10",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value, When Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "UserFieldValue21",
+            "type": "string",
+            "required": false,
+            "description": "Account Level User Field value, when Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "UserFieldValue22",
+            "type": "string",
+            "required": false,
+            "description": "Account Level User Field value, when Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "UserFieldValue23",
+            "type": "string",
+            "required": false,
+            "description": "Account Level User Field value, when Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "UserFieldValue24",
+            "type": "string",
+            "required": false,
+            "description": "Account Level User Field value, when Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "UserFieldValue25",
+            "type": "string",
+            "required": false,
+            "description": "Account Level User Field value, when Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "AssociationProductType",
+            "type": "string",
+            "required": false,
+            "description": "Codes of the Association Product Types will be allowed to be passed in the API Format:XXXXXX Example: MC07, MC08 Allowable Values: 20"
+        },
+        {
+            "name": "RewardID",
+            "type": "string",
+            "required": false,
+            "description": "Reward ID to be mapped on the Account. Valid Values: 0-9, a-z Allowable Values: 25"
+        },
+        {
+            "name": "PromoPurchasePlanMasterID",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates the promotional purchase plan master ID, for which the account is to be created Valid Values: 0-9 Example:1234"
+        },
+        {
+            "name": "RevolvingPlanCreditLimit",
+            "type": "decimal",
+            "required": false,
+            "description": "Indicates the credit limit capping for revolving plans, when revolving plan capping is defined on the program. Valid Values: 0-9 Example: $500.00"
+        },
+        {
+            "name": "AccountOwnerCollateralID",
+            "type": "string",
+            "required": false,
+            "description": "Collateral ID to track legal ownership of account separately from receivable ownership at Portfolio ID. Valid Values: Valid Collateral ID from the list of 'AccountCollateralID' return via GetPortfolioIDMapping API. Example: Midland Condition: This field is an Optional Tag and can setup only when Lender Assignment' is set as 'Collateral and Portfolio ID' on Program. Allowable Values: 50"
+        },
+        {
+            "name": "AutoDebitMandate",
+            "type": "integer",
+            "required": false,
+            "description": "Auto Debit Mandate Valid Values: 0 and 1 Description of Values 0 = No, 1 = Yes."
+        },
+        {
+            "name": "AutoDebitMandateType",
+            "type": "integer",
+            "required": false,
+            "description": "Auto Debit Mandate Type"
+        },
+        {
+            "name": "CreditScore",
+            "type": "decimal",
+            "required": false,
+            "description": "Credit Score"
+        },
+        {
+            "name": "ExternalCustomerID",
+            "type": "string",
+            "required": false,
+            "description": "External Customer ID"
+        },
+        {
+            "name": "UniqueId",
+            "type": "string",
+            "required": false,
+            "description": "Unique ID is a transaction specific unique ID. This ID is unique for every transaction. If multiple calls are made by client for a specific transaction, the value of this tag will always be the same for a specific transaction. (GUID and UUID datatypes are supported for this tag). Valid Values: A-Z, 0-9 Example: F965C56F-C58F-EC11-B80E-A4BF010A357E Condition:For API user, if API Idempotency Applicable is set as Yes on CoreCredit, field is mandatory. The UniqueId is valid for 7 days from first submission of the request. Same request can be retried for 7 days without performing the same action twice.Idempotency will be checked at the belongingOwning Partner and Merchant Level. Allowable Values: 40"
+        },
+        {
+            "name": "RequestedLoanAmt",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates the loan amount with which the loan will be posted on the loan account. Valid Values: 0-9 Example: 500.00 Condition: Only required when Secured Credit Loan set up exists on product."
+        },
+        {
+            "name": "LoanPlanID",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the loan plan ID used to post the loan upon account creation on loan account. Valid Values: 0-9 a-z Example: abc2123 Condition:Only required when Secured Credit Loan set up exists on product. Allowable Values: 100"
+        },
+        {
+            "name": "BankAccountType",
+            "type": "integer",
+            "required": false,
+            "description": "Type of Bank account added by customer for card payment,0=checking and 1=saving Valid Values:0,1 Format:X Example:0,1"
+        },
+        {
+            "name": "BankAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Bank Account Number Valid Values:00000001234567891 Format:XXXXXXXXXXXXXXXXX Example:00000001234567891 Condition: Required when bank account type has a value. Allowable Values: 17"
+        },
+        {
+            "name": "BankRoutingNumber",
+            "type": "string",
+            "required": null,
+            "description": "Bank Rrouting number identifies the location of the bank’s branch Valid Values:111000038 Format:XXXXXXXXX Example: 111000038 Condition: Required when bank account type has a value. Allowable Values: 9"
+        },
+        {
+            "name": "BankName",
+            "type": "string",
+            "required": null,
+            "description": "Name of the Bank Valid Values: A-Z Format:XXXXXXXXXX Example:ABC Corporation Condition: Required when bank account type has a value. Allowable Values: 100"
+        },
+        {
+            "name": "CreditBalanceRefund",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to tag the bank account for credit balance refund ,Only and Only one Bank Account can be 1 (Yes) of an Account. Valid Values:0-No, 1-Yes. Example: 1 Condition: Required when bank account type has a value."
+        },
+        {
+            "name": "OverrideBankVerificationMethod",
+            "type": "integer",
+            "required": false,
+            "description": "Value in this tag will override the default Program set up of bank verification method. If blank, then default Program level set up will be honoured. Valid Values: 0=None, 1=PreNote, 2=MicroDeposit, 3=ThirdPartyValidation Example: 0"
+        },
+        {
+            "name": "AchSetup",
+            "type": "integer",
+            "required": false,
+            "description": "Flag to indicate whether ACH (Automated Clearing House) setup is enabled for credit balance refund on a bank account. Only one bank account per customer/account can have this flag set to 1 (enabled). Valid values: 0 – ACH setup NOT enabled 1 – ACH setup enabled; if set to 1, the system will add the bank and create a payment schedule. Example: 1"
+        },
+        {
+            "name": "DaysUntilBillingCycleDefault",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates the number of days the system will wait before assigning a billing cycle if no first transaction or card activation occurs, based on the product’s configured Billing Cycle Determination Method. Valid Values: 0-60 Example: 20"
+        },
+        {
+            "name": "DefaultBillingCycleOnNoActivity",
+            "type": "integer",
+            "required": null,
+            "description": "Assigns the billing-cycle date when no activity occurs within the 'Days Until Billing Cycle Default' period. If activity occurs earlier, this date still applies. When set, it overrides the product’s 'Minimum Days to Billing Cycle After Base Date' rule. Valid Values: 1-31 Example: 20 Condition: Mandatory when a value is provided for the ‘Days Until Billing Cycle Default’ tag."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number will ensure that API hit our internal servers. This will always be unique.API is returned from our external server Allowable Values: 15",
+                    "children": []
+                },
+                {
+                    "name": "TerminalID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Terminal ID Allowable Values: 10",
+                    "children": []
+                },
+                {
+                    "name": "RecordType",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Record type",
+                    "children": []
+                },
+                {
+                    "name": "ProductType",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflect the product type Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "FirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Applicant's First name. Valid Values: A-Z,0-9 Example: John Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "MiddleName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Applicant's Middle Name Valid Values: A-Z,0-9 Example: K Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "LastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Applicant's last name. Valid Values: A-Z,0-9 Example:LEE Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflects the account number. Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "CardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflects the Card Number. Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "AdminNumber",
+                    "type": "int64",
+                    "required": null,
+                    "description": "This tag reflects the Admin number.",
+                    "children": []
+                },
+                {
+                    "name": "CustomerID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflects the customer ID Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "CompanyName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Company Name Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 26",
+                    "children": []
+                },
+                {
+                    "name": "CompanyNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Company Number Allowable Values: 7",
+                    "children": []
+                },
+                {
+                    "name": "CorporateAccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Corporate Account Number Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "AccountCreationDate",
+                    "type": "DateTime",
+                    "required": null,
+                    "description": "Date Of Account creation. Format: MM/dd/YYYY Example: 11/23/2013",
+                    "children": []
+                },
+                {
+                    "name": "AccountCreationTime",
+                    "type": "string",
+                    "required": null,
+                    "description": "Time of Account Creation Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "EmailID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Applicant's email id. Valid Values:A-Z, 0-9 Format: [email protected] Example: [email protected] Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 256",
+                    "children": []
+                },
+                {
+                    "name": "UniversalUniqueID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Universal Unique Identification Number generated by system From StatementHeader Example: 233d6bc3-9242-11e8-82e3-509a4c38ceea Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "AdminUniversalUniqueID",
+                    "type": "string",
+                    "required": null,
+                    "description": "AccountUniversal Unique Identification Number generated by system From BSegment Example:a585f533-0d33-4282-ab98-4852146e5e17 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "LinkedAccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Indicates the linked account number Valid Values: 0-9 Example: 7314145404 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "SystemStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "System generated status of the account. Valid Values: Active. Closed etc. Format: XXXX Example: Active. Allowable Values: 20",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": "840",
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "ProductID": 1341,
+        "MerchantID": null,
+        "StoreID": 7041,
+        "CreditLimit": 1000.0,
+        "Title": "03",
+        "FirstName": "Test",
+        "MiddleName": "H",
+        "LastName": "Test",
+        "SurnameSuffix": "II",
+        "AddressLine1": "test",
+        "AddressLine2": "test",
+        "State": "AK",
+        "City": "AK",
+        "PostalCode": "85645",
+        "Country": "US",
+        "EmailID": "[email protected]",
+        "LanguageIndicator": "en",
+        "HomePhoneNumber": "9754413354",
+        "WorkPhoneNumber": null,
+        "MobilePhoneNumber": null,
+        "OtherPhoneNumber": null,
+        "DateOfBirth": "03/31/1980",
+        "EmployerName": null,
+        "EmployeeNumber": null,
+        "EmployerPhoneNumber": null,
+        "EmployerFaxNumber": null,
+        "MotherMaidenName": null,
+        "SocialSecurityNumber": "882680935",
+        "IDType": null,
+        "IDNumber": null,
+        "IDIssueDate": null,
+        "IDExpirationDate": null,
+        "IDIssueCountry": null,
+        "IDIssueState": null,
+        "RegulationOFlag": null,
+        "RegulationOFlagEffectiveDate": null,
+        "BillingTable": 2181,
+        "NumberofCardsRequested": null,
+        "EmbossingLine4": null,
+        "BillingCycle": "31",
+        "NameOnCard": "test t test2",
+        "TotalAnnualIncome": 100000.0,
+        "CurrentEmploymentMonths": null,
+        "Position": null,
+        "EmploymentType": null,
+        "ResidenceType": null,
+        "MonthsAtResidence": null,
+        "YearsAtResidence": null,
+        "CompanyName": null,
+        "CompanyNumber": null,
+        "CompanyPrimaryContact": null,
+        "CompanyPhoneNumber": null,
+        "CompanyFaxNumber": null,
+        "CorporateAccountNumber": null,
+        "QRCode": null,
+        "CashCreditLimit": null,
+        "ShippingAddressFlag": null,
+        "ShippingAddressLine1": null,
+        "ShippingAddressLine2": null,
+        "ShippingCity": null,
+        "ShippingState": null,
+        "ShippingCountry": null,
+        "ShippingPostalCode": null,
+        "HoldEmbossing": null,
+        "StatementProduction": null,
+        "IsMLAAccount": null,
+        "CardImageID": null,
+        "SignatureID": null,
+        "ActivationCode": null,
+        "NameOnTrack": null,
+        "PromoPurchaseAllow": null,
+        "PromoPurchasePlanMasterID": null,
+        "CoApplicantFlag": null,
+        "CoApplicantFirstName": null,
+        "CoApplicantMiddleName": null,
+        "CoApplicantLastName": null,
+        "CoApplicantAddressLine1": null,
+        "CoApplicantAddressLine2": null,
+        "CoApplicantCity": null,
+        "CoApplicantState": null,
+        "CoApplicantPostalCode": null,
+        "CoApplicantHomePhoneNumber": null,
+        "CoApplicantMobilePhoneNumber": null,
+        "CoApplicantEmailID": null,
+        "CoApplicantSSN": null,
+        "CoApplicantDateOfBirth": null,
+        "CoApplicantCombinedTotalIncome": null,
+        "CoApplicantWorkPhoneNumber": null,
+        "CoApplicantResidenceType": null,
+        "CoApplicantRentMortgageAmount": null,
+        "UserFieldValue1": null,
+        "UserFieldValue2": null,
+        "UserFieldValue3": null,
+        "UserFieldValue4": null,
+        "UserFieldValue5": null,
+        "UserFieldValue6": null,
+        "UserFieldValue7": null,
+        "UserFieldValue8": null,
+        "UserFieldValue9": null,
+        "UserFieldValue10": null,
+        "UserFieldValue11": null,
+        "UserFieldValue12": null,
+        "UserFieldValue13": null,
+        "UserFieldValue14": null,
+        "UserFieldValue15": null,
+        "UserFieldValue16": null,
+        "UserFieldValue17": null,
+        "UserFieldValue18": null,
+        "UserFieldValue19": null,
+        "UserFieldValue20": null,
+        "IgnoreDuplicateCheck": 1,
+        "IsApplicantMLA": null,
+        "IsCosignerMLA": null,
+        "CosignerFlag": null,
+        "CosignerTitle": null,
+        "CosignerFirstName": null,
+        "CosignerMiddleName": null,
+        "CosignerLastName": null,
+        "CosignerSNSuffix": null,
+        "CosignerAddressLine1": null,
+        "CosignerAddressLine2": null,
+        "CosignerCity": null,
+        "CosignerState": null,
+        "CosignerPostalCode": null,
+        "CosignerCountry": null,
+        "CosignerLanguageIndicator": null,
+        "CosignerEmailID": null,
+        "CosignerHomePhoneNumber": null,
+        "CosignerWorkPhoneNumber": null,
+        "CosignerMobilePhoneNumber": null,
+        "CosignerAlternatePhoneNumber": null,
+        "CosignerDateOfBirth": null,
+        "CosignerSSN": null,
+        "CosignerGovernmentIDType": null,
+        "CosignerIDNumber": null,
+        "CosignerIDIssueDate": null,
+        "CosignerIDExpirationDate": null,
+        "CosignerIDIssueCountry": null,
+        "CosignerIDIssueState": null,
+        "CosignerCombinedTotalIncome": null,
+        "CosignerEmployerName": null,
+        "CosignerEmployeeNumber": null,
+        "CosignerEmploymentType": null,
+        "CosignerResidenceType": null,
+        "CosignerEmployerPhoneNumber": null,
+        "CosignerStatementProduction": null,
+        "CosignerMotherMaidenName": null,
+        "CosignerCurrentEmploymentMonths": null,
+        "CosignerPosition": null,
+        "CosignerRentMortgageAmt": null,
+        "CosignerMobileCarrier": null,
+        "DeliveryMechanism": null,
+        "CustomerID": "78515",
+        "ReferenceAccountNumber": null,
+        "PartnerID": null,
+        "PlanID": null,
+        "RelationshipFlag": null,
+        "RewardRuleID": null,
+        "PortfolioID": null,
+        "PromoBTAllow": null,
+        "StandardBTAllow": null,
+        "CardLevelUserFieldValue1": "Primary",
+        "CardLevelUserFieldValue2": "Primary",
+        "CardLevelUserFieldValue3": "Primary",
+        "CardLevelUserFieldValue4": "Primary",
+        "CardLevelUserFieldValue5": "Primary",
+        "CardLevelUserFieldValue6": "Primary",
+        "CardLevelUserFieldValue7": "Primary",
+        "CardLevelUserFieldValue8": "Primary",
+        "CardLevelUserFieldValue9": "Primary",
+        "CardLevelUserFieldValue10": "Primary",
+        "UserFieldValue21": "Yes",
+        "UserFieldValue22": "Yes",
+        "UserFieldValue23": "Yes",
+        "UserFieldValue24": "Yes",
+        "UserFieldValue25": "Yes",
+        "AssociationProductType": null,
+        "RewardID": null,
+        "RevolvingPlanCreditLimit": null,
+        "AccountOwnerCollateralID": "Midland",
+        "AutoDebitMandate": null,
+        "AutoDebitMandateType": null,
+        "CreditScore": null,
+        "ExternalCustomerID": null,
+        "UniqueId": null,
+        "RequestedLoanAmt": 500.0,
+        "LoanPlanID": "abc2123",
+        "BankAccountType": 1,
+        "BankAccountNumber": "00000001234567891",
+        "BankRoutingNumber": "111000038",
+        "BankName": "ABC Corporation",
+        "CreditBalanceRefund": 1,
+        "OverrideBankVerificationMethod": 3,
+        "AchSetup": 1,
+        "DaysUntilBillingCycleDefault": 30,
+        "DefaultBillingCycleOnNoActivity": 12
+    },
+    "sample_response": {
+        "Message": "Account Creation Successful",
+        "Status": true,
+        "ErrorCode": "ERR01002",
+        "ResponseData": {
+            "ResponseID": "108422228",
+            "TerminalID": "WEB",
+            "RecordType": 55,
+            "ProductType": "B",
+            "FirstName": "test",
+            "MiddleName": "H",
+            "LastName": "test",
+            "AccountNumber": "5000000000004803",
+            "CardNumber": "46166823******1124",
+            "AdminNumber": 101538,
+            "CustomerID": "77263",
+            "CompanyName": null,
+            "CompanyNumber": "0",
+            "CorporateAccountNumber": null,
+            "AccountCreationDate": null,
+            "AccountCreationTime": "05:43:56",
+            "EmailID": "[email protected]",
+            "UniversalUniqueID": "1d90a7dd-d999-4eab-8838-ea08ee458aae",
+            "AdminUniversalUniqueID": "cccfeea0-41bf-457b-aa7c-2f1c8156181c",
+            "LinkedAccountNumber": "545345345",
+            "SystemStatus": "Active"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "New Cards",
+        "category_id": "1",
+        "document_id": "2",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=2&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1&regionId=1"
+    }
+}

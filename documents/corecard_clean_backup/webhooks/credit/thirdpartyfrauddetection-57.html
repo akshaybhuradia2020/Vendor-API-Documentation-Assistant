@@ -1,0 +1,3321 @@
+
+
+
+<!DOCTYPE html>
+<!-- Template by quackit.com -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+    <title>Core Card Api Quick Start</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/lib/bootstrap/dist/css/bootstrap.css?639312945129521368" rel="stylesheet" />
+    <link href="/css/style.css?639312945129521434" rel="stylesheet" />
+    <link href="/css/font-awesome.css?639312945129521460" rel="stylesheet" />
+    <script src="/lib/jquery/dist/jquery.js?639312945129521489"></script>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?639312945129521518"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            //$(".toggle").click(function () {
+            //    $(".flex-left").addClass("closebar");
+            //    $(".flex-right").removeClass("closebar");
+            //    $("#panel-close1").click(function () {
+            //        $(".flex-right").addClass("closebar");
+            //    });
+            //});
+
+            if ($('.flex-right')[0]) {
+                $('.flex-center').addClass("center-box");
+
+            } else {
+                $('.flex-center').removeClass("center-box");
+                $(".right-btn").parent('li').addClass("btn-cc");
+            }
+
+
+
+            $(".flex-center table").wrap("<div class='table-divbox'></div>")
+
+            var strleftLinkname = $("#btnCategoryName").val();
+            var strcenterLinkname = $("#h4APIName").text();
+            var strrightLinkname = $("#spnTryItOut").val();
+
+            if ($.trim(strleftLinkname) != "") {
+                $("#leftLink").text($.trim(strleftLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#leftLink").html("Category");
+            }
+
+            if ($.trim(strcenterLinkname) != "") {
+                $("#centerLink").text($.trim(strcenterLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#centerLink").html("Content");
+            }
+            if ($.trim(strrightLinkname) != "") {
+                $("#rightLink").text($.trim(strrightLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#rightLink").html("API List");
+            }
+
+            $(".left-btn").click(function () {
+
+                $(".flex-left").removeClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".center-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").removeClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".left-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".right-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").removeClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .left-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            var btn = $('#top-button');
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+        });
+        $(document).ready(function () {
+            //$(".toggle1").click(function () {
+            //    $(".flex-right").addClass("closebar");
+            //    $(".flex-left").removeClass("closebar");
+            //    $("#panel-close").click(function () {
+            //        $(".flex-left").addClass("closebar");
+            //    });
+            //});
+            //$(".dark-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#789db7", "color": "#fff" });
+            //});
+            //$(".light-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#f9f6f1", "color": "#212529"});
+            //});
+
+            $(".dark-mode").click(function () {
+                $(".dark-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".light-mode").css({ "background-color": "#f9f6f1", "color": "#032d55" });
+
+                $(".dark-modereq, .dark-moderes").parent().css({ "background-color": "#000000", "color": "#fff" });
+            });
+            $(".light-mode").click(function () {
+                $(".light-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".dark-mode").css({ "background-color": "#f5f6f8", "color": "#032d55" });
+
+                $(".light-modereq, .light-moderes").parent().css({ "background-color": "#f5f6f8", "color": "#032d55" });
+            });
+
+
+
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <header id="header">
+
+        <nav class="navbar navbar-expand-lg navbar-light top-header">
+            <a class="navbar-brand" href="#">
+                <img class="logo-img" src="/images/Logo.png" />
+            </a>
+            <!--<div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/GuidePage">Guide</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link hd-cool-link active-headerlink" href="/CoreCardApiReference">API Guide</a>
+                </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link hd-cool-link active-apiheaderlink" href="/WEBHook/CoreCardWEBHook">WEB Hook</a>
+            </li>-->
+            <!--</ul>
+            </div>-->
+
+            <div class="search-float">
+                <div class="search-anchor">
+                    <form id="search-form" action="Search/Index" class="form-inline my-2 my-lg-0">
+                        <input type="text" class="search-bar" placeholder="Search" name="searchTerm">
+                        <input type="text" class="search-bar" placeholder="Search" name="regionId" hidden value="1">
+                        <input class="search-submit" type="submit">
+                        <div class="search-toggle"></div>
+                    </form>
+
+                </div>
+            </div>
+
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <div class="navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav pt-2 custom-mob-nav">
+                    <li class="nav-item dropdown">
+
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Credit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=1&regionId=1">Core API</a>
+                                    <a class="dropdown-item" href="/CoreCardWEBHook?menuid=1&regionId=1">WEB Hook</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Prepaid/Debit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=2&regionId=1">Core API</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+                <ul class="navbar-nav pt-2 ml-auto custom-mob-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">US</a>
+                        <div class="dropdown-menu dropdown-menu-country">
+                            <a id="1" class="dropdown-item" href="/CoreCardApiReference?regionId=1">US</a>
+                            <a id="2" class="dropdown-item" href="/CoreCardApiReference?regionId=2">Global</a>
+
+                        </div>
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+        </nav>
+
+
+        <div class="mobile-btns-layout">
+            <ul class="btn-list-inline">
+                <li><a href="javascript:void(0);" id="leftLink" class="left-btn">Category List</a></li>
+                <li class="current-menu"><a href="javascript:void(0);" id="centerLink" class="center-btn">Content</a></li>
+                <li><a href="javascript:void(0);" id="rightLink" class="right-btn">API List</a></li>
+                <div class="clearfix"></div>
+            </ul>
+
+        </div>
+    </header>
+
+    <div class="container-fluid nopadding">
+        <div>
+            <a id="top-button"></a>
+
+
+
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Ed2qi4xb2JCm_4tCcgxuBd9m2Rzs32WpTLaeixRhdIEksye78WqCAPKA-Yx5tSpDngPUrg-aJ1G4_y9U1j84MHOwm-pqwTON7jmDkOlFZWbVg2TxutpQc_5bK-r_5FvS-ze8z5UU-IctwaB-xOIZtk" />
+<script>
+    (function ($) {
+        if (!$) { return; }
+        $(document).ajaxSend(function (event, xhr, settings) {
+            var method = (settings.type || 'GET').toUpperCase();
+            if (method === 'GET' || method === 'HEAD' || method === 'OPTIONS' || method === 'TRACE') { return; }
+            if (settings.crossDomain) { return; } // never send the token to another origin
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            if (token) { xhr.setRequestHeader('XSRF-TOKEN', token); }
+        });
+
+        // Destructive links (delete user/role/category/menu) are POST-only. Mark them with data-method="post"
+        // (optional data-confirm="..."); they are submitted as a POST form carrying the antiforgery token.
+        // A generated form is used because these links can sit inside other <form> elements.
+        $(document).on('click', 'a[data-method="post"]', function (e) {
+            e.preventDefault();
+            var message = $(this).attr('data-confirm');
+            if (message && !window.confirm(message)) { return; }
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            var form = $('<form method="post" style="display:none"></form>').attr('action', $(this).attr('href'));
+            form.append($('<input type="hidden" name="__RequestVerificationToken" />').val(token));
+            $('body').append(form);
+            form.trigger('submit');
+        });
+    })(window.jQuery);
+</script>
+
+            <script src="/js/svg-diagram-links.js?v=rhKKoQLmGKC2Pm3Utr9UDhdU4GmCNRW_Yl5EzzGtiBA"></script>
+            <div class="">
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/swagger-ui.css" rel="stylesheet" />
+    <script src="/js/cdn/jquery-ui.min.js"></script>
+    <style>
+        .green {
+            color: green;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .hd-cool-link.active-headerlink::after {
+            width: 100%;
+        }
+
+        .sopblock-post {
+            border-color: #49cc90;
+            background: rgba(73,204,144,.1)
+        }
+
+        .sopblock-put {
+            border-color: #fca130;
+            background: rgba(252,161,48,.1);
+        }
+
+        .sopblock-delete {
+            border-color: #f93e3e;
+            background: rgba(249,62,62,.1);
+        }
+
+        .sopblock-get {
+            border-color: #61affe;
+            background: rgba(97,175,254,.1);
+        }
+
+        .sopblock {
+            margin: 0 0 15px;
+            border: 1px solid #49cc90;
+            border-radius: 4px;
+            -webkit-box-shadow: 0 0 3px rgba(0,0,0,.19);
+            box-shadow: 0 0 3px rgba(0,0,0,.19);
+        }
+
+        .sopblock-summary {
+            border-color: #49cc90;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .sopblock-summary-method {
+            background: #49cc90;
+            font-size: 14px;
+            font-weight: 700;
+            min-width: 80px;
+            padding: 6px 15px;
+            text-align: center;
+            border-radius: 3px;
+            text-shadow: 0 1px 0 rgba(0,0,0,.1);
+            font-family: Titillium Web,sans-serif;
+            color: #fff;
+        }
+
+        .sopblock-summary-path {
+            font-size: 16px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 0 10px;
+            font-family: Source Code Pro,monospace;
+            font-weight: 600;
+            color: #3b4151;
+        }
+    </style>
+</head>
+<body id="apiBody">
+    <div class="flex-left closebar">
+        <div class="parent-div-left">
+            <a href="#" id="panel-close" class="close-panel"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <nav class="left-column">
+                <div class="accordion" id="rightaccordion">
+                    <div class="card">
+                        <div class="card-header" id="rightheading">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#rightcollapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <a href="/CoreCardWEBHook?id=1&amp;type=Category&amp;menuid=1">AlertNotification</a>
+                                </button>
+
+                            </h2>
+
+                        </div>
+
+
+                        <div>
+                            <div class="card-body">
+
+                                            <div class="card">
+                                                <div class="card-header" id="CardCancelled  1 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=1&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardCancelled</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CardManualLost  2 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=2&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardManualLost</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CardManualStolen  3 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=3&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardManualStolen</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CardManualBlocked  4 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=4&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardManualBlocked</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CardActive  5 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=5&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardActive</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CardBlocked  6 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=6&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardBlocked</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CardNewCardPendingActivation  7 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=7&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardNewCardPendingActivation</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CardReplacementCardPendingActivation  8 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=8&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardReplacementCardPendingActivation</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CardReissuedCardPendingActivation  9 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=9&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardReissuedCardPendingActivation</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CardActivationReminder  10 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=10&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardActivationReminder</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CardNearExpiry  11 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=11&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardNearExpiry</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CardDormancyReminder  12 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=12&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardDormancyReminder</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="InterestProjection  13 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=13&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">InterestProjection</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="StatementReady  14 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=14&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">StatementReady</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PaymentSkipped  15 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=15&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">PaymentSkipped</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PaymentReceived  16 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=16&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">PaymentReceived</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PaymentDueinXdays  17 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=17&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">PaymentDueinXdays</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PaymentReversal  18 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=18&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">PaymentReversal</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PaymentNotReceived  19 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=19&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">PaymentNotReceived</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PaymentCleared  20 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=20&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">PaymentCleared</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PaymentScheduleAdd  21 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=21&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">PaymentScheduleAdd</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PaymentScheduleDelete  22 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=22&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">PaymentScheduleDelete</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="BankAccountAddUpdate  23 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=23&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">BankAccountAddUpdate</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="BankAccountDelete  24 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=24&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">BankAccountDelete</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PurchaseNotificationApproval  25 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=25&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">PurchaseNotificationApproval</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PurchaseNotificationDenied  26 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=26&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">PurchaseNotificationDenied</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="DisputeTransactionsReversal  27 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=27&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">DisputeTransactionsReversal</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="DisputeTransactionsReceiveSecondPresentment  28 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=28&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">DisputeTransactionsReceiveSecondPresentment</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="DisputeTransactionsSendArbitrationChargeback  29 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=29&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">DisputeTransactionsSendArbitrationChargeback</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="DisputeTransactionsRaised  30 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=30&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">DisputeTransactionsRaised</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="DisputeTransactionsSendChargebacktoMasterCard  31 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=31&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">DisputeTransactionsSendChargebacktoMasterCard</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="DisputeTransactionsDisputeSettled  32 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=32&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">DisputeTransactionsDisputeSettled</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CreditLimitDecline  33 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=33&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CreditLimitDecline</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CreditLimitApprove  34 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=34&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CreditLimitApprove</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PrenoteApproved  35 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=35&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">PrenoteApproved</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PrenoteRejected  36 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=36&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">PrenoteRejected</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="AutoPayReminder  37 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=37&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">AutoPayReminder</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="InterestChargedAndFeeAssessed  38 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=38&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">InterestChargedAndFeeAssessed</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="BalanceTransferReverse  39 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=39&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">BalanceTransferReverse</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="BalanceTransferProcessed  40 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=40&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">BalanceTransferProcessed</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="BalanceTransferCancelled  41 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=41&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">BalanceTransferCancelled</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="BalanceTransfer  42 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=42&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">BalanceTransfer</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="AuthAgeOff  43 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=43&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">AuthAgeOff</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CIPVerificationFailed  44 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=44&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CIPVerificationFailed</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="AddressChange  45 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=45&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">AddressChange</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CancelPhysicalOrder  46 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=46&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CancelPhysicalOrder</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="ActivatedPrimary  47 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=47&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">ActivatedPrimary</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="ReissuePrimary  48 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=48&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">ReissuePrimary</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="IssuedPrimary  49 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=49&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">IssuedPrimary</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="ReplacedPrimary  50 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=50&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">ReplacedPrimary</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="RegisteredPrimary  51 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=51&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">RegisteredPrimary</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="RegisteredSecondary  52 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=52&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">RegisteredSecondary</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="ActivatedSecondary  53 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=53&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">ActivatedSecondary</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="IssuedSecondary  54 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=54&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">IssuedSecondary</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="ReissuedSecondary  55 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=55&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">ReissuedSecondary</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="ReplacedSecondary  56 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=56&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">ReplacedSecondary</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header subCatHighLight" id="ThirdPartyFraudDetection">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=57&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">ThirdPartyFraudDetection</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="CardClosed  109 57">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=109&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">CardClosed</a>
+
+
+                                                </div>
+                                            </div>
+
+
+                            </div>
+                        </div>
+                        <div class="card-header" id="rightheading">
+                            <h2 class="mb-0">
+                            </h2>
+                        </div>
+
+                    </div>
+                                <div class="card">
+                                    <div class="card-header" id="AuthIntegrationNotification2">
+
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AuthIntegrationNotification" aria-expanded="false" aria-controls="AuthIntegrationNotification">
+                                                    <a href="/CoreCardWEBHook?id=2&amp;type=Category&amp;menuid=1">AuthIntegrationNotification</a>
+                                                </button>
+                                            </h2>
+                                    </div>
+
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="ClearingAuthIntegrationNotification3">
+
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#ClearingAuthIntegrationNotification" aria-expanded="false" aria-controls="ClearingAuthIntegrationNotification">
+                                                    <a href="/CoreCardWEBHook?id=3&amp;type=Category&amp;menuid=1">ClearingAuthIntegrationNotification</a>
+                                                </button>
+                                            </h2>
+                                    </div>
+
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="CollectionNotification4">
+
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#CollectionNotification" aria-expanded="false" aria-controls="CollectionNotification">
+                                                    <a href="/CoreCardWEBHook?id=4&amp;type=Category&amp;menuid=1">CollectionNotification</a>
+                                                </button>
+                                            </h2>
+                                    </div>
+
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="RewardsRedemptionNotification5">
+
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#RewardsRedemptionNotification" aria-expanded="false" aria-controls="RewardsRedemptionNotification">
+                                                    <a href="/CoreCardWEBHook?id=5&amp;type=Category&amp;menuid=1">RewardsRedemptionNotification</a>
+                                                </button>
+                                            </h2>
+                                    </div>
+
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="UpdateNotification6">
+
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#UpdateNotification" aria-expanded="false" aria-controls="UpdateNotification">
+                                                    <a href="/CoreCardWEBHook?id=6&amp;type=Category&amp;menuid=1">UpdateNotification</a>
+                                                </button>
+                                            </h2>
+                                    </div>
+
+                                </div>
+                </div>
+                <div class="accordion" id="leftaccordion">
+
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="flex-center center-new">
+        <div class="mobile-btns">
+            <p class="btn-p toggle1"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>Category links</p>
+            <p class="btn-p toggle">API Links<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></p>
+            <div class="clearfix"></div>
+        </div>
+        <main id="center" class="">
+            <article>
+                            <div id="ThirdPartyFraudDetection" class="target-div">
+                                <h4 class="h4-name">
+                                    ThirdPartyFraudDetection
+                                </h4>
+                            </div>
+                            <div class="action-url">
+                                <p class="">
+                                    <strong class="">Action:</strong> <code class="">POST</code>
+                                </p>
+                                <p class="">
+                                    <strong class="">Endpoint:</strong> <code class="">/api/WebHookNotification/AlertNotification/ThirdPartyFraudDetection</code>
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="">This webhook is triggered when third party fraud detection.</p>
+                            </div>
+                                <h5 class="h5-heading">
+                                    Request fields detail
+                                </h5>
+                                <table class="api-info table">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Fields</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">UpdateCallList</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Group of fields passed in webhook
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">InfoAlert</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Group of fields passed in webhook
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Tab</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates tab in system under which this webhook is available Possible value: Status, Period, Monetary, Security and Cards
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Category</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates category of alert triggered
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">SubCategory</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates subcategory of Category of alert triggered
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">CaseID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Unique ID assigned to each Dispute case
+Valid Values:0-9
+Format:XXXXXXX
+Example:9856198
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">FirstName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        First name of the cardholder associated with the transaction being disputed.
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">50</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">LastName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Last Name of the cardholder associated with the transaction being disputed.
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">50</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Status</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Current Status of card
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">100</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">CardExpiryMonthAndYear</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Month and Year details when Card will expire
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">30</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Xmonths</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        No activity was performed on this card for X number of months, which triggered this webhook
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">20</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">AvailableBalance</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Available Balance to make new transactions.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">StatementMonth</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Denote month for which statement is generated 
+Valid values: 1 to 12
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">20</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">XAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Amount Due on the account which was to be paid before payment due date
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">TransactionCurrencyCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Currency code in which transaction was performed   
+Example: USD
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">20</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">TransactionAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Total amount for which transaction occurred
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">PrimaryCurrencyCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Primary currency defined for the client during setup.
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">20</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">LoyaltyPointsExpirationDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        The expiration date of the loyalty points.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">LoyaltyPoints</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        The total number of loyalty points accumulated by the user.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">PaymentDueDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Due date as to by when payment needs to be made to avoid late fees
+Valid Values: 0-9
+Format: mmddyyyy
+Example: 02012020
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">CardnumLast4Digits</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Last 4 digits of card number associated with the transaction being disputed.
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">4</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">LifeCycleID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Unique identifier to identify transaction across multiple phases like pre-auth, reversal, completion
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">8</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">AuthTranID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        A unique identifier value for authorization transaction
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">8</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">POSCardPresenceIndicator</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates if Card was present for the transaction or not.
+Valid Value:0 - Not Present,1 - Present,9 - Token Transaction
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">1</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">CardAcceptorNameLocation</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Name and Location of Merchant where transaction occurred
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">ResponseCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates transaction response status. 00 for Approved otherwise declined
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">5</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">AmountCurrencyConversionAssessment</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        The details of the amount involved in a currency conversion.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">CrossBorderIndicator</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates if the transaction occurred was international or not 
+Valid Value: Y/N
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">LocalTransactionDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">DateTime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Local date and time of transaction
+(FORMAT: MMDDYYYYhhnnss)
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">InterchangeFee</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        For processing a credit or debit card payment.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">InFavorOf</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates party in favor of which dispute was reversed
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">50</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">ReasonCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Dispute reason code that is sent to/from Mastercard
+Valid Value: 0 - Merchandise Not Ordered,1 - Merchandise Not Received - To Customer ,2 - Merchandise Not Received - From Customer,3 - Sent Payment Not Applied,4 - Product not as described,5 - Defective Merchandise ,6 - Billing Error,7 - Duplicate Processing ,8 - Clarification ,9 -Other ,10 -Fraud  ,11 -Authorization  ,12 -Processing Errors ,13 -Cardholder Disputes
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">5</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">ReasonDescription</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Dispute reason description that is sent to/from Network
+Valid Value: 0 - Merchandise Not Ordered,1 - Merchandise Not Received - To Customer ,2 - Merchandise Not Received - From Customer,3 - Sent Payment Not Applied,4 - Product not as described,5 - Defective Merchandise ,6 - Billing Error,7 - Duplicate Processing ,8 - Clarification ,9 -Other ,10 -Fraud  ,11 -Authorization  ,12 -Processing Errors ,13 -Cardholder Disputes
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">60</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">PaymentScheduleType</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates type of payment for payment schedule which triggered payment 
+Valid values: Statement Balance or Minimum Due or Fixed Amount or Current Balance
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">20</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">PaymentScheduleDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Date when payment schedule was Added(FORMAT: YYYYMMDD)
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">OldCreditLimit</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Previous Credit Limit on account.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">NewCreditLimit</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        New Credit Limit on account.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">AvailableOTB</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Amount available for further purchases on card
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">BankName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Name of bank whose account was used to create payment schedule
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">70</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">ScheduleID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Unique identifier assigned by the system for the added payment schedule
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">10</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">PaymentTransactionID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Unique identifier for Transaction ID of Payment made - Reversed Payment or Original ?
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">50</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">PaymentScheduleFrequency</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates Frequency with which paymentschedule was added 
+Possible values: Monthly Specific Day, Payment Due Date, One Time, Weekly
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">30</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">AuthStatus</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates whether the transaction is authorized, declined, or in another state.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">CheckNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        The check number associated with the transaction.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">BaseCommerceErrorMessages</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Contains details of any issues or errors encountered during the processing of the transaction.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">OldAdminNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">int64</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Previous Admin Number associated with card.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">BankAccountLast4Digit</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Last 4 digits of bank account number involved in this Transaction
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">4</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">AccountGraceFlag</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        This flag shows if the account holder is temporarily exempt from penalties or restrictions.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">OverdueNoSpend</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates whether the account is restricted from spending due to overdue payments.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">GraceFlagChangeDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        The date when the grace period flag was last updated or changed.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">PaymentReferenceId</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Unique identifier for Payment Transaction
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">8</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">OTBReleaseAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Amount released which impacts Open-To-Buy ability of account
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">HoldOTBReleaseDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Date, when Open-To-Buy payment held, is to be released
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">ReleaseStatus</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates if Payment hold release is manual or auto-release
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">20</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">BankMethodName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Unique Identifier for the bank account in CoreCard system
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">25</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">CancellationReason</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        String 'Active' will be mentioned in this field
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">100</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">UnpostedInterestOwed</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        The amount of interest that has been accrued but not yet posted to the account.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">TimeStamp</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        The date and time at which an event or transaction occurred, formatted as a timestamp.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">TransactionUniversalUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Unique identifier created during pre-auth to identify transaction across multiple phases like pre-auth, reversal, completion 
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">ReferenceUniversalUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        A universally unique identifier used as a reference for the transaction or entity.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">CurrentBalance</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Updated Current Balance of Account
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">RevTxnUUID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">NextSchedulePaymentdate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">AccountClosedReason</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Reason provided for Card closure
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">70</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">BTStatusCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Status Code for Balance Transfer process
+Valid values: 0, null
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">19</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">PayeeAccountNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Account number of Payee Account
+Valid Values:0-9
+Format:XXXXXXXXXX
+Example:7314145404
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">19</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">PayeeAccountType</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Account Type of Payee account
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">10</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">PaymentProcessDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        This is the date when the BillpaymentSource(IPAY) initiated the payment to the subscriber system.
+Format: MM/dd/yyyy HH:mm:ss
+Example:01/15/2020 10:05:23
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">ObjectUniversalUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">RequestedBalanceTransferAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">BTStatusMessage</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Status message for Balance Transfer
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">100</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">DateOfCancellation</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Date when initiated Balance Transfer process is reversed or canceled 
+Format: - dd/mm/yyyy hh:mm:ss
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">StatementID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Unique identifier for Statement
+Valid Values:0-9
+Format: XX
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">StatementDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Date when statement was generated
+Format: YYYYMMDDHHMMSS
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Addressline1</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Debtor Address Line 1.
+Valid Values:A-Z, 0-9
+Format:
+Example:123 HWY
+Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. 
+Condition:
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Addressline2</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                         Debtor Address Line 2.
+ Valid Values: A-Z, 0-9
+ Format:
+ Example:Park Avenue
+ Condition:This is mandatory only when HoldEmbossing tag value is 0(NO) and Country selected as Non-US.
+Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">City</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Debtor City
+Valid Values:
+Format:
+Example:Los Angeles
+Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. 
+Condition: CBR
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">State</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        A State of the card holder address.
+Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Zipcode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Postal code of the card holder's address.
+Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">PrimaryEmail</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Email ID of Primary cardholder. This field is available only when AlertRecipientType is 1 or 3 or 5
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">50</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">SecondaryCardUserFirstName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">SecondaryCardUserLastName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">CIPFailReason</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">CosignerEmailID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Email ID of Cosigner on account. This field is available only when AlertRecipientType is 2 or 3
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">50</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">AuthUserEmailID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Email ID of Secondary cardholder. This field is available only when AlertRecipientType is 4 or 5
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">50</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">TranIDForDisputedTransaction</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">int64</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">GracePaymentDueDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">PaymentEffectiveDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates actual payment schedule date considering the bank holidays and weekends.
+Format: MM/dd/yyyy HH:mm:mm 
+Example: 01/01/2020 11:05:05
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">MinimumPaymentDue</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">StatementBalance</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">FraudLabel</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">TransactionID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">int64</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">NotAppliedDisputeStage</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">NotAppliedDisputeMatchedFlag</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">CC Action</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Third Party Fraud Response</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Array Data element to hold Third Party Fraud Response data.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">Lifecycle_id</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Unique identifier to identify transaction across multiple phases like pre-auth, reversal, completion
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">Event_external_id</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        The unique identifier, on the client's platform, of this event. This field has the same value as the one on the request and it will not be present on the response if it's not present on the request.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">Score</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        The risk engine score, which measures the probability of a transfer being legitimate or not. Possible values range from 0 to 1000, where 1000 represents the highest probability of being illegitimate.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">Decision</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Feedzai's suggestion of whether to approve or decline the transfer based on the decision outcome of the Pulse workflow.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">Alert</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">boolean</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Identifies whether or not the request has generated an alert in Feedzai Case Manager.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">First Fraud Rule and Action</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Actions that are activated when the first rule is triggered.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">Other Fraud Rules and Actions</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Actions that are activated by every other triggering rule except the first.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">Fraud SCA Required</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Identifies whether the strong customer authentication (SCA) is needed or not.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Message Type</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AccountNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Account Number associated with the event. The Account Number is consistently maintained at the Account level (one-to-one Mapping).
+Valid Values: 0-9
+Format: XXXXXXXXXXXXXXXX
+Example: 8000000000000037
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">19</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AdminNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Admin Number associated with the event. Admin Number is always associated with a Card (Can be Primary or Secondary)
+Valid Values:0-9
+Format:XXXXX
+Example:12345
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">RequestID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Primary Key for API
+Format:XXXXXXXXXXXXXXXX
+Example:12345
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">19</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Mode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates the type of activity performed which triggered this webhook Possible Value: Alert, Insert, Transaction
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">10</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AccountUniversalUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        UniversalUniqueID of Account
+Format:XXXXXXXXXX
+Example:7408f969-6e0c-4a3f-8fba-3316f6f77db6
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">64</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CardUniversalUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        UniversalUniqueID of Card
+Format:XXXXXXXXXX
+Example:fbe61b75-6751-4add-9c44-7832ccf399e9
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">64</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ClientID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Corecard's Client ID
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">64</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">RequestUniversalUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        UniversalUniqueID Request
+Example: 8638-b87b-48d0-8e13-0ebb5643577
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">64</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">User</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        User ID of the user who triggered the webhook event. 
+Valid Values: CoreCredit user, API user, System
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">DateandTime</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">DateTime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Timestamp when notification was sent
+YYYY-MM-DD hh:mm:ss:sss
+(24-hour Format)
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Source</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates the source from where the activity was performed by user or triggered by system.
+Valid Values: CoreCredit, External API, Self Service, CoreCollect, IVR, System, CoreIssue
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">20</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ServiceName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Name of API service (webhook) triggered
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AlertType</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates type of Alert 
+Possible values:
+Real-Time or Re Try(due to time-out)
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">15</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionSource</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Transaction Source of transaction, IPM, Retail Manual Auth-Installment, Retail Manual Auth-Revolver etc.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">InstitutionID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        A unique identifier assigned by CoreCard for Institution
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ProductID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        A unique identifier assigned by CoreCard for Product
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AlertRecipientType</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Type of recipient to which alert needs to be sent
+Valid Values:1=Primary Applicant,2=Cosigner,3=Applicant and Cosigner,4=Auth User,5=Applicant and Auth User
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">MonetaryLog</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Group element will always null for collection.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">RewardsRedemption</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">array</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Group element will always null for collection.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Reward</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">array</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Group element will always null for collection.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">RewardInfo</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">array</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Group element will always null for collection.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">InfoCollectionAlert</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">array</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Group element will always null for collection.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">InfoAgeOffAlert</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">array</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Group of fields passed in webhook.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+                                    </tbody>
+                                </table>
+                            <h5 class="req-head">
+                                Sample request body
+                            </h5>
+                            <pre class="pre-req"><button class="dark-mode dark-modereq">Dark</button><button class="light-mode light-modereq">Light</button>{&#xD;&#xA;  &quot;UpdateCallList&quot;: null,&#xD;&#xA;  &quot;InfoAlert&quot;: {&#xD;&#xA;    &quot;Tab&quot;: &quot;Monetary&quot;,&#xD;&#xA;    &quot;Category&quot;: &quot;Third-Party Fraud Detection&quot;,&#xD;&#xA;    &quot;SubCategory&quot;: null,&#xD;&#xA;    &quot;CaseID&quot;: 15406,&#xD;&#xA;    &quot;FirstName&quot;: &quot;John&quot;,&#xD;&#xA;    &quot;LastName&quot;: &quot;Doe&quot;,&#xD;&#xA;    &quot;Status&quot;: null,&#xD;&#xA;    &quot;CardExpiryMonthAndYear&quot;: null,&#xD;&#xA;    &quot;Xmonths&quot;: null,&#xD;&#xA;    &quot;AvailableBalance&quot;: null,&#xD;&#xA;    &quot;StatementMonth&quot;: null,&#xD;&#xA;    &quot;XAmount&quot;: null,&#xD;&#xA;    &quot;TransactionCurrencyCode&quot;: &quot;USD&quot;,&#xD;&#xA;    &quot;TransactionAmount&quot;: 10.21,&#xD;&#xA;    &quot;PrimaryCurrencyCode&quot;: &quot;USD&quot;,&#xD;&#xA;    &quot;LoyaltyPointsExpirationDate&quot;: null,&#xD;&#xA;    &quot;LoyaltyPoints&quot;: null,&#xD;&#xA;    &quot;PaymentDueDate&quot;: null,&#xD;&#xA;    &quot;CardnumLast4Digits&quot;: &quot;9198&quot;,&#xD;&#xA;    &quot;LifeCycleID&quot;: &quot;29462226&quot;,&#xD;&#xA;    &quot;AuthTranID&quot;: &quot;29462226&quot;,&#xD;&#xA;    &quot;POSCardPresenceIndicator&quot;: &quot;1&quot;,&#xD;&#xA;    &quot;CardAcceptorNameLocation&quot;: &quot;Merchant name Merchant city USA&quot;,&#xD;&#xA;    &quot;ResponseCode&quot;: &quot;00&quot;,&#xD;&#xA;    &quot;AmountCurrencyConversionAssessment&quot;: null,&#xD;&#xA;    &quot;CrossBorderIndicator&quot;: &quot;N&quot;,&#xD;&#xA;    &quot;LocalTransactionDate&quot;: &quot;&quot;,&#xD;&#xA;    &quot;InterchangeFee&quot;: null,&#xD;&#xA;    &quot;InFavorOf&quot;: null,&#xD;&#xA;    &quot;ReasonCode&quot;: null,&#xD;&#xA;    &quot;ReasonDescription&quot;: null,&#xD;&#xA;    &quot;PaymentScheduleType&quot;: null,&#xD;&#xA;    &quot;PaymentScheduleDate&quot;: null,&#xD;&#xA;    &quot;OldCreditLimit&quot;: null,&#xD;&#xA;    &quot;NewCreditLimit&quot;: null,&#xD;&#xA;    &quot;AvailableOTB&quot;: 7436.0,&#xD;&#xA;    &quot;BankName&quot;: null,&#xD;&#xA;    &quot;ScheduleID&quot;: null,&#xD;&#xA;    &quot;PaymentTransactionID&quot;: null,&#xD;&#xA;    &quot;PaymentScheduleFrequency&quot;: null,&#xD;&#xA;    &quot;AuthStatus&quot;: null,&#xD;&#xA;    &quot;CheckNumber&quot;: null,&#xD;&#xA;    &quot;BaseCommerceErrorMessages&quot;: null,&#xD;&#xA;    &quot;OldAdminNumber&quot;: null,&#xD;&#xA;    &quot;BankAccountLast4Digit&quot;: null,&#xD;&#xA;    &quot;AccountGraceFlag&quot;: null,&#xD;&#xA;    &quot;OverdueNoSpend&quot;: null,&#xD;&#xA;    &quot;GraceFlagChangeDate&quot;: null,&#xD;&#xA;    &quot;PaymentReferenceId&quot;: null,&#xD;&#xA;    &quot;OTBReleaseAmount&quot;: null,&#xD;&#xA;    &quot;HoldOTBReleaseDate&quot;: null,&#xD;&#xA;    &quot;ReleaseStatus&quot;: null,&#xD;&#xA;    &quot;BankMethodName&quot;: null,&#xD;&#xA;    &quot;CancellationReason&quot;: null,&#xD;&#xA;    &quot;UnpostedInterestOwed&quot;: null,&#xD;&#xA;    &quot;TimeStamp&quot;: null,&#xD;&#xA;    &quot;TransactionUniversalUniqueID&quot;: null,&#xD;&#xA;    &quot;ReferenceUniversalUniqueID&quot;: null,&#xD;&#xA;    &quot;CurrentBalance&quot;: 563.0,&#xD;&#xA;    &quot;RevTxnUUID&quot;: null,&#xD;&#xA;    &quot;NextSchedulePaymentdate&quot;: null,&#xD;&#xA;    &quot;AccountClosedReason&quot;: null,&#xD;&#xA;    &quot;BTStatusCode&quot;: null,&#xD;&#xA;    &quot;PayeeAccountNumber&quot;: null,&#xD;&#xA;    &quot;PayeeAccountType&quot;: null,&#xD;&#xA;    &quot;PaymentProcessDate&quot;: null,&#xD;&#xA;    &quot;ObjectUniversalUniqueID&quot;: null,&#xD;&#xA;    &quot;RequestedBalanceTransferAmount&quot;: null,&#xD;&#xA;    &quot;BTStatusMessage&quot;: null,&#xD;&#xA;    &quot;DateOfCancellation&quot;: null,&#xD;&#xA;    &quot;StatementID&quot;: null,&#xD;&#xA;    &quot;StatementDate&quot;: null,&#xD;&#xA;    &quot;Addressline1&quot;: null,&#xD;&#xA;    &quot;Addressline2&quot;: null,&#xD;&#xA;    &quot;City&quot;: null,&#xD;&#xA;    &quot;State&quot;: null,&#xD;&#xA;    &quot;Zipcode&quot;: null,&#xD;&#xA;    &quot;PrimaryEmail&quot;: &quot;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="711b1e191f5f151e1431141c10181d5f121e1c">[email&#160;protected]</a>&quot;,&#xD;&#xA;    &quot;SecondaryCardUserFirstName&quot;: null,&#xD;&#xA;    &quot;SecondaryCardUserLastName&quot;: null,&#xD;&#xA;    &quot;CIPFailReason&quot;: null,&#xD;&#xA;    &quot;CosignerEmailID&quot;: null,&#xD;&#xA;    &quot;AuthUserEmailID&quot;: null,&#xD;&#xA;    &quot;TranIDForDisputedTransaction&quot;: null,&#xD;&#xA;    &quot;CC Action&quot;: &quot;None&quot;,&#xD;&#xA;    &quot;Third Party Fraud Response&quot;: {&#xD;&#xA;      &quot;Lifecycle_id&quot;: &quot;29462226&quot;,&#xD;&#xA;      &quot;Event_external_id&quot;: &quot;29462226&quot;,&#xD;&#xA;      &quot;Score&quot;: 17,&#xD;&#xA;      &quot;Decision&quot;: &quot;decline&quot;,&#xD;&#xA;      &quot;First Fraud Rule and Action&quot;: &quot;Cards-PN1&quot;,&#xD;&#xA;      &quot;Other Fraud Rules and Actions&quot;: null,&#xD;&#xA;      &quot;Alert&quot;: true,&#xD;&#xA;      &quot;Fraud SCA Required&quot;: null&#xD;&#xA;    },&#xD;&#xA;    &quot;Message Type&quot;: &quot;Information&quot;,&#xD;&#xA;    &quot;GracePaymentDueDate&quot;: null,&#xD;&#xA;    &quot;PaymentEffectiveDate&quot;: null,&#xD;&#xA;    &quot;MinimumPaymentDue&quot;: null,&#xD;&#xA;    &quot;StatementBalance&quot;: null,&#xD;&#xA;    &quot;FraudLabel&quot;: null,&#xD;&#xA;    &quot;TransactionID&quot;: null,&#xD;&#xA;    &quot;NotAppliedDisputeStage&quot;: null,&#xD;&#xA;    &quot;NotAppliedDisputeMatchedFlag&quot;: null&#xD;&#xA;  },&#xD;&#xA;  &quot;AccountNumber&quot;: &quot;9000000500679197&quot;,&#xD;&#xA;  &quot;AdminNumber&quot;: 1361088,&#xD;&#xA;  &quot;RequestID&quot;: &quot;1042987139&quot;,&#xD;&#xA;  &quot;Mode&quot;: &quot;ALERT&quot;,&#xD;&#xA;  &quot;AccountUniversalUniqueID&quot;: &quot;a12b7279-4e90-4b38-8af5-e7da41ae59d0&quot;,&#xD;&#xA;  &quot;CardUniversalUniqueID&quot;: &quot;75c14f8d-c692-4e6c-9a94-437edbe0caa8&quot;,&#xD;&#xA;  &quot;ClientId&quot;: null,&#xD;&#xA;  &quot;RequestUniversalUniqueID&quot;: &quot;d02e2edd-adda-49b2-a2da-0299642011d8&quot;,&#xD;&#xA;  &quot;MonetaryLog&quot;: null,&#xD;&#xA;  &quot;RewardsRedemption&quot;: null,&#xD;&#xA;  &quot;Reward&quot;: null,&#xD;&#xA;  &quot;RewardInfo&quot;: null,&#xD;&#xA;  &quot;InfoCollectionAlert&quot;: null,&#xD;&#xA;  &quot;InfoAgeOffAlert&quot;: null,&#xD;&#xA;  &quot;User&quot;: &quot;System&quot;,&#xD;&#xA;  &quot;DateandTime&quot;: &quot;2021-08-16 00:11:01&quot;,&#xD;&#xA;  &quot;Source&quot;: &quot;CoreIssue&quot;,&#xD;&#xA;  &quot;ServiceName&quot;: null,&#xD;&#xA;  &quot;AlertType&quot;: &quot;RealTime&quot;,&#xD;&#xA;  &quot;TransactionSource&quot;: null,&#xD;&#xA;  &quot;InstitutionId&quot;: 5949,&#xD;&#xA;  &quot;ProductId&quot;: 5907,&#xD;&#xA;  &quot;AlertRecipientType&quot;: 1&#xD;&#xA;}</pre>
+            </article>
+
+        </main>
+
+    </div>
+
+    <div class="flex-right new-right">
+        <div class="parent-div-right">
+            <a href="#" id="panel-close1" class="close-panel"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <span id="btn-swagger-ThirdPartyFraudDetection">
+                        <div class="sopblock sopblock-post">
+                            <div class="sopblock-summary sopblock-summary-POST">
+                                <span class="sopblock-summary-method">POST</span>
+                                <span class="sopblock-summary-path" data-path="/api/CoreCredit/MerchantManagement/UpdateMSR">
+                                    <a class="nostyle">
+                                        <span>/api/WebHookNotification/AlertNotification/ThirdPartyFraudDetection</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </span>
+                    <div id="swagger-ThirdPartyFraudDetection"></div>
+        </div>
+    </div>
+
+    <!-- The Modal 1-->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/googleapis/jquery.min.js"></script>
+    <script src="/lib/dist/swagger-ui-bundle.js"></script>
+
+    <script src="/lib/dist/swagger-ui-standalone-preset.js"></script>
+
+
+    <div id="cms-tryout" data-enabled="false" hidden></div>
+
+        <script src='/lib/dist/Webhook/v1_AlertNotification_swaggerFilter.js?v=20261106'></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            //$("#loading").show().delay(5000).fadeOut();
+
+            $(".rmvClass, .close").click(function () {
+                $(".svg-modal.modal").removeClass("active");
+            });
+
+            $('.flex-right .card-body ul li').click(function (event) {
+                $('.active-rightlink').removeClass('active-rightlink');
+                $(this).addClass('active-rightlink');
+                event.preventDefault();
+            });
+
+        });
+        $(document).ready(function () {
+            var $menu = $(".apimenuul");
+            var $menu_a = $("a", $menu);
+            var id = false;
+            var sections = [];
+            var hash = function (h) {
+                if (history.pushState) {
+                    history.pushState(null, null, h);
+                } else {
+                    location.hash = h;
+                }
+            };
+
+
+            $menu_a.each(function () {
+                sections.push($($(this).attr("href")));
+            });
+
+            $(window).scroll(function (event) {
+                var scrolling = $(this).scrollTop() + $(this).height() / 3;
+                var scroll_id;
+                for (var i in sections) {
+                    var section = sections[i];
+                    if (scrolling > section.offset().top) {
+                        scroll_id = section.attr("id");
+                    }
+                }
+                if (scroll_id !== id) {
+                    id = scroll_id;
+                    $menu_a.removeClass("apiliactive");
+                    $("a[href='#" + id + "']", $menu).addClass("apiliactive");
+                }
+            });
+
+            $('#btn-swagger-ThirdPartyFraudDetection').click();
+            });
+
+    </script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"e68766ac58634d3bac78aacb71fbb169","spa":2}' crossorigin="anonymous"></script>
+</body>
+
+
+</html>
+
+</div>
+
+
+
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-txt">
+            Copyright &copy; 2026 CoreCard Software, Inc. All rights reserved
+        </p>
+    </footer>
+</body>
+
+</html>

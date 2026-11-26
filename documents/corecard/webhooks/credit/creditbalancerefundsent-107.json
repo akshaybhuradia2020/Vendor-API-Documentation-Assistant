@@ -1,0 +1,369 @@
+{
+    "metadata": {
+        "name": "CreditBalanceRefundSent",
+        "http_method": "POST",
+        "endpoint": "/api/WebHookNotification/UpdateNotification/CreditBalanceRefundSent",
+        "description": "This webhook is triggered when a credit balance refund transaction is posted on account."
+    },
+    "request_fields": [
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number associated with the event. The Account Number is consistently maintained at the Account level (one-to-one Mapping). Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Admin Number associated with the event. Admin Number is always associated with a Card (Can be Primary or Secondary)"
+        },
+        {
+            "name": "RequestID",
+            "type": "string",
+            "required": null,
+            "description": "Primary Key for API Allowable Values: 19"
+        },
+        {
+            "name": "Mode",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the type of activity performed which triggered this webhook Possible Value: Alert, Insert, Transaction Allowable Values: 10"
+        },
+        {
+            "name": "AccountUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID of Account\nFormat:XXXXXXXXXX\nExample:9894f28b-d051-4eaa-9e48-a3a7d5b4a6f7 Allowable Values: 64"
+        },
+        {
+            "name": "CardUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID of Card\nExample: 8638-b87b-48d0-8e13-0ebb5643577\nCondition: Will be available if present in request. Allowable Values: 64"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": null,
+            "description": "Corecard’s Client ID Allowable Values: 64"
+        },
+        {
+            "name": "RequestUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID Request\nExample: 8638-b87b-48d0-8e13-0ebb5643577 Allowable Values: 64"
+        },
+        {
+            "name": "UpdateCallList",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "MonetaryLog",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "Category",
+            "type": "string",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "SubCategory",
+            "type": "string",
+            "required": null,
+            "description": "Category"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Total amount for which credit was made"
+        },
+        {
+            "name": "BalanceIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Indicates type of balance which is getting impacted by this transaction\nValid Values:Chargeoff Balance,Active Balance(current balance) Allowable Values: 20"
+        },
+        {
+            "name": "DBIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Indicates if this is a debit or credit type of transaction for the account\nValid Values:Credit,Debit Allowable Values: 10"
+        },
+        {
+            "name": "BankAccountLast4Digit",
+            "type": "string",
+            "required": null,
+            "description": "Bank AccountNumber last 4 digits of account from where funds are credited.\nCondition: This field will only be available when refund mode is ACH. Allowable Values: 4"
+        },
+        {
+            "name": "ReasonCode",
+            "type": "string",
+            "required": null,
+            "description": "Return reason code which is sent in an ACH return file. Allowable Values: 5"
+        },
+        {
+            "name": "CardnumLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Last 4 digits of card number. Allowable Values: 4"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": null,
+            "description": "First name of Account holder Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": null,
+            "description": "Last Name of Account holder Allowable Values: 50"
+        },
+        {
+            "name": "PrimaryEmail",
+            "type": "string",
+            "required": null,
+            "description": "Email ID of Primary cardholder. This field is available only when AlertRecipientType is 1 or 3 or 5 Allowable Values: 50"
+        },
+        {
+            "name": "CosignerEmailID",
+            "type": "string",
+            "required": null,
+            "description": "Email ID of Cosigner on account. This field is available only when AlertRecipientType is 2 or 3 Allowable Values: 50"
+        },
+        {
+            "name": "AuthUserEmailID",
+            "type": "string",
+            "required": null,
+            "description": "Email ID of Secondary cardholder. This field is available only when AlertRecipientType is 4 or 5 Allowable Values: 50"
+        },
+        {
+            "name": "BankName",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the Name of the Bank to whose account the credit balance is refunded via ACH. Condition: This field will only be available when refund mode is ACH. Allowable Values: 70"
+        },
+        {
+            "name": "BankMethodName",
+            "type": "string",
+            "required": null,
+            "description": "Unique Identifier for the bank account in CoreCard system.\nCondition: This field will only be available when refund mode is ACH. Allowable Values: 25"
+        },
+        {
+            "name": "RefundType",
+            "type": "string",
+            "required": null,
+            "description": "Indicates if Credit Balance refund initiation was Automatic or Manual Allowable Values: 20"
+        },
+        {
+            "name": "RefundMode",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the Refund Mode; ACH, Other, Adjust to Loan Account\nCondition: Other Refund Mode is when:For Manual Refund Other option is selected. As per Product set up when Automatic transaction posted for credit balance refund. Allowable Values: 20"
+        },
+        {
+            "name": "PrimaryCurrencyCode",
+            "type": "string",
+            "required": null,
+            "description": "Primary currency defined for the client at setup. Allowable Values: 20"
+        },
+        {
+            "name": "AvailableOTB",
+            "type": "decimal",
+            "required": null,
+            "description": "Amount available for further purchases on Account"
+        },
+        {
+            "name": "LoanAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Loan account number on which credit balance refund Adjusted Condition: Loan Account number only available when Refund Mode is Adjust to Loan Account. Allowable Values: 30"
+        },
+        {
+            "name": "SettlementDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Settlement Date and time of Credit Balance transaction.\n(Format: MM/DD/YYYY hhmmss)"
+        },
+        {
+            "name": "TransactionID",
+            "type": "string",
+            "required": null,
+            "description": "Unique identifier for Transaction ID of Credit made Allowable Values: 10"
+        },
+        {
+            "name": "PostingDateTime",
+            "type": "datetime",
+            "required": null,
+            "description": "Date and time when Credit Balance transaction posted. \n(Format: MM/DD/YYYY hhmmss) Allowable Values: 10"
+        },
+        {
+            "name": "AlertRecipientType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of recipient to which alert needs to be sent \n1: - Primary Applicant \n 2: - Cosigner \n3:- Applicant and Cosigner \n4:- Auth User \n5:- Applicant and Auth User"
+        },
+        {
+            "name": "InfoAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "RewardsRedemption",
+            "type": "",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "Reward",
+            "type": "",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "RewardInfo",
+            "type": "",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "InfoCollectionAlert",
+            "type": "",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "InfoAgeOffAlert",
+            "type": "",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "User",
+            "type": "string",
+            "required": null,
+            "description": "API User Id who performed the activity which triggered the event Allowable Values: 40"
+        },
+        {
+            "name": "DateandTime",
+            "type": "DateTime",
+            "required": null,
+            "description": "Timestamp when notification was sent\nYYYY-MM-DD hh:mm:ss:sss\n(24-hour Format)"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the source from where the activity was performed by user or triggered by system.\nValid Values: CoreCredit, External API, Self Service, CoreCollect, IVR, System, CoreIssue Allowable Values: 20"
+        },
+        {
+            "name": "ServiceName",
+            "type": "string",
+            "required": null,
+            "description": "Name of API service (webhook) triggered Allowable Values: 40"
+        },
+        {
+            "name": "AlertType",
+            "type": "string",
+            "required": null,
+            "description": "Indicates type of Alert\nPossible Values:RealTime or Re Try (due to time-out) Allowable Values: 15"
+        },
+        {
+            "name": "TransactionSource",
+            "type": "string",
+            "required": null,
+            "description": "Transaction Source of transaction\nValid Values:IPM, Retail Manual Auth-Installment, Retail Manual Auth-Revolver etc. Allowable Values: 40"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by Corecard for Institution"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by Corecard for Product"
+        },
+        {
+            "name": "AlertRecipientType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of recipient to which alert needs to be sent\nValid Values:1=Primary Applicant,2=Cosigner,3=Applicant and Cosigner,4=Auth User,5=Applicant and Auth User"
+        }
+    ],
+    "response_fields": null,
+    "sample_request": {
+        "AccountNumber": "9000000630283498",
+        "AdminNumber": 1358966,
+        "RequestID": "1427843180",
+        "Mode": "Transaction",
+        "AccountUniversalUniqueID": "6679ac61-7f1a-494e-9e57-a3b8545d0e0a",
+        "CardUniversalUniqueID": "0c439c82-f920-4d29-b122-a164cd255795",
+        "ClientId": null,
+        "RequestUniversalUniqueID": "a8b427e8-a04d-497d-b7f8-1b8a4276a59c",
+        "UpdateCallList": null,
+        "MonetaryLog": {
+            "Category": "Monetary",
+            "SubCategory": "Credit Balance Refund Sent",
+            "TransactionID": "3242342342342342342",
+            "PostingDateTime": null,
+            "TransactionAmount": 170.0,
+            "BalanceIndicator": "Active Balance",
+            "DBIndicator": "Debit",
+            "BankAccountLast4Digit": "2222",
+            "ReasonCode": null,
+            "CardnumLast4Digits": "1234",
+            "FirstName": "Louis",
+            "LastName": "Recupero",
+            "PrimaryEmail": "[email protected]",
+            "CosignerEmailID": null,
+            "AuthUserEmailID": null,
+            "BankName": "ABC Bank",
+            "BankMethodName": "2121111",
+            "RefundType": "Manual",
+            "RefundMode": "ACH",
+            "PrimaryCurrencyCode": "lclUnitedStates",
+            "AvailableOTB": 1200000.0,
+            "LoanAccountNumber": null,
+            "SettlementDate": "2022-09-26",
+            "AlertRecipientType": null
+        },
+        "InfoAlert": null,
+        "RewardsRedemption": null,
+        "Reward": null,
+        "RewardInfo": null,
+        "InfoCollectionAlert": null,
+        "InfoAgeOffAlert": null,
+        "User": "User1",
+        "DateandTime": "2022-09-26 20:00:01",
+        "Source": "CoreCredit",
+        "ServiceName": null,
+        "AlertType": "RealTime",
+        "TransactionSource": "ACH",
+        "InstitutionId": 12345,
+        "ProductId": 1122,
+        "AlertRecipientType": 1
+    },
+    "sample_response": null,
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "webhook",
+        "section": "webhooks/credit",
+        "category": "Update Notification",
+        "category_id": "6",
+        "document_id": "107",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/WEBHookPageApiDetail?id=107&type=ApiDetail&menuid=1&regionId=1"
+    }
+}

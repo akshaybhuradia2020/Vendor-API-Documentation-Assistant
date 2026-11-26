@@ -1,0 +1,1537 @@
+{
+    "metadata": {
+        "name": "GetAccountControl",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/GetAccountControl",
+        "description": "This API is to get the defined account controls on a product for different Merchants."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountControlTableNameID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique ID for a Name of Account Controls like Interest, Payment , Processing Parameters defined etc when defining any Product. Valid Values:0-9 Format:XX Example:1"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique number of merchant account Valid Values: 0-9 Format: XXXXXXXXX Example: 205136549"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountControlTableNameID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique ID for a Name of Account Controls like Interest, Payment , Processing Parameters defined etc when defining any Product. Valid Values:0-9 Format:XX Example:1"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique number of merchant account Valid Values: 0-9 Format: XXXXXXXXX Example: 205136549"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "AccountControlDetails",
+            "type": "",
+            "required": null,
+            "description": "List of all the Account  controls details defined on Product.",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AccountControlDetails",
+                    "type": "",
+                    "required": null,
+                    "description": "List of all the Account  controls details defined on Product.",
+                    "children": [
+                        {
+                            "name": "MerchantID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Unique number of merchant account Valid Values: 0-9 Format: XXXXXXXXX Example: 205136549",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountControlTableName",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Account Controls like Interest, Payment , Processing Parameters defined etc when defining any Product. Valid Values:0-9 Format:XX Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "PrimaryCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Primary Currency Code for that Product. Valid Values:0-9, A-z Format:XX Example:US Dollar Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountControlTableParent",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Parent Name of Account Controls like Interest, Payment , Processing Parameters defined etc when defining any Product. Valid Values:0-9 Format:XX Example:12",
+                            "children": []
+                        },
+                        {
+                            "name": "MonetaryTransactionControlGroup",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Group defined on a product for its monetary transaction like defining Fees, Interest, Transactioncodes etc. Like XXX_MTCG Valid Values:0-9 Format:XX Example:21",
+                            "children": []
+                        },
+                        {
+                            "name": "PurchasePlanMaster",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This field is to set the default Purchase Plan Master for the Merchant. Like XXXX_Regular_Revolving Valid Values:0-9 Format:XX Example:12",
+                            "children": []
+                        },
+                        {
+                            "name": "CashPlanMaster",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This field is to set the default Cash Plan Master for the Merchant. Like XXXX_Regular_Revolving Valid Values:0-9 Format:XX Example:22",
+                            "children": []
+                        },
+                        {
+                            "name": "DefaultBalanceTransferPlan",
+                            "type": "string",
+                            "required": null,
+                            "description": "This field is to set the default Balance Transfer Plan for the Merchant. Format:XX Example:Ignite Balance Transfer plan Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitBalance",
+                            "type": "integer",
+                            "required": null,
+                            "description": "OverlimitBalance for Payment Calculation Basis to define the payment controls as 0-Include 1-Add-On 2-Exclude 3-ADD-On Unbilled Unpaid Valid Values:0-9 Format:XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "CashLimitMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Cash limit method can be set to Amount or Percent of total credit line. Valid Values: 0 = Amount 1 = Percent of Total Credit Line Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "CashLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount set for Amount cash limit method. Valid Values: 0-9 Format: XXXX.XXX Example:1000.00",
+                            "children": []
+                        },
+                        {
+                            "name": "CashLimitPercentage",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Percent of total credit limit set for Percent cash limit method. Valid Values: 0-9 Format: XX.XX Example:1.00",
+                            "children": []
+                        },
+                        {
+                            "name": "GeneralFeeDisclosureMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "To define the General Fee Disclosure, values as 0-No disclosure necessary 1-Disclose X cycles before assessment is effective 2-Disclose on same statement as assessment Valid Values: 0-9 Format: XX.XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "GeneralFeeDisclosureCycles",
+                            "type": "integer",
+                            "required": null,
+                            "description": "To define the General Fee Disclosure, Cycles values as 0 to 12 Valid Values: 0-9 Format: XX.XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountBillingTypeMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "To define the method of Billing type on Account as Revolving or Invoiced 0-Invoiced 1-Revolving Valid Values: 0-9 Format: XX.XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantCategoryCodeGroupName",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of the Merchant Category Code. Eg- 1- MCC Group 1 Valid Values: 0-9 Format: XX.XX Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "PenaltyPriceLevel",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates if penalty pricing is applied at account or plan level. Valid Values: Account/Plan Example:Account Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "PenaltyPricingApplyAmount",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates if penalty pricing will be applied on entire current balance or only on future transactions occurring after 45 days. Valid Values: Current Balance, Future Transaction Balance Example:Current Balance Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountStatusforPenaltyPricing",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the status in which account will be moved if penalty pricing is applied on account. Valid Values: List of account statuses applicable for the institution Example:9974 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PenaltyPricingOptOutAccountStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the status in which account will be moved if customer opts out of penalty pricing. Valid Values: List of account statuses applicable for the institution Example:10557 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PenaltyInterestTableOccurrence",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates Interest table occurrence number for penalty pricing. Valid Values: 1 to 24 Example: 5 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "NumberOfDaysBeforePenaltyPricingApplied",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates number of days system will wait and inform customer before applying penalty pricing on its account. Valid Values: 15 to 100 Example: 45",
+                            "children": []
+                        },
+                        {
+                            "name": "AdvancedPenaltyPricingMethodLogicName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates advanced logic name which will be applied to set Penalty Pricing on account. Valid Values: 1/2 Example:1 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "DynamicRuleGroupArrayForMethod",
+                            "type": "array",
+                            "required": null,
+                            "description": "DynamicRuleGroupArrayForMethod",
+                            "children": [
+                                {
+                                    "name": "DynamicRuleGroupName",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Rule Name provided for dynamic penalty price logic. This has to be unique to uniquely identify dynamic logic. Valid Values: A-Z a-z 0-9 Example: Client1CurePenalty1 Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ParameterName",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Variable based on which rule will be configured. Valid Values: Returned Payment, Late Fee Charged, DPD Example: Returned Payment Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Operator1",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Defines mathematical operator used to check the value for ParameterName or Duration field. Valid Values: Mathematical operator(it,gt,gt eq,it eq,eq,it gt) Example: = Allowable Values: 10",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AmountOrCount1",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Defines value for Parameter Name / Duration field. Valid Values: 0-9 Example: 2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ValueOrPercent1",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Defines attribute of value defined in ‘AmountorCount1’ field. Valid Values: Percent, Amount, Days, Cycles, Value, Count Example: Amount Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Duration",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Defines time period for which activity mentioned in other fields will be checked. Valid Values: Days, Weeks, Months, Years Example: Weeks Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Operator2",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Defines mathematical operator used to check the value for ParameterName or Duration field. Valid Values: Example: > Allowable Values: 10",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AmountOrCount2",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Defines value for Parameter Name / Duration field. Valid Values: 0-9 Example: 2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ValueOrPercent2",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Defines attribute of value defined in ‘AmountorCount2’ field. Valid Values: Percent, Amount, Days, Cycles, Value, Count Example: Amount Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "LogicalOperator",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "This field is required when we need to club more than one rules and mention if they need to be ANDed or ORed together. Valid Values: AND, OR, END Example: AND Allowable Values: 10",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AdditionalLogicalOperator",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "In case combination of ‘OR’ and ‘AND’ where we need to group conditions, we need to use this field and ‘LogicalOperator’ field. Valid Values: AND, OR Example: AND Allowable Values: 10",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Status",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Status",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "AdvancedPenaltyPricingCureLogicName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates advanced logic name which will be applied to cure Penalty Pricing on account. Valid Values: 1/2 Example:1 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "DynamicRuleGroupArrayForCure",
+                            "type": "array",
+                            "required": null,
+                            "description": "DynamicRuleGroupArrayForCure",
+                            "children": [
+                                {
+                                    "name": "DynamicRuleGroupName",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Rule Name provided for dynamic penalty price logic. This has to be unique to uniquely identify dynamic logic. Valid Values: A-Z a-z 0-9 Example: Client1CurePenalty1 Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ParameterName",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Variable based on which rule will be configured. Valid Values: Returned Payment, Late Fee Charged, DPD Example: Returned Payment Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Operator1",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Defines mathematical operator used to check the value for ParameterName or Duration field. Valid Values: Mathematical operator(it,gt,gt eq,it eq,eq,it gt) Example: = Allowable Values: 10",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Operator2",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Defines mathematical operator used to check the value for ParameterName or Duration field. Valid Values: Example: = Allowable Values: 10",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AmountOrCount1",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Defines value for Parameter Name / Duration field. Valid Values: 0-9 Example: 2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AmountOrCount2",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Defines value for Parameter Name / Duration field. Valid Values: 0-9 Example: 2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ValueOrPercent1",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Defines attribute of value defined in ‘AmountorCount1’ field. Valid Values: Percent, Amount, Days, Cycles, Value, Count Example: Amount Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ValueOrPercent2",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Defines attribute of value defined in ‘AmountorCount2’ field. Valid Values: Percent, Amount, Days, Cycles, Value, Count Example: Amount Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Duration",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Defines time period for which activity mentioned in other fields will be checked. Valid Values: Days, Weeks, Months, Years Example: Weeks Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "LogicalOperator",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "This field is required when we need to club more than one rules and mention if they need to be ANDed or ORed together. Valid Values: AND, OR, END Example: AND Allowable Values: 10",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AdditionalLogicalOperator",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "In case combination of ‘OR’ and ‘AND’ where we need to group conditions, we need to use this field and ‘LogicalOperator’ field. Valid Values: AND, OR Example: AND Allowable Values: 10",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Status",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Status",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "PaymentDueMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Payment Due Method to define the payment controls as 0-Next Cycle Date 1-X Days After Current Cycle Date 2-Use fixed payment due dates Valid Values: 0 - 9 Format: XX.XX Example:1, 2",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentDueDaysAfterCycle",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Payment Due Days After Cycle to define the payment controls till 0-45 days. Valid Values: 0-9 Format: XX.XX Example:1,,45",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumPaymentType",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Minimum Payment Type to define the payment controls as 0-Do not use Minimum Payments 1-Use Minimum Payment Amount 2-Use Minimum Payment Percent 3-Use the Greater of Minimum Payment Amount or Percent 4-Use the Lesser of Minimum Payment Amount or Percent Valid Values: 0-9 Format: XX.XX Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumPaymentPercent",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Minimum Payment Percent to define the payment controls as per the configuration of Minimum Payment Type. Valid Values: 0-9 Format: XX.XX Example:12",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumPaymentAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Minimum Payment Amount to define the payment controls as per the configuration of Minimum Payment Type. Valid Values: 0-9 Format: XX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoOnlyMinimumPaymentAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Minimum Payment Amount for Pomotional Plan to define the payment controls as per the configuration of Minimum Payment Type. Valid Values: 0-9 Format: XX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentConsolidationPlanMaster",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Payment Consolidation Plan Master to define the payment controls Valid Values: 0-9 Format: X",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentLevel",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Payment Level to define the payment controls as 0\tAccount 1\tPlan 2\tCombined Valid Values: 0-9 Format: X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumDuePaymentLevel",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Minimum Due Payment Level to define the payment controls 0\tAccount 1\tPlan 2\tCombined Valid Values: 0-9 Format: X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentType",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Payment type to define the payment controls as 0\tBill Balance 1\tBill Fixed Amount 2\tBill Fixed Percent 3\tBill Invoice 4\tBill Fixed Percent Of High Balance Valid Values: 0-9 Format: X",
+                            "children": []
+                        },
+                        {
+                            "name": "FixedPaymentAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Fixed Payment Amount to define the payment controls Valid Values: 0-9 Format: XX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "FixedPaymentPercentage",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Fixed Payment Percent to define the payment controls Valid Values: 0-9 Format: XX Example:20",
+                            "children": []
+                        },
+                        {
+                            "name": "BillEvenDollars",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Bill Even Dollars to define the payment controls as Yes/No Valid Values:  1 = Yes, 0 = No Format: X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "BillOverLimit",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Bill Over Limit to define the payment controls as 0\tDisregard overlimit amount 1\tIncluded but does not affect delinquency 2\tIncluded and affects delinquency Valid Values: 0-1 Format: X Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "BillThresholdAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Bill Threshold Amount to define the payment controls Valid Values: 0-9 Format: XX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "ACHPaymentGenerationAdjustment",
+                            "type": "integer",
+                            "required": null,
+                            "description": "ACH Payment Generation Adjustment to define the payment controls 0\tNone 1\tOne Business day before 2\tTwo Business day before Valid Values: 0-9 Format: X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Balance",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Balance for  Payment Calculation Basis to define the payment controls as 0-Include 1-Add-On 2-Exclude 3-ADD-On Unbilled Unpaid Valid Values:0-9 Format:XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Principal",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Principal for  Payment Calculation Basis to define the payment controls as 0-Include 1-Add-On 2-Exclude 3-ADD-On Unbilled Unpaid Valid Values:0-9 Format:XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Transaction Feesfor Payment Calculation Basis to define the payment controls as 0-Include 1-Add-On 2-Exclude 3-ADD-On Unbilled Unpaid Valid Values:0-9 Format:XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "AnnualFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Annual Fees Payment Calculation Basis to define the payment controls as 0-Include 1-Add-On 2-Exclude 3-ADD-On Unbilled Unpaid Valid Values:0-9 Format:XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Late Fees for  Payment Calculation Basis to define the payment controls as 0-Include 1-Add-On 2-Exclude 3-ADD-On Unbilled Unpaid Valid Values:0-9 Format:XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Interest",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Interest for  Payment Calculation Basis to define the payment controls as 0-Include 1-Add-On 2-Exclude 3-ADD-On Unbilled Unpaid Valid Values:0-9 Format:XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundsFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "InsufficientFunds Fees for  Payment Calculation Basis to define the payment controls as 0-Include 1-Add-On 2-Exclude 3-ADD-On Unbilled Unpaid Valid Values:0-9 Format:XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "CollectionFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Collection Fees for Payment Calculation Basis to define the payment controls as 0-Include 1-Add-On 2-Exclude 3-ADD-On Unbilled Unpaid Valid Values:0-9 Format:XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Insurance",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Insurance for  Payment Calculation Basis to define the payment controls as 0-Include 1-Add-On 2-Exclude 3-ADD-On Unbilled Unpaid Valid Values:0-9 Format:XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "OverLimitFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "OverLimit Fees for  Payment Calculation Basis to define the payment controls as 0-Include 1-Add-On 2-Exclude 3-ADD-On Unbilled Unpaid Valid Values:0-9 Format:XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "RecoveryFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Recovery Fees for  Payment Calculation Basis to define the payment controls as 0-Include 1-Add-On 2-Exclude 3-ADD-On Unbilled Unpaid Valid Values:0-9 Format:XX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumPaymentPriorityFlag",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Minimum Payment Priority Flagto define the payment controls as 0-Account Control Payment Controls 1-Account Payment Parameters Valid Values:0-9 Format:X",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumDaystoFirstPaymentDueDate",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Maximum Days to First Payment Due Date to define the payment controls as 0-Account Control Payment Controls 1-Account Payment Parameters Valid Values:0-9 Format:X",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumDaystoFirstPaymentDueDate",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Minimum Days to First Payment Due Date to define the payment controls as 0-Account Control Payment Controls 1-Account Payment Parameters Valid Values:0-9 Format:X",
+                            "children": []
+                        },
+                        {
+                            "name": "BillingCycleFrequency",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Billing Cycle Frequency to define the payment controls as 0-One time per month 1-Two times per month Valid Values:0-9 Format:X",
+                            "children": []
+                        },
+                        {
+                            "name": "CalculateAmountDueDate",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Calculate Amount Due Date to define the payment controls as 0-None 1-Always Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly4",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly5",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly6",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly7",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly8",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly9",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly10",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly11",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly12",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly13",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly14",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly15",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly16",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly17",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly18",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly19",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly20",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly21",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly22",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly23",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly24",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly25",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly26",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly27",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly28",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly29",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly30",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "Monthly31",
+                            "type": "integer",
+                            "required": null,
+                            "description": "These tags are to set the fixed monthly payment dues dates for billing cycle . Includes Monthly 1-31 Valid Values:0-9 Format:X Example:1-28",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumInterestCalculationMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Minimum Interest Calculation Method for Interest Controls as 0-Do not waive interest 1-Calculate minimum at account level 2-Calculate minimum at plan level Valid Values:0-9 Format:X Example:1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "ConsiderationofDeferredInterest",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Consideration of Deferred Interest for Interest Controls as 0-Consider deferred interest only when charged 1-Consider deferred interest per cycle Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumInterestAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Minimum Interest Amount set  for Interest Controls Valid Values:0-9 Format:XXX.XX Example:22.00",
+                            "children": []
+                        },
+                        {
+                            "name": "AccrueInterestonChargedOffAccounts",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Accrue Interest on Charged Off Accounts for Interest Controls as 0-Do not accrue interest 1-Accrue interest Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestDisclosureMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Interest Disclosure Method for Interest Controls as 0-No disclosure necessary 1-Disclose X cycles before assessment is effective 2- Disclose on same statement as assessment Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestDisclosureCycles",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Interest Disclosure Cycles for Interest Controls as 0 - 12 Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "AccruedInterestWaiverLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the limit to waive off the accrued Interest amount if it is the only component to bill. Valid Values:  0-9 Format: X Example:25.00",
+                            "children": []
+                        },
+                        {
+                            "name": "SegmentsSubjectToGraceDays",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Segments Subject To Grace Days for Interest Controls as 0\tDo not use grace days 1\tCash and purchase plans 2\tCash plans only 3\tPurchase plans only 4\tUse credit plan master grace days application Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "GraceDaysMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Grace Days Method for Interest Controls as 0-Next cycle date 1-Use number of grace days from Statement Date 2- Use number of grace days from Payment Due Date Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "NumberofGraceDays",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Number of Grace Daysfor Interest Controls as 0-45 Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "PreviousCycleGrace",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Previous Cycle Grace for Interest Controls as Yes/No Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "UsePartialGraceDays",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Use Partial Grace Days for Interest Controls as Yes/No Valid Values:0-1 Format:X",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestOnGraceReactivation",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Interest On Grace Reactivation for Interest Controls as 1\tWaive on new and revolving 2\tAccrue on new and revolving 3\tAccrue on revolving till payment 4\tAccrue on revolving till statement Valid Values:1-4 Format:X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "BalanceSubjectToGraceOn",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Balance Subject To Grace On for Interest Controls as 0- Account 1- Plan Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "ContractualDelinquencyMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Contractual Delinquency Method for Delinquency Controls for an Account 0-No automatic setting of this Status 1-Automatically set at CD level, remove when below Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "ContractualDelinquencyLevel",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Contractual Delinquency Level for Delinquency Controls for an Account 0\tNothing Due 1\tCurrent Due 10\tNo Payments 2\tPast Due 3\t1 Cycle Past Due 4\t2 Cycles Past Due 5\t3 Cycles Past Due 6\t4 Cycles Past Due 7\t5 Cycles Past Due 8\t6 Cycles Past Due 9\t7 Cycles Past Due Valid Values:0-9 Format:X",
+                            "children": []
+                        },
+                        {
+                            "name": "ContractualDelinquencyCureStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Contractual Delinquency Cure Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateDelinquencyMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Late Delinquency Method for Delinquency Controls for an Account 0-No automatic setting of this Status 1-Automatically set at CD level, remove when below Valid Values:0-1 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateDelinquencyLevel",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Late Delinquency Level for Delinquency Controls for an Account 0\tNothing Due 1\tCurrent Due 10\tNo Payments 2\tPast Due 3\t1 Cycle Past Due 4\t2 Cycles Past Due 5\t3 Cycles Past Due 6\t4 Cycles Past Due 7\t5 Cycles Past Due 8\t6 Cycles Past Due 9\t7 Cycles Past Due Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateDelinquencyCureStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Late Delinquency Cure Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Delinquency2CureAction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Delinquency 2 Control Action for Delinquency Controls for an Account 0\tManual 1\tAutomatic 2\tUse Delinquency 2 Cure Status Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Delinquency2Timing",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Delinquency 2 Timing  for Delinquency Controls for an Account 1\tNormal 2\tOn First of Month Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "ContractualDelinquency2Level",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Contractual Delinquency 2 Level for Delinquency Controls for an Account 0\tNothing Due 1\tCurrent Due 10\tNo Payments 2\tPast Due 3\t1 Cycle Past Due 4\t2 Cycles Past Due 5\t3 Cycles Past Due 6\t4 Cycles Past Due 7\t5 Cycles Past Due 8\t6 Cycles Past Due 9\t7 Cycles Past Due Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "ContractualDelinquency2Status",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Contractual Delinquency 2 Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "ContractualDelinquency2CureStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Contractual Delinquency 2 Cure Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateDelinquency2Level",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Late Delinquency 2 Level for Delinquency Controls for an Account 0\tNothing Due 1\tCurrent Due 10\tNo Payments 2\tPast Due 3\t1 Cycle Past Due 4\t2 Cycles Past Due 5\t3 Cycles Past Due 6\t4 Cycles Past Due 7\t5 Cycles Past Due 8\t6 Cycles Past Due 9\t7 Cycles Past Due Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateDelinquency2Status",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Late Delinquency 2  Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateDelinquency2CureStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Late Delinquency 2 Cure Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Delinquency3CureAction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Delinquency 3 Control Action for Delinquency Controls for an Account 0\tManual 1\tAutomatic 2\tUse Delinquency 3 Cure Status Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Delinquency3Timing",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Delinquency 3 Timing  for Delinquency Controls for an Account 1\tNormal 2\tOn First of Month Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "ContractualDelinquency3Level",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Contractual Delinquency 3 Level for Delinquency Controls for an Account 0\tNothing Due 1\tCurrent Due 10\tNo Payments 2\tPast Due 3\t1 Cycle Past Due 4\t2 Cycles Past Due 5\t3 Cycles Past Due 6\t4 Cycles Past Due 7\t5 Cycles Past Due 8\t6 Cycles Past Due 9\t7 Cycles Past Due Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "ContractualDelinquency3Status",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Contractual Delinquency 3 Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "ContractualDelinquency3CureStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Contractual Delinquency 3 Cure Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateDelinquency3Level",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Late Delinquency 3 Level for Delinquency Controls for an Account 0\tNothing Due 1\tCurrent Due 10\tNo Payments 2\tPast Due 3\t1 Cycle Past Due 4\t2 Cycles Past Due 5\t3 Cycles Past Due 6\t4 Cycles Past Due 7\t5 Cycles Past Due 8\t6 Cycles Past Due 9\t7 Cycles Past Due Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateDelinquency3Status",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Late Delinquency 3  Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateDelinquency3CureStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Late Delinquency Cure Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Delinquency4CureAction",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Delinquency 4 Control Action for Delinquency Controls for an Account 0\tManual 1\tAutomatic 2\tUse Delinquency 4 Cure Status Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Delinquency4Timing",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Delinquency 4 Timing  for Delinquency Controls for an Account 1\tNormal 2\tOn First of Month Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "ContractualDelinquency4Level",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Contractual Delinquency 4 Level for Delinquency Controls for an Account 0\tNothing Due 1\tCurrent Due 10\tNo Payments 2\tPast Due 3\t1 Cycle Past Due 4\t2 Cycles Past Due 5\t3 Cycles Past Due 6\t4 Cycles Past Due 7\t5 Cycles Past Due 8\t6 Cycles Past Due 9\t7 Cycles Past Due Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "ContractualDelinquency4Status",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Contractual Delinquency 4 Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "ContractualDelinquency4CureStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Contractual Delinquency 4 Cure Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateDelinquency4Level",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Late Delinquency 4 Level for Delinquency Controls for an Account 0\tNothing Due 1\tCurrent Due 10\tNo Payments 2\tPast Due 3\t1 Cycle Past Due 4\t2 Cycles Past Due 5\t3 Cycles Past Due 6\t4 Cycles Past Due 7\t5 Cycles Past Due 8\t6 Cycles Past Due 9\t7 Cycles Past Due Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateDelinquency4Status",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Late Delinquency 4  Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "LateDelinquency4CureStatus",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Late Delinquency 4 Cure Status for Delinquency Controls for an Account Refer Status Appendix. Valid Values:0-9 Format:X Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "RevolvingPlanMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the capping method for the revolving plan credit limit. Valid Values: 0=None, 1=Amount,2=Percentage,3=Use Greater of Amount or Percentage,4=Use Lesser of Amount or Percentage Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "RevolvingPlanAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the amount set for capping the revolving plan credit limit. Valid Values: 0-9 Format: XXXX.XX Example:1000.00",
+                            "children": []
+                        },
+                        {
+                            "name": "RevolvingPlanPercentage",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the percentage set for capping the revolving plan credit limit. Valid Values: 0-9 Format: XX.XX Example:1.00",
+                            "children": []
+                        },
+                        {
+                            "name": "PromotionalPurchasePlanMasterID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the default  promotional purchase plan master ID of the program. . Valid Values: 0-9 Example:Example: 1234",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumDueCalculationAddOns",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Minimum Due Calculation Add Ons defines whether past dues are included in the minimum payment calculation.. Valid Values: 1,2 Format: X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "ExcludeZeroPercentAprPlansFromInterestGraceConsideration",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This is to define the Exclude Zero Percent Apr Plans From Interest Grace Consideration for Interest Controls as Yes/No Valid Values: 1 = Yes, 0 = No Format:X Example:1",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountControlTableNameID": 6859,
+        "MerchantID": 11607
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "AccountControlDetails": {
+                "MerchantID": 11607,
+                "AccountControlTableName": 6859,
+                "PrimaryCurrencyCode": "US Dollar",
+                "AccountControlTableParent": 1,
+                "MonetaryTransactionControlGroup": 78,
+                "PurchasePlanMaster": 6153,
+                "CashPlanMaster": null,
+                "DefaultBalanceTransferPlan": null,
+                "OverlimitBalance": 1000,
+                "CashLimitMethod": 0,
+                "CashLimitAmount": 10000.0,
+                "CashLimitPercentage": 0.0,
+                "GeneralFeeDisclosureMethod": 1,
+                "GeneralFeeDisclosureCycles": 2,
+                "AccountBillingTypeMethod": 1,
+                "MerchantCategoryCodeGroupName": 1024,
+                "PenaltyPriceLevel": "Account",
+                "PenaltyPricingApplyAmount": "Current Balance",
+                "AccountStatusforPenaltyPricing": "9974",
+                "PenaltyPricingOptOutAccountStatus": "10557",
+                "PenaltyInterestTableOccurrence": null,
+                "NumberOfDaysBeforePenaltyPricingApplied": null,
+                "AdvancedPenaltyPricingMethodLogicName": null,
+                "DynamicRuleGroupArrayForMethod": null,
+                "AdvancedPenaltyPricingCureLogicName": null,
+                "DynamicRuleGroupArrayForCure": null,
+                "PaymentDueMethod": 2,
+                "PaymentDueDaysAfterCycle": null,
+                "MinimumPaymentType": null,
+                "MinimumPaymentPercent": null,
+                "MinimumDueCalculationAddOns": null,
+                "MinimumPaymentAmount": null,
+                "PromoOnlyMinimumPaymentAmount": 0.0,
+                "PaymentConsolidationPlanMaster": null,
+                "PaymentLevel": 1,
+                "MinimumDuePaymentLevel": 1,
+                "PaymentType": null,
+                "FixedPaymentAmount": null,
+                "FixedPaymentPercentage": null,
+                "BillEvenDollars": 0,
+                "BillOverLimit": 1,
+                "BillThresholdAmount": 1.0,
+                "ACHPaymentGenerationAdjustment": 0,
+                "Balance": 0,
+                "Principal": 2,
+                "TransactionFees": 2,
+                "AnnualFees": 2,
+                "LateFees": 1,
+                "Interest": 2,
+                "InsufficientFundsFees": 1,
+                "CollectionFees": 2,
+                "Insurance": 2,
+                "OverLimitFees": 2,
+                "RecoveryFees": 2,
+                "MinimumPaymentPriorityFlag": 0,
+                "MaximumDaystoFirstPaymentDueDate": 53,
+                "MinimumDaystoFirstPaymentDueDate": 30,
+                "BillingCycleFrequency": 0,
+                "CalculateAmountDueDate": 1,
+                "Monthly1": 24,
+                "Monthly2": 25,
+                "Monthly3": 26,
+                "Monthly4": 27,
+                "Monthly5": 28,
+                "Monthly6": 1,
+                "Monthly7": 2,
+                "Monthly8": 3,
+                "Monthly9": 4,
+                "Monthly10": 5,
+                "Monthly11": 6,
+                "Monthly12": 7,
+                "Monthly13": 8,
+                "Monthly14": 9,
+                "Monthly15": 10,
+                "Monthly16": 11,
+                "Monthly17": 12,
+                "Monthly18": 13,
+                "Monthly19": 14,
+                "Monthly20": 15,
+                "Monthly21": 16,
+                "Monthly22": 17,
+                "Monthly23": 18,
+                "Monthly24": 19,
+                "Monthly25": 20,
+                "Monthly26": 21,
+                "Monthly27": 22,
+                "Monthly28": 23,
+                "Monthly29": null,
+                "Monthly30": null,
+                "Monthly31": null,
+                "MinimumInterestCalculationMethod": 1,
+                "ConsiderationofDeferredInterest": 0,
+                "MinimumInterestAmount": 2.0,
+                "AccrueInterestonChargedOffAccounts": 0,
+                "InterestDisclosureMethod": 1,
+                "InterestDisclosureCycles": 2,
+                "AccruedInterestWaiverLimit": null,
+                "SegmentsSubjectToGraceDays": 3,
+                "GraceDaysMethod": 2,
+                "NumberofGraceDays": 5,
+                "PreviousCycleGrace": 0,
+                "UsePartialGraceDays": 0,
+                "InterestOnGraceReactivation": 1,
+                "BalanceSubjectToGraceOn": 1,
+                "ExcludeZeroPercentAprPlansFromInterestGraceConsideration": 1,
+                "ContractualDelinquencyMethod": 0,
+                "ContractualDelinquencyLevel": 2,
+                "ContractualDelinquencyCureStatus": 2,
+                "LateDelinquencyMethod": 1,
+                "LateDelinquencyLevel": 1,
+                "LateDelinquencyCureStatus": 2,
+                "Delinquency2CureAction": 1,
+                "Delinquency2Timing": null,
+                "ContractualDelinquency2Level": null,
+                "ContractualDelinquency2Status": null,
+                "ContractualDelinquency2CureStatus": null,
+                "LateDelinquency2Level": null,
+                "LateDelinquency2Status": null,
+                "LateDelinquency2CureStatus": null,
+                "Delinquency3CureAction": null,
+                "Delinquency3Timing": null,
+                "ContractualDelinquency3Level": null,
+                "ContractualDelinquency3Status": null,
+                "ContractualDelinquency3CureStatus": null,
+                "LateDelinquency3Level": null,
+                "LateDelinquency3Status": null,
+                "LateDelinquency3CureStatus": null,
+                "Delinquency4CureAction": null,
+                "Delinquency4Timing": null,
+                "ContractualDelinquency4Level": null,
+                "ContractualDelinquency4Status": null,
+                "ContractualDelinquency4CureStatus": null,
+                "LateDelinquency4Level": null,
+                "LateDelinquency4Status": null,
+                "LateDelinquency4CureStatus": null,
+                "RevolvingPlanMethod": null,
+                "RevolvingPlanAmount": null,
+                "RevolvingPlanPercentage": null,
+                "PromotionalPurchasePlanMasterID": null
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Control Parameters",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1021&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005"
+    }
+}

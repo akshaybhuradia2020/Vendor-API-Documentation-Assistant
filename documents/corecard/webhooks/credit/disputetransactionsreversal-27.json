@@ -1,0 +1,376 @@
+{
+    "metadata": {
+        "name": "DisputeTransactionsReversal",
+        "http_method": "POST",
+        "endpoint": "/api/WebHookNotification/AlertNotification/DisputeTransactionsReversal",
+        "description": "This webhook is triggered  when a dispute raised on a transaction is reversed."
+    },
+    "request_fields": [
+        {
+            "name": "InfoAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "OriginalTranID",
+            "type": "string",
+            "required": null,
+            "description": "This is the transaction ID generated for each clearing and is unique to each clearing Allowable Values: 8"
+        },
+        {
+            "name": "Tab",
+            "type": "string",
+            "required": null,
+            "description": "Indicates tab in system under which this webhook is available\nValid Values:Status, Period, Monetary, Security and Cards Allowable Values: 40"
+        },
+        {
+            "name": "Category",
+            "type": "string",
+            "required": null,
+            "description": "Indicates category of alert triggered Allowable Values: 40"
+        },
+        {
+            "name": "SubCategory",
+            "type": "string",
+            "required": null,
+            "description": "Indicates subcategory of Category of alert triggered Allowable Values: 40"
+        },
+        {
+            "name": "CaseID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique ID assigned to each Dispute case by CoreCard System"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": null,
+            "description": "First name of the cardholder associated with the transaction being disputed. Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": null,
+            "description": "Last name of the cardholder associated with the transaction being disputed. Allowable Values: 50"
+        },
+        {
+            "name": "XAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Amount on which dispute is reversed – equivalent to Disputed Amount"
+        },
+        {
+            "name": "TransactionCurrencyCode",
+            "type": "string",
+            "required": null,
+            "description": "Currency code in which transaction was performed Allowable Values: 20"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Total amount for which transaction occurred"
+        },
+        {
+            "name": "CardnumLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Last 4 digits of card number Allowable Values: 4"
+        },
+        {
+            "name": "LifeCycleID",
+            "type": "string",
+            "required": null,
+            "description": "Unique identifier to identify transaction across multiple phases like pre-auth, reversal, completion Allowable Values: 8"
+        },
+        {
+            "name": "POSCardPresenceIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Indicates if Card was present for the transaction or not. \nValid Value: \n0 - Not Present \n1 - Present \n9 - Token Transaction Allowable Values: 1"
+        },
+        {
+            "name": "CardAcceptorNameLocation",
+            "type": "string",
+            "required": null,
+            "description": "Name and Location of Merchant where transaction occurred. Allowable Values: 40"
+        },
+        {
+            "name": "CrossBorderIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Indicates if transaction occurred was international or not\nValid Value: Y/N Allowable Values: 1"
+        },
+        {
+            "name": "LocalTransactionDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Local transaction date of transaction\n(FORMAT: MMDDYYYYhhnnss)"
+        },
+        {
+            "name": "InFavorOf",
+            "type": "string",
+            "required": null,
+            "description": "Indicates party in favor of which dispute was reversed Allowable Values: 50"
+        },
+        {
+            "name": "ReasonCode",
+            "type": "string",
+            "required": null,
+            "description": "Dispute reason code that is sent to/from Network\nValid Value: 0 - Merchandise Not Ordered,1 - Merchandise Not Received - To Customer ,2 - Merchandise Not Received - From Customer,3 - Sent Payment Not Applied,4 - Product not as described,5 - Defective Merchandise ,6 - Billing Error,7 - Duplicate Processing ,8 - Clarification ,9 -Other ,10 -Fraud  ,11 -Authorization  ,12 -Processing Errors ,13 -Cardholder Disputes Allowable Values: 5"
+        },
+        {
+            "name": "ReasonDescription",
+            "type": "string",
+            "required": null,
+            "description": "Dispute reason description that is sent to/from Network\n0 Merchandise Not Ordered \n1 Merchandise Not Received - To Customer \n2 Merchandise Not Received - From Customer \n3 Sent Payment Not Applied \n4 Product not as described \n5 Defective Merchandise \n6 Billing Error \n7 Duplicate Processing \n8 Clarification \n9 Other \n10 Fraud \n11 Authorization \n12 Processing Errors \n13 Cardholder Disputes Allowable Values: 60"
+        },
+        {
+            "name": "AvailableOTB",
+            "type": "decimal",
+            "required": null,
+            "description": "Amount available for further purchases on Account"
+        },
+        {
+            "name": "PrimaryEmail",
+            "type": "string",
+            "required": null,
+            "description": "Email ID of Primary cardholder. This field is available only when AlertRecipientType is 1 or 3 or 5 Allowable Values: 50"
+        },
+        {
+            "name": "AuthUserEmailID",
+            "type": "string",
+            "required": null,
+            "description": "Email ID of Secondary cardholder. This field is available only when AlertRecipientType is 4 or 5 Allowable Values: 50"
+        },
+        {
+            "name": "CosignerEmailID",
+            "type": "string",
+            "required": null,
+            "description": "Email ID of Cosigner on account. This field is available only when AlertRecipientType is 2 or 3 Allowable Values: 50"
+        },
+        {
+            "name": "CurrentBalance",
+            "type": "decimal",
+            "required": null,
+            "description": "Updated Current Balance of Account post this event."
+        },
+        {
+            "name": "AlertRecipientType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of recipient to which alert needs to be sent\n1: - Primary Applicant\n2: - Cosigner\n3:- Applicant and Cosigner \n4:- Auth User \n5:- Applicant and Auth User"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder Account Number\nValid Values: 0-9\nFormat: XXXXXXXXXXXXXXXX\nExample: 8000000000000037 Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "string",
+            "required": null,
+            "description": "Admin Number associated with the event\nValid Values:0-9\nFormat:XXXXX\nExample:12345"
+        },
+        {
+            "name": "RequestID",
+            "type": "string",
+            "required": null,
+            "description": "Primary Key for API\nFormat:XXXXXXXXXXXXXXXX\nExample:12345 Allowable Values: 19"
+        },
+        {
+            "name": "Mode",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the type of activity performed which triggered this webhook Allowable Values: 10"
+        },
+        {
+            "name": "AccountUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Universal Unique ID for Account\nFormat:XXXXXXXXXX\nExample:9894f28b-d051-4eaa-9e48-a3a7d5b4a6f7 Allowable Values: 64"
+        },
+        {
+            "name": "CardUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Universal Unique ID for Admin\nFormat:XXXXXXXXXX\nExample:9894f28b-d051-4eaa-9e48-a3a7d5b4a6f7 Allowable Values: 64"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": null,
+            "description": "Corecard's Client ID\nValid Values: 0-9\nFormat: XXXXX\nExample: 578455 Allowable Values: 64"
+        },
+        {
+            "name": "RequestUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID Request\nValid Values: 0-9 A-Z\nExample: 8638-b87b-48d0-8e13-0ebb5643577 Allowable Values: 64"
+        },
+        {
+            "name": "User",
+            "type": "string",
+            "required": null,
+            "description": "User ID of the user who triggered the webhook event. \nValid Values: CoreCredit user, API user, System Allowable Values: 40"
+        },
+        {
+            "name": "DateandTime",
+            "type": "DateTime",
+            "required": null,
+            "description": "Timestamp when notification was sent\nMM-DD-YYYY hh:mm:ss:sss \n(24-hour Format) \nException: For Auth Age Off alert the format of this tag is \"YYYY-MM-DD \nhh:mm:ss.SSS"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the source from where the activity was performed by user or triggered by system.\nValid Values: CoreCredit, External API, Self Service, CoreCollect, IVR, System, CoreIssue Allowable Values: 50"
+        },
+        {
+            "name": "ServiceName",
+            "type": "string",
+            "required": null,
+            "description": "Name of API service (webhook) triggered\nExample: svcName Allowable Values: 40"
+        },
+        {
+            "name": "AlertType",
+            "type": "string",
+            "required": null,
+            "description": "Indicates type of Alert\nValid Values:RealTime or Re Try (due to time-out) Allowable Values: 15"
+        },
+        {
+            "name": "TransactionSource",
+            "type": "string",
+            "required": null,
+            "description": "Transaction Source of transaction\nValid Values:IPM, Retail Manual Auth-Installment, Retail Manual Auth-Revolver etc. Allowable Values: 40"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by Corecard for Institution"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by Corecard for Product"
+        },
+        {
+            "name": "AlertRecipientType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of recipient to which alert needs to be sent\nValid Values:1=Primary Applicant,2=Cosigner,3=Applicant and Cosigner,4=Auth User,5=Applicant and Auth User"
+        },
+        {
+            "name": "UpdateCallList",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "MonetaryLog",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "RewardsRedemption",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "Reward",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "RewardInfo",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "InfoCollectionAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "InfoAgeOffAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        }
+    ],
+    "response_fields": null,
+    "sample_request": {
+        "InfoAlert": {
+            "OriginalTranID": null,
+            "Tab": "Monetary",
+            "Category": "Dispute Transaction",
+            "SubCategory": "Reversal",
+            "CaseID": 116719,
+            "FirstName": "SANDEEP",
+            "LastName": "TONDALA",
+            "XAmount": 761.1,
+            "TransactionCurrencyCode": "USD",
+            "TransactionAmount": 761.1,
+            "CardnumLast4Digits": "7331",
+            "LifeCycleID": "29256866",
+            "POSCardPresenceIndicator": "0",
+            "CardAcceptorNameLocation": "WALMART 1300 SE 8TH ST 8009666546 72716 AR USA",
+            "CrossBorderIndicator": "N",
+            "LocalTransactionDate": "07232021000000",
+            "InFavorOf": "Reversal in favor of Bank / Merchant without Finance Charge",
+            "ReasonCode": "8",
+            "ReasonDescription": "Clarification",
+            "AvailableOTB": -2197.25,
+            "PrimaryEmail": "[email protected]",
+            "AuthUserEmailID": null,
+            "CosignerEmailID": null,
+            "CurrentBalance": null,
+            "AlertRecipientType": null
+        },
+        "AccountNumber": "900000050007XXXX",
+        "AdminNumber": "697934",
+        "RequestID": "38746245",
+        "Mode": "ALERT",
+        "AccountUniversalUniqueID": null,
+        "CardUniversalUniqueID": "0b587b04 - 8f08 - 459d - 9926 - d2c1bd7e6821",
+        "ClientId": null,
+        "RequestUniversalUniqueID": "86a8e581 - 6021 - 4d1e-975d - 1edd872665e7",
+        "MonetaryLog": null,
+        "UpdateCallList": null,
+        "RewardsRedemption": null,
+        "Reward": null,
+        "RewardInfo": null,
+        "InfoCollectionAlert": null,
+        "InfoAgeOffAlert": null,
+        "User": "cardholder",
+        "DateandTime": "2021-08-16 09:25:30",
+        "Source": "External API",
+        "ServiceName": null,
+        "AlertType": "RealTime",
+        "TransactionSource": null,
+        "InstitutionId": 5949,
+        "ProductId": 5911,
+        "AlertRecipientType": 1
+    },
+    "sample_response": null,
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "webhook",
+        "section": "webhooks/credit",
+        "category": "Alert Notification",
+        "category_id": "1",
+        "document_id": "27",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/WEBHookPageApiDetail?id=27&type=ApiDetail&menuid=1&regionId=1"
+    }
+}

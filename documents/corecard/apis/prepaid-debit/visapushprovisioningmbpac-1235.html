@@ -1,0 +1,1133 @@
+
+
+
+<!DOCTYPE html>
+<!-- Template by quackit.com -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+    <title>Core Card Api Quick Start</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/lib/bootstrap/dist/css/bootstrap.css?639312904344830307" rel="stylesheet" />
+    <link href="/css/style.css?639312904344830384" rel="stylesheet" />
+    <link href="/css/font-awesome.css?639312904344830425" rel="stylesheet" />
+    <script src="/lib/jquery/dist/jquery.js?639312904344830494"></script>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?639312904344830524"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            //$(".toggle").click(function () {
+            //    $(".flex-left").addClass("closebar");
+            //    $(".flex-right").removeClass("closebar");
+            //    $("#panel-close1").click(function () {
+            //        $(".flex-right").addClass("closebar");
+            //    });
+            //});
+
+            if ($('.flex-right')[0]) {
+                $('.flex-center').addClass("center-box");
+
+            } else {
+                $('.flex-center').removeClass("center-box");
+                $(".right-btn").parent('li').addClass("btn-cc");
+            }
+
+
+
+            $(".flex-center table").wrap("<div class='table-divbox'></div>")
+
+            var strleftLinkname = $("#btnCategoryName").val();
+            var strcenterLinkname = $("#h4APIName").text();
+            var strrightLinkname = $("#spnTryItOut").val();
+
+            if ($.trim(strleftLinkname) != "") {
+                $("#leftLink").text($.trim(strleftLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#leftLink").html("Category");
+            }
+
+            if ($.trim(strcenterLinkname) != "") {
+                $("#centerLink").text($.trim(strcenterLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#centerLink").html("Content");
+            }
+            if ($.trim(strrightLinkname) != "") {
+                $("#rightLink").text($.trim(strrightLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#rightLink").html("API List");
+            }
+
+            $(".left-btn").click(function () {
+
+                $(".flex-left").removeClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".center-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").removeClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".left-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".right-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").removeClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .left-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            var btn = $('#top-button');
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+        });
+        $(document).ready(function () {
+            //$(".toggle1").click(function () {
+            //    $(".flex-right").addClass("closebar");
+            //    $(".flex-left").removeClass("closebar");
+            //    $("#panel-close").click(function () {
+            //        $(".flex-left").addClass("closebar");
+            //    });
+            //});
+            //$(".dark-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#789db7", "color": "#fff" });
+            //});
+            //$(".light-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#f9f6f1", "color": "#212529"});
+            //});
+
+            $(".dark-mode").click(function () {
+                $(".dark-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".light-mode").css({ "background-color": "#f9f6f1", "color": "#032d55" });
+
+                $(".dark-modereq, .dark-moderes").parent().css({ "background-color": "#000000", "color": "#fff" });
+            });
+            $(".light-mode").click(function () {
+                $(".light-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".dark-mode").css({ "background-color": "#f5f6f8", "color": "#032d55" });
+
+                $(".light-modereq, .light-moderes").parent().css({ "background-color": "#f5f6f8", "color": "#032d55" });
+            });
+
+
+
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <header id="header">
+
+        <nav class="navbar navbar-expand-lg navbar-light top-header">
+            <a class="navbar-brand" href="#">
+                <img class="logo-img" src="/images/Logo.png" />
+            </a>
+            <!--<div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/GuidePage">Guide</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link hd-cool-link active-headerlink" href="/CoreCardApiReference">API Guide</a>
+                </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link hd-cool-link active-apiheaderlink" href="/WEBHook/CoreCardWEBHook">WEB Hook</a>
+            </li>-->
+            <!--</ul>
+            </div>-->
+
+            <div class="search-float">
+                <div class="search-anchor">
+                    <form id="search-form" action="Search/Index" class="form-inline my-2 my-lg-0">
+                        <input type="text" class="search-bar" placeholder="Search" name="searchTerm">
+                        <input type="text" class="search-bar" placeholder="Search" name="regionId" hidden value="1,1">
+                        <input class="search-submit" type="submit">
+                        <div class="search-toggle"></div>
+                    </form>
+
+                </div>
+            </div>
+
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <div class="navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav pt-2 custom-mob-nav">
+                    <li class="nav-item dropdown">
+
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Credit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=1&regionId=1">Core API</a>
+                                    <a class="dropdown-item" href="/CoreCardWEBHook?menuid=1&regionId=1">WEB Hook</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Prepaid/Debit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=2&regionId=1">Core API</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+                <ul class="navbar-nav pt-2 ml-auto custom-mob-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">US</a>
+                        <div class="dropdown-menu dropdown-menu-country">
+                            <a id="1" class="dropdown-item" href="/CoreCardApiReference?regionId=1">US</a>
+                            <a id="2" class="dropdown-item" href="/CoreCardApiReference?regionId=2">Global</a>
+
+                        </div>
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+        </nav>
+
+
+        <div class="mobile-btns-layout">
+            <ul class="btn-list-inline">
+                <li><a href="javascript:void(0);" id="leftLink" class="left-btn">Category List</a></li>
+                <li class="current-menu"><a href="javascript:void(0);" id="centerLink" class="center-btn">Content</a></li>
+                <li><a href="javascript:void(0);" id="rightLink" class="right-btn">API List</a></li>
+                <div class="clearfix"></div>
+            </ul>
+
+        </div>
+    </header>
+
+    <div class="container-fluid nopadding">
+        <div>
+            <a id="top-button"></a>
+
+
+
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Ed2qi4xb2JCm_4tCcgxuBcdvW_cflDwAG33L7t-VXst30TCX5URSktoCmzB0b77K0c38oaKvq1ydku9ayQQSOm1eg-WmMdO1YcLj4_926hDNKOf-2Bxgzh2S3EKmq3d9MjljLNIKOE5WDjPQh_glWM" />
+<script>
+    (function ($) {
+        if (!$) { return; }
+        $(document).ajaxSend(function (event, xhr, settings) {
+            var method = (settings.type || 'GET').toUpperCase();
+            if (method === 'GET' || method === 'HEAD' || method === 'OPTIONS' || method === 'TRACE') { return; }
+            if (settings.crossDomain) { return; } // never send the token to another origin
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            if (token) { xhr.setRequestHeader('XSRF-TOKEN', token); }
+        });
+
+        // Destructive links (delete user/role/category/menu) are POST-only. Mark them with data-method="post"
+        // (optional data-confirm="..."); they are submitted as a POST form carrying the antiforgery token.
+        // A generated form is used because these links can sit inside other <form> elements.
+        $(document).on('click', 'a[data-method="post"]', function (e) {
+            e.preventDefault();
+            var message = $(this).attr('data-confirm');
+            if (message && !window.confirm(message)) { return; }
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            var form = $('<form method="post" style="display:none"></form>').attr('action', $(this).attr('href'));
+            form.append($('<input type="hidden" name="__RequestVerificationToken" />').val(token));
+            $('body').append(form);
+            form.trigger('submit');
+        });
+    })(window.jQuery);
+</script>
+
+            <script src="/js/svg-diagram-links.js?v=rhKKoQLmGKC2Pm3Utr9UDhdU4GmCNRW_Yl5EzzGtiBA"></script>
+            <div class="">
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/css/style.css?639312904344815538" rel="stylesheet" />
+    <link href="/css/swagger-ui.css?639312904344815666" rel="stylesheet" />
+    <script src="/js/cdn/jquery-ui.min.js?639312904344815699"></script>
+    <style>
+        .crepreMenu {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .hd-cool-link.active-headerlink::after {
+            width: 100%;
+        }
+
+        .sopblock-post {
+            border-color: #49cc90;
+            background: rgba(73,204,144,.1)
+        }
+
+        .sopblock-put {
+            border-color: #fca130;
+            background: rgba(252,161,48,.1);
+        }
+
+        .sopblock-delete {
+            border-color: #f93e3e;
+            background: rgba(249,62,62,.1);
+        }
+
+        .sopblock-get {
+            border-color: #61affe;
+            background: rgba(97,175,254,.1);
+        }
+
+        .sopblock {
+            margin: 0 0 15px;
+            border: 1px solid #49cc90;
+            border-radius: 4px;
+            -webkit-box-shadow: 0 0 3px rgba(0,0,0,.19);
+            box-shadow: 0 0 3px rgba(0,0,0,.19);
+        }
+
+        .sopblock-summary {
+            border-color: #49cc90;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .sopblock-summary-method {
+            background: #49cc90;
+            font-size: 14px;
+            font-weight: 700;
+            min-width: 80px;
+            padding: 6px 15px;
+            text-align: center;
+            border-radius: 3px;
+            text-shadow: 0 1px 0 rgba(0,0,0,.1);
+            font-family: Titillium Web,sans-serif;
+            color: #fff;
+        }
+
+        .sopblock-summary-path {
+            font-size: 16px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 0 10px;
+            font-family: Source Code Pro,monospace;
+            font-weight: 600;
+            color: #3b4151;
+        }
+    </style>
+</head>
+<body id="apiBody">
+    <div class="flex-left closebar">
+        <div class="parent-div-left">
+            <a href="#" id="panel-close" class="close-panel"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <nav class="left-column">
+                <div class="accordion" id="rightaccordion">
+                    <div class="card">
+                        <div class="card-header" id="rightheading">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#rightcollapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <a href="/GuidePage?id=24&amp;type=Category&amp;menuid=2&amp;regionId=1">Digital Wallets</a>
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div>
+
+                            <div class="card-body">
+                                <h2 class="mb-0 rightlist-link">
+                                    <button id="btnCategoryName" value="Push Provisioning" class="btn btn-link" type="button" data-toggle="collapse" data-target="#rightcollapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <a href="/GuidePage?id=24&amp;type=Category&amp;menuid=2&amp;regionId=1">Push Provisioning</a>
+                                    </button>
+                                </h2>
+                                            <div class="card">
+                                                <div class="card-header" id="MasterCardPushProvisioning  1220 1235">
+                                                    <a href="/GuidePageApiDetail?id=1220&amp;type=ApiDetail&amp;menuid=2&amp;regionId=1&amp;subid=1042">MasterCardPushProvisioning</a>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="VISAPUSHProvisioning  1233 1235">
+                                                    <a href="/GuidePageApiDetail?id=1233&amp;type=ApiDetail&amp;menuid=2&amp;regionId=1&amp;subid=1042">VISAPUSHProvisioning</a>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header subCatHighLight" id="VISAPUSHProvisioningMBPAC">
+                                                    <a href="/GuidePageApiDetail?id=1235&amp;type=ApiDetail&amp;menuid=2&amp;regionId=1&amp;subid=1042">VISAPUSHProvisioningMBPAC</a>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="VISAPUSHProvisioningMBPAD  1234 1235">
+                                                    <a href="/GuidePageApiDetail?id=1234&amp;type=ApiDetail&amp;menuid=2&amp;regionId=1&amp;subid=1042">VISAPUSHProvisioningMBPAD</a>
+                                                </div>
+                                            </div>
+
+                                <div class="card-header" id="rightheading">
+                                    <h2 class="mb-0">
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+
+                                    <div class="card">
+                                        <div class="card-header" id="AccountHolder16">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AccountHolder" aria-expanded="false" aria-controls="AccountHolder">
+                                                        <a href="/GuidePage?id=16&amp;type=Category&amp;menuid=2&amp;regionId=1">Account Holder</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="AccountManagement17">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AccountManagement" aria-expanded="false" aria-controls="AccountManagement">
+                                                        <a href="/GuidePage?id=17&amp;type=Category&amp;menuid=2&amp;regionId=1">Account Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="AlertManagement18">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AlertManagement" aria-expanded="false" aria-controls="AlertManagement">
+                                                        <a href="/GuidePage?id=18&amp;type=Category&amp;menuid=2&amp;regionId=1">Alert Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Authorizations19">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Authorizations" aria-expanded="false" aria-controls="Authorizations">
+                                                        <a href="/GuidePage?id=19&amp;type=Category&amp;menuid=2&amp;regionId=1">Authorizations</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="BeneficiaryManagement20">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#BeneficiaryManagement" aria-expanded="false" aria-controls="BeneficiaryManagement">
+                                                        <a href="/GuidePage?id=20&amp;type=Category&amp;menuid=2&amp;regionId=1">Beneficiary Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="BillPay21">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#BillPay" aria-expanded="false" aria-controls="BillPay">
+                                                        <a href="/GuidePage?id=21&amp;type=Category&amp;menuid=2&amp;regionId=1">BillPay</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="BranchManagement22">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#BranchManagement" aria-expanded="false" aria-controls="BranchManagement">
+                                                        <a href="/GuidePage?id=22&amp;type=Category&amp;menuid=2&amp;regionId=1">Branch Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="CardManagement23">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#CardManagement" aria-expanded="false" aria-controls="CardManagement">
+                                                        <a href="/GuidePage?id=23&amp;type=Category&amp;menuid=2&amp;regionId=1">Card Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Dispute30">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Dispute" aria-expanded="false" aria-controls="Dispute">
+                                                        <a href="/GuidePage?id=30&amp;type=Category&amp;menuid=2&amp;regionId=1">Dispute</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="InventoryManagement25">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#InventoryManagement" aria-expanded="false" aria-controls="InventoryManagement">
+                                                        <a href="/GuidePage?id=25&amp;type=Category&amp;menuid=2&amp;regionId=1">Inventory Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Statement26">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Statement" aria-expanded="false" aria-controls="Statement">
+                                                        <a href="/GuidePage?id=26&amp;type=Category&amp;menuid=2&amp;regionId=1">Statement</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Token29">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Token" aria-expanded="false" aria-controls="Token">
+                                                        <a href="/GuidePage?id=29&amp;type=Category&amp;menuid=2&amp;regionId=1">Token Authentication</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Transactions27">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Transactions" aria-expanded="false" aria-controls="Transactions">
+                                                        <a href="/GuidePage?id=27&amp;type=Category&amp;menuid=2&amp;regionId=1">Transactions</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="UserManagement28">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#UserManagement" aria-expanded="false" aria-controls="UserManagement">
+                                                        <a href="/GuidePage?id=28&amp;type=Category&amp;menuid=2&amp;regionId=1">User Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="flex-center center-new">
+        <div class="mobile-btns">
+            <p class="btn-p toggle1"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>Category links</p>
+            <p class="btn-p toggle">API Links<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></p>
+            <div class="clearfix"></div>
+        </div>
+        <main id="center" class="">
+            <article>
+                            <div id="VISAPUSHProvisioningMBPAC" class="target-div">
+                                <h4 class="h4-name" id="h4APIName" value="VISAPUSHProvisioningMBPAC">
+                                    VISAPUSHProvisioningMBPAC
+                                </h4>
+                            </div>
+                            <div class="action-url">
+                                <p class="">
+                                    <strong class="">Action:</strong> <code class="">POST</code>
+                                </p>
+                                <p class="">
+                                    <strong class="">Endpoint:</strong> <code class="">/api/VISAPUSHProvisioningMBPAC</code>
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="">Use this API to generate encrypted payload for Push provisioning of a Visa Card Activation data  in the Payment APP(Apple pay).</p>
+                            </div>
+                            <h5 class="h5-heading">
+                                Request fields detail
+                            </h5>
+                            <table class="api-info table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Fields</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">APIVersion</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="red">
+                                                                Mandatory
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Version of the API to be invoked<br>Example: 1.3
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">10</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">IPAddress</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="red">
+                                                                Mandatory
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    IP Address of sender<br>Example:  10.206.0.204
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">15</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">Source</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="red">
+                                                                Mandatory
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService)<br>For external system expected source will be WEB.
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">50</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">CallerID</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Caller Id of source from where API is initiated. It is End User phone number.<br>Example: 7204454214 <br>Condition - applicable in Case of IVR
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">20</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">CalledID</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Called Id of destination for which API is initiated. It is Corecard IVR number.<br>Example: 7314145404 <br>Condition - applicable in Case of IVR
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">20</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">SessionID</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Reserved for future use
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">50</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">ANI</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Reserved for future use
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">0</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">DNS</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Reserved for future use
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">0</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">Language</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Flag to retrieve error message in specific language<br>Example: 'en' for English
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">2</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">RequestDate</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Request Date Time of API     <br>Format: MM-DD-YYYYTHH:MM:SS<br>Example:- 11-12-2021T13:05:10
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">19</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">CardNumber</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="blue">
+                                                                Conditional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Clear Card Number of the cardholder<br>Valid values: 0-9<br>Example: 123456******0001<br>Condition : At least one of Card Number/Proxy Number is required.<br>
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">16</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">ProxyNumber</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="blue">
+                                                                Conditional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                     Proxy Number of the cardholder<br> Valid values:0-9 <br> Example:1005 <br> Condition : At least one of Card Number/Proxy Number is required.<br>
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">19</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">nonce</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="red">
+                                                                Mandatory
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Required for Issuer mobile banking app initiated provisioning requests to Apple. <br>Contains the data of the nonce field, in hexBinary, received by the issuer from Apple's servers.<br>This is used to verify that the same device is used with the issuer's mobile banking app and the provisioning request sent to Visa and helps prevent replay.
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">256</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">authcode</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="red">
+                                                                Mandatory
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Contains a 6-character code generated by the issuer that is specific to the current provisioning request.<br>Used by Issuer and Visa to identify specific activation codes in problem resolution or authentication related questions.<br>Format is alphanumeric (allowed characters include: '0' through '9'and 'A' through 'Z',characters must be in uppercase, must not contain all zeros or all spaces).
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">6</p>
+                                                </td>
+                                            </tr>
+                                </tbody>
+                            </table>
+                            <h5 class="req-head">
+                                Sample request body
+                            </h5>
+                            <pre class="pre-req"><button class="dark-mode dark-modereq">Dark</button><button class="light-mode light-modereq">Light</button>{&#xD;&#xA;  &quot;APIVersion&quot;: &quot;1.3&quot;,&#xD;&#xA;  &quot;IPAddress&quot;: &quot;10.206.2.197&quot;,&#xD;&#xA;  &quot;Source&quot;: &quot;WEB&quot;,&#xD;&#xA;  &quot;CallerID&quot;: &quot;&quot;,&#xD;&#xA;  &quot;CalledID&quot;: &quot;&quot;,&#xD;&#xA;  &quot;SessionID&quot;: &quot;&quot;,&#xD;&#xA;  &quot;ANI&quot;: &quot;&quot;,&#xD;&#xA;  &quot;DNS&quot;: &quot;&quot;,&#xD;&#xA;  &quot;Language&quot;: &quot;en&quot;,&#xD;&#xA;  &quot;RequestDate&quot;: &quot;&quot;,&#xD;&#xA;  &quot;CardNumber&quot;: &quot;4066846120001101&quot;,&#xD;&#xA;  &quot;ProxyNumber&quot;: &quot;1310358&quot;,&#xD;&#xA;  &quot;nonce&quot;: &quot;fkhejgjjkd&quot;,&#xD;&#xA;  &quot;authcode&quot;: &quot;E4ER67&quot;&#xD;&#xA;}</pre>
+                            <h5 class="h5-heading">
+                                Response fields detail
+                            </h5>
+                            <table class="api-info table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Fields</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Message</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Returns Error Message in case of Error.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Status</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">boolean</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Returns result of API processing.<br>If any error is found then value will be 'false' else 'true'.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ErrorCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Returns Error Code in case of Error.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ResponseData</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        This is group of below data elements.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">ActivationData</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Activation data formatted in below format.<br>type-version-keyscheme-keysetidentifier-ephemeralkey-algorithm-encryptedinformation.<br>E.g. MBPAC-1-FK-123456.1-TDEA-7AF291C91F3ED4EF92C1D45EFF127C1F9ABC12347E
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">ProxyNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Proxy Number of the cardholder<br>Valid values:0-9 <br>Example:1005
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+
+                                </tbody>
+                            </table>
+                            <h3 class="res-head">
+                                Sample response body
+                            </h3>
+                            <pre class="pre-res"><button class="dark-mode dark-moderes">Dark</button><button class="light-mode light-moderes">Light</button>{&#xD;&#xA;  &quot;Message&quot;: &quot;Encrypted payload generated successfully.&quot;,&#xD;&#xA;  &quot;Status&quot;: true,&#xD;&#xA;  &quot;ErrorCode&quot;: &quot;90057&quot;,&#xD;&#xA;  &quot;ResponseData&quot;: {&#xD;&#xA;    &quot;ActivationData&quot;: &quot;TUJQQUMtMS1GSy00MDY2ODUuMS0tVERFQS1BNTg1NTAyQkUwQTA5N0FDM0IxQTU5NUQwQUNCOEVBNEVCQzA2ODFFRDU2OUVGRjJGMzlDMTc1MTY0RjZDMzFDRDk0MzVCQ0NBODQ4NzBCRA==&quot;,&#xD;&#xA;    &quot;ProxyNumber&quot;: &quot;1310358&quot;&#xD;&#xA;  }&#xD;&#xA;}</pre>
+            </article>
+
+        </main>
+
+    </div>
+
+    <div class="flex-right new-right closebar">
+        <div class=" parent-div-right">
+            <a href="#" id="panel-close1" class="close-panel"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <span id="btn-swagger-VISAPUSHProvisioningMBPAC">
+                        <div class="sopblock sopblock-post">
+                            <div class="sopblock-summary sopblock-summary-POST">
+                                <span class="sopblock-summary-method">POST</span>
+                                <span class="sopblock-summary-path" data-path="/api/CoreCredit/MerchantManagement/UpdateMSR">
+                                    <a class="nostyle">
+                                        <span>/api/VISAPUSHProvisioningMBPAC</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </span>
+                    <div id="swagger-VISAPUSHProvisioningMBPAC"></div>
+        </div>
+    </div>
+    <input type="hidden" id="spnTryItOut" name="spnTryItOut" value="Try It Out" />
+    <!-- The Modal 1-->
+    <script src="/js/googleapis/jquery.min.js"></script>
+    <script src="/lib/dist/swagger-ui-bundle.js"></script>
+
+    <script src="/lib/dist/swagger-ui-standalone-preset.js"></script>
+
+
+    <div id="cms-tryout" data-enabled="false" hidden></div>
+
+        <script src='/lib/dist/v1_USPrepaidDigitalWallets_swaggerFilter.js?v=20261106'></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            //$("#loading").show().delay(5000).fadeOut();
+
+            $(".rmvClass, .close").click(function () {
+                $(".svg-modal.modal").removeClass("active");
+            });
+
+            $('.flex-right .card-body ul li').click(function (event) {
+                $('.active-rightlink').removeClass('active-rightlink');
+                $(this).addClass('active-rightlink');
+                event.preventDefault();
+            });
+
+        });
+        $(document).ready(function () {
+            var $menu = $(".apimenuul");
+            var $menu_a = $("a", $menu);
+            var id = false;
+            var sections = [];
+            var hash = function (h) {
+                if (history.pushState) {
+                    history.pushState(null, null, h);
+                } else {
+                    location.hash = h;
+                }
+            };
+
+
+            $menu_a.each(function () {
+                sections.push($($(this).attr("href")));
+            });
+
+            $(window).scroll(function (event) {
+                var scrolling = $(this).scrollTop() + $(this).height() / 3;
+                var scroll_id;
+                for (var i in sections) {
+                    var section = sections[i];
+                    if (scrolling > section.offset().top) {
+                        scroll_id = section.attr("id");
+                    }
+                }
+                if (scroll_id !== id) {
+                    id = scroll_id;
+                    $menu_a.removeClass("apiliactive");
+                    $("a[href='#" + id + "']", $menu).addClass("apiliactive");
+                }
+            });
+
+            $('#btn-swagger-VISAPUSHProvisioningMBPAC').click();
+        });
+
+    </script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"e68766ac58634d3bac78aacb71fbb169","spa":2}' crossorigin="anonymous"></script>
+</body>
+
+
+</html>
+
+
+</div>
+
+
+
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-txt">
+            Copyright &copy; 2026 CoreCard Software, Inc. All rights reserved
+        </p>
+    </footer>
+</body>
+
+</html>

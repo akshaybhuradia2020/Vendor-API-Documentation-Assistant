@@ -1,0 +1,999 @@
+{
+    "metadata": {
+        "name": "GetCardDetails",
+        "http_method": "POST",
+        "endpoint": "/api/GetCardDetails",
+        "description": "Use this API to get details of card which includes monetary details like Balance, Last load amount,outstanding authrization, Dispute amount and non monetary details like Account manual status,Branch name, OFAC score, card activation date."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "Bsegment",
+                    "type": "",
+                    "required": null,
+                    "description": "Gets or sets Bsegment.",
+                    "children": [
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account Number. Valid values: 0-9 Example: 2000000000000396893 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Current balance after transaction, Valid Values:0-9 Example: 50.00",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACScore",
+                            "type": "string",
+                            "required": null,
+                            "description": "Score received after OFAC Checks. Example : 2",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalOutStgAuthAmt",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total outstanding authorization Amount. Example : 100",
+                            "children": []
+                        },
+                        {
+                            "name": "AvailableBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Available balance on the account Valid values : 0-9 Example: 100.50",
+                            "children": []
+                        },
+                        {
+                            "name": "LastBulkOFACCheckDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date and time of periodic OFAC Check of the accounts present in the system Format:yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "LastTransactionDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date of Last transaction posted on account Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACInquiryDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "OFAC Inquiry Date Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "SavingAccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "If the account has multiple saving account, then This tag will return latest saving account details. Valid values: 0-9 Example: 2000000000000396893 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "SavingAccountCurrentBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "If the account has multiple saving account, then This tag will return latest saving account details. Example: 1220",
+                            "children": []
+                        },
+                        {
+                            "name": "OverDraftStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Current status of Overdraft facility of account. Valid Values : 1 = Opt-in 2 = Opt-out",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowedPINAccess",
+                            "type": "string",
+                            "required": null,
+                            "description": "PIN Transaction allowed or not Valid values : 0  = Allow 1  = Do not Allow Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "CashAccessAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Cash access Transaction allowed or not. Valid values: 0 = No, 1= Yes Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "LexNexInquiryDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Lexis Nexis Inquiry Date Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "BranchID",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Branch ID Valid values: 0-9 Example: 1001",
+                            "children": []
+                        },
+                        {
+                            "name": "BranchName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Branch name Example : Georgia Branch Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CardGeneratedStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Generated Status of Card Example :New Card Pending Activation Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountManualStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account Manual Status Example: Fraud Suspicious Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountGeneratedStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Generated Status of account Example :Active Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "ParentAccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Account Number Valid values: 0-9 Example: 2000000000000396893 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "PurchaseAmountOfLastTransaction",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of last Purchase on account Example: 1001",
+                            "children": []
+                        },
+                        {
+                            "name": "DateOfLastLoad",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when the card was last loaded Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Disputed amount on the card Example : 100",
+                            "children": []
+                        },
+                        {
+                            "name": "LastLoadAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Last Load Amount which was posted on account",
+                            "children": []
+                        },
+                        {
+                            "name": "OverDraftAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This flag will display the Amount of overdraft allowed for Account.",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACMatchedBy",
+                            "type": "string",
+                            "required": null,
+                            "description": "Entity with which Account marked as OFAC. Valid Values:  Primary and Secondary Example: Primary",
+                            "children": []
+                        },
+                        {
+                            "name": "DirectDepositAdvanceAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount given in advance to cardholder, repaid/debited automatically from the next Payroll deposit on the cardholder account.",
+                            "children": []
+                        },
+                        {
+                            "name": "ImmediatePostACH",
+                            "type": "string",
+                            "required": null,
+                            "description": "Flag to indicate the posting of Future dated ACH Transaction will be done on effective date. Valid Value: - 1= Not Allowed, 2 = All Credits and 3= Credits – Payroll Example:- 1",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "Embossing",
+                    "type": "",
+                    "required": null,
+                    "description": "Gets or sets Embossing Data.",
+                    "children": [
+                        {
+                            "name": "CardExpiryDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Expiration Date of the card. Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNumber4Digits",
+                            "type": "string",
+                            "required": null,
+                            "description": "Last  4 digits of the card. Valid values : 0-9 Example : 4386",
+                            "children": []
+                        },
+                        {
+                            "name": "PendingCardExpDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Expiration Date of activation pending card Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "CardSequenceNumber",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Card Sequence Number Valid Values:0-9 Example: 03",
+                            "children": []
+                        },
+                        {
+                            "name": "SecondaryCardType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of secondary card Valid Values:0-2 0 = Regular Card 1 = Virtual Card 2 = Family Card Example: 0 (Regular Card) Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "VirtualCardLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Virtual card Limit when SecondaryCardType = 1 Family Card Usage Limit when SecondaryCardType = 2 Example : 100",
+                            "children": []
+                        },
+                        {
+                            "name": "VirtualCardResetLimitAllowed",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Resetting of Virtual card Limit is allowed or not Valid values : 0 = Allow 1 = Do not Allow",
+                            "children": []
+                        },
+                        {
+                            "name": "VirtualCardResetAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Virtual Card Reset Allowed or not Valid Values  0:Yes, 1 : No Example : 1",
+                            "children": []
+                        },
+                        {
+                            "name": "VirtualCardExpiryOption",
+                            "type": "string",
+                            "required": null,
+                            "description": "Virtual Card Expiry Option Valid values are 0,1,2 0 :- Card will expire after n number of transaction 1 :- Card will expire after n number of days/hour/Minutes/Month/Weeks/years 2 :- Card will expire on particular date",
+                            "children": []
+                        },
+                        {
+                            "name": "FraudSuspicious",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Account is Fraud suspicious or not 1 - Yes 2 - No",
+                            "children": []
+                        },
+                        {
+                            "name": "CardHandoverDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Card handover Date Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "EmbossCardStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card's embossing status Example : Embossed",
+                            "children": []
+                        },
+                        {
+                            "name": "CardActivationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date of card activation Format: yyyy-mm-ddThh:mm:ss Example: 2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "PlasticCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Plastic Code Valid values:0-9 Example: 32",
+                            "children": []
+                        },
+                        {
+                            "name": "PlasticName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Plastic Name Valid Values: A-Z,a-z Example : CashCard Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "DerivedStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status which is derived by considering Card Status (manual and generated) ,account status (manual and generated) and Card plastic status Example: Active",
+                            "children": []
+                        },
+                        {
+                            "name": "FailedLinkCardAttempts",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Counter of failed link card attempts Example : 3",
+                            "children": []
+                        },
+                        {
+                            "name": "LinkCardAttemptsProduct",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Number of link card attempts defined on product. Example : 3",
+                            "children": []
+                        },
+                        {
+                            "name": "InvalidActivationEnrollmentAttempts",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Counter of invalid attempts of activation and enrollment process. Example : 3",
+                            "children": []
+                        },
+                        {
+                            "name": "InvalidAccessCodeAttempts",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Counter of invalid access code attempts. Example : 3",
+                            "children": []
+                        },
+                        {
+                            "name": "ProxyNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005",
+                            "children": []
+                        },
+                        {
+                            "name": "CardLockUnlockStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Flag to set card lock unlock status. Valid values : 0: Card Unlocked 1: Card Locked Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldEmbossing",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Tag to decide physical card or virtual card by holding embossing file. Valid Values: 0 - No (Physical card) 1 - Yes (Virtual card)",
+                            "children": []
+                        },
+                        {
+                            "name": "VirtualCardAvailableLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Available Virtual Card Limit shows the available limit after spending from Total Virtual Card Limit. Condition: SecondaryCardType = 1 then this options will be applicable Example 100,200",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "UserInformation",
+                    "type": "",
+                    "required": null,
+                    "description": "Gets or sets User Information.",
+                    "children": [
+                        {
+                            "name": "UserId",
+                            "type": "string",
+                            "required": null,
+                            "description": "UserId of the cardholder Valid Values: A-Z,a-z,0-9. Example : Sam Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "First Name of user Example : John",
+                            "children": []
+                        },
+                        {
+                            "name": "UserLastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Last Name of user Example : Morris",
+                            "children": []
+                        },
+                        {
+                            "name": "LastLoginDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date of Last login Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "FailedAccessCodeChangeAttempts",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Counter of  failed access code change attempts. Example : 3",
+                            "children": []
+                        },
+                        {
+                            "name": "LinkCardChecked_User",
+                            "type": "string",
+                            "required": null,
+                            "description": "Display or not to display the link card option of the primary card to the user. Valid values : 0 = Do no display Link card option 1 = Display Link card Option",
+                            "children": []
+                        },
+                        {
+                            "name": "LinkCardChecked_Secondaycard_User",
+                            "type": "string",
+                            "required": null,
+                            "description": "Display or not to display the link card option for secondary card to the user. Valid values : 0 = Do no display Link card option 1 = Display Link card option Example : 1",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinkCardChecked_User",
+                            "type": "string",
+                            "required": null,
+                            "description": "Display or not to display the Delink card option of the primary card to the user. Valid values : 0 = Do no display Delink card option 1 = Display Deink card option",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinkCardChecked_SecondaryCard_User",
+                            "type": "string",
+                            "required": null,
+                            "description": "Display or not to display the Delink card option for secondary card to the user. Valid values : 0 = Do no display Link card option 1 = Display Link card option Example : 1",
+                            "children": []
+                        },
+                        {
+                            "name": "LinkCardChecked_Product",
+                            "type": "string",
+                            "required": null,
+                            "description": "Display or not to display the link card option of the primary card as per product setting Valid values : 0 = Do no display Link card option 1 = Display Link card option",
+                            "children": []
+                        },
+                        {
+                            "name": "LinkCardChecked_SecondayCard_Product",
+                            "type": "string",
+                            "required": null,
+                            "description": "Display or not to display the link card option of the secondary card as per product setting. Valid values : 0 = Do no display Link card option 1 = Display Link card option",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinkCardChecked_Product",
+                            "type": "string",
+                            "required": null,
+                            "description": "Display or not to display the Delink card option for primary card as per product setting. Valid values : 0 = Do no display Link card option 1 = Display Link card option Example : 1",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinkCardChecked_SecondaryCard_Product",
+                            "type": "string",
+                            "required": null,
+                            "description": "Display or not to display the Delink card option of the secondary card as per product setting. Valid values : 0 = Do no display Link card option 1 = Display Link card option",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "Customer",
+                    "type": "",
+                    "required": null,
+                    "description": "Gets or sets Customer Data.",
+                    "children": [
+                        {
+                            "name": "CustomerId",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123",
+                            "children": []
+                        },
+                        {
+                            "name": "MaskedSocialSecurityNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Social Security number in masked form Example : *****5645",
+                            "children": []
+                        },
+                        {
+                            "name": "DateofBirth",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "DOB of cardholder Format: yyyy-mm-ddThh:mm:ss Example :2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "HomePhoneNumber",
+                            "type": "Int64",
+                            "required": null,
+                            "description": "Home Phone Number. Valid Values: 0-9 Example: 9812338769",
+                            "children": []
+                        },
+                        {
+                            "name": "WorkPhoneNumber",
+                            "type": "Int64",
+                            "required": null,
+                            "description": "Cardholder  Work Phone Number Valid values:0-9 Example:9632581470",
+                            "children": []
+                        },
+                        {
+                            "name": "MobilePhoneNumber",
+                            "type": "Int64",
+                            "required": null,
+                            "description": "Cardholder's Mobile Phone Number Valid Values: 0-9 Example: 9876543210",
+                            "children": []
+                        },
+                        {
+                            "name": "EMailAddress1",
+                            "type": "string",
+                            "required": null,
+                            "description": "E Mail Address 1 of Cardholder Valid Values: A-Z, a-z, 0-9 @ . Example: sem_pp1 @gmail.com Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "EMailAddress2",
+                            "type": "string",
+                            "required": null,
+                            "description": "E Mail Address 2 of Card holder Valid Values: A-Z, a-z, 0-9 @ . Example :  sem_pp1 @gmail.com Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherIdCountry",
+                            "type": "string",
+                            "required": null,
+                            "description": "Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherIDExpiryDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Expiration date of ID Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherIDIssueDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Indicates the Date of any other ID verification document which was issued. Valid Values:0-9 Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherIdState",
+                            "type": "string",
+                            "required": null,
+                            "description": "ID Issue State Valid Values:Two Digit State Code:A-Z,a-z Example:GA Condition:This field is mandatory when IDName=  02,07 and Country = US Appendix Section: Refer Appendix Section : State Codes(US)",
+                            "children": []
+                        },
+                        {
+                            "name": "HomePhExtension",
+                            "type": "string",
+                            "required": null,
+                            "description": "Home Phone Number Extension Valid Values:0-9 Example:91",
+                            "children": []
+                        },
+                        {
+                            "name": "AlertEmailAddress",
+                            "type": "string",
+                            "required": null,
+                            "description": "Email address of the cardholder where alert should be sent Valid Values: A-Z,a-z,0-9 Example : Core @gmail.com Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "MemberId",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag indicates MemberID Example : ABCD112 Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACInquiryDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "OFAC Inquiry Date Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACScore",
+                            "type": "string",
+                            "required": null,
+                            "description": "Score received after OFAC Checks. Example : 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SDNEntry1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Value imposed to an Account after OFAC Check via third party Example:85",
+                            "children": []
+                        },
+                        {
+                            "name": "SDNEntry2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Value imposed to an Account after OFAC Check via third party Example:85",
+                            "children": []
+                        },
+                        {
+                            "name": "SDNEntry3",
+                            "type": "string",
+                            "required": null,
+                            "description": "Value imposed to an Account after OFAC Check via third party Example:85",
+                            "children": []
+                        },
+                        {
+                            "name": "SDNEntry4",
+                            "type": "string",
+                            "required": null,
+                            "description": "Value imposed to an Account after OFAC Check via third party Example:85",
+                            "children": []
+                        },
+                        {
+                            "name": "SDNEntry5",
+                            "type": "string",
+                            "required": null,
+                            "description": "Value imposed to an Account after OFAC Check via third party Example:85",
+                            "children": []
+                        },
+                        {
+                            "name": "PreviousOFACScore",
+                            "type": "string",
+                            "required": null,
+                            "description": "Previous OFAC Score. Example:85",
+                            "children": []
+                        },
+                        {
+                            "name": "OFACClearanceDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "DateTime when the Account manually cleared from the OFAC status to Active status or to the status which was set before OFAC status. Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "Address",
+                    "type": "",
+                    "required": null,
+                    "description": "Gets or sets Address.",
+                    "children": [
+                        {
+                            "name": "Addressline1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Address Line 1 of the Cardholder Valid values : A-Z, a-z, 0-9 Example: 15 Penang Street Point Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "Addressline2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Address Line 2 of the Cardholder Valid values: A-Z, a-z, 0-9 Example: 1 mecca way Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "City",
+                            "type": "string",
+                            "required": null,
+                            "description": "Cardholder's City of residence Valid values: A-Z, a-z, 0-9 Example: Norcross Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "State",
+                            "type": "string",
+                            "required": null,
+                            "description": "Cardholder State of residence Valid values are A-Z, a-z Example: GA Please refer Appendix Section : State Codes(US) Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "Country",
+                            "type": "string",
+                            "required": null,
+                            "description": "Two Character Country Code Valid values :A-Z, a-z Example: US Refer Appendix section : Country Code Values Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "Postalcode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Cardholder Postal Code of Residence Valid Values:A-Z,a-z,0-9 Example: 30093 Allowable Values: 10",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "Logo",
+                    "type": "",
+                    "required": null,
+                    "description": "Gets or sets Logo.",
+                    "children": [
+                        {
+                            "name": "ProductName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Product Name of card Example: Spend Product",
+                            "children": []
+                        },
+                        {
+                            "name": "FamilyCardAllow",
+                            "type": "string",
+                            "required": null,
+                            "description": "Family Card is allowed for this product or not. Valid Values : 0 = Allow 1 = Do not Allow Example : 1",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "AdditionalCard",
+                    "type": "",
+                    "required": null,
+                    "description": "Gets or sets Additional Card.",
+                    "children": [
+                        {
+                            "name": "NameOnCard",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name to be Embossed on Card Valid values are A-Z, a-z, 0-9. Example: Hudson M Charles Allowable Values: 23",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "",
+        "ProxyNumber": "1316728"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "Bsegment": {
+                "AccountNumber": "60000000032471",
+                "CurrentBalance": 12.0,
+                "OFACScore": "",
+                "TotalOutStgAuthAmt": 23.0,
+                "AvailableBalance": 12.0,
+                "LastBulkOFACCheckDate": "2021-04-10T00:00:00",
+                "LastTransactionDate": "2020-12-01T00:00:00",
+                "OFACInquiryDate": "2020-03-01T00:00:00",
+                "SavingAccountNumber": "",
+                "SavingAccountCurrentBalance": 84.33,
+                "OverDraftStatus": "No decision",
+                "AllowedPINAccess": "",
+                "CashAccessAllowed": "",
+                "LexNexInquiryDate": "2020-12-06T00:00:00",
+                "BranchID": 5737,
+                "BranchName": "Convenient Card Top branch",
+                "CardGeneratedStatus": "Active",
+                "AccountManualStatus": "Active",
+                "AccountGeneratedStatus": "Active",
+                "ParentAccountNumber": "",
+                "PurchaseAmountOfLastTransaction": 20.0,
+                "DateOfLastLoad": "2020-12-01T00:00:00",
+                "DisputeAmount": 23.41,
+                "LastLoadAmount": 12.0,
+                "OverDraftAmount": 75.12,
+                "OFACMatchedBy": "Primary",
+                "DirectDepositAdvanceAmount": 0.0,
+                "ImmediatePostACH": ""
+            },
+            "Embossing": {
+                "CardExpiryDate": "2026-12-01T00:00:00",
+                "CardNumber4Digits": "",
+                "PendingCardExpDate": "2031-04-01T00:00:00",
+                "CardSequenceNumber": 1,
+                "SecondaryCardType": "",
+                "VirtualCardLimit": 110.0,
+                "VirtualCardAvailableLimit": 100.0,
+                "VirtualCardResetLimitAllowed": true,
+                "VirtualCardResetAllowed": "1",
+                "VirtualCardExpiryOption": "",
+                "FraudSuspicious": 2,
+                "CardHandoverDate": "2020-12-01T00:00:00",
+                "EmbossCardStatus": "Active",
+                "CardActivationDate": "2020-12-24T00:00:00",
+                "PlasticCode": "59",
+                "PlasticName": "Government Assistance Card - CN (59)",
+                "DerivedStatus": "Active",
+                "FailedLinkCardAttempts": 5,
+                "LinkCardAttemptsProduct": 5,
+                "InvalidActivationEnrollmentAttempts": 6,
+                "InvalidAccessCodeAttempts": 4,
+                "ProxyNumber": "1316728",
+                "CardLockUnlockStatus": "0",
+                "HoldEmbossing": 1
+            },
+            "UserInformation": {
+                "UserId": "shailab_1212",
+                "UserFirstName": "",
+                "UserLastName": "",
+                "LastLoginDate": "2020-12-01T00:00:00",
+                "FailedAccessCodeChangeAttempts": 2,
+                "LinkCardChecked_User": "1",
+                "LinkCardChecked_Secondaycard_User": "1",
+                "DelinkCardChecked_User": "1",
+                "DelinkCardChecked_SecondaryCard_User": "1",
+                "LinkCardChecked_Product": "1",
+                "LinkCardChecked_SecondayCard_Product": "1",
+                "DelinkCardChecked_Product": "1",
+                "DelinkCardChecked_SecondaryCard_Product": "1"
+            },
+            "Customer": {
+                "CustomerId": "1027161",
+                "MaskedSocialSecurityNumber": "*****4343",
+                "DateofBirth": "1994-01-28T00:00:00",
+                "HomePhoneNumber": 3453453453,
+                "WorkPhoneNumber": 0,
+                "MobilePhoneNumber": 0,
+                "EMailAddress1": "[email protected]",
+                "EMailAddress2": "",
+                "OtherIdCountry": "",
+                "OtherIDExpiryDate": "2026-04-15T00:00:00",
+                "OtherIDIssueDate": "2031-08-25T00:00:00",
+                "OtherIdState": "",
+                "HomePhExtension": "91",
+                "AlertEmailAddress": "[email protected]",
+                "MemberId": "",
+                "OFACInquiryDate": "2020-08-28T00:00:00",
+                "OFACScore": "100.0",
+                "SDNEntry1": "6365",
+                "SDNEntry2": "6365",
+                "SDNEntry3": "6365",
+                "SDNEntry4": "11378",
+                "SDNEntry5": "11378",
+                "PreviousOFACScore": "0",
+                "OFACClearanceDate": "2020-08-28T00:00:00"
+            },
+            "Address": {
+                "Addressline1": "gateway",
+                "Addressline2": "",
+                "City": "Houston",
+                "State": "TX",
+                "Country": "US",
+                "Postalcode": "45645"
+            },
+            "Logo": {
+                "ProductName": "Convenient Visa Payroll Card",
+                "FamilyCardAllow": "1"
+            },
+            "AdditionalCard": {
+                "NameOnCard": "shailab gupta"
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Card Details",
+        "category_id": "1018",
+        "document_id": "1196",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1196&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1018&regionId=1"
+    }
+}

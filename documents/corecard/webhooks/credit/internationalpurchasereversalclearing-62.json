@@ -1,0 +1,1276 @@
+{
+    "metadata": {
+        "name": "InternationalPurchaseReversalClearing",
+        "http_method": "POST",
+        "endpoint": "/api/WebHookNotification/ClearingAuthIntegrationNotification/InternationalPurchaseReversalClearing",
+        "description": "This webhook is triggered when  send clearing received from network to the client's URL for international purchase reversal."
+    },
+    "request_fields": [
+        {
+            "name": "user_id",
+            "type": "string",
+            "required": null,
+            "description": "Used for authentication Allowable Values: 128"
+        },
+        {
+            "name": "password",
+            "type": "string",
+            "required": null,
+            "description": "Used for authentication Allowable Values: 15"
+        },
+        {
+            "name": "request_id",
+            "type": "integer",
+            "required": null,
+            "description": "CoreCard's Unique id of transaction (Tranid) Allowable Values: 19"
+        },
+        {
+            "name": "admin_number",
+            "type": "integer",
+            "required": null,
+            "description": "Proxy Card Number Allowable Values: 10"
+        },
+        {
+            "name": "last4_card_number",
+            "type": "string",
+            "required": null,
+            "description": "Card's number last 4 digits Allowable Values: 4"
+        },
+        {
+            "name": "transaction_amount",
+            "type": "decimal",
+            "required": null,
+            "description": "Amount of Transaction\nExample: 23.50"
+        },
+        {
+            "name": "post_time",
+            "type": "integer",
+            "required": null,
+            "description": "CoreCard Post time of transaction \nFormat: MMDDYYYYhhmmss\nExample: 01162017204958 Allowable Values: 14"
+        },
+        {
+            "name": "local_tran_time",
+            "type": "integer",
+            "required": null,
+            "description": "Local transaction time of transaction where its originated.\nFormat: MMDDYYYYhhmmss\nExample: 01162017202243\nCondition: Will be available if present in request. Allowable Values: 8"
+        },
+        {
+            "name": "Transmission_Date_Time",
+            "type": "datetime",
+            "required": null,
+            "description": "MC will not send transmissiondate time in IPM, this is a BIT12 (Date and Time, Local Transaction).\nFormat: MMDDYYYYHHMMSS\nExample: 01162017202243 Allowable Values: 14"
+        },
+        {
+            "name": "local_currencycode",
+            "type": "string",
+            "required": null,
+            "description": "Local Transaction Currency code (Transaction Currency Code).\nExample: USD Allowable Values: 3"
+        },
+        {
+            "name": "Local_Transaction_Amount",
+            "type": "decimal",
+            "required": null,
+            "description": "Transaction amount in Local Currency.\nExample: 200.8000\nCondition: Will be available if present in request. Allowable Values: 11"
+        },
+        {
+            "name": "Issuer_Currency_Code",
+            "type": "string",
+            "required": null,
+            "description": "Primary Currency Code Cardholder.\nExample:USD Allowable Values: 20"
+        },
+        {
+            "name": "Transaction_Time_Zone",
+            "type": "string",
+            "required": null,
+            "description": "Local Transaction Time Zone.\nExample:ZoneCode1 or ZoneCode2 Allowable Values: 20"
+        },
+        {
+            "name": "Time_Zone_Country_Name",
+            "type": "string",
+            "required": null,
+            "description": "Country Name of Local Transaction Time Zone. Allowable Values: 70"
+        },
+        {
+            "name": "Time_Zone_Olson",
+            "type": "string",
+            "required": null,
+            "description": "A uniform naming convention for time zones.      \nExample: America/New_York, America/Costa_Rica Allowable Values: 70"
+        },
+        {
+            "name": "Time_Zone_Details",
+            "type": "string",
+            "required": null,
+            "description": "Time Zone Name.      \nExample: EST / PST / IST\nCondition: Will be available if present in request. Allowable Values: 200"
+        },
+        {
+            "name": "Time_Zone_Value",
+            "type": "string",
+            "required": null,
+            "description": "Value of the Time Zone.      \nExample:  UTC/DST\nCondition: Will be available if present in request. Allowable Values: 50"
+        },
+        {
+            "name": "OriginalTransactionAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "The second DE 54 occurrence will represent the original transaction amount.      \nExample: 200.8000"
+        },
+        {
+            "name": "TransactionCurrencyCode",
+            "type": "string",
+            "required": null,
+            "description": "DE 51. TransactionCurrencyCode.      \nExample: USD Allowable Values: 3"
+        },
+        {
+            "name": "merchant_category_code",
+            "type": "integer",
+            "required": null,
+            "description": "DE 18 Merchant Category Code     \nExample: 4511 Allowable Values: 4"
+        },
+        {
+            "name": "MerchantCategoryCodeDescription",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Category Code Description.    \nExample: Inbound Telemarketing Merchants Allowable Values: 100"
+        },
+        {
+            "name": "MerchantCity",
+            "type": "string",
+            "required": null,
+            "description": "DE 43 Merchant City.   \nExample: NY Allowable Values: 13"
+        },
+        {
+            "name": "card_acceptor_id_code",
+            "type": "string",
+            "required": null,
+            "description": "DE 42 Merchant type of transaction.   \nExample: ABC123TESTMTF19 Allowable Values: 15"
+        },
+        {
+            "name": "card_acceptor_terminal_id",
+            "type": "string",
+            "required": null,
+            "description": "DE 41 Card Acceptor Terminal ID. \nExample: Reg00004 Allowable Values: 16"
+        },
+        {
+            "name": "cardacceptor_name_location",
+            "type": "string",
+            "required": null,
+            "description": "DE 43 Card Acceptor Location. \nExample:  Midwest Emporium 1234 Allowable Values: 40"
+        },
+        {
+            "name": "card_entry_mode",
+            "type": "string",
+            "required": null,
+            "description": "DE 22 (Point of Service [POS] Entry Mode) is a set of codes used to identify terminal capability, terminal environment, and Point-of-Interaction (POI) security data.\nSubfield 1 indicates the terminal capabilities for transferring the card data into the terminal. Allowable Values: 2"
+        },
+        {
+            "name": "available_balance",
+            "type": "decimal",
+            "required": null,
+            "description": "Available Balance of Account \nExample: 100.000"
+        },
+        {
+            "name": "mti",
+            "type": "integer",
+            "required": null,
+            "description": "It is a four-digit numeric field which indicates the overall function of the message.\nExample: 0220 for Clearing, 0420 for Reversal Allowable Values: 4"
+        },
+        {
+            "name": "stan",
+            "type": "string",
+            "required": null,
+            "description": "System Trace Audit Number of transactions.\nExample: 0000111 Allowable Values: 6"
+        },
+        {
+            "name": "rrn",
+            "type": "string",
+            "required": null,
+            "description": "Retrieval Reference number of transactions.\nExample: 123456789012 Allowable Values: 12"
+        },
+        {
+            "name": "response_code",
+            "type": "integer",
+            "required": null,
+            "description": "Authorization Response Code.\nExample: 00"
+        },
+        {
+            "name": "AuthLifeCycleUniqueID",
+            "type": "integer",
+            "required": null,
+            "description": "A Unique ID for Transaction Life Cycle.\nExample: A1234BC Allowable Values: 19"
+        },
+        {
+            "name": "CrossBorderIndicator",
+            "type": "string",
+            "required": null,
+            "description": "PDS 0177 Subfield 1 (Cross-border Indicator) identifies whether the transaction qualified as a Crossborder transaction and could be subject to Cross-border transaction pricing guidelines.\nValid Values: Y= Qualifies as a Cross-border transaction, N=Does not qualify as a Cross-border transaction\nExample: Y\nCondition: Will be available if present in request. Allowable Values: 2"
+        },
+        {
+            "name": "AuthExpirationDate",
+            "type": "datetime",
+            "required": null,
+            "description": "An Authorization remains valid until its expiration date.\nFormat: YYYYMMDDhhmmss Allowable Values: 14"
+        },
+        {
+            "name": "AmountAuthorized_9F02",
+            "type": "decimal",
+            "required": null,
+            "description": "DE 55 Authorized Transaction Amount. When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.\nExample: 100"
+        },
+        {
+            "name": "ApplicationCryptogram_9F26",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.DE 55 is used to transport ICC data.This data element utilisesthe Tag, Length, Value (TLV) structure to delineate different sub-elements Allowable Values: 16"
+        },
+        {
+            "name": "ApplicationInterchangeProfile_82",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip  transaction, then this data elements must be present.DE 55 is used to transport ICC data.This data element utilisesthe Tag, Length, Value (TLV) structure to delineate different sub-elements Allowable Values: 4"
+        },
+        {
+            "name": "cardSequenceTerminalNumber_5F34",
+            "type": "string",
+            "required": null,
+            "description": "Identifies and differentiates cards with the same PAN.\nExample: 1 Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationTransactionCounter_9F36",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.\nDE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements Allowable Values: 4"
+        },
+        {
+            "name": "TerminalCountryCode_9F1A",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.\nDE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements Allowable Values: 4"
+        },
+        {
+            "name": "TerminalVerificationResults_95",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.\nDE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements Allowable Values: 40"
+        },
+        {
+            "name": "TransactionDate_9A",
+            "type": "datetime",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.\n DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements"
+        },
+        {
+            "name": "TransactionCurrencyCode_5F2A",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.\nDE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements Allowable Values: 4"
+        },
+        {
+            "name": "TransactionType_9C",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.\nDE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements Allowable Values: 2"
+        },
+        {
+            "name": "UnpredictabNumber_9F37",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.\nDE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements Allowable Values: 8"
+        },
+        {
+            "name": "AmountOther_9F03",
+            "type": "decimal",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.\nDE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements"
+        },
+        {
+            "name": "ApplicationUsageControl_9F07",
+            "type": "string",
+            "required": null,
+            "description": "Indicates issuer's specified restrictions on the geographic usage and services allowed for the application. Tag for future reference.        \nCondition: Will be available if present in request.\nLength: 2 Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationVersionNumber_9F08",
+            "type": "string",
+            "required": null,
+            "description": "Version number assigned by the payment system for the application. Tag for future reference.        \nCondition: Will be available if present in request.\nLength: 2 Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationVersionNumber_9F09",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present. \nDE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements Allowable Values: 16"
+        },
+        {
+            "name": "CardholderVerificationMethod_9F34",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present. \nDE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements Allowable Values: 6"
+        },
+        {
+            "name": "CryptogramInformationData_9F27",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present. \nDE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements Allowable Values: 16"
+        },
+        {
+            "name": "DedicatedFileName_84",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present. \nDE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements Allowable Values: 32"
+        },
+        {
+            "name": "FormFactorIndicator_9F6E",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "InterfaceDeviceSerialNumber_9F1E",
+            "type": "string",
+            "required": null,
+            "description": "DE 55 is used to transport ICC data. This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements.\nWhen customers send DE 55 in clearing messages related to a chip transaction, then this data elements must be present. Allowable Values: 6"
+        },
+        {
+            "name": "IssuerApplicationData_9F10",
+            "type": "string",
+            "required": null,
+            "description": "DE 55 is used to transport ICC data. This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements.\nWhen customers send DE 55 in clearing messages related to a chip transaction, then this data elements must be present. Allowable Values: 64"
+        },
+        {
+            "name": "IssuerScriptResults_9F5B",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "POSEntryMode_9F39",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction.\n DE 22 It contains Start sentinel, PAN, Expiration Date, Service code, End sentinel. Allowable Values: 99"
+        },
+        {
+            "name": "TerminalCapabilities_9F33",
+            "type": "string",
+            "required": null,
+            "description": "DE 55 is used to transport ICC data. This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements.\n When customers send DE 55 in clearing messages related to a chip transaction, then this data elements must be present. Allowable Values: 6"
+        },
+        {
+            "name": "TerminalCapabilityFlag_FF20",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "TerminalType_9F35",
+            "type": "string",
+            "required": null,
+            "description": "When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.\nDE 55 is used to transport ICC data. This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements. Allowable Values: 3"
+        },
+        {
+            "name": "Track2Data_57",
+            "type": "string",
+            "required": null,
+            "description": "It is a series of codes that identify terminal capability, terminal environment, and point-of-interaction (POI) security data. \nThis Field will be available during EMV Chip Transaction. Allowable Values: 99"
+        },
+        {
+            "name": "TransactionSequenceCounter_9F41",
+            "type": "string",
+            "required": null,
+            "description": "DE 55 is used to transport ICC data. This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements. \nWhen Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present. Allowable Values: 8"
+        },
+        {
+            "name": "AdditionalTerminalCapabilities_9F40",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationIdentifier_4F",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationIdentifierTerminal_9F06",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationPreferredName_9F12",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationLabel_50",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationPriorityIndicator_87",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "ContactlessCapability_FF22",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "IssuerCountryCode_9F57",
+            "type": "string",
+            "required": null,
+            "description": "DE 21 Issuer Country Code. This Field will be available during EMV Chip Transaction.\nExample: US Allowable Values: 99"
+        },
+        {
+            "name": "SoftwareVersions_FF21",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "TransactionCategoryCode_9F53",
+            "type": "string",
+            "required": null,
+            "description": "DE 55 is used to transport ICC data. This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements.\nWhen customers send DE 55 in clearing messages related to a chip transaction, then this data elements must be present. Allowable Values: 20"
+        },
+        {
+            "name": "TransactionStatusInformation_9B",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "TransactionTime_9F21",
+            "type": "datetime",
+            "required": null,
+            "description": "Tag for future reference."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number of transactions.\nExample: 7000000000000104 Allowable Values: 19"
+        },
+        {
+            "name": "CustomerId",
+            "type": "string",
+            "required": null,
+            "description": "Customer id related to the transaction.\nExample: 167281 Allowable Values: 25"
+        },
+        {
+            "name": "MCCCategoryCode",
+            "type": "string",
+            "required": null,
+            "description": "DE 26—Card Acceptor Business Code (MCC).\nExample: 5311\nCondition: Will be available if present in request. Allowable Values: 100"
+        },
+        {
+            "name": "POSCardholderPresenceInd",
+            "type": "string",
+            "required": null,
+            "description": "DE 22, Subfield 5. Pos Card Holder Presence Indicator.        \nCondition: Will be available if present in request. Allowable Values: 1"
+        },
+        {
+            "name": "PostingRef",
+            "type": "string",
+            "required": null,
+            "description": "It will show Posting Ref of  Auth processing.        \nExample: Transaction posted successfully. Allowable Values: 250"
+        },
+        {
+            "name": "SettlementAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "DE 5. Will be available if present in request."
+        },
+        {
+            "name": "CardHolderBillingAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "DE 6. Cardholder Billing Amount.        \nExample: 49.00\nCondition: Will be available if present in request."
+        },
+        {
+            "name": "CardHolderBillingCurrencycode",
+            "type": "string",
+            "required": null,
+            "description": "DE 51. Cardholder Billing Currency code.        \nExample: 840\nCondition: Will be available if present in request. Allowable Values: 25"
+        },
+        {
+            "name": "ConversionRateCardholderBilling",
+            "type": "decimal",
+            "required": null,
+            "description": "DE 10 (Conversion Rate, Cardholder Billing) is the factor used in converting transaction amount to cardholder billing amount.The value gets populated in case of multicurrency.The rate of conversion.Data Field: Fixed length, 8 positions"
+        },
+        {
+            "name": "SettlementDate",
+            "type": "datetime",
+            "required": null,
+            "description": "DE 15. Settlement Date is a six-digit subfield in the format YYMMDD that identifies the date that the settlement service initiates settlement for the message.   \nFormat: MMDDYY\nExample: 122521\nCondition: Will be available if present in request."
+        },
+        {
+            "name": "ConversionDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Conversion Date.   \nFormat: MMDDYY\nExample: 122521\nCondition: Will be available if present in request."
+        },
+        {
+            "name": "POSTerminalPANEntryMode",
+            "type": "string",
+            "required": null,
+            "description": "Subfield 7—Card Data: Input Mode DE 22 (Point of Service [POS] Entry Mode), subfield 7 indicates how the card data was entered at the terminal.\nValue: 0 = Unspecified; data unavailable, 1 = Manual input; no terminal Allowable Values: 2"
+        },
+        {
+            "name": "POSTerminalPINEntryMode",
+            "type": "string",
+            "required": null,
+            "description": "DE 22 Subfield 8—Cardholder Authentication Method, (Point of Service [POS] Entry Mode), subfield 8 indicates the method by which the cardholder's identity was verified at the point of service.   \nValues: 0 = Not authenticated, 1 = PIN, 2 = Electronic signature analysis Allowable Values: 2"
+        },
+        {
+            "name": "merchantId",
+            "type": "string",
+            "required": null,
+            "description": "DE 42 (Card Acceptor ID Code) identifies the card acceptor ID assigned by the acquirer.   \nValues: AB123 Allowable Values: 16"
+        },
+        {
+            "name": "merchantRawName",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 40"
+        },
+        {
+            "name": "merchantState",
+            "type": "string",
+            "required": null,
+            "description": "DE 43. Merchant State.     \nExample: California Allowable Values: 3"
+        },
+        {
+            "name": "merchantZipcode",
+            "type": "string",
+            "required": null,
+            "description": "DE 43. Merchant Zip Code.     \nExample: 24157 Allowable Values: 10"
+        },
+        {
+            "name": "merchantNameClean",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 40"
+        },
+        {
+            "name": "merchantCityClean",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 10"
+        },
+        {
+            "name": "merchantCleanConfidenceLevel",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 2"
+        },
+        {
+            "name": "cleanupReasonCode",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 6"
+        },
+        {
+            "name": "SettlementIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 1"
+        },
+        {
+            "name": "PointOfServiceConditionCode",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 2"
+        },
+        {
+            "name": "AcquirerReferenceData",
+            "type": "string",
+            "required": null,
+            "description": "DE 31 (Acquirer Reference Data) is data an acquirer supplies in an acquirer-originated message that may be required for an issuer to return to the acquirer in a subsequent message.     \nExample: 05299009269092700000105 Allowable Values: 99"
+        },
+        {
+            "name": "MessageNumber",
+            "type": "string",
+            "required": null,
+            "description": "DE 71 monitors the integrity and continuity of the files being exchanged. Allowable Values: 8"
+        },
+        {
+            "name": "NetworkReferenceNumber",
+            "type": "string",
+            "required": null,
+            "description": "DE 63, Subfield 2. Tag for future reference. Allowable Values: 9"
+        },
+        {
+            "name": "AuthorizingAgentIdCode",
+            "type": "string",
+            "required": null,
+            "description": "Authorizing Agent Institution Id Code. Allowable Values: 11"
+        },
+        {
+            "name": "TransacOriginatorInstIDCode",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 11"
+        },
+        {
+            "name": "MessageReasonCode",
+            "type": "string",
+            "required": null,
+            "description": "Message Reason Code.\nCondition: Will be available if present in request. Allowable Values: 4"
+        },
+        {
+            "name": "NetworkReferenceID",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 15"
+        },
+        {
+            "name": "ProcCode",
+            "type": "string",
+            "required": null,
+            "description": "Processing Code.\nExample: Refer Appendix. Allowable Values: 2"
+        },
+        {
+            "name": "ProcCodeFrom",
+            "type": "string",
+            "required": null,
+            "description": "Proc Code From Allowable Values: 2"
+        },
+        {
+            "name": "ProcCodeTo",
+            "type": "string",
+            "required": null,
+            "description": "Proc Code To Allowable Values: 2"
+        },
+        {
+            "name": "PosTransactionStatusIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 2"
+        },
+        {
+            "name": "TransactionSourceAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Tag for future reference."
+        },
+        {
+            "name": "RewardInfo",
+            "type": "",
+            "required": null,
+            "description": "RewardInfo"
+        },
+        {
+            "name": "AdditionalAmounts",
+            "type": "array",
+            "required": null,
+            "description": "Array Data element to  hold Additional Amount."
+        },
+        {
+            "name": "TicketAndTransportDetail",
+            "type": "array",
+            "required": null,
+            "description": "Array Data element to  hold Ticket And Transport Detail."
+        },
+        {
+            "name": "VehicleRentalDetail",
+            "type": "",
+            "required": null,
+            "description": "VehicleRentalDetail."
+        },
+        {
+            "name": "LodgingSummary",
+            "type": "",
+            "required": null,
+            "description": "LodgingSummary."
+        },
+        {
+            "name": "TemporaryServices",
+            "type": "",
+            "required": null,
+            "description": "TemporaryServices."
+        },
+        {
+            "name": "ShippingCourierServices",
+            "type": "",
+            "required": null,
+            "description": "ShippingCourierServices"
+        },
+        {
+            "name": "PaymentTransactionDetail",
+            "type": "",
+            "required": null,
+            "description": "PaymentTransactionDetail"
+        },
+        {
+            "name": "TelephonyBillingSummary",
+            "type": "",
+            "required": null,
+            "description": "TelephonyBillingSummary"
+        },
+        {
+            "name": "TelephonyBillingDetail",
+            "type": "",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "TravelAgencyDetail",
+            "type": "",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "LodgedAccountDetail",
+            "type": "",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "ElectronicInvoiceTransactionData",
+            "type": "",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "ElectronicInvoicePartyInformation",
+            "type": "",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "CorporateCardCommonDataRequirements",
+            "type": "",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "CorporateFleetTransactionInformation",
+            "type": "",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "CorporateLineItemDetail",
+            "type": "",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "GenericDetail",
+            "type": "",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "Healthcare",
+            "type": "",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "PlanInfo",
+            "type": "",
+            "required": null,
+            "description": ""
+        },
+        {
+            "name": "User",
+            "type": "string",
+            "required": null,
+            "description": "User Name\nFormat: xxxxx\nExample: System Allowable Values: 40"
+        },
+        {
+            "name": "DateandTime",
+            "type": "datetime",
+            "required": null,
+            "description": "Date and time.\nFormat: YYYY-MM-DD hh:nn:ss ET\nExample: 2017-01-16 21:26:15 Allowable Values: 25"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source Name\nValid Values: MSMQ/Clearing Allowable Values: 20"
+        },
+        {
+            "name": "ServiceName",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 40"
+        },
+        {
+            "name": "CardValidationCodeResult",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 1"
+        },
+        {
+            "name": "TransactionDestinationInstitutionIDCode",
+            "type": "integer",
+            "required": null,
+            "description": "DE 32 Acquiring Institution ID Code."
+        },
+        {
+            "name": "CurrencyConversionAssessmentAmount",
+            "type": "string",
+            "required": null,
+            "description": "DE 111 (Amount, Currency Conversion Assessment) is the amount based on the result of applying the multi-currency conversion rate (Currency Conversion Assessment) adjustment to the currency conversion rate used to convert DE 4 (Amount, Transaction) to DE 6 (Amount, Cardholder Billing) for qualified transactions. \nValid Values:All currency amounts are expressed in the minor unit of currency without a decimal separator in accordance with ISO standards for currency notation.\nExample: a cardholder billing amount of USD 212.50 is expressed as 000000021250. Allowable Values: 6"
+        },
+        {
+            "name": "TransactionOriginatorInstitutionIDCode",
+            "type": "string",
+            "required": null,
+            "description": "DE 33 Acquiring Institution ID Code Allowable Values: 11"
+        },
+        {
+            "name": "ServiceCode",
+            "type": "string",
+            "required": null,
+            "description": "DE 40 (Service Code) provides codes that increase issuers' flexibility in defining card acceptance parameters. Allowable Values: 3"
+        },
+        {
+            "name": "Devicetype",
+            "type": "string",
+            "required": null,
+            "description": "PDS 0198 (Device Type) provides information about the form factor of the cardholder device used to initiate a transaction.\nValid Values: 00 = Card, 01 = Mobile Phone, 02 = Key Fob, 03 = Watch using contactless chip, 04 = Mobile Tag, 05 = Wristband Allowable Values: 2"
+        },
+        {
+            "name": "NewOTB",
+            "type": "decimal",
+            "required": null,
+            "description": "OTB after Transaction posting.\nExample: 100.00000\nCondition: Will be available if present in request."
+        },
+        {
+            "name": "CardCycleGroupIdentifier",
+            "type": "integer",
+            "required": null,
+            "description": "Card Cycle Group Identifier\nExample: 1510"
+        },
+        {
+            "name": "AccountUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Account Universal Unique ID\nExample: 8638-b87b-48d0-8e13-0ebb5643577\nCondition: Will be available if present in request. Allowable Values: 64"
+        },
+        {
+            "name": "CardUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Card Universal Unique ID\nExample: 8638-b87b-48d0-8e13-0ebb5643577\nCondition: Will be available if present in request. Allowable Values: 64"
+        },
+        {
+            "name": "TransactionUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Transaction Universal Unique ID\nExample: 8638-b87b-48d0-8e13-0ebb5643577 Allowable Values: 64"
+        },
+        {
+            "name": "LoyaltyTransactionUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Universal Unique ID for a Loyalty Transaction Allowable Values: 64"
+        },
+        {
+            "name": "TransactionLifeCycleUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Transaction LifeCycle Universal Unique ID\nFormat: xxxxxxxxxxxxxxxxxxx\nExample: 8638-b87b-48d0-8e13-0ebb5643577\nCondition: Will be available if present in request. Allowable Values: 64"
+        },
+        {
+            "name": "MerchantName",
+            "type": "string",
+            "required": null,
+            "description": "Name of Merchant\nExample: Midwest Emporium Allowable Values: 22"
+        },
+        {
+            "name": "MerchantStreetAddress",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Street Address\nExample: 1234 Main Street Allowable Values: 48"
+        },
+        {
+            "name": "MerchantCountryCode",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Country Code\nExample: USA Allowable Values: 3"
+        },
+        {
+            "name": "PlanType",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 5"
+        },
+        {
+            "name": "CurrentBalance",
+            "type": "decimal",
+            "required": null,
+            "description": "Current Balance for Retail Auth product.\nExample: 100.0000"
+        },
+        {
+            "name": "ClientId",
+            "type": "string",
+            "required": null,
+            "description": "Corecard's Client ID Allowable Values: 64"
+        },
+        {
+            "name": "RequestUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Universal Unique ID Request\nExample: 8638-b87b-48d0-8e13-0ebb5643577 Allowable Values: 64"
+        },
+        {
+            "name": "AlertType",
+            "type": "string",
+            "required": null,
+            "description": "Alert Type.\nValid Values: RealTime or ReTry\nExample: RealTime Allowable Values: 15"
+        },
+        {
+            "name": "CardCategory",
+            "type": "string",
+            "required": null,
+            "description": "Card category\nExample: Digital\nCondition: Will be available if present in request. Allowable Values: 10"
+        },
+        {
+            "name": "AuthTimestamp",
+            "type": "datetime",
+            "required": null,
+            "description": "Authorization Time stamp. (24 hour Format)\nFormat: MMDDYYYYhhmmss ET\nExample: 01162017210346\nCondition: Will be available if present in request. Allowable Values: 24"
+        },
+        {
+            "name": "TransactionType",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference."
+        },
+        {
+            "name": "FraudBlob",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference."
+        },
+        {
+            "name": "TransactionSource",
+            "type": "string",
+            "required": null,
+            "description": "TransactionSource of transaction.\nValid Values: For retail :  \n29 - RetailManualAuth-Installment\n39 - RetailManualAuth-Revolver\nFor IPM\nIPM\nExample: IPM"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": null,
+            "description": "PDS 0593 (Party Postal Information) contains the city, state/province, country code, and postal code of the party identified on the invoice. Subfield 4 (Postal Code) contains the postal code of the party identified on the invoice.\n This subfield must be a fixed length of 015 and must be left-justified. \n It cannot contain all low values, all high values, all spaces, or all zeros. Allowable Values: 10"
+        },
+        {
+            "name": "DBIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Indicators for the type of transaction.\nValid Value: Credit(For all credit transactions), Debit(For all debit transactions)"
+        },
+        {
+            "name": "InstitutionId",
+            "type": "integer",
+            "required": null,
+            "description": "Insitution ID of the Account"
+        },
+        {
+            "name": "ProductId",
+            "type": "integer",
+            "required": null,
+            "description": "Product ID of Account"
+        },
+        {
+            "name": "IBFeeIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Interchange Rate Indicator Allowable Values: 2"
+        },
+        {
+            "name": "IBFeeAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Interchange Fee Amount"
+        },
+        {
+            "name": "AlertRecipientType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of reciepient to which alert need to be sent\nValid Values: 1 = Primary Applicant, 2 = Cosigner, 3 = BOTH"
+        },
+        {
+            "name": "MessageReversalIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "Indicates if it is a reversal. Possible values 0=No,1=Yes"
+        },
+        {
+            "name": "MultipleCompletionIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "Indicates if it is one of the multiple completions. Possible values 0=No,1=Yes"
+        },
+        {
+            "name": "CustomerExclusiveData_9F7C",
+            "type": "string",
+            "required": null,
+            "description": "Tag for future reference. Allowable Values: 99"
+        },
+        {
+            "name": "TransactionCode",
+            "type": "string",
+            "required": null,
+            "description": "Transaction Code\nExample: 24240"
+        }
+    ],
+    "response_fields": null,
+    "sample_request": {
+        "user_id": "TestUser",
+        "password": "TestPwd",
+        "request_id": 1123641234,
+        "admin_number": 641234,
+        "last4_card_number": "1234",
+        "transaction_amount": 18.11,
+        "post_time": null,
+        "local_tran_time": null,
+        "Transmission_Date_Time": "07/12/2021 06:27:08:08",
+        "local_currencycode": "USD",
+        "Local_Transaction_Amount": 18.0,
+        "Issuer_Currency_Code": "USD",
+        "Transaction_Time_Zone": null,
+        "Time_Zone_Country_Name": null,
+        "Time_Zone_Olson": null,
+        "Time_Zone_Details": null,
+        "Time_Zone_Value": null,
+        "OriginalTransactionAmount": 18.11,
+        "TransactionCurrencyCode": "USD",
+        "merchant_category_code": 5812,
+        "MerchantCategoryCodeDescription": "Eating Places,Restaurants",
+        "MerchantCity": "Bangalore",
+        "card_acceptor_id_code": "14CPM0000001784",
+        "card_acceptor_terminal_id": "CPM01784",
+        "cardacceptor_name_location": "CIT * Bundl technologiesBundl TechnologiesPvt Ltd,IBC Knowle Bangalore 560029 IND",
+        "card_entry_mode": "6",
+        "available_balance": null,
+        "mti": 220,
+        "stan": null,
+        "rrn": null,
+        "response_code": 0,
+        "AuthLifeCycleUniqueID": 28632099,
+        "CrossBorderIndicator": "Y",
+        "AuthExpirationDate": null,
+        "AmountAuthorized_9F02": 0.0,
+        "ApplicationCryptogram_9F26": null,
+        "ApplicationInterchangeProfile_82": null,
+        "cardSequenceTerminalNumber_5F34": null,
+        "ApplicationTransactionCounter_9F36": null,
+        "TerminalCountryCode_9F1A": null,
+        "TerminalVerificationResults_95": null,
+        "TransactionDate_9A": null,
+        "TransactionCurrencyCode_5F2A": null,
+        "TransactionType_9C": null,
+        "UnpredictabNumber_9F37": null,
+        "AmountOther_9F03": 0.0,
+        "ApplicationUsageControl_9F07": null,
+        "ApplicationVersionNumber_9F08": null,
+        "ApplicationVersionNumber_9F09": null,
+        "CardholderVerificationMethod_9F34": null,
+        "CryptogramInformationData_9F27": null,
+        "CustomerExclusiveData_9F7C": null,
+        "DedicatedFileName_84": null,
+        "FormFactorIndicator_9F6E": null,
+        "InterfaceDeviceSerialNumber_9F1E": null,
+        "IssuerApplicationData_9F10": null,
+        "IssuerScriptResults_9F5B": null,
+        "POSEntryMode_9F39": null,
+        "TerminalCapabilities_9F33": null,
+        "TerminalCapabilityFlag_FF20": null,
+        "TerminalType_9F35": null,
+        "Track2Data_57": null,
+        "TransactionSequenceCounter_9F41": null,
+        "AdditionalTerminalCapabilities_9F40": null,
+        "ApplicationIdentifier_4F": null,
+        "ApplicationIdentifierTerminal_9F06": null,
+        "ApplicationPreferredName_9F12": null,
+        "ApplicationLabel_50": null,
+        "ApplicationPriorityIndicator_87": null,
+        "ContactlessCapability_FF22": null,
+        "IssuerCountryCode_9F57": null,
+        "SoftwareVersions_FF21": null,
+        "TransactionCategoryCode_9F53": null,
+        "TransactionStatusInformation_9B": null,
+        "TransactionTime_9F21": null,
+        "AccountNumber": "9000000500081489",
+        "CustomerId": "361281",
+        "MCCCategoryCode": "Restaurants",
+        "POSCardholderPresenceInd": "5",
+        "PostingRef": "Transaction posted successfully",
+        "SettlementAmount": null,
+        "CardHolderBillingAmount": null,
+        "CardHolderBillingCurrencycode": null,
+        "ConversionRateCardholderBilling": 1.0,
+        "SettlementDate": null,
+        "ConversionDate": null,
+        "POSTerminalPANEntryMode": "0",
+        "POSTerminalPINEntryMode": null,
+        "merchantId": "14CPM0000001784",
+        "merchantRawName": null,
+        "MerchantState": null,
+        "MerchantZipcode": "560029",
+        "merchantNameClean": null,
+        "merchantCityClean": null,
+        "merchantCleanConfidenceLevel": null,
+        "cleanupReasonCode": null,
+        "SettlementIndicator": null,
+        "PointOfServiceConditionCode": null,
+        "AcquirerReferenceData": "75120331194000407781378",
+        "MessageNumber": null,
+        "NetworkReferenceNumber": null,
+        "AuthorizingAgentIdCode": null,
+        "TransacOriginatorInstIDCode": null,
+        "MessageReasonCode": null,
+        "NetworkReferenceID": null,
+        "ProcCode": "00",
+        "ProcCodeFrom": "00",
+        "ProcCodeTo": "00",
+        "PosTransactionStatusIndicator": null,
+        "TransactionSourceAmount": null,
+        "RewardInfo": {
+            "CoreIssueTranID": 1123641983.0,
+            "CoreAuthTranID": null,
+            "RewardTranID": 1124819528.0,
+            "TotalRewardAmt": 0.0,
+            "TotalRewardPoints": 0.0,
+            "CurrencyCode": "USD",
+            "RewardDetail": null
+        },
+        "AdditionalAmounts": null,
+        "TicketAndTransportDetail": null,
+        "VehicleRentalDetail": null,
+        "LodgingSummary": null,
+        "TemporaryServices": null,
+        "ShippingCourierServices": null,
+        "PaymentTransactionDetail": null,
+        "TelephonyBillingSummary": null,
+        "TelephonyBillingDetail": null,
+        "TravelAgencyDetail": null,
+        "LodgedAccountDetail": null,
+        "ElectronicInvoiceTransactionData": null,
+        "ElectronicInvoicePartyInformation": null,
+        "CorporateCardCommonDataRequirements": null,
+        "CorporateFleetTransactionInformation": null,
+        "CorporateLineItemDetail": null,
+        "GenericDetail": null,
+        "Healthcare": null,
+        "PlanInfo": {
+            "PlanId": null,
+            "PlanUUID": null,
+            "PlanType": null,
+            "OTBReleaseAmount": 0.0,
+            "OTBReleaseAllRemaining": null,
+            "OtbAmountHeld": 0.0,
+            "LastPaymentAmount": 0.0,
+            "TotalInterestPaid": 0.0,
+            "TotalAmount": 0.0,
+            "StartDate": null,
+            "DueDate": null,
+            "LoanEndDate": null,
+            "PaymentsToDateAmount": null,
+            "MonthlyPaymentAmount": null,
+            "Term": null,
+            "APR": null,
+            "ReverseRewards": null,
+            "ReverseMDR": null,
+            "OrderNumber": null,
+            "InvoiceNumber": null,
+            "PaidOffDate": null,
+            "RMADateTime": null,
+            "RMAGroupId": null,
+            "InstallmentsBalance": null,
+            "InstallmentsPendingPurchases": null,
+            "StatementRemainingBalanceWithInstallmentDue": null,
+            "PlanDescription": null,
+            "PerMonthPayment": null,
+            "FirstMonthPayment": null,
+            "LastMonthPayment": null,
+            "OrignalEndDate": null,
+            "RevisedTerm": null,
+            "Principal": null,
+            "TotalDue": null,
+            "LateFeesBNP": null,
+            "InterestBNP": null,
+            "RecoveryFeesBNP": null,
+            "InsufficientFundsFeesBNP": null,
+            "CollectionFeesBNP": null,
+            "InsuranceBNP": null,
+            "OverlimitFeesBNP": null,
+            "CycleDue": null,
+            "CurrentDue": null,
+            "PastDue": null,
+            "OneCyclePastDue": null,
+            "TwoCyclesPastDue": null,
+            "ThreeCyclesPastDue": null,
+            "FourCyclesPastDue": null,
+            "FiveCyclesPastDue": null,
+            "SixCyclesPastDue": null,
+            "SevenCyclesPastDue": null,
+            "Payments": null
+        },
+        "User": "System",
+        "DateandTime": null,
+        "Source": "Clearing",
+        "ServiceName": null,
+        "CardValidationCodeResult": null,
+        "TransactionDestinationInstitutionIDCode": 19363,
+        "CurrencyConversionAssessmentAmount": null,
+        "TransactionOriginatorInstitutionIDCode": null,
+        "ServiceCode": null,
+        "Devicetype": null,
+        "NewOTB": null,
+        "CardCycleGroupIdentifier": 0,
+        "AccountUniversalUniqueID": null,
+        "CardUniversalUniqueID": null,
+        "TransactionUniversalUniqueID": "7ac313ab - bdff - 4a34 - bd80 - 8546bc8dbb5d",
+        "LoyaltyTransactionUniversalUniqueID": "02d446bd - 203f - 4edd - bfad - ecb3fdb12019",
+        "TransactionLifeCycleUniqueID": "7ac313ab - bdff - 4a34 - bd80 - 8546bc8dbb5d",
+        "MerchantName": "CIT * Bundl technologies",
+        "MerchantStreetAddress": "Bundl TechnologiesPvt Ltd,IBC Knowle",
+        "MerchantCountryCode": "IND",
+        "PlanType": null,
+        "CurrentBalance": 1399.56,
+        "ClientId": null,
+        "RequestUniversalUniqueID": "2919be9d - d49b - 49e3 - bd76 - 14f8f8a61d3e",
+        "AlertType": "RealTime",
+        "CardCategory": null,
+        "AuthTimestamp": null,
+        "TransactionType": null,
+        "FraudBlob": null,
+        "TransactionSource": "IPM",
+        "TransactionCode": null,
+        "PostalCode": null,
+        "DBIndicator": null,
+        "InstitutionId": 5949,
+        "ProductId": 5907,
+        "IBFeeIndicator": "29",
+        "IBFeeAmount": 0.26,
+        "AlertRecipientType": 1,
+        "MessageReversalIndicator": null,
+        "MultipleCompletionIndicator": null
+    },
+    "sample_response": null,
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "webhook",
+        "section": "webhooks/credit",
+        "category": "Clearing Auth Integration",
+        "category_id": "3",
+        "document_id": "62",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/WEBHookPageApiDetail?id=62&type=ApiDetail&menuid=1&regionId=1"
+    }
+}

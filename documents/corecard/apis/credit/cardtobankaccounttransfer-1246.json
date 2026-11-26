@@ -1,0 +1,358 @@
+{
+    "metadata": {
+        "name": "CardToBankAccountTransfer",
+        "http_method": "POST",
+        "endpoint": "/api/CardToBankAccountTransfer",
+        "description": "Use this API to transfer funds from card account to external bank Account only when the status of bank account and card is active. A valid card number and transaction amount should be provided as input for a successful transfer."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "string",
+            "required": true,
+            "description": "Used for performing various operations when respective flag values defined below are passed. 1 = To Get Recipient ID, Recipient Name and Nick Name etc. 2 = Fund Transfer from Card to Bank. 3 = Adding a new Recipient Bank Account. 4 = Fund Transfer from Card to Bank by given Recipient Bank Account information. 5 = Delete Recipient Bank Account information. 6 = Get Recipient Bank Account information. 7 = Update Recipient Bank Account information. 8 = Set Recipient Bank Account Active/Inactive. Allowable Values: 2"
+        },
+        {
+            "name": "TransferType",
+            "type": "string",
+            "required": true,
+            "description": "Type of  money transfer. Valid values: 0 = Card To Bank 1 = Bank To Card Example: 0 Condition :0 (Card To Bank) is applicable for  decision flags 1,2,3,4,5,6,7 and 8. 1 (Bank To Card) is applicable for  decision flags 1,3,5 and 7 only. Allowable Values: 1"
+        },
+        {
+            "name": "FromCardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder from where a transaction is initiated. Valid values: 0-9 Example: 123456******0001 Condition : At least one of  From Card Number/ From Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "FromProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder from where a transaction is initiated Valid values:0-9 Example:1005 Condition : At least one of  From Card Number/ From Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "RecipientId",
+            "type": "Int64",
+            "required": null,
+            "description": "UniqueID of Recipient. Valid Values:0-9 Example:1234567890 Condition: It is Mandatory when DecisionFlag = 2,5,6,7 and 8"
+        },
+        {
+            "name": "RecipientName",
+            "type": "string",
+            "required": null,
+            "description": "First Name of Recipient. Valid Values:- A-Z,a-z , special characters ( '- .,) and Ampersand Example: Andrick Condition: It is mandatory for below scenario: DecisionFlag = 3 and TransferType = 1 or 0, DecisionFlag = 4 and TransferType = 0 Allowable Values: 50"
+        },
+        {
+            "name": "AccountNickName",
+            "type": "string",
+            "required": null,
+            "description": "Nick name of the account Valid Values:- A-Z,a-z , special characters ( '- .,) and Ampersand Example: Sem Condition: It is mandatory when DecisionFlag = 3 and 4. Allowable Values: 50"
+        },
+        {
+            "name": "TranactionAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Transaction Amount Valid Values: 0-9 Example:100.11 Condition:It is Mandatory when DecisionFlag = 2 and 4."
+        },
+        {
+            "name": "AccountType",
+            "type": "string",
+            "required": null,
+            "description": "Type of account. Valid Values: 0 = Checking 1 = Savings Example:0 Condition: It is Mandatory when DecisionFlag =3 and 4. Allowable Values: 9"
+        },
+        {
+            "name": "ConfirmBankAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Re-enter Cardholder's Bank Account Number for confirmation Valid Values:0-9 Example: 1122345678 Condition: It is Mandatory when DecisionFlag =3,4 and 7 Allowable Values: 17"
+        },
+        {
+            "name": "BankAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder's Bank Account Number Valid Values:0-9 Example: 1122345678 Condition: It is Mandatory when DecisionFlag =3,4 and 7 Allowable Values: 17"
+        },
+        {
+            "name": "RoutingNumber",
+            "type": "string",
+            "required": null,
+            "description": "Bank Routing Number Valid Values:0-9 Example:0110000015 Condition: It is Mandatory when DecisionFlag = 3,4 and 7 Allowable Values: 9"
+        },
+        {
+            "name": "ReasonDescription",
+            "type": "string",
+            "required": false,
+            "description": "Flag for PreDefined Memo Reasons. Please refer appendix Section : Memo Reason Allowable Values: 50"
+        },
+        {
+            "name": "Note",
+            "type": "string",
+            "required": false,
+            "description": "Notes entered by the user Valid Values : A-Z,0-9 Example : Card found Allowable Values: 396"
+        },
+        {
+            "name": "BankStatus",
+            "type": "string",
+            "required": null,
+            "description": "Status of  Bank Account. Valid Values  :1 = Active 0 = Inactive Example : 1 Condition: It is mandatory for Decision Flag = 8. Allowable Values: 1"
+        },
+        {
+            "name": "ExternalBankStatus",
+            "type": "string",
+            "required": null,
+            "description": "External Bank Account Status. Valid Values: 0-7 Example:1 (Validated) Appendix Section:ExternalBankStatus Condition: It is Mandatory when DecisionFlag = 7 or 3 Allowable Values: 2"
+        },
+        {
+            "name": "SameDayACHType",
+            "type": "string",
+            "required": false,
+            "description": "For sending transaction in Same Day ACH file, use this field. Valid values: SD1300 or SD1700 Example: SD1300 Allowable Values: 6"
+        },
+        {
+            "name": "FromWalletID",
+            "type": "Int32",
+            "required": null,
+            "description": "Wallet ID of wallet mapped on account Valid values: 0-9 Example: 1005 Condition: Mandatory when card product structure is multi wallet. Allowable Values: 10"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Transaction Amount Valid Values: 0-9 Example:100.11 Condition:It is Mandatory when DecisionFlag = 2 and 4."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "TransactionId",
+                    "type": "Int64",
+                    "required": null,
+                    "description": "Transaction ID of Debit Transaction on Source Card.",
+                    "children": []
+                },
+                {
+                    "name": "BankAccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder's Bank Account Number Valid Values:0-9 Example: 1122345678 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "AccountType",
+                    "type": "string",
+                    "required": null,
+                    "description": "Type of account. Valid Values: 0 =Checking 1 =Savings Example:0 Allowable Values: 3",
+                    "children": []
+                },
+                {
+                    "name": "RoutingNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Bank Routing Number Valid Values:0-9 Example:0110000015 Allowable Values: 9",
+                    "children": []
+                },
+                {
+                    "name": "FinancialInstituteName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name of Financial Institution Valid Values:A-Z,a-z Example:FEDERAL RESERVE BANK Allowable Values: 200",
+                    "children": []
+                },
+                {
+                    "name": "RecipientName",
+                    "type": "string",
+                    "required": null,
+                    "description": "First Name of Recipient. Valid Values:A-Z,a-z. Example: Andrick Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "RecipientNameId",
+                    "type": "array",
+                    "required": null,
+                    "description": "List of Recipient Name Id.",
+                    "children": [
+                        {
+                            "name": "RecipientId",
+                            "type": "Int64",
+                            "required": null,
+                            "description": "UniqueID of Recipient. Valid Values:0-9 Example:1234567890",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNickName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Nick name of the account Valid Values:A-Z,a-z Example: Sem Allowable Values: 0",
+                            "children": []
+                        },
+                        {
+                            "name": "RecipientName",
+                            "type": "string",
+                            "required": null,
+                            "description": "First Name of Recipient. Valid Values:A-Z,a-z. Example: Andrick Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AddedBankStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of Bank Account. Valid values: 1 = Active 0 = Inactive Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "TransferType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of  money transfer. Valid values: 0 = Card To Bank 1 = Bank To Card Example: 0 Allowable Values: 5",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.5",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "DecisionFlag": "1",
+        "TransferType": "0",
+        "FromCardNumber": "",
+        "FromProxyNumber": "1316605",
+        "FromWalletID": 1001,
+        "RecipientId": 176270,
+        "RecipientName": "Harshal",
+        "AccountNickName": "",
+        "TransactionAmount": 20.0,
+        "AccountType": "1",
+        "ConfirmBankAccountNumber": "60000000027166",
+        "BankAccountNumber": "60000000027166",
+        "RoutingNumber": "061120835",
+        "ReasonDescription": "",
+        "Note": "",
+        "BankStatus": "1",
+        "ExternalBankStatus": "",
+        "SameDayACHType": "SD1700"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "TransactionId": 2154696549,
+            "BankAccountNumber": "60000000027166",
+            "AccountType": "1",
+            "RoutingNumber": "061120835",
+            "FinancialInstituteName": "FIRST COVENANT BANK",
+            "RecipientName": "Harshal",
+            "RecipientNameId": [
+                {
+                    "RecipientId": 175937,
+                    "AccountNickName": "Harsh",
+                    "RecipientName": "Harshal",
+                    "AddedBankStatus": "",
+                    "TransferType": "1"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Card to Bank Transfer",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1246&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1027"
+    }
+}

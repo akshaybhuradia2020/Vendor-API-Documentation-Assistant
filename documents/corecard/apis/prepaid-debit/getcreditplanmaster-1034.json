@@ -1,0 +1,422 @@
+{
+    "metadata": {
+        "name": "GetCreditPlanMaster",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/GetCreditPlanMaster",
+        "description": "This API shall be used to get the credit plan master list and its details."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "PlanMasterID",
+            "type": "integer",
+            "required": true,
+            "description": "Code associated with the Credit plan.. Valid Values: Code shared by the Corecard. Example: 601"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique number of merchant account Valid Values:0-9 Format:XXXXX Example:12345"
+        },
+        {
+            "name": "ParentCreditPlanMasterID",
+            "type": "integer",
+            "required": false,
+            "description": "Code associated with the parent Credit plan. Valid Values: Code shared by the Corecard. Example: 601"
+        },
+        {
+            "name": "ProductType",
+            "type": "integer",
+            "required": false,
+            "description": "a description of the type of card being processed. Valid Values: Code shared by the Corecard. Example: 601"
+        },
+        {
+            "name": "MonetaryTransactionControlGroup",
+            "type": "integer",
+            "required": false,
+            "description": "Group of transaction code's applicable for the Plan. Valid Values:Corecard will share the value. Example: 2332"
+        },
+        {
+            "name": "PrimaryCurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "3 digit Code assiciated with the Currency Valid Values: Refer' Primary Currency Code' section of Appendix Format: XXX Example: 840 Allowable Values: 3"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "creditPlanMasterDetails",
+                    "type": "",
+                    "required": null,
+                    "description": "creditPlanMasterDetails",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "PlanMasterID": 6053,
+        "MerchantID": 11607,
+        "ParentCreditPlanMasterID": null,
+        "ProductType": null,
+        "MonetaryTransactionControlGroup": null,
+        "PrimaryCurrencyCode": ""
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "CreditPlanMasterDetails": {
+                "PlanMasterID": 6053,
+                "PlanMasterDescription": "12 Months No Interest if Paid in Full",
+                "PrimaryCurrencyCode": "US Dollar",
+                "ParentCreditPlanMasterID": "Template Record",
+                "MerchantID": 11607,
+                "ProductType": "Bankcard",
+                "MonetaryTransactionControlGroup": 78,
+                "MerchantRateTableName": "Template Record",
+                "GeneralControlsList": {
+                    "PlanType": 0,
+                    "SingleAuthorizationMinimum": 200.0,
+                    "SingleAuthorizationMaximum": 25000.0,
+                    "MultipleSales": 1,
+                    "PreviousCycleGrace": "0",
+                    "GraceDaysApplication": 3,
+                    "NumOfGraceDays": null,
+                    "InterestOnGraceReactivation": 1,
+                    "InterestPlanOccurrence": 2,
+                    "InterestPlanOverride": null,
+                    "IntPlanOverridePeriod": null,
+                    "CardScheme": "0",
+                    "PreAuthAndAuthVarience": null,
+                    "PreAuthAging": null,
+                    "PreAuthAgingTimeFrame": null,
+                    "PreAuthAgingApproved": null,
+                    "PreAuthAgingDeclined": null,
+                    "AuthAgingEntry": null,
+                    "AuthAgingTimeFrame": null,
+                    "AuthAgingApproved": null,
+                    "AuthAgingDeclined": null,
+                    "PlanStructure": 1,
+                    "HighInterestRate": null,
+                    "LowInterestRate": 29.99,
+                    "CustomerRecieptInformationText": "No Interest if Paid in Full Within <Term> Months. Beginning with 1st transaction, <Term> month promo period with payments of <Required Minimum Percent> of the transaction amount.  Interest charged to account is waived if entire purchase balance is paid before end of promo period. Making initial minimum required payments will not pay off loan. <HighBalance> APR fixed for life of loan.",
+                    "MCCPlan": "",
+                    "MCCAccountNumber": "",
+                    "TrancodeGroup": null,
+                    "TranCodeGroupMCCAccountNumber": "",
+                    "CatalogCode": null,
+                    "ActivityRecapChannel1": 0,
+                    "ActivityRecapChannel2": 0,
+                    "ActivityRecapChannel3": 0,
+                    "ActivityRecapChannel4": 0
+                },
+                "PaymentControls": {
+                    "PaymentControllingPlan": 0,
+                    "PaymentType": 8,
+                    "FixedPaymentAmt": null,
+                    "FixedPaymentPercent": 3.25,
+                    "MinPaymentType": 2,
+                    "MinPaymentPercent": 3.15,
+                    "MinPaymentAmount": 0.0,
+                    "EqualPayments": null,
+                    "AnnuityPaymentMethod": null
+                },
+                "AddOnToEqualPayments": {
+                    "GeneratePaymentRequest": null,
+                    "Interest": null,
+                    "TransactionFees": null,
+                    "AnnualFees": null,
+                    "LateFees": null,
+                    "InsufficientFundsFees": null,
+                    "CollectionFees": null,
+                    "Insurance": null,
+                    "OverLimitFees": null,
+                    "RecoveryFees": null
+                },
+                "PaymentPriority": 1,
+                "OverPaymentPriority": 1,
+                "UnderPaymentPriority": 1,
+                "LastPaymentVariance": {
+                    "LastPaymentVarianceType": null,
+                    "LastPaymentVarianceAmount": null,
+                    "LastPaymentVariancePercentage": null
+                },
+                "PaymentMatrix": {
+                    "PaymentMethod1": 0,
+                    "PlanBalance1": null,
+                    "PaymentAmount1": null,
+                    "PlanPercentage1": null,
+                    "PaymentMethod2": 0,
+                    "PlanBalance2": null,
+                    "PaymentAmount2": null,
+                    "PlanPercentage2": null,
+                    "PaymentMethod3": 0,
+                    "PlanBalance3": null,
+                    "PaymentAmount3": null,
+                    "PlanPercentage3": null,
+                    "PaymentMethod4": 0,
+                    "PlanBalance4": null,
+                    "PaymentAmount4": null,
+                    "PlanPercentage4": null,
+                    "PaymentMethod5": 0,
+                    "PlanBalance5": null,
+                    "PaymentAmount5": null,
+                    "PlanPercentage5": null,
+                    "PaymentMethod6": 0,
+                    "PlanBalance6": null,
+                    "PaymentAmount6": null,
+                    "PlanPercentage6": null,
+                    "PaymentMethod7": 0,
+                    "PlanBalance7": null,
+                    "PaymentAmount7": null,
+                    "PlanPercentage7": null,
+                    "PaymentMethod8": 0,
+                    "PlanBalance8": null,
+                    "PaymentAmount8": null,
+                    "PlanPercentage8": null,
+                    "PaymentMethod9": 0,
+                    "PlanBalance9": null,
+                    "PaymentAmount9": null,
+                    "PlanPercentage9": null,
+                    "PaymentMethod10": 0,
+                    "PlanBalance10": null,
+                    "PaymentAmount10": null,
+                    "PlanPercentage10": null,
+                    "PlanBalance11": null,
+                    "PaymentAmount11": null,
+                    "PlanPercentage11": null,
+                    "PaymentMethod11": null,
+                    "PaymentMethod12": null,
+                    "PlanBalance12": null,
+                    "PaymentAmount12": null,
+                    "PlanPercentage12": null,
+                    "PaymentMethod13": null,
+                    "PlanBalance13": null,
+                    "PaymentAmount13": null,
+                    "PlanPercentage13": null,
+                    "PaymentMethod14": null,
+                    "PlanBalance14": null,
+                    "PaymentAmount14": null,
+                    "PlanPercentage14": null,
+                    "PaymentMethod15": null,
+                    "PlanBalance15": null,
+                    "PaymentAmount15": null,
+                    "PlanPercentage15": null,
+                    "PaymentMethod16": null,
+                    "PlanBalance16": null,
+                    "PaymentAmount16": null,
+                    "PlanPercentage16": null,
+                    "PaymentMethod17": null,
+                    "PlanBalance17": null,
+                    "PaymentAmount17": null,
+                    "PlanPercentage17": null,
+                    "PaymentMethod18": null,
+                    "PlanBalance18": null,
+                    "PaymentAmount18": null,
+                    "PlanPercentage18": null,
+                    "PaymentMethod19": null,
+                    "PlanBalance19": null,
+                    "PaymentAmount19": null,
+                    "PlanPercentage19": null,
+                    "PaymentMethod20": null,
+                    "PaymentAmount20": null,
+                    "PlanBalance20": null,
+                    "PlanPercentage20": null
+                },
+                "DeferredInterestOptions": {
+                    "InterestDeferPeriod": 0,
+                    "DeferInterestNumberofCycles": 13,
+                    "DeferInterestNumberofDays": null,
+                    "DeferInterestExpDate": null,
+                    "InterestDisposition": 0,
+                    "MonetaryTransactionControlGroupName": "abc MTCG",
+                    "DeferredExpiredInterestBillingTranCode": 27078,
+                    "DeferredCancelledInterestBillingTranCode": 27078,
+                    "RollOverReq": 1,
+                    "RollCPMDays": null,
+                    "RollInterestBNPintoPrincipal": 0
+                },
+                "DefermentCancellationOptions": {
+                    "DefermentCancelType": "",
+                    "DefermentCancelLevel": "",
+                    "DefermentCancelMethod": null
+                },
+                "DeferredPaymentOptions": {
+                    "PaymentDefermentPeriod": null,
+                    "DeferPaymentNumberofCycles": null,
+                    "DeferPaymentNumberofDays": null,
+                    "DeferPaymentExpirationDate": null
+                },
+                "PenaltyPricing": {
+                    "PenaltyPricingInterestPlanOccurrence": null,
+                    "PenaltyPricingLetter": null,
+                    "PenaltyPricingEmail": null,
+                    "PenaltyPricingSMS": null,
+                    "PenaltyPricingApplyAmount": "Current Balance"
+                },
+                "PenaltyPricingMethods": {
+                    "Option1PenaltyPricingWhenCycleLevelPastDue": null,
+                    "Option2PenaltyPricingWhenCycleLevelPastDue": null,
+                    "ForConsecutiveCycles": null
+                },
+                "PenaltyPricingCure": {
+                    "WhenCycleLevelPastDue": null,
+                    "DynamicRuleGroupArrayForMethod": null,
+                    "PenaltyPricingCureForConsecutiveCycles": null,
+                    "DynamicRuleGroupArrayForCure": null
+                },
+                "PromotionalControls": {
+                    "PromoPlanType": null,
+                    "PromoPlanOfferCode": null,
+                    "PlanOfferCheckCode": null,
+                    "PromoPurchaseTxnCategory": null,
+                    "PromoPurchaseTxnAmount": null
+                },
+                "PromotionalRateDurationSettings": {
+                    "PromoIntRatePlan": null,
+                    "PromoRateStartOn": null,
+                    "PromoStartDate": null,
+                    "PromoRateEndDate": null,
+                    "PromoRateDuration": null,
+                    "PromoEndTiming": null,
+                    "PromoEndMsg": null
+                },
+                "PromoTxnWindowSettings": {
+                    "PromoTxnWindow": null,
+                    "PromoTxnPeriodWindowStartOn": null,
+                    "PromoTxnPeriodStartDate": null,
+                    "PromoTxnPeriodEndDate": null,
+                    "PromoTxnPeriodDuration": null
+                },
+                "PromotionalTurnOffSettings": {
+                    "PromoDelinqDaysTurnOff": null,
+                    "PromoDelinqTurnOffNotification": null,
+                    "PromoDelinqTurnOffMsg": null
+                },
+                "PromotionalEndInterestRateSettings": {
+                    "RolloverBalancePlan": null,
+                    "DefaultBalancePlan": null
+                }
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Control Parameters",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1034&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005"
+    }
+}

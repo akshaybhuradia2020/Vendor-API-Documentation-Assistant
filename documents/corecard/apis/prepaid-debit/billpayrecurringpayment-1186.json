@@ -1,0 +1,258 @@
+{
+    "metadata": {
+        "name": "BillPayRecurringPayment",
+        "http_method": "POST",
+        "endpoint": "/api/BillPayRecurringPayment",
+        "description": "Use this API to schedule a recurring payment for a Payee."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "SubscriberID",
+            "type": "Int64",
+            "required": true,
+            "description": "This is the Service Provider's (iPay Solutions) identifier  for the Cardholder User. Example : 12345678"
+        },
+        {
+            "name": "PayeeId",
+            "type": "Int64",
+            "required": true,
+            "description": "This is the Payee identifier associated with the Payee or Transfer account for the Bill Pay Services API. Valid Values: 0-9 Example: 20"
+        },
+        {
+            "name": "PaymentFrequencyType",
+            "type": "string",
+            "required": true,
+            "description": "This is the payment frequency for the recurring payment or recurring Transfer series at the time the payment/Transfer was processed. Valid Values: i)   Weekly - Weekly ii)  TwiceMonthly - Twice Monthly iii) Monthly - Monthly iv)  Every3Months - Quarterly v)   Every6Months - Half Yearly vi)  Annual - Annually Example: Weekly, TwiceMonthly, Every3Months, Every6Months, Annual Allowable Values: 50"
+        },
+        {
+            "name": "PaymentDayOfWeek",
+            "type": "string",
+            "required": null,
+            "description": "This is the specified day of the week when recurring payments or Transfers will be made if the specified payment frequency is: ‘Weekly’. Valid values: Mon,Tues,Wed,Thur, Fri Example: Wed Condition: This shall be the mandatory field when PaymentFrequencyType=Weekly. Allowable Values: 20"
+        },
+        {
+            "name": "PaymentDayofMonth",
+            "type": "Int32",
+            "required": null,
+            "description": "This is the day of the month when the recurring payment or Transfer will be made .The Value 'LastBusinessDay' shall not be applicable when PaymentFrequencyType is set as TwiceMonthly. Valid Values: 1 - 31 Example: 15 Condition: i: The Value 'LastBusinessDay' shall not be applicable when PaymentFrequencyType is set as TwiceMonthly. ii: This shall be the mandatory field when PaymentFrequencyType = MOnthly, TwiceMonthly ,Every3Months."
+        },
+        {
+            "name": "PaymentDayofMonthTo",
+            "type": "Int32",
+            "required": null,
+            "description": "This is the second day of the month when the recurring payment or Transfer will be made. Valid Values: 1 - 31. Example: 28 Condition: i.This shall be the mandatory field and will be applicable only when PaymentFrequencyType is set as TwiceMonthly. ii.This day value should be greater than 6 days with the day set in DayoftheMonth tag."
+        },
+        {
+            "name": "PaymentUseLastBusDay",
+            "type": "boolean",
+            "required": null,
+            "description": "This is the payment or Transfer should be made on the last business day of the month. Valid Values:true,False. Example:true,False. Condition: This value can be set when the PaymentFrequencyType=TwiceMonthly, Monthly, Every3Months,Every6Months, Annual."
+        },
+        {
+            "name": "PaymentUseLastBusDayTo",
+            "type": "boolean",
+            "required": null,
+            "description": "This indicates that the payment or Transfer should be made on the last business day of the month. Valid Values: true, False. Example: true, False. Condition: This value can be set when the PaymentFrequencyType=TwiceMonthly."
+        },
+        {
+            "name": "PaymentInstruction",
+            "type": "string",
+            "required": false,
+            "description": "This is the payment date instruction when a recurring payment or Transfer date falls on a non-processing date (such as a weekend or holiday). Valid Values: Before, After. Example: Before, After. Allowable Values: 20"
+        },
+        {
+            "name": "PaymentOccurance",
+            "type": "Int32",
+            "required": false,
+            "description": "This is the number of remaining payment or Transfer occurrences for the recurring payment or recurring Transfer series at the time the specified payment or Transfer was processed. Valid Values: 1-9999. Example: 20"
+        },
+        {
+            "name": "PaymentSeriesExpireDate",
+            "type": "datetime",
+            "required": null,
+            "description": "This is the expiration date for the recurring payment or Transfer series. Valid Values: 2015-12-11T00:00:00 Format : YYYY-MM-DDTHH:mm:ss Example :2015-12-11T00:00:00 Condition: This field is mandatory when the PaymentSeriesFinite is set as True."
+        },
+        {
+            "name": "PaymentSeriesFinite",
+            "type": "boolean",
+            "required": false,
+            "description": "This is the payment or Transfer series is finite or 'has no end'. Valid Values: true, false(default) Example: true, false."
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": true,
+            "description": "This is the Transaction Amount of the final payment on a loan, which may often differ from the other payment installments on the loan. Example:  10.25."
+        },
+        {
+            "name": "PaymentProcessDate",
+            "type": "datetime",
+            "required": false,
+            "description": "This is the starting date for processing a new recurring payment. Format: YYYY-MM-DDTHH:mm:ss Example: 2015-12-11T00:00:00"
+        },
+        {
+            "name": "PaymentDate",
+            "type": "datetime",
+            "required": true,
+            "description": "This is the starting estimated arrival date (i.e., due date/Payment Date) for a new recurring payment. Format: YYYY-MM-DDTHH:mm:ss Example: 2015-12-11T00:00:00"
+        },
+        {
+            "name": "Memo",
+            "type": "string",
+            "required": false,
+            "description": "This is the memo to be added to a check associated with a check payment. Allowable Values: 25"
+        },
+        {
+            "name": "PaymentComment",
+            "type": "string",
+            "required": false,
+            "description": "This is the comment that will be stored with the payment. Allowable Values: 300"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "PaymentId",
+                    "type": "Int64",
+                    "required": null,
+                    "description": "This is the payment ID which is generated by Bill Payment Services. Valid Values:0-9 Example: 120 Note : PaymentID will be generated for only recurring payments.",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "SubscriberID": 1468203805,
+        "PayeeId": 1,
+        "PaymentFrequencyType": "Monthly",
+        "PaymentDayOfWeek": "",
+        "PaymentDayofMonth": 5,
+        "PaymentDayofMonthTo": 10,
+        "PaymentUseLastBusDay": true,
+        "PaymentUseLastBusDayTo": true,
+        "PaymentInstruction": "After",
+        "PaymentOccurance": 1,
+        "PaymentSeriesExpireDate": "2022-03-30T00:00:00",
+        "PaymentSeriesFinite": true,
+        "TransactionAmount": 20.01,
+        "PaymentProcessDate": "2022-03-14T00:00:00",
+        "PaymentDate": "2022-03-16T00:00:00",
+        "Memo": "monthly payment",
+        "PaymentComment": "abcd"
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "",
+        "ResponseData": {
+            "PaymentId": 2
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "BillPay",
+        "category_id": "1039",
+        "document_id": "1186",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1186&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1039&regionId=1"
+    }
+}

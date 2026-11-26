@@ -1,0 +1,255 @@
+{
+    "metadata": {
+        "name": "DisputeResolution",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Dispute/DisputeResolution",
+        "description": "The purpose of this API is to resolve the transaction dispute."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card Holder's Account number. Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 8000000000000037 Allowable Values: 19"
+        },
+        {
+            "name": "TransactionID",
+            "type": "int64",
+            "required": false,
+            "description": "Transaction Number for transaction being posted. Valid Values: 0-9 Example: 23654789"
+        },
+        {
+            "name": "DisputeAction",
+            "type": "integer",
+            "required": true,
+            "description": "Action to be performed on Dispute Transaction. Valid Values: All dispute Actions mentioned in the appendix section 'Dispute Actions’ Except 0 and 9 Example: 2 - Resolve in favor of Cardholder"
+        },
+        {
+            "name": "DisputeReason",
+            "type": "string",
+            "required": true,
+            "description": "Reason through which Dispute resolution needs to take place. Valid Values: Please refer appendix section 'Dispute Reason'. Example: 7 - Duplicate Processing"
+        },
+        {
+            "name": "DisputeResolveAmount",
+            "type": "decimal",
+            "required": true,
+            "description": "Amount  for which Dispute need to resolve. Valid Values: 0-9 Format: XX.XX Example: 10.50"
+        },
+        {
+            "name": "MemoReason",
+            "type": "string",
+            "required": false,
+            "description": "Reason of Memo Text. Valid Values: 0-9, A-Z Example: Disputed Transaction Allowable Values: 50"
+        },
+        {
+            "name": "MemoText",
+            "type": "string",
+            "required": false,
+            "description": "Text of the Memo. Valid Values:0-9, a-z, special characters Format: XXXXXXXXXXXXXX Example: New Transaction posted. Allowable Values: 1800"
+        },
+        {
+            "name": "CaseID",
+            "type": "int64",
+            "required": false,
+            "description": "Case which is generated against the Dispute request. Valid Values: 0-9 Format: XXXXXXX Example:9856198"
+        },
+        {
+            "name": "ChargebackMemo",
+            "type": "string",
+            "required": false,
+            "description": "Note which is to be sent to Association Valid Values: 0-9,A-Z Example:Documents verified."
+        },
+        {
+            "name": "FraudLabel",
+            "type": "integer",
+            "required": null,
+            "description": "Mark Transaction as Fruadulent/NonFraudulent. Valid Value: 0 and 1 Example: 1- Fraudulent 0- Non-Fraudulent Condition: Mandatory if the Feedzai system is active for that product but optional if the product is not enrolled in Feedzai."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "DisputeAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "The amount for which the Dispute is raised on the Transaction. Valid Values:0-9 Format: XXX.XX Example: 20.00",
+                    "children": []
+                },
+                {
+                    "name": "DisputeTranID",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Disputed Transaction ID. Valid Values: 0-9 Format: XXXXXXX Example:9856198",
+                    "children": []
+                },
+                {
+                    "name": "CaseID",
+                    "type": "int64",
+                    "required": null,
+                    "description": "ID which is generated against the Dispute  request. Valid Values: 0-9 Format: XXXXXXX Example:9856198",
+                    "children": []
+                },
+                {
+                    "name": "FraudTypeCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Defines the Fraud Type Code prescribed for SAFE Reporting to Mastercard in the SAFE Reporting Guide. Valid Values:Refer Appendix section Fraud Type Code Example: 06 Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "SubFraudTypeCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Defines the Sub Fraud Type Code prescribed for SAFE Reporting to Mastercard in the SAFE Reporting Guide Valid Values:Refer Appendix section Sub Fraud Type Code Example: K Allowable Values: 5",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "8110000000000026",
+        "TransactionID": 123372036854843936,
+        "DisputeAction": 3,
+        "DisputeReason": "7",
+        "DisputeResolveAmount": 53.21,
+        "MemoReason": null,
+        "MemoText": "some comments",
+        "CaseID": null,
+        "ChargebackMemo": null,
+        "FraudLabel": null
+    },
+    "sample_response": {
+        "Message": "Dispute Resolved Successfully",
+        "Status": true,
+        "ErrorCode": "ERR01016",
+        "ResponseData": {
+            "DisputeAmount": 53.21,
+            "DisputeTranID": "12337203685486",
+            "CaseID": 123456,
+            "FraudTypeCode": null,
+            "SubFraudTypeCode": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Dispute Resolution",
+        "category_id": "17",
+        "document_id": "114",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=114&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=17&regionId=1"
+    }
+}

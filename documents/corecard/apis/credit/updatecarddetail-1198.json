@@ -1,0 +1,476 @@
+{
+    "metadata": {
+        "name": "UpdateCardDetail",
+        "http_method": "POST",
+        "endpoint": "/api/UpdateCardDetail",
+        "description": "Use this API to update cardholder's PII (personal identification information), address information, and additional information (if applicable)."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": null,
+            "description": "Client Id Valid Values: 1422245 Format:1089 Allowable Values: 50"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values:0-9 Example: 123456******0001. Condition: At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition:At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "Title",
+            "type": "string",
+            "required": false,
+            "description": "Title for the customer can be set by this tag. Valid Values: Refer Appendix section :  Title Values Example: Mr. , Mrs, Dr. Allowable Values: 9"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": true,
+            "description": "Cardholder First Name Valid values : A-Z, a-z and Spaces Example: Andrew Allowable Values: 50"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder Middle Name Valid Values: A-Z,a-z,special characters ( !@#$%^*()_+=-.) and Ampersand Example: Charles Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": true,
+            "description": "Cardholder Last Name Valid values : A-Z, a-z and Spaces Example: Hudson Allowable Values: 50"
+        },
+        {
+            "name": "SecondLastName",
+            "type": "string",
+            "required": false,
+            "description": "Second Last Name Valid values are A-Z, a-z, 0-9 Example: Andrew Allowable Values: 40"
+        },
+        {
+            "name": "NameOnCard",
+            "type": "string",
+            "required": true,
+            "description": "Name to be Embossed on Card Valid Values: A-Z, a-z, and all special characters Example: Hudson M Charles Allowable Values: 28"
+        },
+        {
+            "name": "DateOfBirth",
+            "type": "datetime",
+            "required": true,
+            "description": "Date of Birth of cardholder Format: MM/DD/YYYY Valid Values: 0-9 Example:- 03/26/1986"
+        },
+        {
+            "name": "MotherMaidenName",
+            "type": "string",
+            "required": false,
+            "description": "Mother’s Maiden Name Valid Values: A-Z,a-z Example: Devi Allowable Values: 40"
+        },
+        {
+            "name": "SocialSecurityNumber",
+            "type": "string",
+            "required": false,
+            "description": "Social Security Number of Card Holder Valid Value:0-9 Ex: 123456789 Condition:At least one of SocialSecurityNumber, TaxID or IDName field should be passed in the input as Identification details Allowable Values: 9"
+        },
+        {
+            "name": "IDName",
+            "type": "string",
+            "required": false,
+            "description": "ID Code representing Name of ID Valid Values: 0-9 Example 05 Condition:At least one of SocialSecurityNumber, TaxID or IDName field should be passed in the input as Identification details Refer Appendix section :  ID Name Values Allowable Values: 2"
+        },
+        {
+            "name": "IDNumber",
+            "type": "string",
+            "required": false,
+            "description": "Last 4 Digits of Primary ID Valid Values: 0-9 Example: 4586 Allowable Values: 18"
+        },
+        {
+            "name": "IDDescription",
+            "type": "string",
+            "required": false,
+            "description": "ID Description. Valid Values: A-Z,a-z, 0-9. Condition:ID Description Field will be ignored in case of ID Name other than '13 - Other ID'. Allowable Values: 20"
+        },
+        {
+            "name": "IDIssueCountry",
+            "type": "string",
+            "required": null,
+            "description": "ID Issuing Country Valid values :A-Z, a-z Example: US Two Character Country Code should be passed in the request and not Country Name. Condition : This field is mandatory when IDName= \"02\",\"03\", \"04\",\"05\", \"06\", \"07\", \"08\", \"09\", \"10\", “11”, \"12\", \"13\". Please refer to Appendix Country Code Values Allowable Values: 2"
+        },
+        {
+            "name": "IDIssueState",
+            "type": "string",
+            "required": false,
+            "description": "ID Issue State. Valid Values: A-Z,a-z Example:GA Condition:This field is mandatory when IDName= \"02\", \"07\" and IDIssueCountry = USMobilePhoneNumber. Appendix Section: Refer Appendix Section : State Codes (US) Allowable Values: 3"
+        },
+        {
+            "name": "IDIssueDate",
+            "type": "datetime",
+            "required": null,
+            "description": "ID  Issue Date Format: MM/DD/YYYY Valid Values:0-9 Example: 03/26/1998 Condition: This field is mandatory when IDName= \"02\""
+        },
+        {
+            "name": "IDExpirationDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Expiration date of ID. Format: MM/DD/YYYY Valid Values:0-9 Example:12/12/2015 Condition:At least one of Id Name should be required."
+        },
+        {
+            "name": "CustomAccountID",
+            "type": "string",
+            "required": null,
+            "description": "Any custom ID which is used to uniquely identify the Account. Valid values: A-Z, a-z, 0-9 Example:123456789 Condition: Mandatory If Custom Account ID  on product as Enabled. Allowable Values: 25"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": false,
+            "description": "Address Line 1 of a Cardholder Valid values are A-Z, a-z, 0-9 Example: 15 Penang Street Point Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Address Line 2 of a Cardholder Valid values: A-Z, a-z, 0-9 Example: 15 Penang Street Point Allowable Values: 50"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": false,
+            "description": "Two Character Country Code. Valid values :A-Z, a-z Example: US Refer Appendix section : Country Code Values Allowable Values: 2"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder State of residencex Valid values are A-Z, a-z Example: GA Please refer Appendix Section : State Codes (US) Allowable Values: 3"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder's City of residence Valid values: A-Z, a-z, 0-9 Example: Norcross Allowable Values: 25"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder Postal Code of Residence Valid Values:A-Z,a-z,0-9 Example: 30093 Allowable Values: 10"
+        },
+        {
+            "name": "HomePhoneCountryCode",
+            "type": "Int32",
+            "required": false,
+            "description": "Home Phone Country Code. Valid Values: 0-9 Example: 91 Refer Appendix section : Phone Country Code Values"
+        },
+        {
+            "name": "HomePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Home Phone Number. Valid Values: 0-9 Example: 9812338769 Condition: Mandatory when Card Account Parameters on Product is Set as Yes. Allowable Values: 10"
+        },
+        {
+            "name": "HomePhoneExtension",
+            "type": "Int32",
+            "required": false,
+            "description": "Home Phone Number Extension Valid Values:0-9 Example:91"
+        },
+        {
+            "name": "WorkPhoneCountryCode",
+            "type": "Int32",
+            "required": false,
+            "description": "Cardholder's work phone country code. Valid Values: 0-9 Example: 91"
+        },
+        {
+            "name": "WorkPhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder  Work Phone Number Valid values:0-9 Example:9632581470 Condition:Mandatory when validation parameter set on product as WorkPhone. Allowable Values: 10"
+        },
+        {
+            "name": "WorkPhoneExtension",
+            "type": "Int32",
+            "required": false,
+            "description": "Cardholder's work phone extension code. Valid Values: 0-9 Example: 1589"
+        },
+        {
+            "name": "MobilePhoneCountryCode",
+            "type": "Int32",
+            "required": false,
+            "description": "Cardholder's Mobile Phone Country Code. Valid Values: 0-9 Example: 91"
+        },
+        {
+            "name": "FaxNumberCountryCode",
+            "type": "Int32",
+            "required": false,
+            "description": "Country code of Fax number. Valid Values: 0-9 Format: 12 Example: 20"
+        },
+        {
+            "name": "WorkFaxCountryCode",
+            "type": "Int32",
+            "required": false,
+            "description": "Country code of WorkFax number. Valid Values: 0-9 Format: 12 Example: 20"
+        },
+        {
+            "name": "MobilePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder's Mobile Phone Number Valid Values: 0-9 Example: 9876543210 Allowable Values: 10"
+        },
+        {
+            "name": "HomeFaxNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder Home Fax Number Valid values are 0-9 Example:9632581470 Allowable Values: 10"
+        },
+        {
+            "name": "WorkFaxNumber",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder's Work Fax Number Valid values: 0-9 Example:9632581470 Allowable Values: 10"
+        },
+        {
+            "name": "EmailAddress1",
+            "type": "string",
+            "required": null,
+            "description": "E Mail Address 1 of Cardholder Valid Values: A-Z, a-z, 0-9. Example: [email protected] Condition: If the validation parameter is set on the product for Primary Email Address then it will be mandatory. Allowable Values: 100"
+        },
+        {
+            "name": "EmailAddress2",
+            "type": "string",
+            "required": false,
+            "description": "E Mail Address 2 of Card holder Ex: [email protected] Allowable Values: 100"
+        },
+        {
+            "name": "NoteReason",
+            "type": "string",
+            "required": false,
+            "description": "Flag for Predefined Memo Reasons. Please refer appendix Section : Memo Reason. Allowable Values: 5"
+        },
+        {
+            "name": "NotesText",
+            "type": "string",
+            "required": false,
+            "description": "Notes entered by the user Valid Values : A-Z,0-9 Example : Card found. Allowable Values: 2000"
+        },
+        {
+            "name": "AlertEmailAddress",
+            "type": "string",
+            "required": false,
+            "description": "Email address of the cardholder where alert should be sent. Valid Values: A-Z, a-z, 0-9. Example: [email protected] Allowable Values: 100"
+        },
+        {
+            "name": "UserField1",
+            "type": "string",
+            "required": false,
+            "description": "Account level Field to capture additional data from cardholder as per product setup. Format in case of date: MMDDYYYY Valid Values:A-Z,a-z,0-9 Example: Test,1234,09102019 Allowable Values: 200"
+        },
+        {
+            "name": "UserField2",
+            "type": "string",
+            "required": false,
+            "description": "Account level Field to capture additional data from cardholder as per product setup. Format in case of date: MMDDYYYY Valid Values:A-Z,a-z,0-9 Example: Test,1234,09102019 Allowable Values: 200"
+        },
+        {
+            "name": "UserField3",
+            "type": "string",
+            "required": false,
+            "description": "Account level Field to capture additional data from cardholder as per product setup. Format in case of date: MMDDYYYY Valid Values:A-Z,a-z,0-9 Example: Test,1234,09102019 Allowable Values: 200"
+        },
+        {
+            "name": "UserField4",
+            "type": "string",
+            "required": false,
+            "description": "Account level Field to capture additional data from cardholder as per product setup. Format in case of date: MMDDYYYY Valid Values:A-Z,a-z,0-9 Example: Test,1234,09102019 Allowable Values: 200"
+        },
+        {
+            "name": "UserField5",
+            "type": "string",
+            "required": false,
+            "description": "Account level Field to capture additional data from cardholder as per product setup. Format in case of date: MMDDYYYY Valid Values:A-Z,a-z,0-9 Example: Test,1234,09102019 Allowable Values: 200"
+        },
+        {
+            "name": "ImmediatePostACH",
+            "type": "string",
+            "required": null,
+            "description": "Flag to indicate the posting of Future dated ACH Transaction will be done on effective date. Valid Value: - 1= Not Allowed, 2 = All Credits and 3= Credits – Payroll Example:- 1"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.6",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "ClientID": "",
+        "CardNumber": "4066846120012843",
+        "ProxyNumber": "1316614",
+        "Title": "",
+        "FirstName": "Harshal",
+        "MiddleName": "",
+        "LastName": "Waje",
+        "SecondLastName": "",
+        "NameOnCard": "Harshal Waje",
+        "DateOfBirth": "1986-03-26T00:00:00",
+        "MotherMaidenName": "",
+        "SocialSecurityNumber": "",
+        "IDName": "02",
+        "IDNumber": "12587",
+        "IDDescription": "",
+        "IDIssueCountry": "US",
+        "IDIssueState": "ID",
+        "IDIssueDate": "2017-05-17T00:00:00",
+        "IDExpirationDate": "2024-12-24T00:00:00",
+        "CustomAccountID": "",
+        "AddressLine1": "",
+        "AddressLine2": "V Time Square",
+        "Country": "US",
+        "State": "DC",
+        "City": "Navi Mumbai",
+        "PostalCode": "40061",
+        "HomePhoneCountryCode": 0,
+        "HomePhoneNumber": "2158795878",
+        "HomePhoneExtension": 2,
+        "WorkPhoneCountryCode": 0,
+        "WorkPhoneNumber": "2158795874",
+        "WorkPhoneExtension": 0,
+        "MobilePhoneCountryCode": 0,
+        "FaxNumberCountryCode": 10,
+        "WorkFaxCountryCode": 20,
+        "MobilePhoneNumber": "2158795875",
+        "HomeFaxNumber": "",
+        "WorkFaxNumber": "",
+        "EmailAddress1": " [email protected] ",
+        "EmailAddress2": " [email protected] ",
+        "NoteReason": "",
+        "NotesText": "",
+        "AlertEmailAddress": "",
+        "UserField1": "",
+        "UserField2": "",
+        "UserField3": "",
+        "UserField4": "",
+        "UserField5": "",
+        "ImmediatePostACH": ""
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "AccountNumber": "60000000011558"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1198&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1041"
+    }
+}

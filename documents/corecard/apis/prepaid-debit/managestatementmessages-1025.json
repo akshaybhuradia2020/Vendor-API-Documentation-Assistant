@@ -1,0 +1,244 @@
+{
+    "metadata": {
+        "name": "ManageStatementMessages",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/ManageStatementMessages",
+        "description": "This API shall be used to manage the statement messages in terms of adding/updating/deleting the message."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "integer",
+            "required": true,
+            "description": "To decide if the API is getting used for Add/Update/Delete. Valid Values: 0 = Add 1= Update 2=Delete Example: 0"
+        },
+        {
+            "name": "StatementMessage",
+            "type": "",
+            "required": false,
+            "description": "StatementMessage"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": false,
+            "description": "Unique identification number for Institution. Valid Values: 0-9 Format: XXXX Example: Fixed value needs to pass which is provided by Corecard."
+        },
+        {
+            "name": "StatementMessageGroupCode",
+            "type": "string",
+            "required": null,
+            "description": "Code of the statement message group which is created to group all the statement messages. Valid Values: Code which is generated with this API at the time of Create or get this via GetStatementMessageGroup API. Example: 100 Condition: This shall be a required field when DecisionFlag=0. It will work with DecisionFlag=0 only. Allowable Values: 5"
+        },
+        {
+            "name": "StatementMessageTypeCode",
+            "type": "string",
+            "required": null,
+            "description": "Code associated with the Statement Message Type(activity types). Valid Values: Refer 'Statement Message Types' section of the Appendix sheet. Condition: This shall be a required field when DecisionFlag = 0.It will work with DecisionFlag = 0 only. Allowable Values: 5"
+        },
+        {
+            "name": "StatementTypeCode",
+            "type": "string",
+            "required": null,
+            "description": "Code for the Type of Statement where the Statement message should get displayed. Condition: This shall be a required field when DecisionFlag = 0 Allowable Values: 5"
+        },
+        {
+            "name": "StatementMessageCode",
+            "type": "string",
+            "required": null,
+            "description": "User defined unique value to identify the Statement Message . Valid Value: A-Z,0-9 Example: ST123 Condition: This shall be a required field when DecisionFlag = 0 Allowable Values: 4"
+        },
+        {
+            "name": "StatementMessage",
+            "type": "string",
+            "required": null,
+            "description": "Message displayed in message section of statement at end Valid Values: A-Z,0-9 Example: You account is past due Condition: This shall be a required field when DecisionFlag = 0 Allowable Values: 999"
+        },
+        {
+            "name": "Priority",
+            "type": "integer",
+            "required": null,
+            "description": "To decide which messge to show first on Statement. Valid Values: 0-9 Example: 10"
+        },
+        {
+            "name": "CurrentBalance",
+            "type": "decimal",
+            "required": false,
+            "description": "Current balance of the account to use as criteria for delivering the statement message. Valid Values: 0-9 Example: 100.00"
+        },
+        {
+            "name": "MessagePeriod",
+            "type": "string",
+            "required": false,
+            "description": "Decides when the message should display on the Statement. Valid Values:Refer Appendix Section 'Statement Message Period) Example: June Allowable Values: 5"
+        },
+        {
+            "name": "LastDigitOfAccountNumber",
+            "type": "string",
+            "required": false,
+            "description": "Last digit of the account number to use as criteria for delivering the statement message. Valid Values: 0,1,2,3….9, All Example: All Allowable Values: 5"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Selection of language Valid Values: en Example: en Allowable Values: 5"
+        },
+        {
+            "name": "DataVariable",
+            "type": "string",
+            "required": false,
+            "description": "Selection of DataVariable Valid Values: 123 Example: 123 Allowable Values: 5"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the state for setting up statement message disclosures. Valid Values: AK,AL,MA Example: AL,MA Allowable Values: 30"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": []
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "DecisionFlag": 0,
+        "StatementMessage": {
+            "InstitutionID": 1320,
+            "StatementMessageGroupCode": "27",
+            "StatementMessageTypeCode": "51",
+            "StatementTypeCode": "0",
+            "StatementMessageCode": "333",
+            "StatementMessage": "Your promotional offer on purchases will end on <Promo End Date>",
+            "Priority": 1,
+            "CurrentBalance": null,
+            "MessagePeriod": null,
+            "LastDigitOfAccountNumber": null,
+            "Language": "en",
+            "DataVariable": "Abc",
+            "State": "AL"
+        }
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": null
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Control Parameters",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1025&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005"
+    }
+}

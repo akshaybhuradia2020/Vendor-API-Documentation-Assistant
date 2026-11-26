@@ -1,0 +1,765 @@
+{
+    "metadata": {
+        "name": "GetCardholderDetail",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/CardManagement/GetCardHolderDetail",
+        "description": "This API is used to get Card Holder's customer information, communication details and ID details."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "CustomerID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "CustomerID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123 Condition: At least one of CustomerID/AdminNumber/AccountNumber is required."
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format: XXXXX Example:12345 Condition: At least one of CustomerID/AdminNumber/AccountNumber is required."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder/AccountHolder. *if a Specific Account Number is Inputted, then the Account Number specifc Application Details will be fetched Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404121234569 Condition: At least one of CustomerID/AdminNumber/AccountNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "IdentifierToken",
+            "type": "string",
+            "required": null,
+            "description": "A generated token that is not expired can be used as an input field to access API. If we are passing this field in input, user should not pass any other account identifier. Condition:At least one account identifier is required. Allowable Values: 800"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "AddressGroup",
+            "type": "",
+            "required": null,
+            "description": "AddressGroup",
+            "children": []
+        },
+        {
+            "name": "CustomerGroup",
+            "type": "",
+            "required": null,
+            "description": "CustomerGroup",
+            "children": []
+        },
+        {
+            "name": "EmbossingGroup",
+            "type": "",
+            "required": null,
+            "description": "EmbossingGroup",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AddressGroup",
+                    "type": "",
+                    "required": null,
+                    "description": "AddressGroup",
+                    "children": [
+                        {
+                            "name": "AddressLine1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card Holder's address line 1. Valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AddressLine2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's address line 2. Valid Values: A-Z, 0-9 Example:Park Avenue Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "City",
+                            "type": "string",
+                            "required": null,
+                            "description": "Primary Applicant's City Valid Values: A-Z, 0-9 Example:kansas Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "State",
+                            "type": "string",
+                            "required": null,
+                            "description": "Primary Applicant's State Valid Values: 0-9 A-Z Format: XXXXXXX Example: Alabama Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "Country",
+                            "type": "string",
+                            "required": null,
+                            "description": "Country name of the Card holder's address Valid Values: 0-9 A-Z Format: XXXXXXX Example: USA Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "PostalCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Postal code of the card holder's address. Valid Values:0-9 Format:XXXXX Example:46206 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ResidenceType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of Residence that cardholder lives in. Valid Values: 0-9 Example: 0 Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "DurationatAddress",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Duration of stay on the address in Months. Valid Values: 0-9 Format: xx Example: 12",
+                            "children": []
+                        },
+                        {
+                            "name": "POBoxNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "A numbered box assigned to a customer. Valid Values: 0-9 Example 59 Allowable Values: 10",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "CustomerGroup",
+                    "type": "",
+                    "required": null,
+                    "description": "CustomerGroup",
+                    "children": [
+                        {
+                            "name": "CustomerID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123",
+                            "children": []
+                        },
+                        {
+                            "name": "Title",
+                            "type": "string",
+                            "required": null,
+                            "description": "Title of the cardholder. Valid Values:  Refer Appendix.Title Values. Format: xx Example: 16 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's First name. Valid Values: A-Z 0-9 Example: Fname Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MiddleName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's Middle Name Valid Values: A-Z Format:XXX Example: LEE Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "LastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's last name. Valid Values:A-Z Format:XXXXX Example:Smith Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "SurnameSuffix",
+                            "type": "string",
+                            "required": null,
+                            "description": "Cardholder's surname-suffix. Valid Values: 0-9 A-Z Format: xx Example: Sr. / Jr. Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "PassportNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Passport Number Valid Values:  0-9 A-Z Format: xxxxx Example: AB123456 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "PassportExpDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Expiration Date of Passport. Valid Values:  0-9 Format: mm/dd/yyyy hh:mm:ss Example: 06/30/2025 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "DriverLicenseNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Driver License Number. Valid Values: 0-9 A-Z Format: xxxxxx Example: AZ12345B Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "DriverLicenseState",
+                            "type": "string",
+                            "required": null,
+                            "description": "State of the Driver's license. Valid Values: 0-9 A-Z Format: XX Example: CA Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "DriverLicenseExpDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Expiry date of Driver License. Valid Values: 0-9 Format: mm/dd/yyyy Example: 04/12/2014",
+                            "children": []
+                        },
+                        {
+                            "name": "TaxIdentificationNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique identification number of Individual Tax Payer. Valid Values: 0-9 A-Z Format: xxxxxx Example: AZ12345B Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the presented ID. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherIdType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of the presented ID. Valid Values: Refer Appendix, ID Types Example: AZ12345B Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "DateOfBirth",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Card Holder's Date of Birth Valid Values:  0-9 Format: mm/dd/yyyy hh:mm:ss Example: 06/30/2025 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "LanguageIndicator",
+                            "type": "string",
+                            "required": null,
+                            "description": "Cardholder's preferred Language Valid Values: a-z Format: xx Example: English Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "HomePhoneNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's Home Phone number Valid Values:0-9 Format:XXXXXXXXXX Example:7895463214 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "WorkPhoneNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's Work Phone number Valid Values:0-9 Format:XXXXXXXXXXX Example:5678909876 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MobileNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's mobile number Valid Values: 0-9 Format: xxxx Example:  123456789 Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "FaxNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's Fax number Valid Values: 0-9 Format: xxxxx Example:  123456789 Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherIdCountry",
+                            "type": "string",
+                            "required": null,
+                            "description": "Country of the OtherID. Valid Values: 0-9 A-Z Format:XXX Example: US Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherIDExpiryDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Expiry Date of the Other ID. Valid Values: 0-9 Format: mm/dd/yyyy Example: 06/21/2021",
+                            "children": []
+                        },
+                        {
+                            "name": "IssuanceCountry",
+                            "type": "string",
+                            "required": null,
+                            "description": "Country of ID Issuance. Valid Values: 0-9 A-Z Format: XXX Example: US Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "DriverLicenseCountry",
+                            "type": "string",
+                            "required": null,
+                            "description": "Driver License Country Valid Values: 0-9 A-Z Format: XXX Example: US Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherIDIssueDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Issuance date of Other ID Date. Valid Values: 0-9 Format: mm/dd/yyyy Example: 04/12/2014",
+                            "children": []
+                        },
+                        {
+                            "name": "PassportIssueDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Issuance date of Passport. Valid Values: 0-9 Format: mm/dd/yyyy Example: 04/12/2014",
+                            "children": []
+                        },
+                        {
+                            "name": "DriverLicenceIssueDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Issuance date of Driver License. Valid Values: 0-9 Format: mm/dd/yyyy Example: 04/12/2014",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherIdState",
+                            "type": "string",
+                            "required": null,
+                            "description": "State/Province of the presented ID. Valid Values: 0-9 A-Z Format:XXX Example: CA Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherIDDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the Other ID. Valid Values: 0-9 A-Z Format: xxxxx Example: Passport Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "EmailID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's Email ID Valid Values: 0-9,A-Z Format:XX @XX.Com Example:ABC @gmail.com Allowable Values: 300",
+                            "children": []
+                        },
+                        {
+                            "name": "MaritalStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Applicant's Marital Status Valid Values: Refer Appendix, Marital Status Example: 1 Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "BankruptcyNotificationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when bankruptcy is notified Format:MM/DD/YYYY Example:02/22/2020 Condition: Mandatory for bankruptcy account",
+                            "children": []
+                        },
+                        {
+                            "name": "DBA",
+                            "type": "string",
+                            "required": null,
+                            "description": "DBA Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "Education",
+                            "type": "string",
+                            "required": null,
+                            "description": "Educational details of the applicant. Valid Values: a-z,0-9 Format: xxxxxxx Example: B.E Allowable Values: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "Deceased",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for card holder is deceased or not Valid Values: 0,1 Format: x Example: 0- No, 1 - Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "Gender",
+                            "type": "string",
+                            "required": null,
+                            "description": "Gender of Cardholder. Valid Values: A-Z Format: xxxxxxx Example: Male Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "Income",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Cardholder's income Valid Values: 0-9 Format: xxxx.xx Example: 98754.22",
+                            "children": []
+                        },
+                        {
+                            "name": "MotherMaidenName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's mother Maiden Name Valid ValuesA-Z, 0-9 Format:XXXX Example:Johnson Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "OtherPhoneNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's Other Phone number Valid Values:0-9GetNameAddressDetailsGetNameAddressDetails Format:XXXXXXXXXX Example:987567757 Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "CeaseAndDesistIndicator",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "flag for applicant Cease And Desist Valid Values:  true/false Format: xxxxx Example: false",
+                            "children": []
+                        },
+                        {
+                            "name": "Bankruptcy",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Flag for Bankruptcy Valid Values:  true/false Format: xxxxx Example: false",
+                            "children": []
+                        },
+                        {
+                            "name": "ThreePDM",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Third party debt management Valid Values:  true / false Format: xxxxx Example: false",
+                            "children": []
+                        },
+                        {
+                            "name": "DoNotCallHomePhoneNUM",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Flag for do not call at home phone number. Valid Values:  true / false Format: xxxxx Example: false",
+                            "children": []
+                        },
+                        {
+                            "name": "DoNotCallMobileNUM",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Flag for do not call at Mobile Number. Valid Values:  true / false Format: xxxxx Example: false",
+                            "children": []
+                        },
+                        {
+                            "name": "DoNotCallWorkPhoneNUM",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Flag for do not call at work phone Valid Values: 0-9 Format: x Example: 0/1",
+                            "children": []
+                        },
+                        {
+                            "name": "DoNotCallOtherPhoneNUM",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Flag for do not call at other phone number. Valid Values: true / false Format: xxxxxx Example: false",
+                            "children": []
+                        },
+                        {
+                            "name": "MobileCarrier",
+                            "type": "string",
+                            "required": null,
+                            "description": "Carrier of Card holder's Mobile Phone number Valid Values:a-z,0-9 Format:XXXXXX Example:BSNL Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "DeceasedNotificationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when deceased is notified Format:MM/DD/YYYY Example:02/20/2020 Condition: Mandatory for deceased account",
+                            "children": []
+                        },
+                        {
+                            "name": "FraudVictim",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Flag to identify any individual that is victim of Fraud Valid Values: true / false Format:XXXXX Example: false",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Reflects the name of product for the account Valid Values: A-Z 0-9 Example: Abc revolving Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "CoownerStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicate the status of Coowner sharing liability. Valid Values : 0 –Inactive, 1 - Active Example: 1 Allowable Values: 100",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "CustomerID": 167257,
+        "AdminNumber": 129293,
+        "AccountNumber": null,
+        "IdentifierToken": null
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "AddressGroup": {
+                "AddressLine1": "test",
+                "AddressLine2": "test",
+                "City": "test",
+                "State": "test",
+                "Country": "test",
+                "PostalCode": "test",
+                "ResidenceType": "test",
+                "DurationatAddress": 12
+            },
+            "CustomerGroup": {
+                "CustomerID": 167257,
+                "Title": null,
+                "FirstName": null,
+                "MiddleName": null,
+                "LastName": null,
+                "SurnameSuffix": "0",
+                "PassportNumber": null,
+                "DriverLicenseNumber": null,
+                "DriverLicenseState": null,
+                "DriverLicenseExpDate": null,
+                "TaxIdentificationNumber": null,
+                "OtherID": null,
+                "OtherIdType": null,
+                "DateOfBirth": "01/01/1970 00:00:00",
+                "LanguageIndicator": null,
+                "HomePhoneNumber": null,
+                "WorkPhoneNumber": "8745981256",
+                "MobileNumber": null,
+                "FaxNumber": null,
+                "OtherIdCountry": null,
+                "OtherIDExpiryDate": null,
+                "IssuanceCountry": null,
+                "DriverLicenseCountry": null,
+                "OtherIDIssueDate": null,
+                "PassportIssueDate": null,
+                "DriverLicenceIssueDate": null,
+                "OtherIdState": null,
+                "OtherIDDescription": null,
+                "EmailID": null,
+                "MaritalStatus": null,
+                "BankruptcyNotificationDate": null,
+                "DBA": null,
+                "Education": null,
+                "Deceased": 0,
+                "Gender": null,
+                "Income": null,
+                "MotherMaidenName": null,
+                "OtherPhoneNumber": null,
+                "CeaseAndDesistIndicator": false,
+                "Bankruptcy": false,
+                "ThreePDM": false,
+                "DoNotCallHomePhoneNUM": false,
+                "DoNotCallMobileNUM": false,
+                "DoNotCallWorkPhoneNUM": false,
+                "DoNotCallOtherPhoneNUM": false,
+                "MobileCarrier": null,
+                "DeceasedNotificationDate": null,
+                "FraudVictim": false,
+                "ProductName": "Abc revolving",
+                "CoownerStatus": null
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Card Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=100&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=12"
+    }
+}

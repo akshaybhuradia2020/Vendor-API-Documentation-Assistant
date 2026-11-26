@@ -1,0 +1,1243 @@
+{
+    "metadata": {
+        "name": "UpdateAccountParameters",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/UpdateAccountParameters",
+        "description": "This API is to update multiple parameters/fields on an account. The fields can be dynamic and list of fields which can be updated through this API is list down in Appendix section."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the Account number of Card holder. Valid Values: 0-9 Example: 8000000000000037 Condition: At least one of Card Number\\Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflect the card number. Valid Values:0-9 Example:1236547896541236 Condition:.At least one of Card Number\\Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "CompanyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Company Number Valid Values: 0-9 Example: 1234 Allowable Values: 7"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": false,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Example: 12345"
+        },
+        {
+            "name": "AddressType",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the type of address Valid Values: A-Z, 0-9 Example: Primary,Co-Owner,Correspondence Allowable Values: 5"
+        },
+        {
+            "name": "Field1",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue1",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field2",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue2",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field3",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue3",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field4",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue4",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field5",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue5",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field6",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue6",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field7",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue7",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field8",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue8",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field9",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue9",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field10",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue10",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field11",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue11",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field12",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue12",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field13",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue13",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field14",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue14",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field15",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue15",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field16",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue16",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field17",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue17",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field18",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue18",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field19",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue19",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field20",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue20",
+            "type": "string",
+            "required": null,
+            "description": "Values of the fields which need  to be updated. Eg - If accountcatergory needs to be updates Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Reissue",
+            "type": "string",
+            "required": false,
+            "description": "Activates Reissue functionality E.g.value: 1 or 2 Valid Values: 1,2 Example: 1/2 Allowable Values: 2"
+        },
+        {
+            "name": "FileName",
+            "type": "string",
+            "required": false,
+            "description": "File Name of PDF statement generated Valid Values: 0-9 A-Z Example: Statement_569845_02102020.PDF Allowable Values: 500"
+        },
+        {
+            "name": "ApplicantType",
+            "type": "string",
+            "required": false,
+            "description": "Description: Selects the type of Applicants. Valid Values: 1, 2, 3 Format: x Example:  1= 'Applicant', 2 ='Co-Applicant', 3= 'Cosigner', Allowable Values: 20"
+        },
+        {
+            "name": "StatusDescription",
+            "type": "string",
+            "required": false,
+            "description": "A description for the selected Extended/Manual status Allowable Values: 20"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the Account number of Card holder. Valid Values: 0-9 Example: 8000000000000037 Condition:At least one of Card Number\\Account Number\\Admin Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflect the card number. Valid Values:0-9 Example:1236547896541236 Condition:At least one of Card Number\\Account Number\\Admin Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "CompanyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Company Number Valid Values: 0-9 Example: 1234 Condition: If any company details need to be updated. Allowable Values: 7"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": false,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Example: 12345"
+        },
+        {
+            "name": "AddressType",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the type of address Valid Values: A-Z, 0-9 Example: Primary,Co-Owner,Correspondence Allowable Values: 5"
+        },
+        {
+            "name": "Field1",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: IsAcctCAReservist Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue1",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: 0,1 Example: 1 Allowable Values: 256"
+        },
+        {
+            "name": "Field2",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: CARBenefitStartDate Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue2",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 256"
+        },
+        {
+            "name": "Field3",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: CARServiceEndDate Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue3",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 256"
+        },
+        {
+            "name": "Field4",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue4",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 256"
+        },
+        {
+            "name": "Field5",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue5",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field..Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 256"
+        },
+        {
+            "name": "Field6",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag, AssoProductType Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue6",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field..Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456,MWE (Mastercard World Elite) Allowable Values: 40"
+        },
+        {
+            "name": "Field7",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue7",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field8",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue8",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field9",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue9",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field10",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue10",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field11",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue11",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field12",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue12",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field13",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue13",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field14",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue14",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field15",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue15",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field16",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue16",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field17",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue17",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field18",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue18",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field19",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue19",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Field20",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue20",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 40"
+        },
+        {
+            "name": "Reissue",
+            "type": "string",
+            "required": false,
+            "description": "Activates Reissue functionality E.g.value: 1 or 2 Valid Values: 1,2 Example: 1/2 Allowable Values: 2"
+        },
+        {
+            "name": "FileName",
+            "type": "string",
+            "required": false,
+            "description": "File Name of PDF statement generated Valid Values: 0-9 A-Z Example: Statement_569845_02102020.PDF Allowable Values: 500"
+        },
+        {
+            "name": "ApplicantType",
+            "type": "string",
+            "required": false,
+            "description": "Selects the type of Applicants. Valid Values: 1, 2, 3 Format: x Example:  1= 'Applicant', 2 ='Co-Applicant', 3= 'Cosigner', Allowable Values: 20"
+        },
+        {
+            "name": "StatusDescription",
+            "type": "string",
+            "required": false,
+            "description": "A description for the selected Extended/Manual status Allowable Values: 20"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Admin number of the account.. Valid Values: 0-9 Format: XXXXX Example: 12345. Condition:At least one of Card Number\\Account Number\\Admin Number is required."
+        },
+        {
+            "name": "CardLevelUserField1",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field name which needs an update Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 200"
+        },
+        {
+            "name": "CardLevelUserFieldValue1",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective card level user field Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserField2",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field name which needs an update Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 25"
+        },
+        {
+            "name": "CardLevelUserFieldValue2",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective card level user field Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserField3",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field name which needs an update Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 25"
+        },
+        {
+            "name": "CardLevelUserFieldValue3",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective card level user field Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserField4",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field name which needs an update Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 25"
+        },
+        {
+            "name": "CardLevelUserFieldValue4",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective card level user field Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserField5",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field name which needs an update Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 25"
+        },
+        {
+            "name": "CardLevelUserFieldValue5",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective card level user field Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserField6",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field name which needs an update Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 100"
+        },
+        {
+            "name": "CardLevelUserFieldValue6",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective card level user field Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserField7",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field name which needs an update Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 100"
+        },
+        {
+            "name": "CardLevelUserFieldValue7",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective card level user field Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserField8",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field name which needs an update Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 100"
+        },
+        {
+            "name": "CardLevelUserFieldValue8",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective card level user field Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserField9",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field name which needs an update Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 100"
+        },
+        {
+            "name": "CardLevelUserFieldValue9",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective card level user field Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserField10",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field name which needs an update Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 100"
+        },
+        {
+            "name": "CardLevelUserFieldValue10",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective card level user field Valid Values: A-Z,0-9 Example: Primary Owner Allowable Values: 256"
+        },
+        {
+            "name": "Field21",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue21",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 256"
+        },
+        {
+            "name": "Field22",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue22",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 256"
+        },
+        {
+            "name": "Field23",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue23",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 256"
+        },
+        {
+            "name": "Field24",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue24",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 256"
+        },
+        {
+            "name": "Field25",
+            "type": "string",
+            "required": null,
+            "description": "Field name which needs an update.Refer Appendix, 5.16 UpdateAccountParameter API Fields Field name i.e.AccountCategory Valid Values: A-Z,0-9 Example: SCRAEffectiveDate,RegOFlag Allowable Values: 40"
+        },
+        {
+            "name": "UpdateAccValue25",
+            "type": "string",
+            "required": null,
+            "description": "Place holder which contains value for respective field.Refer Appendix, 5.16 UpdateAccountParameter API Fields. Eg - If account category needs to be updated Value of field AccountCategory Valid Values: A-Z,0-9 Example: 02/02/2010, N, 3456 Allowable Values: 256"
+        },
+        {
+            "name": "IsTemporaryCreditLimitActive",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates whether the credit limit update is temporary. Valid Values : 0 - No 1 - Yes Format: X Example: 1 NOTE: 1. If not provided, the default value of this Tag will be 0 (No) emphasizing the credit limit is permanent. 2. To set a Temporary Credit Limit, the 'CreditLimit' value  must be provided, as it defines the temporary limit to apply. If omitted, the Temporary Limit flag will be disregarded."
+        },
+        {
+            "name": "temporaryCreditLimitExpirationDate",
+            "type": "datetime",
+            "required": null,
+            "description": "The expiration date when the credit limit reverts. Format: MM/dd/YYYY Example: 07/25/1991 Condition: If TempCreditLimitIncrease is set to 1, then this tag is mandatory."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the Account number of Card holder. Valid Values: 0-9 Example: 8000000000000037 Allowable Values: 19",
+            "children": []
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the card number. Valid Values:0-9 Example:1236547896541236 Allowable Values: 19",
+            "children": []
+        },
+        {
+            "name": "CompanyName",
+            "type": "string",
+            "required": null,
+            "description": "Company Name Valid Values: A-Z,0-9 Example: ABC Allowable Values: 40",
+            "children": []
+        },
+        {
+            "name": "CompanyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Company Number Valid Values: 0-9 Example: 1234 Allowable Values: 7",
+            "children": []
+        },
+        {
+            "name": "CorporateAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number of the corporate entity. Valid Values:0-9, A-Z Format:XXXX Example:1234 Allowable Values: 19",
+            "children": []
+        },
+        {
+            "name": "ReasonCode",
+            "type": "string",
+            "required": null,
+            "description": "Reason code field for Error or Success of API Valid Values: 1/0 Example: 1,0 Allowable Values: 30",
+            "children": []
+        },
+        {
+            "name": "Memo",
+            "type": "string",
+            "required": null,
+            "description": "Note for each erroneous input.Two letter code Valid Values: A-Z,0-9 Example: 12 Allowable Values: 100",
+            "children": []
+        },
+        {
+            "name": "OtherError",
+            "type": "string",
+            "required": null,
+            "description": "Return Error Message in case of Other Error.Example: Unknown error occurred Valid Values: A-Z, 0-9 Example: Unknown error occurred,Network Error etc. Allowable Values: 100",
+            "children": []
+        },
+        {
+            "name": "ResponseID",
+            "type": "string",
+            "required": null,
+            "description": "This number will ensure that API hit our internal servers. This will always be unique.API is returned from our external server Valid Values: 0-9,a-z Example: 200 Allowable Values: 15",
+            "children": []
+        },
+        {
+            "name": "DerivedPartnerStatus",
+            "type": "string",
+            "required": null,
+            "description": "Derived status based on Account Status, Card Manual Status and Embossing Status. Possible values - Active Blocked Cancelled Disabled N/A New Valid Values:0-9, A-Z Format:XXXX Example:Active Blocked Cancelled Disabled N/A New Allowable Values: 50",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflects the Account number of Card holder. Valid Values: 0-9 Example: 8000000000000037 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "CardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflects the card number. Valid Values:0-9 Example:1236547896541236 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "CompanyName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Company Name Valid Values: A-Z,0-9 Example: ABC Allowable Values: 40",
+                    "children": []
+                },
+                {
+                    "name": "CompanyNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Company Number Valid Values: 0-9 Example: 1234 Allowable Values: 7",
+                    "children": []
+                },
+                {
+                    "name": "CorporateAccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account Number of the corporate entity. Valid Values:0-9, A-Z Format:XXXX Example:1234 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "ReasonCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Reason code field for Error or Success of API Valid Values: 1/0 Example: 1,0 Allowable Values: 30",
+                    "children": []
+                },
+                {
+                    "name": "Memo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Note for each erroneous input.Two letter code Valid Values: A-Z,0-9 Example: 12 Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "OtherError",
+                    "type": "string",
+                    "required": null,
+                    "description": "Return Error Message in case of Other Error. Valid Values: A-Z, 0-9 Example: Unknown error occurred,Network Error etc. Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number will ensure that API hit our internal servers. This will always be unique.API is returned from our external server Valid Values: 0-9,a-z Example: 200 Allowable Values: 15",
+                    "children": []
+                },
+                {
+                    "name": "DerivedPartnerStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Derived status based on Account Status, Card Manual Status and Embossing Status. Possible values - Active Blocked Cancelled Disabled N/A New Valid Values:0-9, A-Z Format:XXXX Example:Active Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "MLAEffectiveDate",
+                    "type": "string",
+                    "required": null,
+                    "description": "The Date from when MLA will be effective Valid Values: Format:MMDDYYYY Example:01202020 Allowable Values: 15",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": null,
+        "CardNumber": null,
+        "AdminNumber": null,
+        "CompanyNumber": null,
+        "AccountID": 32441,
+        "AddressType": null,
+        "Field1": "EMPOCCUPATION",
+        "UpdateAccValue1": "77",
+        "Field2": "EMPINCOME",
+        "UpdateAccValue2": "10000000.00",
+        "Field3": "EMPYEARSOFEMPLOYMENT",
+        "UpdateAccValue3": "0.8",
+        "Field4": "EMPPOSITION",
+        "UpdateAccValue4": "Developer",
+        "Field5": "EMPORGANIZATIONNAME",
+        "UpdateAccValue5": "ISC",
+        "Field6": "EMPLOYEENUMBER",
+        "UpdateAccValue6": "43265",
+        "Field7": "EMPLOYERNAME",
+        "UpdateAccValue7": "ISC",
+        "Field8": "EMPADDRESS1",
+        "UpdateAccValue8": "test",
+        "Field9": "EMPADDRESS2",
+        "UpdateAccValue9": "test",
+        "Field10": "EMPCITY",
+        "UpdateAccValue10": "bhopal",
+        "Field11": "EMPSTATE",
+        "UpdateAccValue11": "MP",
+        "Field12": "EMPPOSTALCODE",
+        "UpdateAccValue12": "46200",
+        "Field13": "EMPCOUNTRY",
+        "UpdateAccValue13": "IND",
+        "Field14": "EMPPHONENUMBER",
+        "UpdateAccValue14": "9765645454565",
+        "Field15": "EMPFAXNUMBER",
+        "UpdateAccValue15": "8546443563",
+        "Field16": null,
+        "UpdateAccValue16": null,
+        "Field17": null,
+        "UpdateAccValue17": null,
+        "Field18": null,
+        "UpdateAccValue18": null,
+        "Field19": null,
+        "UpdateAccValue19": null,
+        "Field20": null,
+        "UpdateAccValue20": null,
+        "Reissue": null,
+        "FileName": null,
+        "ApplicantType": null,
+        "StatusDescription": null,
+        "CardLevelUserField1": null,
+        "CardLevelUserFieldValue1": null,
+        "CardLevelUserField2": null,
+        "CardLevelUserFieldValue2": null,
+        "CardLevelUserField3": null,
+        "CardLevelUserFieldValue3": null,
+        "CardLevelUserField4": null,
+        "CardLevelUserFieldValue4": null,
+        "CardLevelUserField5": null,
+        "CardLevelUserFieldValue5": null,
+        "CardLevelUserField6": null,
+        "CardLevelUserFieldValue6": null,
+        "CardLevelUserField7": null,
+        "CardLevelUserFieldValue7": null,
+        "CardLevelUserField8": null,
+        "CardLevelUserFieldValue8": null,
+        "CardLevelUserField9": null,
+        "CardLevelUserFieldValue9": null,
+        "CardLevelUserField10": null,
+        "CardLevelUserFieldValue10": null,
+        "Field21": null,
+        "UpdateAccValue21": null,
+        "Field22": null,
+        "UpdateAccValue22": null,
+        "Field23": null,
+        "UpdateAccValue23": null,
+        "Field24": null,
+        "UpdateAccValue24": null,
+        "Field25": null,
+        "UpdateAccValue25": null,
+        "IsTemporaryCreditLimitActive": 0,
+        "temporaryCreditLimitExpirationDate": null
+    },
+    "sample_response": {
+        "Message": "Account updated successfully",
+        "Status": true,
+        "ErrorCode": "ERR01003",
+        "ResponseData": {
+            "AccountNumber": "0000007063766272",
+            "CardNumber": "125412******9532",
+            "CompanyName": null,
+            "CompanyNumber": null,
+            "CorporateAccountNumber": null,
+            "ReasonCode": "1",
+            "Memo": "Account Updated Successfully.",
+            "OtherError": null,
+            "ResponseID": "108422264",
+            "DerivedPartnerStatus": null,
+            "MLAEffectiveDate": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Account Control Parameters",
+        "category_id": "3",
+        "document_id": "64",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=64&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=3&regionId=1"
+    }
+}

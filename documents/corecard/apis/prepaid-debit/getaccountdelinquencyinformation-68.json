@@ -1,0 +1,523 @@
+{
+    "metadata": {
+        "name": "GetAccountDelinquencyInformation",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetDelinquencyInfoForAccount",
+        "description": "This API will get current delinquency status and related details of the account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one account identifier of AccountNumber or AccountID is mandatory. Allowable Values: 19"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition: At least one account identifier of AccountNumber or AccountID is mandatory."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "DelinquencyDetail",
+                    "type": "",
+                    "required": null,
+                    "description": "Array containing Delinquency details of an account",
+                    "children": [
+                        {
+                            "name": "ClientId",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Client ID of the client. Valid Values: 1422245 Format:XXXXX Example: 5558547",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "AcctId",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345",
+                            "children": []
+                        },
+                        {
+                            "name": "SysOrgID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Used for authentication and issued by Core Card.This is a static value to represent institution. Valid Values: 0-9 Format : X Example : 6",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount Of Total Due as on Statement Date Valid Values: 0-9 Format: $XX.XX Example: $150.99",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount currently due on account Valid Values: 0-9 Format: $XX.XX Example: $100.00",
+                            "children": []
+                        },
+                        {
+                            "name": "PastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount due not paid as per last cycle of statement Valid Values: 0-9 Format:$XX.XX Example:$100.00",
+                            "children": []
+                        },
+                        {
+                            "name": "OneCyclePastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount due on account as of Past one cycle Valid Values: 0-9 Format: $XX.XX Example: $150.99",
+                            "children": []
+                        },
+                        {
+                            "name": "TwoCyclePastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount due on account as of Past two cycle Valid Values: 0-9 Format: $XX.XX Example: $150.99",
+                            "children": []
+                        },
+                        {
+                            "name": "ThreeCyclePastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount due on account as of Past three cycle Valid Values: 0-9 Format: $XX.XX Example: $150.99",
+                            "children": []
+                        },
+                        {
+                            "name": "FourCyclePastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount due on account as of Past four cycle Valid Values: 0-9 Format: $XX.XX Example: $150.99",
+                            "children": []
+                        },
+                        {
+                            "name": "FiveCyclePastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount due on account as of Past five cycle Valid Values: 0-9 Format: $XX.XX Example: $150.99",
+                            "children": []
+                        },
+                        {
+                            "name": "SixCyclePastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount due on account as of Past six cycle Valid Values: 0-9 Format: $XX.XX Example: $150.99",
+                            "children": []
+                        },
+                        {
+                            "name": "SevenCyclePastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount due on account as of Past seven cycle Valid Values: 0-9 Format: $XX.XX Example: $150.99",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalPastDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Amount due on account Valid Values: 0-9 Format: $XX.XX Example: $150.99",
+                            "children": []
+                        },
+                        {
+                            "name": "CycleDue",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Returns  CycleDueDTD of Account. Possible Values are as follows: 0 - Nothing Due 1 - Current Due 2 - Past Due 3 - 1 Cycle Past Due 4 - 2 Cycles Past Due 5 - 3 Cycles Past Due 6 - 4 Cycles Past Due 7 - 5 Cycles Past Due 8 - 6 Cycles Past Due 9 - 7 Cycles Past Due Valid Values: 0-9 Format:X Example:2",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountInCollections",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates if account is in collections Valid Values: Yes/No Format:No Example:No Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CollectionReason",
+                            "type": "string",
+                            "required": null,
+                            "description": "If account is in Colelctions, this tag specifies reason for being in collection Valid Values:a-z Format:XXX Example:Delinquent,Delinquent and Overlimit,Overlimit,First Payment and Default,Status Low,Status High,ChargedOff Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "DaysDelinquent",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of days account currently has been in delinquent status, if account is delinquent Valid Values:0-9 Format:X Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalDaysDelinquent",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of days account has been in delinquent status ever, if account is delinquent Valid Values:0-9 Format:X Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "DateofOriginalPaymentDue",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Last due date on account, failing which, account will be delinquent Valid Values: valid date Format: MM/DD/YYYY HH:MM:SS Example: 02/01/2020 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "DateLastDelinquent",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when last account was marked as delinquent Valid Values: valid date Format: MM/DD/YYYY HH:MM:SS Example: 02/01/2020 00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "PastDueCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of time account has been in this delinquent state Valid Values: 0-9 Format:X Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "OneCyclePastDueCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of time account has been in this delinquent state Valid Values: 0-9 Format:X Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "TwoCyclePastDueCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of time account has been in this delinquent state Valid Values: 0-9 Format:X Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "ThreeCyclePastDueCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of time account has been in this delinquent state Valid Values: 0-9 Format:X Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "FourCyclePastDueCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of time account has been in this delinquent state Valid Values: 0-9 Format:X Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "FiveCyclePastDueCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Total Amount due on account Number of time account has been in this delinquent state Valid Values: 0-9 Format:X Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "SixCyclePastDueCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of time account has been in this delinquent state Valid Values: 0-9 Format:X Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "SevenCyclePastDueCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of time account has been in this delinquent state Valid Values: 0-9 Format:X Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "NumberOfTimesReaged",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Number of time account has been reaged in past Valid Values: 0-9 Format:X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "ReageDate1",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when account was reaged last time Valid Values: valid date Format: mmddyyyy Example: 02012020",
+                            "children": []
+                        },
+                        {
+                            "name": "ReageDate2",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when account was reaged before ReageDate1 date Valid Values: valid date Format: mmddyyyy Example: 02012020",
+                            "children": []
+                        },
+                        {
+                            "name": "ReageDate3",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when account was reaged before ReageDate2 date Valid Values: valid date Format: mmddyyyy Example: 02012020",
+                            "children": []
+                        },
+                        {
+                            "name": "ReageDate4",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when account was reaged before ReageDate3 date Valid Values: valid date Format: mmddyyyy Example: 02012020",
+                            "children": []
+                        },
+                        {
+                            "name": "ReageDate5",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when account was reaged before ReageDate4 date Valid Values: valid date Format: mmddyyyy Example: 02012020",
+                            "children": []
+                        },
+                        {
+                            "name": "ReageDate6",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when account was reaged before ReageDate5 date Valid Values: valid date Format: mmddyyyy Example: 02012020",
+                            "children": []
+                        },
+                        {
+                            "name": "ReageTypeIndic1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if last time account was Reaged using which method Valid Values: 0-Manual / 1-Auto Format:X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "ReageTypeIndic2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if account was Reaged before ReageDate1 using which method Valid Values: 0-Manual / 1-Auto Format:X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "ReageTypeIndic3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if account was Reaged before ReageDate2 using which method Valid Values: 0-Manual / 1-Auto Format:X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "ReageTypeIndic4",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if account was Reaged before ReageDate3 using which method Valid Values: 0-Manual / 1-Auto Format:X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "ReageTypeIndic5",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if account was Reaged before ReageDate4 using which method Valid Values: 0-Manual / 1-Auto Format:X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "ReageTypeIndic6",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if account was Reaged before ReageDate5 using which method Valid Values: 0-Manual / 1-Auto Format:X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "LastReageDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when account was reaged last Valid Values: valid date Format: mmddyyyy Example: 02012020",
+                            "children": []
+                        },
+                        {
+                            "name": "DelinquencyLevel",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Define the level of delinquency in fields, if details are to be shown at account or plan level or combined Valid Values: 0 = Account 1 = Plan 2 = Combined Format: Example:0 = Account",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "1000000700000135",
+        "AccountID": 5888
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "DelinquencyDetail": {
+                "ClientId": 5030,
+                "AccountNumber": "1000000700000090",
+                "AcctId": 5798,
+                "SysOrgID": 1,
+                "TotalDue": 0.0,
+                "CurrentDue": 0.0,
+                "PastDue": 0.0,
+                "OneCyclePastDue": 0.0,
+                "TwoCyclePastDue": 0.0,
+                "ThreeCyclePastDue": 0.0,
+                "FourCyclePastDue": 0.0,
+                "FiveCyclePastDue": 0.0,
+                "SixCyclePastDue": 0.0,
+                "SevenCyclePastDue": 0.0,
+                "TotalPastDue": 0.0,
+                "CycleDue": 0,
+                "CollectionReason": "None",
+                "DaysDelinquent": 0,
+                "TotalDaysDelinquent": 0,
+                "DateofOriginalPaymentDue": null,
+                "DateLastDelinquent": null,
+                "PastDueCount": 2,
+                "OneCyclePastDueCount": 0,
+                "TwoCyclePastDueCount": 0,
+                "ThreeCyclePastDueCount": 0,
+                "FourCyclePastDueCount": 0,
+                "FiveCyclePastDueCount": 0,
+                "SixCyclePastDueCount": 0,
+                "SevenCyclePastDueCount": 0,
+                "NumberOfTimesReaged": 0,
+                "ReageDate1": null,
+                "ReageDate2": null,
+                "ReageDate3": null,
+                "ReageDate4": null,
+                "ReageDate5": null,
+                "ReageDate6": null,
+                "ReageTypeIndic1": 0,
+                "ReageTypeIndic2": 0,
+                "ReageTypeIndic3": 0,
+                "ReageTypeIndic4": 0,
+                "ReageTypeIndic5": 0,
+                "ReageTypeIndic6": 0,
+                "LastReageDate": null,
+                "DelinquencyLevel": 1
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=68&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4"
+    }
+}

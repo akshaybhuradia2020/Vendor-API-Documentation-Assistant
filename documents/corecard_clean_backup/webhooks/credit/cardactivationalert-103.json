@@ -1,0 +1,302 @@
+{
+    "metadata": {
+        "name": "CardActivationAlert",
+        "http_method": "POST",
+        "endpoint": "/api/WebHookNotification/UpdateNotification/CardActivationAlert",
+        "description": "This webhook is triggered when a card gets activated for an account."
+    },
+    "request_fields": [
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number associated with the event. The Account Number is consistently maintained at the Account level (one-to-one Mapping).\nValid Values: 0-9\nFormat: XXXXXXXXXXXXXXXX\nExample: 8000000000000037 Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Admin Number associated with the event. Admin Number is always associated with a Card (Can be Primary or Secondary)\nValid Values:0-9\nFormat:XXXXX\nExample:12345"
+        },
+        {
+            "name": "RequestID",
+            "type": "string",
+            "required": null,
+            "description": "Primary Key for API\nFormat:XXXXXXXXXXXXXXXX\nExample:12345 Allowable Values: 19"
+        },
+        {
+            "name": "Mode",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the type of activity performed which triggered this webhook Possible Value: Alert, Insert, Transaction Allowable Values: 10"
+        },
+        {
+            "name": "AccountUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID of Account\nFormat:XXXXXXXXXX\nExample:7408f969-6e0c-4a3f-8fba-3316f6f77db6 Allowable Values: 64"
+        },
+        {
+            "name": "CardUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID of Card\nFormat:XXXXXXXXXX\nExample:fbe61b75-6751-4add-9c44-7832ccf399e9 Allowable Values: 64"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": null,
+            "description": "Corecard's Client ID Allowable Values: 64"
+        },
+        {
+            "name": "RequestUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID Request\nExample: 8638-b87b-48d0-8e13-0ebb5643577 Allowable Values: 64"
+        },
+        {
+            "name": "UpdateCallList",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "Category",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "CategoryName",
+            "type": "string",
+            "required": null,
+            "description": "Indicates category of alert triggered\nPossible values:\nAccount Creation, Payment Schedule, Manage Bank Account, Create Secondary card, Card Replacement, Customer Information, Update Credit Limit, Update Manual Status, Loyalty Redemption, Loyalty Manual Redemption, Loyalty Points Adjustments, Card Activation, CollateralID, Update System Status, Update Card Status, Card Auto Reissue, Dispute Release OTB, PromotionalReward Allowable Values: 40"
+        },
+        {
+            "name": "CategoryID",
+            "type": "integer",
+            "required": null,
+            "description": "Numeric unique identifier for Category"
+        },
+        {
+            "name": "CategoryFieldList",
+            "type": "array",
+            "required": null,
+            "description": "Array of fields passed in webhook"
+        },
+        {
+            "name": "ModifiedFieldName",
+            "type": "string",
+            "required": null,
+            "description": "Indicates cashback policy is updated on the card Allowable Values: 40"
+        },
+        {
+            "name": "OldValue",
+            "type": "string",
+            "required": null,
+            "description": "Represents the previous value of the field being updated. For insert operations, this will be null. This tag is applicable only for updates Allowable Values: 40"
+        },
+        {
+            "name": "NewValue",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the new value assigned to the field being updated/modified. Allowable Values: 40"
+        },
+        {
+            "name": "CardnumLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Last 4 digits of card number"
+        },
+        {
+            "name": "User",
+            "type": "string",
+            "required": null,
+            "description": "User ID of the user who triggered the webhook event. \nValid Values: CoreCredit user, API user, System Allowable Values: 40"
+        },
+        {
+            "name": "DateandTime",
+            "type": "DateTime",
+            "required": null,
+            "description": "Timestamp when notification was sent\nYYYY-MM-DD hh:mm:ss:sss\n(24-hour Format)"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the source from where the activity was performed by user or triggered by system.\nValid Values: CoreCredit, External API, Self Service, CoreCollect, IVR, System, CoreIssue Allowable Values: 20"
+        },
+        {
+            "name": "ServiceName",
+            "type": "string",
+            "required": null,
+            "description": "Name of API service (webhook) triggered Allowable Values: 40"
+        },
+        {
+            "name": "AlertType",
+            "type": "string",
+            "required": null,
+            "description": "Indicates type of Alert \nPossible values:\nReal-Time or Re Try(due to time-out) Allowable Values: 15"
+        },
+        {
+            "name": "TransactionSource",
+            "type": "string",
+            "required": null,
+            "description": "Transaction Source of transaction, IPM, Retail Manual Auth-Installment, Retail Manual Auth-Revolver etc. Allowable Values: 40"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by CoreCard for Institution"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by CoreCard for Product"
+        },
+        {
+            "name": "AlertRecipientType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of recipient to which alert needs to be sent\nValid Values:1=Primary Applicant,2=Cosigner,3=Applicant and Cosigner,4=Auth User,5=Applicant and Auth User"
+        },
+        {
+            "name": "MonetaryLog",
+            "type": "",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "InfoAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook."
+        },
+        {
+            "name": "RewardsRedemption",
+            "type": "",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "Reward",
+            "type": "",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "RewardInfo",
+            "type": "",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "InfoCollectionAlert",
+            "type": "",
+            "required": null,
+            "description": "Group element will always null for collection."
+        },
+        {
+            "name": "InfoAgeOffAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook."
+        }
+    ],
+    "response_fields": null,
+    "sample_request": {
+        "AccountNumber": "9000000630333566",
+        "AdminNumber": 1367273,
+        "RequestID": "1043057639",
+        "Mode": "Update",
+        "AccountUniversalUniqueID": "b7ebe855-24b1-46df-9cd1-0b515a38a93e",
+        "CardUniversalUniqueID": "54ac3bd8-dd7a-4ba4-a3f7-5cd569a5cbb2",
+        "ClientId": null,
+        "RequestUniversalUniqueID": "5f0ea9a9-50af-4fb6-9fb2-0d5aba361ff6",
+        "UpdateCallList": {
+            "Category": {
+                "CategoryName": "Card Activation",
+                "CategoryID": 1367273,
+                "CategoryFieldList": [
+                    {
+                        "ModifiedFieldName": "Card Status",
+                        "OldValue": "New Card Pending Activation",
+                        "NewValue": "Active"
+                    }
+                ],
+                "CardnumLast4Digits": "43454"
+            }
+        },
+        "MonetaryLog": {
+            "Category": "Purchase",
+            "SubCategory": "POS",
+            "TranId": 333,
+            "TransactionType": null,
+            "TransactionCode": null,
+            "TransactionDescription": "POS Purchase",
+            "TransactionAmount": 250.75,
+            "TransactionDateTime": "2021-08-16 13:40:55",
+            "CurrentBalanceAfterTran": 1000.25,
+            "TransactionLifeCycleUniqueID": "20a2b378-f028-4a6f-bb16-12345cdef678",
+            "AuthTranId": null,
+            "RecoveredRewardPoints": null,
+            "CheckNumber": null,
+            "BalanceIndicator": null,
+            "DBIndicator": null,
+            "BankAccountLast4Digit": null,
+            "CardnumLast4Digits": "43454",
+            "InstallmentsBalance": null,
+            "InstallmentsPendingPurchases": null,
+            "StatementRemainingBalanceWithInstallmentDue": null,
+            "TransactionUniversalUniqueID": "c8ee96c2-ee93-49f1-9e8f-88f1e79fcab7",
+            "ReasonCode": null,
+            "AdjustedCurrentBalance": null,
+            "RevolvingCurrentBalance": null,
+            "InfoPlan": null,
+            "OriginalTranID": null,
+            "TransactionReferenceID": null,
+            "FirstName": "John",
+            "LastName": "Doe",
+            "PrimaryEmail": "[email protected]",
+            "CosignerEmailID": null,
+            "AuthUserEmailID": null,
+            "BankName": null,
+            "BankMethodName": null,
+            "RefundType": null,
+            "RefundMode": null,
+            "PrimaryCurrencyCode": "USD",
+            "AvailableOTB": 0.0,
+            "LoanAccountNumber": null,
+            "SettlementDate": null
+        },
+        "InfoAlert": null,
+        "RewardsRedemption": null,
+        "Reward": null,
+        "RewardInfo": null,
+        "InfoCollectionAlert": null,
+        "InfoAgeOffAlert": null,
+        "User": "System",
+        "DateandTime": "2021-08-16 00:11:01",
+        "Source": "External API",
+        "ServiceName": "svcAPICardActivation",
+        "AlertType": "RealTime",
+        "TransactionSource": null,
+        "InstitutionId": 12471,
+        "ProductId": 12516,
+        "AlertRecipientType": 1
+    },
+    "sample_response": null,
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "webhook",
+        "section": "webhooks/credit",
+        "category": "Update Notification",
+        "category_id": "6",
+        "document_id": "103",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/WEBHookPageApiDetail?id=103&type=ApiDetail&menuid=1&regionId=1"
+    }
+}

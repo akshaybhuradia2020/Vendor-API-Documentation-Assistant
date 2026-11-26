@@ -1,0 +1,771 @@
+{
+    "metadata": {
+        "name": "GetLoyaltyProgramSegment",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Rewards/GetLoyaltyProgramSegment",
+        "description": "The Purpose of this API is to get the loyalty programwise summary of reward points in terms of Credit/Debit/Adjustments/Redemptions for timeperiod CurrentDay/Daily/Cycle/Monthly/Yearly/LifeTime."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder/AccountHolder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition:At least one of AccountNumber/AdminNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345 Condition:At least one of AccountNumber/AdminNumber is required."
+        },
+        {
+            "name": "LoyaltyProgramID",
+            "type": "integer",
+            "required": false,
+            "description": "ID of Loyalty Program Valid Values:0-9 Format:XXXX Example:2345(Value shared by Corecard)."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "LoyaltyProgramSegment",
+                    "type": "array",
+                    "required": null,
+                    "description": "Array to show the details of rewards programwise.",
+                    "children": [
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "MaskedCardNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Masked Card Number Valid Values:0-9 Example:XXXXXXXXXXXXXXXX Allowable Values: 16",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyProgramName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of Loyalty Program Valid Values:A-Z,a-z Example: Card Loyalty Program Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Current balance of account/Debtor Owing Valid Values:0-9 Format:XXXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "ProgramEndDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "End Date of Loyalty Program Valid Values:  0-9 Format: MMDDYYYY Example: 02012020",
+                            "children": []
+                        },
+                        {
+                            "name": "ProgramStartDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Start Date of Loyalty Program Valid Values:  0-9 Format: MMDDYYYY Example: 02012020",
+                            "children": []
+                        },
+                        {
+                            "name": "BonusEndDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when the Bonus reward period ended. Format:YYYYMMDDHHMMSS Example:202002041820",
+                            "children": []
+                        },
+                        {
+                            "name": "BonusStartDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when the Bonus reward period ended. Format:YYYYMMDDHHMMSS Example:202002041820",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstUsageBonus",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Reward points earned within Bonus Period. Valid Values:0-9 Example:200",
+                            "children": []
+                        },
+                        {
+                            "name": "DayToDateBucket",
+                            "type": "",
+                            "required": null,
+                            "description": "Array to show Credit/Debit/Adjustment/Redemption buckets of rewards for a current day.",
+                            "children": [
+                                {
+                                    "name": "DebitsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points which got deducted within a time period. Valid Values:0-9 Example:100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of transactions which deducted the reward points within a time period. Valid Values:0-9 Example:1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points earned within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of transactions which earned reward points within a time period. Valid Values:0-9 Example:2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitAdjustmentsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points deducted within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitAdjustmentsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of adjustment transactions which deducted the reward points within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditAdjustmentsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points deducted within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditAdjustmentsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Total Reward points earned with credit adjutsments within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points redeemed within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of  transactions posted to redeem the reward points within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsReversalsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points which reversed after redemption within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsReversalsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of reversal transactions posted to initiate reversal of  redeemed points within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "CycleToDateBucket",
+                            "type": "",
+                            "required": null,
+                            "description": "Array to show Credit/Debit/Adjustment/Redemption buckets of rewards for a Cycle Period.",
+                            "children": [
+                                {
+                                    "name": "DebitsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points which got deducted within a time period. Valid Values:0-9 Example:100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of transactions which deducted the reward points within a time period. Valid Values:0-9 Example:1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points earned within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of transactions which earned reward points within a time period. Valid Values:0-9 Example:2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitAdjustmentsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points deducted within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitAdjustmentsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of adjustment transactions which deducted the reward points within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditAdjustmentsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points deducted within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditAdjustmentsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Total Reward points earned with credit adjutsments within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points redeemed within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of  transactions posted to redeem the reward points within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsReversalsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points which reversed after redemption within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsReversalsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of reversal transactions posted to initiate reversal of  redeemed points within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "MonthToDateBucket",
+                            "type": "",
+                            "required": null,
+                            "description": "Array to show Credit/Debit/Adjustment/Redemption buckets of rewards for a month Period.",
+                            "children": [
+                                {
+                                    "name": "DebitsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points which got deducted within a time period. Valid Values:0-9 Example:100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of transactions which deducted the reward points within a time period. Valid Values:0-9 Example:1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points earned within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of transactions which earned reward points within a time period. Valid Values:0-9 Example:2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitAdjustmentsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points deducted within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitAdjustmentsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of adjustment transactions which deducted the reward points within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditAdjustmentsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points deducted within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditAdjustmentsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Total Reward points earned with credit adjutsments within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points redeemed within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of  transactions posted to redeem the reward points within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsReversalsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points which reversed after redemption within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsReversalsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of reversal transactions posted to initiate reversal of  redeemed points within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "YearToDateBucket",
+                            "type": "",
+                            "required": null,
+                            "description": "Array to show Credit/Debit/Adjustment/Redemption buckets of rewards for a year Period.",
+                            "children": [
+                                {
+                                    "name": "DebitsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points which got deducted within a time period. Valid Values:0-9 Example:100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of transactions which deducted the reward points within a time period. Valid Values:0-9 Example:1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points earned within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of transactions which earned reward points within a time period. Valid Values:0-9 Example:2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitAdjustmentsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points deducted within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitAdjustmentsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of adjustment transactions which deducted the reward points within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditAdjustmentsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points deducted within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditAdjustmentsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Total Reward points earned with credit adjutsments within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points redeemed within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of  transactions posted to redeem the reward points within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsReversalsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points which reversed after redemption within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsReversalsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of reversal transactions posted to initiate reversal of  redeemed points within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "LifeToDateBucket",
+                            "type": "",
+                            "required": null,
+                            "description": "Array to show Credit/Debit/Adjustment/Redemption buckets of rewards for a lifetime Period.",
+                            "children": [
+                                {
+                                    "name": "DebitsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points which got deducted within a time period. Valid Values:0-9 Example:100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of transactions which deducted the reward points within a time period. Valid Values:0-9 Example:1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points earned within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of transactions which earned reward points within a time period. Valid Values:0-9 Example:2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitAdjustmentsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points deducted within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DebitAdjustmentsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of adjustment transactions which deducted the reward points within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditAdjustmentsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points deducted within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CreditAdjustmentsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Total Reward points earned with credit adjutsments within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points redeemed within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of  transactions posted to redeem the reward points within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsReversalsPoints",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total Reward points which reversed after redemption within the time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RedemptionsReversalsCount",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Number of reversal transactions posted to initiate reversal of  redeemed points within a time period. Valid Values:0-9 Example:500",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "5000000000011071",
+        "AdminNumber": 59934,
+        "LoyaltyProgramID": 0
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "LoyaltyProgramSegment": [
+                {
+                    "AccountNumber": "5000000000011071",
+                    "MaskedCardNumber": "461668XXXXXX4612",
+                    "LoyaltyProgramName": "abc Loyalty Program",
+                    "CurrentBalance": 1087.84,
+                    "FirstUsageBonus": 0.0,
+                    "DayToDateBucket": {
+                        "DebitsPoints": 0.0,
+                        "DebitsCount": 0,
+                        "CreditsPoints": 0.0,
+                        "CreditsCount": 1,
+                        "DebitAdjustmentsPoints": 0.0,
+                        "DebitAdjustmentsCount": 0,
+                        "CreditAdjustmentsPoints": 0.0,
+                        "CreditAdjustmentsCount": 0,
+                        "RedemptionsPoints": 0.0,
+                        "RedemptionsCount": 0,
+                        "RedemptionsReversalsPoints": 0.0,
+                        "RedemptionsReversalsCount": 0
+                    },
+                    "CycleToDateBucket": {
+                        "DebitsPoints": 60.46,
+                        "DebitsCount": 1,
+                        "CreditsPoints": 350.4,
+                        "CreditsCount": 6,
+                        "DebitAdjustmentsPoints": 0.0,
+                        "DebitAdjustmentsCount": 0,
+                        "CreditAdjustmentsPoints": 0.0,
+                        "CreditAdjustmentsCount": 0,
+                        "RedemptionsPoints": 0.0,
+                        "RedemptionsCount": 0,
+                        "RedemptionsReversalsPoints": 0.0,
+                        "RedemptionsReversalsCount": 0
+                    },
+                    "MonthToDateBucket": {
+                        "DebitsPoints": 60.46,
+                        "DebitsCount": 1,
+                        "CreditsPoints": 350.4,
+                        "CreditsCount": 6,
+                        "DebitAdjustmentsPoints": 0.0,
+                        "DebitAdjustmentsCount": 0,
+                        "CreditAdjustmentsPoints": 0.0,
+                        "CreditAdjustmentsCount": 0,
+                        "RedemptionsPoints": 0.0,
+                        "RedemptionsCount": 0,
+                        "RedemptionsReversalsPoints": 0.0,
+                        "RedemptionsReversalsCount": 0
+                    },
+                    "YearToDateBucket": {
+                        "DebitsPoints": 60.46,
+                        "DebitsCount": 1,
+                        "CreditsPoints": 350.4,
+                        "CreditsCount": 6,
+                        "DebitAdjustmentsPoints": 0.0,
+                        "DebitAdjustmentsCount": 0,
+                        "CreditAdjustmentsPoints": 350.4,
+                        "CreditAdjustmentsCount": 0,
+                        "RedemptionsPoints": 0.0,
+                        "RedemptionsCount": 0,
+                        "RedemptionsReversalsPoints": 0.0,
+                        "RedemptionsReversalsCount": 0
+                    },
+                    "LifeToDateBucket": {
+                        "DebitsPoints": 1219.17,
+                        "DebitsCount": 3,
+                        "CreditsPoints": 2307.01,
+                        "CreditsCount": 16,
+                        "DebitAdjustmentsPoints": 0.0,
+                        "DebitAdjustmentsCount": 0,
+                        "CreditAdjustmentsPoints": 350.4,
+                        "CreditAdjustmentsCount": 0,
+                        "RedemptionsPoints": 0.0,
+                        "RedemptionsCount": 0,
+                        "RedemptionsReversalsPoints": 0.0,
+                        "RedemptionsReversalsCount": 0
+                    }
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Reward Transactions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=146&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=23"
+    }
+}

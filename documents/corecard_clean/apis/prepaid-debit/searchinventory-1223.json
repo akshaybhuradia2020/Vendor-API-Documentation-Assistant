@@ -1,0 +1,291 @@
+{
+    "metadata": {
+        "name": "SearchInventory",
+        "http_method": "POST",
+        "endpoint": "/api/SearchInventory",
+        "description": "Use this API  to search inventory using parameters like Inventory Status, Order ID, Product ID etc."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "OrderID",
+            "type": "string",
+            "required": false,
+            "description": "Order number for an inventory. Valid values : 0-9 Example : 3478 Allowable Values: 19"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": false,
+            "description": "Client Id Valid Values: 1422245 Format:XXXXX Allowable Values: 50"
+        },
+        {
+            "name": "InventoryStatus",
+            "type": "string",
+            "required": false,
+            "description": "Status of the inventory Valid values : 1= Approval Pending 2 = Approved 3 = Cards Created 4 = Inventory Dispatch 5 = Received 6 = Inventory Received with return 7 = Lost in Transit 8 = Damaged in Transit 9 = Transfer Received 10 = Transfer Received with return 11 = Transfer - In Transit 12 = Transfer - Lost in Transit 13 = Transfer - Damaged in Transit 14 = Error 15 = Rejected Allowable Values: 50"
+        },
+        {
+            "name": "ProductID",
+            "type": "string",
+            "required": false,
+            "description": "ID of the Account's Product Valid Values:0-9 Example: 1739,1758 Allowable Values: 10"
+        },
+        {
+            "name": "PlasticCode",
+            "type": "string",
+            "required": false,
+            "description": "Plastic Code Valid values:0-9 Example: 32 Allowable Values: 100"
+        },
+        {
+            "name": "BranchCode",
+            "type": "string",
+            "required": false,
+            "description": "Code assigned to branch from where the card was issued. Valid Values:0-9, A-Z Example:C1006 Allowable Values: 20"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": false,
+            "description": "Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893 Allowable Values: 19"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": false,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Allowable Values: 19"
+        },
+        {
+            "name": "OrderRequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Date of requesting order Format:mm/dd/yyyy Example:09/26/2020 Allowable Values: 10"
+        },
+        {
+            "name": "CreateDate",
+            "type": "string",
+            "required": false,
+            "description": "Date of order creation Format:mm/dd/yyyy Example:09/26/2020 Allowable Values: 10"
+        },
+        {
+            "name": "NumberOfCard",
+            "type": "string",
+            "required": false,
+            "description": "Total number of cards. Valid values: 0-9 Example: 17 Allowable Values: 10"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": false,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Allowable Values: 16"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "SearchInventoryList",
+                    "type": "array",
+                    "required": null,
+                    "description": "",
+                    "children": [
+                        {
+                            "name": "OrderId",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Order number for an inventory. Valid values : 0-9 Example : 3478",
+                            "children": []
+                        },
+                        {
+                            "name": "RequestedOn",
+                            "type": "string",
+                            "required": null,
+                            "description": "Request date time of activity Format: MM/DD/YYYY HH:mm:ss:msi Example: 09/12/2016 15:51:19:000",
+                            "children": []
+                        },
+                        {
+                            "name": "NumberOfCard",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Total number of cards. Valid values: 0-9 Example: 17",
+                            "children": []
+                        },
+                        {
+                            "name": "InventoryStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of the inventory Valid values : 1= Approval Pending 2 = Approved 3 = Cards Created 4 = Inventory Dispatch 5 = Received 6 = Inventory Received with return 7 = Lost in Transit 8 = Damaged in Transit 9 = Transfer Received 10 = Transfer Received with return 11 = Transfer - In Transit 12 = Transfer - Lost in Transit 13 = Transfer - Damaged in Transit 14 = Error 15 = Rejected",
+                            "children": []
+                        },
+                        {
+                            "name": "RequestedBy",
+                            "type": "string",
+                            "required": null,
+                            "description": "User id of the user who requested the inventory. Example : abc.cc.admin",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Account's Product Valid Values:0-9, A-Z Example: Cash card",
+                            "children": []
+                        },
+                        {
+                            "name": "MultiplePlastic",
+                            "type": "string",
+                            "required": null,
+                            "description": "multiple plastics for the same card or not. Valid Values: Yes,No",
+                            "children": []
+                        },
+                        {
+                            "name": "BranchStoreName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Store Name of the branch Valid values  : A-Z Example - head office",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "OrderID": "1316728",
+        "ClientID": "",
+        "InventoryStatus": "1",
+        "ProductID": "1739",
+        "PlasticCode": "",
+        "BranchCode": "CC1000",
+        "AccountNumber": "60000000025889",
+        "ProxyNumber": "1316182",
+        "OrderRequestDate": "12/30/2020",
+        "CreateDate": "08/24/2020",
+        "NumberOfCard": "3",
+        "CardNumber": "4066846120009716"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "SearchInventoryList": [
+                {
+                    "OrderId": 194467,
+                    "RequestedOn": "8/17/2020 3:30:32 PM",
+                    "NumberOfCard": 3,
+                    "InventoryStatus": "Transfer - in Transit",
+                    "RequestedBy": "ccadmin",
+                    "ProductName": "Convenient Access Visa Prepaid Card - AC155",
+                    "MultiplePlastic": "Yes",
+                    "BranchStoreName": "Convenient Card Top branch (CC10000)"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Inventory",
+        "category_id": "1043",
+        "document_id": "1223",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1223&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1043&regionId=1"
+    }
+}

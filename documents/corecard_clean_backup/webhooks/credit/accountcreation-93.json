@@ -1,0 +1,314 @@
+{
+    "metadata": {
+        "name": "AccountCreation",
+        "http_method": "POST",
+        "endpoint": "/api/WebHookNotification/UpdateNotification/AccountCreation",
+        "description": "This webhook is triggered when a new account is created."
+    },
+    "request_fields": [
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number associated with the event. The Account Number is consistently maintained at the Account level (one-to-one Mapping).\nValid Values: 0-9\nFormat: XXXXXXXXXXXXXXXX\nExample: 8000000000000037 Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Admin Number associated with the event. Admin Number is always associated with a Card (Can be Primary or Secondary)\nValid Values:0-9\nFormat:XXXXX\nExample:12345"
+        },
+        {
+            "name": "RequestID",
+            "type": "string",
+            "required": null,
+            "description": "Primary Key for API\nFormat:XXXXXXXXXXXXXXXX\nExample:12345 Allowable Values: 19"
+        },
+        {
+            "name": "Mode",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the type of activity performed which triggered this webhook \nPossible Value: Alert, Insert, Transaction Allowable Values: 10"
+        },
+        {
+            "name": "AccountUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID of Account\nFormat:XXXXXXXXXX\nExample:9894f28b-d051-4eaa-9e48-a3a7d5b4a6f7 Allowable Values: 64"
+        },
+        {
+            "name": "CardUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID of Card\nFormat:XXXXXXXXXX\nExample:9894f28b-d051-4eaa-9e48-a3a7d5b4a6f7 Allowable Values: 64"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": null,
+            "description": "Corecard's Client ID Allowable Values: 64"
+        },
+        {
+            "name": "RequestUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID Request Allowable Values: 64"
+        },
+        {
+            "name": "UpdateCallList",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "InfoAlert",
+            "type": "array",
+            "required": null,
+            "description": "Group element will always null for collection"
+        },
+        {
+            "name": "InfoReward",
+            "type": "array",
+            "required": null,
+            "description": "Group element will always null for collection"
+        },
+        {
+            "name": "InfoCollectionAlert",
+            "type": "array",
+            "required": null,
+            "description": "Group Element"
+        },
+        {
+            "name": "RewardsRedemption",
+            "type": "array",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "Reward",
+            "type": "array",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "RewardInfo",
+            "type": "array",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "InfoAgeOffAlert",
+            "type": "array",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "User",
+            "type": "string",
+            "required": null,
+            "description": "User ID of the user who triggered the webhook event. \nValid Values: CoreCredit user, API user, System Allowable Values: 40"
+        },
+        {
+            "name": "DateandTime",
+            "type": "DateTime",
+            "required": null,
+            "description": "Timestamp when notification was sent\nYYYY-MM-DD hh:mm:ss:sss \n(24-hour Format)"
+        },
+        {
+            "name": "AlertType",
+            "type": "string",
+            "required": null,
+            "description": "Indicates type of Alert\nValid Values:RealTime or Re Try (due to time-out) Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the source from where the activity was performed by user or triggered by system.\nValid Values: CoreCredit, External API, Self Service, CoreCollect, IVR, System, CoreIssue Allowable Values: 50"
+        },
+        {
+            "name": "ServiceName",
+            "type": "string",
+            "required": null,
+            "description": "Name of API service (webhook) triggered Allowable Values: 40"
+        },
+        {
+            "name": "TransactionSource",
+            "type": "string",
+            "required": null,
+            "description": "Transaction Source of transaction, IPM, Retail Manual Auth-Installment, Retail Manual Auth-Revolver etc. Allowable Values: 40"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by Corecard for Institution"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by Corecard for Product"
+        },
+        {
+            "name": "AlertRecipientType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of recipient to which alert needs to be sent\n1:-- Primary Applicant\n2:- Cosigner\n3:- Applicant and Cosigner\n4:- Auth User\n5:- Applicant and Auth User"
+        },
+        {
+            "name": "MonetaryLog",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        }
+    ],
+    "response_fields": null,
+    "sample_request": {
+        "AccountNumber": "9000000630351899",
+        "AdminNumber": 1370740,
+        "RequestID": "1043029587",
+        "Mode": "Insert",
+        "AccountUniversalUniqueID": "d7f27316-9cec-47b4-88cc-36fe59792b9f",
+        "CardUniversalUniqueID": "3415a3b8-0348-449f-a8fe-df3a063bb5d3",
+        "ClientId": null,
+        "RequestUniversalUniqueID": "7e5dd066-6af5-475d-b39f-f83bab15e07b",
+        "UpdateCallList": {
+            "Category": {
+                "CategoryName": "Account Creation",
+                "CategoryID": 1740428,
+                "CategoryFieldList": [
+                    {
+                        "ModifiedFieldName": "First Name",
+                        "OldValue": null,
+                        "NewValue": "Dylan"
+                    },
+                    {
+                        "ModifiedFieldName": "Last Name",
+                        "OldValue": null,
+                        "NewValue": "Brown"
+                    },
+                    {
+                        "ModifiedFieldName": "Account Number",
+                        "OldValue": null,
+                        "NewValue": "9000000630351899"
+                    },
+                    {
+                        "ModifiedFieldName": "Primary Card Number",
+                        "OldValue": null,
+                        "NewValue": "XXXXXXXXXXXX6534"
+                    },
+                    {
+                        "ModifiedFieldName": "Primary Card Admin Number",
+                        "OldValue": null,
+                        "NewValue": "1370740"
+                    },
+                    {
+                        "ModifiedFieldName": "Account Creation Date",
+                        "OldValue": null,
+                        "NewValue": "08-16-2021"
+                    },
+                    {
+                        "ModifiedFieldName": "Account Creation Time",
+                        "OldValue": null,
+                        "NewValue": "15:23:49"
+                    },
+                    {
+                        "ModifiedFieldName": "Credit Limit",
+                        "OldValue": null,
+                        "NewValue": "5000.00"
+                    },
+                    {
+                        "ModifiedFieldName": "Address Line 1",
+                        "OldValue": null,
+                        "NewValue": "4950 Belmont Stakes Court"
+                    },
+                    {
+                        "ModifiedFieldName": "City",
+                        "OldValue": null,
+                        "NewValue": "Jacksonville"
+                    },
+                    {
+                        "ModifiedFieldName": "Country",
+                        "OldValue": null,
+                        "NewValue": "United States"
+                    },
+                    {
+                        "ModifiedFieldName": "Postal Code",
+                        "OldValue": null,
+                        "NewValue": "32257"
+                    },
+                    {
+                        "ModifiedFieldName": "State",
+                        "OldValue": null,
+                        "NewValue": "Florida"
+                    },
+                    {
+                        "ModifiedFieldName": "Date of Birth",
+                        "OldValue": null,
+                        "NewValue": "12-24-1993"
+                    },
+                    {
+                        "ModifiedFieldName": "Home Phone Number",
+                        "OldValue": null,
+                        "NewValue": "9048881962"
+                    },
+                    {
+                        "ModifiedFieldName": "Email ID",
+                        "OldValue": null,
+                        "NewValue": "[email protected]"
+                    },
+                    {
+                        "ModifiedFieldName": "Language Indicator",
+                        "OldValue": null,
+                        "NewValue": "English"
+                    },
+                    {
+                        "ModifiedFieldName": "SSN",
+                        "OldValue": null,
+                        "NewValue": "195749937"
+                    },
+                    {
+                        "ModifiedFieldName": "Name on Card",
+                        "OldValue": null,
+                        "NewValue": "Dylan Brown"
+                    },
+                    {
+                        "ModifiedFieldName": "Reg O Flag",
+                        "OldValue": null,
+                        "NewValue": "0"
+                    }
+                ]
+            }
+        },
+        "InfoAlert": null,
+        "InfoReward": null,
+        "InfoCollectionAlert": null,
+        "RewardsRedemption": null,
+        "Reward": null,
+        "RewardInfo": null,
+        "InfoAgeOffAlert": null,
+        "MonetaryLog": null,
+        "User": "cardholder",
+        "DateandTime": "2021-08-16 15:23:50",
+        "AlertType": "RealTime",
+        "Source": "External API",
+        "ServiceName": "svcAccountCreationBC",
+        "TransactionSource": null,
+        "InstitutionID": 12471,
+        "ProductID": 12516,
+        "AlertRecipientType": 1
+    },
+    "sample_response": null,
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "webhook",
+        "section": "webhooks/credit",
+        "category": "Update Notification",
+        "category_id": "6",
+        "document_id": "93",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/WEBHookPageApiDetail?id=93&type=ApiDetail&menuid=1&regionId=1"
+    }
+}

@@ -1,0 +1,306 @@
+{
+    "metadata": {
+        "name": "PaymentScheduleRequest",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Transactions/PaymentScheduleRequest",
+        "description": "This API is used to add or delete a payment schedule in system for an account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Example:8000000000000037 Condition:At least one of AdminNumber/AccountNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Example:4851455 Condition:At least one of AdminNumber/AccountNumber is required."
+        },
+        {
+            "name": "Frequency",
+            "type": "integer",
+            "required": null,
+            "description": "Frequency set with which payment will be made Possible values 0 = Monthly Specific Day 1 = Payment Due Date 2 = One Time 3 = Weekly 4 = Instant Pay 5 = Daily 6 = Bi-Weekly 7 = Semi-Monthly Condition:Mandatory When Request type = 0 NOTE: If 'Instant Pay' option is used for Payment then the balances will be updated at the same time but it can have different status based on the transaction processing through ACH."
+        },
+        {
+            "name": "PaymentDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Date when payment is scheduled. Format: MM/DD/YYYY Example: 01/01/2020 Condition: If request type  = 0 and frequency = 2 then this is mandatory."
+        },
+        {
+            "name": "PaymentType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of Payment as below enumerations: 0 = Minimum Payment Due 1 = Statement Balance 2 = Current Balance 3 = Fixed Amount 4 = Adjusted Statement Balance Condition: Mandatory When Request type = 0"
+        },
+        {
+            "name": "MethodName",
+            "type": "int64",
+            "required": null,
+            "description": "Method Name uniquely identifies bank accounts in Core card system. Whenever user adds any bank account. This is required If User wants to send transaction in ACH. Condition: Mandatory When Request type = 0 and PaymentMode is 0(ACH)."
+        },
+        {
+            "name": "SpecificDay",
+            "type": "string",
+            "required": null,
+            "description": "Specific day when scheduled payment should occur. If frequency = 0 Or frequency = 3 Or frequency = 6 then this is mandatory. Possible values: If (frequency = 0) 1-31 EOM If (frequency = 3 Or  frequency = 6) MON, TUE, WED, THU, FRI, SAT, SUN Condition : If frequency = 0 Or frequency = 3  Or frequency = 6 then this is mandatory if PaymentDate is not provided. Allowable Values: 10"
+        },
+        {
+            "name": "EnterMemo",
+            "type": "string",
+            "required": null,
+            "description": "Memo text entered by Customer service representative. Possible values: a-z,0-9 Example:abc Condition: Memo text required when deleting a schedule, if request type = 1 Allowable Values: 150"
+        },
+        {
+            "name": "ScheduleID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique identifier for Schedule Payment. Condition:Mandatory When Request type = 1."
+        },
+        {
+            "name": "RequestType",
+            "type": "integer",
+            "required": false,
+            "description": "Denotes type of action being attempted. Possible values: 0 = Add/Create Schedule 1 = Delete Schedule 2 = Update Example: 0"
+        },
+        {
+            "name": "Priority",
+            "type": "integer",
+            "required": null,
+            "description": "Denotes memo priority while deleting scheduled payment. Possible values: 0 = No, 1 = Yes Example:1 Condition: If request type = 1 then priority can be set."
+        },
+        {
+            "name": "FixedAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "This is fixed value of payment to be used to schedule a payment. Condition: If payment type = 3 then this is mandatory"
+        },
+        {
+            "name": "PaymentMode",
+            "type": "integer",
+            "required": false,
+            "description": "If not provided then Default value - 0 (ACH) Possible values: 0 = ACH 1 = Debit Card With Token 2 = Debit Card With Card Number 3 = APC Payment"
+        },
+        {
+            "name": "Token",
+            "type": "string",
+            "required": false,
+            "description": "Debit Card Token (Cardholder Authentication Verification Value(CAVV)) Allowable Values: 100"
+        },
+        {
+            "name": "CreateMethodForNextPayment",
+            "type": "string",
+            "required": false,
+            "description": "If User wants to generate Method of Debit Card Token or Debit Card Number information for further Payments Possible values: 0 = No, 1 = Yes Example: 0 Allowable Values: 2"
+        },
+        {
+            "name": "XDaysBeforePaymentDueDate",
+            "type": "integer",
+            "required": false,
+            "description": "XdaysBeforePaymentDueDate will be enable, if Frequency is Payment Due Date. Possible Values: 0 - 28. If not provided then default values is 0 which means payment date will be Payment due Date."
+        },
+        {
+            "name": "ApplicantType",
+            "type": "integer",
+            "required": false,
+            "description": "Selects the type of Applicant. Valid Values: 1,2,3 Example: 1 = Applicant, 2 = Co-Applicant, 3 = Cosigner"
+        },
+        {
+            "name": "UniqueId",
+            "type": "string",
+            "required": false,
+            "description": "Unique ID is a transaction specific unique ID. This ID is unique for every transaction. If multiple calls are made by client for a specific transaction, the value of this tag will always be the same for a specific transaction. (GUID and UUID datatypes are supported for this tag). Valid Values: A-Z, 0-9 Example: F965C56F-C58F-EC11-B80E-A4BF010A357E Condition:For API user, if API Idempotency Applicable is set as Yes on CoreCredit, field is mandatory. The UniqueId is valid for 7 days from first submission of the request. Same request can be retried for 7 days without performing the same action twice.Idempotency will be checked at the belongingOwning Partner and Merchant Level. Allowable Values: 40"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ScheduleID",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Unique identifier for Schedule Payment.",
+                    "children": []
+                },
+                {
+                    "name": "TransactionStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Shows status of transaction. Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "TransactionAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Amount of Transaction.",
+                    "children": []
+                },
+                {
+                    "name": "ExternalErrorMessage",
+                    "type": "string",
+                    "required": null,
+                    "description": "Error message, if any. Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "DateOfPayment",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date when payment transaction will happen. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "700000000785214",
+        "AdminNumber": 100989,
+        "Frequency": null,
+        "PaymentDate": "11/02/2020 00:00:00",
+        "PaymentType": 3,
+        "MethodName": null,
+        "SpecificDay": null,
+        "EnterMemo": null,
+        "ScheduleID": null,
+        "RequestType": 0,
+        "Priority": null,
+        "FixedAmount": 10.0,
+        "PaymentMode": null,
+        "Token": null,
+        "CreateMethodForNextPayment": null,
+        "XDaysBeforePaymentDueDate": null,
+        "ApplicantType": null,
+        "UniqueId": null
+    },
+    "sample_response": {
+        "Message": "Payment Schedule Added.",
+        "Status": true,
+        "ErrorCode": "ERR01032",
+        "ResponseData": {
+            "ScheduleID": 1654477,
+            "TransactionStatus": null,
+            "TransactionAmount": null,
+            "ExternalErrorMessage": null,
+            "DateOfPayment": "03/15/2020 00:00:00"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=157&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1010"
+    }
+}

@@ -1,0 +1,256 @@
+{
+    "metadata": {
+        "name": "Token",
+        "http_method": "POST",
+        "endpoint": "/api/Token",
+        "description": "Use this API to either generate token or refresh token to access CoreCard APIs."
+    },
+    "request_fields": [
+        {
+            "name": "UserID",
+            "type": "string",
+            "required": null,
+            "description": "User ID provided by CoreCARD to login in CoreCard System. Condition: mandatory when GrantType = AccessToken. Allowable Values: 40"
+        },
+        {
+            "name": "Password",
+            "type": "string",
+            "required": null,
+            "description": "Password of user id Condition: mandatory when GrantType = AccessToken. Allowable Values: 32"
+        },
+        {
+            "name": "GrantType",
+            "type": "string",
+            "required": false,
+            "description": "Grant Type. Valid values : 'AccessToken', and 'RefreshToken'. Allowable Values: 32"
+        },
+        {
+            "name": "RefreshToken",
+            "type": "string",
+            "required": null,
+            "description": "use this to re generate Access Token Condition:Mandatory when GrantType = RefreshToken."
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "username",
+            "type": "string",
+            "required": null,
+            "description": "username of user. Condition:Mandatory."
+        },
+        {
+            "name": "auth_header",
+            "type": "string",
+            "required": null,
+            "description": "username of user. Condition:Mandatory."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "access_token",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects Access Token which is used to access CoreCard API's.",
+            "children": []
+        },
+        {
+            "name": "token_type",
+            "type": "string",
+            "required": null,
+            "description": "Type of token.",
+            "children": []
+        },
+        {
+            "name": "expires_in",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the Expires. It is the time when provided Access Token has been expired.",
+            "children": []
+        },
+        {
+            "name": "refresh_token",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects Refresh Token. It is used to re generate Access Token when the GrantType value is RefreshToken.",
+            "children": []
+        },
+        {
+            "name": "issued",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the IssuedAt. It is the time when token provided to access CoreCard API.",
+            "children": []
+        },
+        {
+            "name": "userName",
+            "type": "string",
+            "required": null,
+            "description": "This Tag reflects User ID provided by CoreCARD to login in CoreCard System.",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "expires",
+                    "type": "string",
+                    "required": null,
+                    "description": "Time when provided Access Token will be expired.",
+                    "children": []
+                },
+                {
+                    "name": "AccessToken",
+                    "type": "string",
+                    "required": null,
+                    "description": "Token  to access CoreCard API's.",
+                    "children": []
+                },
+                {
+                    "name": "RefreshToken",
+                    "type": "string",
+                    "required": null,
+                    "description": "Use Refresh Token to re generate Access Token with GrantType as RefreshToken.",
+                    "children": []
+                },
+                {
+                    "name": "TokenType",
+                    "type": "string",
+                    "required": null,
+                    "description": "Type of token. Valid Value : Bearer",
+                    "children": []
+                },
+                {
+                    "name": "UserID",
+                    "type": "string",
+                    "required": null,
+                    "description": "User ID provided by CoreCARD to login in CoreCard System.",
+                    "children": []
+                },
+                {
+                    "name": "IssuedAt",
+                    "type": "string",
+                    "required": null,
+                    "description": "Time when token provided to access CoreCard API.",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "language": "en",
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "RequestDate": "",
+        "UserID": "TestUser",
+        "Password": "XXXXXXXXXX",
+        "GrantType": "AccessToken",
+        "RefreshToken": ""
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "AccessToken": "XXXXXXXXXXXXXXXXXXXXXXXXXX",
+            "RefreshToken": "XXXXXXXXXXXXXXXXXXXXXXXXXX",
+            "TokenType": "bearer",
+            "UserID": "TestUser",
+            "IssuedAt": "Wed,30 Mar 2022 08:17:56 GMT",
+            "Expires": "Wed,30 Mar 2022 08:47:56 GMT"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Token",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1266&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1034"
+    }
+}

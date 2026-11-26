@@ -1,0 +1,810 @@
+{
+    "metadata": {
+        "name": "TransactionHistory",
+        "http_method": "POST",
+        "endpoint": "/api/TransactionHistory",
+        "description": "Use this API to fetch monetary transaction posted on a card account. Combination of multiple filters such as date range, Transaction ID, Minimum Transaction Amount, Maximum Transaction Amount and Transaction type are present to fetch records of all transactions, settled transactions, outstanding transactions, expired transactions."
+    },
+    "request_fields": [
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": false,
+            "description": "Account Number  of card Example:3002151478 Application Version is 1.3 Condition:At least Account Number / Card Number/ Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": false,
+            "description": "Client ID Example: 1000 Allowable Values: 0"
+        },
+        {
+            "name": "ClientPassword",
+            "type": "string",
+            "required": false,
+            "description": "Client Password Example: ********* Allowable Values: 0"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of card Example:134567****1200 Application Version is 1.3 Condition:At least Card Number/ Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of card Example: 10501001744174117 Valid values :0-19 Condition : At least Card Number/ Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "NumberOfDays",
+            "type": "string",
+            "required": false,
+            "description": "NumberOfDays Allowable Values: 3"
+        },
+        {
+            "name": "NumberOfTransactions",
+            "type": "string",
+            "required": false,
+            "description": "Number of Transactions Example: 5/10 Allowable Values: 4"
+        },
+        {
+            "name": "FromDate",
+            "type": "string",
+            "required": false,
+            "description": "Transactions can be searched by Transaction Date\" Example:20170528 Format :YYYYMMDD FromDate Allowable Values: 20"
+        },
+        {
+            "name": "ToDate",
+            "type": "string",
+            "required": false,
+            "description": "Transactions can be searched by Transaction Date Example:20170528 Format :YYYYMMDD Required when ToDate is passed in Input. Allowable Values: 20"
+        },
+        {
+            "name": "TransferAmountFrom",
+            "type": "string",
+            "required": false,
+            "description": "Transactions can be searched by Transaction amount greater or equal to Min Transaction Amount Example: 25.00 Allowable Values: 30"
+        },
+        {
+            "name": "TransferAmountTo",
+            "type": "string",
+            "required": false,
+            "description": "Transactions can be searched by Transaction amount less than or equal to Max Transaction Amount Example: 250.00 Allowable Values: 30"
+        },
+        {
+            "name": "NumberOfSavingAcctTransactions",
+            "type": "string",
+            "required": false,
+            "description": "NumberOfSavingAcctTransactions Allowable Values: 4"
+        },
+        {
+            "name": "PageIndex",
+            "type": "string",
+            "required": false,
+            "description": "Start Count of Transactions Example: 0,1,100 Allowable Values: 4"
+        },
+        {
+            "name": "AllFlag",
+            "type": "string",
+            "required": false,
+            "description": "All Flag Example: 0 = No 1 = Yes Allowable Values: 5"
+        },
+        {
+            "name": "LocationID",
+            "type": "string",
+            "required": false,
+            "description": "Location ID Example: 1 Allowable Values: 9"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "WarehousedTxns",
+                    "type": "array",
+                    "required": null,
+                    "description": "CHWarehousedTxns",
+                    "children": [
+                        {
+                            "name": "TransactionID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction ID of Transaction.  This field is used to track the transaction posted in the CoreCard CoreISSUE System Example: 147852369 Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Transaction Date Time of Transaction Example:  07/05/2017 19:48:55 Format : MM/DD/YYYY HH:mm:ss Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction description Example: 40 - PURCHASE DEBIT Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Transaction amount of transaction Exanple: 14.000 Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "EffectiveDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Effective Time of Transaction Processing Example :  07/05/2017 19:48:55 Format : MM/DD/YYYY HH:mm:ss Application Version is 1.3",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "FeeDetail",
+                    "type": "array",
+                    "required": null,
+                    "description": "FeeDetail",
+                    "children": [
+                        {
+                            "name": "FeeName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Fee",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalFeeForPeriod",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Sum of all fees in given month",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalFeeForYear",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Sum of all fees in given Year",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "TransactionList",
+                    "type": "array",
+                    "required": null,
+                    "description": "List of Transactions",
+                    "children": []
+                },
+                {
+                    "name": "SavingAccountTransactions",
+                    "type": "array",
+                    "required": null,
+                    "description": "List of Transactions that are carried our over the savings Account",
+                    "children": [
+                        {
+                            "name": "TransactionDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Transaction Date Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionTime",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Time Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Transaction Amount Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFeeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Fee Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Status Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Type Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionMCC",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction MCC Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "Description1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description1 Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "Description2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description2 Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "Description3",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description3 Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "Description4",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description4 Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Number Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionLifeCycleUniqueID",
+                            "type": "string",
+                            "required": null,
+                            "description": "",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant ID Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Name Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantCity",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant City Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantState",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant State Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Type Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "DrCrIndicator",
+                            "type": "string",
+                            "required": null,
+                            "description": "Debit Credit Indicator Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "SpendCategory",
+                            "type": "string",
+                            "required": null,
+                            "description": "",
+                            "children": []
+                        },
+                        {
+                            "name": "AuthTranID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type Of Transaction Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "CardAcceptorNameLocation",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card Acceptor Name and Location Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "OverLimitFlag",
+                            "type": "string",
+                            "required": null,
+                            "description": "OverLimit Flag Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "HoldAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Hold Amount Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "",
+                            "children": []
+                        },
+                        {
+                            "name": "PostedDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Posted Date Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "PostedTime",
+                            "type": "string",
+                            "required": null,
+                            "description": "Posted Time Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "NoteReason",
+                            "type": "string",
+                            "required": null,
+                            "description": "Memo Flag Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "Notes",
+                            "type": "string",
+                            "required": null,
+                            "description": "Memo Text Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "IsDeclined",
+                            "type": "string",
+                            "required": null,
+                            "description": "Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card Number Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Dispute Status Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "IsDisputeAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Is Dispute Allowed Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeStatusUpdateTime",
+                            "type": "string",
+                            "required": null,
+                            "description": "Dispute Status Update Time Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "AvailableBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Available Balance Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFraudOrNotFraud",
+                            "type": "string",
+                            "required": null,
+                            "description": "",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "LinkedCardInformations",
+                    "type": "array",
+                    "required": null,
+                    "description": "LinkedCardInformations",
+                    "children": [
+                        {
+                            "name": "CardNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card Number of the Card Example:like *********1234567 Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "CreatedOn",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Card Created Date Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "CardExpiryDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Card Expiry Date Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "ManualCardStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Manual Card Status Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "CardType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card Type Application Version is 1.3",
+                            "children": []
+                        },
+                        {
+                            "name": "ProxyNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Proxy Number Application Version is 1.3",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "LastTransaction",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last Transaction Application Version is 1.3",
+                    "children": []
+                },
+                {
+                    "name": "BeginningBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Beginning  Balance of account after respective transaction Example: 250.00",
+                    "children": []
+                },
+                {
+                    "name": "EndingBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Ending  Balance of account after respective transaction Example: 250.00",
+                    "children": []
+                },
+                {
+                    "name": "TotalCredits",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Total Credits of the account",
+                    "children": []
+                },
+                {
+                    "name": "TotalDebits",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Total Debits of the account",
+                    "children": []
+                },
+                {
+                    "name": "TotalFees",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Total Fees of the account Example : 20.00",
+                    "children": []
+                },
+                {
+                    "name": "TransactionDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Transaction Date of the Transaction Example: 06/29/2017 Format : MM/DD/YYYY",
+                    "children": []
+                },
+                {
+                    "name": "CurrentCardBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Current Card Balance Application Version is 1.3",
+                    "children": []
+                },
+                {
+                    "name": "ExpirationDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Expiration date of card Example: 05/31/2021",
+                    "children": []
+                },
+                {
+                    "name": "AllFlag",
+                    "type": "string",
+                    "required": null,
+                    "description": "AllFlag",
+                    "children": []
+                },
+                {
+                    "name": "StartCount",
+                    "type": "string",
+                    "required": null,
+                    "description": "Start Count Application Version is 1.3",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "AccountNumber": "60000000031689",
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "",
+        "ProxyNumber": "1316608",
+        "NumberOfDays": "",
+        "NumberOfTransactions": "",
+        "FromDate": "",
+        "ToDate": "",
+        "TransferAmountFrom": "",
+        "TransferAmountTo": "",
+        "NumberOfSavingAcctTransactions": "",
+        "PageIndex": "100",
+        "AllFlag": "1",
+        "LocationID": ""
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "WarehousedTxns": [
+                {
+                    "TransactionID": "2153561714",
+                    "TransactionDateTime": "2018-09-21T00:00:00",
+                    "TransactionDescription": "LOAD",
+                    "TransactionAmount": 125.01,
+                    "EffectiveDateTime": "2020-12-01T00:00:00"
+                }
+            ],
+            "FeeDetail": [
+                {
+                    "FeeName": "",
+                    "TotalFeeForPeriod": 0.0,
+                    "TotalFeeForYear": 0.0
+                }
+            ],
+            "TransactionList": [
+                {
+                    "TransactionDate": "2020-11-08T00:00:00",
+                    "TransactionTime": "",
+                    "TransactionAmount": 125.01,
+                    "TransactionStatus": "1",
+                    "TransactionType": "Settled",
+                    "TransactionMCC": "",
+                    "Description1": "",
+                    "Description2": "",
+                    "Description3": "",
+                    "Description4": "",
+                    "TransactionNumber": "",
+                    "TransactionLifeCycleUniqueID": "",
+                    "MerchantID": "",
+                    "MerchantName": "",
+                    "MerchantCity": "",
+                    "MerchantState": "",
+                    "MerchantType": "",
+                    "DrCrIndicator": "NO",
+                    "SpendCategory": "Miscellaneous",
+                    "AuthTranID": "",
+                    "CardAcceptorNameLocation": "",
+                    "OverLimitFlag": "",
+                    "CurrentBalance": -152.01,
+                    "PostedDate": "2020-12-01T00:00:00",
+                    "PostedTime": "",
+                    "NoteReason": "",
+                    "Notes": "",
+                    "IsDeclined": "NO",
+                    "CardNumber": "406684******2785",
+                    "DisputeStatus": "",
+                    "IsDisputeAllowed": "NO",
+                    "DisputeStatusUpdateTime": "",
+                    "AvailableBalance": 152.01
+                }
+            ],
+            "SavingAccountTransactions": [
+                {
+                    "TransactionDate": "2020-11-08T00:00:00",
+                    "TransactionTime": "",
+                    "TransactionAmount": 125.01,
+                    "TransactionStatus": "1",
+                    "TransactionType": "Settled",
+                    "TransactionMCC": "",
+                    "Description1": "",
+                    "Description2": "",
+                    "Description3": "",
+                    "Description4": "",
+                    "TransactionNumber": "",
+                    "TransactionLifeCycleUniqueID": "",
+                    "MerchantID": "",
+                    "MerchantName": "",
+                    "MerchantCity": "",
+                    "MerchantState": "",
+                    "MerchantType": "",
+                    "DrCrIndicator": "NO",
+                    "SpendCategory": "Miscellaneous",
+                    "AuthTranID": "",
+                    "CardAcceptorNameLocation": "",
+                    "OverLimitFlag": "",
+                    "CurrentBalance": -152.01,
+                    "PostedDate": "2020-12-01T00:00:00",
+                    "PostedTime": "",
+                    "NoteReason": "",
+                    "Notes": "",
+                    "IsDeclined": "NO",
+                    "CardNumber": "406684******2785",
+                    "DisputeStatus": "",
+                    "IsDisputeAllowed": "NO",
+                    "DisputeStatusUpdateTime": "",
+                    "AvailableBalance": 152.01
+                }
+            ],
+            "LinkedCardInformations": [
+                {
+                    "CardNumber": "406681******2773",
+                    "CreatedOn": "2019-09-08T00:00:00",
+                    "CardExpiryDate": "2026-11-08T00:00:00",
+                    "ManualCardStatus": "2",
+                    "CardType": "",
+                    "ProxyNumber": "1316646"
+                },
+                {
+                    "CardNumber": "406684******4195",
+                    "CreatedOn": "2019-09-08T00:00:00",
+                    "CardExpiryDate": "2024-08-03T00:00:00",
+                    "ManualCardStatus": "9",
+                    "CardType": "",
+                    "ProxyNumber": "1317775"
+                }
+            ],
+            "LastTransaction": "",
+            "TotalCredits": 11.01,
+            "TransactionDate": "2019-09-08T00:00:00",
+            "CurrentCardBalance": -152.01,
+            "ExpirationDate": "2026-11-08T00:00:00",
+            "AllFlag": "",
+            "StartCount": ""
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1241&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1044"
+    }
+}

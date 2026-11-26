@@ -1,0 +1,212 @@
+{
+    "metadata": {
+        "name": "AddNewMemo",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/AddNewMemo",
+        "description": "Purpose of this API is to add Memo for a particular Account, Transaction or Merchant."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "integer",
+            "required": true,
+            "description": "Decide if Memo is account level,transaction level or merchant level. Valid Values: '1' is for Account level memo '2' is for Merchant level memo. '3' is for Transaction level."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values: 0-9 Example: 7314145404 Condition: 1 At least one of AdminNumber/AccountNumber is required when Decision Flag tag would be 1 - Account level Memo. 2 Client who support duplicate Account number, they need to provide Merchant number as well. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values: 0-9 Format: XXXXX Example: 12345 Condition: 1 At least one of AdminNumber/AccountNumber is required when Decision Flag tag would be 1 -Account level Memo."
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Merchant Number which is assigned to a Merchant. Valid Values:0-9 Example: 205136549 Condition: 'MerchantNumber' is mandatory when 'Decision Flag' value would be '2' (Merchant Level memo)"
+        },
+        {
+            "name": "TransactionID",
+            "type": "int64",
+            "required": null,
+            "description": "Transaction Number for transaction being posted. Valid Values:0-9 Example:23654789 Condition: 'TransactionID' is mandatory when 'Decision Flag' value would be '3' (Transaction Level memo)"
+        },
+        {
+            "name": "MemoReasonID",
+            "type": "integer",
+            "required": false,
+            "description": "ID of added Memo Reason. Valid Values: Its value will be pulled by GetMemoReason API Example: Account related notes. Allowable Values: 50"
+        },
+        {
+            "name": "MemoPriority",
+            "type": "integer",
+            "required": false,
+            "description": "It defines if the note is urgent. If priority is set as YES then it will show on top of Memo list. Its default value would be 0 -NO Valid Values: 0 = No and 1 = Yes"
+        },
+        {
+            "name": "MemoText",
+            "type": "string",
+            "required": true,
+            "description": "Text of the Memo. Valid Values: 0-9,a-z,special characters Example: New Transaction posted. Allowable Values: 1800"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "MemoUniqueID",
+                    "type": "string",
+                    "required": null,
+                    "description": "A unique ID for the added memo. Format: XXXXXXX Example: 2345 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "MemoCreationDateTime",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date and Time of Memo creation Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 10:05:05",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "WEB",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "DecisionFlag": 1,
+        "AccountNumber": "8000000000000250",
+        "AdminNumber": null,
+        "MerchantNumber": null,
+        "TransactionID": null,
+        "MemoReasonID": null,
+        "MemoPriority": 1,
+        "MemoText": "New Transaction posted."
+    },
+    "sample_response": {
+        "Message": "Note has been added successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01027",
+        "ResponseData": {
+            "MemoUniqueID": "50198",
+            "MemoCreationDateTime": "12/13/2016 23:03:15"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Activity Log",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=22&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=6"
+    }
+}

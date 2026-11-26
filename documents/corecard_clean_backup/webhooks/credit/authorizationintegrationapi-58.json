@@ -1,0 +1,2934 @@
+{
+    "metadata": {
+        "name": "AuthorizationIntegrationApi",
+        "http_method": "POST",
+        "endpoint": "/api/WebHookNotification/AuthIntegrationNotification/AuthorizationIntegrationApi",
+        "description": "This webhook is triggered when  transaction perform on card."
+    },
+    "request_fields": [
+        {
+            "name": "user_id",
+            "type": "string",
+            "required": null,
+            "description": "Userid provided by Corecard to use the  API Allowable Values: 128"
+        },
+        {
+            "name": "password",
+            "type": "string",
+            "required": null,
+            "description": "Password provided by Corecard to use the API Allowable Values: 15"
+        },
+        {
+            "name": "request_id",
+            "type": "integer",
+            "required": null,
+            "description": "CoreCard system’s Unique id of transaction (Tranid) Allowable Values: 19"
+        },
+        {
+            "name": "admin_number",
+            "type": "integer",
+            "required": null,
+            "description": "Corecard system’s Value which can be used as Proxy to card number. Allowable Values: 10"
+        },
+        {
+            "name": "last4_card_number",
+            "type": "string",
+            "required": null,
+            "description": "Card number’s last 4 digits Allowable Values: 4"
+        },
+        {
+            "name": "transaction_amount",
+            "type": "decimal",
+            "required": null,
+            "description": "Amount of Transaction (DE4 of Authorization request in case Domestic Transaction and De5 in case of International Transaction)"
+        },
+        {
+            "name": "post_time",
+            "type": "integer",
+            "required": null,
+            "description": "CoreCard system’s Posting time of transaction \nFormat:(mmddyyyyhhmmss) Allowable Values: 14"
+        },
+        {
+            "name": "local_tran_time",
+            "type": "integer",
+            "required": null,
+            "description": "Local time of transaction where its originated. \n(De12/13 of Authorization request)\nFormat: MMDDYYYYhhmmss Allowable Values: 14"
+        },
+        {
+            "name": "Transmission_Date_Time",
+            "type": "datetime",
+            "required": null,
+            "description": "Transmission date time of Network.\n(MC send us UTC Time) \n(Format: MMDDYYYYhhnnss) \nDE 7 of the Authorization requests Allowable Values: 14"
+        },
+        {
+            "name": "local_currencycode",
+            "type": "string",
+            "required": null,
+            "description": "Local Transaction Currency code (Transaction Currency Code) De49 of Authorization Message\nExample – USD Allowable Values: 3"
+        },
+        {
+            "name": "Local_Transaction_Amount",
+            "type": "decimal",
+            "required": null,
+            "description": "Transaction amount in Local Currency(De 4 In case of cross border or international transaction)\nExample – 200.8000\nCondition: Will be available if present in request. Allowable Values: 10"
+        },
+        {
+            "name": "Issuer_Currency_Code",
+            "type": "string",
+            "required": null,
+            "description": "Primary Currency code of the Product.\nExample – USD Allowable Values: 20"
+        },
+        {
+            "name": "Transaction_Time_Zone",
+            "type": "string",
+            "required": null,
+            "description": "Local Transaction Time Zone \nTime zone where the transaction was attempted.\nWill be populated only in case of multiple time zone support is turned on.\nExample – ZoneCode1 or ZoneCode2 Allowable Values: 20"
+        },
+        {
+            "name": "Time_Zone_Country_Name",
+            "type": "string",
+            "required": null,
+            "description": "Country Name where transaction was attempted.\n Will be populated only in case of multiple time zone support is turned on. Allowable Values: 70"
+        },
+        {
+            "name": "Time_Zone_Olson",
+            "type": "string",
+            "required": null,
+            "description": "Timezone in olson format.      \nWill be populated only in case of multiple time zone support is turned on.\nExample: America/New_York, America/Costa_Rica Allowable Values: 70"
+        },
+        {
+            "name": "Time_Zone_Details",
+            "type": "string",
+            "required": null,
+            "description": "Time Zone Name.   \nWill be populated only in case of multiple time zone support is turned on.\nExample: EST / PST / IST Allowable Values: 200"
+        },
+        {
+            "name": "Time_Zone_Value",
+            "type": "string",
+            "required": null,
+            "description": "Time denotation of Time zone where transaction was attempted.    \nWill be populated only in case of multiple time zone support is turned on.\nExample:  UTC/DST Allowable Values: 50"
+        },
+        {
+            "name": "merchant_category_code",
+            "type": "integer",
+            "required": null,
+            "description": "Merchant Category Code received in transaction. De 18 of the authorization messages.   \nExample: 4511 Allowable Values: 4"
+        },
+        {
+            "name": "MerchantCategoryCodeDescription",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Category Code Description.    \nDescription of MCC received in Authorization. Allowable Values: 100"
+        },
+        {
+            "name": "MerchantCity",
+            "type": "string",
+            "required": null,
+            "description": "Merchant City derived from DE 43 of Authorization message Allowable Values: 13"
+        },
+        {
+            "name": "card_acceptor_id_code",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Id received in transaction (de 42 of Authorization Message)   \nExample: ABC123TESTMTF19 Allowable Values: 15"
+        },
+        {
+            "name": "card_acceptor_terminal_id",
+            "type": "string",
+            "required": null,
+            "description": "Card acceptor terminal id (De 41 of Authorization Message)\nExample: Reg00004 Allowable Values: 16"
+        },
+        {
+            "name": "cardacceptor_name_location",
+            "type": "string",
+            "required": null,
+            "description": "Merchant’s Address and location details.\nDe 43 of Authorization message. Allowable Values: 40"
+        },
+        {
+            "name": "card_entry_mode",
+            "type": "string",
+            "required": null,
+            "description": "Card entry mode Point off service data data entry mode \n(De 22 of Authorization Message) Allowable Values: 2"
+        },
+        {
+            "name": "available_balance",
+            "type": "decimal",
+            "required": null,
+            "description": "Available Balance of Account \nExample: 100.000"
+        },
+        {
+            "name": "mti",
+            "type": "integer",
+            "required": null,
+            "description": "Message Type Identifier received in Authorization Message.\nExample: 0100 Allowable Values: 4"
+        },
+        {
+            "name": "stan",
+            "type": "string",
+            "required": null,
+            "description": "System Trace Audit Number received in Authorization Message. De  11 of authorization message.\nExample: 0100 Allowable Values: 6"
+        },
+        {
+            "name": "rrn",
+            "type": "string",
+            "required": null,
+            "description": "Retrieval Reference number received in Authorization.DE 37 of Authorization message.\nExample: 123456789012 Allowable Values: 12"
+        },
+        {
+            "name": "response_code",
+            "type": "string",
+            "required": null,
+            "description": "Two-digit response code indicating the result of transaction processing by Corecard system. (To be populated in de 39 if unchanged by the third party)please see Appendix 2.1 section.\nExample: 00 Allowable Values: 2"
+        },
+        {
+            "name": "AuthLifeCycleUniqueID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique id if the Transaction assigned by corecard,This id remains same for the complete lifecycle of the Transaction.\nExample: 00"
+        },
+        {
+            "name": "CrossBorderIndicator",
+            "type": "string",
+            "required": null,
+            "description": "This will have Y or N where \nExample: Y= International\nN=Domestic Allowable Values: 2"
+        },
+        {
+            "name": "AuthExpirationDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Date calculated by corecard system after which pending authorization will be aged off.\nFormat: YYYYMMDDhhmmss"
+        },
+        {
+            "name": "AmountAuthorized_9F02",
+            "type": "decimal",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and will carry the Authorization amount received in Tag 9f02 of EMV data.\nExample: 100"
+        },
+        {
+            "name": "ApplicationCryptogram_9F26",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and will carry the ARQC value received in Tag 9f26 of EMV data. Allowable Values: 16"
+        },
+        {
+            "name": "ApplicationInterchangeProfile_82",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and Indicates the capabilities of the card to support specific functions in the \napplication. The value is received in Tag 82 of EMV data Allowable Values: 4"
+        },
+        {
+            "name": "CardSequenceTerminalNumber_5F34",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and contains the PAN sequence number received in Tag 5F34 of EMV data.\nExample: 1 Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationTransactionCounter_9F36",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and contains the Application transaction counter received in Tag 9f36. Allowable Values: 4"
+        },
+        {
+            "name": "TerminalCountryCode_9F1A",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the Country code of the Terminal where transaction was attempted. Value  is received in Tag 9F1A of EMV data. Allowable Values: 4"
+        },
+        {
+            "name": "TerminalVerificationResults_95",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and contains the Terminal verification results received in Tag 95 of EMV data. Allowable Values: 40"
+        },
+        {
+            "name": "TransactionDate_9A",
+            "type": "datetime",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction (Format: YYMMDD) and contains the Transaction date received in Tag 9A of EMV data."
+        },
+        {
+            "name": "TransactionCurrencyCode_5F2A",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the Currency code in which transaction was attempted. Value is received in Tag 5F2A of EMV data. Allowable Values: 2"
+        },
+        {
+            "name": "TransactionType_9C",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction Allowable Values: 2"
+        },
+        {
+            "name": "TransactionCurrencyCode",
+            "type": "string",
+            "required": null,
+            "description": "DE 51. TransactionCurrencyCode.      \nExample: USD Allowable Values: 3"
+        },
+        {
+            "name": "UnpredictabNumber_9F37",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the Unpredictable Number received in Tag 9F37 of EMV data. Allowable Values: 8"
+        },
+        {
+            "name": "AmountOther_9F03",
+            "type": "decimal",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f03 of EMV data."
+        },
+        {
+            "name": "ApplicationUsageControl_9F07",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f07 of EMV data Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationVersionNumber_9F08",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f08 of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationVersionNumber_9F09",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f09 of EMV data. Allowable Values: 16"
+        },
+        {
+            "name": "CardholderVerificationMethod_9F34",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f34 of EMV data. Allowable Values: 6"
+        },
+        {
+            "name": "CryptogramInformationData_9F27",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction Allowable Values: 16"
+        },
+        {
+            "name": "DedicatedFileName_84",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 84 of EMV data. Allowable Values: 32"
+        },
+        {
+            "name": "InterfaceDeviceSerialNumber_9F1E",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f1E of EMV data. Allowable Values: 6"
+        },
+        {
+            "name": "IssuerApplicationData_9F10",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f10 of EMV data. Allowable Values: 64"
+        },
+        {
+            "name": "IssuerScriptResults_9F5B",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f5B of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "POSEntryMode_9F39",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f39 of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "TerminalCapabilities_9F33",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f33 of EMV data. Allowable Values: 6"
+        },
+        {
+            "name": "TerminalCapabilityFlag_FF20",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag FF20 of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "TerminalType_9F35",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f35 of EMV data. Allowable Values: 3"
+        },
+        {
+            "name": "Track2Data_57",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the Track 2 Equivalent Data received in Tag 57 of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "TransactionSequenceCounter_9F41",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag 9F41 of EMV data Allowable Values: 8"
+        },
+        {
+            "name": "AdditionalTerminalCapabilities_9F40",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag 9F40 of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationIdentifier_4F",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag 4F of EMV data . Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationIdentifierTerminal_9F06",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag 9F06 of EMV data Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationPreferredName_9F12",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag 9F12 of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationLabel_50",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag 50 of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "ApplicationPriorityIndicator_87",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag 87 of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "ContactlessCapability_FF22",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag FF22 of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "IssuerCountryCode_5F28",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag 5F28 of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "SoftwareVersions_FF21",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag FF21 of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "TransactionCategoryCode_9F53",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag 9F53 of EMV data. Allowable Values: 20"
+        },
+        {
+            "name": "TransactionStatusInformation_9B",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag 9B of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "TransactionTime_9F21",
+            "type": "datetime",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction carries the data received in Tag 9F21 of EMV data."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number of the card with which Authorization is initiated.\nExample: 7000000000000104 Allowable Values: 19"
+        },
+        {
+            "name": "CustomerId",
+            "type": "string",
+            "required": null,
+            "description": "Customer id of the card with which Authorization is initiated. Allowable Values: 25"
+        },
+        {
+            "name": "MCCCategoryCode",
+            "type": "string",
+            "required": null,
+            "description": "DE 26—Card Acceptor Business Code (MCC).\nExample: 5311\nCondition: Will be available if present in request. Allowable Values: 100"
+        },
+        {
+            "name": "POSCardholderPresenceInd",
+            "type": "string",
+            "required": null,
+            "description": "Pos Card Holder Presence Indicator carries the data received in (DE 61, position 4) of the Authorization request. Allowable Values: 1"
+        },
+        {
+            "name": "PostingRef",
+            "type": "string",
+            "required": null,
+            "description": "It will show the Posting reference of auth Transaction For e.g.Approved Allowable Values: 250"
+        },
+        {
+            "name": "SettlementAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Settlement Amount DE 5 of Authorization message"
+        },
+        {
+            "name": "CardHolderBillingAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Card Holder Billing Amount DE 6 of Authorization message"
+        },
+        {
+            "name": "SettlementCurrencyCode",
+            "type": "string",
+            "required": null,
+            "description": "Settlement Currency Code DE 50 of Authorization message Allowable Values: 20"
+        },
+        {
+            "name": "CardHolderBillingCurrencycode",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder Billing Currency Code De 51 of Authorization message Allowable Values: 20"
+        },
+        {
+            "name": "ConversionRateCardholderBilling",
+            "type": "string",
+            "required": null,
+            "description": "Conversion Rate Cardholder Billing is DE 10 of Authorization Message"
+        },
+        {
+            "name": "SettlementDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Settlement Date in format [yymmdd] DE 15 of authorization message."
+        },
+        {
+            "name": "ConversionDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Conversion Date [mmdd] DE 16 of Authorization message"
+        },
+        {
+            "name": "POSTerminalPANEntryMode",
+            "type": "string",
+            "required": null,
+            "description": "POS Terminal PAN Entry Mode is DE 22 Subfield 1 Allowable Values: 2"
+        },
+        {
+            "name": "POSTerminalPINEntryMode",
+            "type": "string",
+            "required": null,
+            "description": "POS Terminal PIN Entry Mode DE 22 Subfield 2 Allowable Values: 2"
+        },
+        {
+            "name": "merchantId",
+            "type": "string",
+            "required": null,
+            "description": "DE 42 (Card Acceptor ID Code) identifies the card acceptor ID assigned by the acquirer.   \nValues: AB123 Allowable Values: 16"
+        },
+        {
+            "name": "merchantRawName",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Name derived from DE 43 of Authorization message Allowable Values: 40"
+        },
+        {
+            "name": "merchantState",
+            "type": "string",
+            "required": null,
+            "description": "Merchant State Derived from DE 43 of Authorization message Allowable Values: 3"
+        },
+        {
+            "name": "merchantZipcode",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Zip code if received in Transaction Allowable Values: 10"
+        },
+        {
+            "name": "merchantNameClean",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Name if received in transaction extracted from DE 43 of Authorization message Allowable Values: 40"
+        },
+        {
+            "name": "merchantCityClean",
+            "type": "string",
+            "required": null,
+            "description": "Merchant City if received in Transaction Allowable Values: 10"
+        },
+        {
+            "name": "merchantCleanConfidenceLevel",
+            "type": "string",
+            "required": null,
+            "description": "If merchant change request is received from third party for cleaning up status of a merchant. This value is populated Allowable Values: 2"
+        },
+        {
+            "name": "cleanupReasonCode",
+            "type": "string",
+            "required": null,
+            "description": "Cleanup Reason Code of the request If merchant change request is received from third party for cleaning up status of a merchant. Allowable Values: 6"
+        },
+        {
+            "name": "SettlementIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Settlement Indicator is used to identify how settlement of a non-network transaction will be done. Allowable Values: 1"
+        },
+        {
+            "name": "PointOfServiceConditionCode",
+            "type": "string",
+            "required": null,
+            "description": "Point Of Service Condition Code as received in DE 25 of Authorization message Allowable Values: 2"
+        },
+        {
+            "name": "AcquirerReferenceData",
+            "type": "string",
+            "required": null,
+            "description": "Acquirer Reference Data derived from DE 63, subfield 5 Allowable Values: 99"
+        },
+        {
+            "name": "ForwardingInstitutionIDCode",
+            "type": "string",
+            "required": null,
+            "description": "Forwarding Institution ID Code is received in DE 33 of Authorization message Allowable Values: 11"
+        },
+        {
+            "name": "AcquiringInstitutionIDCode",
+            "type": "string",
+            "required": null,
+            "description": "Acquiring Institution ID Code is received in DE 32 of Authorization message. Allowable Values: 11"
+        },
+        {
+            "name": "MessageNumber",
+            "type": "string",
+            "required": null,
+            "description": "Message Number as received in DE 71 of Authorization message. Allowable Values: 8"
+        },
+        {
+            "name": "TransacOriginatorInstIDCode",
+            "type": "string",
+            "required": null,
+            "description": "Originator id code Allowable Values: 11"
+        },
+        {
+            "name": "MessageReasonCode",
+            "type": "string",
+            "required": null,
+            "description": "Message Reason Code if provided in transaction request. Allowable Values: 4"
+        },
+        {
+            "name": "NetworkReferenceNumber",
+            "type": "string",
+            "required": null,
+            "description": "Network Reference Number Allowable Values: 9"
+        },
+        {
+            "name": "NetworkReferenceID",
+            "type": "string",
+            "required": null,
+            "description": "Network Reference ID as received in de 63 Allowable Values: 15"
+        },
+        {
+            "name": "PosTransactionStatusIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Pos Transaction Status Indicator as received in DE 61 Position 7 of Authorization message Allowable Values: 2"
+        },
+        {
+            "name": "TransactionSourceAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Transaction Source Amount is populated as transaction amount before making any calculations by the network."
+        },
+        {
+            "name": "ProcCode",
+            "type": "string",
+            "required": null,
+            "description": "Processing Code as received in first 2 digits de 3 of Authorization message. Allowable Values: 2"
+        },
+        {
+            "name": "ProcCodeFrom",
+            "type": "string",
+            "required": null,
+            "description": "Proc Code From is taken from position #3 and 4 of DE 3 received in authorization Allowable Values: 2"
+        },
+        {
+            "name": "ProcCodeTo",
+            "type": "string",
+            "required": null,
+            "description": "Proc Code To is taken from position 5 and 6 of DE 3 received in authorization Allowable Values: 2"
+        },
+        {
+            "name": "AuthorizingAgentIdCode",
+            "type": "string",
+            "required": null,
+            "description": "Id Code of Authorizing Agent as received in transaction request Allowable Values: 11"
+        },
+        {
+            "name": "ConversionRateSettlement",
+            "type": "string",
+            "required": null,
+            "description": "Conversion Rate of Settlement id DE 9 of Authorization message. Allowable Values: 11"
+        },
+        {
+            "name": "Return_Amount",
+            "type": "decimal",
+            "required": null,
+            "description": "Return or Replacement Amount from Network. DE 4 in case of return and DE 95 in case of replacement amount. Allowable Values: 10"
+        },
+        {
+            "name": "TokenTransaction",
+            "type": "string",
+            "required": null,
+            "description": "Indicate Token Transaction; Yes or No. Allowable Values: 5"
+        },
+        {
+            "name": "DeviceId",
+            "type": "string",
+            "required": null,
+            "description": "Device ID for Wallet Transaction if received in token transaction DE 124. Allowable Values: 50"
+        },
+        {
+            "name": "DeviceLocation",
+            "type": "string",
+            "required": null,
+            "description": "Device Location for Wallet Transaction if received in token transaction DE 124. Allowable Values: 20"
+        },
+        {
+            "name": "TokenRequestorId",
+            "type": "string",
+            "required": null,
+            "description": "Token Requestor Id for Wallet Transaction if received in token transaction DE48, SE33, SF6 Allowable Values: 15"
+        },
+        {
+            "name": "TokenNumberLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Token Number Last 4 Digits for Wallet Transaction if token information received in Authorization. Allowable Values: 4"
+        },
+        {
+            "name": "WalletIdentifier",
+            "type": "string",
+            "required": null,
+            "description": "Wallet Identifier for Wallet Transaction if received in token transaction. Allowable Values: 4"
+        },
+        {
+            "name": "IResponseCode",
+            "type": "string",
+            "required": null,
+            "description": "Internal response code as assigned by Corecard system. Allowable Values: 95"
+        },
+        {
+            "name": "TokenAssuranceLevel",
+            "type": "string",
+            "required": null,
+            "description": "Token Assurance Level is populated if received in token transaction. Allowable Values: 50"
+        },
+        {
+            "name": "TokenNumberIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Token Number Indicator is populated if received in token transaction. Allowable Values: 50"
+        },
+        {
+            "name": "TokenMessageType",
+            "type": "string",
+            "required": null,
+            "description": "Token Message Type if received in token transaction. Allowable Values: 50"
+        },
+        {
+            "name": "TokenExpirationDate",
+            "type": "string",
+            "required": null,
+            "description": "Token Expiration Date in format [yymm] if received in token transaction. Allowable Values: 50"
+        },
+        {
+            "name": "TokenType",
+            "type": "string",
+            "required": null,
+            "description": "Token Type is populated if received in token transaction. Allowable Values: 50"
+        },
+        {
+            "name": "TokenizationEventIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Tokenization Event Indicator is populated if received in token transaction 124. Allowable Values: 50"
+        },
+        {
+            "name": "Devicetype",
+            "type": "string",
+            "required": null,
+            "description": "Device type is populated if received in token transaction DE 124. Allowable Values: 50"
+        },
+        {
+            "name": "TokenNumber",
+            "type": "string",
+            "required": null,
+            "description": "TokenNumber is populated if received in token transaction. Allowable Values: 50"
+        },
+        {
+            "name": "TokenIdentifierTranid",
+            "type": "string",
+            "required": null,
+            "description": "Transactionid of Token transaction provided by Corecard system. Allowable Values: 50"
+        },
+        {
+            "name": "PaymentAccountReference",
+            "type": "string",
+            "required": null,
+            "description": "Payment Account Reference is populated if received in transaction request. Allowable Values: 50"
+        },
+        {
+            "name": "CardPresenceInd",
+            "type": "string",
+            "required": null,
+            "description": "Card Presence Indicator is populated if received in de 61 Sub Field 5 of Authorization message.. Allowable Values: 50"
+        },
+        {
+            "name": "TraceID",
+            "type": "string",
+            "required": null,
+            "description": "TraceID is populated if received in de 48 sub element 63. Allowable Values: 50"
+        },
+        {
+            "name": "PosCountryCode",
+            "type": "string",
+            "required": null,
+            "description": "Pos Country Code is populated if received in De 61 Sub element 13. Allowable Values: 50"
+        },
+        {
+            "name": "TokenUniqueReference",
+            "type": "string",
+            "required": null,
+            "description": "Token Unique Reference is populated if present in corecard System. Allowable Values: 50"
+        },
+        {
+            "name": "PANUniqueReference",
+            "type": "string",
+            "required": null,
+            "description": "PANUniqueReference if present in corecard system. Allowable Values: 50"
+        },
+        {
+            "name": "PaymentHash",
+            "type": "string",
+            "required": null,
+            "description": "PaymentHash is calculated and populated on requirement by the corecard system. Allowable Values: 50"
+        },
+        {
+            "name": "NetworkResponseCode",
+            "type": "string",
+            "required": null,
+            "description": "Network Response Code is populated if received from the payment network. Allowable Values: 50"
+        },
+        {
+            "name": "OrginalAuthTranid",
+            "type": "integer",
+            "required": null,
+            "description": "Tranid of original transaction (Populated in case of reversal request). Allowable Values: 50"
+        },
+        {
+            "name": "AmountCardholderBillingFee",
+            "type": "decimal",
+            "required": null,
+            "description": "Amount of Cardholder Billing Fee as received in De 8. Allowable Values: 8"
+        },
+        {
+            "name": "DateExpiration",
+            "type": "datetime",
+            "required": null,
+            "description": "Date of card Expiration in format [yymm] De 14. Allowable Values: 50"
+        },
+        {
+            "name": "DateCapture",
+            "type": "datetime",
+            "required": null,
+            "description": "Date of Capture in format [mmdd] De 17 of Authorization message. Allowable Values: 50"
+        },
+        {
+            "name": "AcquiringInstitutionCountryCode",
+            "type": "integer",
+            "required": null,
+            "description": "Country Code of Acquiring Institution populated from De 19 of Authorization message. Allowable Values: 3"
+        },
+        {
+            "name": "PANCountryCode",
+            "type": "integer",
+            "required": null,
+            "description": "PAN Country Code De 20 of Authorization Message. Allowable Values: 3"
+        },
+        {
+            "name": "ForwardingInstituionCountryCode",
+            "type": "integer",
+            "required": null,
+            "description": "Country Code Forwarding Institution De 21 of Authorization Message. Allowable Values: 3"
+        },
+        {
+            "name": "CardSequenceNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Card Sequence Number is populated if received in De 23 of authorization message. Allowable Values: 3"
+        },
+        {
+            "name": "NetworkInternationalID",
+            "type": "integer",
+            "required": null,
+            "description": "Network International ID if received in transaction request. Allowable Values: 3"
+        },
+        {
+            "name": "AuthIDResponseLength",
+            "type": "integer",
+            "required": null,
+            "description": "Auth ID Response Length populated by Corecard system on requirement. Allowable Values: 1"
+        },
+        {
+            "name": "TransactionFeeAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Transaction Fee Amount as received in De 28 of Authorization message. Allowable Values: 8"
+        },
+        {
+            "name": "SettlementFeeAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Settlement Fee Amount as received in de 29 of Authorization message. Allowable Values: 9"
+        },
+        {
+            "name": "TransactionProcessingFeeAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Transaction Processing Fee Amount as received in De 30 of Authorization Message. Allowable Values: 8"
+        },
+        {
+            "name": "SettlementProcessingFeeAmount",
+            "type": "decimal",
+            "required": null,
+            "description": "Settlement Processing Fee Amount Amount as received in De 31 of Authorization Message. Allowable Values: 8"
+        },
+        {
+            "name": "ServiceRestrictionCode",
+            "type": "integer",
+            "required": null,
+            "description": "Service Restriction Code is populated as received in De 40 of Authorization message. Allowable Values: 3"
+        },
+        {
+            "name": "AdditionalResponseData",
+            "type": "string",
+            "required": null,
+            "description": "Additional Response Data is populated as received in De 44 of Authorization message. Allowable Values: 999"
+        },
+        {
+            "name": "AdditionalDataISOUse",
+            "type": "string",
+            "required": null,
+            "description": "Additional Data is populated from De 48 on request. Allowable Values: 999"
+        },
+        {
+            "name": "AdditionalDataNationalUse",
+            "type": "string",
+            "required": null,
+            "description": "Additional Data National Use is populated from de 47 on request. Allowable Values: 999"
+        },
+        {
+            "name": "SecurityServicesAdditionalData",
+            "type": "string",
+            "required": null,
+            "description": "Security Services Additional Data is populated from De 48 SF 56 on requirement. Allowable Values: 99"
+        },
+        {
+            "name": "ScoreReasonCode",
+            "type": "integer",
+            "required": null,
+            "description": "Score Reason Code is populated as received: Mastercard: F-048, Tag-75, SF-02 Amex: F-62, SF-03.\nAllowable Values: 4 Allowable Values: 4"
+        },
+        {
+            "name": "RulesScore",
+            "type": "string",
+            "required": null,
+            "description": "Rules Score Code is populated from De 48 Sub-element 75 Subfield 3. Allowable Values: 3"
+        },
+        {
+            "name": "RulesReasonCode1",
+            "type": "string",
+            "required": null,
+            "description": "RulesReasonCode1 Code is populated from De 48 Sub-element 75 Subfield 4. Allowable Values: 2"
+        },
+        {
+            "name": "RulesReasonCode2",
+            "type": "string",
+            "required": null,
+            "description": "RulesReasonCode2 Code is populated from De 48 Sub-element 75 Subfield 5. Allowable Values: 2"
+        },
+        {
+            "name": "ReasonCode",
+            "type": "integer",
+            "required": null,
+            "description": "Reason Code is populated on basis of De 60 Sub Field 1 Allowable Values: 4"
+        },
+        {
+            "name": "AdviceDetail_60",
+            "type": "integer",
+            "required": null,
+            "description": "AdviceDetail_60 is populated on basis of De 60 Sub Field 2. Allowable Values: 4"
+        },
+        {
+            "name": "AdviceDetailText",
+            "type": "string",
+            "required": null,
+            "description": "Advice Detail Text is populated on basis of De 60 Sub Field 3. Allowable Values: 53"
+        },
+        {
+            "name": "POSTerminalAttendanceIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "POS Terminal Attendance Indicator is populated based on De 61 Subfield 1. Allowable Values: 1"
+        },
+        {
+            "name": "Reserved61",
+            "type": "integer",
+            "required": null,
+            "description": "Reserved for future use. Allowable Values: 1"
+        },
+        {
+            "name": "POSTerminalLocationIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "POS Terminal Location Indicator is populated based on De 61 Subfield 3. Allowable Values: 1"
+        },
+        {
+            "name": "POSCardCaptureCapabilitiesIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "POS Card Capture Capabilities Indicator is populated based on De 61 Subfield 8. Allowable Values: 1"
+        },
+        {
+            "name": "POSTransactionSecurityIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "POS Transaction Security Indicator is populated based on De 61 Subfield 8. Allowable Values: 1"
+        },
+        {
+            "name": "ReservedZero61",
+            "type": "integer",
+            "required": null,
+            "description": "Reserved for future use. Allowable Values: 1"
+        },
+        {
+            "name": "CardHolderActivatedTerminalLevelIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "Card Holder Activated Terminal Level Indicator is populated based on De 61 Subfield 10. Allowable Values: 1"
+        },
+        {
+            "name": "POSCarddataTerminalInputCapabilityIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "POS Card data Terminal Input Capability Indicator is populated based on is populated based on De 61 Subfield 11. Allowable Values: 1"
+        },
+        {
+            "name": "POSAuthLifeCyclenumberofdayspreauth",
+            "type": "string",
+            "required": null,
+            "description": "POS Auth Life Cycle number of days pre-auth is populated based on De 61 Subfield 12. Allowable Values: 1"
+        },
+        {
+            "name": "POSCountryCodendicatesthecountryofthePOSlocation",
+            "type": "integer",
+            "required": null,
+            "description": "POS Country Code is populated based on De 61 Subfield 13. Allowable Values: 3"
+        },
+        {
+            "name": "IntermediateNetworkFacilityData",
+            "type": "string",
+            "required": null,
+            "description": "Intermediate Network Facility Data is populated based on De 62. Allowable Values: 999"
+        },
+        {
+            "name": "TheFinancialNetworkCode",
+            "type": "string",
+            "required": null,
+            "description": "The Financial Network Code is populated based on De 63 Subfields 1. Allowable Values: 3"
+        },
+        {
+            "name": "BankNetReferenceNumber",
+            "type": "string",
+            "required": null,
+            "description": "Bank Net Reference Number is populated based on De 63 Subfields 4. Allowable Values: 9"
+        },
+        {
+            "name": "SettlementCode",
+            "type": "integer",
+            "required": null,
+            "description": "Settlement Code is populated based on De 66. Allowable Values: 1"
+        },
+        {
+            "name": "ExtendedPaymentCode",
+            "type": "integer",
+            "required": null,
+            "description": "Extended Payment Code is populated based on De 67 Allowable Values: 2"
+        },
+        {
+            "name": "ReceivingInstitutionCountryCode",
+            "type": "integer",
+            "required": null,
+            "description": "Receiving Institution Country Code is populated based on De 68. Allowable Values: 3"
+        },
+        {
+            "name": "SettlementsInstitutionCountryCode",
+            "type": "integer",
+            "required": null,
+            "description": "Settlements Institution Country Code is populated based on De 69. Allowable Values: 3"
+        },
+        {
+            "name": "NetworkManagementInformationCode",
+            "type": "string",
+            "required": null,
+            "description": "Network Management Information Code is populated based on De 70. Allowable Values: 3"
+        },
+        {
+            "name": "MessageNumberLast",
+            "type": "integer",
+            "required": null,
+            "description": "Message Number Last is populated based on De 72 Allowable Values: 4"
+        },
+        {
+            "name": "DateAction",
+            "type": "datetime",
+            "required": null,
+            "description": "Date Action is populated based on De 73. Allowable Values: 6"
+        },
+        {
+            "name": "CreditsNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Credits Number is populated based on De 74. Allowable Values: 10"
+        },
+        {
+            "name": "CreditsReversalNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Credits Reversal Number is populated based on De 75. Allowable Values: 10"
+        },
+        {
+            "name": "DebitsNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Debits Number is populated based on De 76. Allowable Values: 10"
+        },
+        {
+            "name": "DebitsReversalNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Debits Reversal Number is populated based on De 77. Allowable Values: 10"
+        },
+        {
+            "name": "TransfersNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Transfers Number is populated based on De 78. Allowable Values: 10"
+        },
+        {
+            "name": "TransfersReversalNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Transfers Reversal Number is populated based on De 79. Allowable Values: 10"
+        },
+        {
+            "name": "InquiriesNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Inquiries Number is populated based on De 80 Allowable Values: 10"
+        },
+        {
+            "name": "AuthorizationsNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Authorizations Number Number is populated based on De 81. Allowable Values: 10"
+        },
+        {
+            "name": "CreditsProcessingFeeAmount",
+            "type": "integer",
+            "required": null,
+            "description": "Credits Processing Fee Amount Number is populated based on De 82. Allowable Values: 12"
+        },
+        {
+            "name": "CreditsTransactionFeeAmount",
+            "type": "integer",
+            "required": null,
+            "description": "Credits Transaction Fee Amount Number is populated based on De 83. Allowable Values: 12"
+        },
+        {
+            "name": "DebitsProcessingFeeAmount",
+            "type": "integer",
+            "required": null,
+            "description": "Debits Processing Fee Amount Number is populated based on De 84 Allowable Values: 12"
+        },
+        {
+            "name": "DebitsTransactionFeeAmt",
+            "type": "integer",
+            "required": null,
+            "description": "Debits Transaction Fee Amt Number is populated based on De 85."
+        },
+        {
+            "name": "CreditsAmount",
+            "type": "integer",
+            "required": null,
+            "description": "Credits Amount Number is populated based on De 86. Allowable Values: 16"
+        },
+        {
+            "name": "CreditsReversalAmount",
+            "type": "integer",
+            "required": null,
+            "description": "Credits Reversal Amount Number is populated based on De 87. Allowable Values: 16"
+        },
+        {
+            "name": "DebitsAmount",
+            "type": "integer",
+            "required": null,
+            "description": "Debits Amount Number is populated based on De 88. Allowable Values: 16"
+        },
+        {
+            "name": "DebitsReversalAmount",
+            "type": "integer",
+            "required": null,
+            "description": "Debits Reversal Amount Number is populated based on De 89. Allowable Values: 16"
+        },
+        {
+            "name": "FileUpdateCode",
+            "type": "string",
+            "required": null,
+            "description": "File Update Code Number is populated based on De 91. Allowable Values: 1"
+        },
+        {
+            "name": "ResponseIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Response Indicator Number is populated based on De 93. Allowable Values: 5"
+        },
+        {
+            "name": "CreditDebitIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Credit Debit Indicator is populated by Corecard system on basis of type of transaction identified. Allowable Values: 1"
+        },
+        {
+            "name": "AcquirerIssuerDataIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Acquirer Issuer Data Indicator is populated by CoreCard system based on type of transaction. Allowable Values: 1"
+        },
+        {
+            "name": "AddressDataIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "Address Data Indicator is populated by Corecard system to indicate type of Address. Allowable Values: 1"
+        },
+        {
+            "name": "ActualAmountSettlement",
+            "type": "decimal",
+            "required": null,
+            "description": "Actual Amount Settlement is populated based on De 95 Subfield 2. Allowable Values: 12"
+        },
+        {
+            "name": "ActualAmountCardholderBilling",
+            "type": "decimal",
+            "required": null,
+            "description": "Actual Amount Card Holder Billing is populated based on De 95 Subfield 3. Allowable Values: 12"
+        },
+        {
+            "name": "DebitCreditIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Debit Credit Indicator is populated by Corecard system based on Type of transaction and Amount. Allowable Values: 1"
+        },
+        {
+            "name": "AmountNetSettlement",
+            "type": "decimal",
+            "required": null,
+            "description": "Amount Net Settlement is populated based on De 97. Allowable Values: 16"
+        },
+        {
+            "name": "Payee",
+            "type": "string",
+            "required": null,
+            "description": "Payee information is populated based on De 98. Allowable Values: 25"
+        },
+        {
+            "name": "SettlementInstitutionIDCode",
+            "type": "integer",
+            "required": null,
+            "description": "Settlement Institution ID Code is populated based on De 99. Allowable Values: 11"
+        },
+        {
+            "name": "ReceivingInstitutionIDCode",
+            "type": "integer",
+            "required": null,
+            "description": "Receiving Institution ID Code is populated based on De 100 Allowable Values: 13"
+        },
+        {
+            "name": "CustomerExclusiveData_9F7C",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f7C of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "FileName",
+            "type": "string",
+            "required": null,
+            "description": "File Name is populated based on De 101. Allowable Values: 17"
+        },
+        {
+            "name": "AccountID1",
+            "type": "string",
+            "required": null,
+            "description": "AccountID1 is populated based on De 102. Allowable Values: 28"
+        },
+        {
+            "name": "AccountID2",
+            "type": "string",
+            "required": null,
+            "description": "AccountID2 is populated based on De 103. Allowable Values: 28"
+        },
+        {
+            "name": "FormFactorIndicator_9F6E",
+            "type": "string",
+            "required": null,
+            "description": "This Field will be available during EMV Chip Transaction and carries the data received in Tag 9f6E of EMV data. Allowable Values: 99"
+        },
+        {
+            "name": "TransactionDescription",
+            "type": "string",
+            "required": null,
+            "description": "Transaction Description is populated based on De 104. Allowable Values: 100"
+        },
+        {
+            "name": "AdditionalDataNationalUse112",
+            "type": "string",
+            "required": null,
+            "description": "Additional Data National Use  is populated based on De 112 Allowable Values: 999"
+        },
+        {
+            "name": "AdditionalRecordData",
+            "type": "string",
+            "required": null,
+            "description": "Additional Record Data is populated based on De 122. Allowable Values: 999"
+        },
+        {
+            "name": "ReservedFutureDefinition123",
+            "type": "string",
+            "required": null,
+            "description": "Reserved For future use. Allowable Values: 999"
+        },
+        {
+            "name": "MemberData",
+            "type": "string",
+            "required": null,
+            "description": "Member Data is populated based on De 124. Allowable Values: 999"
+        },
+        {
+            "name": "PrivateData126",
+            "type": "string",
+            "required": null,
+            "description": "PrivateData126 is populated based on De 126. Allowable Values: 999"
+        },
+        {
+            "name": "PrivateData127",
+            "type": "string",
+            "required": null,
+            "description": "PrivateData127 is populated based on De 127. Allowable Values: 999"
+        },
+        {
+            "name": "EncriptedPINBlockKey",
+            "type": "string",
+            "required": null,
+            "description": "Encrypted PIN Block Key is populated by the Corecard system. if Pin block needs to be delivered. Allowable Values: 16"
+        },
+        {
+            "name": "KeyClassIdentifierTKTransportKey",
+            "type": "string",
+            "required": null,
+            "description": "KeyClassIdentifierTKTransportKey. Allowable Values: 2"
+        },
+        {
+            "name": "KeyIndexNumber",
+            "type": "integer",
+            "required": null,
+            "description": "KeyIndexNumber. Allowable Values: 2"
+        },
+        {
+            "name": "KeyCycleNumber",
+            "type": "integer",
+            "required": null,
+            "description": "KeyCycleNumber. Allowable Values: 2"
+        },
+        {
+            "name": "PINEncryptionKey",
+            "type": "string",
+            "required": null,
+            "description": "PINEncryptionKey. Allowable Values: 50"
+        },
+        {
+            "name": "RoutingIndicatorPDS12",
+            "type": "string",
+            "required": null,
+            "description": "RoutingIndicatorPDS12. Allowable Values: 1"
+        },
+        {
+            "name": "MobilePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "MobilePhoneNumber Allowable Values: 17"
+        },
+        {
+            "name": "MobilePhoneServiceProviderName",
+            "type": "string",
+            "required": null,
+            "description": "MobilePhoneServiceProviderName. Allowable Values: 30"
+        },
+        {
+            "name": "AuthorizationDate48",
+            "type": "integer",
+            "required": null,
+            "description": "Reserved for future Use Allowable Values: 4"
+        },
+        {
+            "name": "AuthorizationTime48",
+            "type": "integer",
+            "required": null,
+            "description": "Reserved for future Use Allowable Values: 6"
+        },
+        {
+            "name": "CanadaDomesticIndicator",
+            "type": "string",
+            "required": null,
+            "description": "CanadaDomesticIndicator Allowable Values: 1"
+        },
+        {
+            "name": "ProcessorPseudoICA",
+            "type": "integer",
+            "required": null,
+            "description": "ProcessorPseudoICA. Allowable Values: 7"
+        },
+        {
+            "name": "CardholderVerificationMethod20pds",
+            "type": "string",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the verification methods available for Cardholder Allowable Values: 1"
+        },
+        {
+            "name": "MessageIdentifier",
+            "type": "string",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the Message Identifier for the transaction Allowable Values: 10"
+        },
+        {
+            "name": "MasterCardAssignID",
+            "type": "string",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the id assigned by Mastercard to the Acquirer. Allowable Values: 6"
+        },
+        {
+            "name": "VCNProductCode",
+            "type": "string",
+            "required": null,
+            "description": "This tag will carry the VCN Product Code Allowable Values: 99"
+        },
+        {
+            "name": "AccountRange",
+            "type": "integer",
+            "required": null,
+            "description": "This tag will carry the Account Range Allowable Values: 99"
+        },
+        {
+            "name": "CryptogramValidationIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "This tag will carry the Cryptogram Validation Indicator Allowable Values: 99"
+        },
+        {
+            "name": "StorageTechnology",
+            "type": "integer",
+            "required": null,
+            "description": "This tag will carry the Storage Technology Allowable Values: 99"
+        },
+        {
+            "name": "ATCValuePDS341",
+            "type": "integer",
+            "required": null,
+            "description": "This tag will carry the ATC Value received in Tag PDS341 Allowable Values: 0"
+        },
+        {
+            "name": "ATCDiscrepancyValuePDS342",
+            "type": "integer",
+            "required": null,
+            "description": "This tag will carry the ATC Discrepancy Value received in PDS342 Allowable Values: 5"
+        },
+        {
+            "name": "ATCDiscrepancyIndicatorPDS343",
+            "type": "string",
+            "required": null,
+            "description": "This tag will carry the ATC Discrepancy Indicator received in PDS343 Allowable Values: 1"
+        },
+        {
+            "name": "PayPassNonCardFormFactorPDS35",
+            "type": "string",
+            "required": null,
+            "description": "This tag will carry the PayPass Non-Card Form Factor received in PDS35 Allowable Values: 1"
+        },
+        {
+            "name": "PaymentFacilitatorID",
+            "type": "integer",
+            "required": null,
+            "description": "This tag will carry the Payment Facilitator ID if available in request. Allowable Values: 999"
+        },
+        {
+            "name": "AccountCategory",
+            "type": "integer",
+            "required": null,
+            "description": "This tag will carry the Account Category assigned to Cardholder. Allowable Values: 1"
+        },
+        {
+            "name": "ADCEventMassagingServiceInfo",
+            "type": "string",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the ADC Event Massaging Service Info Allowable Values: 0"
+        },
+        {
+            "name": "MerchantCertificateSerialNumber",
+            "type": "string",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the MerchantCertificateSerialNumber. Allowable Values: 16"
+        },
+        {
+            "name": "CardholderCertificateSerialNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the CardholderCertificateSerialNumber Allowable Values: 16"
+        },
+        {
+            "name": "ReservedforFutureUse411",
+            "type": "string",
+            "required": null,
+            "description": "ReservedforFutureUse411. Allowable Values: 26"
+        },
+        {
+            "name": "Reservedforfutureuse412",
+            "type": "integer",
+            "required": null,
+            "description": "Reservedforfutureuse412. Allowable Values: 6"
+        },
+        {
+            "name": "Reservedforfutureuse413",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse413. Allowable Values: 3"
+        },
+        {
+            "name": "Reservedforfutureuse414",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse414 Allowable Values: 22"
+        },
+        {
+            "name": "Reservedforfutureuse415",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse415. Allowable Values: 20"
+        },
+        {
+            "name": "Reservedforfutureuse416",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse416. Allowable Values: 13"
+        },
+        {
+            "name": "Reservedforfutureuse417",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse417. Allowable Values: 3"
+        },
+        {
+            "name": "Reservedforfutureuse418",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse418. Allowable Values: 10"
+        },
+        {
+            "name": "Reservedforfutureuse419",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse419. Allowable Values: 22"
+        },
+        {
+            "name": "Reservedforfutureuse4110",
+            "type": "integer",
+            "required": null,
+            "description": "Reservedforfutureuse4110. Allowable Values: 9"
+        },
+        {
+            "name": "CitizenID",
+            "type": "string",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the CitizenID Allowable Values: 8"
+        },
+        {
+            "name": "Reservedforfutureuse4112",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse4112. Allowable Values: 20"
+        },
+        {
+            "name": "Reservedforfutureuse4113",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse4113. Allowable Values: 20"
+        },
+        {
+            "name": "Reservedforfutureuse4114",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse4114. Allowable Values: 20"
+        },
+        {
+            "name": "Reservedforfutureuse4115",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse4115. Allowable Values: 10"
+        },
+        {
+            "name": "Reservedforfutureuse4116",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse4116. Allowable Values: 2"
+        },
+        {
+            "name": "Reservedforfutureuse4117",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse4117. Allowable Values: 1"
+        },
+        {
+            "name": "Reservedforfutureuse4118",
+            "type": "string",
+            "required": null,
+            "description": "Reservedforfutureuse4118. Allowable Values: 20"
+        },
+        {
+            "name": "EleCommSecuLevInd",
+            "type": "integer",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the E-Commerce Security Level Indicator if present in request. Allowable Values: 99"
+        },
+        {
+            "name": "UniversalCardholderAuthenticationField",
+            "type": "string",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the Universal Cardholder Authentication Field Allowable Values: 99"
+        },
+        {
+            "name": "SecureElectronicCommTrandentifier",
+            "type": "string",
+            "required": null,
+            "description": "This tag will carry the Secure Electronic Commerce Transaction identifier Allowable Values: 20"
+        },
+        {
+            "name": "SecureElectronicCommTranResponse",
+            "type": "string",
+            "required": null,
+            "description": "This tag will carry the Secure Electronic Commerce Transaction Response Allowable Values: 1"
+        },
+        {
+            "name": "CardLevelResultPDS46",
+            "type": "string",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the value received in Card Level Result in PDS46 Allowable Values: 2"
+        },
+        {
+            "name": "PaymentGatewayTranIicatorPDS47",
+            "type": "string",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the Payment Gateway Tran Indicator PDS47 Allowable Values: 8"
+        },
+        {
+            "name": "RemotePaymentsProgramTypeIdentifier",
+            "type": "integer",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the Remote Payments Program Type Identifier Allowable Values: 1"
+        },
+        {
+            "name": "MobileRemotePaymentTransactionType",
+            "type": "integer",
+            "required": null,
+            "description": "Reserved for future Use -This tag will carry the Mobile Remote Payment Transaction Type Allowable Values: 1"
+        },
+        {
+            "name": "MobilePhoneNumber48_MC",
+            "type": "string",
+            "required": null,
+            "description": "MobilePhoneNumber48_MC. Allowable Values: 50"
+        },
+        {
+            "name": "ConvenienceFee",
+            "type": "string",
+            "required": null,
+            "description": "ConvenienceFee. Allowable Values: 40"
+        },
+        {
+            "name": "MerchantOnbehalfService",
+            "type": "string",
+            "required": null,
+            "description": "MerchantOn-behalfService. Allowable Values: 2"
+        },
+        {
+            "name": "MerchantOnbehalfResult1",
+            "type": "string",
+            "required": null,
+            "description": "MerchantOnbehalfResult1. Allowable Values: 1"
+        },
+        {
+            "name": "AdditionalInformation",
+            "type": "string",
+            "required": null,
+            "description": "AdditionalInformation. Allowable Values: 1"
+        },
+        {
+            "name": "TransactionIntegrityClass",
+            "type": "string",
+            "required": null,
+            "description": "TransactionIntegrityClass. Allowable Values: 2"
+        },
+        {
+            "name": "EIDRequestValue",
+            "type": "string",
+            "required": null,
+            "description": "EIDRequestValue Allowable Values: 99"
+        },
+        {
+            "name": "MerchantFraudScore",
+            "type": "string",
+            "required": null,
+            "description": "MerchantFraudScore Allowable Values: 3"
+        },
+        {
+            "name": "MerchantScoreReasonCode1",
+            "type": "string",
+            "required": null,
+            "description": "MerchantScoreReasonCode1 Allowable Values: 2"
+        },
+        {
+            "name": "ReservedforFutureUse",
+            "type": "string",
+            "required": null,
+            "description": "ReservedforFutureUse Allowable Values: 3"
+        },
+        {
+            "name": "ReservedforFutureUse4",
+            "type": "string",
+            "required": null,
+            "description": "ReservedforFutureUse4 Allowable Values: 2"
+        },
+        {
+            "name": "ReservedforFutureUse5",
+            "type": "string",
+            "required": null,
+            "description": "ReservedforFutureUse5 Allowable Values: 2"
+        },
+        {
+            "name": "SecurityServicesData",
+            "type": "string",
+            "required": null,
+            "description": "SecurityServicesData Allowable Values: 3"
+        },
+        {
+            "name": "ATMTimePDS581",
+            "type": "integer",
+            "required": null,
+            "description": "ATMTimePDS581. Allowable Values: 4"
+        },
+        {
+            "name": "ATMDatePDS582",
+            "type": "string",
+            "required": null,
+            "description": "ATMDatePDS582. Allowable Values: 6"
+        },
+        {
+            "name": "WatermarkPDS583",
+            "type": "integer",
+            "required": null,
+            "description": "WatermarkPDS583. Allowable Values: 12"
+        },
+        {
+            "name": "Mark1PDS584",
+            "type": "string",
+            "required": null,
+            "description": "Mark1PDS584. Allowable Values: 2"
+        },
+        {
+            "name": "Mark2PDS585",
+            "type": "string",
+            "required": null,
+            "description": "Mark2PDS585 Allowable Values: 2"
+        },
+        {
+            "name": "Mark3PDS586",
+            "type": "string",
+            "required": null,
+            "description": "Mark3PDS586. Allowable Values: 2"
+        },
+        {
+            "name": "CardSwallowedStatusPDS587",
+            "type": "integer",
+            "required": null,
+            "description": "CardSwallowedStatusPDS587. Allowable Values: 1"
+        },
+        {
+            "name": "PostingDatePDS588",
+            "type": "integer",
+            "required": null,
+            "description": "PostingDatePDS588. Allowable Values: 4"
+        },
+        {
+            "name": "SecurityServicesIndicator",
+            "type": "string",
+            "required": null,
+            "description": "SecurityServicesIndicator Allowable Values: 3"
+        },
+        {
+            "name": "PartialApprovalTerminalSupportIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "PartialApprovalTerminalSupportIndicator. Allowable Values: 1"
+        },
+        {
+            "name": "PurchaseAmountOnlyTerminalSupportIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "PurchaseAmountOnlyTerminalSupportIndicator"
+        },
+        {
+            "name": "ReservedforFutureUse613",
+            "type": "integer",
+            "required": null,
+            "description": "ReservedforFutureUse613.\nExample: 0100 Allowable Values: 1"
+        },
+        {
+            "name": "ReservedForFutureUse614",
+            "type": "string",
+            "required": null,
+            "description": "ReservedForFutureUse614 Allowable Values: 1"
+        },
+        {
+            "name": "FinalAuthorizationIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "FinalAuthorizationIndicator Allowable Values: 1"
+        },
+        {
+            "name": "TransitTransactionTypeIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "TransitTransactionTypeIndicator Allowable Values: 2"
+        },
+        {
+            "name": "TransportationModeIndicator",
+            "type": "integer",
+            "required": null,
+            "description": "TransportationModeIndicator"
+        },
+        {
+            "name": "TLECompliant",
+            "type": "integer",
+            "required": null,
+            "description": "TLECompliant Allowable Values: 1"
+        },
+        {
+            "name": "UKPT_DUKPTCompliant",
+            "type": "integer",
+            "required": null,
+            "description": "UKPT_DUKPTCompliant Allowable Values: 1"
+        },
+        {
+            "name": "SanctionScreeningScore",
+            "type": "decimal",
+            "required": null,
+            "description": "SanctionScreeningScore"
+        },
+        {
+            "name": "IssuerChipAuthentication",
+            "type": "string",
+            "required": null,
+            "description": "IssuerChipAuthentication Allowable Values: 99"
+        },
+        {
+            "name": "MasterCardInternalUseOnlyPDS73",
+            "type": "string",
+            "required": null,
+            "description": "MasterCardInternalUseOnlyPDS73 Allowable Values: 10"
+        },
+        {
+            "name": "ProcessIndicator",
+            "type": "string",
+            "required": null,
+            "description": "ProcessIndicator.\nExample: 1 Allowable Values: 2"
+        },
+        {
+            "name": "ProcessingInformation",
+            "type": "string",
+            "required": null,
+            "description": "ProcessingInformation Allowable Values: 1"
+        },
+        {
+            "name": "ScoreReasonCode_MC",
+            "type": "string",
+            "required": null,
+            "description": "ProcessingInformation Allowable Values: 99"
+        },
+        {
+            "name": "MasterCardElectronicAcceptanceIndicator",
+            "type": "string",
+            "required": null,
+            "description": "MasterCardElectronicAcceptanceIndicator Allowable Values: 1"
+        },
+        {
+            "name": "USDeferredBillingIndicator",
+            "type": "string",
+            "required": null,
+            "description": "USDeferredBillingIndicator Allowable Values: 1"
+        },
+        {
+            "name": "CVRTVRBitErrorResultsListing",
+            "type": "string",
+            "required": null,
+            "description": "CVRTVRBitErrorResultsListing Allowable Values: 99"
+        },
+        {
+            "name": "PINServiceCode",
+            "type": "string",
+            "required": null,
+            "description": "PINServiceCode Allowable Values: 2"
+        },
+        {
+            "name": "AddrVeriReqOptCode",
+            "type": "integer",
+            "required": null,
+            "description": "AddrVeriReqOptCode Allowable Values: 2"
+        },
+        {
+            "name": "AddressVerificationResponse",
+            "type": "string",
+            "required": null,
+            "description": "AddressVerificationResponse Allowable Values: 1"
+        },
+        {
+            "name": "MerchantAdviceCode",
+            "type": "string",
+            "required": null,
+            "description": "MerchantAdviceCode Allowable Values: 2"
+        },
+        {
+            "name": "VisaResponseCodes",
+            "type": "string",
+            "required": null,
+            "description": "VisaResponseCodes Allowable Values: 2"
+        },
+        {
+            "name": "USExistingDebtIndicator",
+            "type": "string",
+            "required": null,
+            "description": "USExistingDebtIndicator Allowable Values: 2"
+        },
+        {
+            "name": "RelationshipParticipantIndicator",
+            "type": "string",
+            "required": null,
+            "description": "RelationshipParticipantIndicator Allowable Values: 1"
+        },
+        {
+            "name": "MasterCardCVC1CVC2Validation",
+            "type": "string",
+            "required": null,
+            "description": "MasterCardCVC1CVC2Validation Allowable Values: 1"
+        },
+        {
+            "name": "CVC1StatusChange",
+            "type": "string",
+            "required": null,
+            "description": "CVC1StatusChange Allowable Values: 1"
+        },
+        {
+            "name": "MagneticStripeComplianceErrorIndicator",
+            "type": "string",
+            "required": null,
+            "description": "MagneticStripeComplianceErrorIndicator. Allowable Values: 1"
+        },
+        {
+            "name": "CVC1TrackEditErrors",
+            "type": "string",
+            "required": null,
+            "description": "CVC1TrackEditErrors Allowable Values: 1"
+        },
+        {
+            "name": "TravIndPreSerInterProIden",
+            "type": "string",
+            "required": null,
+            "description": "TravIndPreSerInterProIden. Allowable Values: 1"
+        },
+        {
+            "name": "CPSRequest",
+            "type": "string",
+            "required": null,
+            "description": "CPSRequest Allowable Values: 1"
+        },
+        {
+            "name": "CPSRequestTransactionId",
+            "type": "string",
+            "required": null,
+            "description": "CPSRequestTransactionId Allowable Values: 19"
+        },
+        {
+            "name": "CVC2",
+            "type": "integer",
+            "required": null,
+            "description": "CVC2. Allowable Values: 3"
+        },
+        {
+            "name": "CVV2PresenceID",
+            "type": "integer",
+            "required": null,
+            "description": "CVV2PresenceID. Allowable Values: 0"
+        },
+        {
+            "name": "CVV2Value",
+            "type": "integer",
+            "required": null,
+            "description": "CVV2Value. Allowable Values: 4"
+        },
+        {
+            "name": "CVV2ResponseCode",
+            "type": "integer",
+            "required": null,
+            "description": "CVV2ResponseCode. Allowable Values: 1"
+        },
+        {
+            "name": "FleetCardIDRequestIndicator",
+            "type": "string",
+            "required": null,
+            "description": "FleetCardIDRequestIndicator. Allowable Values: 1"
+        },
+        {
+            "name": "OptionalFreeformInformationalText",
+            "type": "string",
+            "required": null,
+            "description": "OptionalFreeformInformationalText. Allowable Values: 18"
+        },
+        {
+            "name": "CommercialCardInquiryRequest",
+            "type": "string",
+            "required": null,
+            "description": "CommercialCardInquiryRequest. Allowable Values: 4"
+        },
+        {
+            "name": "CommercialCardInquiryResponse",
+            "type": "string",
+            "required": null,
+            "description": "CommercialCardInquiryResponse. Allowable Values: 4"
+        },
+        {
+            "name": "MasterCardPromotionCode",
+            "type": "string",
+            "required": null,
+            "description": "MasterCardPromotionCode. Allowable Values: 6"
+        },
+        {
+            "name": "AmericanExpressCustomerIDNumber",
+            "type": "string",
+            "required": null,
+            "description": "AmericanExpressCustomerIDNumber. Allowable Values: 4"
+        },
+        {
+            "name": "MarketspecificDataIdentifier",
+            "type": "string",
+            "required": null,
+            "description": "MarketspecificDataIdentifier. Allowable Values: 1"
+        },
+        {
+            "name": "PrestigiousPropertiesIndicator",
+            "type": "string",
+            "required": null,
+            "description": "PrestigiousPropertiesIndicator. Allowable Values: 1"
+        },
+        {
+            "name": "MCFleetCardIDDriverNumber",
+            "type": "string",
+            "required": null,
+            "description": "MCFleetCardIDDriverNumber. Allowable Values: 6"
+        },
+        {
+            "name": "MCFleetCardVehicleNumber",
+            "type": "string",
+            "required": null,
+            "description": "MCFleetCardVehicleNumber. Allowable Values: 6"
+        },
+        {
+            "name": "AVSAddressData",
+            "type": "string",
+            "required": null,
+            "description": "AVSAddressData Allowable Values: 999"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": null,
+            "description": "PostalCode. Allowable Values: 9"
+        },
+        {
+            "name": "AuthIDResponse",
+            "type": "string",
+            "required": null,
+            "description": "AuthIDResponse. Allowable Values: 6"
+        },
+        {
+            "name": "RulesScore_MC",
+            "type": "string",
+            "required": null,
+            "description": "RulesScore_MC. Allowable Values: 50"
+        },
+        {
+            "name": "CardValidationCodeResult",
+            "type": "string",
+            "required": null,
+            "description": "CardValidationCodeResult. Allowable Values: 50"
+        },
+        {
+            "name": "TransactionDestinationInstitutionIDCode",
+            "type": "string",
+            "required": null,
+            "description": "TransactionDestinationInstitutionIDCode. Allowable Values: 50"
+        },
+        {
+            "name": "CurrencyConversionAssessmentAmount",
+            "type": "string",
+            "required": null,
+            "description": "CurrencyConversionAssessmentAmount. Allowable Values: 50"
+        },
+        {
+            "name": "AdditionalAmounts",
+            "type": "array",
+            "required": null,
+            "description": "Array Data element to hold Additional Amount taken from De 54."
+        },
+        {
+            "name": "AccountType_54",
+            "type": "integer",
+            "required": null,
+            "description": "Account Type received in DE 54"
+        },
+        {
+            "name": "AmountType_54",
+            "type": "integer",
+            "required": null,
+            "description": "Amount Type received in DE 54"
+        },
+        {
+            "name": "CurrencyCode_54",
+            "type": "integer",
+            "required": null,
+            "description": "Currency Code received in DE 54"
+        },
+        {
+            "name": "CreditDebit_54",
+            "type": "string",
+            "required": null,
+            "description": "CreditDebit indicator received in DE 54 Allowable Values: 1"
+        },
+        {
+            "name": "Amount_54",
+            "type": "decimal",
+            "required": null,
+            "description": "Additional amount received in DE 54"
+        },
+        {
+            "name": "OnbehalfIssuer",
+            "type": "array",
+            "required": null,
+            "description": "Array Data element to hold on behalf Issuer data from De 48 Sub element 71."
+        },
+        {
+            "name": "OnbehalfService",
+            "type": "string",
+            "required": null,
+            "description": "On behalf Service is populated based on De 48 Sub element 71 Sub field 1 Allowable Values: 2"
+        },
+        {
+            "name": "OnbehalfResult1",
+            "type": "string",
+            "required": null,
+            "description": "OnbehalfResult1 is populated based on De 48 Sub element 71 Sub field 2 Allowable Values: 1"
+        },
+        {
+            "name": "OnbehalfResult2",
+            "type": "string",
+            "required": null,
+            "description": "OnbehalfResult2 is populated based on De 48 Sub element 71 Sub field 3 Allowable Values: 1"
+        },
+        {
+            "name": "CardType",
+            "type": "integer",
+            "required": null,
+            "description": "Card Type is populated by Corecard System on basis of Card Used for Transaction."
+        },
+        {
+            "name": "SecondaryCardType",
+            "type": "integer",
+            "required": null,
+            "description": "Secondary Card Type is populated if Card used for transaction is a secondary card and this field indicates which type of secondary card was used."
+        },
+        {
+            "name": "AuthDecisionDescription",
+            "type": "string",
+            "required": null,
+            "description": "Auth Decision Description is populated to indicate the initial decision taken by Corecard System for this transaction. Allowable Values: 200"
+        },
+        {
+            "name": "AuthDecisionControlId",
+            "type": "integer",
+            "required": null,
+            "description": "Auth Decision Control Id is populated if Transaction is initially declined by Corecard system and indicates the ADC id responsible for Transaction decline."
+        },
+        {
+            "name": "AuthDecisionCategory",
+            "type": "string",
+            "required": null,
+            "description": "Auth Decision Category defines the category of ADC responsible for declining the transaction Allowable Values: 50"
+        },
+        {
+            "name": "AuthDecisionRuleDescription",
+            "type": "string",
+            "required": null,
+            "description": "Auth Decision Rule Description is used to transfer description of ADC responsible for transaction decline. Allowable Values: 50"
+        },
+        {
+            "name": "card_category",
+            "type": "string",
+            "required": null,
+            "description": "card_category. Allowable Values: 10"
+        },
+        {
+            "name": "NewOTB",
+            "type": "decimal",
+            "required": null,
+            "description": "OTB after Auth."
+        },
+        {
+            "name": "AccountUUID",
+            "type": "string",
+            "required": null,
+            "description": "AccountUUID is the Unique identifier generated for Account by the corecard system. Allowable Values: 64"
+        },
+        {
+            "name": "CardUUID",
+            "type": "string",
+            "required": null,
+            "description": "CardUUID is the Unique identifier generated for Card by the corecard system. Each card can be identified using this id. For e.g. One account have 2 cards then each card will have a different CardUUID Allowable Values: 64"
+        },
+        {
+            "name": "AccountOpeningDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Account Opening Date in \n(Format: MMDDYYYY)"
+        },
+        {
+            "name": "Ecreationdate",
+            "type": "datetime",
+            "required": null,
+            "description": "Ecreationdate is in Format: MMDDYYYY and indicates the Card creation date"
+        },
+        {
+            "name": "CardCycleGroupIdentifier",
+            "type": "integer",
+            "required": null,
+            "description": "Card Cycle Group Identifier is populated by the Corecard System to indicate group type of Card."
+        },
+        {
+            "name": "CardCreationSource",
+            "type": "string",
+            "required": null,
+            "description": "Card Cycle Group Identifier is populated by the Corecard System to indicate group type of Card. Allowable Values: 50"
+        },
+        {
+            "name": "TransactionUUID",
+            "type": "string",
+            "required": null,
+            "description": "TransactionUUID is one unique identifier generated by Corecard system for one transaction. All transactions will have a unique id even if they are part of one transaction life cycle. for e.g. A purchase, its completion , reversal each will have the different transactionUUID Allowable Values: 64"
+        },
+        {
+            "name": "TransactionLifeCycleUUID",
+            "type": "string",
+            "required": null,
+            "description": "TransactionLifeCycleUUID is the unique identifier generated by Corecard system for a complete transaction life cycle. This id will be stamped on all the transactions of a transaction life cycle for e.g. A purchase, its completion, reversal will have the same transaction life cycle UUID. Allowable Values: 64"
+        },
+        {
+            "name": "RMA_RequestId",
+            "type": "string",
+            "required": null,
+            "description": "RMA_RequestId is populated if received in Transaction request. Allowable Values: 64"
+        },
+        {
+            "name": "FraudBlob",
+            "type": "string",
+            "required": null,
+            "description": "Fraud Blob is used to populate Fraud related data Allowable Values: 8000"
+        },
+        {
+            "name": "Client",
+            "type": "string",
+            "required": null,
+            "description": "Client name is populated if received in transaction request Allowable Values: 10"
+        },
+        {
+            "name": "OverlimitPolicy_DynEligRulesHit",
+            "type": "string",
+            "required": null,
+            "description": "This tag is populated based on Overlimit Policy defined in Corecard System. Allowable Values: 10"
+        },
+        {
+            "name": "OverlimitPolicy_PctAllowed",
+            "type": "string",
+            "required": null,
+            "description": "This tag is populated based on Overlimit Policy defined in Corecard System. Allowable Values: 10"
+        },
+        {
+            "name": "OverlimitPolicy_DollarAllowed",
+            "type": "string",
+            "required": null,
+            "description": "This tag is populated based on Overlimit Policy defined in Corecard System. Allowable Values: 10"
+        },
+        {
+            "name": "OverlimitPolicy_TransactionCatg",
+            "type": "string",
+            "required": null,
+            "description": "This tag is populated based on Overlimit Policy defined in Corecard System. Allowable Values: 10"
+        },
+        {
+            "name": "OverlimitPolicy_PositiveOTBatTran",
+            "type": "string",
+            "required": null,
+            "description": "This tag is populated based on Overlimit Policy defined in Corecard System. Allowable Values: 10"
+        },
+        {
+            "name": "ClientId",
+            "type": "string",
+            "required": null,
+            "description": "ClientId of CoreCard system Allowable Values: 50"
+        },
+        {
+            "name": "MerchantName",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Name received in Transaction request. Allowable Values: 22"
+        },
+        {
+            "name": "PDPolicy_DynEligRulesHit",
+            "type": "string",
+            "required": null,
+            "description": "This tag is populated based on Past due  Policy defined in Corecard System. Allowable Values: 10"
+        },
+        {
+            "name": "PDPolicy_DaysAllowed",
+            "type": "string",
+            "required": null,
+            "description": "This tag is populated based on Past due Policy defined in Corecard System. Allowable Values: 10"
+        },
+        {
+            "name": "RequestUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Unique ID of the Request generated by Corecard system\nExample: 8638-b87b-48d0-8e13-0ebb5643577 Allowable Values: 64"
+        },
+        {
+            "name": "AlertType",
+            "type": "string",
+            "required": null,
+            "description": "This tag indicates this request RealTime or ReTry. Allowable Values: 15"
+        },
+        {
+            "name": "CustomerZipCode",
+            "type": "string",
+            "required": null,
+            "description": "Zip Code of Customer if received in request. Allowable Values: 9"
+        },
+        {
+            "name": "TransactionZipCode",
+            "type": "string",
+            "required": null,
+            "description": "Transaction Zip Code indicates the zip of Merchant if received in transaction request. Allowable Values: 9"
+        },
+        {
+            "name": "AVS_Indicator",
+            "type": "string",
+            "required": null,
+            "description": "1 - AVS Matched, 0 - AVS Not matched, 2 - AVS not evaluated Allowable Values: 1"
+        },
+        {
+            "name": "AVS_Response_Code",
+            "type": "string",
+            "required": null,
+            "description": "This field carried the Address Verification Service Response Code(See appendix 3.4 for Possible values) Allowable Values: 1"
+        },
+        {
+            "name": "CreditLimit",
+            "type": "decimal",
+            "required": null,
+            "description": "Credit Limit of the Card."
+        },
+        {
+            "name": "cardexpirationdate_file",
+            "type": "datetime",
+            "required": null,
+            "description": "Date of card Expiration in Corecard System."
+        },
+        {
+            "name": "cardexpirationdate_customer",
+            "type": "datetime",
+            "required": null,
+            "description": "Card expiration date came through transaction."
+        },
+        {
+            "name": "CardExpiration_Response",
+            "type": "string",
+            "required": null,
+            "description": "1 - CardExpirationDate, 0 - CardExpirationDate Not matched, 2 - CardExpirationDate not evaluated Allowable Values: 1"
+        },
+        {
+            "name": "InstitutionId",
+            "type": "integer",
+            "required": null,
+            "description": "Insitution ID of the Acoount"
+        },
+        {
+            "name": "ProductId",
+            "type": "integer",
+            "required": null,
+            "description": "Product ID of Account."
+        },
+        {
+            "name": "Third Party Fraud Response",
+            "type": "array",
+            "required": null,
+            "description": "Array Data element to hold Third Party Fraud Response data."
+        },
+        {
+            "name": "Lifecycle_id",
+            "type": "string",
+            "required": null,
+            "description": "The identifier of the transaction sent to the external fraud system. Allowable Values: 15"
+        },
+        {
+            "name": "Event_external_id",
+            "type": "string",
+            "required": null,
+            "description": "The Unique Identifier received from the external Fraud System for this authorization Allowable Values: 15"
+        },
+        {
+            "name": "Score",
+            "type": "string",
+            "required": null,
+            "description": "Score received from the external Fraud System for this authorization. Possible values range from 0 to 1000, where 1000 represents the highest probability of it being illegitimate. Allowable Values: 4"
+        },
+        {
+            "name": "Decision",
+            "type": "string",
+            "required": null,
+            "description": "Third Party Fraud suggestion of whether to approve or decline the transfer based on the decision outcome of the External Fraud System. Allowable Values: 15"
+        },
+        {
+            "name": "First Fraud Rule and Action",
+            "type": "string",
+            "required": null,
+            "description": "Actions that are activated when the first rule is triggered. Allowable Values: 50"
+        },
+        {
+            "name": "Other Fraud Rules and Actions",
+            "type": "string",
+            "required": null,
+            "description": "Actions that are activated by every other triggering rule except the first. Allowable Values: 10"
+        },
+        {
+            "name": "Alert",
+            "type": "boolean",
+            "required": null,
+            "description": "Identifies whether or not the request has generated an alert in Third Party Fraud Case Manager."
+        },
+        {
+            "name": "Fraud SCA Required",
+            "type": "boolean",
+            "required": null,
+            "description": "Identifies whether the strong customer authentication (SCA) is needed or not."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Request_ID",
+            "type": "integer",
+            "required": null,
+            "description": "CoreCard system’s Unique id of transaction (Tranid) Allowable Values: 19",
+            "children": []
+        },
+        {
+            "name": "admin_number",
+            "type": "integer",
+            "required": null,
+            "description": "Proxy card number Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "last4_card_number",
+            "type": "string",
+            "required": null,
+            "description": "Card number's last 4 digits Allowable Values: 4",
+            "children": []
+        },
+        {
+            "name": "res_code_override",
+            "type": "integer",
+            "required": null,
+            "description": "RResponse code received from client interface. 00=Approved and 09= Prefunded (Live load) transaction, 05= Do not honour. Allowable Values: 2",
+            "children": []
+        },
+        {
+            "name": "reason",
+            "type": "string",
+            "required": null,
+            "description": "Reason Allowable Values: 400",
+            "children": []
+        }
+    ],
+    "sample_request": {
+        "user_id": "TestUser",
+        "password": "TestPwd",
+        "request_id": 2123424,
+        "admin_number": 675505,
+        "last4_card_number": "1564",
+        "transaction_amount": 11.4,
+        "post_time": 715202,
+        "local_tran_time": 71520,
+        "Transmission_Date_Time": null,
+        "local_currencycode": "USD",
+        "Local_Transaction_Amount": 11.0,
+        "Issuer_Currency_Code": "USD",
+        "Transaction_Time_Zone": null,
+        "Time_Zone_Country_Name": null,
+        "Time_Zone_Olson": null,
+        "Time_Zone_Details": null,
+        "Time_Zone_Value": null,
+        "merchant_category_code": 5999,
+        "MerchantCategoryCodeDescription": "Miscellaneous and Specialty Retail Stores",
+        "MerchantCity": "Columbia",
+        "card_acceptor_id_code": "687555537877464",
+        "card_acceptor_terminal_id": "Reg00004",
+        "cardacceptor_name_location": "Midwest EmporiumColumbia MO ",
+        "card_entry_mode": "90",
+        "available_balance": 5000.0,
+        "mti": 100,
+        "stan": "000001",
+        "rrn": "123456789012",
+        "response_code": "00",
+        "AuthLifeCycleUniqueID": 2123424,
+        "CrossBorderIndicator": "N",
+        "AuthExpirationDate": null,
+        "AmountAuthorized_9F02": null,
+        "ApplicationCryptogram_9F26": null,
+        "ApplicationInterchangeProfile_82": null,
+        "CardSequenceTerminalNumber_5F34": null,
+        "ApplicationTransactionCounter_9F36": null,
+        "TerminalCountryCode_9F1A": null,
+        "TerminalVerificationResults_95": null,
+        "TransactionDate_9A": null,
+        "TransactionCurrencyCode_5F2A": null,
+        "TransactionType_9C": null,
+        "TransactionCurrencyCode": null,
+        "UnpredictabNumber_9F37": null,
+        "AmountOther_9F03": null,
+        "ApplicationUsageControl_9F07": null,
+        "ApplicationVersionNumber_9F08": null,
+        "ApplicationVersionNumber_9F09": null,
+        "CardholderVerificationMethod_9F34": null,
+        "CryptogramInformationData_9F27": null,
+        "DedicatedFileName_84": null,
+        "InterfaceDeviceSerialNumber_9F1E": null,
+        "IssuerApplicationData_9F10": null,
+        "IssuerScriptResults_9F5B": null,
+        "POSEntryMode_9F39": null,
+        "TerminalCapabilities_9F33": null,
+        "TerminalCapabilityFlag_FF20": null,
+        "TerminalType_9F35": null,
+        "Track2Data_57": null,
+        "TransactionSequenceCounter_9F41": null,
+        "AdditionalTerminalCapabilities_9F40": null,
+        "ApplicationIdentifier_4F": null,
+        "ApplicationIdentifierTerminal_9F06": null,
+        "ApplicationPreferredName_9F12": null,
+        "ApplicationLabel_50": null,
+        "ApplicationPriorityIndicator_87": null,
+        "ContactlessCapability_FF22": null,
+        "IssuerCountryCode_5F28": null,
+        "SoftwareVersions_FF21": null,
+        "TransactionCategoryCode_9F53": null,
+        "TransactionStatusInformation_9B": null,
+        "TransactionTime_9F21": null,
+        "AccountNumber": "7000000000007786",
+        "CustomerId": "674408",
+        "MCCCategoryCode": "Miscellaneous Stores",
+        "POSCardholderPresenceInd": "0",
+        "PostingRef": "Approved",
+        "SettlementAmount": null,
+        "CardHolderBillingAmount": null,
+        "SettlementCurrencyCode": null,
+        "CardHolderBillingCurrencycode": null,
+        "ConversionRateCardholderBilling": null,
+        "SettlementDate": null,
+        "ConversionDate": null,
+        "POSTerminalPANEntryMode": "90",
+        "POSTerminalPINEntryMode": "2",
+        "merchantId": "687555537877464",
+        "merchantRawName": null,
+        "merchantState": "MO ",
+        "merchantZipcode": null,
+        "merchantNameClean": null,
+        "merchantCityClean": null,
+        "merchantCleanConfidenceLevel": null,
+        "cleanupReasonCode": null,
+        "SettlementIndicator": null,
+        "PointOfServiceConditionCode": null,
+        "AcquirerReferenceData": null,
+        "ForwardingInstitutionIDCode": null,
+        "AcquiringInstitutionIDCode": "9685",
+        "MessageNumber": null,
+        "TransacOriginatorInstIDCode": null,
+        "MessageReasonCode": null,
+        "NetworkReferenceNumber": null,
+        "NetworkReferenceID": null,
+        "PosTransactionStatusIndicator": "0",
+        "TransactionSourceAmount": null,
+        "ProcCode": "00",
+        "ProcCodeFrom": "00",
+        "ProcCodeTo": "00",
+        "AuthorizingAgentIdCode": null,
+        "ConversionRateSettlement": null,
+        "Return_Amount": null,
+        "TokenTransaction": "NO",
+        "DeviceId": null,
+        "DeviceLocation": null,
+        "TokenRequestorId": null,
+        "TokenNumberLast4Digits": null,
+        "WalletIdentifier": null,
+        "IResponseCode": "00 = Successful approval",
+        "TokenAssuranceLevel": null,
+        "TokenNumberIndicator": null,
+        "TokenMessageType": null,
+        "TokenExpirationDate": null,
+        "TokenType": null,
+        "TokenizationEventIndicator": null,
+        "Devicetype": null,
+        "TokenNumber": null,
+        "TokenIdentifierTranid": null,
+        "PaymentAccountReference": null,
+        "CardPresenceInd": "0",
+        "TraceID": null,
+        "PosCountryCode": "840",
+        "TokenUniqueReference": null,
+        "PANUniqueReference": null,
+        "PaymentHash": null,
+        "NetworkResponseCode": null,
+        "OrginalAuthTranid": null,
+        "AmountCardholderBillingFee": null,
+        "DateExpiration": null,
+        "DateCapture": null,
+        "AcquiringInstitutionCountryCode": null,
+        "PANCountryCode": null,
+        "ForwardingInstituionCountryCode": null,
+        "CardSequenceNumber": null,
+        "NetworkInternationalID": null,
+        "AuthIDResponseLength": null,
+        "TransactionFeeAmount": null,
+        "SettlementFeeAmount": null,
+        "TransactionProcessingFeeAmount": null,
+        "SettlementProcessingFeeAmount": null,
+        "ServiceRestrictionCode": null,
+        "AdditionalResponseData": null,
+        "AdditionalDataISOUse": null,
+        "AdditionalDataNationalUse": null,
+        "SecurityServicesAdditionalData": null,
+        "ScoreReasonCode": null,
+        "RulesScore": null,
+        "RulesReasonCode1": null,
+        "RulesReasonCode2": null,
+        "ReasonCode": null,
+        "AdviceDetail_60": null,
+        "AdviceDetailText": null,
+        "POSTerminalAttendanceIndicator": 0,
+        "Reserved61": 0,
+        "POSTerminalLocationIndicator": 0,
+        "POSCardCaptureCapabilitiesIndicator": 0,
+        "POSTransactionSecurityIndicator": 0,
+        "ReservedZero61": 0,
+        "CardHolderActivatedTerminalLevelIndicator": 0,
+        "POSCarddataTerminalInputCapabilityIndicator": 2,
+        "POSAuthLifeCyclenumberofdayspreauth": "00",
+        "POSCountryCodendicatesthecountryofthePOSlocation": 840,
+        "IntermediateNetworkFacilityData": null,
+        "TheFinancialNetworkCode": null,
+        "BankNetReferenceNumber": null,
+        "SettlementCode": null,
+        "ExtendedPaymentCode": null,
+        "ReceivingInstitutionCountryCode": null,
+        "SettlementsInstitutionCountryCode": null,
+        "NetworkManagementInformationCode": null,
+        "MessageNumberLast": null,
+        "DateAction": null,
+        "CreditsNumber": null,
+        "CreditsReversalNumber": null,
+        "DebitsNumber": null,
+        "DebitsReversalNumber": null,
+        "TransfersNumber": null,
+        "TransfersReversalNumber": null,
+        "InquiriesNumber": null,
+        "AuthorizationsNumber": null,
+        "CreditsProcessingFeeAmount": 0,
+        "CreditsTransactionFeeAmount": 0,
+        "DebitsProcessingFeeAmount": 0,
+        "DebitsTransactionFeeAmt": 0,
+        "CreditsAmount": 0,
+        "CreditsReversalAmount": 0,
+        "DebitsAmount": 0,
+        "DebitsReversalAmount": 0,
+        "FileUpdateCode": null,
+        "ResponseIndicator": null,
+        "CreditDebitIndicator": null,
+        "AcquirerIssuerDataIndicator": null,
+        "AddressDataIndicator": null,
+        "ActualAmountSettlement": null,
+        "ActualAmountCardholderBilling": null,
+        "DebitCreditIndicator": null,
+        "AmountNetSettlement": null,
+        "Payee": null,
+        "SettlementInstitutionIDCode": null,
+        "ReceivingInstitutionIDCode": null,
+        "CustomerExclusiveData_9F7C": null,
+        "FileName": null,
+        "AccountID1": null,
+        "AccountID2": null,
+        "FormFactorIndicator_9F6E": null,
+        "TransactionDescription": null,
+        "AdditionalDataNationalUse112": null,
+        "AdditionalRecordData": null,
+        "ReservedFutureDefinition123": null,
+        "MemberData": null,
+        "PrivateData126": null,
+        "PrivateData127": null,
+        "EncriptedPINBlockKey": null,
+        "KeyClassIdentifierTKTransportKey": null,
+        "KeyIndexNumber": null,
+        "KeyCycleNumber": null,
+        "PINEncryptionKey": null,
+        "RoutingIndicatorPDS12": null,
+        "MobilePhoneNumber": null,
+        "MobilePhoneServiceProviderName": null,
+        "AuthorizationDate48": null,
+        "AuthorizationTime48": null,
+        "CanadaDomesticIndicator": null,
+        "ProcessorPseudoICA": null,
+        "CardholderVerificationMethod20pds": null,
+        "MessageIdentifier": null,
+        "MasterCardAssignID": null,
+        "VCNProductCode": null,
+        "AccountRange": null,
+        "CryptogramValidationIndicator": null,
+        "StorageTechnology": null,
+        "ATCValuePDS341": null,
+        "ATCDiscrepancyValuePDS342": null,
+        "ATCDiscrepancyIndicatorPDS343": null,
+        "PayPassNonCardFormFactorPDS35": null,
+        "PaymentFacilitatorID": null,
+        "AccountCategory": null,
+        "ADCEventMassagingServiceInfo": null,
+        "MerchantCertificateSerialNumber": null,
+        "CardholderCertificateSerialNumber": null,
+        "ReservedforFutureUse411": null,
+        "Reservedforfutureuse412": null,
+        "Reservedforfutureuse413": null,
+        "Reservedforfutureuse414": null,
+        "Reservedforfutureuse415": null,
+        "Reservedforfutureuse416": null,
+        "Reservedforfutureuse417": null,
+        "Reservedforfutureuse418": null,
+        "Reservedforfutureuse419": null,
+        "Reservedforfutureuse4110": null,
+        "CitizenID": null,
+        "Reservedforfutureuse4112": null,
+        "Reservedforfutureuse4113": null,
+        "Reservedforfutureuse4114": null,
+        "Reservedforfutureuse4115": null,
+        "Reservedforfutureuse4116": null,
+        "Reservedforfutureuse4117": null,
+        "Reservedforfutureuse4118": null,
+        "EleCommSecuLevInd": null,
+        "UniversalCardholderAuthenticationField": null,
+        "SecureElectronicCommTrandentifier": null,
+        "SecureElectronicCommTranResponse": null,
+        "CardLevelResultPDS46": null,
+        "PaymentGatewayTranIicatorPDS47": null,
+        "RemotePaymentsProgramTypeIdentifier": null,
+        "MobileRemotePaymentTransactionType": null,
+        "MobilePhoneNumber48_MC": null,
+        "ConvenienceFee": null,
+        "MerchantOnbehalfService": null,
+        "MerchantOnbehalfResult1": null,
+        "AdditionalInformation": null,
+        "TransactionIntegrityClass": null,
+        "EIDRequestValue": null,
+        "MerchantFraudScore": null,
+        "MerchantScoreReasonCode1": null,
+        "ReservedforFutureUse": null,
+        "ReservedforFutureUse4": null,
+        "ReservedforFutureUse5": null,
+        "SecurityServicesData": null,
+        "ATMTimePDS581": null,
+        "ATMDatePDS582": null,
+        "WatermarkPDS583": null,
+        "Mark1PDS584": null,
+        "Mark2PDS585": null,
+        "Mark3PDS586": null,
+        "CardSwallowedStatusPDS587": null,
+        "PostingDatePDS588": null,
+        "SecurityServicesIndicator": null,
+        "PartialApprovalTerminalSupportIndicator": null,
+        "PurchaseAmountOnlyTerminalSupportIndicator": null,
+        "ReservedforFutureUse613": null,
+        "ReservedForFutureUse614": null,
+        "FinalAuthorizationIndicator": null,
+        "TransitTransactionTypeIndicator": null,
+        "TransportationModeIndicator": null,
+        "TLECompliant": null,
+        "UKPT_DUKPTCompliant": null,
+        "SanctionScreeningScore": null,
+        "IssuerChipAuthentication": null,
+        "MasterCardInternalUseOnlyPDS73": null,
+        "ProcessIndicator": null,
+        "ProcessingInformation": null,
+        "ScoreReasonCode_MC": null,
+        "MasterCardElectronicAcceptanceIndicator": null,
+        "USDeferredBillingIndicator": null,
+        "CVRTVRBitErrorResultsListing": null,
+        "PINServiceCode": null,
+        "AddrVeriReqOptCode": null,
+        "AddressVerificationResponse": null,
+        "MerchantAdviceCode": null,
+        "VisaResponseCodes": null,
+        "USExistingDebtIndicator": null,
+        "RelationshipParticipantIndicator": null,
+        "MasterCardCVC1CVC2Validation": null,
+        "CVC1StatusChange": null,
+        "MagneticStripeComplianceErrorIndicator": null,
+        "CVC1TrackEditErrors": null,
+        "TravIndPreSerInterProIden": null,
+        "CPSRequest": null,
+        "CPSRequestTransactionId": null,
+        "CVC2": null,
+        "CVV2PresenceID": null,
+        "CVV2Value": null,
+        "CVV2ResponseCode": null,
+        "FleetCardIDRequestIndicator": null,
+        "OptionalFreeformInformationalText": null,
+        "CommercialCardInquiryRequest": null,
+        "CommercialCardInquiryResponse": null,
+        "MasterCardPromotionCode": null,
+        "AmericanExpressCustomerIDNumber": null,
+        "MarketspecificDataIdentifier": null,
+        "PrestigiousPropertiesIndicator": null,
+        "MCFleetCardIDDriverNumber": null,
+        "MCFleetCardVehicleNumber": null,
+        "AVSAddressData": null,
+        "PostalCode": "90210",
+        "AuthIDResponse": null,
+        "RulesScore_MC": null,
+        "CardValidationCodeResult": null,
+        "TransactionDestinationInstitutionIDCode": null,
+        "CurrencyConversionAssessmentAmount": "0",
+        "AdditionalAmounts": null,
+        "OnbehalfIssuer": null,
+        "Third Party Fraud Response": [
+            {
+                "Lifecycle_id": "35123372036854829808",
+                "Event_external_id": "35123372036854829808",
+                "Score": "315",
+                "Decision": "decline",
+                "First Fraud Rule and Action": "[\"[T-Cards-TPN1]\"]",
+                "Other Fraud Rules and Actions": "[\"[v7 glob]\",\"[v8 glob]\",\"[Cards-Velocity-2]\",\"[Cards-Threshold-1]\",\"Limit/Review Card\",\"[Cards-Threshold-5]\",\"[Cards-Behavior-2]\",\"[VS81=1CNT TEST]\",\"[VS71=1AMT TEST]\",\"[vs-7-amt-4w]\",\"[vs>$250}\",\"[cut off rule]\",\"[Cards-bo-24hrs]\",\"[BV5RECTIFIED]\"]",
+                "Alert": true,
+                "Fraud SCA Required": false
+            }
+        ],
+        "CardType": 0,
+        "SecondaryCardType": null,
+        "AuthDecisionDescription": "Approved",
+        "AuthDecisionControlId": null,
+        "AuthDecisionCategory": null,
+        "AuthDecisionRuleDescription": null,
+        "card_category": "Digital",
+        "NewOTB": 4988.6,
+        "AccountUUID": "ee160353-56e34128-a8e4-4b53901da217",
+        "CardUUID": "bda7776d-715b4cc6-99f6-839bdba48d03",
+        "AccountOpeningDate": "07/26/2021 12:00:00:00",
+        "Ecreationdate": "07/26/2021 12:00:00:00",
+        "CardCycleGroupIdentifier": 672513,
+        "CardCreationSource": "Individual",
+        "TransactionUUID": "78bbe31d-9fad4d0a-8177-b2c2023800fa",
+        "TransactionLifeCycleUUID": "5261a22e-78da4676-a630-9b2dc4dc36a4",
+        "RMA_RequestId": null,
+        "FraudBlob": null,
+        "Client": null,
+        "OverlimitPolicy_DynEligRulesHit": null,
+        "OverlimitPolicy_PctAllowed": null,
+        "OverlimitPolicy_DollarAllowed": null,
+        "OverlimitPolicy_TransactionCatg": null,
+        "OverlimitPolicy_PositiveOTBatTran": null,
+        "ClientId": null,
+        "MerchantName": " Midwest Emporium",
+        "PDPolicy_DynEligRulesHit": null,
+        "PDPolicy_DaysAllowed": null,
+        "RequestUniversalUniqueID": "e012b994-bb614354-9ae6-ec6636487ef9",
+        "AlertType": "RealTime",
+        "CustomerZipCode": null,
+        "TransactionZipCode": null,
+        "AVS_Indicator": "2",
+        "AVS_Response_Code": null,
+        "CreditLimit": 500000.0,
+        "cardexpirationdate_file": "07/26/2021 12:00:00:00",
+        "cardexpirationdate_customer": "07/26/2021 12:00:00:00",
+        "CardExpiration_Response": "1",
+        "InstitutionId": 4855,
+        "ProductId": 4969
+    },
+    "sample_response": {
+        "application/json": {
+            "Request_ID": 2123424,
+            "admin_number": 675505,
+            "last4_card_number": "1564",
+            "res_code_override": 0,
+            "reason": "Approved or Completed successfully"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "webhook",
+        "section": "webhooks/credit",
+        "category": "Auth Integration",
+        "category_id": "2",
+        "document_id": "58",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/WEBHookPageApiDetail?id=58&type=ApiDetail&menuid=1&regionId=1"
+    }
+}

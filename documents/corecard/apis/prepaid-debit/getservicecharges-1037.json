@@ -1,0 +1,2352 @@
+{
+    "metadata": {
+        "name": "GetServiceCharges",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/GetServiceCharges",
+        "description": "This API gets all service charges associated with with a Service Charge plan for a merchant."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": true,
+            "description": "Specific ID Assigned to a Merchant, Mandatory If Merchant Number not Inputted in API Request. Valid Values: 0-9 Format: XXXX Example: 562489"
+        },
+        {
+            "name": "ServiceChargePlanID",
+            "type": "integer",
+            "required": true,
+            "description": "get or set SChargeAcctID"
+        },
+        {
+            "name": "PrimaryCurrencyCode",
+            "type": "string",
+            "required": null,
+            "description": "3 digit Code assiciated with the Currency Valid Values: Refer Primary Currency Code section of Appendix Format: XXX Example: 840 Allowable Values: 3"
+        },
+        {
+            "name": "MTCG",
+            "type": "integer",
+            "required": null,
+            "description": "get or set MTCG"
+        },
+        {
+            "name": "SChargeParentId",
+            "type": "integer",
+            "required": null,
+            "description": "get or set SChargeParentId"
+        },
+        {
+            "name": "DefaultCreditPlanID",
+            "type": "integer",
+            "required": null,
+            "description": "get or set DefaultCreditPlanID"
+        },
+        {
+            "name": "TransactionFeeDefaultCreditPlanID",
+            "type": "integer",
+            "required": null,
+            "description": "get or set TransactionFeeDefaultCreditPlanID"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ServiceChargeDetails",
+                    "type": "",
+                    "required": null,
+                    "description": "serviceChargeDetails",
+                    "children": [
+                        {
+                            "name": "AllowProgParameterUpdateCI",
+                            "type": "string",
+                            "required": null,
+                            "description": "AllowProgParameterUpdateCI",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowProgParameterUpdateRole",
+                            "type": "string",
+                            "required": null,
+                            "description": "AllowProgParameterUpdateRole",
+                            "children": []
+                        },
+                        {
+                            "name": "ServiceChargePlanName",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Service Charge Plan Name. Valid Values: 0-9 A-Z Format: xxx xxxxx Example: Service Charge Plan 1",
+                            "children": []
+                        },
+                        {
+                            "name": "PrimaryCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "3 digit Code assiciated with the Currency Valid Values: Refer' Primary Currency Code' section of Appendix Format: XXX Example: 840 Allowable Values: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "ServiceChargePlanParentName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Service Charge Plan. Valid Values: 0-9 A-Z Format: xxx xxxxx Example: Parent Service Charge Plan 1 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "MonetaryTransactionControlGroup",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Group of transaction code's applicable for the Plan. Valid Values:Corecard will share the value. Example: 2332",
+                            "children": []
+                        },
+                        {
+                            "name": "DefaultCreditPlanName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Default Credit Plan Name. Valid Values: 0-9 A-Z Format: xxx xxxxx Example: Parent Service Charge Plan 1 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFeesDefaultCreditPlanName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Default Credit Plan Name for Transaction Fees. Valid Values: 0-9 A-Z Format: xxx xxxxx Example: Parent Service Charge Plan 1 Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "GSTFeeGroup",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicate the GST fee group linked to a service charge. Valid Values: 0-9 A-Z Format: xxx xxxxx Example: Example: SGST Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantId",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Specific ID Assigned to a Merchant, Mandatory If Merchant Number not Inputted in API Request. Valid Values: 0-9 Format: XXXX Example: 562489",
+                            "children": []
+                        },
+                        {
+                            "name": "DefaultRecoveryFeeCreditPlanName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Credit Plan Name for Default recovery Fee. Valid Values: 0-9 A-Z Format: xxx xxxxx Example: Parent Service Charge Plan 1 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargePenaltyFeeOnNegativeRewardBalance",
+                            "type": "integer",
+                            "required": null,
+                            "description": "ChargePenaltyFeeOnNegativeRewardBalance. Valid Values: 0-9 Format: XXXX Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "TierCriteriaAccountBalanceUnder",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the amount of account balance to consider for this late fee tier. All parameters for that tier then apply. Valid Values: 0-9 Format: xxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeTiming",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates whether or not a late fee should be assessed, and if so, the method of timing the assessment. Valid Values: Refer Appendix Late Fee Parameters Format: xxxx xx xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeBaseDate",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates how to calculate the late fee date; this entry plus the number entered in the Late Fee Days field determines when a late fee is assessed on a delinquent account. Valid Values:  Refer Appendix Late Fee Parameters Format: xxxx xx xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeDays",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the number of days added to the Payment Due Date, Current Cycle Date, or Next Statement Date to determine when a late fee is assessed on a delinquent account. Valid Values: Refer Appendix Late Fee Parameters Format: xx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeDelinquencyCycle",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the cycle delinquency level to determine when to start assessing a late fee. This field is required if a value is entered in the Late Fee Percent field. Valid Values:  Refer Appendix Late Fee Parameters Format: xx",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumNumberLateFeesOption",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the maximum number of late fees flags are being used. Valid Values: Refer Appendix Late Fee Parameters Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeConsecutiveLimit",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the maximum number of consecutive late fees permitted on an account. Once this number is reached, the system skips a cycle before assessing another late fee. Valid Values: Refer Appendix Late Fee Parameters Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMinimumBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the minimum balance on an account that can be assessed a late fee. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMinimumAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the minimum amount of a single late fee for an account. This amount must be less than the value in the Late Fee Maximum Amount field. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMaximumAmount1",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the maximum late fee amount that can be assessed on an account in this service charge plan. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMaximumYearToDate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the total amount of late fees that can be assessed on an account year to date. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumNumberLateFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Identifies the maximum number of late fees that can be assessed on an account in a year. for this late fee tier. All parameters for that tier then apply. Valid Values: 0-12 Format: xxx Example: 1 Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeTransactionCode",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the transaction code to use to process late fees. Valid Values: Refer Appendix Late Fee Parameters Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMaximumAmount2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the maximum late fee amount that can be assessed on an account when the Maximum Amount 2 Criteria is met. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumAmount2Criteria",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the criteria that should be met to make the Late Fee Maximum Amount 2 applicable. Valid Values: Refer Appendix Late Fee Parameters Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeCalculationBasis",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the calculation basis used to assess late fees. When Minimum Due Amount is selected, you are not allowed to enter a value in Late Fee Percent or Late Fee Amount. Valid Values: Refer Appendix Late Fee Calculation Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeePercent",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the percentage used to calculate late fees. Required if you selected Percent, Amount and Percent, Greater of Amount or Percent, or Lesser of Amount or Percent in the Late Fee Calculation Basis field. If you selected Minimum due amount in the Late Fee Calculation Basis field, you cannot enter a value in this field. Valid Values: 0-9 Format: x Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the currency amount to assess as a late charge. This amount must be within the range defined by the Late Fee Minimum Amount field and the Late Fee Maximum Amount field. Required if you selected Amount, Amount and Percent, Greater of Amount or Percent, or Lesser of Amount or Percent in the Late Fee Calculation Basis field. If you selected Minimum due amount in the Late Fee Calculation Basis field, you cannot enter a value in this field. Valid Values: 0-9 Format: x Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeePercentMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the method used to assess late fee percentages. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "BalanceSubjecttoLateFeeControl",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the balance subject to the late fees if Late Fee Percent Method is set to Use Balance Subject to Late Fee Control. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "InsuranceBilledNotPaid",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if Insurance value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "CollectionFeeBilledNotPaid",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Collection Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "interestBilledNotPaid",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Interest Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFeesBilledNotPaid",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Transaction Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeBilledNotPaid",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Late Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "AnnualFeeBilledNotPaid",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Annual Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeeBilledNotPaid",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Overlimit Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "RecoveryBilledNotPaid",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Recovery value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundsFeeBilledNotPaid",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Insufficient Funds Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "FeeLevel",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the Late Fee level. Valid Values: Refer Appendix Late Fee Parameters Format: xxxxx xxxxx Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveFirstLateFee",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates whether first late fee to be waived or not.. Valid Values: Refer Appendix Late Fee Parameters Format: xxxxx xxxxx Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "TierCriteriaAccountBalanceOverTier2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the amount of account balance to consider for this late fee tier. All parameters for that tier then apply. Valid Values: 0-9 Format: xxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "TierCriteriaAccountBalanceUnderTier2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the amount of account balance to consider for this late fee tier. All parameters for that tier then apply. Valid Values: 0-9 Format: xxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeTimingTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates whether or not a late fee should be assessed, and if so, the method of timing the assessment. Valid Values: Refer Appendix Late Fee Parameters Format: xxxx xx xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeBaseDateTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates how to calculate the late fee date; this entry plus the number entered in the Late Fee Days field determines when a late fee is assessed on a delinquent account. Valid Values:  Refer Appendix Late Fee Parameters Format: xxxx xx xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeDaysTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the number of days added to the Payment Due Date, Current Cycle Date, or Next Statement Date to determine when a late fee is assessed on a delinquent account. Valid Values: Refer Appendix Late Fee Parameters Format: xx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeDelinquencyCycleTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the cycle delinquency level to determine when to start assessing a late fee. This field is required if a value is entered in the Late Fee Percent field. Valid Values:  Refer Appendix Late Fee Parameters Format: xx",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumNumberLateFeesOptionTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the maximum number of late fees flags are being used. Valid Values: Refer Appendix Late Fee Parameters Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeConsecutiveLimitTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the maximum number of consecutive late fees permitted on an account. Once this number is reached, the system skips a cycle before assessing another late fee. Valid Values: Refer Appendix Late Fee Parameters Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMinimumBalanceTier2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the minimum balance on an account that can be assessed a late fee. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMinimumAmountTier2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the minimum amount of a single late fee for an account. This amount must be less than the value in the Late Fee Maximum Amount field. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMaximumAmount1Tier2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the maximum late fee amount that can be assessed on an account in this service charge plan. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMaximumAmount2Tier2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the maximum late fee amount that can be assessed on an account when the Maximum Amount 2 Criteria is met. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumAmount2CriteriaTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the criteria that should be met to make the Late Fee Maximum Amount 2 applicable. Valid Values: Refer Appendix Late Fee Parameters Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMaximumYearToDateTier2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the total amount of late fees that can be assessed on an account year to date. Valid Values: 0-9 Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumNumberLateFeesTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the maximum number of late fees that can be assessed on an account in a year. Valid Values: Refer Appendix Late Fee Parameters Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeTransactionCodeTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Transaction Code for Late Fees. Valid Values: Refer Appendix Late Fee Parameters Format: xxxxx Example:  12456",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeCalculationBasisTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the calculation basis used to assess late fees. When Minimum Due Amount is selected, you are not allowed to enter a value in Late Fee Percent or Late Fee Amount. Valid Values: Refer Appendix Late Fee Calculation Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeePercentTier2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the percentage used to calculate late fees. Required if you selected Percent, Amount and Percent, Greater of Amount or Percent, or Lesser of Amount or Percent in the Late Fee Calculation Basis field. If you selected Minimum due amount in the Late Fee Calculation Basis field, you cannot enter a value in this field. Valid Values: 0-9 Format: x Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeAmountTier2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the currency amount to assess as a late charge. This amount must be within the range defined by the Late Fee Minimum Amount field and the Late Fee Maximum Amount field. Required if you selected Amount, Amount and Percent, Greater of Amount or Percent, or Lesser of Amount or Percent in the Late Fee Calculation Basis field. If you selected Minimum due amount in the Late Fee Calculation Basis field, you cannot enter a value in this field. Valid Values: 0-9 Format: x Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeePercentMethodTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the method used to assess late fee percentages. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "BalanceSubjecttoLateFeeControlTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the balance subject to the late fees if Late Fee Percent Method is set to Use Balance Subject to Late Fee Control. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "InsuranceBilledNotPaidTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if Insurance value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "CollectionFeeBilledNotPaidTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Collection Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestBilledNotPaidTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Interest Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFeesBilledNotPaidTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Transaction Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeBilledNotPaidTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Late Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "AnnualFeeBilledNotPaidTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Annual Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeeBilledNotPaidTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Overlimit Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "RecoveryBilledNotPaidTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Recovery value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundsFeeBilledNotPaidTier2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Insufficient Funds Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "TierCriteriaAccountBalanceOverTier3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Indicates the amount of account balance to consider for this late fee tier. All parameters for that tier then apply. Valid Values: 0-9 Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeTimingTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates whether or not a late fee should be assessed, and if so, the method of timing the assessment. Valid Values: Assess Using Due Base Date and Number of Days,  Assess on Next Statement,  Do Not Assess Late Fee Format: xxxx xx xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeBaseDateTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates how to calculate the late fee date; this entry plus the number entered in the Late Fee Days field determines when a late fee is assessed on a delinquent account. Valid Values:  Refer Appendix Late Fee Parameters Format: xxxx xx xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeDaysTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the number of days added to the Payment Due Date, Current Cycle Date, or Next Statement Date to determine when a late fee is assessed on a delinquent account. Valid Values: Refer Appendix Late Fee Parameters Format: xx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeDelinquencyCycleTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the cycle delinquency level to determine when to start assessing a late fee. This field is required if a value is entered in the Late Fee Percent field. Valid Values:  Refer Appendix Late Fee Parameters Format: xx",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumNumberLateFeesOptionTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the maximum number of late fees flags are being used. Valid Values: Refer Appendix Late Fee Parameters Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeConsecutiveLimitTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the maximum number of consecutive late fees permitted on an account. Once this number is reached, the system skips a cycle before assessing another late fee. Valid Values: Refer Appendix Late Fee Parameters Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMinimumBalanceTier3Tier3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the minimum balance on an account that can be assessed a late fee. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMinimumAmountTier3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the minimum amount of a single late fee for an account. This amount must be less than the value in the Late Fee Maximum Amount field. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMaximumAmount1Tier3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the maximum late fee amount that can be assessed on an account in this service charge plan. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMaximumAmount2Tier3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the maximum late fee amount that can be assessed on an account when the Maximum Amount 2 Criteria is met. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumAmount2CriteriaTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the criteria that should be met to make the Late Fee Maximum Amount 2 applicable. Valid Values: Refer Appendix Late Fee Parameters Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeMaximumYearToDateTier3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the total amount of late fees that can be assessed on an account year to date. Valid Values: 0-9 Format: xxx Example:  500",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumNumberLateFeesTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the maximum number of late fees that can be assessed on an account in a year. Valid Values: Refer Appendix Late Fee Parameters Format: xx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeTransactionCodeTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Transaction Code for Late Fees. Valid Values: Refer Appendix Late Fee Parameters Format: xxxxx Example:  12345",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeCalculationBasisTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the calculation basis used to assess late fees. When Minimum Due Amount is selected, you are not allowed to enter a value in Late Fee Percent or Late Fee Amount. Valid Values: Refer Appendix Late Fee Calculation Format: xxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeePercentTier3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the percentage used to calculate late fees. Required if you selected Percent, Amount and Percent, Greater of Amount or Percent, or Lesser of Amount or Percent in the Late Fee Calculation Basis field. If you selected Minimum due amount in the Late Fee Calculation Basis field, you cannot enter a value in this field. Valid Values: 0-9 Format: x Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeAmountTier3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the currency amount to assess as a late charge. This amount must be within the range defined by the Late Fee Minimum Amount field and the Late Fee Maximum Amount field. Required if you selected Amount, Amount and Percent, Greater of Amount or Percent, or Lesser of Amount or Percent in the Late Fee Calculation Basis field. If you selected Minimum due amount in the Late Fee Calculation Basis field, you cannot enter a value in this field. Valid Values: 0-9 Format: x Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeePercentMethodTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the method used to assess late fee percentages. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "BalanceSubjecttoLateFeeControlTier3",
+                            "type": "string",
+                            "required": null,
+                            "description": "Identifies the method used to assess late fee percentages. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "InsuranceBilledNotPaidTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if Insurance value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "CollectionFeeBilledNotPaidTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Collection Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestBilledNotPaidTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Interest Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFeesBilledNotPaidTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Transaction Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "LateFeeBilledNotPaidTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Late Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "MembershipFeeBilledNotPaidTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "MembershipFeeBilledNotPaidTier3",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeeBilledNotPaidTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Overlimit Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "RecoveryBilledNotPaidTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Recovery value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundsFeeBilledNotPaidTier3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the Insufficient Funds Fees Billed Not Paid value should be included in the calculation of the late fee. Valid Values: Refer Appendix Late Fee Calculation Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitTiming",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates when an overlimit fee is assessed on accounts in this service charge plan. Valid Values: Refer Appendix Overlimit Fees Format: xxxxx xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeeMaximumAmount1",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the maximum overlimit fee amount that can be assessed on an account in this service charge plan. Valid Values: 0-9 Format: xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeeMaximumAmount2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the maximum overlimit fee amount that can be assessed on an account when the Maximum Amount 2 Criteria is met. This is an optional field, but should be greater than 0 if a selection is made in the Maximum Amount 2 Criteria field. Valid Values: 0-9 Format: xxxxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeeMinimumAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the minimum amount of a single overlimit fee. This amount must be less than the value in the Overlimit Fee Maximum Amount field. Valid Values: 0-9 Format: xxxxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeesMaximumYearToDate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the maximum number of overlimit fees that can be assessed on an account year to date. Valid Values: 0-9 Format: xxxxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeeMaximumAmount2Criteria",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the criteria that should be met to make the Overlimit Fee Maximum Amount 2 applicable. Valid Values: Refer Appendix Overlimit Fees Format: xxxxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "OverLimitFeeTrancode",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the tran code to use to post overlimit fees. Valid Values: Refer Appendix Overlimit Fees Format: xxxxx Example: 1852154",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeeCalculationBasis",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates how overlimit fees are calculated. Valid Values: Refer Appendix Overlimit Fees Format: xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the currency amount assessed as an overlimit fee. This amount must be within the minimum/maximum range. This amount must be greater than zero when the value in the Overlimit Fee Calculation Basis field is not Percent. Valid Values: 0-9 Format: xxxxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitPercent",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the percentage of the balance assessed as the overlimit fee. Valid Values: 0-9 Format: xxxxx Example: 12",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowedOverlimitPercent",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the percentage of the credit line that the account is allowed to exceed before an overlimit fee is assessed. Valid Values: 0-9 Format: xxxxx Example: 12",
+                            "children": []
+                        },
+                        {
+                            "name": "OverlimitFeesMaximumCycleToDate",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the maximum number of overlimit fees that can be assessed on an account cycle to date. Valid Values: Refer Appendix Overlimit Fees Format: xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundsFeeCalculationBasis",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates how insufficient funds fees are calculated for accounts in this service charge plan. Valid Values: Refer Appendix Insufficient Fund Fees Format: xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundsFeeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the currency amount of the fee charged on the insufficient funds payment. This amount must be within the minimum or maximum range and must be greater than zero when the value in the Insufficient Funds Fee Calculation Basis field is not Percent. Valid Values: 0-9 Format: xxxxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundsFeePercent",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the percentage of the insufficient funds payment to be assessed as an insufficient funds charge. This percentage must be greater than zero when the value in the Insufficient Funds Calculation Basis field is not Amount. Valid Values: 0-9 Format: xxxxx Example: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundsFeeMaximum1",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the maximum amount charged for an insufficient funds payment. This amount must be greater than the Insufficient Funds Fee Minimum value. Valid Values: 0-9 Format: xxxxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundsFeeMaximum2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the maximum insufficient funds fee amount that can be assessed on an account when the Maximum Amount 2 Criteria is met. This is an optional field, but should be greater than 0 if a selection is made in the Maximum Amount 2 Criteria field. This amount cannot be less than the amount defined in the Insufficient Funds Fees Minimum field. Valid Values: 0-9 Format: xxxxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundsFeeMaximumAmount2Criteria",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the criteria that should be met to make the Insufficient Funds Fees Amount 2 applicable. Valid Values: Refer Appendix Insufficient Fund Fees Format: xxxxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundsFeeMinimum",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the minimum amount of an insufficient funds fee. Valid Values: 0-9 Format: xxxxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "InsufficientFundsFeeTrancode",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the transaction code to use to generate an insufficient funds fee. Valid Values: Refer Appendix Insufficient Fund Fees Format: xxxxx Example: 158758",
+                            "children": []
+                        },
+                        {
+                            "name": "WaiveFirstAnnualFee",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates if the very first annual fee should be waived. Valid Values: Refer Appendix Annual Fees Format: xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "AnnualFeeType",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the type of annual fee (annual fees are always be assessed on cycle billing). Valid Values: Refer Appendix Annual Fees Format: xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "AnnualFeeCardholderOptions",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates which cardholders should be subject to an annual fee and whether the fee is the same or different for all affected cardholders. Valid Values: Refer Appendix Annual Fees Format: xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "DefaultAnnualPlan",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Indicates the default plan for this fee. Valid Values: A-Z 0-9 Format: xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "AnnualFeeMonth",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Controls the timing of the on-going (second plus) annual fees. Valid Values: Refer Appendix Annual Fees Format: xxxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "AnnualFeeAmountPrimary",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Identifies the amount of the annual fee for the primary cardholder. Valid Values: 0-9 Format: xxxxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "AnnualFeeAmountSecondary",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The amount of the annual fee for the secondary cardholder. This field is required if the Annual Fee Cardholder Options field is set to Assess Discounted Fee for Secondary Cardholders. Valid Values: 0-9 Format: xxxxx Example: 500",
+                            "children": []
+                        },
+                        {
+                            "name": "AnnualFeeTransactionCode",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the transaction code to use to generate an annual fee. Valid Values: Refer Appendix Annual Fees Format: xxxxx Example: 1254879",
+                            "children": []
+                        },
+                        {
+                            "name": "ReturnAnnualFeeOnCardCancellation",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the ReturnAnnualFeeOnCardCancellation to use to generate an annual fee. Valid Values: 0-9 Format: xxxxx Example: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "AnnualFeeRefundDays",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifies the AnnualFeeRefundDays to use to generate an annual fee. Valid Values: 0-9 Format: xxxxx Example: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFeesList",
+                            "type": "array",
+                            "required": null,
+                            "description": "get or set transactionFeeslist",
+                            "children": [
+                                {
+                                    "name": "TransactionFeesAccountID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set TransactionFeesAccountID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeName",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "The unique name of this transaction fee that was established on the Fee Catalog panel. Once added, this field cannot be modified on this panel; any changes to the Fee Name must be performed on the Fee Catalog panel. Valid Values: 0-9 A-Z Format: xxxxx Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeStatus",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates the status of the fee. Valid Values: Active/Inactive Format: xxxxx Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeType",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates the type of fee. Valid Values: Authorization/Transaction Format: xxxxx Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeTransactionCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the transaction code to use to generate this transaction fee. Valid Values: 0-9 Format: xxxxx Example: 145455 Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeInternalTransactionCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Payment Transaction Code Valid Values:0-9 Format:XXXXX Example: 86221 = AUTO ACH PAYMENT Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeNumberforFree",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the number of transactions or services that are provided for free (before a fee is assessed). If this field is left at its default value (null), the fee is always generated if the Incoming Transaction Code occurs on the account. If this field is set to a value between 1 and 10, the system allows this number of occurrences of the Incoming Transaction Code to happen on the account in the selected Timeframe before the fee is assessed. Valid Values: The values are Null and 1 through 10. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeTimeframe",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the designated timeframe connected to the Number for Free services or transactions. Valid Values: NULL, Per Day, Per Week, Per Cycle, Per Year, Per Lifetime, Per Load. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeRecurring",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates if this fee is recurring; i.e., one transaction may generate two or more fees based on one transaction event. If set to Yes, you must also use the following two Duration fields to set the number of times the fee recurs, and the time period on which to base the occurrence. Valid Values: Yes/No Format: xxxxx Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeDuration",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "The number of times the fee recurs and when (indicated in the Duration Period field). Required when Recurring = Yes. Valid Values: The values are 2 through 12. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeDurationPeriod",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "The time period on which to base the occurrence. Required when Recurring = Yes. Valid Values: Week, Month, Cycle, Quarter, Year Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeDeleteIfZeroBalance",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates if any recurring fees should be deleted if the account and plan balance reach zero or less than zero. Required when Recurring = Yes. Valid Values: No = Do not delete fees. Account = The system deletes the recurring fee if the account balance becomes zero or negative. Plan = The system deletes the recurring fee if the plan balance becomes zero or negative. Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeFeeCalculationMethod",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the calculation method for this transaction fee. Valid Values: Assess Flat Amount, Assess Percentage Format: xxxxx Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeRate1Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Identifies the flat fee amount the system should use to calculate this fee. If the Fee Calculation Method field is set to Assess Flat Amount, enter the value to represent the whole currency amount of the fee. Valid Values: The values are 1 through 999. Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeRate1Percent",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Identifies the flat fee percentage the system should use to calculate this fee. If the Fee Calculation Method field is set to Assess Percentage, enter the value to represent the percentage the system should use to calculate the fee. Valid Values: The values are 1 through 100. Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeRate1AmountOrPercentLimit",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Identifies the flat fee percentage the system should use to calculate this fee. If the Fee Calculation Method field is set to Assess Percentage, enter the value to represent the percentage the system should use to calculate the fee. Valid Values: The values are 1 through 100. Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeRate1LimitPeriod",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the timeframe associated with the Rate 1 Amount or Percent field. If you enter a value in the Rate 1 Amount or Percent field, you must select a value in this field. Valid Values: Day, Week, Cycle, Year, Occurrence = Use Rate 1 Amount or Percent for recurring fees up the number defined in the Occurrence field. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeOccurrence",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Sets the recurring fee limit used for Rate 1 Amount or Percent. Any recurring fees above this occurrence use Rate 2 Amount or Percent. The number selected must be less than the number selected in the Dur # field. This field is used only when Recurring = Yes. Valid Values: The values are 1 through 11. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeRate2Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Enter the second amount the system should use to generate the fee if the Rate 1 Limit is attained within the Rate 1 Limit Period. If you defined a Rate 1 Amount, you must set this field to a value. This value can be less than or greater than the Rate 1 Amount but cannot be equal to the Rate 1 Amount. Both fields are governed by the Fee Calculation Method; you cannot provide a flat amount as one rate and a percentage amount in the second rate. Valid Values: 0-9 Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeRate2Percent",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Enter the second percentage the system should use to generate the fee if the Rate 1 Limit is attained within the Rate 1 Limit Period. If you defined a Rate 1 Percent, you must set this field to a value. This value can be less than or greater than the Rate 1 Percent but cannot be equal to the Rate 1 Percent. Both fields are governed by the Fee Calculation Method; you cannot provide a flat amount as one rate and a percentage amount in the second rate. Valid Values: 0-9 Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeMinFeeAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Enter the minimum fee that should be charged if the calculated fee based on a percentage is less than this amount. If no minimum fee is entered, the system charges the calculated fee unless there is a maximum fee parameter to consider. Valid Values: 0-9 Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeMaxFeeAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Enter the maximum fee that should be charged if the calculated fee based on a percentage is greater than this amount. If no maximum fee is entered, the system should charge the calculated fee unless there is a minimum fee parameter to consider. Valid Values: 0-9 Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ReverseTransactionFees",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates if this fee should be reversed if the original transaction that triggered the fee was reversed (as opposed to automatically reversing all fees if the transaction is reversed). Valid Values: Yes- Reverse Fee when the transaction is reversed/ No- Do Not Reverse Fee when the transaction is reversed Format: xxxxx Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeFeeWaiverRuleID",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "It will show the Fee waiver rule ID for the transaction fees set at Program Setup. Valid Values: 0-9 Example: 1234 Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionFeeWaiverTransactionCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "It will show the transaction code mapped to fee waiver transaction. Valid Values: A-Z, 0-9, Special Characters Example: 1450206907 = Waived Transaction Fee Allowable Values: 100",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "AuthorizationFeesList",
+                            "type": "array",
+                            "required": null,
+                            "description": "get or set authorizationFeeslist",
+                            "children": [
+                                {
+                                    "name": "AuthorizationFeesAccountID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set AuthorizationFeesAccountID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeName",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Identifies the unique name of this authorization fee that was established on the Fee Catalog panel. Once added, this field cannot be modified by the user. Valid Values: A-Z 0-9 Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeStatus",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates the status of the fee. Valid Values: Active/Inactive Format: xxxxx Allowable Values: 1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeType",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates the type of fee. Valid Values: Authorization /Transaction. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeTransactionCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the transaction code to use to generate this authorization fee. Valid Values: 0-9 Format: xxxxx Example: 1554462 Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeInternalTransactionCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the internal transaction code to use to generate this authorization fee. Valid Values: 0-9 Format: xxxxx Example: 1554462 Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeNumberForFree",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the number of transactions or services 4that is provided for free (before a fee is assessed). If this field is left at its default value (null), the fee is always generated if the Incoming Transaction Code occurs on the account. If this field is set to a value between 1 and 10, the system allows this number of occurrences of the Incoming Transaction Code to happen on the account in the selected Timeframe before the fee is assessed. Valid Values: The values are Null and 1 through 10. Format: xxxxx Example: 1554462 Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeTimeframe",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the designated timeframe connected to the Number for Free services or transactions. Valid Values: Null, Per Day, Per Week, Per Cycle, Per Year, Per Lifetime, Per Load Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Recurring",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set Recurring Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Duration",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set Duration Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DurationPeriod",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set DurationPeriod Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DeleteIfZeroBalance",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set DeleteIfZeroBalance Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeFeeCalculationMethod",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the calculation method for this transaction fee. Valid Values: Assess Flat Amount, Assess Percentage Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeRate1Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Identifies the flat fee amount the system should use to calculate this fee. If the Fee Calculation Method field is set to Assess Flat Amount, enter the value to represent the whole currency amount of the fee. Valid Values: The values are 1 through 999. Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeRate1Percent",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Identifies the flat fee percentage the system should use to calculate this fee. If the Fee Calculation Method field is set to Assess Percentage, enter the value to represent the percentage the system should use to calculate the fee. Valid Values: The values are 1 through 100. Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeRate1AmountorPercentLimit",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Identifies the number of fees that should be assessed at the Rate 1 rate before the system should assess the fee at the Rate 2 Amount or Rate 2 Percent. If you leave this field at its default value (null), the fee is assessed at the Rate 1 rate. The number in the Number for Free field is not included in this count. Valid Values: The values are 1 through 99. Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeRate1LimitPeriod",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the timeframe associated with the Rate 1 Amount or Percent field. If you enter a value in the Rate 1 Amount or Percent field, you must select a value in this field. Valid Values: Day, Week, Cycle, Year, Occurrence Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Occurrence",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set Occurrence Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeRate2Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Enter the second amount the system should use to generate the fee if the Rate 1 Limit is attained within the Rate 1 Limit Period. If you defined a Rate 1 Amount, you must set this field to a value. This value can be less than or greater than the Rate 1 Amount but cannot be equal to the Rate 1 Amount. Both fields are governed by the Fee Calculation Method; you cannot provide a flat amount as one rate and a percentage amount in the second rate. Valid Values: 0-9 Format: xxxxx Example: 500",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeRate2Percent",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Enter the second percentage the system should use to generate the fee if the Rate 1 Limit is attained within the Rate 1 Limit Period. If you defined a Rate 1 Percent, you must set this field to a value. This value can be less than or greater than the Rate 1 Percent but cannot be equal to the Rate 1 Percent. Both fields are governed by the Fee Calculation Method; you cannot provide a flat amount as one rate and a percentage amount in the second rate. Valid Values: 0-9 Format: xxxxx Example: 10",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeMinFeeAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Enter the minimum fee that should be charged if the calculated fee based on a percentage is less than this amount. If no minimum fee is entered, the system charges the calculated fee unless there is a maximum fee parameter to consider. Valid Values: 0-9 Format: xxxxx Example: 10",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AuthorizationFeeMaxFeeAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Enter the maximum fee that should be charged if the calculated fee based on a percentage is greater than this amount. If no maximum fee is entered, the system should charge the calculated fee unless there is a minimum fee parameter to consider. Valid Values: 0-9 Format: xxxxx Example: 10",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ReverseTransactionFees",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates if this fee should be reversed if the original transaction that triggered the fee was reversed (as opposed to automatically reversing all fees if the transaction is reversed). Valid Values: Yes- Reverse Fee when the transaction is reversed/ No- Do Not Reverse Fee when the transaction is reversed Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "CardFeesList",
+                            "type": "array",
+                            "required": null,
+                            "description": "get or set cardFeeslist",
+                            "children": [
+                                {
+                                    "name": "CardFeesAccountID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set CardFeesAccountID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CardFeeType",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Required on Add. Identifies the type of card fee. Valid Values: New Card, Additional Card, Replaced Card, Reissued Card Format: xxxxx Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CardFeeTiming",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the timing of this card fee. Valid Values: At Request = The fee is assessed upon card request. At Activation = The fee is assessed upon card activation. Required on Add. Format: xxxxx Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CardFeeTransactionCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the transaction code to use to generate this card fee. Valid Values: 0-9 Format: xxxxx Example: 1254852 Allowable Values: 8",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CardFeeAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Identifies the amount of the card fee in whole dollars. Valid Values: 0-9 Format: xxxxx Example: 125",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CardFeeNumberForFree",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the number of transactions or services that is provided for free (before a fee is assessed). If this field is 0, the fee will always be generated if the Incoming Transaction Code occurs on the account. If this field is set to any other numeric value ,the system allows this number of occurrences of the Incoming Transaction Code to happen on the account in the selected Timeframe without accessing the fee. Valid Values:0-9.(upto 9999) Example: 1000 Allowable Values: 4",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CardFeeTimeFrame",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the designated timeframe connected to the Number for Free services or transactions. Valid Values: Null, Per Year, Per Lifetime, Rolling Month. Format: xxxxx Allowable Values: 1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CardFeeRollingMonths",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "The number of look back Months to track the count of card replacement to charge fee. Valid Values: 0-9. Format: 12 Allowable Values: 2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CardArt",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "\"Card art\" for a card refers to the visual design and imagery present on the card Valid Values: A-Z 0-9 Format: XXXXX",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CardFeeFeeWaiverRuleID",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "It will show the Fee waiver rule ID for the Card fees set at Program Setup. Valid Values: 0-9 Example: 2345 Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CardFeeWaiverTransactionCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "It will show the transaction code mapped to fee waiver transaction. Valid Values: A-Z, 0-9, Special Characters Example: 1450106907 = Waived Card Fee Allowable Values: 100",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "ActiveFeesList",
+                            "type": "array",
+                            "required": null,
+                            "description": "get or set activeFeeslist",
+                            "children": [
+                                {
+                                    "name": "ActivFeesAccountID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set ActivFeesAccountID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ActiveFeeType",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies if this fee is Active or Inactive. Both active and inactive fees are generated only if an account otherwise qualifies (based on both definition and timing) and has a credit balance at the time the fee is generated. Bankcard accounts must have a debit balance. Valid Values: Active or Inactive. Format: xxxxx Allowable Values: 1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ActiveFeeLevel",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "For all Active fee types, you must identify if you assessing one fee at the account level or assessing two fees - one fee for the Primary cardholder and a second fee for the Secondary cardholder. Valid Values: Account = This fee is assessed at the account level only. Card = This fee is assessed at the card level; therefore, one fee is assessed for the Primary cardholder and a second fee is assessed for the Secondary cardholder. If you set this field to Card, you must also define the Cardholder field. If the Fee Type is set to Inactive, this field is disabled. Format: xxxxx Allowable Values: 1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ActiveFeeCardholder",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "If the Fee Level field is set to Card, indicate here if this active/inactive fee is assessed for either the Primary or Secondary cardholder. You are only allowed one fee for the Primary cardholder and one fee for the Secondary cardholder. Valid Values: Primary/Secondary Format: xxxxx Allowable Values: 1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ActiveFeeAssessment",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "If the Cardholder field is set to Secondary, you must indicate if this fee should be assessed for each Secondary cardholder or for all Secondary cardholders. Valid Values: Each = The system generates the active/inactive fee for each Secondary cardholder with a Card Status of Active each time the account qualifies for an Active fee. All = The system generates just one active/inactive fee if there are any Secondary cardholders with a Card Status of Active each time the account qualifies for an active fee. If the Cardholder field is set to null values or Primary, this field is disabled. Allowable Values: 1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ActiveFeeFirstFeeTiming",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies when this active/inactive fee is assessed the first time. Valid Values: After no of cycles/ After no of years Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ActiveFeeFirstFeePeriod",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the number of cycles or the number of years after which the first inactivity fee is charged. Valid Values: The values are 1 through 12 if you selected After no of cycles in the First Fee Timing field. If you selected After no of years, the values are 1 through 7. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ActiveFeeSubsequentFeeTiming",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies when this active/inactive fee is assessed after the first time fee. Valid Values: One Time Only,  Each Cycle, Each Year, After no of cycles, After no of years Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ActiveFeeSubsequentFeePeriod",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the number of cycles or the number of years after the first time fee, in which the subsequent fees is charged. Valid Values: The values are 1 through 12 if you selected After no of cycles in the Subsequent Fee Timing field. If you selected After no of years, the values are 1 through 7. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ActiveFeeFeeGenerationOverride",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "The level to use to generate this Active fee. Valid Values: Use Parent Settings (default) Use Cycle Due Limit Format: xxxxx Allowable Values: 1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ActiveFeeCycleDueLimit",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "When the Fee Generation Override field is set to Use Cycle Due Limit, this field requires entry. If Fee Generation Override is set to Use Parent Settings, this field is disabled. Valid Values: Nothing Due, Current Due, Past Due, One Cycle Past Due, Two Cycles Past Due, Three Cycles Past Due, Four Cycles Past Due, Five Cycles Past Due, Six Cycles Past Due, Seven Cycles Past Due Format: xxxxx Allowable Values: 1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "DaysOverdraftLimit",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set DaysOverdraftLimit Allowable Values: 3",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ApplyForClosedAccounts",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set ApplyForClosedAccounts Allowable Values: 2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "PartialFeeApplicationAllowed",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set PartialFeeApplicationAllowed Allowable Values: 2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ActiveFeeAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "The amount of Active fee. Valid Values: 0-9 Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ActiveFeeTransactionCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "transaction code for Active fee. Valid Values: 0-9 Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "ServiceFeesList",
+                            "type": "array",
+                            "required": null,
+                            "description": "get or set serviceFeeslist",
+                            "children": [
+                                {
+                                    "name": "ServiceFeesAccountID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set ServiceFeesAccountID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ServiceFeeType",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the type of service fee. Valid Values: PIN Reset, Statement Print, Statement Reprint, Balance Inquiry, Currency Conversion, Shipping Charges Format: xxxxx Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ServiceFeeTransactionCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the transaction code to use to generate this service fee.. Valid Values: 0-9 Format: xxxxx Example: 154464 Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ServiceFeeAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Identifies the amount of the fee in whole dollars. Valid Values: 0-9 Format: xxxxx Example: 15",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ServiceFeeNumberForFree",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the number of transactions or services that are provided for free (before a fee is assessed). If this field is left at its default value (null), the fee is always generated if the Incoming Transaction Code occurs on the account. If this field is set to a value between 1 and 10, the system allows this number of occurrences of the Incoming Transaction Code to happen on the account in the selected Timeframe before the fee is assessed. Valid Values: Null and 1 through 10. Format: xxxxx Example: 10 Allowable Values: 2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ServiceFeeTimeframe",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the designated timeframe connected to the Number for Free services or transactions. Valid Values: Null, Per Year, Per Lifetime, Rolling Month Format: xxxxx Example: 10 Allowable Values: 1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ServiceFeeRollingMonths",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "The number of look back Months to track the count of card replacement to charge fee. Valid Values: 0-9. Format: 12 Allowable Values: 2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ShippingMode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "It will show the value set in shipping mode field for the fee type “Shipping Charges”. Example: 2 = Overnight Allowable Values: 100",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "ManualFeesList",
+                            "type": "array",
+                            "required": null,
+                            "description": "get or set manualFeeslist",
+                            "children": [
+                                {
+                                    "name": "ManualFeesAccountID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set ManualFeesAccountID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "acctId",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set acctId",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ATID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set ATID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "rowClassifier",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set rowClassifier Allowable Values: 16",
+                                    "children": []
+                                },
+                                {
+                                    "name": "grpClassifier",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set grpClassifier Allowable Values: 16",
+                                    "children": []
+                                },
+                                {
+                                    "name": "LAD",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "get or set LAD",
+                                    "children": []
+                                },
+                                {
+                                    "name": "LAPD",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "get or set LAPD",
+                                    "children": []
+                                },
+                                {
+                                    "name": "NAD",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "get or set NAD",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AccountBlob",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set AccountBlob Allowable Values: 2147483647",
+                                    "children": []
+                                },
+                                {
+                                    "name": "StatementDate",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "get or set StatementDate",
+                                    "children": []
+                                },
+                                {
+                                    "name": "parent01ATID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set parent01ATID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "parent01AID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set parent01AID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "parent02ATID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set parent02ATID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "parent02AID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set parent02AID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "parent03ATID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set parent03ATID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "parent03AID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set parent03AID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "parent04ATID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set parent04ATID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "parent04AID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set parent04AID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "parent05ATID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set parent05ATID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "parent05AID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set parent05AID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "PrimaryCurrencyCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set PrimaryCurrencyCode Allowable Values: 25",
+                                    "children": []
+                                },
+                                {
+                                    "name": "ReversalFeeTranCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set ReversalFeeTranCode Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MTCGrpName",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set MTCGrpName",
+                                    "children": []
+                                },
+                                {
+                                    "name": "FeeAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "get or set FeeAmount",
+                                    "children": []
+                                },
+                                {
+                                    "name": "FeeTranCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set FeeTranCode Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "SChargesAID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set SChargesAID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "SChargesATID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set SChargesATID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MappingStatus",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set MappingStatus Allowable Values: 2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "tpyNAD",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "get or set tpyNAD",
+                                    "children": []
+                                },
+                                {
+                                    "name": "tpyLAD",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "get or set tpyLAD",
+                                    "children": []
+                                },
+                                {
+                                    "name": "tpyBlob",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set tpyBlob Allowable Values: 2147483647",
+                                    "children": []
+                                },
+                                {
+                                    "name": "param_sig",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set param_sig",
+                                    "children": []
+                                },
+                                {
+                                    "name": "param_state",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set param_state Allowable Values: 171",
+                                    "children": []
+                                },
+                                {
+                                    "name": "param_lcd",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "get or set param_lcd",
+                                    "children": []
+                                },
+                                {
+                                    "name": "param_fvt",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "get or set param_fvt",
+                                    "children": []
+                                },
+                                {
+                                    "name": "_paramLVT",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "get or set _paramLVT",
+                                    "children": []
+                                },
+                                {
+                                    "name": "FeeWaiverRuleName",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set FeeWaiverRuleName",
+                                    "children": []
+                                },
+                                {
+                                    "name": "FeeName",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set FeeName",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "MessageFeesList",
+                            "type": "array",
+                            "required": null,
+                            "description": "get or set messageFeeslist",
+                            "children": [
+                                {
+                                    "name": "MessageFeesAccountID",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "get or set MessageFeesAccountID",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MessageCategory",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "The message category for which you are defining a fee. Valid Values: Status, Period, Monetary, Security, Cards Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MessageType",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the type of message. Valid Values: Email/SMS Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MessageFeeTransactionCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the transaction code to use to generate this message fee. Valid Values: 0-9 Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MessageFeeAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Identifies the amount of the message fee in whole dollars. Message fees are always assessed as a flat fee amount. Valid Values: 0-9 Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MessageFeeNumberForFree",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the number of messages that are provided for free (before a fee is assessed). Valid Values: 1 through 10. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MessageFeeTimeFrame",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Identifies the designated timeframe connected to the Number for Free messages. Valid Values: Null, Per Year, Per Lifetime, Rolling Month Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MessageFeeRollingMonths",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "The number of look back Months to track the count of card replacement to charge fee. Valid Values: 0-9. Format: 12 Allowable Values: 2",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "FeeGroupList",
+                            "type": "array",
+                            "required": null,
+                            "description": "get or set feeGrouplist",
+                            "children": [
+                                {
+                                    "name": "FeeGroupName",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "get or set FeeGroupName Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "FeeGroupPriority",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "The priority of this fee group. The values are 1 through 50 with 1 being highest priority. Each fee group should have a unique priority. Valid Values: 1 through 50 Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MaxNumberOfFeesPerDay",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates the maximum number of fees allowed in this fee group per day. Valid Values: 1 through 12. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MaxNumberOfFeesPerMonth",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates the maximum number of fees allowed in this fee group per month. Valid Values: 1 through 12. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MaxNumberOfFeesPerCycle",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates the maximum number of fees allowed in this fee group per cycle. Valid Values: 1 through 12. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MaxNumberOfFeesPerYear",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates the maximum number of fees allowed in this fee group per year. Valid Values: 1 through 12. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MaxFeesCycleToDate",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Indicates the maximum amount of fees in this fee group that can be charged cycle to date. At least one condition should be defined when adding a fee group to this service charge table. Valid Values: $1.00 through $500.00. Format: xxxxx",
+                                    "children": []
+                                },
+                                {
+                                    "name": "AccountToBeInactiveForMinimum",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates the minimum number of cycles or years an account can remain inactive before fees can be imposed in this fee group. At least one condition should be defined when adding a fee group to this service charge table. Valid Values: 0-9 Format: xxxxx Allowable Values: 2",
+                                    "children": []
+                                },
+                                {
+                                    "name": "FeeGroupPeriod",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates the period in which the account is inactive, if a selection has been made in the Account to be inactive for minimum field. Valid Values: Cycle, Year = This value is allowed when the Account to be inactive for minimum field is set to 1 through 7. Format: xxxxx Allowable Values: 5",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "MonthlyFeesList",
+                            "type": "array",
+                            "required": null,
+                            "description": "get or set MonthlyFeesList",
+                            "children": [
+                                {
+                                    "name": "AssessMonthlyFees",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Indicates whether the monthly fees will be assessed or not. Valid Values: 0, 1 0 = Yes, 1 = No Example: 0 Allowable Values: 1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MonthlyFeeAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Identifies the amount of the monthly fee in dollars. Valid Values: 0-9 Example: 250",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MonthlyFeeTransactionCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "It will show the transaction code mapped to Monthly Fee. Valid Values: A-Z, 0-9, Special Characters Example: 14540010 = Monthly Fee Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MonthlyFeeFeeWaiverRuleID",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "It will show the Fee waiver rule ID for the Monthly Fees set at Program Setup. Valid Values: 0-9 Example: 3456 Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MonthlyFeeWaiverTransactionCode",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "It will show the transaction code mapped to Fee waiver transaction. Valid Values: A-Z, 0-9, Special Characters Example: 1450105011 = Waived Monthly Fee Allowable Values: 100",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MerchantID": 11607,
+        "ServiceChargePlanID": 613
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "ServiceChargeDetails": {
+                "AllowProgParameterUpdateCI": null,
+                "AllowProgParameterUpdateRole": null,
+                "ServiceChargePlanName": 613,
+                "PrimaryCurrencyCode": "US Dollar",
+                "ServiceChargePlanParentName": "Template Record",
+                "MonetaryTransactionControlGroup": 78,
+                "DefaultCreditPlanName": "abcd",
+                "TransactionFeesDefaultCreditPlanName": "Use Default Credit Plan Name",
+                "GSTFeeGroup": "SGST",
+                "MerchantId": 11607,
+                "DefaultRecoveryFeeCreditPlanName": "abcd",
+                "ChargePenaltyFeeOnNegativeRewardBalance": null,
+                "TierCriteriaAccountBalanceUnder": null,
+                "LateFeeTiming": 2,
+                "LateFeeBaseDate": 0,
+                "LateFeeDays": 10,
+                "LateFeeDelinquencyCycle": 2,
+                "MaximumNumberLateFeesOption": 0,
+                "LateFeeConsecutiveLimit": 6,
+                "LateFeeMinimumBalance": 0.0,
+                "LateFeeMinimumAmount": 0.0,
+                "LateFeeMaximumAmount1": 27.0,
+                "LateFeeMaximumYearToDate": 9999.0,
+                "MaximumNumberLateFees": "12",
+                "LateFeeTransactionCode": 26681,
+                "LateFeeMaximumAmount2": 38.0,
+                "MaximumAmount2Criteria": 5,
+                "LateFeeCalculationBasis": 6,
+                "LateFeePercent": 0.0,
+                "LateFeeAmount": 0.0,
+                "LateFeePercentMethod": null,
+                "BalanceSubjecttoLateFeeControl": 0,
+                "InsuranceBilledNotPaid": 0,
+                "CollectionFeeBilledNotPaid": 0,
+                "interestBilledNotPaid": 0,
+                "TransactionFeesBilledNotPaid": 0,
+                "LateFeeBilledNotPaid": 0,
+                "AnnualFeeBilledNotPaid": 0,
+                "OverlimitFeeBilledNotPaid": 0,
+                "RecoveryBilledNotPaid": 0,
+                "InsufficientFundsFeeBilledNotPaid": 0,
+                "FeeLevel": "Account",
+                "WaiveFirstLateFee": "No",
+                "TierCriteriaAccountBalanceOverTier2": null,
+                "TierCriteriaAccountBalanceUnderTier2": null,
+                "LateFeeTimingTier2": null,
+                "LateFeeBaseDateTier2": null,
+                "LateFeeDaysTier2": null,
+                "LateFeeDelinquencyCycleTier2": null,
+                "MaximumNumberLateFeesOptionTier2": null,
+                "LateFeeConsecutiveLimitTier2": null,
+                "LateFeeMinimumBalanceTier2": null,
+                "LateFeeMinimumAmountTier2": null,
+                "LateFeeMaximumAmount1Tier2": null,
+                "LateFeeMaximumAmount2Tier2": null,
+                "MaximumAmount2CriteriaTier2": null,
+                "LateFeeMaximumYearToDateTier2": null,
+                "MaximumNumberLateFeesTier2": null,
+                "LateFeeTransactionCodeTier2": 26681,
+                "LateFeeCalculationBasisTier2": null,
+                "LateFeePercentTier2": null,
+                "LateFeeAmountTier2": null,
+                "LateFeePercentMethodTier2": null,
+                "BalanceSubjecttoLateFeeControlTier2": null,
+                "InsuranceBilledNotPaidTier2": null,
+                "CollectionFeeBilledNotPaidTier2": null,
+                "InterestBilledNotPaidTier2": null,
+                "TransactionFeesBilledNotPaidTier2": null,
+                "LateFeeBilledNotPaidTier2": null,
+                "AnnualFeeBilledNotPaidTier2": null,
+                "OverlimitFeeBilledNotPaidTier2": null,
+                "RecoveryBilledNotPaidTier2": null,
+                "InsufficientFundsFeeBilledNotPaidTier2": null,
+                "TierCriteriaAccountBalanceOverTier3": null,
+                "LateFeeTimingTier3": null,
+                "LateFeeBaseDateTier3": null,
+                "LateFeeDaysTier3": null,
+                "LateFeeDelinquencyCycleTier3": 1,
+                "MaximumNumberLateFeesOptionTier3": null,
+                "LateFeeConsecutiveLimitTier3": null,
+                "LateFeeMinimumBalanceTier3Tier3": null,
+                "LateFeeMinimumAmountTier3": null,
+                "LateFeeMaximumAmount1Tier3": null,
+                "LateFeeMaximumAmount2Tier3": null,
+                "MaximumAmount2CriteriaTier3": null,
+                "LateFeeMaximumYearToDateTier3": null,
+                "MaximumNumberLateFeesTier3": null,
+                "LateFeeTransactionCodeTier3": null,
+                "LateFeeCalculationBasisTier3": null,
+                "LateFeePercentTier3": null,
+                "LateFeeAmountTier3": null,
+                "LateFeePercentMethodTier3": null,
+                "BalanceSubjecttoLateFeeControlTier3": null,
+                "InsuranceBilledNotPaidTier3": null,
+                "CollectionFeeBilledNotPaidTier3": null,
+                "InterestBilledNotPaidTier3": null,
+                "TransactionFeesBilledNotPaidTier3": null,
+                "LateFeeBilledNotPaidTier3": null,
+                "MembershipFeeBilledNotPaidTier3": null,
+                "OverlimitFeeBilledNotPaidTier3": null,
+                "RecoveryBilledNotPaidTier3": null,
+                "InsufficientFundsFeeBilledNotPaidTier3": null,
+                "OverlimitTiming": 0,
+                "OverlimitFeeMaximumAmount1": 0.0,
+                "OverlimitFeeMaximumAmount2": null,
+                "OverlimitFeeMinimumAmount": 0.0,
+                "OverlimitFeesMaximumYearToDate": 0.0,
+                "OverlimitFeeMaximumAmount2Criteria": null,
+                "OverLimitFeeTrancode": 26685,
+                "OverlimitFeeCalculationBasis": 0,
+                "OverlimitFeeAmount": 0.0,
+                "OverlimitPercent": 0.0,
+                "AllowedOverlimitPercent": 0.0,
+                "OverlimitFeesMaximumCycleToDate": null,
+                "InsufficientFundsFeeCalculationBasis": 6,
+                "InsufficientFundsFeeAmount": 20.0,
+                "InsufficientFundsFeePercent": 0.0,
+                "InsufficientFundsFeeMaximum1": 20.0,
+                "InsufficientFundsFeeMaximum2": null,
+                "InsufficientFundsFeeMaximumAmount2Criteria": null,
+                "InsufficientFundsFeeMinimum": 0.0,
+                "InsufficientFundsFeeTrancode": 26678,
+                "WaiveFirstAnnualFee": 1,
+                "AnnualFeeType": 0,
+                "AnnualFeeCardholderOptions": null,
+                "DefaultAnnualPlan": 0,
+                "AnnualFeeMonth": 0,
+                "AnnualFeeAmountPrimary": 0.0,
+                "AnnualFeeAmountSecondary": 0.0,
+                "AnnualFeeTransactionCode": null,
+                "ReturnAnnualFeeOnCardCancellation": null,
+                "AnnualFeeRefundDays": null,
+                "TransactionFeesList": null,
+                "AuthorizationFeesList": null,
+                "CardFeesList": null,
+                "ActiveFeesList": null,
+                "ServiceFeesList": null,
+                "ManualFeesList": null,
+                "MessageFeesList": null,
+                "FeeGroupList": [
+                    {
+                        "FeeGroupName": null,
+                        "FeeGroupPriority": "1",
+                        "MaxNumberOfFeesPerDay": "1",
+                        "MaxNumberOfFeesPerMonth": null,
+                        "MaxNumberOfFeesPerCycle": "1",
+                        "MaxNumberOfFeesPerYear": "12",
+                        "MaxFeesCycleToDate": 9999.0,
+                        "AccountToBeInactiveForMinimum": null,
+                        "FeeGroupPeriod": null
+                    }
+                ],
+                "MonthlyFeesList": [
+                    {
+                        "AssessMonthlyFees": "Yes",
+                        "MonthlyFeeAmount": 250.0,
+                        "MonthlyFeeTransactionCode": "14540010 = Monthly Fee",
+                        "MonthlyFeeFeeWaiverRuleID": "3456",
+                        "MonthlyFeeWaiverTransactionCode": "1450105011 = Waived Monthly Fee"
+                    }
+                ]
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Control Parameters",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1037&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005"
+    }
+}

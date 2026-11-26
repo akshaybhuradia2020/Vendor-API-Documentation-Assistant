@@ -1,0 +1,1012 @@
+{
+    "metadata": {
+        "name": "CardRegistration",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/CardManagement/CardRegistration",
+        "description": "This API is used to register only Instant Card for personalization."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of account holder Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896541236 Condition:Card Number of the Card Holder Mandatory If Account Number or Admin Number not Inputted. Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition:Account Number of the Account Holder Mandatory If Card Number or Admin Number not Inputted. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Description: Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345 Condition:Admin Number  Mandatory If Account Number or Card Number not Inputted"
+        },
+        {
+            "name": "IsMLAAccount",
+            "type": "boolean",
+            "required": false,
+            "description": "Identify whether the account is MLA type or not Valid Values:Yes-1 No-0 Format:X Example:0"
+        },
+        {
+            "name": "RegulationOFlag",
+            "type": "boolean",
+            "required": false,
+            "description": "Regulation O Flag to classify Rego Account"
+        },
+        {
+            "name": "RegulationOFlagEffectiveDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Date of effective Reg \"O\" Valid Values:0-9 Format:MM/DD/YYYY Example:02/01/2020 Condition:RegulationOFlagEffectiveDate, mandatory if Regulation O Flag is Yes."
+        },
+        {
+            "name": "Title",
+            "type": "string",
+            "required": false,
+            "description": "Title of the cardholder Format: A-Z Example:Mr Allowable Values: 10"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": true,
+            "description": "Card holder's First name. Valid Values:A-Z Example:User1 Allowable Values: 50"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's Middle Name. Valid Values: A-Z Example: LEE Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": true,
+            "description": "Card holder's last name. Valid Values:A-Z Example:Smith Allowable Values: 50"
+        },
+        {
+            "name": "SurnameSuffix",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder's surname-suffix Example:SR Allowable Values: 5"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": true,
+            "description": "Card Holder's address line 1. Valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's address line 2. Valid Values:A-Z, 0-9 Example:Park Avenue Allowable Values: 50"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": true,
+            "description": "City name of the Card holder's address. Example:Los Angeles Allowable Values: 40"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": true,
+            "description": "Address State of the Card Holder. For Input Values Refer Appendix Section 5.6 for State Name Codes Example:Virginia Allowable Values: 40"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": true,
+            "description": "Postal code of the card holder address. Valid Values:0-9 Example:46206 Allowable Values: 9"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": true,
+            "description": "Address Country of the Card Holder For Input Values Refer Appendix Section 5.1 for Country Name Codes. Valid Values: a-z Format:XXX Example:US Allowable Values: 3"
+        },
+        {
+            "name": "DateOfBirth",
+            "type": "datetime",
+            "required": true,
+            "description": "Card Holder's Date of Birth. Format:MM/dd/YYYY Example:11/23/1980"
+        },
+        {
+            "name": "ResidenceType",
+            "type": "string",
+            "required": true,
+            "description": "Type of Residince that cardholder lives in. For Input Values Refer Appendix Section 5.15 for Residence Ownership Codes. Valid Values:A-Z Example:Own Allowable Values: 35"
+        },
+        {
+            "name": "MonthsAtResidence",
+            "type": "integer",
+            "required": true,
+            "description": "Duration on residence in months Valid Values: 0-9 Example:9"
+        },
+        {
+            "name": "HomePhoneNumber",
+            "type": "string",
+            "required": true,
+            "description": "Card holder's Home Phone number. Valid Values:0-9 Example:7895463241 Allowable Values: 15"
+        },
+        {
+            "name": "WorkPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's Work phone number. Valid Values:0-9 Example:5678909876 Allowable Values: 15"
+        },
+        {
+            "name": "MobilePhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card holder Mobile Phone Number. Valid Values:0-9 Example:987567757 Allowable Values: 20"
+        },
+        {
+            "name": "EmailID",
+            "type": "string",
+            "required": true,
+            "description": "Card holder's Email ID. Format: [email protected] Example: [email protected] Allowable Values: 50"
+        },
+        {
+            "name": "LanguageIndicator",
+            "type": "string",
+            "required": false,
+            "description": "Language Indicator of the institution. Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 35"
+        },
+        {
+            "name": "MotherMaidenName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's mother Maiden Name Valid Values:a-z,0-9 Example:Johnson Allowable Values: 50"
+        },
+        {
+            "name": "SocialSecurityNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's Social Security Number. Format:AAAGGSSSS Example:078051120 Condition:Mandatory if ID type is Not Inputted Allowable Values: 9"
+        },
+        {
+            "name": "IDType",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder's Identity type. For Input Values Refer Appendix Section 5.2 for ID Name Value Codes Valid Values: a-z Format: xxxxx Example:  E.g.Passport, Driving License, Governemnt ID etc. Allowable Values: 25"
+        },
+        {
+            "name": "IDNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's Government ID Number. Format:AAAGGSSSS Example:078051120 Condition:This field is mandatory when government id type other than Other ID is used for cardholder identification. Allowable Values: 40"
+        },
+        {
+            "name": "IDIssueDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Issue date of ID card. Valid Values: 0-9 Format: MM/DD/YYYY Example: 02/01/2020 Condition: GovernmentID issue date is mandatory when governmentID type is 'Drivers license' and ID issue country is US and Id issue state is other than Massachusetts, Michigan, Missouri, Texas."
+        },
+        {
+            "name": "IDExpirationDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Government issued identification expiration date. Valid Values: MM/DD/YYY Example: 02/01/2020 Condition: This field is mandatory when government id type other than Other ID is used for cardholder identification."
+        },
+        {
+            "name": "IDIssueCountry",
+            "type": "string",
+            "required": false,
+            "description": "Country of Identification proof. Valid Values:a-z, 0-9 Example: Canada Condition:This field is mandatory when government id Type other than Other ID is used for cardholder identification.Two character country code should be passed in the request and not country name. Allowable Values: 5"
+        },
+        {
+            "name": "IDState",
+            "type": "string",
+            "required": false,
+            "description": "Government identification issued state. Condition: GovernmentID issue state is mandatory, when Government id type is 'Drivers license' Or 'State ID' and ID issue country is US. Allowable Values: 50"
+        },
+        {
+            "name": "ShippingAddressFlag",
+            "type": "boolean",
+            "required": true,
+            "description": "Shipping address is existing or new. Valid Values:0,1 Format:X Example:Ship to Existing Address â€“ 0 Ship Address â€“ 1"
+        },
+        {
+            "name": "ShippingAddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Shipping address line 1 Example: 2354 Main road Condition:If ShippingAddressFlag is 1 then it is mandatory Allowable Values: 50"
+        },
+        {
+            "name": "ShippingAddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Shipping address line 2 Example:xyz Avenue Condition:If ShippingAddressFlag is 1 then it is mandatory Allowable Values: 50"
+        },
+        {
+            "name": "ShippingCity",
+            "type": "string",
+            "required": null,
+            "description": "Shipping address city name. Example: chicago Allowable Values: 50"
+        },
+        {
+            "name": "ShippingState",
+            "type": "string",
+            "required": null,
+            "description": "State of the shipping address For Input Values Refer Appendix Section 5.6 for State Name Codes Valid Values: a-z Format:XXX Example:MO Condition:If ShippingAddressFlag is 1 then it is mandatory Allowable Values: 40"
+        },
+        {
+            "name": "ShippingCountry",
+            "type": "string",
+            "required": null,
+            "description": "Shipping address Country name For Input Values Refer Appendix Section 5.1 for Country Name Codes Format: USA Condition:If ShippingAddressFlag is 1 then it is mandatory Allowable Values: 50"
+        },
+        {
+            "name": "ShippingPostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Zip code of the shipping address. Condition:If ShippingAddressFlag is 1 then it is mandatory Allowable Values: 10"
+        },
+        {
+            "name": "CreditLimit",
+            "type": "decimal",
+            "required": true,
+            "description": "Credit Limit of account Valid Values:0-9 Format:XXX.XX Example:500.00"
+        },
+        {
+            "name": "BillingTable",
+            "type": "integer",
+            "required": true,
+            "description": "Name of the Billing Table assigned on the Card Holder Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896541236"
+        },
+        {
+            "name": "BillingCycle",
+            "type": "integer",
+            "required": true,
+            "description": "Billing Cycle to be Assigned on the Card Holder Use the Billing Cycle API to Get the Billing Cycles available and assign out of the available for the Card Holder For Input Values Refer Appendix Section 5.2 for Billing Cycle Codes Valid Values:0-9 Format: x Example:1"
+        },
+        {
+            "name": "NumberofCardsRequested",
+            "type": "integer",
+            "required": true,
+            "description": "Number of Cards Requested Valid Values:0-9x Format:XX Example:02"
+        },
+        {
+            "name": "NameOnCard",
+            "type": "string",
+            "required": true,
+            "description": "Name to be printed on the card. Valid Values:A-Z, 0-9 Format:XXXX Example:John J Allowable Values: 50"
+        },
+        {
+            "name": "EmbossingLine4",
+            "type": "string",
+            "required": false,
+            "description": "Embossing line4 Allowable Values: 50"
+        },
+        {
+            "name": "CashCreditLimit",
+            "type": "decimal",
+            "required": false,
+            "description": "Cash Credit Limit of account Valid Values:0-9 Format:XXX.XX Example:500.00"
+        },
+        {
+            "name": "CardImageID",
+            "type": "string",
+            "required": false,
+            "description": "This is the card image type number which is already decided for embossing them. Valid Values: 0-9 Example: 12 Allowable Values: 100"
+        },
+        {
+            "name": "NameOnTrack",
+            "type": "string",
+            "required": false,
+            "description": "Details to be provided in the Magnetic Strip (mostly derived from Last Name and First name of the Card Holder). Valid Values: A-z Example: John J Allowable Values: 50"
+        },
+        {
+            "name": "ActivationCode",
+            "type": "string",
+            "required": false,
+            "description": "Code which is provided at the time of Account Creation/Registration should be pass as a user validation. Allowable Values: 50"
+        },
+        {
+            "name": "TotalAnnualIncome",
+            "type": "decimal",
+            "required": true,
+            "description": "Total Annual Income of cardholder Valid Values: 0-9 Format: XXX.XX Example: 500.00"
+        },
+        {
+            "name": "CurrentEmploymentMonths",
+            "type": "string",
+            "required": true,
+            "description": "Number of months in current employment Allowable Values: 10"
+        },
+        {
+            "name": "Position",
+            "type": "string",
+            "required": false,
+            "description": "This field reflects the employement position of the card holder Valid Values: A-Z, 0-9 Allowable Values: 100"
+        },
+        {
+            "name": "EmploymentType",
+            "type": "string",
+            "required": true,
+            "description": "Type of employement of cardholder Allowable Values: 5"
+        },
+        {
+            "name": "EmployerName",
+            "type": "string",
+            "required": true,
+            "description": "Card Holder's employer name. Allowable Values: 100"
+        },
+        {
+            "name": "EmployerContactPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card Holder's employer Phone number Valid Values: 0-9 Format: XXXXXXXXXX Example: 789654121 Allowable Values: 15"
+        },
+        {
+            "name": "HoldEmbossing",
+            "type": "string",
+            "required": false,
+            "description": "Hold embossing indicator. Valid Values: 1= YES, 0 = NO Allowable Values: 2"
+        },
+        {
+            "name": "Cardhandover",
+            "type": "boolean",
+            "required": true,
+            "description": "Card hand over Valid Values: 1= YES, 0 = NO"
+        },
+        {
+            "name": "DeliveryMechanism",
+            "type": "string",
+            "required": false,
+            "description": "Delivery Mechanism(Overnight, Priority or Standard). Valid Values: 0 -for Standard ,1 -for Priority , 2 -for Overnight Condition: Delivery mechanism is optional. Allowable Values: 5"
+        },
+        {
+            "name": "MobileCarrier",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Mobile carrier company. Valid Values:A-z, 0-9 Format:XXXXXXXX Example: c.vodafone.ne.jp, csouth1.com, m1.com.sg Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of account holder Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896541236 Condition:Card Number of the Card Holder Mandatory If Account Number or Admin Number not Inputted. Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition:Account Number of the Account Holder Mandatory If Card Number or Admin Number not Inputted. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345 Condition:Admin Number  Mandatory If Account Number or Card Number not Inputted"
+        },
+        {
+            "name": "IsMLAAccount",
+            "type": "boolean",
+            "required": false,
+            "description": "Identify whether the account is MLA type or not Valid Values:Yes-1 No-0 Format:X Example:0"
+        },
+        {
+            "name": "RegulationOFlag",
+            "type": "boolean",
+            "required": false,
+            "description": "Regulation O Flag to classify Rego Account"
+        },
+        {
+            "name": "RegulationOFlagEffectiveDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Date of effective Reg \"O\" Valid Values:0-9 Format:MM/DD/YYYY Example:02/01/2020 Condition:RegulationOFlagEffectiveDate, mandatory if Regulation O Flag is Yes."
+        },
+        {
+            "name": "Title",
+            "type": "string",
+            "required": false,
+            "description": "Title of the cardholder Format: A-Z Example:Mr Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": true,
+            "description": "Card holder's First name. Valid Values:A-Z Example:User1 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's Middle Name. Valid Values: A-Z Example: LEE Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": true,
+            "description": "Card holder's last name. Valid Values:A-Z Example:Smith Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "SurnameSuffix",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder's surname-suffix Example:SR Allowable Values: 5"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": true,
+            "description": "Card Holder's address line 1. Valid Values:A-Z, 0-9 Example:123 HWY Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's address line 2. Valid Values:A-Z, 0-9 Example:Park Avenue Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": true,
+            "description": "City name of the Card holder's address. Example:Los Angeles Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 25"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": true,
+            "description": "Address State of the Card Holder. For Input Values Refer Appendix Section 5.6 for State Name Codes Example:Virginia Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": true,
+            "description": "Postal code of the card holder address. Valid Values:0-9 Example:46206 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": true,
+            "description": "Address Country of the Card Holder For Input Values Refer Appendix Section 5.1 for Country Name Codes. Valid Values: a-z Format:XXX Example:US Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "DateOfBirth",
+            "type": "datetime",
+            "required": true,
+            "description": "Card Holder's Date of Birth. Format:MM/dd/YYYY Example:11/23/1980"
+        },
+        {
+            "name": "ResidenceType",
+            "type": "string",
+            "required": true,
+            "description": "Type of Residince that cardholder lives in. For Input Values Refer Appendix Section 5.15 for Residence Ownership Codes. Valid Values:A-Z Example:Own Allowable Values: 35"
+        },
+        {
+            "name": "MonthsAtResidence",
+            "type": "integer",
+            "required": true,
+            "description": "Duration on residence in months Valid Values: 0-9 Example:9"
+        },
+        {
+            "name": "HomePhoneNumber",
+            "type": "string",
+            "required": true,
+            "description": "Card holder's Home Phone number. Valid Values:0-9 Example:7895463241 Allowable Values: 15"
+        },
+        {
+            "name": "WorkPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's Work phone number. Valid Values:0-9 Example:5678909876 Allowable Values: 15"
+        },
+        {
+            "name": "MobileCarrier",
+            "type": "string",
+            "required": false,
+            "description": "Cosigner's Mobile carrier company. Valid Values:A-z, 0-9 Format:XXXXXXXX Example: c.vodafone.ne.jp, csouth1.com, m1.com.sg Allowable Values: 15"
+        },
+        {
+            "name": "MobilePhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card holder Mobile Phone Number. Valid Values:0-9 Example:987567757 Allowable Values: 20"
+        },
+        {
+            "name": "EmailID",
+            "type": "string",
+            "required": true,
+            "description": "Card holder's Email ID. Format: [email protected] Example: [email protected] Allowable Values: 256"
+        },
+        {
+            "name": "LanguageIndicator",
+            "type": "string",
+            "required": false,
+            "description": "Language Indicator of the institution. Valid Values: a-z, 0-9 Format: xxxx Allowable Values: 35"
+        },
+        {
+            "name": "MotherMaidenName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's mother Maiden Name Valid Values:a-z,0-9 Example:Johnson Allowable Values: 50"
+        },
+        {
+            "name": "SocialSecurityNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's Social Security Number. Format:AAAGGSSSS Example:078051120 Condition:Mandatory if ID type is Not Inputted Allowable Values: 9"
+        },
+        {
+            "name": "IDType",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder's Identity type. For Input Values Refer Appendix Section 5.2 for ID Name Value Codes Valid Values: a-z Format: xxxxx Example:  E.g.Passport, Driving License, Governemnt ID etc. Allowable Values: 25"
+        },
+        {
+            "name": "IDNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's Government ID Number. Format:AAAGGSSSS Example:078051120 Condition:This field is mandatory when government id type other than Other ID is used for cardholder identification. Allowable Values: 40"
+        },
+        {
+            "name": "IDIssueDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Issue date of ID card. Valid Values: 0-9 Format: MM/DD/YYYY Example: 02/01/2020 Condition: GovernmentID issue date is mandatory when governmentID type is 'Drivers license' and ID issue country is US and Id issue state is other than Massachusetts, Michigan, Missouri, Texas."
+        },
+        {
+            "name": "IDExpirationDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Government issued identification expiration date. Valid Values: MM/DD/YYY Example: 02/01/2020 Condition: This field is mandatory when government id type other than Other ID is used for cardholder identification."
+        },
+        {
+            "name": "IDIssueCountry",
+            "type": "string",
+            "required": false,
+            "description": "Country of Identification proof. Valid Values:a-z, 0-9 Example: Canada Condition:This field is mandatory when government id Type other than Other ID is used for cardholder identification.Two character country code should be passed in the request and not country name. Allowable Values: 5"
+        },
+        {
+            "name": "IDState",
+            "type": "string",
+            "required": false,
+            "description": "Government identification issued state. Condition: GovernmentID issue state is mandatory, when Government id type is 'Drivers license' Or 'State ID' and ID issue country is US. Allowable Values: 50"
+        },
+        {
+            "name": "ShippingAddressFlag",
+            "type": "boolean",
+            "required": true,
+            "description": "Shipping address is existing or new. Valid Values:0,1 Format:X Example:Ship to Existing Address – 0 Ship Address – 1"
+        },
+        {
+            "name": "ShippingAddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Shipping address line 1 Example: 2354 Main road Condition:If ShippingAddressFlag is 1 then it is mandatory Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "ShippingAddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Shipping address line 2 Example:xyz Avenue Condition:If ShippingAddressFlag is 1 then it is mandatory Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "ShippingCity",
+            "type": "string",
+            "required": null,
+            "description": "Shipping address city name. Example: chicago Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 25"
+        },
+        {
+            "name": "ShippingState",
+            "type": "string",
+            "required": null,
+            "description": "State of the shipping address For Input Values Refer Appendix Section 5.6 for State Name Codes Valid Values: a-z Format:XXX Example:MO Condition:If ShippingAddressFlag is 1 then it is mandatory Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30"
+        },
+        {
+            "name": "ShippingCountry",
+            "type": "string",
+            "required": null,
+            "description": "Shipping address Country name For Input Values Refer Appendix Section 5.1 for Country Name Codes Format: USA Condition:If ShippingAddressFlag is 1 then it is mandatory Allowable Values: 5"
+        },
+        {
+            "name": "ShippingPostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Zip code of the shipping address. Condition:If ShippingAddressFlag is 1 then it is mandatory Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "CreditLimit",
+            "type": "decimal",
+            "required": true,
+            "description": "Credit Limit of account Valid Values:0-9 Format:XXX.XX Example:500.00"
+        },
+        {
+            "name": "BillingTable",
+            "type": "integer",
+            "required": true,
+            "description": "Name of the Billing Table assigned on the Card Holder Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896541236"
+        },
+        {
+            "name": "BillingCycle",
+            "type": "integer",
+            "required": true,
+            "description": "Billing Cycle to be Assigned on the Card Holder Use the Billing Cycle API to Get the Billing Cycles available and assign out of the available for the Card Holder For Input Values Refer Appendix Section 5.2 for Billing Cycle Codes Valid Values:0-9 Format: x Example:1"
+        },
+        {
+            "name": "NumberofCardsRequested",
+            "type": "integer",
+            "required": true,
+            "description": "Number of Cards Requested Valid Values:0-9x Format:XX Example:02"
+        },
+        {
+            "name": "NameOnCard",
+            "type": "string",
+            "required": true,
+            "description": "Name to be printed on the card. Valid Values:A-Z, 0-9 Format:XXXX Example:John J Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "EmbossingLine4",
+            "type": "string",
+            "required": false,
+            "description": "Embossing line4 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 20"
+        },
+        {
+            "name": "CashCreditLimit",
+            "type": "decimal",
+            "required": false,
+            "description": "Cash Credit Limit of account Valid Values:0-9 Format:XXX.XX Example:500.00"
+        },
+        {
+            "name": "CardImageID",
+            "type": "string",
+            "required": false,
+            "description": "This is the card image type number which is already decided for embossing them. Valid Values: 0-9 Example: 12 Allowable Values: 100"
+        },
+        {
+            "name": "NameOnTrack",
+            "type": "string",
+            "required": false,
+            "description": "Details to be provided in the Magnetic Strip (mostly derived from Last Name and First name of the Card Holder). Valid Values: A-z Example: John J Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 26"
+        },
+        {
+            "name": "ActivationCode",
+            "type": "string",
+            "required": false,
+            "description": "Code which is provided at the time of Account Creation/Registration should be pass as a user validation. Allowable Values: 50"
+        },
+        {
+            "name": "TotalAnnualIncome",
+            "type": "decimal",
+            "required": true,
+            "description": "Total Annual Income of cardholder Valid Values: 0-9 Format: XXX.XX Example: 500.00"
+        },
+        {
+            "name": "CurrentEmploymentMonths",
+            "type": "string",
+            "required": false,
+            "description": "Number of months in current employment Allowable Values: 10"
+        },
+        {
+            "name": "Position",
+            "type": "string",
+            "required": false,
+            "description": "This field reflects the employement position of the card holder Valid Values: A-Z, 0-9 Allowable Values: 100"
+        },
+        {
+            "name": "EmploymentType",
+            "type": "string",
+            "required": true,
+            "description": "Type of employement of cardholder Allowable Values: 5"
+        },
+        {
+            "name": "EmployerName",
+            "type": "string",
+            "required": true,
+            "description": "Card Holder's employer name. Allowable Values: 100"
+        },
+        {
+            "name": "EmployerContactPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card Holder's employer Phone number Valid Values: 0-9 Format: XXXXXXXXXX Example: 789654121 Allowable Values: 15"
+        },
+        {
+            "name": "HoldEmbossing",
+            "type": "string",
+            "required": false,
+            "description": "Hold embossing indicator. Valid Values: 1= YES, 0 = NO Allowable Values: 2"
+        },
+        {
+            "name": "Cardhandover",
+            "type": "boolean",
+            "required": true,
+            "description": "Card hand over Valid Values: 1= YES, 0 = NO"
+        },
+        {
+            "name": "DeliveryMechanism",
+            "type": "string",
+            "required": false,
+            "description": "Delivery Mechanism(Overnight, Priority or Standard). Valid Values: 0 -for Standard ,1 -for Priority , 2 -for Overnight Condition: Delivery mechanism is optional. Allowable Values: 5"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "ResponseID",
+            "type": "string",
+            "required": null,
+            "description": "This number indicates that API responded. Response ID is unique.This value will be null if no authentication information was passed. Response ID can be used for tracking Valid Values:0-9,a-z Format:xxx Example:200 Allowable Values: 15",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number indicates that API responded. Response ID is unique.This value will be null if no authentication information was passed. Response ID can be used for tracking Valid Values:0-9,a-z Format:xxx Example:200 Allowable Values: 15",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "CardNumber": "",
+        "AccountNumber": "1200001000000004",
+        "AdminNumber": null,
+        "IsMLAAccount": false,
+        "RegulationOFlag": false,
+        "RegulationOFlagEffectiveDate": null,
+        "Title": null,
+        "FirstName": "monika",
+        "MiddleName": null,
+        "LastName": "gupta",
+        "SurnameSuffix": null,
+        "AddressLine1": "test",
+        "AddressLine2": null,
+        "City": "test",
+        "State": "test",
+        "PostalCode": "354646",
+        "Country": "US",
+        "DateOfBirth": null,
+        "ResidenceType": null,
+        "MonthsAtResidence": 0,
+        "HomePhoneNumber": "975757646465",
+        "WorkPhoneNumber": null,
+        "MobileCarrier": null,
+        "MobilePhoneNumber": null,
+        "EmailID": "[email protected]",
+        "LanguageIndicator": "en",
+        "MotherMaidenName": null,
+        "SocialSecurityNumber": "111111111",
+        "IDType": "2",
+        "IDNumber": "123456789",
+        "IDIssueDate": null,
+        "IDExpirationDate": null,
+        "IDIssueCountry": null,
+        "IDState": null,
+        "ShippingAddressFlag": false,
+        "ShippingAddressLine1": null,
+        "ShippingAddressLine2": null,
+        "ShippingCity": null,
+        "ShippingState": null,
+        "ShippingCountry": null,
+        "ShippingPostalCode": null,
+        "CreditLimit": 1000.0,
+        "BillingTable": 0,
+        "BillingCycle": 0,
+        "NumberofCardsRequested": 0,
+        "NameOnCard": "Monika Gupta",
+        "EmbossingLine4": null,
+        "CashCreditLimit": 0.0,
+        "CardImageID": null,
+        "NameOnTrack": null,
+        "ActivationCode": null,
+        "TotalAnnualIncome": 0.0,
+        "CurrentEmploymentMonths": null,
+        "Position": null,
+        "EmploymentType": null,
+        "EmployerName": null,
+        "EmployerContactPhoneNumber": null,
+        "HoldEmbossing": null,
+        "Cardhandover": null,
+        "DeliveryMechanism": "0"
+    },
+    "sample_response": {
+        "Message": "Bulk Card Register successfully",
+        "Status": true,
+        "ErrorCode": "ERR01125",
+        "ResponseData": {
+            "ResponseID": "7011"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Card Registration",
+        "category_id": "11",
+        "document_id": "107",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=107&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=11&regionId=1"
+    }
+}

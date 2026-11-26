@@ -1,0 +1,256 @@
+{
+    "metadata": {
+        "name": "GetAccountControlParameters",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetActControlParams",
+        "description": "Purpose of this API is to Get Account control Parameters."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition:At least one of AccountNumber/AccountID/AdminNumber is required."
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345 Condition:At least one of AccountNumber/AccountID/AdminNumber is required."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder/AccountHolder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition:At least one of AccountNumber/AccountID/AdminNumber is required. Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "RatificationMethod1",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Identifies the ratification method. Valid Values: 0 = Normal 1 = Grandfathered 2 = Statement",
+                    "children": []
+                },
+                {
+                    "name": "PaymentType",
+                    "type": "string",
+                    "required": null,
+                    "description": "Type of the Payment. Valid Values: 0 = Bill Balance 1 = Bill Fixed Amount 2 = Bill Fixed Percent 3 = Bill Invoice 4 = Bill Fixed Percent Of High Balance Example:0 = Bill Balance Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "FixedPaymentAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Fixed amount define for Bill Fixed amount payment type. Valid Values:0-9 Format:XXXX.XX Example:1000.00 Condition: This field is mandatory when Payment type is Bill Fixed amount.",
+                    "children": []
+                },
+                {
+                    "name": "FixedPaymentPercentage",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Percent of principal define for Bill Fix Percent payment type. Valid Values:0-9 Format:XX.XX Example:1.00 Condition: This field is mandatory when Payment type is Bill Fix Percent.",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLevel",
+                    "type": "string",
+                    "required": null,
+                    "description": "Define the level of Payment terms calculation. Valid Values: 0 = Account 1 = Plan 2 = Combined Example:0 = Account Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "GracePeriod",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Define the Grace Period Valid Values: 0-9 Format:XX Example:25",
+                    "children": []
+                },
+                {
+                    "name": "PaymentHoldSkipCheck",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to not check payment on hold parameter for the account. Valid Values: 0 = Unchecked, 1= Checked(system will not check payment on hold parameters for this account)",
+                    "children": []
+                },
+                {
+                    "name": "EligibleForAutoSkipPaymentOpt",
+                    "type": "string",
+                    "required": null,
+                    "description": "Define if Account is Eligible for Automatic skip of payment, Valid Values: 0 = Eligible 1 = Not Eligible Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "CashLimitMethod",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cash limit method can be set to Amount or Percent of total credit line. Valid Values: 0 = Amount 1 = Percent of Total Credit Line Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "CashLimitPercentage",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Percent of total credit limit set for Percent cash limit method. Valid Values: 0-9 Format: XX.XX Example:1.00 Condition: This field is mandatory when Cash limit method is Percent",
+                    "children": []
+                },
+                {
+                    "name": "CashLimitAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Amount set for Amount cash limit method. Valid Values: 0-9 Format: XXXX.XXX Example:1000.00 Condition: This field is mandatory when Cash limit method is Amount.",
+                    "children": []
+                },
+                {
+                    "name": "BillingTable",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Name of Billing table assigned to account. Valid Values: Format:ABC_FICO_XXX_XXX Example: ABC_FICO_740_749",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountID": 167499,
+        "AccountNumber": "8000000000000078",
+        "AdminNumber": 129368
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "RatificationMethod1": 2,
+            "PaymentType": "2",
+            "FixedPaymentAmount": 0.0,
+            "FixedPaymentPercentage": 10.0,
+            "PaymentLevel": "1",
+            "GracePeriod": 21,
+            "PaymentHoldSkipCheck": 0,
+            "CashLimitMethod": "0.0000",
+            "CashLimitPercentage": 0.0,
+            "CashLimitAmount": 5000.0,
+            "BillingTable": 6765
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Control Parameters",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=52&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=3"
+    }
+}

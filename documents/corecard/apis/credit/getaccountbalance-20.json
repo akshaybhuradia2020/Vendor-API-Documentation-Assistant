@@ -1,0 +1,453 @@
+{
+    "metadata": {
+        "name": "GetAccountBalance",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetAccountBalance",
+        "description": "This method is used to get Account Balance Details."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values: 0-9 Example: 12345 Condition: At least one of AccountNumber or AdminNumber is required."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's Account number. Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 8000000000000037 Condition: At least one of AccountNumber or AdminNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "IdentifierToken",
+            "type": "string",
+            "required": null,
+            "description": "A generated token that is not expired can be used as an input field to access API. If we are passing this field in input, user should not pass any other account identifier. Condition:At least one account identifier is required. Allowable Values: 800"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "CurrencySymbol",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the currency symbol",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "TotalAmountDue",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Total amount due as on statement date. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "CurrentBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Current balance of account. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "PaymentDueDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Due date as to by when payment needs to be made to avoid late fees. Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                    "children": []
+                },
+                {
+                    "name": "LastPaymentAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Last payment amount on the account. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "LastPurchaseAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Last Purchase Amount as on statement date. Valid Values:0-9 Format:XXX.XX Example:200.00",
+                    "children": []
+                },
+                {
+                    "name": "RecentPurchasesAndDebits",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Purchase and Debits made on current statement recently. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "RecentPaymentsAndCredits",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Payments and Credits made on current statement recently. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "LastStatementBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Balance of previous statement. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "NextStatementDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Next Date for Statement Generation. Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                    "children": []
+                },
+                {
+                    "name": "CreditLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Total Credit Limit on account. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "MaskedCardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Masked Card Number. Format: XXXX XXXX XXXX XXXX Example: 4567 89XX XXXX 0123 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "AvailableCreditLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Total Credit limit minus the total amount due. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "LastPaymentDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date of last payment transaction. Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                    "children": []
+                },
+                {
+                    "name": "PreviousStatementDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date of Previous Statement. Format: MM/dd/yyyy HH:mm:ss Example: 01/25/2020 00:00:00",
+                    "children": []
+                },
+                {
+                    "name": "BeginningRewardBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Reward balance at the beginning of Statement. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "RewardEarned",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Reward Earned in statement Cycle. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "RewardRedeemed",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Reward points Redeemed in statement Cycle. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "AvailableRewardBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Number of Available Reward Balance. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "RewardExpired",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Number of Expired Rewards. Valid Values:0-9 Format:XXXX Example:1234567.123, 1234567.1234",
+                    "children": []
+                },
+                {
+                    "name": "RewardForfeited",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Number of Forfeited Rewards. Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "CustomerID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflects the customer ID. Valid Values:0-9 Format:XXXXX Example: 12345 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CardNumberLast4Digit",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last 4 digits of card number. Valid Values:0-9 Format:XXXXX Example: 1234 Allowable Values: 4",
+                    "children": []
+                },
+                {
+                    "name": "CardStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Status of the requested card. Valid Values: 0-9 A-Z Format: xxx xxx Example: New Card Pending Activation.Cancelled etc Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "AllotedCardCashUsageLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "AllotedCardCashUsageLimit Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "UtilizedCardCashUsageLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "UtilizedCardCashUsageLimit Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "RemainingCardCashUsageLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "RemainingCardCashUsageLimit Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "RemainingCardUsageLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "RemainingCardUsageLimit Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "UtilizedCardUsageLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "UtilizedCardUsageLimit Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "AllotedCardUsageLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "AllotedCardUsageLimit Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "EmbossingManualStatus",
+                    "type": "integer",
+                    "required": null,
+                    "description": "EmbossingManualStatus Valid Values:0-9 Format:XXX.XX Example: 200.00",
+                    "children": []
+                },
+                {
+                    "name": "IsAutoPay",
+                    "type": "string",
+                    "required": null,
+                    "description": "Get or Set IsAutoPay",
+                    "children": []
+                },
+                {
+                    "name": "IsPaperless",
+                    "type": "string",
+                    "required": null,
+                    "description": "Get or Set IsPaperless",
+                    "children": []
+                },
+                {
+                    "name": "ESecCardType",
+                    "type": "string",
+                    "required": null,
+                    "description": "ESecCardType",
+                    "children": []
+                },
+                {
+                    "name": "VirtualCardReplacementAllowed",
+                    "type": "string",
+                    "required": null,
+                    "description": "VirtualCardReplacementAllowed",
+                    "children": []
+                },
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "AccountNumber",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": null,
+        "AdminNumber": 61992,
+        "IdentifierToken": null
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "TotalAmountDue": 0.0,
+            "CurrentBalance": 1000.0,
+            "PaymentDueDate": null,
+            "LastPaymentAmount": 0.0,
+            "LastPurchaseAmount": 0.0,
+            "RecentPurchasesAndDebits": 0.0,
+            "RecentPaymentsAndCredits": 0.0,
+            "LastStatementBalance": 0.0,
+            "NextStatementDate": "03/23/2020 00:00:00",
+            "CreditLimit": 1500.0,
+            "AllotedCardCashUsageLimit": 0.0,
+            "UtilizedCardCashUsageLimit": 0.0,
+            "RemainingCardCashUsageLimit": 0.0,
+            "RemainingCardUsageLimit": 0.0,
+            "UtilizedCardUsageLimit": 0.0,
+            "AllotedCardUsageLimit": 0.0,
+            "EmbossingManualStatus": 0,
+            "MaskedCardNumber": "461668XXXXXX1592",
+            "AvailableCreditLimit": 1500.0,
+            "LastPaymentDate": null,
+            "PreviousStatementDate": null,
+            "BeginningRewardBalance": 0.0,
+            "RewardEarned": 0.0,
+            "RewardRedeemed": 0.0,
+            "AvailableRewardBalance": 0.0,
+            "RewardExpired": 0.0,
+            "RewardForfeited": 0.0,
+            "CustomerID": "44570",
+            "CardNumberLast4Digit": "1592",
+            "CardStatus": "Active",
+            "IsAutoPay": null,
+            "IsPaperless": null,
+            "ESecCardType": null,
+            "VirtualCardReplacementAllowed": null,
+            "AccountNumber": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Account Balances",
+        "category_id": "2",
+        "document_id": "20",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=20&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=2&regionId=1"
+    }
+}

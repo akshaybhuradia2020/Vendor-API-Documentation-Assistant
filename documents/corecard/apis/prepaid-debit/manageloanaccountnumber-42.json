@@ -1,0 +1,481 @@
+{
+    "metadata": {
+        "name": "ManageLoanAccountNumber",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/AddUpdateLoanAccountNumber",
+        "description": "This API is add/update loan account number against an existing account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Condition:At least one of AdminNumber/AccountNumber/AccountUniversalUniqueID/AdminUniversalUniqueID is required."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Condition:At least one of AdminNumber/AccountNumber/AccountUniversalUniqueID/AdminUniversalUniqueID is required. Allowable Values: 19"
+        },
+        {
+            "name": "Action",
+            "type": "integer",
+            "required": false,
+            "description": "Valid Values: 1 = Add 2 = Update 3 = Get Loan Account details"
+        },
+        {
+            "name": "Status",
+            "type": "integer",
+            "required": false,
+            "description": "Valid Values: 0 =  Inactive, 1 =  Active Status should be active for adding LoanAccountNumber and if not provided then default value is active"
+        },
+        {
+            "name": "PayeeName1",
+            "type": "string",
+            "required": null,
+            "description": "Payee first name Condition: PayeeName1 is required if action is 1. Example: Alex Valid Value: a-z Allowable Values: 50"
+        },
+        {
+            "name": "PayeeName2",
+            "type": "string",
+            "required": false,
+            "description": "Payee last name Example: Telles Valid Value: a-z Allowable Values: 50"
+        },
+        {
+            "name": "PayeeAddress1",
+            "type": "string",
+            "required": null,
+            "description": "PayeeAddress1 Condition: PayeeAddress1 is required if action is 1. Example: 123 HWY Valid Values: a-z, 0-9 Allowable Values: 50"
+        },
+        {
+            "name": "PayeeAddress2",
+            "type": "string",
+            "required": false,
+            "description": "Payee's Address2 Example: 123 HWY Valid Values: a-z, 0-9 Allowable Values: 50"
+        },
+        {
+            "name": "PayeeAddress3",
+            "type": "string",
+            "required": false,
+            "description": "Payee's Address3 Example: 123 HWY Valid Values: a-z, 0-9 Allowable Values: 50"
+        },
+        {
+            "name": "PayeeCity",
+            "type": "string",
+            "required": null,
+            "description": "PayeeCity Condition: PayeeCity is required if action is 1. Example: New York Valid Values: a-z Allowable Values: 25"
+        },
+        {
+            "name": "PayeeState",
+            "type": "string",
+            "required": null,
+            "description": "PayeeState Example: NY Valid Values: a-z Condition: PayeeState is required if action is 1 (it can be statecode or state name). Allowable Values: 50"
+        },
+        {
+            "name": "PayeeZipCode",
+            "type": "string",
+            "required": null,
+            "description": "PayeeZipCode Condition: PayeeZipCode is required if action is 1. Example: 178365 Valid Value: 0-9 Allowable Values: 10"
+        },
+        {
+            "name": "PayeeCountry",
+            "type": "string",
+            "required": null,
+            "description": "PayeeCountry Condition: PayeeCountry is required if action is 1 (it can be country code or country name). Example: India Valid Value: a-z Allowable Values: 50"
+        },
+        {
+            "name": "LoanAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "LoanAccountNumber which is to be added or updated. Valid Values: 19 digit number Example : 654789512301450039 Condition : Required in case of add and update. Allowable Values: 19"
+        },
+        {
+            "name": "AccountUUID",
+            "type": "string",
+            "required": null,
+            "description": "Basesegment's Universal Unique Id. Condition:At least one of AdminNumber/AccountNumber/AccountUniversalUniqueID/AdminUniversalUniqueID is required. Valid Values:a-z,0-9 Example a585f533-0d33-4282-ab98-4852146e5e17 Allowable Values: 64"
+        },
+        {
+            "name": "AdminUUID",
+            "type": "string",
+            "required": null,
+            "description": "EmbossingAccount's Universal Unique Id. Condition:At least one of AdminNumber/AccountNumber/AccountUniversalUniqueID/AdminUniversalUniqueID is required. Valid Values:a-z,0-9 Example b585f533-0d33-4282-ab98-4852146e5e17 Allowable Values: 64"
+        },
+        {
+            "name": "CustomerNameOnLoan",
+            "type": "string",
+            "required": false,
+            "description": "CustomerNameOnLoan is the Borrower's name on the loan account. Example: John Dow Valid Value: a-z Allowable Values: 50"
+        },
+        {
+            "name": "PayeeAddress4",
+            "type": "string",
+            "required": false,
+            "description": "PayeeAddress4 Fetched from Biller Directory Example: 123 HWY Valid Values: a-z, 0-9 Allowable Values: 50"
+        },
+        {
+            "name": "PayeeID",
+            "type": "string",
+            "required": false,
+            "description": "Biller ID Example: 1485 Valid Value: 0-9 Allowable Values: 50"
+        },
+        {
+            "name": "MethodName",
+            "type": "string",
+            "required": false,
+            "description": "Loan ID being used for Reward Redemption. Example: 4015 Valid Values:0-9 Allowable Values: 50"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "LoanAccountDetailsList",
+                    "type": "array",
+                    "required": null,
+                    "description": "LoanAccountDetailsList",
+                    "children": [
+                        {
+                            "name": "Status",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of Loan Account. Example: 1 Valid Value: a-z 0-9 Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "MethodName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Loan ID being used for Reward Redemption. Example: 4015 Valid Value: a-z 0-9 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "LAcctNumLast4digit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Last 4 Digits of LoanAccountNumber. Example:0782 Valid Value: 0-9 Allowable Values: 4",
+                            "children": []
+                        },
+                        {
+                            "name": "InsertDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when LoanAccount was added Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeName1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee first name Example: Alex Valid Value: a-z Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeName2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee last name Example: Telles Valid Value: a-z Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeAddress1",
+                            "type": "string",
+                            "required": null,
+                            "description": "PayeeAddress1 Example: 123 HWY Valid Values: a-z, 0-9 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeAddress2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee's Address2 Example: 123 HWY Valid Values: a-z, 0-9 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeAddress3",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee's Address3 Example: 123 HWY Valid Values: a-z, 0-9 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeCity",
+                            "type": "string",
+                            "required": null,
+                            "description": "PayeeCity Example: New York Valid Values: a-z Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeZipCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "PayeeZipCode Example: 178365 Valid Value: 0-9 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeState",
+                            "type": "string",
+                            "required": null,
+                            "description": "PayeeState Example: NY Valid Values: a-z Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeCountry",
+                            "type": "string",
+                            "required": null,
+                            "description": "PayeeCountry Example: India Valid Value: a-z Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CustomerNameOnLoan",
+                            "type": "string",
+                            "required": null,
+                            "description": "CustomerNameOnLoan is the Borrower's name on the loan account. Example: John Dow Valid Value: a-z Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeAddress4",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee Address 4 Fetched from Biller Directory. Example: 123 HWY Valid Values: a-z, 0-9 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Biller ID Example: 1485 Valid Value: 0-9 Allowable Values: 50",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "MethodName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Loan ID being used for Reward Redemption. Example: 4015 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "LAcctNumLast4digit",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last 4 Digits of LoanAccountNumber. Example:0782 Allowable Values: 4",
+                    "children": []
+                },
+                {
+                    "name": "AccountUUID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Basesegment's Universal Unique Id. Valid Values:a-z,0-9 Example a585f533-0d33-4282-ab98-4852146e5e17 Allowable Values: 64",
+                    "children": []
+                },
+                {
+                    "name": "AdminUUID",
+                    "type": "string",
+                    "required": null,
+                    "description": "EmbossingAccount's Universal Unique Id. Valid Values:a-z,0-9 Example b585f533-0d33-4282-ab98-4852146e5e17 Allowable Values: 64",
+                    "children": []
+                },
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number indicates that API responded. Response ID is unique. This value will be null if no authentication information was passed. Response ID can be used for tracking. Valid Values: 0-9 Format: xxxxx Example: 148525 Allowable Values: 10",
+                    "children": []
+                },
+                {
+                    "name": "ErrorMessage",
+                    "type": "string",
+                    "required": null,
+                    "description": "ErrorMessage. Example:0782 Allowable Values: 4",
+                    "children": []
+                },
+                {
+                    "name": "ErrorNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "ErrorNumber. Example:0782 Allowable Values: 4",
+                    "children": []
+                },
+                {
+                    "name": "ErrorFound",
+                    "type": "string",
+                    "required": null,
+                    "description": "ErrorFound. Example:0782 Allowable Values: 4",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AdminNumber": 167550,
+        "AccountNumber": "8110000000000125",
+        "AccountUUID": null,
+        "AdminUUID": null,
+        "Action": 3,
+        "Status": null,
+        "PayeeName1": null,
+        "PayeeName2": null,
+        "PayeeAddress1": null,
+        "PayeeAddress2": null,
+        "PayeeAddress3": null,
+        "PayeeCity": null,
+        "PayeeState": null,
+        "PayeeZipCode": null,
+        "PayeeCountry": null,
+        "LoanAccountNumber": null,
+        "CustomerNameOnLoan": null,
+        "PayeeAddress4": null,
+        "PayeeID": null,
+        "MethodName": null
+    },
+    "sample_response": {
+        "Message": "Return Successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01093",
+        "ResponseData": {
+            "MethodName": null,
+            "LAcctNumLast4digit": null,
+            "AccountUUID": null,
+            "AdminUUID": null,
+            "ResponseID": null,
+            "LoanAccountDetailsList": [
+                {
+                    "Status": null,
+                    "MethodName": null,
+                    "LAcctNumLast4digit": null,
+                    "InsertDate": null,
+                    "PayeeName1": null,
+                    "PayeeName2": null,
+                    "PayeeAddress1": null,
+                    "PayeeAddress2": null,
+                    "PayeeAddress3": null,
+                    "PayeeCity": null,
+                    "PayeeZipCode": null,
+                    "PayeeState": null,
+                    "PayeeCountry": null,
+                    "CustomerNameOnLoan": null,
+                    "PayeeAddress4": null,
+                    "PayeeID": null
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=42&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4"
+    }
+}

@@ -1,0 +1,239 @@
+{
+    "metadata": {
+        "name": "UpdateCardLoadLimit",
+        "http_method": "POST",
+        "endpoint": "/api/UpdateCardLoadLimit",
+        "description": "Use this API to update load limits set on account along with card limit and card to card transfer limit."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition: At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "This tag indicates the Proxy Number of the cardholder Valid values:0-9 Condition: At least one of Card Number/Proxy Number/Account Number is required. Example:1617358 etc. Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number of the cardholder. Valid values: 0-9 Condition: At least one of Card Number/Proxy Number/Account Number is required. Example: 2000000000000396893 Allowable Values: 19"
+        },
+        {
+            "name": "SingleTransactionLoadLimit",
+            "type": "decimal",
+            "required": false,
+            "description": "Maximum load amount allowed for a transaction Example : 500.00 Allowable Values: 10"
+        },
+        {
+            "name": "DailyLoadLimitCount",
+            "type": "Int32",
+            "required": false,
+            "description": "Sum of Loads allowed on a card in a day Example : 3 Allowable Values: 2"
+        },
+        {
+            "name": "DailyLoadLimitAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Number of Loads allowed on a card in a day Example : 3 Allowable Values: 10"
+        },
+        {
+            "name": "WeeklyLoadLimitCount",
+            "type": "Int32",
+            "required": false,
+            "description": "Sum of Loads allowed on a card in a week Example : 3 Allowable Values: 2"
+        },
+        {
+            "name": "WeeklyLoadLimitAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Number of Loads allowed on a card in a week Example : 3 Allowable Values: 10"
+        },
+        {
+            "name": "MonthlyLoadLimitCount",
+            "type": "Int32",
+            "required": false,
+            "description": "Sum of Loads allowed on a card in a month Example : 3 Allowable Values: 2"
+        },
+        {
+            "name": "MonthlyLoadLimitAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Number of Loads allowed on a card in a month Example : 3 Allowable Values: 10"
+        },
+        {
+            "name": "CardLimitAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Card limit Example : 25000 Allowable Values: 10"
+        },
+        {
+            "name": "CardToCardSingleTransactionAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Maximum amount allowed for a card to card transaction Example : 500.00 Allowable Values: 10"
+        },
+        {
+            "name": "CardToCardDailyLimitCount",
+            "type": "Int32",
+            "required": false,
+            "description": "Sum of card to card transaction allowed on a card in a day Example : 3 Allowable Values: 2"
+        },
+        {
+            "name": "CardToCardDailyLimitAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Number of card to card transaction allowed on a card in a day Example : 3 Allowable Values: 10"
+        },
+        {
+            "name": "NotesReason",
+            "type": "string",
+            "required": false,
+            "description": "Description :  This tag indicates PreDefined Memo Reasons. Please refer appendix Section : Memo Reason Allowable Values: 50"
+        },
+        {
+            "name": "NotesText",
+            "type": "string",
+            "required": false,
+            "description": "Notes entered by the user Valid Values : A-Z,0-9 Example : Card found Allowable Values: 500"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": []
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "4066846120****14",
+        "ProxyNumber": "1321236",
+        "AccountNumber": "60000000048964",
+        "SingleTransactionLoadLimit": 2000.0,
+        "DailyLoadLimitCount": 1,
+        "DailyLoadLimitAmount": 100.0,
+        "WeeklyLoadLimitCount": 2,
+        "WeeklyLoadLimitAmount": 200.0,
+        "MonthlyLoadLimitCount": 3,
+        "MonthlyLoadLimitAmount": 300.0,
+        "CardLimitAmount": 5000.0,
+        "CardToCardSingleTransactionAmount": 2000.0,
+        "CardToCardDailyLimitCount": 5,
+        "CardToCardDailyLimitAmount": 500.0
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {}
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1041",
+        "document_id": "1213",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1213&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1041&regionId=1"
+    }
+}

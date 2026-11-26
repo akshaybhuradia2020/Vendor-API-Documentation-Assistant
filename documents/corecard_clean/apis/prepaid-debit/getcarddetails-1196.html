@@ -1,0 +1,2699 @@
+
+
+
+<!DOCTYPE html>
+<!-- Template by quackit.com -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+    <title>Core Card Api Quick Start</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/lib/bootstrap/dist/css/bootstrap.css?639312965691461491" rel="stylesheet" />
+    <link href="/css/style.css?639312965691461557" rel="stylesheet" />
+    <link href="/css/font-awesome.css?639312965691461678" rel="stylesheet" />
+    <script src="/lib/jquery/dist/jquery.js?639312965691461722"></script>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?639312965691461758"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            //$(".toggle").click(function () {
+            //    $(".flex-left").addClass("closebar");
+            //    $(".flex-right").removeClass("closebar");
+            //    $("#panel-close1").click(function () {
+            //        $(".flex-right").addClass("closebar");
+            //    });
+            //});
+
+            if ($('.flex-right')[0]) {
+                $('.flex-center').addClass("center-box");
+
+            } else {
+                $('.flex-center').removeClass("center-box");
+                $(".right-btn").parent('li').addClass("btn-cc");
+            }
+
+
+
+            $(".flex-center table").wrap("<div class='table-divbox'></div>")
+
+            var strleftLinkname = $("#btnCategoryName").val();
+            var strcenterLinkname = $("#h4APIName").text();
+            var strrightLinkname = $("#spnTryItOut").val();
+
+            if ($.trim(strleftLinkname) != "") {
+                $("#leftLink").text($.trim(strleftLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#leftLink").html("Category");
+            }
+
+            if ($.trim(strcenterLinkname) != "") {
+                $("#centerLink").text($.trim(strcenterLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#centerLink").html("Content");
+            }
+            if ($.trim(strrightLinkname) != "") {
+                $("#rightLink").text($.trim(strrightLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#rightLink").html("API List");
+            }
+
+            $(".left-btn").click(function () {
+
+                $(".flex-left").removeClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".center-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").removeClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".left-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".right-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").removeClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .left-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            var btn = $('#top-button');
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+        });
+        $(document).ready(function () {
+            //$(".toggle1").click(function () {
+            //    $(".flex-right").addClass("closebar");
+            //    $(".flex-left").removeClass("closebar");
+            //    $("#panel-close").click(function () {
+            //        $(".flex-left").addClass("closebar");
+            //    });
+            //});
+            //$(".dark-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#789db7", "color": "#fff" });
+            //});
+            //$(".light-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#f9f6f1", "color": "#212529"});
+            //});
+
+            $(".dark-mode").click(function () {
+                $(".dark-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".light-mode").css({ "background-color": "#f9f6f1", "color": "#032d55" });
+
+                $(".dark-modereq, .dark-moderes").parent().css({ "background-color": "#000000", "color": "#fff" });
+            });
+            $(".light-mode").click(function () {
+                $(".light-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".dark-mode").css({ "background-color": "#f5f6f8", "color": "#032d55" });
+
+                $(".light-modereq, .light-moderes").parent().css({ "background-color": "#f5f6f8", "color": "#032d55" });
+            });
+
+
+
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <header id="header">
+
+        <nav class="navbar navbar-expand-lg navbar-light top-header">
+            <a class="navbar-brand" href="#">
+                <img class="logo-img" src="/images/Logo.png" />
+            </a>
+            <!--<div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/GuidePage">Guide</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link hd-cool-link active-headerlink" href="/CoreCardApiReference">API Guide</a>
+                </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link hd-cool-link active-apiheaderlink" href="/WEBHook/CoreCardWEBHook">WEB Hook</a>
+            </li>-->
+            <!--</ul>
+            </div>-->
+
+            <div class="search-float">
+                <div class="search-anchor">
+                    <form id="search-form" action="Search/Index" class="form-inline my-2 my-lg-0">
+                        <input type="text" class="search-bar" placeholder="Search" name="searchTerm">
+                        <input type="text" class="search-bar" placeholder="Search" name="regionId" hidden value="1,1">
+                        <input class="search-submit" type="submit">
+                        <div class="search-toggle"></div>
+                    </form>
+
+                </div>
+            </div>
+
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <div class="navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav pt-2 custom-mob-nav">
+                    <li class="nav-item dropdown">
+
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Credit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=1&regionId=1">Core API</a>
+                                    <a class="dropdown-item" href="/CoreCardWEBHook?menuid=1&regionId=1">WEB Hook</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Prepaid/Debit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=2&regionId=1">Core API</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+                <ul class="navbar-nav pt-2 ml-auto custom-mob-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">US</a>
+                        <div class="dropdown-menu dropdown-menu-country">
+                            <a id="1" class="dropdown-item" href="/CoreCardApiReference?regionId=1">US</a>
+                            <a id="2" class="dropdown-item" href="/CoreCardApiReference?regionId=2">Global</a>
+
+                        </div>
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+        </nav>
+
+
+        <div class="mobile-btns-layout">
+            <ul class="btn-list-inline">
+                <li><a href="javascript:void(0);" id="leftLink" class="left-btn">Category List</a></li>
+                <li class="current-menu"><a href="javascript:void(0);" id="centerLink" class="center-btn">Content</a></li>
+                <li><a href="javascript:void(0);" id="rightLink" class="right-btn">API List</a></li>
+                <div class="clearfix"></div>
+            </ul>
+
+        </div>
+    </header>
+
+    <div class="container-fluid nopadding">
+        <div>
+            <a id="top-button"></a>
+
+
+
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Ed2qi4xb2JCm_4tCcgxuBciGFDwdnhz9i3-CMBf7kCTWlJSOtguPYoFAEPx--Acm10hs8XQrz7lyLrUOgXpmrcYlT2Jut4h_OUY4jPiefGKui39l-9WRVHxDff0GagFCihDmyTFXsJ88rtr9204P50" />
+<script>
+    (function ($) {
+        if (!$) { return; }
+        $(document).ajaxSend(function (event, xhr, settings) {
+            var method = (settings.type || 'GET').toUpperCase();
+            if (method === 'GET' || method === 'HEAD' || method === 'OPTIONS' || method === 'TRACE') { return; }
+            if (settings.crossDomain) { return; } // never send the token to another origin
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            if (token) { xhr.setRequestHeader('XSRF-TOKEN', token); }
+        });
+
+        // Destructive links (delete user/role/category/menu) are POST-only. Mark them with data-method="post"
+        // (optional data-confirm="..."); they are submitted as a POST form carrying the antiforgery token.
+        // A generated form is used because these links can sit inside other <form> elements.
+        $(document).on('click', 'a[data-method="post"]', function (e) {
+            e.preventDefault();
+            var message = $(this).attr('data-confirm');
+            if (message && !window.confirm(message)) { return; }
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            var form = $('<form method="post" style="display:none"></form>').attr('action', $(this).attr('href'));
+            form.append($('<input type="hidden" name="__RequestVerificationToken" />').val(token));
+            $('body').append(form);
+            form.trigger('submit');
+        });
+    })(window.jQuery);
+</script>
+
+            <script src="/js/svg-diagram-links.js?v=rhKKoQLmGKC2Pm3Utr9UDhdU4GmCNRW_Yl5EzzGtiBA"></script>
+            <div class="">
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/css/style.css?639312965691366108" rel="stylesheet" />
+    <link href="/css/swagger-ui.css?639312965691366273" rel="stylesheet" />
+    <script src="/js/cdn/jquery-ui.min.js?639312965691366325"></script>
+    <style>
+        .crepreMenu {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .hd-cool-link.active-headerlink::after {
+            width: 100%;
+        }
+
+        .sopblock-post {
+            border-color: #49cc90;
+            background: rgba(73,204,144,.1)
+        }
+
+        .sopblock-put {
+            border-color: #fca130;
+            background: rgba(252,161,48,.1);
+        }
+
+        .sopblock-delete {
+            border-color: #f93e3e;
+            background: rgba(249,62,62,.1);
+        }
+
+        .sopblock-get {
+            border-color: #61affe;
+            background: rgba(97,175,254,.1);
+        }
+
+        .sopblock {
+            margin: 0 0 15px;
+            border: 1px solid #49cc90;
+            border-radius: 4px;
+            -webkit-box-shadow: 0 0 3px rgba(0,0,0,.19);
+            box-shadow: 0 0 3px rgba(0,0,0,.19);
+        }
+
+        .sopblock-summary {
+            border-color: #49cc90;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .sopblock-summary-method {
+            background: #49cc90;
+            font-size: 14px;
+            font-weight: 700;
+            min-width: 80px;
+            padding: 6px 15px;
+            text-align: center;
+            border-radius: 3px;
+            text-shadow: 0 1px 0 rgba(0,0,0,.1);
+            font-family: Titillium Web,sans-serif;
+            color: #fff;
+        }
+
+        .sopblock-summary-path {
+            font-size: 16px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 0 10px;
+            font-family: Source Code Pro,monospace;
+            font-weight: 600;
+            color: #3b4151;
+        }
+    </style>
+</head>
+<body id="apiBody">
+    <div class="flex-left closebar">
+        <div class="parent-div-left">
+            <a href="#" id="panel-close" class="close-panel"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <nav class="left-column">
+                <div class="accordion" id="rightaccordion">
+                    <div class="card">
+                        <div class="card-header" id="rightheading">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#rightcollapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <a href="/GuidePage?id=23&amp;type=Category&amp;menuid=2&amp;regionId=1">Card Management</a>
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div>
+
+                            <div class="card-body">
+                                <h2 class="mb-0 rightlist-link">
+                                    <button id="btnCategoryName" value="Card Details" class="btn btn-link" type="button" data-toggle="collapse" data-target="#rightcollapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <a href="/GuidePage?id=23&amp;type=Category&amp;menuid=2&amp;regionId=1">Card Details</a>
+                                    </button>
+                                </h2>
+                                            <div class="card">
+                                                <div class="card-header" id="AdditionalCardDetail  1217 1196">
+                                                    <a href="/GuidePageApiDetail?id=1217&amp;type=ApiDetail&amp;menuid=2&amp;regionId=1&amp;subid=1018">AdditionalCardDetail</a>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="GetAdditionalCardDetails2  1209 1196">
+                                                    <a href="/GuidePageApiDetail?id=1209&amp;type=ApiDetail&amp;menuid=2&amp;regionId=1&amp;subid=1018">GetAdditionalCardDetails2</a>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header subCatHighLight" id="GetCardDetails">
+                                                    <a href="/GuidePageApiDetail?id=1196&amp;type=ApiDetail&amp;menuid=2&amp;regionId=1&amp;subid=1018">GetCardDetails</a>
+                                                </div>
+                                            </div>
+
+                                <div class="card-header" id="rightheading">
+                                    <h2 class="mb-0">
+                                            <a class="btn apibtn-link" href="/GuidePage?id=2136&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Card Balance Status
+                                            </a>
+                                            <a class="btn apibtn-link" href="/GuidePage?id=1017&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Card Activation
+                                            </a>
+                                            <a class="btn apibtn-link" href="/GuidePage?id=1019&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Card Plastic
+                                            </a>
+                                            <a class="btn apibtn-link" href="/GuidePage?id=1021&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Card Replacement
+                                            </a>
+                                            <a class="btn apibtn-link" href="/GuidePage?id=1020&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Card Status
+                                            </a>
+                                            <a class="btn apibtn-link" href="/GuidePage?id=1023&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Hold Embossing
+                                            </a>
+                                            <a class="btn apibtn-link" href="/GuidePage?id=1022&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Lock\Unlock Card
+                                            </a>
+                                            <a class="btn apibtn-link" href="/GuidePage?id=1041&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Other Miscellaneous Functions
+                                            </a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+
+                                    <div class="card">
+                                        <div class="card-header" id="AccountHolder16">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AccountHolder" aria-expanded="false" aria-controls="AccountHolder">
+                                                        <a href="/GuidePage?id=16&amp;type=Category&amp;menuid=2&amp;regionId=1">Account Holder</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="AccountManagement17">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AccountManagement" aria-expanded="false" aria-controls="AccountManagement">
+                                                        <a href="/GuidePage?id=17&amp;type=Category&amp;menuid=2&amp;regionId=1">Account Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="AlertManagement18">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AlertManagement" aria-expanded="false" aria-controls="AlertManagement">
+                                                        <a href="/GuidePage?id=18&amp;type=Category&amp;menuid=2&amp;regionId=1">Alert Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Authorizations19">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Authorizations" aria-expanded="false" aria-controls="Authorizations">
+                                                        <a href="/GuidePage?id=19&amp;type=Category&amp;menuid=2&amp;regionId=1">Authorizations</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="BeneficiaryManagement20">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#BeneficiaryManagement" aria-expanded="false" aria-controls="BeneficiaryManagement">
+                                                        <a href="/GuidePage?id=20&amp;type=Category&amp;menuid=2&amp;regionId=1">Beneficiary Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="BillPay21">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#BillPay" aria-expanded="false" aria-controls="BillPay">
+                                                        <a href="/GuidePage?id=21&amp;type=Category&amp;menuid=2&amp;regionId=1">BillPay</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="BranchManagement22">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#BranchManagement" aria-expanded="false" aria-controls="BranchManagement">
+                                                        <a href="/GuidePage?id=22&amp;type=Category&amp;menuid=2&amp;regionId=1">Branch Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="DigitalWallets24">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#DigitalWallets" aria-expanded="false" aria-controls="DigitalWallets">
+                                                        <a href="/GuidePage?id=24&amp;type=Category&amp;menuid=2&amp;regionId=1">Digital Wallets</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Dispute30">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Dispute" aria-expanded="false" aria-controls="Dispute">
+                                                        <a href="/GuidePage?id=30&amp;type=Category&amp;menuid=2&amp;regionId=1">Dispute</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="InventoryManagement25">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#InventoryManagement" aria-expanded="false" aria-controls="InventoryManagement">
+                                                        <a href="/GuidePage?id=25&amp;type=Category&amp;menuid=2&amp;regionId=1">Inventory Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Statement26">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Statement" aria-expanded="false" aria-controls="Statement">
+                                                        <a href="/GuidePage?id=26&amp;type=Category&amp;menuid=2&amp;regionId=1">Statement</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Token29">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Token" aria-expanded="false" aria-controls="Token">
+                                                        <a href="/GuidePage?id=29&amp;type=Category&amp;menuid=2&amp;regionId=1">Token Authentication</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Transactions27">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Transactions" aria-expanded="false" aria-controls="Transactions">
+                                                        <a href="/GuidePage?id=27&amp;type=Category&amp;menuid=2&amp;regionId=1">Transactions</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="UserManagement28">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#UserManagement" aria-expanded="false" aria-controls="UserManagement">
+                                                        <a href="/GuidePage?id=28&amp;type=Category&amp;menuid=2&amp;regionId=1">User Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="flex-center center-new">
+        <div class="mobile-btns">
+            <p class="btn-p toggle1"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>Category links</p>
+            <p class="btn-p toggle">API Links<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></p>
+            <div class="clearfix"></div>
+        </div>
+        <main id="center" class="">
+            <article>
+                            <div id="GetCardDetails" class="target-div">
+                                <h4 class="h4-name" id="h4APIName" value="GetCardDetails">
+                                    GetCardDetails
+                                </h4>
+                            </div>
+                            <div class="action-url">
+                                <p class="">
+                                    <strong class="">Action:</strong> <code class="">POST</code>
+                                </p>
+                                <p class="">
+                                    <strong class="">Endpoint:</strong> <code class="">/api/GetCardDetails</code>
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="">Use this API to get details of card which includes monetary details like Balance, Last load amount,outstanding authrization, Dispute amount and non monetary details like Account manual status,Branch name, OFAC score, card activation date.</p>
+                            </div>
+                            <h5 class="h5-heading">
+                                Request fields detail
+                            </h5>
+                            <table class="api-info table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Fields</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">APIVersion</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="red">
+                                                                Mandatory
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Version of the API to be invoked<br>Example: 1.3
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">10</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">IPAddress</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="red">
+                                                                Mandatory
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    IP Address of sender<br>Example:  10.206.0.204
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">15</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">Source</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="red">
+                                                                Mandatory
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService)<br>For external system expected source will be WEB.
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">50</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">CallerID</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Caller Id of source from where API is initiated. It is End User phone number.<br>Example: 7204454214 <br>Condition - applicable in Case of IVR
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">20</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">CalledID</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Called Id of destination for which API is initiated. It is Corecard IVR number.<br>Example: 7314145404 <br>Condition - applicable in Case of IVR
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">20</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">SessionID</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Reserved for future use
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">50</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">ANI</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Reserved for future use
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">0</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">DNS</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Reserved for future use
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">0</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">Language</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Flag to retrieve error message in specific language<br>Example: 'en' for English
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">2</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">RequestDate</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="green">
+                                                                Optional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Request Date Time of API     <br>Format: MM-DD-YYYYTHH:MM:SS<br>Example:- 11-12-2021T13:05:10
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">19</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">CardNumber</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="blue">
+                                                                Conditional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Clear Card Number of the cardholder<br>Valid values: 0-9<br>Example: 123456******0001<br>Condition:At least one of Card Number/Proxy Number is required.<br> 
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">16</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="">
+                                                <td class="td-body">
+                                                    <p class="">
+                                                        <span class="field-src">ProxyNumber</span>
+                                                    </p>
+                                                    <p class="">
+                                                        <span class="" style="font-style: italic;">string</span>
+                                                    </p>
+                                                        <p class="">
+                                                            <span class="blue">
+                                                                Conditional
+                                                            </span>
+                                                        </p>
+
+                                                </td>
+                                                <td class="td-body">
+                                                    Proxy Number of the cardholder<br>Valid values:0-9 <br>Example:1005 <br>Condition:At least one of Card Number/Proxy Number is required.<br>
+                                                        <p class=""><strong class="">Allowable Values:</strong></p>
+                                                        <p class="">19</p>
+                                                </td>
+                                            </tr>
+                                </tbody>
+                            </table>
+                            <h5 class="req-head">
+                                Sample request body
+                            </h5>
+                            <pre class="pre-req"><button class="dark-mode dark-modereq">Dark</button><button class="light-mode light-modereq">Light</button>{&#xD;&#xA;  &quot;APIVersion&quot;: &quot;1.3&quot;,&#xD;&#xA;  &quot;IPAddress&quot;: &quot;10.206.2.197&quot;,&#xD;&#xA;  &quot;Source&quot;: &quot;WEB&quot;,&#xD;&#xA;  &quot;CallerID&quot;: &quot;&quot;,&#xD;&#xA;  &quot;CalledID&quot;: &quot;&quot;,&#xD;&#xA;  &quot;SessionID&quot;: &quot;&quot;,&#xD;&#xA;  &quot;ANI&quot;: &quot;&quot;,&#xD;&#xA;  &quot;DNS&quot;: &quot;&quot;,&#xD;&#xA;  &quot;Language&quot;: &quot;en&quot;,&#xD;&#xA;  &quot;RequestDate&quot;: &quot;&quot;,&#xD;&#xA;  &quot;CardNumber&quot;: &quot;&quot;,&#xD;&#xA;  &quot;ProxyNumber&quot;: &quot;1316728&quot;&#xD;&#xA;}</pre>
+                            <h5 class="h5-heading">
+                                Response fields detail
+                            </h5>
+                            <table class="api-info table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Fields</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Message</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Returns Error Message in case of Error.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Status</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">boolean</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Returns result of API processing.<br>If any error is found then value will be 'false' else 'true'.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ErrorCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Returns Error Code in case of Error.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ResponseData</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        This is group of below data elements.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Bsegment</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Gets or sets Bsegment.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">AccountNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Account Number.<br>Valid values: 0-9<br>Example: 2000000000000396893
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">19</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">CurrentBalance</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Current balance after transaction,<br>Valid Values:0-9<br>Example: 50.00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">OFACScore</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Score received after OFAC Checks.<br>Example : 2
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">TotalOutStgAuthAmt</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Total outstanding authorization Amount.<br>Example : 100
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">AvailableBalance</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Available balance on the account<br>Valid values : 0-9<br>Example: 100.50
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">LastBulkOFACCheckDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Date and time of periodic OFAC Check of the accounts present in the system<br>Format:yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">LastTransactionDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Date of Last transaction posted on account<br>Format: yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">OFACInquiryDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        OFAC Inquiry Date<br>Format: yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">SavingAccountNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        If the account has multiple saving account, then This tag will return latest saving account details.<br>Valid values: 0-9<br>Example: 2000000000000396893
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">19</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">SavingAccountCurrentBalance</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        If the account has multiple saving account, then This tag will return latest saving account details.<br>Example: 1220
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">OverDraftStatus</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Current status of Overdraft facility of account.<br>Valid Values :<br>1 = Opt-in<br>2 = Opt-out
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">AllowedPINAccess</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        PIN Transaction allowed or not<br>Valid values :<br>0  = Allow<br>1  = Do not Allow<br>Example: 1
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">CashAccessAllowed</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Cash access Transaction allowed or not.<br>Valid values:<br>0 = No, 1= Yes<br>Example: 1
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">LexNexInquiryDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Lexis Nexis Inquiry Date<br>Format: yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">BranchID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">Int32</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Branch ID <br>Valid values: 0-9<br>Example: 1001
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">BranchName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Branch name<br>Example : Georgia Branch
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">50</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">CardGeneratedStatus</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Generated Status of Card<br>Example :New Card Pending Activation
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">AccountManualStatus</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Account Manual Status<br>Example: Fraud Suspicious
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">AccountGeneratedStatus</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Generated Status of account<br>Example :Active
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">ParentAccountNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Parent Account Number<br>Valid values: 0-9<br>Example: 2000000000000396893
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">19</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">PurchaseAmountOfLastTransaction</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Amount of last Purchase on account<br>Example: 1001
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">DateOfLastLoad</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Date when the card was last loaded<br>Format: yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">DisputeAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Disputed amount on the card<br>Example : 100
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">LastLoadAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Last Load Amount which was posted on account
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">OverDraftAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        This flag will display the Amount of overdraft allowed for Account.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">OFACMatchedBy</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Entity with which Account marked as OFAC.<br>Valid Values:  Primary and Secondary<br>Example: Primary
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">DirectDepositAdvanceAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Amount given in advance to cardholder, repaid/debited automatically <br>from the next Payroll deposit on the cardholder account.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">ImmediatePostACH</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Flag to indicate the posting of Future dated ACH Transaction will be done on effective date.<br>Valid Value: - <br>1= Not Allowed, <br>2 = All Credits and <br>3= Credits – Payroll<br>Example:- 1
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Embossing</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Gets or sets Embossing Data.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">CardExpiryDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Expiration Date of the card. <br>Format: yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">CardNumber4Digits</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Last  4 digits of the card.<br>Valid values : 0-9<br>Example : 4386
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">PendingCardExpDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Expiration Date of activation pending card<br>Format: yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">CardSequenceNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">Int32</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Card Sequence Number<br>Valid Values:0-9<br>Example: 03
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">SecondaryCardType</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Type of secondary card <br>Valid Values:0-2<br>0 = Regular Card<br>1 = Virtual Card<br>2 = Family Card<br>Example: 0 (Regular Card)
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">25</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">VirtualCardLimit</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Virtual card Limit when SecondaryCardType = 1<br>Family Card Usage Limit when SecondaryCardType = 2<br>Example : 100
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">VirtualCardResetLimitAllowed</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">boolean</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Resetting of Virtual card Limit is allowed or not<br>Valid values :<br>0 = Allow<br>1 = Do not Allow
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">VirtualCardResetAllowed</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Virtual Card Reset Allowed or not<br>Valid Values  0:Yes, 1 : No<br>Example : 1
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">VirtualCardExpiryOption</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Virtual Card Expiry Option<br>Valid values are 0,1,2<br>0 :- Card will expire after n number of transaction<br>1 :- Card will expire after n number of days/hour/Minutes/Month/Weeks/years<br>2 :- Card will expire on particular date
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">FraudSuspicious</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">Int32</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Account is Fraud suspicious or not<br>1 - Yes<br>2 - No
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">CardHandoverDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Card handover Date<br>Format: yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">EmbossCardStatus</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Card's embossing status<br>Example : Embossed
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">CardActivationDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Date of card activation<br>Format: yyyy-mm-ddThh:mm:ss<br>Example: 2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">PlasticCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Plastic Code<br>Valid values:0-9<br>Example: 32
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">PlasticName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Plastic Name<br>Valid Values: A-Z,a-z<br>Example : CashCard
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">50</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">DerivedStatus</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Status which is derived by considering Card Status (manual and generated) ,account status (manual and generated) and Card plastic status<br>Example: Active
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">FailedLinkCardAttempts</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">Int32</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Counter of failed link card attempts<br>Example : 3
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">LinkCardAttemptsProduct</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">Int32</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Number of link card attempts defined on product.<br>Example : 3
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">InvalidActivationEnrollmentAttempts</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">Int32</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Counter of invalid attempts of activation and enrollment process.<br>Example : 3
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">InvalidAccessCodeAttempts</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">Int32</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Counter of invalid access code attempts.<br>Example : 3
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">ProxyNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Proxy Number of the cardholder<br>Valid values:0-9 <br>Example:1005
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">CardLockUnlockStatus</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Flag to set card lock unlock status.<br>Valid values :<br>0: Card Unlocked<br>1: Card Locked<br>Example: 1
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">HoldEmbossing</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">Int32</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag to decide physical card or virtual card by holding embossing file.<br>Valid Values: <br>0 - No (Physical card)<br>1 - Yes (Virtual card)<br>
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">VirtualCardAvailableLimit</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Available Virtual Card Limit shows the <br>available limit after spending from Total Virtual<br>Card Limit.<br>Condition: SecondaryCardType = 1<br>then this options will be applicable<br>Example 100,200
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">UserInformation</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Gets or sets User Information.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">UserId</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        UserId of the cardholder<br>Valid Values: A-Z,a-z,0-9.<br>Example : Sam
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">UserFirstName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        First Name of user<br>Example : John
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">UserLastName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Last Name of user<br>Example : Morris
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">LastLoginDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Date of Last login <br>Format: yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">FailedAccessCodeChangeAttempts</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">Int32</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Counter of  failed access code change attempts.<br>Example : 3
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">LinkCardChecked_User</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Display or not to display the link card option of the primary card to the user.<br>Valid values :<br>0 = Do no display Link card option<br>1 = Display Link card Option
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">LinkCardChecked_Secondaycard_User</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Display or not to display the link card option for secondary card to the user.<br>Valid values :<br>0 = Do no display Link card option<br>1 = Display Link card option<br>Example : 1
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">DelinkCardChecked_User</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Display or not to display the Delink card option of the primary card to the user.<br>Valid values :<br>0 = Do no display Delink card option<br>1 = Display Deink card option
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">DelinkCardChecked_SecondaryCard_User</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Display or not to display the Delink card option for secondary card to the user.<br>Valid values :<br>0 = Do no display Link card option<br>1 = Display Link card option<br>Example : 1
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">LinkCardChecked_Product</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Display or not to display the link card option of the primary card as per product setting<br>Valid values :<br>0 = Do no display Link card option<br>1 = Display Link card option
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">LinkCardChecked_SecondayCard_Product</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Display or not to display the link card option of the secondary card as per product setting.<br>Valid values :<br>0 = Do no display Link card option<br>1 = Display Link card option
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">DelinkCardChecked_Product</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Display or not to display the Delink card option for primary card as per product setting.<br>Valid values :<br>0 = Do no display Link card option<br>1 = Display Link card option<br>Example : 1
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">DelinkCardChecked_SecondaryCard_Product</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Display or not to display the Delink card option of the secondary card as per product setting.<br>Valid values :<br>0 = Do no display Link card option<br>1 = Display Link card option
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Customer</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Gets or sets Customer Data.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">CustomerId</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Unique ID associated with Customer<br>Valid Values: 0-9 a-z<br>Format: xxxx<br>Example: abc2123
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">MaskedSocialSecurityNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Social Security number in masked form <br>Example : *****5645
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">DateofBirth</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DOB of cardholder<br>Format: yyyy-mm-ddThh:mm:ss<br>Example :2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">HomePhoneNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">Int64</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Home Phone Number. <br>Valid Values: 0-9<br>Example: 9812338769
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">WorkPhoneNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">Int64</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Cardholder  Work Phone Number   <br>Valid values:0-9<br>Example:9632581470
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">MobilePhoneNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">Int64</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Cardholder's Mobile Phone Number<br>Valid Values: 0-9<br>Example: 9876543210
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">EMailAddress1</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        E Mail Address 1 of Cardholder<br>Valid Values: A-Z, a-z, 0-9 @ .<br>Example: sem_pp1 @gmail.com
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">EMailAddress2</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        E Mail Address 2 of Card holder<br>Valid Values: A-Z, a-z, 0-9 @ .                                         <br>Example :  sem_pp1 @gmail.com
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">OtherIdCountry</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">5</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">OtherIDExpiryDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Expiration date of ID <br>Format: yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">OtherIDIssueDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates the Date of any other ID verification document which was issued.<br>Valid Values:0-9<br>Format: yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">OtherIdState</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        ID Issue State <br>Valid Values:Two Digit State Code:A-Z,a-z<br>Example:GA<br>Condition:This field is mandatory when IDName=  02,07 and Country = US<br>Appendix Section: Refer Appendix Section : State Codes(US)
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">HomePhExtension</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Home Phone Number Extension<br>Valid Values:0-9<br>Example:91
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">AlertEmailAddress</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Email address of the cardholder where alert should be sent<br>Valid Values: A-Z,a-z,0-9<br>Example : Core @gmail.com
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">MemberId</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        This tag indicates MemberID<br>Example : ABCD112
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">OFACInquiryDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        OFAC Inquiry Date<br>Format: yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">OFACScore</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Score received after OFAC Checks.<br>Example : 2
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">SDNEntry1</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Value imposed to an Account after OFAC Check via third party <br>Example:85
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">SDNEntry2</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Value imposed to an Account after OFAC Check via third party <br>Example:85
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">SDNEntry3</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Value imposed to an Account after OFAC Check via third party <br>Example:85
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">SDNEntry4</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Value imposed to an Account after OFAC Check via third party <br>Example:85
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">SDNEntry5</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Value imposed to an Account after OFAC Check via third party <br>Example:85
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">PreviousOFACScore</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Previous OFAC Score.<br>Example:85
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">OFACClearanceDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DateTime when the Account manually cleared from the OFAC status to Active status or to the status which was set before OFAC status.<br>Format: yyyy-mm-ddThh:mm:ss<br>Example:2017-09-26T00:00:00
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Address</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Gets or sets Address.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">Addressline1</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Address Line 1 of the Cardholder<br>Valid values : A-Z, a-z, 0-9 <br>Example: 15 Penang Street Point
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">Addressline2</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Address Line 2 of the Cardholder<br>Valid values: A-Z, a-z, 0-9 <br>Example: 1 mecca way
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">City</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Cardholder's City of residence <br>Valid values: A-Z, a-z, 0-9 <br>Example: Norcross
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">25</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">State</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Cardholder State of residence<br>Valid values are A-Z, a-z<br>Example: GA<br>Please refer Appendix Section : State Codes(US)
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">5</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">Country</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Two Character Country Code <br>Valid values :A-Z, a-z<br>Example: US<br>Refer Appendix section : Country Code Values
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">5</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">Postalcode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Cardholder Postal Code of Residence<br>Valid Values:A-Z,a-z,0-9<br>Example: 30093
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">10</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">Logo</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Gets or sets Logo.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">ProductName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Product Name of card<br>Example: Spend Product
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">FamilyCardAllow</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Family Card is allowed for this product or not.<br>Valid Values :<br>0 = Allow<br>1 = Do not Allow<br>Example : 1
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:50px!important">
+                    <p class="">
+                        <span class="">AdditionalCard</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Gets or sets Additional Card.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:75px!important">
+                    <p class="">
+                        <span class="">NameOnCard</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Name to be Embossed on Card<br>Valid values are A-Z, a-z, 0-9.<br>Example: Hudson M Charles
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">23</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+
+                                </tbody>
+                            </table>
+                            <h3 class="res-head">
+                                Sample response body
+                            </h3>
+                            <pre class="pre-res"><button class="dark-mode dark-moderes">Dark</button><button class="light-mode light-moderes">Light</button>{&#xD;&#xA;  &quot;Message&quot;: &quot;Successful.&quot;,&#xD;&#xA;  &quot;Status&quot;: true,&#xD;&#xA;  &quot;ErrorCode&quot;: &quot;00000&quot;,&#xD;&#xA;  &quot;ResponseData&quot;: {&#xD;&#xA;    &quot;Bsegment&quot;: {&#xD;&#xA;      &quot;AccountNumber&quot;: &quot;60000000032471&quot;,&#xD;&#xA;      &quot;CurrentBalance&quot;: 12.0,&#xD;&#xA;      &quot;OFACScore&quot;: &quot;&quot;,&#xD;&#xA;      &quot;TotalOutStgAuthAmt&quot;: 23.0,&#xD;&#xA;      &quot;AvailableBalance&quot;: 12.0,&#xD;&#xA;      &quot;LastBulkOFACCheckDate&quot;: &quot;2021-04-10T00:00:00&quot;,&#xD;&#xA;      &quot;LastTransactionDate&quot;: &quot;2020-12-01T00:00:00&quot;,&#xD;&#xA;      &quot;OFACInquiryDate&quot;: &quot;2020-03-01T00:00:00&quot;,&#xD;&#xA;      &quot;SavingAccountNumber&quot;: &quot;&quot;,&#xD;&#xA;      &quot;SavingAccountCurrentBalance&quot;: 84.33,&#xD;&#xA;      &quot;OverDraftStatus&quot;: &quot;No decision&quot;,&#xD;&#xA;      &quot;AllowedPINAccess&quot;: &quot;&quot;,&#xD;&#xA;      &quot;CashAccessAllowed&quot;: &quot;&quot;,&#xD;&#xA;      &quot;LexNexInquiryDate&quot;: &quot;2020-12-06T00:00:00&quot;,&#xD;&#xA;      &quot;BranchID&quot;: 5737,&#xD;&#xA;      &quot;BranchName&quot;: &quot;Convenient Card Top branch&quot;,&#xD;&#xA;      &quot;CardGeneratedStatus&quot;: &quot;Active&quot;,&#xD;&#xA;      &quot;AccountManualStatus&quot;: &quot;Active&quot;,&#xD;&#xA;      &quot;AccountGeneratedStatus&quot;: &quot;Active&quot;,&#xD;&#xA;      &quot;ParentAccountNumber&quot;: &quot;&quot;,&#xD;&#xA;      &quot;PurchaseAmountOfLastTransaction&quot;: 20.0,&#xD;&#xA;      &quot;DateOfLastLoad&quot;: &quot;2020-12-01T00:00:00&quot;,&#xD;&#xA;      &quot;DisputeAmount&quot;: 23.41,&#xD;&#xA;      &quot;LastLoadAmount&quot;: 12.0,&#xD;&#xA;      &quot;OverDraftAmount&quot;: 75.12,&#xD;&#xA;      &quot;OFACMatchedBy&quot;: &quot;Primary&quot;,&#xD;&#xA;      &quot;DirectDepositAdvanceAmount&quot;: 0.0,&#xD;&#xA;      &quot;ImmediatePostACH&quot;: &quot;&quot;&#xD;&#xA;    },&#xD;&#xA;    &quot;Embossing&quot;: {&#xD;&#xA;      &quot;CardExpiryDate&quot;: &quot;2026-12-01T00:00:00&quot;,&#xD;&#xA;      &quot;CardNumber4Digits&quot;: &quot;&quot;,&#xD;&#xA;      &quot;PendingCardExpDate&quot;: &quot;2031-04-01T00:00:00&quot;,&#xD;&#xA;      &quot;CardSequenceNumber&quot;: 1,&#xD;&#xA;      &quot;SecondaryCardType&quot;: &quot;&quot;,&#xD;&#xA;      &quot;VirtualCardLimit&quot;: 110.0,&#xD;&#xA;      &quot;VirtualCardAvailableLimit&quot;: 100.0,&#xD;&#xA;      &quot;VirtualCardResetLimitAllowed&quot;: true,&#xD;&#xA;      &quot;VirtualCardResetAllowed&quot;: &quot;1&quot;,&#xD;&#xA;      &quot;VirtualCardExpiryOption&quot;: &quot;&quot;,&#xD;&#xA;      &quot;FraudSuspicious&quot;: 2,&#xD;&#xA;      &quot;CardHandoverDate&quot;: &quot;2020-12-01T00:00:00&quot;,&#xD;&#xA;      &quot;EmbossCardStatus&quot;: &quot;Active&quot;,&#xD;&#xA;      &quot;CardActivationDate&quot;: &quot;2020-12-24T00:00:00&quot;,&#xD;&#xA;      &quot;PlasticCode&quot;: &quot;59&quot;,&#xD;&#xA;      &quot;PlasticName&quot;: &quot;Government Assistance Card - CN (59)&quot;,&#xD;&#xA;      &quot;DerivedStatus&quot;: &quot;Active&quot;,&#xD;&#xA;      &quot;FailedLinkCardAttempts&quot;: 5,&#xD;&#xA;      &quot;LinkCardAttemptsProduct&quot;: 5,&#xD;&#xA;      &quot;InvalidActivationEnrollmentAttempts&quot;: 6,&#xD;&#xA;      &quot;InvalidAccessCodeAttempts&quot;: 4,&#xD;&#xA;      &quot;ProxyNumber&quot;: &quot;1316728&quot;,&#xD;&#xA;      &quot;CardLockUnlockStatus&quot;: &quot;0&quot;,&#xD;&#xA;      &quot;HoldEmbossing&quot;: 1&#xD;&#xA;    },&#xD;&#xA;    &quot;UserInformation&quot;: {&#xD;&#xA;      &quot;UserId&quot;: &quot;shailab_1212&quot;,&#xD;&#xA;      &quot;UserFirstName&quot;: &quot;&quot;,&#xD;&#xA;      &quot;UserLastName&quot;: &quot;&quot;,&#xD;&#xA;      &quot;LastLoginDate&quot;: &quot;2020-12-01T00:00:00&quot;,&#xD;&#xA;      &quot;FailedAccessCodeChangeAttempts&quot;: 2,&#xD;&#xA;      &quot;LinkCardChecked_User&quot;: &quot;1&quot;,&#xD;&#xA;      &quot;LinkCardChecked_Secondaycard_User&quot;: &quot;1&quot;,&#xD;&#xA;      &quot;DelinkCardChecked_User&quot;: &quot;1&quot;,&#xD;&#xA;      &quot;DelinkCardChecked_SecondaryCard_User&quot;: &quot;1&quot;,&#xD;&#xA;      &quot;LinkCardChecked_Product&quot;: &quot;1&quot;,&#xD;&#xA;      &quot;LinkCardChecked_SecondayCard_Product&quot;: &quot;1&quot;,&#xD;&#xA;      &quot;DelinkCardChecked_Product&quot;: &quot;1&quot;,&#xD;&#xA;      &quot;DelinkCardChecked_SecondaryCard_Product&quot;: &quot;1&quot;&#xD;&#xA;    },&#xD;&#xA;    &quot;Customer&quot;: {&#xD;&#xA;      &quot;CustomerId&quot;: &quot;1027161&quot;,&#xD;&#xA;      &quot;MaskedSocialSecurityNumber&quot;: &quot;*****4343&quot;,&#xD;&#xA;      &quot;DateofBirth&quot;: &quot;1994-01-28T00:00:00&quot;,&#xD;&#xA;      &quot;HomePhoneNumber&quot;: 3453453453,&#xD;&#xA;      &quot;WorkPhoneNumber&quot;: 0,&#xD;&#xA;      &quot;MobilePhoneNumber&quot;: 0,&#xD;&#xA;      &quot;EMailAddress1&quot;: &quot;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="066846616b676f6a2865696b6b">[email&#160;protected]</a>&quot;,&#xD;&#xA;      &quot;EMailAddress2&quot;: &quot;&quot;,&#xD;&#xA;      &quot;OtherIdCountry&quot;: &quot;&quot;,&#xD;&#xA;      &quot;OtherIDExpiryDate&quot;: &quot;2026-04-15T00:00:00&quot;,&#xD;&#xA;      &quot;OtherIDIssueDate&quot;: &quot;2031-08-25T00:00:00&quot;,&#xD;&#xA;      &quot;OtherIdState&quot;: &quot;&quot;,&#xD;&#xA;      &quot;HomePhExtension&quot;: &quot;91&quot;,&#xD;&#xA;      &quot;AlertEmailAddress&quot;: &quot;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bfdac7ded2cfd3daffd8ded2d6d391dcd0d2">[email&#160;protected]</a>&quot;,&#xD;&#xA;      &quot;MemberId&quot;: &quot;&quot;,&#xD;&#xA;      &quot;OFACInquiryDate&quot;: &quot;2020-08-28T00:00:00&quot;,&#xD;&#xA;      &quot;OFACScore&quot;: &quot;100.0&quot;,&#xD;&#xA;      &quot;SDNEntry1&quot;: &quot;6365&quot;,&#xD;&#xA;      &quot;SDNEntry2&quot;: &quot;6365&quot;,&#xD;&#xA;      &quot;SDNEntry3&quot;: &quot;6365&quot;,&#xD;&#xA;      &quot;SDNEntry4&quot;: &quot;11378&quot;,&#xD;&#xA;      &quot;SDNEntry5&quot;: &quot;11378&quot;,&#xD;&#xA;      &quot;PreviousOFACScore&quot;: &quot;0&quot;,&#xD;&#xA;      &quot;OFACClearanceDate&quot;: &quot;2020-08-28T00:00:00&quot;&#xD;&#xA;    },&#xD;&#xA;    &quot;Address&quot;: {&#xD;&#xA;      &quot;Addressline1&quot;: &quot;gateway&quot;,&#xD;&#xA;      &quot;Addressline2&quot;: &quot;&quot;,&#xD;&#xA;      &quot;City&quot;: &quot;Houston&quot;,&#xD;&#xA;      &quot;State&quot;: &quot;TX&quot;,&#xD;&#xA;      &quot;Country&quot;: &quot;US&quot;,&#xD;&#xA;      &quot;Postalcode&quot;: &quot;45645&quot;&#xD;&#xA;    },&#xD;&#xA;    &quot;Logo&quot;: {&#xD;&#xA;      &quot;ProductName&quot;: &quot;Convenient Visa Payroll Card&quot;,&#xD;&#xA;      &quot;FamilyCardAllow&quot;: &quot;1&quot;&#xD;&#xA;    },&#xD;&#xA;    &quot;AdditionalCard&quot;: {&#xD;&#xA;      &quot;NameOnCard&quot;: &quot;shailab gupta&quot;&#xD;&#xA;    }&#xD;&#xA;  }&#xD;&#xA;}</pre>
+            </article>
+
+        </main>
+
+    </div>
+
+    <div class="flex-right new-right closebar">
+        <div class=" parent-div-right">
+            <a href="#" id="panel-close1" class="close-panel"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <span id="btn-swagger-GetCardDetails">
+                        <div class="sopblock sopblock-post">
+                            <div class="sopblock-summary sopblock-summary-POST">
+                                <span class="sopblock-summary-method">POST</span>
+                                <span class="sopblock-summary-path" data-path="/api/CoreCredit/MerchantManagement/UpdateMSR">
+                                    <a class="nostyle">
+                                        <span>/api/GetCardDetails</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </span>
+                    <div id="swagger-GetCardDetails"></div>
+        </div>
+    </div>
+    <input type="hidden" id="spnTryItOut" name="spnTryItOut" value="Try It Out" />
+    <!-- The Modal 1-->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/googleapis/jquery.min.js"></script>
+    <script src="/lib/dist/swagger-ui-bundle.js"></script>
+
+    <script src="/lib/dist/swagger-ui-standalone-preset.js"></script>
+
+
+    <div id="cms-tryout" data-enabled="false" hidden></div>
+
+        <script src='/lib/dist/v1_USPrepaidCardManagement_swaggerFilter.js?v=20261106'></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            //$("#loading").show().delay(5000).fadeOut();
+
+            $(".rmvClass, .close").click(function () {
+                $(".svg-modal.modal").removeClass("active");
+            });
+
+            $('.flex-right .card-body ul li').click(function (event) {
+                $('.active-rightlink').removeClass('active-rightlink');
+                $(this).addClass('active-rightlink');
+                event.preventDefault();
+            });
+
+        });
+        $(document).ready(function () {
+            var $menu = $(".apimenuul");
+            var $menu_a = $("a", $menu);
+            var id = false;
+            var sections = [];
+            var hash = function (h) {
+                if (history.pushState) {
+                    history.pushState(null, null, h);
+                } else {
+                    location.hash = h;
+                }
+            };
+
+
+            $menu_a.each(function () {
+                sections.push($($(this).attr("href")));
+            });
+
+            $(window).scroll(function (event) {
+                var scrolling = $(this).scrollTop() + $(this).height() / 3;
+                var scroll_id;
+                for (var i in sections) {
+                    var section = sections[i];
+                    if (scrolling > section.offset().top) {
+                        scroll_id = section.attr("id");
+                    }
+                }
+                if (scroll_id !== id) {
+                    id = scroll_id;
+                    $menu_a.removeClass("apiliactive");
+                    $("a[href='#" + id + "']", $menu).addClass("apiliactive");
+                }
+            });
+
+            $('#btn-swagger-GetCardDetails').click();
+        });
+
+    </script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"e68766ac58634d3bac78aacb71fbb169","spa":2}' crossorigin="anonymous"></script>
+</body>
+
+
+</html>
+
+
+</div>
+
+
+
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-txt">
+            Copyright &copy; 2026 CoreCard Software, Inc. All rights reserved
+        </p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+{
+    "metadata": {
+        "name": "LoyaltyPointsManagement",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Rewards/LoyaltyPointsManagement",
+        "description": "The purpose of this API is to manage the loyalty points with respect to Add/Reduce/Redeem for the Account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's Account Number. Valid Values:0-9 Example:8000000000000037 Condition:At least one of AdminNumber/AccountNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Account id) Valid Values:0-9 Example:82432455 Condition:At least one of AdminNumber/AccountNumber is required."
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "string",
+            "required": false,
+            "description": "To decide if Loyalty points needs to Add or Remove Valid Values: 0 = Add Loyalty Points 1 = Reduce Loyalty Points 2 = Redeem Loyalty Points Allowable Values: 2"
+        },
+        {
+            "name": "LoyaltyProgramID",
+            "type": "integer",
+            "required": true,
+            "description": "ID of Loyalty Program Valid Values:0-9 Format:XXXX Example:2345(Value shared by CoreCard)."
+        },
+        {
+            "name": "ValueofLoyaltyPoint",
+            "type": "decimal",
+            "required": false,
+            "description": "The value of loyalty points to Add/Reduce/Redeem for the Account. Valid Values:0-9 Example:150.50"
+        },
+        {
+            "name": "BankAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "This tag represents the Bank Account number / Method Name of the payment bank for the following redemption method: 1 = ACH. For the  9 = 'LoanPayDown' redemption method, this tag must contain the Loan ID to identify the loan account for loyalty points redemption. Valid Values:0-9 Example:123654214556 Condition: It is mandatory for 1 = ACH and 9 = LoanPayDown Redemption Method. Allowable Values: 19"
+        },
+        {
+            "name": "RedemptionMethod",
+            "type": "string",
+            "required": null,
+            "description": "Method by which loyalty points will be redeemed for the Account. Valid Values : 1 = ACH 3 = Statement Credit 5 = Partner Pay 9 = LoanPayDown Example:1 Condition: The 'RedemptionMethod' field is required when DecisionFlag = 2 (Redeem Loyalty Points). Allowable Values: 2"
+        },
+        {
+            "name": "LoanPayDown",
+            "type": "string",
+            "required": null,
+            "description": "Indicates whether Loyalty Points should be applied to loan payment. Valid Values:0-No and 1-Yes Example : 1 Condition: The 'LoanPayDown' field is required and must be set to 1 when RedemptionMethod = 9 (Loan Pay Down). Allowable Values: 2"
+        },
+        {
+            "name": "Notes",
+            "type": "string",
+            "required": false,
+            "description": "The note capture by the user. Valid Values:A-Z,0-9 Example : This is a test note Allowable Values: 1800"
+        },
+        {
+            "name": "ExternalReference",
+            "type": "string",
+            "required": false,
+            "description": "The field can accommodate various types of client-specific identifiers or references relevant to loyalty points transactions, which can be included in RewardsActivity DF. Valid Values: A-Z, a-z, 0-9 Example : REF123 Allowable Values: 128"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number indicates that API responded. Response ID is unique. This value will be null if no authentication information was passed. Response ID can be used for tracking. Example:7485122",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "700000000785214",
+        "AdminNumber": 100989,
+        "DecisionFlag": null,
+        "LoyaltyProgramID": null,
+        "ValueofLoyaltyPoint": null,
+        "BankAccountNumber": null,
+        "RedemptionMethod": null,
+        "LoanPayDown": null,
+        "Notes": null,
+        "ExternalReference": null
+    },
+    "sample_response": {
+        "Message": "Loyalty points processed successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01022",
+        "ResponseData": {
+            "ResponseID": "154545"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Reward Transactions",
+        "category_id": "23",
+        "document_id": "143",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=143&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=23&regionId=1"
+    }
+}

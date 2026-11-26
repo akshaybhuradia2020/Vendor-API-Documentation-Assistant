@@ -1,0 +1,1072 @@
+{
+    "metadata": {
+        "name": "GetCo-applicantDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetCoApplicantDetails",
+        "description": "This API is used to get Co-Applicant's customer information, communication details and ID details."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "CustomerID",
+            "type": "string",
+            "required": null,
+            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123 Allowable Values: 25"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345 Condition: At least one account identifier is required."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one account identifier is required. Allowable Values: 19"
+        },
+        {
+            "name": "CustomerID",
+            "type": "string",
+            "required": null,
+            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: 2123 Condition: At least one account identifier is required. Allowable Values: 25"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "CoApplicantTitle",
+            "type": "string",
+            "required": null,
+            "description": "Co-applicant Title like MR or MRS. Valid Values:0 to 17 Format: xx Example:01 Allowable Values: 2",
+            "children": []
+        },
+        {
+            "name": "CustomerID",
+            "type": "string",
+            "required": null,
+            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123 Allowable Values: 25",
+            "children": []
+        },
+        {
+            "name": "CoApplicantFirstName",
+            "type": "string",
+            "required": null,
+            "description": "Co- Applicantâ€™s First Name Valid Values:A-Z,0-9 Format:XXXXX Example:User1 Allowable Values: 40",
+            "children": []
+        },
+        {
+            "name": "CoApplicantMiddleName",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicantâ€™s Middle Name Valid Values:A-Z, 0-9 Format:XXXXX Example:Smith Allowable Values: 40",
+            "children": []
+        },
+        {
+            "name": "CoApplicantLastName",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflect the co-applicant Last Name Valid Values: 0-9 a-z Format: xxx Example: Tower Allowable Values: 40",
+            "children": []
+        },
+        {
+            "name": "CoApplicantSurnameSuffix",
+            "type": "string",
+            "required": null,
+            "description": "CoApplicantâ€™s Surname Suffix e.g. I, II, III, IV Valid Values: a-z Format: xxxx Example:  I, II Allowable Values: 5",
+            "children": []
+        },
+        {
+            "name": "CoApplicantAddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Co-applicant Address line1 Valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 50",
+            "children": []
+        },
+        {
+            "name": "CoApplicantAddressLine2",
+            "type": "string",
+            "required": null,
+            "description": "Co-applicant Address line2 Valid Values:A-Z, 0-9 Example:Park Avenue Allowable Values: 50",
+            "children": []
+        },
+        {
+            "name": "CoApplicantCity",
+            "type": "string",
+            "required": null,
+            "description": "Co-Applicantâ€™s City Valid Values:A-Z,0-9 Format:XXXXX Example:Chicago Allowable Values: 25",
+            "children": []
+        },
+        {
+            "name": "CoApplicantState",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflect the co-applicant State Valid Values: a-z Format: xxx Example: GA Allowable Values: 3",
+            "children": []
+        },
+        {
+            "name": "CoApplicantCountry",
+            "type": "string",
+            "required": null,
+            "description": "Co -Applicant's country Valid Values:A-Z, 0-9 Format:XXXXX Example:USA Allowable Values: 3",
+            "children": []
+        },
+        {
+            "name": "CoApplicantPostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Postal code of the CoApplicant address. Valid Values: 0-9 Format: xxxx Example:  12345 Allowable Values: 9",
+            "children": []
+        },
+        {
+            "name": "CoApplicantHomePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Co-applicant Home Phone Number Valid Values:0-9 Format:XXXXXXXXXX Example:7548264758 Allowable Values: 20",
+            "children": []
+        },
+        {
+            "name": "CoApplicantWorkPhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Co-applicant' work pone number Valid Values:0-9 Format:XXXXXXXXX Example:784565412 Allowable Values: 20",
+            "children": []
+        },
+        {
+            "name": "CoApplicantMobileNumber",
+            "type": "string",
+            "required": null,
+            "description": "CoApplicant's mobile number Valid Values: 0-9 Format: xxxx Example:  12548795541 Allowable Values: 11",
+            "children": []
+        },
+        {
+            "name": "CoApplicantOtherPhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "CoApplicant's Other Phone number Valid Values: 0-9 Format: xxxx Example:  12548795541 Allowable Values: 11",
+            "children": []
+        },
+        {
+            "name": "CoApplicantFaxNumber",
+            "type": "string",
+            "required": null,
+            "description": "CoApplicant's Fax number Valid Values: 0-9 Format: xxxx Example:  12548795541 Allowable Values: 11",
+            "children": []
+        },
+        {
+            "name": "CoApplicantCreditFilePhone",
+            "type": "string",
+            "required": null,
+            "description": "CoApplicant's Credit File Phone number Valid Values: 0-9 Format: xxxx Example:  12548795541 Allowable Values: 11",
+            "children": []
+        },
+        {
+            "name": "CoApplicantAlternatePhone",
+            "type": "string",
+            "required": null,
+            "description": "CoApplicant's Alternate Phone number Valid Values: 0-9 Format: xxxx Example:  12548795541 Allowable Values: 11",
+            "children": []
+        },
+        {
+            "name": "CoApplicantEmailID",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflect the co-applicant Email ID Valid Values: 0-9 a-z Format: xxx @xxx.xxx Example: abc @def.com Allowable Values: 300",
+            "children": []
+        },
+        {
+            "name": "CoApplicantMobileCarrier",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflect the co-applicant Mobile carrier company Valid Values:A-z, 0-9 Format:XXXXXXXX Example:Vodafone Allowable Values: 25",
+            "children": []
+        },
+        {
+            "name": "CoApplicantOptOutofEmailMarketing",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark opt out of Email Marketing. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantBadHomePhoneNUM",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark bad for home phone number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantBadMobileNUM",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark bad for mobile number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantBadWorkPhoneNUM",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark bad for work phone number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantBadFaxNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark bad for fax number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantBadCreditFilePhone",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark bad for credit file phone number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantBadAlternatePhone",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark bad for alternate phone number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantBadOtherPhoneNUM",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark bad for other phone number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantDoNotCallHomePhoneNUM",
+            "type": "integer",
+            "required": null,
+            "description": "Flag for do not call at home phone number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantDoNotCallMobileNUM",
+            "type": "integer",
+            "required": null,
+            "description": "Flag for do not call at Mobile Number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantDoNotCallWorkPhoneNUM",
+            "type": "integer",
+            "required": null,
+            "description": "Flag for do not call at work phone Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantDoNotCallOtherPhoneNUM",
+            "type": "integer",
+            "required": null,
+            "description": "Flag for do not call at other phone Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantDoNotCallFaxNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Flag for do not call at Fax Number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantDoNotCallCreditFilePhone",
+            "type": "integer",
+            "required": null,
+            "description": "Flag for do not call at Credit File Phone. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantDoNotCallAlternatePhone",
+            "type": "integer",
+            "required": null,
+            "description": "Flag for do not call at Alternate phone number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantOptOutTextMarketingOtherPhoneNUM",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark opt out text marketing for other phone number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantOptOutTextMarketingWorkPhoneNUM",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark opt out text marketing for work phone number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantOptOutTextMarketingHomePhoneNUM",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark opt out text marketing for home phone number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantOptOutTextMarketingFaxNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark opt out text marketing for fax number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantOptOutTextMarketingCreditFilePhone",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark opt out text marketing for credit file phone number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantOptOutTextMarketingAlternatePhone",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark opt out text marketing for alternate phone number. Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantDateofBirth",
+            "type": "datetime",
+            "required": null,
+            "description": "Co-Applicantâ€™s Date of Birth Valid Values: Format:MM/DD/YYYY Example:01/02/2021",
+            "children": []
+        },
+        {
+            "name": "CoApplicantResidenceType",
+            "type": "string",
+            "required": null,
+            "description": "Co-applicant residence type Valid Values: a-z Format: xxxx Example: Own Allowable Values: 50",
+            "children": []
+        },
+        {
+            "name": "CoApplicantDurationatAddress",
+            "type": "string",
+            "required": null,
+            "description": "Duration of stay on the address. Valid Values: 0-9 Format: xy,ab Example:  10,04 Allowable Values: 4",
+            "children": []
+        },
+        {
+            "name": "CoApplicantBadAddress",
+            "type": "integer",
+            "required": null,
+            "description": "Flag for Bad Address Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantBankruptcyNotificationDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Date when bankruptcy is notified Valid Values: 0-9 Format: MM/dd/YYYY Example: 10/10/2019",
+            "children": []
+        },
+        {
+            "name": "CoApplicantMaritalStatus",
+            "type": "integer",
+            "required": null,
+            "description": "Applicant Marital Status Valid Values: 0 - 6 Format: x Example:  1 = Married, 2 = Single, 3 = Divorced, 4 = Seperated, 5 = Common Law, 6 = Unknown",
+            "children": []
+        },
+        {
+            "name": "CoApplicantSSN",
+            "type": "string",
+            "required": null,
+            "description": "Co-applicantâ€™s Social Security Number Valid Values:0-9 Format:XXXXXXXXX Example:987456321 Allowable Values: 9",
+            "children": []
+        },
+        {
+            "name": "CoApplicantConsumerInformationIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Bankruptcy code for CoApplicant. Valid Values: 1A, 2A, A to V and Z Format: x Example:  1A Allowable Values: 2",
+            "children": []
+        },
+        {
+            "name": "CoApplicantGender",
+            "type": "integer",
+            "required": null,
+            "description": "CoApplicant's Gender Valid Values: 0 - 6 Format: x Example:  0 = No Information, 1 = Male, 2 = Female",
+            "children": []
+        },
+        {
+            "name": "CoApplicantCeaseandDesist",
+            "type": "integer",
+            "required": null,
+            "description": "Flag for Cease And Desist Indicator Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantBankruptcy",
+            "type": "integer",
+            "required": null,
+            "description": "Flag for Bankruptcy Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "CoApplicantDeceased",
+            "type": "integer",
+            "required": null,
+            "description": "This tag reflects whether the card holder is deceased or not. Valid Values: 0-9 Format: 0 or 1 Example: 0",
+            "children": []
+        },
+        {
+            "name": "CoApplicantThreePDM",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to mark 3PDM (Third party debt management) Valid Values: 0, 1 Format: x Example:  1",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "CoApplicantTitle",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co-applicant Title like MR or MRS. Valid Values:0 to 17 Format: xx Example:01 Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "CustomerID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123 Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantFirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co- Applicant’s First Name Valid Values:A-Z,0-9 Format:XXXXX Example:User1 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantMiddleName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co-Applicant’s Middle Name Valid Values:A-Z, 0-9 Format:XXXXX Example:Smith Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantLastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflect the co-applicant Last Name Valid Values: 0-9 a-z Format: xxx Example: Tower Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantSurnameSuffix",
+                    "type": "string",
+                    "required": null,
+                    "description": "CoApplicant’s Surname Suffix e.g. I, II, III, IV Valid Values: a-z Format: xxxx Example:  I, II Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantAddressLine1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co-applicant Address line1 Valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantAddressLine2",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co-applicant Address line2 Valid Values:A-Z, 0-9 Example:Park Avenue Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantCity",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co-Applicant’s City Valid Values:A-Z,0-9 Format:XXXXX Example:Chicago Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantState",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflect the co-applicant State Valid Values: a-z Format: xxx Example: GA Allowable Values: 30",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantCountry",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co -Applicant's country Valid Values:A-Z, 0-9 Format:XXXXX Example:USA Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantPostalCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Postal code of the CoApplicant address. Valid Values: 0-9 Format: xxxx Example:  12345 Allowable Values: 9",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantHomePhoneNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co-applicant Home Phone Number Valid Values:0-9 Format:XXXXXXXXXX Example:7548264758 Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantWorkPhoneNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co-applicant' work pone number Valid Values:0-9 Format:XXXXXXXXX Example:784565412 Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantMobileNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "CoApplicant's mobile number Valid Values: 0-9 Format: xxxx Example:  12548795541 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantOtherPhoneNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "CoApplicant's Other Phone number Valid Values: 0-9 Format: xxxx Example:  12548795541 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantFaxNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "CoApplicant's Fax number Valid Values: 0-9 Format: xxxx Example:  12548795541 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantCreditFilePhone",
+                    "type": "string",
+                    "required": null,
+                    "description": "CoApplicant's Credit File Phone number Valid Values: 0-9 Format: xxxx Example:  12548795541 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantAlternatePhone",
+                    "type": "string",
+                    "required": null,
+                    "description": "CoApplicant's Alternate Phone number Valid Values: 0-9 Format: xxxx Example:  12548795541 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantEmailID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflect the co-applicant Email ID Valid Values: 0-9 a-z Format: xxx @xxx.xxx Example: abc @def.com Allowable Values: 300",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantMobileCarrier",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflect the co-applicant Mobile carrier company Valid Values:A-z, 0-9 Format:XXXXXXXX Example:Vodafone Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantOptOutofEmailMarketing",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark opt out of Email Marketing. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantBadHomePhoneNUM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark bad for home phone number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantBadMobileNUM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark bad for mobile number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantBadWorkPhoneNUM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark bad for work phone number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantBadFaxNumber",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark bad for fax number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantBadCreditFilePhone",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark bad for credit file phone number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantBadAlternatePhone",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark bad for alternate phone number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantBadOtherPhoneNUM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark bad for other phone number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantDoNotCallHomePhoneNUM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag for do not call at home phone number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantDoNotCallMobileNUM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag for do not call at Mobile Number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantDoNotCallWorkPhoneNUM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag for do not call at work phone Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantDoNotCallOtherPhoneNUM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag for do not call at other phone Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantDoNotCallFaxNumber",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag for do not call at Fax Number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantDoNotCallCreditFilePhone",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag for do not call at Credit File Phone. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantDoNotCallAlternatePhone",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag for do not call at Alternate phone number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantOptOutTextMarketingOtherPhoneNUM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark opt out text marketing for other phone number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantOptOutTextMarketingWorkPhoneNUM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark opt out text marketing for work phone number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantOptOutTextMarketingHomePhoneNUM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark opt out text marketing for home phone number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantOptOutTextMarketingMobileNUM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark opt out text marketing Valid Values: 0,1 Format: x Example: 1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantOptOutTextMarketingFaxNumber",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark opt out text marketing for fax number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantOptOutTextMarketingCreditFilePhone",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark opt out text marketing for credit file phone number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantOptOutTextMarketingAlternatePhone",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark opt out text marketing for alternate phone number. Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantDateofBirth",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Co-Applicant’s Date of Birth Valid Values: Format:MM/DD/YYYY Example:01/02/2021",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantResidenceType",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co-applicant residence type Valid Values: a-z Format: xxxx Example: Own Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantDurationatAddress",
+                    "type": "string",
+                    "required": null,
+                    "description": "Duration of stay on the address. Valid Values: 0-9 Format: xy,ab Example:  10,04 Allowable Values: 4",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantBadAddress",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag for Bad Address Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantBankruptcyNotificationDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date when bankruptcy is notified Valid Values: 0-9 Format: MM/dd/YYYY Example: 10/10/2019",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantMaritalStatus",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Applicant Marital Status Valid Values: 0 - 6 Format: x Example:  1 = Married, 2 = Single, 3 = Divorced, 4 = Seperated, 5 = Common Law, 6 = Unknown",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantSSN",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co-applicant’s Social Security Number Valid Values:0-9 Format:XXXXXXXXX Example:987456321 Allowable Values: 9",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantConsumerInformationIndicator",
+                    "type": "string",
+                    "required": null,
+                    "description": "Bankruptcy code for CoApplicant. Valid Values: 1A, 2A, A to V and Z Format: x Example:  1A Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantGender",
+                    "type": "integer",
+                    "required": null,
+                    "description": "CoApplicant's Gender Valid Values: 0 - 6 Format: x Example:  0 = No Information, 1 = Male, 2 = Female",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantCeaseandDesist",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag for Cease And Desist Indicator Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantBankruptcy",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag for Bankruptcy Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantDeceased",
+                    "type": "integer",
+                    "required": null,
+                    "description": "This tag reflects whether the card holder is deceased or not. Valid Values: 0-9 Format: 0 or 1 Example: 0",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantThreePDM",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark 3PDM (Third party debt management) Valid Values: 0, 1 Format: x Example:  1",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AdminNumber": null,
+        "AccountNumber": null,
+        "CustomerID": "167332"
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "CoApplicantTitle": "06",
+            "CustomerID": "167308",
+            "CoApplicantFirstName": "Richard",
+            "CoApplicantMiddleName": "",
+            "CoApplicantLastName": "Test",
+            "CoApplicantSurnameSuffix": "I",
+            "CoApplicantAddressLine1": "161 BERGEN AVE",
+            "CoApplicantAddressLine2": "11111111",
+            "CoApplicantCity": "YUMA",
+            "CoApplicantState": "NJ",
+            "CoApplicantCountry": "US",
+            "CoApplicantPostalCode": "07621",
+            "CoApplicantHomePhoneNumber": "3369249402",
+            "CoApplicantWorkPhoneNumber": "4563218536",
+            "CoApplicantMobileNumber": "4563218536",
+            "CoApplicantOtherPhoneNumber": "4563218536",
+            "CoApplicantFaxNumber": "4563218536",
+            "CoApplicantCreditFilePhone": "4563218536",
+            "CoApplicantAlternatePhone": "4563218536",
+            "CoApplicantEmailID": " [email protected] ",
+            "CoApplicantMobileCarrier": "cwemail.com",
+            "CoApplicantOptOutofEmailMarketing": 0,
+            "CoApplicantBadHomePhoneNUM": 1,
+            "CoApplicantBadMobileNUM": 1,
+            "CoApplicantBadWorkPhoneNUM": 1,
+            "CoApplicantBadFaxNumber": 1,
+            "CoApplicantBadCreditFilePhone": 1,
+            "CoApplicantBadAlternatePhone": 1,
+            "CoApplicantBadOtherPhoneNUM": 1,
+            "CoApplicantDoNotCallHomePhoneNUM": 1,
+            "CoApplicantDoNotCallMobileNUM": 1,
+            "CoApplicantDoNotCallWorkPhoneNUM": 1,
+            "CoApplicantDoNotCallOtherPhoneNUM": 1,
+            "CoApplicantDoNotCallFaxNumber": 1,
+            "CoApplicantDoNotCallCreditFilePhone": 1,
+            "CoApplicantDoNotCallAlternatePhone": 1,
+            "CoApplicantOptOutTextMarketingOtherPhoneNUM": 1,
+            "CoApplicantOptOutTextMarketingWorkPhoneNUM": 1,
+            "CoApplicantOptOutTextMarketingHomePhoneNUM": 1,
+            "CoApplicantOptOutTextMarketingMobileNUM": null,
+            "CoApplicantOptOutTextMarketingFaxNumber": 1,
+            "CoApplicantOptOutTextMarketingCreditFilePhone": 1,
+            "CoApplicantOptOutTextMarketingAlternatePhone": 1,
+            "CoApplicantDateofBirth": "11/07/1937 00:00:00",
+            "CoApplicantResidenceType": "O",
+            "CoApplicantDurationatAddress": "10",
+            "CoApplicantBadAddress": 0,
+            "CoApplicantBankruptcyNotificationDate": "11/07/2019 00:00:00",
+            "CoApplicantMaritalStatus": null,
+            "CoApplicantSSN": null,
+            "CoApplicantConsumerInformationIndicator": null,
+            "CoApplicantGender": 0,
+            "CoApplicantCeaseandDesist": 0,
+            "CoApplicantBankruptcy": 0,
+            "CoApplicantDeceased": 0,
+            "CoApplicantThreePDM": 0
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=74&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4"
+    }
+}

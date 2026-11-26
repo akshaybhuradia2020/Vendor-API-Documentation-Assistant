@@ -1,0 +1,428 @@
+{
+    "metadata": {
+        "name": "TransactionHistoryDetail",
+        "http_method": "POST",
+        "endpoint": "/api/TransactionHistoryDetail",
+        "description": "Use this API to fetch transaction details."
+    },
+    "request_fields": [],
+    "response_fields": [],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.70",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "TransactionId": "2177254091"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "POSTING_DETAIL": {
+                "ACCOUNT": [
+                    {
+                        "CardNumberLast4Digits": "4386",
+                        "CurrencyCode": "840",
+                        "AccountAvailableBalance": "$ 100.50",
+                        "AccountCurrentBalance": "$ 5425.00"
+                    }
+                ],
+                "TRANSACTION": [
+                    {
+                        "TransactionId": "2154684348",
+                        "TransactionAmount": "$ 100.11",
+                        "FeeWavied": "No",
+                        "WaviedFeeAmount": "$ 0.00",
+                        "TransactionCode": "PS00D043R = Sign Purchase - REVERSAL",
+                        "TransactionDescription": " PS00D043R - Sign Purchase - REVERSAL",
+                        "DEBITCREDIT": "Credit",
+                        "LogicModule": "43 = PURCHASE DEBIT REVERSAL",
+                        "EffectiveDateandTime": "2020-02-10T00:00:00",
+                        "PostingDateandTime": "2020-02-10T00:00:00",
+                        "PostingFlag": "0,1",
+                        "InvoiceNumber": "987567757",
+                        "PostingReference": "TransactionPosted Successfully",
+                        "PostingTransactionSource": "17 = Visa SMS",
+                        "OriginalTransactionSource": "17 = Visa SMS",
+                        "PhysicalSource": "Visa",
+                        "Authorization": "Yes",
+                        "MessageIndicator": "SMS",
+                        "ReversalTransactionId": "147852369",
+                        "UserId": "Sam",
+                        "StoreNumber": "14622",
+                        "AcquirerNetworkID": "Visa programs, Private Label and non-Visa Authorization Gateway Services",
+                        "AcquiringInstitutionCountryCode": "840 = United States",
+                        "ThreeDSAuthenticationStatus": " Product Not Enrolled",
+                        "FraudSystemRecommendation": "",
+                        "FraudSystemScore": "",
+                        "FraudLabel": "None",
+                        "FirstFraudRuleandAction": "PSD2 - Article - 18",
+                        "OtherFraudRulesandActions": "txnaspctoflim"
+                    }
+                ],
+                "LinkedTransactionList": [
+                    {
+                        "TransactionID": "2154684348",
+                        "WalletorSavingPocketName": "Australian Dollar",
+                        "Amount": "200.00",
+                        "PostingWallet": "Yes"
+                    }
+                ]
+            },
+            "Authorization": {
+                "GENERAL": {
+                    "Repeat": "No",
+                    "TransactionId": "2154684348",
+                    "SystemTraceAuditNumber": "000001",
+                    "MessageTypeIdentifier": "0420 = Acquirer Reversal/Reversal Advice",
+                    "LocalTransactionDateTime": "2020-02-10T00:00:00",
+                    "RetrievalTraceReferenceNumber": "000000000001",
+                    "PostingDateAndTime": "2020-02-10T00:00:00",
+                    "ProcessingCode": "Goods/Service purchase POS transaction only",
+                    "ExpirationDate": "2020-02-10T00:00:00",
+                    "SettlementDate": "2020-02-10T00:00:00",
+                    "RequestResponseCode": "",
+                    "AdditionalResponseData": "",
+                    "ConversionDate": "2020-02-10T00:00:00",
+                    "RecordData": "",
+                    "AdviceResponseCode": "",
+                    "AuthExpiration": "",
+                    "FinancialNetworkCode": "",
+                    "CardSequenceNumber": "00",
+                    "TransactionLifeCycleUniqueId": "22788314",
+                    "AcquirerNetworkID": "",
+                    "InterChangeGroupIdentifier": "57820cf1f2f3f1f2f3f1f2f3f1f2f1",
+                    "ARNNumber": "",
+                    "SchemeTransactionID": "",
+                    "SwitchSerialNumber": "",
+                    "Decision": {
+                        "AuthorizationCode": "568130",
+                        "AuthorizationStatus": "Matched",
+                        "InternalResponseCode": "Successful approval",
+                        "ResponseCode": "Approved or Completed successfully",
+                        "ForcePost": "No",
+                        "CVVResponse": "CVV was not verified"
+                    },
+                    "AuthDecisionControlLogDetails": {
+                        "ADCLog": [
+                            {
+                                "ControlId": "101128",
+                                "ControlName": "EMV:ARQC Verification",
+                                "Response": "Decline"
+                            }
+                        ]
+                    },
+                    "OriginalDataElements": {
+                        "OriginalMessageType": "0200 = Financial Request",
+                        "OriginalSystemTraceAuditNumber": "000001",
+                        "OriginalTransmission": "03/06/2024 10:45:27 PM",
+                        "OriginalDateTime": "",
+                        "OriginalAcquirerInstitutionIDCode": "00000000000",
+                        "OriginalForwardingId": "00000000000",
+                        "OriginalSequenceNumber": "",
+                        "OriginalCaptureDate": "2020-02-10T00:00:00"
+                    },
+                    "AddressVerificationDetails": {
+                        "AVSCheckAndAuthData": "N",
+                        "AVSResponse": "N",
+                        "AddressLine1": "1 meca way",
+                        "CalculatedCardholderAddressData": "",
+                        "ZipCode": "30093",
+                        "ReceivedAddressData": "",
+                        "ReceivedZipCode": ""
+                    },
+                    "TokenDetails": {
+                        "TokenNumber": "",
+                        "TokenAssuranceLevel": "",
+                        "TokenRequestorID": "01234567890",
+                        "TokenReferenceID": "DNITHE3021189657412",
+                        "TokenExpiryDate": "",
+                        "DeviceID": "12349",
+                        "DeviceName": "iPhone 13 Pro",
+                        "DeviceNumber": "",
+                        "DeviceType": "05"
+                    }
+                },
+                "POS_MERCHANT": {
+                    "Merchant": {
+                        "MerchantType": "5411 = Grocery Stores And Supermarkets",
+                        "MerchantName": "ACQUIRER NAME",
+                        "MerchantNameandAddress": "CARD ACCEPTOR  ACQUIRER NAME",
+                        "MerchantCity": "Atlanta",
+                        "State": "21546",
+                        "Country": "US",
+                        "AcquiringInstitutionCountryCode": "GB = United Kingdom of Great Britain and Ireland"
+                    },
+                    "POS": {
+                        "POSEntryMode": "Mag stripe read-track 1/2 included",
+                        "POSConditionCode": "00",
+                        "POSPINCaptureCode": "",
+                        "CardAcceptorTerminalIDCode": "ATM01",
+                        "CardAcceptorIDCode": "CARD ACCEPTOR",
+                        "CardAcceptorNameLocation": "ACQUIRER NAME CITY NAME GB",
+                        "AcquirerTraceData": "",
+                        "MasterCardAssignedID": "1234569",
+                        "PINSignatureAuthIdentifier": "Signature",
+                        "CardExpirationDate": "1115",
+                        "HoldAmount": "60.30",
+                        "HoldDate": "2020-02-10T00:00:00"
+                    },
+                    "DataCode": {
+                        "CardDataInputCapability": "",
+                        "CardholderAuthMethod": "1 = Pin",
+                        "CardholderAuthCapability": "",
+                        "CardholderAuthEntity": "1 = Integrated cir card",
+                        "CardCaptureCapability": "0 = Terminal/opera does not have card capture capability",
+                        "CardDataOutputCapability": "1 = Not capable",
+                        "OperatingEnvironment": "1 = On premises of acceptor, attended",
+                        "TerminalOutputCapability": "",
+                        "CardholderPresent": "Populate Code and Name Both.",
+                        "TerminalOperator": "",
+                        "CardPresent": "0=Not present",
+                        "TerminalType": "A= Contactless rea capability via magstripe run",
+                        "CardDataInputMode": ""
+                    },
+                    "POSGeographicData": {
+                        "StateCode": "US",
+                        "CountryCode": "US",
+                        "PostalServiceCode": "30093",
+                        "Country": "GB = United Kingdom of Great Britain and Ireland"
+                    },
+                    "EntryMode": {
+                        "PANEntryMode": "90 = Mag stripe read-track 1/2 included",
+                        "PANEntryCapability": "0 = Unknown or Terminal not used"
+                    }
+                },
+                "AMOUNTS": {
+                    "Amount": {
+                        "TransactionCurrencyCode": "840 = U.S.Dollar",
+                        "SettlementCurrencyCode": "840",
+                        "CardholderBillingAmount": "215.11",
+                        "CardholderBillingFee": "11.11",
+                        "TranProcessingFeeAmount": "Populate Fee and Amount Both.",
+                        "TransactionFeeIndicator": "D= $ 4.00",
+                        "TransactionFeeAmount": "D= $ 4.00",
+                        "SettlementFeeIndicator": "Populate Fee and Amount Both.",
+                        "SettlementFeeAmount": "Populate Fee and Amount Both.",
+                        "CountryCode": "840 = U.S.Dollar",
+                        "TransactionAmount": "200.000",
+                        "TransactionSourceAmount": "200.000",
+                        "SettlementProcessingFeeAmount": "Populate Fee and Amount Both.",
+                        "AdditionalFees": "10"
+                    },
+                    "ReplacementAmount": {
+                        "ActualAmountTransaction": "200.000",
+                        "ActualAmountCardholderBilling": "200.000",
+                        "ActualAmountSettlement": "200.000",
+                        "TransactionFeeIndicator": "Populate Fee and Amount Both.",
+                        "TransactionFeeAmount": "Populate Fee and Amount Both.",
+                        "SettlementFeeIndicator": "Populate Fee and Amount Both.",
+                        "SettlementFeeAmount": "Populate Fee and Amount Both."
+                    },
+                    "AdditionalAmount": [
+                        {
+                            "AmountTypes": "",
+                            "Amount": "200.00"
+                        }
+                    ]
+                }
+            },
+            "Completion": {
+                "GENERAL": {
+                    "Repeat": "No",
+                    "TransactionId": "2154684348",
+                    "SystemTraceAuditNumber": "000001",
+                    "MessageTypeIndentifier": "0420 = Acquirer Reversal/Reversal Advice",
+                    "LocalTransactionDateTime": "2020-02-10T00:00:00",
+                    "RetrievalTraceReferenceNumber": "000000000001",
+                    "PostingDateAndTime": "2020-02-10T00:00:00",
+                    "ProcessingCode": "Goods/Service purchase POS transaction only",
+                    "ExpirationDate": "2020-02-10T00:00:00",
+                    "SettlementDate": "2020-02-10T00:00:00",
+                    "RequestResponseCode": "",
+                    "AdditionalResponseData": "",
+                    "ConversionDate": "2020-02-10T00:00:00",
+                    "RecordData": "",
+                    "AdviceResponseCode": "",
+                    "AVSCheckandAuthData": "",
+                    "FinancialNetworkCode": "",
+                    "CardSequenceNumber": "00",
+                    "TransactionLifeCycleUniqueId": "22788314",
+                    "AcquirerNetworkID": "",
+                    "InterChangeGroupIdentifier": "57820cf1f2f3f1f2f3f1f2f3f1f2f1",
+                    "ARNNumber": "",
+                    "SchemeTransactionID": "",
+                    "SwitchSerialNumber": "",
+                    "Decision": {
+                        "AuthorizationCode": "568130",
+                        "AuthorizationStatus": "Matched",
+                        "InternalResponseCode": "Successful approval",
+                        "ResponseCode": "Approved or Completed successfully",
+                        "ForcePost": "No",
+                        "CVVResponse": "CVV was not verified"
+                    },
+                    "AuthDecisionControlLogDetails": {
+                        "ADCLog": [
+                            {
+                                "ControlId": "101128",
+                                "ControlName": "EMV:ARQC Verification",
+                                "Response": "Decline"
+                            }
+                        ]
+                    },
+                    "OriginalDataElements": {
+                        "OriginalMessageType": "0200 = Financial Request",
+                        "OriginalSystemTraceAuditNumber": "000001",
+                        "OriginalTransmission": "03/06/2024 10:45:27 PM",
+                        "OriginalDateTime": "",
+                        "OriginalAcquirerInstitutionIDCode": "00000000000",
+                        "OriginalForwardingId": "00000000000",
+                        "OriginalSequenceNumber": "",
+                        "OriginalCaptureDate": "2020-02-10T00:00:00"
+                    },
+                    "AddressVerificationDetails": {
+                        "AVSCheckAndAuthData": "N",
+                        "AVSResponse": "N",
+                        "AddressLine1": "1 meca way",
+                        "CalculatedCardholderAddressData": "",
+                        "ZipCode": "30093",
+                        "ReceivedAddressData": "",
+                        "ReceivedZipCode": ""
+                    }
+                },
+                "POS_MERCHANT": {
+                    "Merchant": {
+                        "MerchantType": "5411 = Grocery Stores And Supermarkets",
+                        "MerchantName": "ACQUIRER NAME",
+                        "MerchantNameandAddress": "CARD ACCEPTOR  ACQUIRER NAME",
+                        "MerchantCity": "Atlanta",
+                        "State": "21546",
+                        "Country": "US",
+                        "AcquiringInstitutionCountryCode": "GB = United Kingdom of Great Britain and Ireland"
+                    },
+                    "POS": {
+                        "POSEntryMode": "Mag stripe read-track 1/2 included",
+                        "POSConditionCode": "00",
+                        "POSPINCaptureCode": "",
+                        "CardAcceptorTerminalIDCode": "ATM01",
+                        "CardAcceptorIDCode": "CARD ACCEPTOR",
+                        "CardAcceptorNameLocation": "ACQUIRER NAME CITY NAME GB",
+                        "AcquirerTraceData": "",
+                        "MasterCardAssignedID": "1234569",
+                        "PINSignatureAuthIdentifier": "Signature",
+                        "CardExpirationDate": "1115",
+                        "HoldAmount": "60.30",
+                        "HoldDate": "2020-02-10T00:00:00"
+                    },
+                    "DataCode": {
+                        "CardDataInputCapability": "",
+                        "CardholderAuthMethod": "1 = Pin",
+                        "CardholderAuthCapability": "",
+                        "CardholderAuthEntity": "1 = Integrated cir card",
+                        "CardCaptureCapability": "0 = Terminal/opera does not have card capture capability",
+                        "CardDataOutputCapability": "1 = Not capable",
+                        "OperatingEnvironment": "1 = On premises of acceptor, attended",
+                        "TerminalOutputCapability": "",
+                        "CardholderPresent": "Populate Code and Name Both.",
+                        "TerminalOperator": "",
+                        "CardPresent": "0=Not present",
+                        "TerminalType": "A= Contactless rea capability via magstripe run",
+                        "CardDataInputMode": ""
+                    },
+                    "POSGeographicData": {
+                        "StateCode": "US",
+                        "CountryCode": "US",
+                        "PostalServiceCode": "30093",
+                        "Country": "GB = United Kingdom of Great Britain and Ireland"
+                    },
+                    "EntryMode": {
+                        "PANEntryMode": "90 = Mag stripe read-track 1/2 included",
+                        "PANEntryCapability": "0 = Unknown or Terminal not used"
+                    }
+                },
+                "AMOUNTS": {
+                    "Amount": {
+                        "TransactionCurrencyCode": "840 = U.S.Dollar",
+                        "SettlementCurrencyCode": "840",
+                        "CardholderBillingAmount": "215.11",
+                        "CardholderBillingFee": "11.11",
+                        "TranProcessingFeeAmount": "Populate Fee and Amount Both.",
+                        "TransactionFeeIndicator": "D= $ 4.00",
+                        "TransactionFeeAmount": "D= $ 4.00",
+                        "SettlementFeeIndicator": "Populate Fee and Amount Both.",
+                        "SettlementFeeAmount": "Populate Fee and Amount Both.",
+                        "CountryCode": "840 = U.S.Dollar",
+                        "TransactionAmount": "200.000",
+                        "TransactionSourceAmount": "200.000",
+                        "SettlementProcessingFeeAmount": "Populate Fee and Amount Both.",
+                        "AdditionalFees": "10"
+                    },
+                    "ReplacementAmount": {
+                        "ActualAmountTransaction": "200.000",
+                        "ActualAmountCardholderBilling": "200.000",
+                        "ActualAmountSettlement": "200.000",
+                        "TransactionFeeIndicator": "Populate Fee and Amount Both.",
+                        "TransactionFeeAmount": "Populate Fee and Amount Both.",
+                        "SettlementFeeIndicator": "Populate Fee and Amount Both.",
+                        "SettlementFeeAmount": "Populate Fee and Amount Both."
+                    },
+                    "AdditionalAmount": [
+                        {
+                            "AmountTypes": "",
+                            "Amount": "200.00"
+                        }
+                    ]
+                }
+            },
+            "Settlement": {
+                "Merchant": {
+                    "CardAcceptorIdCode": "687555537877464",
+                    "MerchantCategoryCode": "687555537877464",
+                    "OriginalTransactionDate": "2022-09-06T00:00:00",
+                    "TransactionAmount": "$ 100.11",
+                    "MerchantName": "Midwest Emporium",
+                    "MerchantCity": "Columbia",
+                    "MerchantStateOrCountry": "USA",
+                    "AuthorizationDateAndTime": "2027-07-05T00:00:00",
+                    "ApprovalCode": "039819",
+                    "SystemTraceAuditNumber": "000001"
+                },
+                "POS": {
+                    "TransactionIdNumber": "123456789012",
+                    "OriginalPostDate": "2027-07-05T00:00:00",
+                    "ProcCode": "00 = Purchase(of goods or services)",
+                    "PANEntryMode": "81 = Radio Frequency Identification Indicator – Magnetic Stripe",
+                    "PINentryMode": "1 = PIN entry capability",
+                    "POSDeviceAttendanceIndicator": "1",
+                    "POSPartialApprovalIndicator": "I",
+                    "POSDeviceLocationIndicator": "I",
+                    "POSCardholderPresenceIndicator": "I",
+                    "POSCardCaptureCapabilityIndicator": "0 = Terminal/operator has no card capture capability",
+                    "POSTransactionStatusIndicator": "I = Incremental Authorizations",
+                    "POSTransactionSecurityIndicator": "N",
+                    "POSDeviceCardDataInputModeCapabilityIndicator": "2",
+                    "NetworkReferenceId": "123456789088",
+                    "ResponseCode": "00 = Approved or Completed successfully"
+                }
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Transaction History Detail",
+        "category_id": "2137",
+        "document_id": "2617",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=2617&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=2137&regionId=1"
+    }
+}

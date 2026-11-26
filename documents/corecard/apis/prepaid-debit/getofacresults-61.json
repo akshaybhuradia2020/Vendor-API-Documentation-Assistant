@@ -1,0 +1,373 @@
+{
+    "metadata": {
+        "name": "GetOFACResults",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetOFACResults",
+        "description": "The purpose of this API is to get the OFAC details of the Account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition:At least one of AdminNumber/AccountNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition:At least one of AdminNumber/AccountNumber is required."
+        },
+        {
+            "name": "ApplicantType",
+            "type": "integer",
+            "required": false,
+            "description": "type of Applicants. Valid Value: 1 = Applicant 2 = Co-Applicant 3 = Cosigner 4 = Secondary Card Format:XXXXX Example: 1 Condition: Default value in Request should be 1-Applicant"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "LastIndividualOFACCheckDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Previous Date on which Account screened for OFAC. Format:MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "LastBulkOFACCheckDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Previous Date on which Account screened  for OFAC as part of Bulk OFAC screening. Format:MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "OFACScore",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Score which is imposed to an Account after OFAC Check via any third party and basis SDNEntries(For Exmaple: ISTWatch). Example:85",
+                    "children": []
+                },
+                {
+                    "name": "SDNEntry1",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Value imposed to an Account after OFAC Check via any third party(For Exmaple: ISTWatch). Example:85",
+                    "children": []
+                },
+                {
+                    "name": "SDNEntry2",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Value imposed to an Account after OFAC Check via any third party(For Exmaple: ISTWatch). Example:90",
+                    "children": []
+                },
+                {
+                    "name": "SDNEntry3",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Value imposed to an Account after OFAC Check via any third party(For Exmaple: ISTWatch). Example:90",
+                    "children": []
+                },
+                {
+                    "name": "SDNEntry4",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Value imposed to an Account after OFAC Check via any third party(For Exmaple: ISTWatch). Example:85",
+                    "children": []
+                },
+                {
+                    "name": "SDNEntry5",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Value imposed to an Account after OFAC Check via any third party(For Exmaple: ISTWatch). Example:85",
+                    "children": []
+                },
+                {
+                    "name": "ApplicantType",
+                    "type": "integer",
+                    "required": null,
+                    "description": "type of Applicants. Valid Value: 0-Applicant 1-CoSigner 2-Secondary Card Format:XXXXX Example: 1",
+                    "children": []
+                },
+                {
+                    "name": "OFACResultList",
+                    "type": "array",
+                    "required": null,
+                    "description": "NonMonetaryActivities",
+                    "children": [
+                        {
+                            "name": "OFACScoreNew",
+                            "type": "integer",
+                            "required": null,
+                            "description": "OFAC Score.",
+                            "children": []
+                        },
+                        {
+                            "name": "SDNEntry",
+                            "type": "string",
+                            "required": null,
+                            "description": "Database identification number",
+                            "children": []
+                        },
+                        {
+                            "name": "Name",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name.",
+                            "children": []
+                        },
+                        {
+                            "name": "Street",
+                            "type": "string",
+                            "required": null,
+                            "description": "Street address.",
+                            "children": []
+                        },
+                        {
+                            "name": "City",
+                            "type": "string",
+                            "required": null,
+                            "description": "City.",
+                            "children": []
+                        },
+                        {
+                            "name": "Country",
+                            "type": "string",
+                            "required": null,
+                            "description": "Country.",
+                            "children": []
+                        },
+                        {
+                            "name": "DuplicateID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Duplicate database identification number.",
+                            "children": []
+                        },
+                        {
+                            "name": "RecordDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date of record insertion into list.",
+                            "children": []
+                        },
+                        {
+                            "name": "Memo",
+                            "type": "string",
+                            "required": null,
+                            "description": "Additional personal information (date of birth and such).",
+                            "children": []
+                        },
+                        {
+                            "name": "DPL",
+                            "type": "string",
+                            "required": null,
+                            "description": "Listed as Denied Person.",
+                            "children": []
+                        },
+                        {
+                            "name": "SDNType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of a specially designated national.",
+                            "children": []
+                        },
+                        {
+                            "name": "Program",
+                            "type": "string",
+                            "required": null,
+                            "description": "Sanctions programs that list this entity.",
+                            "children": []
+                        },
+                        {
+                            "name": "PostalCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Postal code (denied persons only).",
+                            "children": []
+                        },
+                        {
+                            "name": "EffectiveDate",
+                            "type": "string",
+                            "required": null,
+                            "description": "Entry effective date (denied persons only).",
+                            "children": []
+                        },
+                        {
+                            "name": "ExpirationDate",
+                            "type": "string",
+                            "required": null,
+                            "description": "Entry expiration date (denied persons only).",
+                            "children": []
+                        },
+                        {
+                            "name": "Title",
+                            "type": "string",
+                            "required": null,
+                            "description": "Title or position.",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "8110000000000018",
+        "AdminNumber": null,
+        "ApplicantType": 1
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "LastIndividualOFACCheckDate": null,
+            "LastBulkOFACCheckDate": null,
+            "OFACScore": null,
+            "SDNEntry1": null,
+            "SDNEntry2": null,
+            "SDNEntry3": null,
+            "SDNEntry4": null,
+            "SDNEntry5": null,
+            "ApplicantType": null,
+            "OFACResultList": [
+                {
+                    "OFACScoreNew": null,
+                    "SDNEntry": null,
+                    "Name": null,
+                    "Street": null,
+                    "City": null,
+                    "Country": null,
+                    "DuplicateID": null,
+                    "RecordDate": null,
+                    "Memo": null,
+                    "DPL": null,
+                    "SDNType": null,
+                    "Program": null,
+                    "PostalCode": null,
+                    "EffectiveDate": null,
+                    "ExpirationDate": null,
+                    "Title": null
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "External Parties",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=61&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=5"
+    }
+}

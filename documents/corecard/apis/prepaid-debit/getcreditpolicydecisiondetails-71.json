@@ -1,0 +1,327 @@
+{
+    "metadata": {
+        "name": "GetCreditPolicyDecisionDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetCreditPolicyDecisionDetails",
+        "description": "This API is used to get Credit Policy decision details such as name of Credit Policy, GDS Code, GDS description and BKPlus Score."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "ApplicationID",
+            "type": "int64",
+            "required": true,
+            "description": "This tag reflects the ApplicationID Valid Values:0-9 Format:XXXXXXXXXX Example:1234569875"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "BankAuditDetailsList",
+                    "type": "array",
+                    "required": null,
+                    "description": "BankAuditDetailsList",
+                    "children": [
+                        {
+                            "name": "GDSCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Specific code for Global Descisioning Score. Valid Values: 0-9, A-Z Format:  xxxxxx Example: GDS003 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "GDSDecription",
+                            "type": "string",
+                            "required": null,
+                            "description": "The description of Global Descisioning Score Valid Values: 0-9, A-Z Format: xxx xxx xxx Example: Limited Credit Experience Allowable Values: 500",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "CreditPolicy",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name of Credit Policy Valid Values: A-Z, 0-9 Format: abcdefghijk Example: Child Policy Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "BKPlusScore",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Predicts the likelihood of future bankruptcies on any type of account within 24 months. Provides a score range of 1 to 1400 (low score = low risk) Valid Values: 0 - 9 Format: xxxx Example:  0635",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicationBKPlusScore",
+                    "type": "string",
+                    "required": null,
+                    "description": "Predicts the likelihood of future bankruptcies on Co-Applicant account within 24 months. Provides a score range of 1 to 1400 (low score = low risk) Valid Values: 0 - 9 Format: xxxx Example: 0635",
+                    "children": []
+                },
+                {
+                    "name": "RequestedLoanAmt",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "RequestedLoanAmt Valid Values: 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "Apartment",
+                    "type": "string",
+                    "required": null,
+                    "description": "Apartment Valid Values: A-Z, 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "CAApartment",
+                    "type": "string",
+                    "required": null,
+                    "description": "CAApartment Valid Values: A-Z, 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "ProgramState",
+                    "type": "string",
+                    "required": null,
+                    "description": "ProgramState Valid Values: A-Z, 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "CreditLimit",
+                    "type": "string",
+                    "required": null,
+                    "description": "CreditLimit Valid Values: 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "Status",
+                    "type": "string",
+                    "required": null,
+                    "description": "Status Valid Values: A-Z, 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "MerchantName",
+                    "type": "string",
+                    "required": null,
+                    "description": "MerchantName Valid Values: A-Z, 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "DTI",
+                    "type": "string",
+                    "required": null,
+                    "description": "DTI Valid Values: A-Z, 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "MaximumCreditLimit",
+                    "type": "string",
+                    "required": null,
+                    "description": "MaximumCreditLimit Valid Values: 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicationIncome",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "CoApplicationIncome Valid Values: 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "ProgramAddress1",
+                    "type": "string",
+                    "required": null,
+                    "description": "ProgramAddress1 Valid Values: A-Z, 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "ProgramAddress2",
+                    "type": "string",
+                    "required": null,
+                    "description": "ProgramAddress2 Valid Values: A-Z, 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "ProgramCity",
+                    "type": "string",
+                    "required": null,
+                    "description": "ProgramCity Valid Values: A-Z, 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "ProgramZip",
+                    "type": "string",
+                    "required": null,
+                    "description": "ProgramZip Valid Values: A-Z, 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "ApplicationFICOScore",
+                    "type": "string",
+                    "required": null,
+                    "description": "ApplicationFICOScore Valid Values: A-Z, 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicationFICOScore",
+                    "type": "string",
+                    "required": null,
+                    "description": "CoApplicationFICOScore Valid Values: A-Z, 0-9 Format: 123 Example: Child Policy",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "ApplicationID": 8002200220
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "BankAuditDetailsList": [
+                {
+                    "GDSCode": "",
+                    "GDSDecription": ""
+                }
+            ],
+            "CreditPolicy": "",
+            "BKPlusScore": 1,
+            "CoApplicationBKPlusScore": "1",
+            "RequestedLoanAmt": 0.0,
+            "Apartment": null,
+            "CAApartment": null,
+            "ProgramState": null,
+            "CreditLimit": null,
+            "Status": null,
+            "MerchantName": null,
+            "DTI": null,
+            "MaximumCreditLimit": null,
+            "CoApplicationIncome": 0.0,
+            "ProgramAddress1": null,
+            "ProgramAddress2": null,
+            "ProgramCity": null,
+            "ProgramZip": null,
+            "ApplicationFICOScore": null,
+            "CoApplicationFICOScore": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=71&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4"
+    }
+}

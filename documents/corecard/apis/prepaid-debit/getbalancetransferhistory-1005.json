@@ -1,0 +1,565 @@
+{
+    "metadata": {
+        "name": "GetBalanceTransferHistory",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetBalanceTransferHistory",
+        "description": "This API is used to get history of a Balance Transfer transaction."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format: XXXXX Example: 12345"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values: 0-9 Example: 7314145404 Condition: 1 At least one of AccountID/AdminNumber/AccountNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values: 0-9 Format: XXXXX Example: 12345 Condition: 1 At least one of AccountID/AdminNumber/AccountNumber is required."
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format: XXXXX Example: 12345"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values: 0-9 Example: 7314145404 Condition: 1 At least one of AccountID/AdminNumber/AccountNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values: 0-9 Format: XXXXX Example: 12345 Condition: 1 At least one of AccountID/AdminNumber/AccountNumber is required."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "GetBalanceTransferLogList",
+            "type": "array",
+            "required": null,
+            "description": "GetBalanceTransferLogModel list",
+            "children": []
+        },
+        {
+            "name": "GetBalanceTransferLogList",
+            "type": "array",
+            "required": null,
+            "description": "GetBalanceTransferLogModel list",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "GetBalanceTransferHistoryLog",
+                    "type": "array",
+                    "required": null,
+                    "description": "GetBalanceTransferLogModel list",
+                    "children": [
+                        {
+                            "name": "TransactionID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Number for the  transaction being posted. Valid Values:0-9 a-z Format:XXXXXXXXXXXXXXXX Example:23654789 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account Number of card holder Valid Values: 0 - 9 Format: xxxx Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeAccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee’s Account Number for BT (Card No. / Loan Account Number) Valid Values: 0 - 9 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeAccountType",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Payee account type. 1 – Loan. 2 – Card. Valid Values: 1/2 Format: x",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNumber",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Card Number of account holder Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "ID assigned to a Program Valid Values: 0-9 Format: XXXX Example: Fixed value provided by CoreCard.",
+                            "children": []
+                        },
+                        {
+                            "name": "AvailableBTAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Available Balance Transfer Amount Valid Values:0-9 Format: XXX.XX Example: 500.00 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "RequestedBTAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount requested for Balance Transfer. Valid Values: 0 - 9 Format: xxxx Example: 500.00 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditorsName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Creditor entity Name. Valid Values: 0 - 9 a-z Format: xxxx Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeAddressLine1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee Address Line 1. Valid Values: 0 - 9 a-z Format: xxxx Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeAddressLine2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee Address Line 2. Valid Values: 0 - 9 a-z Format: xxxx Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeAddressLine3",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee Address Line 3. Valid Values: 0 - 9 a-z Format: xxxx Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeAddressLine4",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee Address Line 4. Valid Values: 0 - 9 a-z Format: xxxx Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeCity",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee City. Valid Values: 0 - 9 a-z Format: xxxx Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeState",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee State. Valid Values: 0 - 9 a-z Format: xxxx Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeCountry",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee Country. Valid Values: 0 - 9 a-z Format: xxxx Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "PromotionPlanID",
+                            "type": "string",
+                            "required": null,
+                            "description": "ID of Promo Plan Valid Values: 0 - 9 a-z Format: xxxx Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date and Time of transaction occured Valid Values: 0 - 9 Format: MM:DD:YYYY HH/MM/SS Example: 12:11:2020 11/00/00",
+                            "children": []
+                        },
+                        {
+                            "name": "ACIStatusCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status Code received from 3rd party Payment gateway (ACI). Valid Values: Check, Electronic, Rejected, Error, Unknown Format: Check Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "ACIStatusMessage",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status message received from 3rd party Payment gateway (ACI). Valid Values: A-Z, 0-9 Format: xxxx xxxx xxxxx xxxx Example: Your request has been processed Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "BTPaymentDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "BT transaction posting date. Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 02/02/2020 11:00:00 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "OriginatorPaymentID",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the ID created at the issuer end. This ID will be acting as lifecycle ID. Valid Values: 0 - 9 a-z Format: xxxx Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Pending/Cancelled Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "eComPaymentId",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique ID received from 3rd party Payment Gateway API (ACI API). Valid Values: A-Z, 0-9 Format: xxxxxxxxxx Example: 1234567890 Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "BTRequestDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "BT transaction request date. Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 02/02/2020 11:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee name Valid Values:a-z Format : XXXX Example : John",
+                            "children": []
+                        },
+                        {
+                            "name": "CIN",
+                            "type": "string",
+                            "required": null,
+                            "description": "Customer Identification Number. Valid Values: 0-9 Format: xxxxxx Example: 1234568 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeePostalCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payee’s Postal Code. Valid Values: 0 - 9 Format: xxxx Allowable Values: 9",
+                            "children": []
+                        },
+                        {
+                            "name": "BatchId",
+                            "type": "string",
+                            "required": null,
+                            "description": "The identifier of the batch, which is assigned by the system. Valid Values:0-9 Example:1234 Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "AdjustmentAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The amount received in the adjustment file from 3rd party payment gateway. Valid Values: 0-9 Format: xxxx Example: 1234",
+                            "children": []
+                        },
+                        {
+                            "name": "AdjustmentDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when amount is reverse posted as mentioned in Adjustment File received from 3rd party payment gateway (ACI). Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 02/02/2020 11:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionFeeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Transaction Fee Amount ($). Valid Values: 0 - 9 Format: xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalTransactionAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Sum of requested BT amount and Transaction Fees. Valid Values: 0-9 Format: xxxx Example: 1234",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionWindowEndDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoOfferEndDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "",
+                            "children": []
+                        },
+                        {
+                            "name": "BTCancellationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountID": 167605,
+        "AccountNumber": null,
+        "AdminNumber": null
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "GetBalanceTransferHistoryLog": [
+                {
+                    "TransactionID": "123372036855563836",
+                    "AccountNumber": "8110000000000364",
+                    "PayeeAccountNumber": "************9000",
+                    "PayeeAccountType": 2,
+                    "CardNumber": null,
+                    "ProductID": 3409,
+                    "AvailableBTAmount": null,
+                    "RequestedBTAmount": 1200.0,
+                    "CreditorsName": "ABCL",
+                    "PayeeAddressLine1": "ABCL1",
+                    "PayeeAddressLine2": "ABCL2",
+                    "PayeeAddressLine3": "ABCL3",
+                    "PayeeAddressLine4": "ABCL4",
+                    "PayeeCity": "Atlanta",
+                    "PayeeState": "GA   ",
+                    "PayeeCountry": "US",
+                    "PromotionPlanID": "6165",
+                    "TransactionDateTime": "03/31/2016 00:00:00",
+                    "ACIStatusCode": "0",
+                    "ACIStatusMessage": "Your request has been processed successfully.",
+                    "BTPaymentDate": "03/31/2016 00:00:00",
+                    "OriginatorPaymentID": "4120981",
+                    "PaymentStatus": "CHECK",
+                    "eComPaymentId": "99081279",
+                    "BTRequestDate": "03/31/2016 00:00:00",
+                    "PayeeName": null,
+                    "CIN": null,
+                    "PayeePostalCode": "12345",
+                    "BatchId": null,
+                    "AdjustmentAmount": null,
+                    "AdjustmentDate": null,
+                    "TransactionFeeAmount": 0.0,
+                    "TotalTransactionAmount": 0.0,
+                    "TransactionWindowEndDate": null,
+                    "PromoOfferEndDate": null,
+                    "BTCancellationDate": null
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1005&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1001"
+    }
+}

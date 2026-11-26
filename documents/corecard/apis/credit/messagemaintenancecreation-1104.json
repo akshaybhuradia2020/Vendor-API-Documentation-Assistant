@@ -1,0 +1,246 @@
+{
+    "metadata": {
+        "name": "MessageMaintenanceCreation",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/MessageMaintenanceCreation",
+        "description": "This API is used to create Message Maintenance Templates."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique identification number for Institution"
+        },
+        {
+            "name": "MessageCategory",
+            "type": "string",
+            "required": true,
+            "description": "The message category for Message Maintenance Valid Values: 0,1,2,3,4 Example: 0-Status, 1-Period, 2-Monetary, 3-Security, 4-Cards Allowable Values: 20"
+        },
+        {
+            "name": "MessageType",
+            "type": "string",
+            "required": true,
+            "description": "Indicates the type of message Valid Values: 0,1 Example: 0- Email, 1-SMS Allowable Values: 10"
+        },
+        {
+            "name": "TemplateName",
+            "type": "string",
+            "required": true,
+            "description": "Name of the Template Valid Values: a-z,0-9"
+        },
+        {
+            "name": "TemplateLanguage",
+            "type": "string",
+            "required": true,
+            "description": "Indicates the Language of the Template Valid Values: ‘en’ Example: ‘en’"
+        },
+        {
+            "name": "TemplateStatus",
+            "type": "string",
+            "required": true,
+            "description": "Indicates the Status of the Template Valid Values: 1, 2 Example: 1-Active,2-Inactive"
+        },
+        {
+            "name": "Subject",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the Subject of the Template Valid Values: a-z, 0-9 Condition: Subject is not allowed to enter when Message type selected as SMS"
+        },
+        {
+            "name": "MessageText",
+            "type": "string",
+            "required": true,
+            "description": "Indicates the message text of the Template Valid Values: a-z, 0-9"
+        },
+        {
+            "name": "MessageFormat",
+            "type": "string",
+            "required": true,
+            "description": "Indicates the type of message format Valid Values: 0,1 Example: 0-Plain Text,1-HTML"
+        },
+        {
+            "name": "TemplateVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the Template Valid Values: 0-9"
+        },
+        {
+            "name": "DLTTemplateId",
+            "type": "string",
+            "required": false,
+            "description": "Required for SMS Template if going to use \"JSON Karix API\" SMS Service option Example: a-z, 0-9"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ErrorMessage",
+                    "type": "string",
+                    "required": null,
+                    "description": "Get or Set ErrorMessage",
+                    "children": []
+                },
+                {
+                    "name": "Info_Code",
+                    "type": "string",
+                    "required": null,
+                    "description": "Get or Set Info_Code",
+                    "children": []
+                },
+                {
+                    "name": "TemplateID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Get or Set TemplateID",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "InstitutionID": 3235,
+        "MessageCategory": "11",
+        "MessageType": "0",
+        "TemplateName": "abcd",
+        "TemplateVersion": "1",
+        "TemplateLanguage": "en",
+        "TemplateStatus": "1",
+        "Subject": "abcd",
+        "MessageText": "abcd",
+        "MessageFormat": "0",
+        "DLTTemplateId": null
+    },
+    "sample_response": {
+        "Message": "Template Created Successfully",
+        "Status": true,
+        "ErrorCode": "ERR01155",
+        "ResponseData": {
+            "ErrorMessage": null,
+            "Info_Code": null,
+            "TemplateID": "1234"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Control Parameters",
+        "category_id": "1005",
+        "document_id": "1104",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1104&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005&regionId=1"
+    }
+}

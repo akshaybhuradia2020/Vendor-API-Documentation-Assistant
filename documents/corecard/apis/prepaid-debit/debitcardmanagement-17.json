@@ -1,0 +1,268 @@
+{
+    "metadata": {
+        "name": "DebitCardManagement",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/DebitCardManagement",
+        "description": "The purpose of this API is to securely store debit card details, such as Card Number, Expiry Date, Name on Card, Billing Address, and other Debit Card Information for future transactions."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number of the Cardholder. Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 8000000000000037 Condition: At least one account identifier — Account Number, Admin Number, or Application ID—is required."
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Admin number is the Unique ID associated with the Cardholder. Valid Values: 0-9 Format: XXXXX Example: 12345 Condition: At least one account identifier—Account Number, Admin Number, or Application ID—is required."
+        },
+        {
+            "name": "RequestType",
+            "type": "integer",
+            "required": true,
+            "description": "The type of Action that needs to be executed on the Debit Card. Valid Values: 0 = Add Debit Card 1 = Delete Debit Card 2 = Generate Debit Card Token using Debit Card Information 3 = Update Debit Card Details Format: X Example: 3 Note: '3' - 'Update Debit Card Details' is not valid if Debit Card Setup at Product level = \"Base Commerce\""
+        },
+        {
+            "name": "Token",
+            "type": "string",
+            "required": null,
+            "description": "A hash value getting generated based on Request Type Required If Request Type = 0(Add Debit Card, 1 = Delete Debit Card) Valid Values: 0-1, A-Z Condition: This tag is applicable only if Debit Card Setup at Product level = \"Base Commerce\" and will be ignored if Debit Card Setup at Product Level is \"Internal\"."
+        },
+        {
+            "name": "DebitCardNumber",
+            "type": "string",
+            "required": null,
+            "description": "16 Digit Card Number mentioned in debit card Condition: Required If Request Type = 0 (Add Debit Card) and  Debit card Setup at Product is \"Internal\" and will be ignored if Debit Card Setup at Product Level is \"Base Commerce\". Note: A Debit Card Number cannot be updated once created.However, other associated details can be updated as required. Allowable Values: 16"
+        },
+        {
+            "name": "ExpirationDate",
+            "type": "string",
+            "required": null,
+            "description": "Expiration Date mentioned on Debit card. Format: MMYY Example: 0220 Condition: Required If Request Type = 0 (Add Debit Card) and Debit card Setup at Product is \"Internal\" and will be ignored if Debit Card Setup at Product Level is \"Base Commerce\". Allowable Values: 4"
+        },
+        {
+            "name": "CardCVV",
+            "type": "string",
+            "required": null,
+            "description": "CVV Number of the card"
+        },
+        {
+            "name": "MethodName",
+            "type": "string",
+            "required": null,
+            "description": "Method Name uniquely identifies Debit Card information in Core card system. Whenever user adds any Debit card information, this API returns Method Name against successful addition of bank account. Condition: Required if request type = 1 (delete request) or 3 (Update Debit Card Details)"
+        },
+        {
+            "name": "ApplicantType",
+            "type": "string",
+            "required": false,
+            "description": "Selects the type of Applicants. Valid Values: 1 - Applicant 2 - Co-Applicant 3 - Cosigner Format: x Example:  1"
+        },
+        {
+            "name": "ApplicationID",
+            "type": "integer",
+            "required": null,
+            "description": "Application ID of the Applicant. Condition: At least one account identifier—Account Number, Admin Number, or Application ID—is required."
+        },
+        {
+            "name": "CardholderName",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder's name on card Condition: Required If Request Type = 0 (Add Debit Card) and Debit card Setup at Product is \"Internal\" and will be ignored if Debit Card Setup at Product Level is \"Base Commerce\". Allowable Values: 24"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Applicant’s address line 1. Valid Values: A-Z, 0-9 Example: 123 HWY Condition: Required If Request Type = 0 (Add Debit Card) and Debit card Setup at Product is \"Internal\" and will be ignored if Debit Card Setup at Product Level is \"Base Commerce\". Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Applicant’s address line 2. Valid Values: A-Z,0-9 Example: Park Avenue Condition: Required If Request Type = 0 (Add Debit Card) and Debit card Setup at Product is \"Internal\" and will be ignored if Debit Card Setup at Product Level is \"Base Commerce\". Allowable Values: 50"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": null,
+            "description": "City name of the applicant’s address. Example: Los Angeles Condition: Required If Request Type = 0 (Add Debit Card) and Debit card Setup at Product is \"Internal\" and will be ignored if Debit Card Setup at Product Level is \"Base Commerce\". Allowable Values: 25"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": null,
+            "description": "Applicant’s State name. Valid Values: Refer Appendix Section State Codes Example: AK Condition: Required If Request Type = 0 (Add Debit Card) and Debit card Setup at Product is \"Internal\" and will be ignored if Debit Card Setup at Product Level is \"Base Commerce\". Allowable Values: 30"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Postal code of the applicant’s address. Valid Values: 0-9 Example: 46206 Condition: Required If Request Type = 0 (Add Debit Card) and Debit card Setup at Product is \"Internal\" and will be ignored if Debit Card Setup at Product Level is \"Base Commerce\". Allowable Values: 9"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number will ensure that API hit our internal servers. This will always be unique. It can also be null when API is returned from our external servers example - If we pass blank User Id and Password in input then this will be null. This ID can be used for tracking purpose of any request hit the core card internal servers.",
+                    "children": []
+                },
+                {
+                    "name": "MethodName",
+                    "type": "string",
+                    "required": null,
+                    "description": "This will be returned when new Debit Card will be added.",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "WEB",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "9000000500000048",
+        "AdminNumber": 12345,
+        "RequestType": 0,
+        "Token": "12346",
+        "DebitCardNumber": "4256368978459696",
+        "ExpirationDate": "0222",
+        "CardCVV": "069",
+        "MethodName": "1",
+        "ApplicantType": "1",
+        "ApplicationID": null,
+        "CardholderName": null,
+        "AddressLine1": null,
+        "AddressLine2": null,
+        "City": null,
+        "State": null,
+        "PostalCode": null
+    },
+    "sample_response": {
+        "Message": "Debit Card Management Added",
+        "Status": true,
+        "ErrorCode": "ERR01132",
+        "ResponseData": {
+            "ResponseID": "56894601",
+            "MethodName": "3243"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=17&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4"
+    }
+}

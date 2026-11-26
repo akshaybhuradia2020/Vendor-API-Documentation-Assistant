@@ -1,0 +1,1395 @@
+
+
+
+<!DOCTYPE html>
+<!-- Template by quackit.com -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+    <title>Core Card Api Quick Start</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/lib/bootstrap/dist/css/bootstrap.css?639312964675321114" rel="stylesheet" />
+    <link href="/css/style.css?639312964675321169" rel="stylesheet" />
+    <link href="/css/font-awesome.css?639312964675321194" rel="stylesheet" />
+    <script src="/lib/jquery/dist/jquery.js?639312964675321220"></script>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?639312964675321260"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            //$(".toggle").click(function () {
+            //    $(".flex-left").addClass("closebar");
+            //    $(".flex-right").removeClass("closebar");
+            //    $("#panel-close1").click(function () {
+            //        $(".flex-right").addClass("closebar");
+            //    });
+            //});
+
+            if ($('.flex-right')[0]) {
+                $('.flex-center').addClass("center-box");
+
+            } else {
+                $('.flex-center').removeClass("center-box");
+                $(".right-btn").parent('li').addClass("btn-cc");
+            }
+
+
+
+            $(".flex-center table").wrap("<div class='table-divbox'></div>")
+
+            var strleftLinkname = $("#btnCategoryName").val();
+            var strcenterLinkname = $("#h4APIName").text();
+            var strrightLinkname = $("#spnTryItOut").val();
+
+            if ($.trim(strleftLinkname) != "") {
+                $("#leftLink").text($.trim(strleftLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#leftLink").html("Category");
+            }
+
+            if ($.trim(strcenterLinkname) != "") {
+                $("#centerLink").text($.trim(strcenterLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#centerLink").html("Content");
+            }
+            if ($.trim(strrightLinkname) != "") {
+                $("#rightLink").text($.trim(strrightLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#rightLink").html("API List");
+            }
+
+            $(".left-btn").click(function () {
+
+                $(".flex-left").removeClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".center-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").removeClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".left-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".right-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").removeClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .left-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            var btn = $('#top-button');
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+        });
+        $(document).ready(function () {
+            //$(".toggle1").click(function () {
+            //    $(".flex-right").addClass("closebar");
+            //    $(".flex-left").removeClass("closebar");
+            //    $("#panel-close").click(function () {
+            //        $(".flex-left").addClass("closebar");
+            //    });
+            //});
+            //$(".dark-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#789db7", "color": "#fff" });
+            //});
+            //$(".light-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#f9f6f1", "color": "#212529"});
+            //});
+
+            $(".dark-mode").click(function () {
+                $(".dark-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".light-mode").css({ "background-color": "#f9f6f1", "color": "#032d55" });
+
+                $(".dark-modereq, .dark-moderes").parent().css({ "background-color": "#000000", "color": "#fff" });
+            });
+            $(".light-mode").click(function () {
+                $(".light-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".dark-mode").css({ "background-color": "#f5f6f8", "color": "#032d55" });
+
+                $(".light-modereq, .light-moderes").parent().css({ "background-color": "#f5f6f8", "color": "#032d55" });
+            });
+
+
+
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <header id="header">
+
+        <nav class="navbar navbar-expand-lg navbar-light top-header">
+            <a class="navbar-brand" href="#">
+                <img class="logo-img" src="/images/Logo.png" />
+            </a>
+            <!--<div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/GuidePage">Guide</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link hd-cool-link active-headerlink" href="/CoreCardApiReference">API Guide</a>
+                </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link hd-cool-link active-apiheaderlink" href="/WEBHook/CoreCardWEBHook">WEB Hook</a>
+            </li>-->
+            <!--</ul>
+            </div>-->
+
+            <div class="search-float">
+                <div class="search-anchor">
+                    <form id="search-form" action="Search/Index" class="form-inline my-2 my-lg-0">
+                        <input type="text" class="search-bar" placeholder="Search" name="searchTerm">
+                        <input type="text" class="search-bar" placeholder="Search" name="regionId" hidden value="1,1">
+                        <input class="search-submit" type="submit">
+                        <div class="search-toggle"></div>
+                    </form>
+
+                </div>
+            </div>
+
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <div class="navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav pt-2 custom-mob-nav">
+                    <li class="nav-item dropdown">
+
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Credit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=1&regionId=1">Core API</a>
+                                    <a class="dropdown-item" href="/CoreCardWEBHook?menuid=1&regionId=1">WEB Hook</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Prepaid/Debit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=2&regionId=1">Core API</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+                <ul class="navbar-nav pt-2 ml-auto custom-mob-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">US</a>
+                        <div class="dropdown-menu dropdown-menu-country">
+                            <a id="1" class="dropdown-item" href="/CoreCardApiReference?regionId=1">US</a>
+                            <a id="2" class="dropdown-item" href="/CoreCardApiReference?regionId=2">Global</a>
+
+                        </div>
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+        </nav>
+
+
+        <div class="mobile-btns-layout">
+            <ul class="btn-list-inline">
+                <li><a href="javascript:void(0);" id="leftLink" class="left-btn">Category List</a></li>
+                <li class="current-menu"><a href="javascript:void(0);" id="centerLink" class="center-btn">Content</a></li>
+                <li><a href="javascript:void(0);" id="rightLink" class="right-btn">API List</a></li>
+                <div class="clearfix"></div>
+            </ul>
+
+        </div>
+    </header>
+
+    <div class="container-fluid nopadding">
+        <div>
+            <a id="top-button"></a>
+
+
+
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Ed2qi4xb2JCm_4tCcgxuBe0x2GIf6BTAN8n0xtJOEsK75UEZsVd1vNgWufQM0FrRLur9xvhgU-e9bU8fNviSEj_UY6B6wWowpJhXp9dBddguR2-HJnrkCNdtartAhS7BKV1fzm1HTyntMyAB5Nh3TY" />
+<script>
+    (function ($) {
+        if (!$) { return; }
+        $(document).ajaxSend(function (event, xhr, settings) {
+            var method = (settings.type || 'GET').toUpperCase();
+            if (method === 'GET' || method === 'HEAD' || method === 'OPTIONS' || method === 'TRACE') { return; }
+            if (settings.crossDomain) { return; } // never send the token to another origin
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            if (token) { xhr.setRequestHeader('XSRF-TOKEN', token); }
+        });
+
+        // Destructive links (delete user/role/category/menu) are POST-only. Mark them with data-method="post"
+        // (optional data-confirm="..."); they are submitted as a POST form carrying the antiforgery token.
+        // A generated form is used because these links can sit inside other <form> elements.
+        $(document).on('click', 'a[data-method="post"]', function (e) {
+            e.preventDefault();
+            var message = $(this).attr('data-confirm');
+            if (message && !window.confirm(message)) { return; }
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            var form = $('<form method="post" style="display:none"></form>').attr('action', $(this).attr('href'));
+            form.append($('<input type="hidden" name="__RequestVerificationToken" />').val(token));
+            $('body').append(form);
+            form.trigger('submit');
+        });
+    })(window.jQuery);
+</script>
+
+            <script src="/js/svg-diagram-links.js?v=rhKKoQLmGKC2Pm3Utr9UDhdU4GmCNRW_Yl5EzzGtiBA"></script>
+            <div class="">
+
+
+<!DOCTYPE html>
+<link href="/css/style.css?639312964675308969" rel="stylesheet" />
+<link href="/css/swagger-ui.css?639312964675309112" rel="stylesheet" />
+<script src="/js/cdn/jquery-ui.min.js?639312964675309145"></script>
+<style>
+    .crepreMenu {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+
+    .green {
+        color: green;
+    }
+
+    .blue {
+        color: blue;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .hd-cool-link.active-headerlink::after {
+        width: 100%;
+    }
+
+    .sopblock-post {
+        border-color: #49cc90;
+        background: rgba(73,204,144,.1)
+    }
+
+    .sopblock-put {
+        border-color: #fca130;
+        background: rgba(252,161,48,.1);
+    }
+
+    .sopblock-delete {
+        border-color: #f93e3e;
+        background: rgba(249,62,62,.1);
+    }
+
+    .sopblock-get {
+        border-color: #61affe;
+        background: rgba(97,175,254,.1);
+    }
+
+    .sopblock {
+        margin: 0 0 15px;
+        border: 1px solid #49cc90;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 0 3px rgba(0,0,0,.19);
+        box-shadow: 0 0 3px rgba(0,0,0,.19);
+    }
+
+    .sopblock-summary {
+        border-color: #49cc90;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    .sopblock-summary-method {
+        background: #49cc90;
+        font-size: 14px;
+        font-weight: 700;
+        min-width: 80px;
+        padding: 6px 15px;
+        text-align: center;
+        border-radius: 3px;
+        text-shadow: 0 1px 0 rgba(0,0,0,.1);
+        font-family: Titillium Web,sans-serif;
+        color: #fff;
+    }
+
+    .sopblock-summary-path {
+        font-size: 16px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 0 10px;
+        font-family: Source Code Pro,monospace;
+        font-weight: 600;
+        color: #3b4151;
+    }
+</style>
+<body id="apiBody">
+    <div class="flex-left closebar">
+
+        <div class="parent-div-left">
+            <a href="#" id="panel-close" class="close-panel"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <nav class="left-column">
+                    
+                <div class="accordion" id="leftaccordion">
+                            <div class="card">
+                                <div class="card-header" id="AccountHolder16">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AccountHolder" aria-expanded="false" aria-controls="AccountHolder">
+                                                <a href="/GuidePage?id=16&amp;type=Category&amp;menuid=2&amp;RegionId=1">Account Holder</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="AccountHolder" class="collapse " aria-labelledby="AccountHolder16" data-parent="#AccountHolder16">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1016&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Card Handover\Sell card</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="AccountHolder" class="collapse " aria-labelledby="AccountHolder16" data-parent="#AccountHolder16">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1014&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">New Cards</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="AccountHolder" class="collapse " aria-labelledby="AccountHolder16" data-parent="#AccountHolder16">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1015&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Saving Account</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="AccountManagement17">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link " type="button" data-toggle="collapse" data-target="#AccountManagement" aria-expanded="false" aria-controls="AccountManagement">
+                                                <a href="/GuidePage?id=17&amp;type=Category&amp;menuid=2&amp;RegionId=1">Account Management</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="AccountManagement" class="collapse show" aria-labelledby="AccountManagement17" data-parent="#AccountManagement17">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=2135&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Branch Transfer </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="AccountManagement" class="collapse show" aria-labelledby="AccountManagement17" data-parent="#AccountManagement17">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1024&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Account Balances</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="AccountManagement" class="collapse show" aria-labelledby="AccountManagement17" data-parent="#AccountManagement17">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link subCatHighLight">
+                                                        <a href="/GuidePage?id=1035&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Other Miscellaneous Functions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="AlertManagement18">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AlertManagement" aria-expanded="false" aria-controls="AlertManagement">
+                                                <a href="/GuidePage?id=18&amp;type=Category&amp;menuid=2&amp;RegionId=1">Alert Management</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="AlertManagement" class="collapse " aria-labelledby="AlertManagement18" data-parent="#AlertManagement18">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1036&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Alert</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="Authorizations19">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Authorizations" aria-expanded="false" aria-controls="Authorizations">
+                                                <a href="/GuidePage?id=19&amp;type=Category&amp;menuid=2&amp;RegionId=1">Authorizations</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="Authorizations" class="collapse " aria-labelledby="Authorizations19" data-parent="#Authorizations19">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1037&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Clearing</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Authorizations" class="collapse " aria-labelledby="Authorizations19" data-parent="#Authorizations19">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1029&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Manual Authorization</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="BeneficiaryManagement20">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#BeneficiaryManagement" aria-expanded="false" aria-controls="BeneficiaryManagement">
+                                                <a href="/GuidePage?id=20&amp;type=Category&amp;menuid=2&amp;RegionId=1">Beneficiary Management</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="BeneficiaryManagement" class="collapse " aria-labelledby="BeneficiaryManagement20" data-parent="#BeneficiaryManagement20">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1038&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Recipient</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="BillPay21">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#BillPay" aria-expanded="false" aria-controls="BillPay">
+                                                <a href="/GuidePage?id=21&amp;type=Category&amp;menuid=2&amp;RegionId=1">BillPay</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="BillPay" class="collapse " aria-labelledby="BillPay21" data-parent="#BillPay21">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1039&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">BillPay</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="BranchManagement22">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#BranchManagement" aria-expanded="false" aria-controls="BranchManagement">
+                                                <a href="/GuidePage?id=22&amp;type=Category&amp;menuid=2&amp;RegionId=1">Branch Management</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="BranchManagement" class="collapse " aria-labelledby="BranchManagement22" data-parent="#BranchManagement22">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1040&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Branch</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="CardManagement23">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#CardManagement" aria-expanded="false" aria-controls="CardManagement">
+                                                <a href="/GuidePage?id=23&amp;type=Category&amp;menuid=2&amp;RegionId=1">Card Management</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement23" data-parent="#CardManagement23">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=2136&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Card Balance Status</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement23" data-parent="#CardManagement23">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1017&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Card Activation</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement23" data-parent="#CardManagement23">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1018&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Card Details</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement23" data-parent="#CardManagement23">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1019&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Card Plastic</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement23" data-parent="#CardManagement23">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1021&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Card Replacement</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement23" data-parent="#CardManagement23">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1020&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Card Status</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement23" data-parent="#CardManagement23">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1023&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Hold Embossing</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement23" data-parent="#CardManagement23">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1022&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Lock\Unlock Card</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement23" data-parent="#CardManagement23">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1041&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Other Miscellaneous Functions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="DigitalWallets24">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#DigitalWallets" aria-expanded="false" aria-controls="DigitalWallets">
+                                                <a href="/GuidePage?id=24&amp;type=Category&amp;menuid=2&amp;RegionId=1">Digital Wallets</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="DigitalWallets" class="collapse " aria-labelledby="DigitalWallets24" data-parent="#DigitalWallets24">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1042&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Push Provisioning</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="Dispute30">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Dispute" aria-expanded="false" aria-controls="Dispute">
+                                                <a href="/GuidePage?id=30&amp;type=Category&amp;menuid=2&amp;RegionId=1">Dispute</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="Dispute" class="collapse " aria-labelledby="Dispute30" data-parent="#Dispute30">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1046&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Dispute</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="InventoryManagement25">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#InventoryManagement" aria-expanded="false" aria-controls="InventoryManagement">
+                                                <a href="/GuidePage?id=25&amp;type=Category&amp;menuid=2&amp;RegionId=1">Inventory Management</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="InventoryManagement" class="collapse " aria-labelledby="InventoryManagement25" data-parent="#InventoryManagement25">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1043&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Inventory</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="Statement26">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Statement" aria-expanded="false" aria-controls="Statement">
+                                                <a href="/GuidePage?id=26&amp;type=Category&amp;menuid=2&amp;RegionId=1">Statement</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="Statement" class="collapse " aria-labelledby="Statement26" data-parent="#Statement26">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1031&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Statement Details</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Statement" class="collapse " aria-labelledby="Statement26" data-parent="#Statement26">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1030&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Statement List</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="Token29">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Token" aria-expanded="false" aria-controls="Token">
+                                                <a href="/GuidePage?id=29&amp;type=Category&amp;menuid=2&amp;RegionId=1">Token Authentication</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="Token" class="collapse " aria-labelledby="Token29" data-parent="#Token29">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1034&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Token</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="Transactions27">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Transactions" aria-expanded="false" aria-controls="Transactions">
+                                                <a href="/GuidePage?id=27&amp;type=Category&amp;menuid=2&amp;RegionId=1">Transactions</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="Transactions" class="collapse " aria-labelledby="Transactions27" data-parent="#Transactions27">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=2137&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Transaction History Detail</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Transactions" class="collapse " aria-labelledby="Transactions27" data-parent="#Transactions27">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1028&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Bank to Card Transfer</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Transactions" class="collapse " aria-labelledby="Transactions27" data-parent="#Transactions27">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1027&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Card to Bank Transfer</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Transactions" class="collapse " aria-labelledby="Transactions27" data-parent="#Transactions27">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1025&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Load</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Transactions" class="collapse " aria-labelledby="Transactions27" data-parent="#Transactions27">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1044&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Other Miscellaneous Functions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Transactions" class="collapse " aria-labelledby="Transactions27" data-parent="#Transactions27">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1026&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Unload</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="UserManagement28">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#UserManagement" aria-expanded="false" aria-controls="UserManagement">
+                                                <a href="/GuidePage?id=28&amp;type=Category&amp;menuid=2&amp;RegionId=1">User Management</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="UserManagement" class="collapse " aria-labelledby="UserManagement28" data-parent="#UserManagement28">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1033&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Delink Card</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="UserManagement" class="collapse " aria-labelledby="UserManagement28" data-parent="#UserManagement28">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1032&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Link Cards</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="UserManagement" class="collapse " aria-labelledby="UserManagement28" data-parent="#UserManagement28">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1045&amp;type=SubCategory&amp;menuid=2&amp;RegionId=1">Other Miscellaneous Functions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class='flex-center css-SubCategory'>
+        <div class="mobile-btns">
+            <p class="btn-p toggle1"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>Category links</p>
+            <p class="btn-p toggle">API Links<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></p>
+            <div class="clearfix"></div>
+        </div>
+        <main id="center" class="">
+            <article>
+                        <h1 class="h1-box">
+                            Other Miscellaneous Functions
+                        </h1>
+                        <p>
+                            <p>Using these APIs, you can&nbsp;retrieve, add and update card and account&nbsp;holder’s additional miscellaneous data.</p>
+
+                        </p>
+
+                <!-- Start of Category Description Section -->
+
+                <!-- End of Category Description Section -->
+                <!-- Start of Sub Category Description Section -->
+                            <div>
+                                
+                            </div>
+                            <div>
+                                
+                            </div>
+                            <div>
+                                
+                            </div>
+                            <div>
+                                
+                            </div>
+                            <div>
+                                
+                            </div>
+
+            </article>
+
+        </main>
+
+    </div>
+
+        <div class="flex-right closebar">
+            <div class="parent-div-right">
+                <nav class="left-column">
+                    <div class="accordion" id="rightaccordion">
+                        <div class="card">
+                            <div class="card-header" id="rightheading">
+                                <h2 class="mb-0 pl-2">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#rightcollapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        API List
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div>
+                                <div class="card-body">
+                                            <div class="card">
+                                                <div class="card-header" id="AddNotes1159">
+
+                                                    <a href="/GuidePageApiDetail?id=1159&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> AddNotes</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="AddPartnerID1150">
+
+                                                    <a href="/GuidePageApiDetail?id=1150&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> AddPartnerID</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="ChangeOverDraftStatus1156">
+
+                                                    <a href="/GuidePageApiDetail?id=1156&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> ChangeOverDraftStatus</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="GetCardholderSpendLimits1161">
+
+                                                    <a href="/GuidePageApiDetail?id=1161&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> GetCardholderSpendLimits</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="GetLexNexResults1157">
+
+                                                    <a href="/GuidePageApiDetail?id=1157&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> GetLexNexResults</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="GetListofPartneridMID1148">
+
+                                                    <a href="/GuidePageApiDetail?id=1148&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> GetListofPartneridMID</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="GetMemoDetails1158">
+
+                                                    <a href="/GuidePageApiDetail?id=1158&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> GetMemoDetails</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="GetPartnerID1146">
+
+                                                    <a href="/GuidePageApiDetail?id=1146&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> GetPartnerID</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="GetRestrictedCountries1163">
+
+                                                    <a href="/GuidePageApiDetail?id=1163&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> GetRestrictedCountries</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="GetSavingAccountDetails1269">
+
+                                                    <a href="/GuidePageApiDetail?id=1269&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> GetSavingAccountDetails</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="LexNexRenewInquiry1152">
+
+                                                    <a href="/GuidePageApiDetail?id=1152&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> LexNexRenewInquiry</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PartnerIDMIDMapping1151">
+
+                                                    <a href="/GuidePageApiDetail?id=1151&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> PartnerIDMIDMapping</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="PartnerIDorMerchantIDAccountMapping1147">
+
+                                                    <a href="/GuidePageApiDetail?id=1147&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> PartnerIDorMerchantIDAccountMapping</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="ProductTransfer1267">
+
+                                                    <a href="/GuidePageApiDetail?id=1267&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> ProductTransfer</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="ResetAccountGeneratedStatus1155">
+
+                                                    <a href="/GuidePageApiDetail?id=1155&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> ResetAccountGeneratedStatus</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="UpdateAccountStatus1149">
+
+                                                    <a href="/GuidePageApiDetail?id=1149&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> UpdateAccountStatus</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="UpdateMemoDetails1160">
+
+                                                    <a href="/GuidePageApiDetail?id=1160&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> UpdateMemoDetails</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="UpdateSpendLimits1162">
+
+                                                    <a href="/GuidePageApiDetail?id=1162&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> UpdateSpendLimits</a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="ViewDDA1153">
+
+                                                    <a href="/GuidePageApiDetail?id=1153&amp;type=ApiDetail&amp;menuid=2&amp;RegionId=1&amp;PlatformMappingId=2&amp;subid=1035"> ViewDDA</a>
+
+                                                </div>
+
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+
+        <div class="svg-modal modal fade" id="myModal1">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/CategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Account Management</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- The Modal 2-->
+        <div class="svg-modal modal fade" id="myModal2">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/CategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Account Management</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal 3-->
+        <div class="svg-modal modal fade" id="myModal3">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/CategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Account Management</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal 4-->
+        <div class="svg-modal modal fade" id="myModal4">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/CategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Account Management</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal 5-->
+        <div class="svg-modal modal fade" id="myModal5">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/CategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Account Management</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal 6-->
+        <div class="svg-modal modal fade" id="myModal6">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/SubCategoryImages/" class="img_mv" />
+                        </p>
+
+                        <h4 class="modal-title text-center titie-hid"> Other Miscellaneous Functions</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal 7-->
+        <div class="svg-modal modal fade" id="myModal7">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/SubCategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Other Miscellaneous Functions</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal 8-->
+        <div class="svg-modal modal fade" id="myModal8">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/SubCategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Other Miscellaneous Functions</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal 9-->
+        <div class="svg-modal modal fade" id="myModal9">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/SubCategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Other Miscellaneous Functions</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal 10-->
+        <div class="svg-modal modal fade" id="myModal10">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/SubCategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Other Miscellaneous Functions</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <input type="hidden" id="spnTryItOut" name="spnTryItOut" value="API List" />
+    <!-- The Modal 1-->
+
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            //$("#loading").show().delay(5000).fadeOut();
+
+            $(".rmvClass, .close").click(function () {
+                $(".svg-modal.modal").removeClass("active");
+            });
+
+            $('.flex-right .card-body ul li').click(function (event) {
+                $('.active-rightlink').removeClass('active-rightlink');
+                $(this).addClass('active-rightlink');
+                event.preventDefault();
+            });
+
+        });
+        $(document).ready(function () {
+            var $menu = $(".apimenuul");
+            var $menu_a = $("a", $menu);
+            var id = false;
+            var sections = [];
+            var hash = function (h) {
+                if (history.pushState) {
+                    history.pushState(null, null, h);
+                } else {
+                    location.hash = h;
+                }
+            };
+
+
+            $menu_a.each(function () {
+                sections.push($($(this).attr("href")));
+            });
+
+            $(window).scroll(function (event) {
+                var scrolling = $(this).scrollTop() + $(this).height() / 3;
+                var scroll_id;
+                for (var i in sections) {
+                    var section = sections[i];
+                    if (scrolling > section.offset().top) {
+                        scroll_id = section.attr("id");
+                    }
+                }
+                if (scroll_id !== id) {
+                    id = scroll_id;
+                    $menu_a.removeClass("apiliactive");
+                    $("a[href='#" + id + "']", $menu).addClass("apiliactive");
+                }
+            });
+
+            $('.carousel').carousel({
+                wrap: false
+            });
+            function debounce(func, wait, immediate) {
+                var timeout;
+                return function () {
+                    var context = this,
+                        args = arguments;
+                    var later = function () {
+                        timeout = null;
+                        if (!immediate) func.apply(context, args);
+                    };
+                    var callNow = immediate && !timeout;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                    if (callNow) func.apply(context, args);
+                };
+            }
+
+            //var slider = document.getElementById("demo");
+            var onScroll = debounce(function (direction, fieldId) {
+                //console.log(direction);
+                if (direction == false) {
+                    $('#' + fieldId + 'carousel1').click();
+                } else {
+                    $('#' + fieldId + 'carousel2').click();
+                }
+            }, 10, true);
+
+            $('[data-id="demo"]').each(function (iField, field) {
+                field.addEventListener("wheel", function (e) {
+                    var fieldId = $(field).attr("id")
+                    e.preventDefault();
+                    var delta;
+                    if (event.wheelDelta) {
+                        delta = event.wheelDelta;
+                    } else {
+                        delta = -1 * event.deltaY;
+                    }
+
+                    onScroll(delta >= 0, fieldId);
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"e68766ac58634d3bac78aacb71fbb169","spa":2}' crossorigin="anonymous"></script>
+</body>
+
+
+</div>
+
+
+
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-txt">
+            Copyright &copy; 2026 CoreCard Software, Inc. All rights reserved
+        </p>
+    </footer>
+</body>
+
+</html>

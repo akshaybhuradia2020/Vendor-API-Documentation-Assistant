@@ -1,0 +1,202 @@
+{
+    "metadata": {
+        "name": "ExtendedManualStatusManagement",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/ExtendedManualStatusManagement",
+        "description": "This API used to add and remove the extended manual status."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid  Values:0-9 Format: XXXXXXXXXX Example: 7314145404 Condition: At least one account identifier is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values: 0-9 Format: XXXXX Example: 12345 Condition: At least one account identifier is required."
+        },
+        {
+            "name": "ManualStatus",
+            "type": "string",
+            "required": true,
+            "description": "Status of account assigned manually Valid Values: Active, Closed etc. Format: XXXX Example: Active Allowable Values: 19"
+        },
+        {
+            "name": "EffectiveEndDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Effective End date of the Manual Status for an account Valid Values: 0-9 Format: MM/DD/YYYY Example: 01/01/2020"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "integer",
+            "required": true,
+            "description": "Decision Flag Values can be 0 - Add and 1-Remove. Valid Values: 0, 1 Example: 0"
+        },
+        {
+            "name": "ApplicantType",
+            "type": "string",
+            "required": false,
+            "description": "Selects the type of Applicants. Valid Values: 1, 2, 3 Format: x Example:  1= 'Applicant', 2 ='Co-Applicant', 3= 'Cosigner', Allowable Values: 20"
+        },
+        {
+            "name": "StatusDescription",
+            "type": "string",
+            "required": false,
+            "description": "A description for the selected Extended/Manual status Allowable Values: 800"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number indicates that API responded. Response ID is unique. This value will be null if no authentication information was passed. Response ID can be used for tracking. Valid Values: 0-9, a-z Format: xxxxx Example: 148525",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "7000000000000054",
+        "AdminNumber": 101055,
+        "ManualStatus": "2",
+        "EffectiveEndDate": null,
+        "DecisionFlag": 0,
+        "ApplicantType": null,
+        "StatusDescription": null
+    },
+    "sample_response": {
+        "Message": "Manual Status stored successfully in the List.",
+        "Status": true,
+        "ErrorCode": "ERR01138",
+        "ResponseData": {
+            "ResponseID": "24285"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Account Details",
+        "category_id": "4",
+        "document_id": "83",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=83&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4&regionId=1"
+    }
+}

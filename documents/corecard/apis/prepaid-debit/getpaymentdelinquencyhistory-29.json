@@ -1,0 +1,3155 @@
+{
+    "metadata": {
+        "name": "GetPaymentDelinquencyHistory",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetPaymentDelinquencyHistory",
+        "description": "This API will get you deliquency history on the account based on payment pattern."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "CardHolder's Account number. Format:XXXXX Example:12346453535365 Condition:At least one of AccountNumber/AccountID is required. Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "PayHistoryCtrCC01",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 01 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC02",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 02 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC03",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 03 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC04",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 04 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC05",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 05 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC06",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 06 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC07",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 07 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC08",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 08 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC09",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 09 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC10",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 10 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC11",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 11 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC12",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 12 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC13",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 13 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC14",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 14 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC15",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 15 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC16",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 16 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC17",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 17 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC18",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 18 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC19",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 19 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC20",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 20 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC21",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 21 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC22",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 22 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC23",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 23 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PayHistoryCtrCC24",
+            "type": "integer",
+            "required": null,
+            "description": "Delinquency History Counter for previous 24 cycle Valid Values: Delinquency Buckets Format: A-Z a-z",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter1CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 01 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 1 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter2CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 02 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 2 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter3CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 03 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 3 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter4CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 04 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 4 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter5CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 05 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 5 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter6CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 06 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 6 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter7CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 07 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 7 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter8CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 08 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 8 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter9CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 09 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 7 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter10CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 10 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 10 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter11CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 11 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 11 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter12CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 12 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 12 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter13CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 13 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 13 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter14CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 14 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 14 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter15CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 15 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 15 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter16CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 16 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 16 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter17CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 17 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 17 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter18CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 18 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 18 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter19CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 19 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 19 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter20CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 20 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 20 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter21CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 21 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 21 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter22CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 22 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 22 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter23CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 23 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 23 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentHistoryCounter24CycAgo",
+            "type": "integer",
+            "required": null,
+            "description": "History Counter Reported for previous 24 cycle Valid Values: Delinquency Buckets Format: A-Z a-z Example: 24 Cycle Past Due",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter1CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 01 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter2CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 02 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter3CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 03 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter4CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 04 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter5CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 05 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter6CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 06 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter7CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 07 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter8CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 08 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter9CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 09 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter10CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 10 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter11CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 11 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter12CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 12 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter13CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 13 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter14CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 14 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter15CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 15 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter16CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 16 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter17CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 17 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter18CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 18 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter19CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 19 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter20CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 20 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter21CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 21 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter22CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 22 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter23CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 23 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentDateCounter24CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 24 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter1CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  01 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User01",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter2CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  02 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User02",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter3CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  03 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User03",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter4CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  04 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User04",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter5CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  05 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User05",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter6CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  06 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User06",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter7CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  07 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User07",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter8CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  08 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User08",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter9CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  09 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User09",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter10CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  10 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User10",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter11CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  11 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User11",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter12CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  12 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User12",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter13CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  13 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User13",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter14CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  14 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User14",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter15CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  15 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User15",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter16CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  16 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User16",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter17CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  17 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User17",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter18CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  18 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User18",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter19CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  19 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User19",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter20CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  20 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User20",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter21CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  21 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User21",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter22CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  22 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User22",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter23CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  23 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User23",
+            "children": []
+        },
+        {
+            "name": "PaymentUserCounter24CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  24 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User24",
+            "children": []
+        },
+        {
+            "name": "NumberOfMonthsWithBalance",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  NumberOfMonthsWithBalance",
+            "children": []
+        },
+        {
+            "name": "NumberOfMonthsWithPurchase",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  NumberOfMonthsWithPurchase",
+            "children": []
+        },
+        {
+            "name": "LastSkipPymtDate",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastSkipPymtDate",
+            "children": []
+        },
+        {
+            "name": "LastSkipPymtAmt",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastSkipPymtAmt",
+            "children": []
+        },
+        {
+            "name": "NumberOfSkipPayments",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  NumberOfSkipPayments",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC01",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC01",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC02",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC02",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC03",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC03",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC04",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC04",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC05",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC05",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC06",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC06",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC07",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC07",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC08",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC08",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC09",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC09",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC10",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC10",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC11",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC11",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC12",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC12",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC13",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC13",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC14",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC14",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC15",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC15",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC16",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC16",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC17",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC17",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC18",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC18",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC19",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC19",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC20",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC20",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC21",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC21",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC22",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC22",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC23",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC23",
+            "children": []
+        },
+        {
+            "name": "DelinHistoryCtrCC24",
+            "type": "integer",
+            "required": null,
+            "description": "get or set  DelinHistoryCtrCC24",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC01",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 1 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC02",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 2 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC03",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 3 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC04",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 4 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC05",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 5 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC06",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 6 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC07",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 7 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC08",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 8 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC09",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 9 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC10",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 10 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC11",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 11 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC12",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 12 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC13",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 13 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC14",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 14 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC15",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 15 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC16",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 16 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC17",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 17 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC18",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 18 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC19",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 19 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC20",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 20 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC21",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 21 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC22",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 22 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC23",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 23 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "ReportHistoryCtrCC24",
+            "type": "integer",
+            "required": null,
+            "description": "Reported history on payment deliquency 24 Cycle ago Valid Values:Combo values",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC01",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC01",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC02",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC02",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC03",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC03",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC04",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC04",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC05",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC05",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC06",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC06",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC07",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC07",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC08",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC08",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC09",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC09",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC10",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC10",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC11",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC11",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC12",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC12",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC13",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC13",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC14",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC14",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC15",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC15",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC16",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC16",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC17",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC17",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC18",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC18",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC19",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC19",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC20",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC20",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC21",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC21",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC22",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC22",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC23",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC23",
+            "children": []
+        },
+        {
+            "name": "LastUpdDateCounterCC24",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdDateCounterCC24",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC01",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC01",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC02",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC02",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC03",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC03",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC04",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC04",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC05",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC05",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC06",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC06",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC07",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC07",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC08",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC08",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC09",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC09",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC10",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC10",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC11",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC11",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC12",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC12",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC13",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC13",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC14",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC14",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC15",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC15",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC16",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC16",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC17",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC17",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC18",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC18",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC19",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC19",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC20",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC20",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC21",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC21",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC22",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC22",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC23",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC23",
+            "children": []
+        },
+        {
+            "name": "LastUpdUsrCounterCC24",
+            "type": "string",
+            "required": null,
+            "description": "get or set  LastUpdUsrCounterCC24",
+            "children": []
+        },
+        {
+            "name": "PaymentLastUpdateDateCounter24CycAgo",
+            "type": "datetime",
+            "required": null,
+            "description": "Last udpate date of payment  for 24 cycle ago Valid Values: valid values Format: MMDDYYYY Example:12202019",
+            "children": []
+        },
+        {
+            "name": "PaymentLastUpdatedUserCounter24CycAgo",
+            "type": "string",
+            "required": null,
+            "description": "Last udpated user of Payment  24 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User24 Allowable Values: 128",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "PaymentLastUpdateDateCounter1CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 01 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter2CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 02 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter3CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 03 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter4CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 04 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter5CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 05 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter6CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 06 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter7CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 07 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter8CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 08 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter9CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 09 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter10CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 10 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter11CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 11 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter12CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 12 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter13CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 13 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter14CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 14 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter15CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 15 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter16CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 16 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter17CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 17 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter18CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 18 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter19CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 19 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter20CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 20 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter21CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 21 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter22CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 22 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounter23CycAgo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for 23 cycle ago Valid Values: valid values Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter1CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  01 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User01 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter2CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  02 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User02 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter3CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  03 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User03 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter4CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  04 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User04 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter5CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  05 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User05 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter6CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  06 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User06 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter7CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  07 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User07 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter8CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  08 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User08 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter9CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  09 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User09 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter10CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  10 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User10 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter11CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  11 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User11 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter12CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  12 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User12 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter13CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  13 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User13 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter14CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  14 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User14 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter15CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  15 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User15 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter16CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  16 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User16 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter17CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  17 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User17 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter18CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  18 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User18 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter19CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  19 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User19 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter20CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  20 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User20 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter21CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  21 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User21 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter22CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  22 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User22 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounter23CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment  23 cycle ago Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User23 Allowable Values: 128",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter1CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 01 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter2CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 02 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter3CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 03 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter4CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 04 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter5CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 05 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter6CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 06 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter7CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 07 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter8CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 08 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter9CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 09 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter10CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 10 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter11CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 11 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter12CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 12 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter13CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 13 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter14CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 14 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter15CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 15 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter16CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 16 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter17CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 17 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter18CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 18 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter19CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 19 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter20CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 20 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter21CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 21 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter22CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 22 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounter23CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency Generated History Counter for previous 23 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter1CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 01 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter2CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 02 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter3CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 03 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter4CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 04 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter5CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 05 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter6CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 06 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter7CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 7 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter8CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 8 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter9CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 9 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter10CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 10 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter11CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 11 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter12CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 12 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter13CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 13 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter14CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 14 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter15CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 15 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter16CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 16 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter17CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 17 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter18CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 18 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter19CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 19 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter20CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 20 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter21CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 21 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter22CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 22 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounter23CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous 23 cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "CBRAccountStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Indicates the Account Status reported to Credit Bureau while updating reported delinquency history. Valid Values: A-Z, 0-9 Format: XX Example: 21",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounterCurrentCycle",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency History Counter for current cycle Valid Values: Delinquency Buckets Format: 0-9 Example: 1",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounterCurrentCycle",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency History Counter for current cycle Valid Values: Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounterCurrentCycle",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for current cycle Valid Values: Format: MM/DD/YYYY Example: 12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounterCurrentCycle",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment for current cycle Valid Values: A-Z, 0-9 Format: XXXXXX Example: User04 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "PaymentGeneratedHistoryCounterPreviousCycle",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency History Counter for previous cycle Valid Values: Delinquency Buckets Format: 0-9 Example: 1",
+                    "children": []
+                },
+                {
+                    "name": "PaymentReportedHistoryCounterPreviousCycle",
+                    "type": "integer",
+                    "required": null,
+                    "description": "History Counter Reported for previous cycle Valid Values: 0 : No Action 1 : No Payment History for this statement period 10: New account 20: No payment requested 21: Account was prepaid so no payment was made 22: Skip payment in effect and no payment was received 30: Account debited this cycle 40: Normal payment made 50: Overpayment made 51: Account was prepaid but customer made a payment 52: Advanced Payment 53: Skip payment was in effect and payment was received 60: Balance paid out 70: Statement production stopped 80: First usage 90: Short payment made 100: No payment made 110: Inactive 120: Reaged Format: 0-9 Example: 60",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdateDateCounterPreviousCycle",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Last udpate date of payment  for previous cycle Valid Values: Format: MM/DD/YYYY Example: 12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "PaymentLastUpdatedUserCounterPreviousCycle",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last udpated user of Payment for previous cycle Valid Values: A-Z, 0-9 Format: XXXXXX Example: User04 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter1CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency History Counter Generated for Current cycle Valid Values: 1 = Payment past Due (Current Account) 2 = 30-59 Days Past Due 3 = 60-89 Days Past Due 4 = 90-119 Days Past Due 5 = 120-149 Days Past Due 6 = 150-179 Days Past Due 7 = 180 Or More Days Past Due 10 = No Payment History Available for This Month Format:  0-9 Example:  5",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter2CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag \"DelinquencyGeneratedHistoryCounter1CycAgo\" but for Previous Cycle",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter3CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 1 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter4CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 2 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter5CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 3 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter6CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 4 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter7CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 5 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter8CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 6 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter9CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 7 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter10CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 8 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter11CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 9 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter12CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 10 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter13CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 11 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter14CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 12 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter15CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 13 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter16CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 14 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter17CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 15 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter18CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 16 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter19CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 17 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter20CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 18 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter21CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 19 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter22CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 20 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter23CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 21 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter24CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 22 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyGeneratedHistoryCounter25CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyGeneratedHistoryCounter1CycAgo' but for 23 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter1CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Delinquency History Counter Reported for Current cycle Valid Values: 1 = 0 Payment past Due (Current Account) 2 = 30-59 Days Past Due 3 = 60-89 Days Past Due 4 = 90-119 Days Past Due 5 = 120-149 Days Past Due 6 = 150-179 Days Past Due 7 = 180 Or More Days Past Due 10 = No Payment History Available for This Month Format:  0-9 Example:  5",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter2CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for Previous Cycle",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter3CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 1 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter4CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 2 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter5CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 3 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter6CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 4 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter7CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 5 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter8CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 6 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter9CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 7 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter10CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 8 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter11CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 9 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter12CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 10 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter13CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 11 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter14CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag \"DelinquencyReportedHistoryCounter1CycAgo\" but for 12 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter15CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 13 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter16CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 14 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter17CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 15 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter18CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 16 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter19CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 17 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter20CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 18 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter21CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 19 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter22CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 20 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter23CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 21 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter24CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 22 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyReportedHistoryCounter25CycAgo",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyReportedHistoryCounter1CycAgo' but for 23 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter1CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "If \"DelinquencyGeneratedHistoryCounter1CycAgo\" is not equal to 'DelinquencyReportedHistoryCounter1CycAgo' (That is if Reported History has been edited by a User) Then, the Date and Time of the edit must be displayed here. Valid Values: XXXXX Format: MM/DD/YYYY Example:12/20/2019",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter2CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for Previous Cycle",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter3CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 1 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter4CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 2 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter5CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 3 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter6CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 4 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter7CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 5 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter8CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 6 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter9CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 7 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter10CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 8 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter11CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 9 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter12CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 10 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter13CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 11 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter14CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 12 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter15CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 13 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter16CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 14 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter17CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 15 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter18CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 16 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter19CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 17 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter20CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 18 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter21CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 19 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter22CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 20 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter23CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 21 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter24CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 22 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdateDateCounter25CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdateDateCounter1CycAgo' but for 23 Cycle ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter1CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "If 'DelinquencyGeneratedHistoryCounter1CycAgo' is not equal to 'DelinquencyReportedHistoryCounter1CycAgo' (That is if Reported History has been edited by a User) Then, User ID Of that User must be displayed. Valid Values: A-Z, 0-9 Format: XXXXXX1 Example: User06",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter2CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for Previous Cycle",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter3CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 1 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter4CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 2 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter5CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 3 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter6CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 4 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter7CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 5 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter8CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 6 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter9CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 7 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter10CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 8 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter11CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 9 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter12CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 10 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter13CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 11 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter14CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 12 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter15CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 13 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter16CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 14 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter17CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 15 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter18CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 16 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter19CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 17 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter20CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 18 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter21CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 19 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter22CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag\"DelinquencyLastUpdatedUserCounter1CycAgo\" but for 20 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter23CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 21 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter24CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 22 Cycle Ago",
+                    "children": []
+                },
+                {
+                    "name": "DelinquencyLastUpdatedUserCounter25CycAgo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Description Same as Tag 'DelinquencyLastUpdatedUserCounter1CycAgo' but for 23 Cycle Ago",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountID": 5994,
+        "AccountNumber": null
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "PaymentGeneratedHistoryCounter1CycAgo": 100,
+            "PaymentGeneratedHistoryCounter2CycAgo": 100,
+            "PaymentGeneratedHistoryCounter3CycAgo": 100,
+            "PaymentGeneratedHistoryCounter4CycAgo": 100,
+            "PaymentGeneratedHistoryCounter5CycAgo": 100,
+            "PaymentGeneratedHistoryCounter6CycAgo": 100,
+            "PaymentGeneratedHistoryCounter7CycAgo": 100,
+            "PaymentGeneratedHistoryCounter8CycAgo": 100,
+            "PaymentGeneratedHistoryCounter9CycAgo": 100,
+            "PaymentGeneratedHistoryCounter10CycAgo": 100,
+            "PaymentGeneratedHistoryCounter11CycAgo": 100,
+            "PaymentGeneratedHistoryCounter12CycAgo": 100,
+            "PaymentGeneratedHistoryCounter13CycAgo": 100,
+            "PaymentGeneratedHistoryCounter14CycAgo": 100,
+            "PaymentGeneratedHistoryCounter15CycAgo": 100,
+            "PaymentGeneratedHistoryCounter16CycAgo": 100,
+            "PaymentGeneratedHistoryCounter17CycAgo": 100,
+            "PaymentGeneratedHistoryCounter18CycAgo": 100,
+            "PaymentGeneratedHistoryCounter19CycAgo": 100,
+            "PaymentGeneratedHistoryCounter20CycAgo": 100,
+            "PaymentGeneratedHistoryCounter21CycAgo": 100,
+            "PaymentGeneratedHistoryCounter22CycAgo": 100,
+            "PaymentGeneratedHistoryCounter23CycAgo": 100,
+            "PaymentReportedHistoryCounter1CycAgo": null,
+            "PaymentReportedHistoryCounter2CycAgo": null,
+            "PaymentReportedHistoryCounter3CycAgo": null,
+            "PaymentReportedHistoryCounter4CycAgo": null,
+            "PaymentReportedHistoryCounter5CycAgo": null,
+            "PaymentReportedHistoryCounter6CycAgo": null,
+            "PaymentReportedHistoryCounter7CycAgo": null,
+            "PaymentReportedHistoryCounter8CycAgo": null,
+            "PaymentReportedHistoryCounter9CycAgo": null,
+            "PaymentReportedHistoryCounter10CycAgo": null,
+            "PaymentReportedHistoryCounter11CycAgo": null,
+            "PaymentReportedHistoryCounter12CycAgo": null,
+            "PaymentReportedHistoryCounter13CycAgo": null,
+            "PaymentReportedHistoryCounter14CycAgo": null,
+            "PaymentReportedHistoryCounter15CycAgo": null,
+            "PaymentReportedHistoryCounter16CycAgo": null,
+            "PaymentReportedHistoryCounter17CycAgo": null,
+            "PaymentReportedHistoryCounter18CycAgo": null,
+            "PaymentReportedHistoryCounter19CycAgo": null,
+            "PaymentReportedHistoryCounter20CycAgo": null,
+            "PaymentReportedHistoryCounter21CycAgo": null,
+            "PaymentReportedHistoryCounter22CycAgo": null,
+            "PaymentReportedHistoryCounter23CycAgo": null,
+            "PaymentLastUpdateDateCounter1CycAgo": null,
+            "PaymentLastUpdateDateCounter2CycAgo": null,
+            "PaymentLastUpdateDateCounter3CycAgo": null,
+            "PaymentLastUpdateDateCounter4CycAgo": null,
+            "PaymentLastUpdateDateCounter5CycAgo": null,
+            "PaymentLastUpdateDateCounter6CycAgo": null,
+            "PaymentLastUpdateDateCounter7CycAgo": null,
+            "PaymentLastUpdateDateCounter8CycAgo": null,
+            "PaymentLastUpdateDateCounter9CycAgo": null,
+            "PaymentLastUpdateDateCounter10CycAgo": null,
+            "PaymentLastUpdateDateCounter11CycAgo": null,
+            "PaymentLastUpdateDateCounter12CycAgo": null,
+            "PaymentLastUpdateDateCounter13CycAgo": null,
+            "PaymentLastUpdateDateCounter14CycAgo": null,
+            "PaymentLastUpdateDateCounter15CycAgo": null,
+            "PaymentLastUpdateDateCounter16CycAgo": null,
+            "PaymentLastUpdateDateCounter17CycAgo": null,
+            "PaymentLastUpdateDateCounter18CycAgo": null,
+            "PaymentLastUpdateDateCounter19CycAgo": null,
+            "PaymentLastUpdateDateCounter20CycAgo": null,
+            "PaymentLastUpdateDateCounter21CycAgo": null,
+            "PaymentLastUpdateDateCounter22CycAgo": null,
+            "PaymentLastUpdateDateCounter23CycAgo": null,
+            "PaymentLastUpdatedUserCounter1CycAgo": null,
+            "PaymentLastUpdatedUserCounter2CycAgo": null,
+            "PaymentLastUpdatedUserCounter3CycAgo": null,
+            "PaymentLastUpdatedUserCounter4CycAgo": null,
+            "PaymentLastUpdatedUserCounter5CycAgo": null,
+            "PaymentLastUpdatedUserCounter6CycAgo": null,
+            "PaymentLastUpdatedUserCounter7CycAgo": null,
+            "PaymentLastUpdatedUserCounter8CycAgo": null,
+            "PaymentLastUpdatedUserCounter9CycAgo": null,
+            "PaymentLastUpdatedUserCounter10CycAgo": null,
+            "PaymentLastUpdatedUserCounter11CycAgo": null,
+            "PaymentLastUpdatedUserCounter12CycAgo": null,
+            "PaymentLastUpdatedUserCounter13CycAgo": null,
+            "PaymentLastUpdatedUserCounter14CycAgo": null,
+            "PaymentLastUpdatedUserCounter15CycAgo": null,
+            "PaymentLastUpdatedUserCounter16CycAgo": null,
+            "PaymentLastUpdatedUserCounter17CycAgo": null,
+            "PaymentLastUpdatedUserCounter18CycAgo": null,
+            "PaymentLastUpdatedUserCounter19CycAgo": null,
+            "PaymentLastUpdatedUserCounter20CycAgo": null,
+            "PaymentLastUpdatedUserCounter21CycAgo": null,
+            "PaymentLastUpdatedUserCounter22CycAgo": null,
+            "PaymentLastUpdatedUserCounter23CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter1CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter2CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter3CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter4CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter5CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter6CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter7CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter8CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter9CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter10CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter11CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter12CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter13CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter14CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter15CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter16CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter17CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter18CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter19CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter20CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter21CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter22CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter23CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter24CycAgo": null,
+            "DelinquencyGeneratedHistoryCounter25CycAgo": null,
+            "DelinquencyReportedHistoryCounter1CycAgo": null,
+            "DelinquencyReportedHistoryCounter2CycAgo": null,
+            "DelinquencyReportedHistoryCounter3CycAgo": null,
+            "DelinquencyReportedHistoryCounter4CycAgo": null,
+            "DelinquencyReportedHistoryCounter5CycAgo": null,
+            "DelinquencyReportedHistoryCounter6CycAgo": null,
+            "DelinquencyReportedHistoryCounter7CycAgo": null,
+            "DelinquencyReportedHistoryCounter8CycAgo": null,
+            "DelinquencyReportedHistoryCounter9CycAgo": null,
+            "DelinquencyReportedHistoryCounter10CycAgo": null,
+            "DelinquencyReportedHistoryCounter11CycAgo": null,
+            "DelinquencyReportedHistoryCounter12CycAgo": null,
+            "DelinquencyReportedHistoryCounter13CycAgo": null,
+            "DelinquencyReportedHistoryCounter14CycAgo": null,
+            "DelinquencyReportedHistoryCounter15CycAgo": null,
+            "DelinquencyReportedHistoryCounter16CycAgo": null,
+            "DelinquencyReportedHistoryCounter17CycAgo": null,
+            "DelinquencyReportedHistoryCounter18CycAgo": null,
+            "DelinquencyReportedHistoryCounter19CycAgo": null,
+            "DelinquencyReportedHistoryCounter20CycAgo": null,
+            "DelinquencyReportedHistoryCounter21CycAgo": null,
+            "DelinquencyReportedHistoryCounter22CycAgo": null,
+            "DelinquencyReportedHistoryCounter23CycAgo": null,
+            "DelinquencyReportedHistoryCounter24CycAgo": null,
+            "DelinquencyReportedHistoryCounter25CycAgo": null,
+            "DelinquencyLastUpdateDateCounter1CycAgo": null,
+            "DelinquencyLastUpdateDateCounter2CycAgo": null,
+            "DelinquencyLastUpdateDateCounter3CycAgo": null,
+            "DelinquencyLastUpdateDateCounter4CycAgo": null,
+            "DelinquencyLastUpdateDateCounter5CycAgo": null,
+            "DelinquencyLastUpdateDateCounter6CycAgo": null,
+            "DelinquencyLastUpdateDateCounter7CycAgo": null,
+            "DelinquencyLastUpdateDateCounter8CycAgo": null,
+            "DelinquencyLastUpdateDateCounter9CycAgo": null,
+            "DelinquencyLastUpdateDateCounter10CycAgo": null,
+            "DelinquencyLastUpdateDateCounter11CycAgo": null,
+            "DelinquencyLastUpdateDateCounter12CycAgo": null,
+            "DelinquencyLastUpdateDateCounter13CycAgo": null,
+            "DelinquencyLastUpdateDateCounter14CycAgo": null,
+            "DelinquencyLastUpdateDateCounter15CycAgo": null,
+            "DelinquencyLastUpdateDateCounter16CycAgo": null,
+            "DelinquencyLastUpdateDateCounter17CycAgo": null,
+            "DelinquencyLastUpdateDateCounter18CycAgo": null,
+            "DelinquencyLastUpdateDateCounter19CycAgo": null,
+            "DelinquencyLastUpdateDateCounter20CycAgo": null,
+            "DelinquencyLastUpdateDateCounter21CycAgo": null,
+            "DelinquencyLastUpdateDateCounter22CycAgo": null,
+            "DelinquencyLastUpdateDateCounter23CycAgo": null,
+            "DelinquencyLastUpdateDateCounter24CycAgo": null,
+            "DelinquencyLastUpdateDateCounter25CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter1CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter2CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter3CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter4CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter5CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter6CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter7CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter8CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter9CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter10CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter11CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter12CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter13CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter14CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter15CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter16CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter17CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter18CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter19CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter20CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter21CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter22CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter23CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter24CycAgo": null,
+            "DelinquencyLastUpdatedUserCounter25CycAgo": null,
+            "CBRAccountStatus": null,
+            "PaymentGeneratedHistoryCounterCurrentCycle": null,
+            "PaymentReportedHistoryCounterCurrentCycle": null,
+            "PaymentLastUpdateDateCounterCurrentCycle": null,
+            "PaymentLastUpdatedUserCounterCurrentCycle": null,
+            "PaymentGeneratedHistoryCounterPreviousCycle": null,
+            "PaymentReportedHistoryCounterPreviousCycle": null,
+            "PaymentLastUpdateDateCounterPreviousCycle": null,
+            "PaymentLastUpdatedUserCounterPreviousCycle": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=29&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4"
+    }
+}

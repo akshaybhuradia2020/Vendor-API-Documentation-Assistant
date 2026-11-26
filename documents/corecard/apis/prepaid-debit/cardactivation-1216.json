@@ -1,0 +1,390 @@
+{
+    "metadata": {
+        "name": "CardActivation",
+        "http_method": "POST",
+        "endpoint": "/api/CardActivation",
+        "description": "Use this API to activate card by providing correct data in card validation parameter set on program."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "UniqueID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 19"
+        },
+        {
+            "name": "UniqueIDFlag",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 1"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder First Name Valid Values: A-Z,a-z,special characters ( !@#$%^*()_+=-.) and Ampersand Example: Andrew Condition: This is required if validation parameter set on product as part of Full Name Allowable Values: 40"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder Middle Name Valid Values: A-Z,a-z,special characters ( !@#$%^*()_+=-.) and Ampersand Example: Charles Condition: This is required if validation parameter set on product as part of Full Name Allowable Values: 40"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder Last Name Valid Values: A-Z,a-z,special characters ( !@#$%^*()_+=-.) and Ampersand Example: Hudson Condition: This is required if validation parameter set on product as part of Full Name Allowable Values: 40"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Address Line 1 of the Cardholder Valid values : A-Z, a-z, 0-9 Example: 15 Penang Street Point Condition : This is required if validation parameter set on product as Full Address. Both AddressLine1 and AddressLine2 is Mandatory. Allowable Values: 40"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": null,
+            "description": "Address Line 2 of the Cardholder Valid values: A-Z, a-z, 0-9 Example: 1 mecca way Condition : This is required if validation parameter set on product as Full Address. Both AddressLine1 and AddressLine2 is Mandatory. Allowable Values: 40"
+        },
+        {
+            "name": "EmailAddress1",
+            "type": "string",
+            "required": null,
+            "description": "E Mail Address 1 of Cardholder Valid Values: A-Z, a-z, 0-9 @ . Example: [email protected] Condition : This is required if validation parameter set on product as EMail One Allowable Values: 100"
+        },
+        {
+            "name": "DateOfBirth",
+            "type": "string",
+            "required": null,
+            "description": "Date of Birth of cardholder Format: MM/DD/YYYY Valid Values: 0-9 Example:- 03/26/1986 Condition : This is required if validation parameter set on product as Birth Date Allowable Values: 10"
+        },
+        {
+            "name": "LanguageIndicator",
+            "type": "string",
+            "required": null,
+            "description": "Language Indicator Valid Values:A-Z,a-z. Example: en, where en represents 'English' Condition : This is required if validation parameter set on product as Language Indicator Allowable Values: 5"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder Postal Code of Residence Valid Values:A-Z,a-z,0-9 Example: 30093 Condition : This is required if validation parameter set on product as Postal Code Allowable Values: 10"
+        },
+        {
+            "name": "HomePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Home Phone Number. Valid Values: 0-9 Example: 9812338769 Condition : This is required if validation parameter set on product as Home Phone Allowable Values: 19"
+        },
+        {
+            "name": "WorkPhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder  Work Phone Number Valid values:0-9 Example:9632581470 Condition : This is required if validation parameter set on product as Work Phone Allowable Values: 19"
+        },
+        {
+            "name": "SocialSecurityNumber",
+            "type": "string",
+            "required": null,
+            "description": "Social Security Number of Cardholder Valid Values:0-9 Example:123456789 Condition :This is required if validation parameter set on product as  Social Security Number of Cardholder. Allowable Values: 9"
+        },
+        {
+            "name": "CardExpiryDate",
+            "type": "string",
+            "required": null,
+            "description": "Expiration Date of the card. Format is (MMYYYY). Valid Values: 0-9 Example : 092020 Condition : This is required if validation parameter set on product as Card Expiration Date Allowable Values: 6"
+        },
+        {
+            "name": "CurrentPIN",
+            "type": "string",
+            "required": null,
+            "description": "Current Card PIN of four digits. Valid Values: 0-9 Example: 1346 Condition : This is required if validation parameter set on product as Current PIN Allowable Values: 4"
+        },
+        {
+            "name": "CurrentPassword",
+            "type": "string",
+            "required": null,
+            "description": "Current Password of Cardholder. Valid Values: A-Z, a-z,0-9, Special characters. Example: Test123! Condition : This is required if validation parameter set on product as Current Password Allowable Values: 9"
+        },
+        {
+            "name": "NewPIN",
+            "type": "string",
+            "required": null,
+            "description": "Four Digit New PIN of the card Valid Values: 0-9 Example:1346 Condition : This is required if validation parameter set on product as New PIN Allowable Values: 4"
+        },
+        {
+            "name": "NewPassword",
+            "type": "string",
+            "required": null,
+            "description": "New Password of Cardholder. Valid Values: A-Z, a-z,0-9, Special characters. Example: Test123! Condition : This is required if validation parameter set on product as New Password Allowable Values: 9"
+        },
+        {
+            "name": "IDNumber",
+            "type": "string",
+            "required": null,
+            "description": "Last 4 Digits of Primary ID Valid Values: 0-9 Example: 4586 Condition : This is required if validation parameter set on product as Last 4 Digits of Primary ID Allowable Values: 25"
+        },
+        {
+            "name": "CVV2",
+            "type": "string",
+            "required": null,
+            "description": "Three digit printed on  the back of  the card. Valid Values - 0-9 Example: 213 Condition : This is required if validation parameter set on product as CVC2 Allowable Values: 4"
+        },
+        {
+            "name": "BirthYear",
+            "type": "string",
+            "required": null,
+            "description": "Birth Year Of CardHolder Valid Values: 0-9 Example:1994 Condition : This is required if validation parameter set on product as Birth Year Allowable Values: 4"
+        },
+        {
+            "name": "CustomAccountID",
+            "type": "string",
+            "required": null,
+            "description": "Any custom ID which is used to uniquely identify the Account. Valid values: A-Z, a-z, 0-9 Example:123456789 Condition: This is required if validation parameter set on product as Custom Account ID Allowable Values: 25"
+        },
+        {
+            "name": "SSNLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Last 4 digits of Social Security Number of a Cardholder Valid values :0-9 Example: 6789 Condition : This is required if validation parameter set on product as Last 4 Digits of SSN Allowable Values: 4"
+        },
+        {
+            "name": "CIPCollectSSN",
+            "type": "string",
+            "required": null,
+            "description": "Social Security Number of a Cardholder Valid values :0-9 Example: 123456788 Condition : This tag is required if validation parameter set on product as CIPCollectSSN"
+        },
+        {
+            "name": "CIPCollectIDType",
+            "type": "string",
+            "required": null,
+            "description": "Type of ID. Valid Values: 0-12 Example 05 Appendix Section: ID Name Values Condition : This tag is required if validation parameter set on product as CIPCollectIDType"
+        },
+        {
+            "name": "CIPCollectIDNumber",
+            "type": "string",
+            "required": null,
+            "description": "ID Number. Valid Values: A-Z, a-z, 0-9 Example: NT1234569PM Condition : This tag is required if validation parameter set on product as CIPCollectIDNumber"
+        },
+        {
+            "name": "CollectIDCountry",
+            "type": "string",
+            "required": null,
+            "description": "Country of Identification proof. Valid Values:a-z, 0-9 Example: US Refer Appendix section : Country Code Values Condition : This tag is required if validation parameter set on product as CollectIDCountry"
+        },
+        {
+            "name": "CollectIDDate",
+            "type": "string",
+            "required": null,
+            "description": "ID Issue Date Format: MM/DD/YYYY Example : 09/16/2022 Condition : This tag is required if validation parameter set on product as CollectIDDate Allowable Values: 10"
+        },
+        {
+            "name": "CollectIDExpirationDate",
+            "type": "string",
+            "required": null,
+            "description": "Expiration date of ID. Format: MM/DD/YYYY Valid Values:0-9 Example:03/26/1998 Condition : This tag is required if validation parameter set on product as CollectIDExpirationDate Allowable Values: 10"
+        },
+        {
+            "name": "CollectIDState",
+            "type": "string",
+            "required": null,
+            "description": "ID Issue State Valid Values:A-Z,a-z Example:GA Appendix Section: State Codes (US) Condition : This tag is required if validation parameter set on product as CollectIDState Allowable Values: 10"
+        },
+        {
+            "name": "SACValue",
+            "type": "string",
+            "required": null,
+            "description": "Used to hold SAC Value passed by user in input. Condition: It will be asked as per product set up Allowable Values: 14"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "CardRegistered",
+                    "type": "string",
+                    "required": null,
+                    "description": "Display whether card is registered or not. Valid Values: 0 = Card not registered in Self Service 1 = Card registered in Self Service Example: 0",
+                    "children": []
+                },
+                {
+                    "name": "CardLinked",
+                    "type": "string",
+                    "required": null,
+                    "description": "Display whether card is linked with any self service user or not. Valid Values: 0 = Card not Linked with any Self Service User 1 = Card Linked with Self Service User Example: 0",
+                    "children": []
+                },
+                {
+                    "name": "FlowSessionID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Reserved for future use",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.5",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "4066836120006077",
+        "ProxyNumber": "",
+        "FirstName": "Mark",
+        "MiddleName": "",
+        "LastName": "smith",
+        "AddressLine1": "AB",
+        "AddressLine2": "CD",
+        "EmailAddress1": "",
+        "DateOfBirth": "03/26/1986",
+        "LanguageIndicator": "",
+        "PostalCode": "",
+        "HomePhoneNumber": "",
+        "WorkPhoneNumber": "",
+        "SocialSecurityNumber": "458968579",
+        "CardExpiryDate": "",
+        "CurrentPIN": "6077",
+        "CurrentPassword": "",
+        "NewPIN": "0143",
+        "NewPassword": "",
+        "IDNumber": "",
+        "CVV2": "",
+        "BirthYear": "",
+        "CustomAccountID": "",
+        "SSNLast4Digits": "1234",
+        "CIPCollectSSN": "",
+        "CIPCollectIDType": "",
+        "CIPCollectIDNumber": "",
+        "CollectIDCountry": "",
+        "CollectIDDate": "",
+        "CollectIDExpirationDate": "12/24/2024",
+        "CollectIDState": "",
+        "SACValue": ""
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "CardRegistered": "0",
+            "CardLinked": ""
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Card Activation",
+        "category_id": "1017",
+        "document_id": "1216",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1216&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1017&regionId=1"
+    }
+}

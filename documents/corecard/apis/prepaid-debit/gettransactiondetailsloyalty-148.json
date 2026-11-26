@@ -1,0 +1,565 @@
+{
+    "metadata": {
+        "name": "GetTransactionDetailsLoyalty",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Rewards/GetTransactionDetailsLoyalty",
+        "description": "This API is used to get loyalty transaction details."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Example:8000000000000037 Condition:At least one of AdminNumber/AccountNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number  (Embossing Account id) Valid Values:0-9 Example:82432455 Condition:At least one of AdminNumber/AccountNumber is required."
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": false,
+            "description": "Unique identification number for Institution. Valid Values:0-9 Example:Fixed value needs to pass which is provided by Corecard."
+        },
+        {
+            "name": "DetailActivityType",
+            "type": "string",
+            "required": false,
+            "description": "Activity Type can be specified for specific transactions . Valid Values: Refer Appendix Section 5.55 (Activity Type) Example : 12 = Earned Allowable Values: 2"
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "integer",
+            "required": false,
+            "description": "Unique Number which is assigned to a Merchant. Valid Values- 0-9 Format:XXXXXX Example:11642"
+        },
+        {
+            "name": "FromDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Used as a criteria for Transaction Filter. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05"
+        },
+        {
+            "name": "ToDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Used as a criteria for Transaction Filter. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05"
+        },
+        {
+            "name": "StatementFrom",
+            "type": "datetime",
+            "required": false,
+            "description": "Used as a criteria for Transaction Filter. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05"
+        },
+        {
+            "name": "StatementTo",
+            "type": "datetime",
+            "required": false,
+            "description": "Used as a criteria for Transaction Filter. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05"
+        },
+        {
+            "name": "BatchSize",
+            "type": "integer",
+            "required": false,
+            "description": "Number of Transaction which can be view in one Batch. Default Value would be 100 Valid Values: 0-9 Format: XX Example: 20"
+        },
+        {
+            "name": "PageIndex",
+            "type": "integer",
+            "required": false,
+            "description": "Number of page. Valid Values: 0 - 9 Format: XX Example: 12"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "DetailsCount",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Number of Transactions. Valid Values: 0-9 Format: xx Example: 20",
+                    "children": []
+                },
+                {
+                    "name": "TransactionList",
+                    "type": "array",
+                    "required": null,
+                    "description": "List of Transactions.",
+                    "children": [
+                        {
+                            "name": "ReversalTarget",
+                            "type": "int64",
+                            "required": null,
+                            "description": "ID for the reversed loyalty points. Valid Values: 0-9 a-z Format: xxx Example: 123abc",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoPoints",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Accumulated Promotional Point. Valid Values:0-9 Example : 12.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyExpirationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Loyalty Points Expiration Date. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionPostTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Time of Transaction  posted. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                            "children": []
+                        },
+                        {
+                            "name": "DetailActivityType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Activity Type can be specified for specific transactions. Valid Values: Refer Appendix Section 5.55 (Activity Type) Example : 12 = Earned Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "User defined description of transaction if entered by user explicitly. If not entered by the user, then system will generate it. Example:Purchase/Payment. Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyPoints",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total accumulated loyalty points of the Account. Example: 810.00",
+                            "children": []
+                        },
+                        {
+                            "name": "EquivalentAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Equivalent amount based on points. Example : 250.00",
+                            "children": []
+                        },
+                        {
+                            "name": "EquivalentAmount_Web",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Equivalent amount based on points. Example : 250.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Merchant. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "StoreName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Store Valid Values:Wallmart Format:A-Z, 0-9 Example:Wallmart Condition:Core Card will provide the value for this field after the Program is setup. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "RegisterName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Register Name in a merchant hierarchy Valid Values:a-z, 0-9 Format: xxxx Example:abc 123 Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account number of cardholder. Valid Values:0-9 Example:8000000000000037 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionReference",
+                            "type": "string",
+                            "required": null,
+                            "description": "Reference number of Transaction. Valid Values:0-9, A-Z Format: Example:321dss2 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantNameandLocation",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name and location details of merchant Valid Values: a-z A-Z Format: XXXXXXXXXXXXXXXX Example: Dental merchant, Nashua Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNumberLast4Digit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Last 4 digits of card number Valid Values:0-9 Format:XXXX Example:1234 Allowable Values: 4",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionSource",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction source like ACH, manual etc. Example:5=IPM, For  Retail =29(Installment Purchase) Retail =39(Credit Purchase)  Retail=23 (Manual Auth) Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionSourceDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of Transaction Source. Example : Manual Auth Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "PostDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This is the time when transaction actually got posted in system. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantCategory",
+                            "type": "string",
+                            "required": null,
+                            "description": "Identifier for the Merchant Category. Valid Values: 0-9 a-z Format: xxxx Example:1d3f4 Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "MCCDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the Merchant Category Code. Valid Values: 0-9, a-z Format:xxxx Example: 123abc Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MCCCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique code assigned for Merchant Category. Valid Values: 0-9, a-z Format:xxxx Example: 123abc Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "RedemptionType",
+                            "type": "string",
+                            "required": null,
+                            "description": "ACH or Statement Credit for Redeemption transaction. Example:3 (Statement Credit) Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoTxnAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount qualified for Promotional points. Example:150.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyProgramID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "ID of Loyalty Program.",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyProgramName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of Loyalty Program. Example: Card Loyalty Program Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "BasePercent",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Base Percent of an Loyalty transaction. Example:1.20",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoPercent",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Promotional Percent of a loyalty program. Example:2.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalPercent",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Percentage (Base percent + promo percent) Example:3.20",
+                            "children": []
+                        },
+                        {
+                            "name": "RewardRedeemStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "The status of reward redemption. Valid Values: a-z 0-9 Format: xxx Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "ClientUniqueId",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique Identifier for the client. Valid Values: 0-9 a-z Format: xxxx Example: 123abc",
+                            "children": []
+                        },
+                        {
+                            "name": "PartnerID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique ID of Partner Valid Values: 0-9, A-B Format:XXX Example:1234 Allowable Values: 256",
+                            "children": []
+                        },
+                        {
+                            "name": "ReasonCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Reason Code field for Error or Success of API. Example:0 Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "RedeemBankAccountName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of bank or loan servicer account where loyalty points are redeemed. Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Transaction Number for transaction being posted. Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:23654789",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Loyalty Rule. Example:Base Rule Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "DebitCreditIndicator",
+                            "type": "integer",
+                            "required": null,
+                            "description": "It tells if the loyalty transaction is debit or credit. Valid Values: 1 = Debit , -1 =  Credit Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyPointsMgmtResponseID",
+                            "type": "string",
+                            "required": null,
+                            "description": "A unique identifier generated from the LoyaltyPointsManagement transaction. It can be used to track and link the transaction across systems. Example: 7485122 Allowable Values: 15",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number indicates that API responded. Response ID is unique. This value will be null if no authentication information was passed. Response ID can be used for tracking Valid Values:0-9, a-z Format:xxx Example:200 Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "AccountUUID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Unique additional Identification Number generated by system for an Account. Valid Values: Format: Example:a585f533-0d33-4282-ab98-4852146e5e17 Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "AdminNumberUUID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Unique additional Identification Number generated by system for an Admin Number. Valid Values: Format: Example:a585f533-0d33-4282-ab98-4852146e5e17 Allowable Values: 20",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "700000000785214",
+        "AdminNumber": 100989,
+        "InstitutionID": null,
+        "DetailActivityType": "11",
+        "MerchantNumber": null,
+        "FromDate": null,
+        "ToDate": null,
+        "StatementFrom": null,
+        "StatementTo": null,
+        "BatchSize": null,
+        "PageIndex": null
+    },
+    "sample_response": {
+        "Message": "Loyalty Transaction details returned successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01023",
+        "ResponseData": {
+            "DetailsCount": 10,
+            "TransactionList": [
+                {
+                    "ReversalTarget": 14554444,
+                    "PromoPoints": 205.0,
+                    "LoyaltyExpirationDate": "11/02/2022 00:00:00",
+                    "TransactionPostTime": "11/02/2020 00:00:00",
+                    "DetailActivityType": "12",
+                    "TransactionDescription": "43801 = CASHBACK CREDIT",
+                    "LoyaltyPoints": 2055.2,
+                    "EquivalentAmount": 20.02,
+                    "EquivalentAmount_Web": null,
+                    "MerchantName": null,
+                    "StoreName": null,
+                    "RegisterName": null,
+                    "AccountNumber": "8110000000000448",
+                    "TransactionReference": "123372036855203839",
+                    "MerchantNameandLocation": null,
+                    "CardNumberLast4Digit": "4821",
+                    "TransactionSource": "4",
+                    "TransactionSourceDescription": "Generated",
+                    "PostDateTime": "11/02/2020 00:00:00",
+                    "MerchantCategory": "Restaurants",
+                    "MCCDescription": "Eating Places, Restaurants",
+                    "MCCCode": "5812",
+                    "RedemptionType": null,
+                    "PromoTxnAmount": 100.02,
+                    "LoyaltyProgramID": 10,
+                    "LoyaltyProgramName": "ABC Student Loan Rewards Loyalty Program",
+                    "BasePercent": 1.25,
+                    "PromoPercent": 1.55,
+                    "TotalPercent": 1.8,
+                    "RewardRedeemStatus": null,
+                    "ClientUniqueId": "3457577",
+                    "PartnerID": null,
+                    "ReasonCode": null,
+                    "RedeemBankAccountName": null,
+                    "TransactionID": 87874574,
+                    "RuleName": "Student Loan Base Reward Rule",
+                    "DebitCreditIndicator": -1,
+                    "LoyaltyPointsMgmtResponseID": "123372036855"
+                }
+            ],
+            "ResponseID": "56806584",
+            "AccountUUID": "b58ce8d3-2bb1-492a-b224-af548236d843",
+            "AdminNumberUUID": "97a5ca01-a0ce-4df1-9050-e5fa00c3b8ab"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Reward Transactions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=148&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=23"
+    }
+}

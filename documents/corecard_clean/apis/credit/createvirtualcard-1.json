@@ -1,0 +1,332 @@
+{
+    "metadata": {
+        "name": "CreateVirtualCard",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountHolders/CreateVirtualCard",
+        "description": "The purpose of this API is to create Virtual Card."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of Card holder under which secondary card need to be created. Valid Values:0-9 Example:8000000000000037 Condition:At least one account identifier is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values:0-9 Format:XXXXX Example:12345 Condition:At least one account identifier is required."
+        },
+        {
+            "name": "VirtualCardLimit",
+            "type": "decimal",
+            "required": null,
+            "description": "Card limit of Virtual card Valid Values:0-9 Format:XXXX.XX Example:1000.00 Condition:This field is conditional. Virtual Card can be created without passing Virtual card limit, It can be 0 or Null.If it is 0 or Null then card will use Accounts Credit Limit."
+        },
+        {
+            "name": "VirtualCardResetAllow",
+            "type": "integer",
+            "required": false,
+            "description": "Flag to decide if created virtual card should get the facility to update card limit. Valid Values: 0 = Yes (Will get the facility to update card limit) 1 = No (Will not get the facility to update card limit) Format:X Example:0,1"
+        },
+        {
+            "name": "VirtualCardExpOption",
+            "type": "integer",
+            "required": false,
+            "description": "Virtual card expiration option. Valid Values: 0 = Card expire after no.of transactions. 1 = Card expire on particular duration. 2 = Card expire on particular date. 3 = Card expiry date is same as Primary Card. This field is mandatory when Secondary Card Type is \"1\"(Virtual). Format: X Example: 2 (Card expire on particular date)"
+        },
+        {
+            "name": "VirtualCardExpAfterTxn",
+            "type": "integer",
+            "required": null,
+            "description": "Virtual card expiration option after certain number of transaction. Valid Values: 0-9 Format: XX Example: 10 Condition: This field is mandatory when VirtualCardExpOption is 0 (Card expire after no. of transactions)"
+        },
+        {
+            "name": "VirtualCardExpDuration",
+            "type": "integer",
+            "required": null,
+            "description": "Virtual card expiration duration like hour, minute, day etc Valid Values: 0 = Minutes 1 = Hour 2 = Day 3 = Week 4 = Month 5 = Year Format: X Example: 2 (Day) Condition: This field is mandatory when VirtualCardExpOption = 1 (Card expire on particular duration)"
+        },
+        {
+            "name": "VirtualCardExpDurationValue",
+            "type": "integer",
+            "required": null,
+            "description": "Virtual card expiration Duration Value. Valid Values: 0-9 Format: XXX Example: Virtual Card Expiry duration is 4(month) then this field value can be of 1-12. Condition: This field is mandatory when VirtualCardExpOption = 1 (Card expire on particular duration)"
+        },
+        {
+            "name": "VirtualCardExpDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Virtual card expiration option at exact date. Valid Values: 0-9 Format: MM/DD/YYYY Example: 01/01/2024 Condition: This field is mandatory when VirtualCardExpOption is 2 (Card expire on particular date)"
+        },
+        {
+            "name": "IdentifierToken",
+            "type": "string",
+            "required": null,
+            "description": "A generated token that is not expired can be used as an input field to access API. If we are passing this field in input, user should not pass any other account identifier. Condition:At least one account identifier is required. Allowable Values: 800"
+        },
+        {
+            "name": "CardImageID",
+            "type": "string",
+            "required": false,
+            "description": "Art/Template ID based on this Card’s Image will be displayed. Valid Values:0-9, a-z Format:XXXX(String) Example:30abc Allowable Values: 100"
+        },
+        {
+            "name": "VirtualCardAutoReset",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to decide if Virtual Card Limit will get auto-reset or not. Valid Values: 0 = Yes (Virtual Card Limit will be Auto-Reset) 1 = No(Virtual Card Limit will not be Auto-Reset) Format: X Example: 0,1 Condition: Allowed only if- 1. Virtual Card Limit has a value except 0 or NULL. 2. ‘Usage Reset Frequency’ is set to Billing Cycle at Product Level. 3. If no value is passed, then by default null will be considered as no auto-reset applicable."
+        },
+        {
+            "name": "EmbossingLine4",
+            "type": "string",
+            "required": false,
+            "description": "Embossing line4 Valid Values:A-Z Example:ABC Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 20"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "VirtualCardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Virtual Card Number Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account number of Card holder under which secondary card created. Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:8000000000000037 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "AdminNumber",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values:0-9 Format:XXXXX Example:12345",
+                    "children": []
+                },
+                {
+                    "name": "CurrentCardBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Available Balance of Card. Valid Values:0-9 Format:XXX.XX Example:2000.00",
+                    "children": []
+                },
+                {
+                    "name": "FirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card holder's First name. Example:John Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "LastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card holder's last name. Example:Smith Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "NameOnCard",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name to be printed on the card. Valid Values:A-Z, 0-9 Format:XXXX Example:John J Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "PrimaryCardExpiryDate",
+                    "type": "DateTime",
+                    "required": null,
+                    "description": "Expiry date of primary card under which secondary card is being created. Valid Values:0-9 Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                    "children": []
+                },
+                {
+                    "name": "ValidFrom",
+                    "type": "DateTime",
+                    "required": null,
+                    "description": "Card Creation Date of requested card. Format:MM/dd/yyyy HH:mm:ss Example:01/01/2020",
+                    "children": []
+                },
+                {
+                    "name": "ValidTo",
+                    "type": "DateTime",
+                    "required": null,
+                    "description": "Card Expiration Date of requested card. Format:MM/dd/yyyy HH:mm:ss Example:01/01/2022",
+                    "children": []
+                },
+                {
+                    "name": "CVC",
+                    "type": "string",
+                    "required": null,
+                    "description": "3 Digit security number printed on back side of the card. Valid Values:0-9 Format:XXX Example:456 Allowable Values: 3",
+                    "children": []
+                },
+                {
+                    "name": "VirtualCardExpirationDate",
+                    "type": "DateTime",
+                    "required": null,
+                    "description": "Card Expiration Date of Virtual card. Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "9000000500000170",
+        "AdminNumber": 129408,
+        "VirtualCardLimit": 1000.0,
+        "VirtualCardResetAllow": 0,
+        "VirtualCardExpOption": 3,
+        "VirtualCardExpAfterTxn": null,
+        "VirtualCardExpDuration": null,
+        "VirtualCardExpDurationValue": null,
+        "VirtualCardExpDate": null,
+        "IdentifierToken": null,
+        "CardImageID": null,
+        "VirtualCardAutoReset": 1,
+        "EmbossingLine4": "ABC"
+    },
+    "sample_response": {
+        "Message": "Card created successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01070",
+        "ResponseData": {
+            "VirtualCardNumber": "XXXXXXXXXXXXXXXX",
+            "AccountNumber": "7000000000000146",
+            "AdminNumber": 129475,
+            "CurrentCardBalance": 1000.0,
+            "FirstName": "John",
+            "LastName": "Miller",
+            "NameOnCard": "John Miller",
+            "PrimaryCardExpiryDate": "11/02/2022",
+            "ValidFrom": "11/02/2020",
+            "ValidTo": "11/02/2022",
+            "CVC": "XXX",
+            "VirtualCardExpirationDate": "11/02/2020"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "New Cards",
+        "category_id": "1",
+        "document_id": "1",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1&regionId=1"
+    }
+}

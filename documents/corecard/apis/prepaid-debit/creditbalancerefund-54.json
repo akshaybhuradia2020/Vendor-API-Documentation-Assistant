@@ -1,0 +1,202 @@
+{
+    "metadata": {
+        "name": "CreditBalanceRefund",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/CreditBalanceRefund",
+        "description": "This API is to post the credit balance refund for the account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder/AccountHolder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one Account identifier input parameter should be passed Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345 Condition: At least one Account identifier input parameter should be passed"
+        },
+        {
+            "name": "CreditBalance",
+            "type": "decimal",
+            "required": true,
+            "description": "The amount which has to be refunded Valid Values:0-9 Format:XX.XX Example:22.00"
+        },
+        {
+            "name": "RefundMode",
+            "type": "integer",
+            "required": true,
+            "description": "Mode how the balance has been refund.like ACH, manual,other Valid Values:0,1 Format:XXXXXXXXXXXXXXXX Example:0 = ACH OR 1 = Other,2 – Adjust to Loan Account"
+        },
+        {
+            "name": "MethodName",
+            "type": "int64",
+            "required": null,
+            "description": "Method Name uniquely identifies bank accounts in Core card system. Whenever user adds any bank account. This is required If User wants to send transaction in ACH. Valid Values:0-9 Format:XXXX Example:4092 Condition: If Payment mode is ACH then only Methodname is required."
+        },
+        {
+            "name": "LoanAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number on which the refund amount should be adjusted. Valid Values:0-9 Format:XXXXXXXXXXXXXXX Example:2342432543512 Condition:It should be mandatory if Refund mode is 2 i.e Adjust to Loan Account."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ErrorNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Error Code which has been defined for the API response. Valid Values:0-9, A-Z Format:XXXXX Example:ERR01013",
+                    "children": []
+                },
+                {
+                    "name": "ErrorMessage",
+                    "type": "string",
+                    "required": null,
+                    "description": "Error Message which has been defined for the Error Codes,like ERR01013 -Credit balance refund retrieved successfully . Valid Values:0-9, A-Z Format:XXXXX Example:Credit balance refund retrieved successfully",
+                    "children": []
+                },
+                {
+                    "name": "ErrorFound",
+                    "type": "string",
+                    "required": null,
+                    "description": "Error is been there in the API response. Valid Values:Y/N Format:XXXXX Example:Yes/No",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "5000000000011550",
+        "AdminNumber": 62065,
+        "CreditBalance": 364.6,
+        "RefundMode": 0,
+        "LoanAccountNumber": "5000000000014343",
+        "MethodName": 2881
+    },
+    "sample_response": {
+        "Message": "Credit balance refund retrieved successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01013",
+        "ResponseData": null
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Balances",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=54&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=2"
+    }
+}

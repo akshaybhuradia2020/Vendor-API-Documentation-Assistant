@@ -1,0 +1,468 @@
+{
+    "metadata": {
+        "name": "GetMerchantTransactionLog",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/MerchantManagement/GetMerchantTransactionLog",
+        "description": "Purpose of this API is to get merchant transaction log."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "string",
+            "required": false,
+            "description": "Merchant ID assigned to merchant. Valid Values:0-9 Format: XXXXXXXXX Example: 205136549 Allowable Values: 50"
+        },
+        {
+            "name": "StoreNumber",
+            "type": "string",
+            "required": false,
+            "description": "Unique Number which is assgined to a Store. Valid Values:0-9 Example: 205136549 Allowable Values: 10"
+        },
+        {
+            "name": "RegisterNumber",
+            "type": "string",
+            "required": false,
+            "description": "Unique Number which is assigned to a register. Valid Values:0-9 Example: 205136549 Allowable Values: 30"
+        },
+        {
+            "name": "FromDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Starting date of transaction search. Used as a criteria for Transaction Filter. Valid Values: 0-9 Format: MM/DD/YYYY Example: 02/01/2020 Condition: Default value should be 1 month before date from current date"
+        },
+        {
+            "name": "ToDate",
+            "type": "datetime",
+            "required": false,
+            "description": "End date of transaction search. Used as a criteria for Transaction Filter Valid Values: 0-9 Format: MM/DD/YYYY Example: 02/01/2020 Condition: Default value should be 1 day before date from current date"
+        },
+        {
+            "name": "TransactionDateTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Date and Time transaction when occurred Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 12:10:01"
+        },
+        {
+            "name": "TransactionID",
+            "type": "decimal",
+            "required": false,
+            "description": "Transaction Number for the  transaction being posted. Valid Values:0-9 a-z Format:XXXXXXXXXXXXXXXX Example:23654789"
+        },
+        {
+            "name": "PostDateTime",
+            "type": "datetime",
+            "required": false,
+            "description": "This is the time when transaction actually got posted in system. Valid Values: valid date Format:MM/DD/YYYY HH:MM:SS Example: 01/01/2020 12:10:01"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": false,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one account identifier is required. Allowable Values: 19"
+        },
+        {
+            "name": "ApplicationNumber",
+            "type": "string",
+            "required": false,
+            "description": "Unique Number generated for the Account creation Application . Valid Values:0-9 Example:8002201421 Allowable Values: 20"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": false,
+            "description": "First name of account holder Valid Values:a-z Format:XXXX Example:John Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": false,
+            "description": "Last name of account holder Valid Values:a-z Format:XXXX Example:Smith Allowable Values: 50"
+        },
+        {
+            "name": "TransactionType",
+            "type": "string",
+            "required": false,
+            "description": "Type of Transaction (Purchase debit,payment reversal etc) Valid Values: 23 - DIRECTED PAYMENT 3 - INTEREST CREDIT 2 - INTEREST DEBIT 21 - NON-DIRECTED PAYMENT 28 - NON-DIRECTED PAYMENT REVERSAL 22 - PAYMENT REVERSAL 49 - PRINCIPAL CREDIT 48 - PRINCIPAL DEBIT 40 - PURCHASE DEBIT 43 - PURCHASE DEBIT REVERSAL 41 - PURCHASE RETURN 42 - PURCHASE RETURN REVERSAL 29 - REVERSAL OF NON-DIRECTED PAYMENT REVERSAL Format: XX Example: 41 Allowable Values: 25"
+        },
+        {
+            "name": "CreditPlanMaster",
+            "type": "integer",
+            "required": false,
+            "description": "Plan name associated with the card account. Valid Values:A-Z, 0-9 Format:XXXXXX Example:6 Months No Interest if Paid in Full"
+        },
+        {
+            "name": "Amount",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount for which transaction occurred Valid Values:  0-9 Format: $XX.XX Example: $20.00"
+        },
+        {
+            "name": "BatchSize",
+            "type": "integer",
+            "required": false,
+            "description": "Number of Transaction which can be view in one Batch Default Value would be 50. Valid Values:0-9 Format:XX Example:20"
+        },
+        {
+            "name": "PageIndex",
+            "type": "integer",
+            "required": false,
+            "description": "Number of page Default value would be 0 Valid Values:0-9 Format:XX Example:12"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "TransactionRecords",
+                    "type": "array",
+                    "required": null,
+                    "description": "Get or Set TransactionRecords",
+                    "children": [
+                        {
+                            "name": "TransactionID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Transaction Number for the  transaction being posted. Valid Values:0-9 a-z Format:XXXXXXXXXXXXXXXX Example:23654789",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Merchant Valid Values:A-Z, 0-9 Format:XXXXXX Example:ABC LLC Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant ID assigned to merchant. Valid Values- 0-9 Format:XXXXXX Example:11642",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one account identifier is required. Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "ApplicationNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique Number generated for the Account creation Application . Valid Values:0-9 Example:8002201421 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "First name of account holder Valid Values:a-z Format:XXXX Example:John Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "LastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Last name of account holder Valid Values:a-z Format:XXXX Example:Smith Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "StoreNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique Number which is assigned to a Store. Valid Values:0-9 Example: 205136549 Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "RegisterNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique Number which is assgined to a register. Valid Values:0-9 Example: 205136549 Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of Transaction (purchase,payment etc) Valid Values: Puchase, Payment Format: XXXXXXX Example: Purchase Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "Amount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount for which transaction occurred Valid Values:  0-9 Format: $XX.XX Example: $20.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date and Time transaction when occured Valid Values: 0-9 Format:MM/DD/YYYY HH:MM:SS Example: 01/01/2020 12:10:01",
+                            "children": []
+                        },
+                        {
+                            "name": "PostDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This is the time when transaction actually got posted in system. Valid Values: valid date Format:MM/DD/YYYY HH:MM:SS Example: 01/01/2020 12:10:01",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "User defined description of transaction if entered by user explicitly. If not entered by the user, then system will generate it. Valid Values:A-Z,0-9 Example:Purchase/Payment. Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payment Transaction Code Valid Values:0-9 Format:XXXXX Example: 86221 = AUTO ACH PAYMENT Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditPlanMaster",
+                            "type": "string",
+                            "required": null,
+                            "description": "Plan name associated with the card account. Valid Values:A-Z, 0-9 Format:XXXXXX Example:6 Months No Interest if Paid in Full Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "Operator",
+                            "type": "string",
+                            "required": null,
+                            "description": "SpecialMerchantIdentifier as TransactionCode Internal Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "DiscountPercent",
+                            "type": "string",
+                            "required": null,
+                            "description": "DiscountPercent Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "DiscountFee",
+                            "type": "string",
+                            "required": null,
+                            "description": "DiscountFee Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ReverseFlag",
+                            "type": "string",
+                            "required": null,
+                            "description": "Flag to Reverse ransaction Valid Values: 0= No, 1 = Yes Format: X Example: 1 + Yes Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "ReturnFlag",
+                            "type": "string",
+                            "required": null,
+                            "description": "Flag to return transaction. Valid Values: 0 = No, 1 = Yes Format: X Example: 1 = Yes Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "PrintReceiptflag",
+                            "type": "string",
+                            "required": null,
+                            "description": "Get or Set PrintReceiptflag Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditPlanDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Credit Plan Description Valid Values: A-z,0-9 Example: 6 Months No Interest if Paid in Full Allowable Values: 250",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Shows status of transaction if it was a success, failed, outstanding auth Valid Values: Success, Fail, Outstanding Authorization Example: fail Allowable Values: 20",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MerchantNumber": "33333333",
+        "StoreNumber": null,
+        "RegisterNumber": null,
+        "FromDate": null,
+        "ToDate": null,
+        "TransactionDateTime": null,
+        "TransactionID": null,
+        "PostDateTime": null,
+        "AccountNumber": null,
+        "ApplicationNumber": null,
+        "FirstName": null,
+        "LastName": null,
+        "TransactionType": null,
+        "CreditPlanMaster": null,
+        "Amount": null,
+        "BatchSize": 1,
+        "PageIndex": 1
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "TransactionRecords": [
+                {
+                    "TransactionID": "123372036854802020",
+                    "MerchantName": "Merchant 3",
+                    "MerchantNumber": "33333333",
+                    "AccountNumber": "8000000000000136",
+                    "ApplicationNumber": "8002200246",
+                    "FirstName": "JOSEPH",
+                    "LastName": "GILSON",
+                    "StoreNumber": "Merchant_Store 3",
+                    "RegisterNumber": null,
+                    "TransactionType": "PURCHASE DEBIT",
+                    "Amount": 3000.0,
+                    "TransactionDateTime": "01/16/2017 01:48:57",
+                    "PostDateTime": "01/16/2017 01:48:57",
+                    "TransactionDescription": "3020 = DOMESTIC SALE (THIRD PARTY)",
+                    "TransactionCode": "3020 = DOMESTIC SALE (THIRD PARTY)",
+                    "CreditPlanMaster": "18 Months No Interest if Paid in Full",
+                    "Operator": "Gsadmin",
+                    "DiscountPercent": "10.00",
+                    "DiscountFee": "300.00",
+                    "ReverseFlag": "0",
+                    "ReturnFlag": "0",
+                    "PrintReceiptflag": "1",
+                    "CreditPlanDescription": "6 Months No Interest if Paid in Full",
+                    "TransactionStatus": "fail"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1008",
+        "document_id": "138",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=138&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1008&regionId=1"
+    }
+}

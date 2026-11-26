@@ -1,0 +1,284 @@
+{
+    "metadata": {
+        "name": "GetSpendRule",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/CardManagement/GetSpendRule",
+        "description": "This API is used to get the Spend Rule applied on the Card."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": true,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values: 0-9 Format: XXXX Example: 1234"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "listSpendRuleResponseModel",
+                    "type": "array",
+                    "required": null,
+                    "description": "SpendRuleResponseModel List",
+                    "children": [
+                        {
+                            "name": "TransactionType",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag will return the type of transaction defined for the Spend Rule.The Spend Rules will be applied for this type of Transaction. Valid Values:1=Cash Access,2=Online,3=PIN POS Transaction,4=Signature POS Transaction,5=Contactless Transactions,6=Recurring Transactions,7= Card Not present Transactions Format: X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionCategory",
+                            "type": "string",
+                            "required": null,
+                            "description": "Use this tag to define the transaction category. Valid Values:1=All, 2=Domestic,3=International, Format: X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Use this tag to define whether Transaction Allowed will be yes or Not Valid Values: 0 = No / 1 = Yes Format: X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "CardType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Use this tag to define the Card Type Valid Values:1=Primary,2=Seconday,3=Al Format: X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "SingleTransactionLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Use this tag to provide the single transaction limit Valid Values: 0-9 Format: X Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "DefaultValueonCard",
+                            "type": "string",
+                            "required": null,
+                            "description": "Use this tag to provide the default value on card Valid Values: 0 = No / 1 = Yes Format: X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "DailySpendLimitCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Use this tag to update daily spend limit count. Valid Values: 0-9 Format: X Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "DailySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Use this tag to update daily spend limit amount. Valid Values: 0-9 Format: X Example:500",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklySpendLimitCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Use this tag to update Weekly spend limit count. Valid Values: 0-9 Format: X Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Use this tag to update Weekly spend limit amount. Valid Values: 0-9 Format: X Example:500",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlySpendLimitCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Use this tag to update Monthly spend limit count. Valid Values: 0-9 Format: X Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Use this tag to update Monthly spend limit amount. Valid Values: 0-9 Format: X Example:500",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlySpendLimitCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Use this tag to update Yearly spend limit count. Valid Values: 0-9 Format: X Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Use this tag to update Yearly spend limit amount. Valid Values: 0-9 Format: X Example:500",
+                            "children": []
+                        },
+                        {
+                            "name": "Status",
+                            "type": "string",
+                            "required": null,
+                            "description": "Use this tag to provide the status of the Spend rule, whether it is Active or Inactive Valid Values:1=Active, 2=Inactive Format: X Example:1",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AdminNumber": 129308
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "listSpendRuleResponseModel": [
+                {
+                    "TransactionType": "1",
+                    "TransactionCategory": "1",
+                    "TransactionAllowed": "1",
+                    "CardType": "1",
+                    "SingleTransactionLimit": 10.0,
+                    "DefaultValueonCard": "1",
+                    "DailySpendLimitCount": 10,
+                    "DailySpendLimitAmount": 500.0,
+                    "WeeklySpendLimitCount": 10,
+                    "WeeklySpendLimitAmount": 500.0,
+                    "MonthlySpendLimitCount": 10,
+                    "MonthlySpendLimitAmount": 500.0,
+                    "YearlySpendLimitCount": 10,
+                    "YearlySpendLimitAmount": 500.0,
+                    "Status": "1"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Card Registration",
+        "category_id": "11",
+        "document_id": "1404",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1404&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=11&regionId=1"
+    }
+}

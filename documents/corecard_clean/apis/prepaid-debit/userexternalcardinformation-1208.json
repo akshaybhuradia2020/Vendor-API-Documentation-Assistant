@@ -1,0 +1,318 @@
+{
+    "metadata": {
+        "name": "UserExternalCardInformation",
+        "http_method": "POST",
+        "endpoint": "/api/UserExternalCardInformation",
+        "description": "Use this API to save the external debit card information in CoreCard system."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "UniqueID",
+            "type": "string",
+            "required": true,
+            "description": "Unique ID for request Allowable Values: 19"
+        },
+        {
+            "name": "RequestType",
+            "type": "string",
+            "required": true,
+            "description": "Operation to be performed Valid values : 0 = New information 1 = Update existing card information 2 = Get Card Information Example: 0 Allowable Values: 1"
+        },
+        {
+            "name": "CCInternalAID",
+            "type": "string",
+            "required": null,
+            "description": "CCInternalAID created against a CardNumber. Valid values: 0-9 Example: 1005 Condition : mandatory when Request Type value =1 or 2. Allowable Values: 16"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition : mandatory when Request Type value =0 Allowable Values: 16"
+        },
+        {
+            "name": "CVC",
+            "type": "string",
+            "required": null,
+            "description": "Three digit printed on  the back of  the card . Valid Values - 0-9 Example: 213 Condition : mandatory when Request Type value = 0 or 1 Allowable Values: 3"
+        },
+        {
+            "name": "CardExpiryDate",
+            "type": "string",
+            "required": null,
+            "description": "Expiration Date of the card. Format is (MM/YY). Valid Values: 0-9 Example : 09/22 Condition : mandatory when Request Type value = 0 or 1 Allowable Values: 5"
+        },
+        {
+            "name": "NameOnCard",
+            "type": "string",
+            "required": false,
+            "description": "Name to be Embossed on Card Valid values are A-Z, a-z, 0-9. Example: Hudson M Charles Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": false,
+            "description": "Address Line 1 of the Cardholder Valid values : A-Z, a-z, 0-9 Example: 15 Penang Street Point Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Address Line 2 of the Cardholder Valid values: A-Z, a-z, 0-9 Example: 1 mecca way Allowable Values: 50"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder's City of residence Valid values: A-Z, a-z, 0-9 Example: Norcross Allowable Values: 25"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder Postal Code of Residence Valid Values:A-Z,a-z,0-9 Example: 30093 Allowable Values: 9"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder State of residence Valid values are A-Z, a-z Example: GA Please refer Appendix Section : State Codes(US) Allowable Values: 100"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": false,
+            "description": "Two Character Country Code Valid values :A-Z, a-z Example: US Refer Appendix section : Country Code Values Allowable Values: 100"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "UniqueID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Unique ID for request",
+                    "children": []
+                },
+                {
+                    "name": "CCInternalAID",
+                    "type": "string",
+                    "required": null,
+                    "description": "CCInternalAID created against a CardNumber.",
+                    "children": []
+                },
+                {
+                    "name": "CardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001",
+                    "children": []
+                },
+                {
+                    "name": "CVC",
+                    "type": "string",
+                    "required": null,
+                    "description": "Three digit printed on  the back of  the card . Valid Values - 0-9 Example: 213",
+                    "children": []
+                },
+                {
+                    "name": "CardExpiryDate",
+                    "type": "string",
+                    "required": null,
+                    "description": "Expiration Date of the card.  Format is (MM/YY). Valid Values: 0-9 Example : 09/22",
+                    "children": []
+                },
+                {
+                    "name": "AddressLine1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Address Line 1 of the Cardholder Valid values : A-Z, a-z, 0-9 Example: 15 Penang Street Point",
+                    "children": []
+                },
+                {
+                    "name": "AddressLine2",
+                    "type": "string",
+                    "required": null,
+                    "description": "Address Line 2 of the Cardholder Valid values: A-Z, a-z, 0-9 Example: 1 mecca way",
+                    "children": []
+                },
+                {
+                    "name": "City",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder's City of residence Valid values: A-Z, a-z, 0-9 Example: Norcross",
+                    "children": []
+                },
+                {
+                    "name": "PostalCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder Postal Code of Residence Valid Values:A-Z,a-z,0-9 Example: 30093",
+                    "children": []
+                },
+                {
+                    "name": "Country",
+                    "type": "string",
+                    "required": null,
+                    "description": "Two Character Country Code Valid values :A-Z, a-z Example: US Refer Appendix section : Country Code Values",
+                    "children": []
+                },
+                {
+                    "name": "State",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder State of residence Valid values are A-Z, a-z Example: GA Please refer Appendix Section : State Codes(US)",
+                    "children": []
+                },
+                {
+                    "name": "NameOnCard",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name to be Embossed on Card Valid values are A-Z, a-z, 0-9. Example: Hudson M Charles",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "UniqueID": "58452163",
+        "RequestType": "0",
+        "CCInternalAID": "",
+        "CardNumber": "4066836120006077",
+        "CVC": "158",
+        "CardExpiryDate": "02/26",
+        "NameOnCard": "Smith",
+        "AddressLine1": "Lane1",
+        "AddressLine2": "near Subway",
+        "City": "New York City",
+        "PostalCode": "34351",
+        "State": "GA",
+        "Country": "US"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "UniqueID": "58452163",
+            "CCInternalAID": "4066836158645938",
+            "CardNumber": "4066836120006077",
+            "CVC": "158",
+            "CardExpiryDate": "02/24",
+            "AddressLine1": "AB",
+            "AddressLine2": "CD",
+            "City": "NoCross",
+            "PostalCode": "34351",
+            "Country": "US",
+            "State": "GA",
+            "NameOnCard": "Smith"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1041",
+        "document_id": "1208",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1208&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1041&regionId=1"
+    }
+}

@@ -1,0 +1,251 @@
+{
+    "metadata": {
+        "name": "LinkedTransaction",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Transactions/LinkedTransaction",
+        "description": "This API is to get the list of linked transaction of any generated transaction to its original transaction and vice-versa of an account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "TransactionId",
+            "type": "int64",
+            "required": true,
+            "description": "Transaction Number for transaction being posted. Valid Values:0-9 Format:XXXXXXXXX Example:236547895"
+        },
+        {
+            "name": "TransactionSource",
+            "type": "string",
+            "required": true,
+            "description": "Source of Transaction made like ACH, manual etc Valid Values:0-9,a-z Format : Manual Example:Manual, ACH Allowable Values: 50"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "LinkedTransactionList",
+                    "type": "array",
+                    "required": null,
+                    "description": "LinkedTransactionList",
+                    "children": [
+                        {
+                            "name": "TransactionID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Number for the  transaction being posted. Valid Values:0-9 a-z Format:XXXXXXXX Example:23654789 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date and Time of transaction occured Valid Values:0 - 9 Format:MM:DD:YYYY HH/MM/SS Example:12:11:2020 11/00/00",
+                            "children": []
+                        },
+                        {
+                            "name": "PostDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This is the time when transaction actually got posted in system. Valid Values: valid date Format:MM/DD/YYYY HH:MM:SS Example: 01/01/2020 12:10:01",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "User defined description of transaction if entered by user explicitly. If not entered by the user, then system will generate it. Valid Values:A-Z,0-9 Format: xxxxxxxx Example:Purchase/Payment. Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Transaction Valid Values:0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionSource",
+                            "type": "string",
+                            "required": null,
+                            "description": "Source of Transaction made like ACH, manual etc Valid Values:0-9,a-z Format : Manual Example:Manual, ACH Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Current balance of account/Debtor Owing Valid Values:0-9 Format:XXXX.XX Example:500.00",
+                            "children": []
+                        },
+                        {
+                            "name": "Postingref",
+                            "type": "string",
+                            "required": null,
+                            "description": "Posting reference (Like -Transaction Posted Successfully) Valid Values: A-Z 0-9 Format: XXXXXXXXXXXXX Example: Transaction Posted Successfully Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "BeginingBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Beginning Balance of an account before making any transaction on it. Valid Values:0-9 Format:XXX.00 Example:400.00",
+                            "children": []
+                        },
+                        {
+                            "name": "CaseID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "ID which is generated against the Dispute request. Valid Values:0-9 Format:XXXXXXX Example:9856198",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "TransactionId": 594026,
+        "TransactionSource": "MANUAL"
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "LinkedTransactionList": [
+                {
+                    "TransactionID": "134769880",
+                    "TransactionDateTime": "02/26/2016 23:00:00",
+                    "PostDateTime": "02/26/2016 23:00:00",
+                    "TransactionDescription": "Interest Refund",
+                    "TransactionAmount": 1.37,
+                    "TransactionSource": "4",
+                    "CurrentBalance": 0.0,
+                    "Postingref": "Transaction posted successfully",
+                    "BeginingBalance": 0.0,
+                    "CaseID": 9856198
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1010",
+        "document_id": "1140",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1140&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1010&regionId=1"
+    }
+}

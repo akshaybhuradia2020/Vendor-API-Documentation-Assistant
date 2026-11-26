@@ -1,0 +1,211 @@
+{
+    "metadata": {
+        "name": "ChangePIN",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/CardManagement/ChangePin",
+        "description": "This API is use to Change the card pin."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of account holder Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896541236 Condition: At least one of Card Number\\Admin Number is required Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345 Condition: At least one of Card Number\\Admin Number is required"
+        },
+        {
+            "name": "NewPIN",
+            "type": "string",
+            "required": false,
+            "description": "New pin for the card. Allowable Values: 4"
+        },
+        {
+            "name": "ConfirmPIN",
+            "type": "string",
+            "required": false,
+            "description": "Confirmation of new pin. Allowable Values: 4"
+        },
+        {
+            "name": "DateOfBirth",
+            "type": "datetime",
+            "required": null,
+            "description": "Card Holder's Date of Birth. Valid Values: 0-9 Format: MM/DD/YYYY Example: 02/01/2020 Condition: Required if it is set in the “Authentication For PIN Change” at Program Parameters."
+        },
+        {
+            "name": "IdentifierToken",
+            "type": "string",
+            "required": null,
+            "description": "A generated token that is not expired can be used as an input field to access API. If we are passing this field in input, user should not pass any other account identifier. Condition:At least one account identifier is required. Allowable Values: 800"
+        },
+        {
+            "name": "EmployeeID",
+            "type": "string",
+            "required": null,
+            "description": "Employee ID mapped on the Card. Valid Values: 0-9, A-Z Format:XXXXX Example:A1234 Condition: Required if it is set in the “Authentication For PIN Change” at Program Parameters. Allowable Values: 20"
+        },
+        {
+            "name": "ZipCode",
+            "type": "string",
+            "required": null,
+            "description": "Zip/Postal code mapped on the card. Valid Values: 0-9, A-Z Format:XXXXX Example:46206 Condition: Required if it is set in the “Authentication For PIN Change” at Program Parameters. Allowable Values: 9"
+        },
+        {
+            "name": "CardExpirationDate",
+            "type": "string",
+            "required": null,
+            "description": "Card Expiration Date of the card. Valid Values: 0-9 Format: MMYYYY Condition: Condition: Required if it is set in the “Authentication For PIN Change” at Program Parameters. Allowable Values: 6"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number indicates that API responded.Response ID is unique.This value will be null if no authentication information was passed. Response ID can be used for tracking Valid Values:0-9,a-z Format:xxx Example:200 Allowable Values: 15",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "CardNumber": null,
+        "AdminNumber": 5626,
+        "NewPIN": "3256",
+        "ConfirmPIN": "3256",
+        "DateOfBirth": "01/01/1970 00:00:00",
+        "EmployeeID": "121242534",
+        "ZipCode": "2534645",
+        "CardExpirationDate": "012002",
+        "IdentifierToken": null
+    },
+    "sample_response": {
+        "Message": "Your PIN has been changed Successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01096",
+        "ResponseData": {
+            "ResponseID": "56944623"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Card Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=93&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=12"
+    }
+}

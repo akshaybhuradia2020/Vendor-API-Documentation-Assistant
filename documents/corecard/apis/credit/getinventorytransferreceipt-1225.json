@@ -1,0 +1,282 @@
+{
+    "metadata": {
+        "name": "GetInventoryTransferReceipt",
+        "http_method": "POST",
+        "endpoint": "/api/GetInventoryTransferReceipt",
+        "description": "Use this API to view the receipt of the transferred inventory."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "InventoryTransferReceiptDetailsModelList",
+                    "type": "array",
+                    "required": null,
+                    "description": "",
+                    "children": [
+                        {
+                            "name": "OrderID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Order number for an inventory. Valid values : 0-9 Example : 3478",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductID",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "ID of the Account's Product Valid Values:0-9 Example: 1739,1758",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Account's Product Valid Values:0-9, A-Z Example: Cash card",
+                            "children": []
+                        },
+                        {
+                            "name": "Quantity",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Number of cards ordered in inventory Valid values - 0-9 Example : 850",
+                            "children": []
+                        },
+                        {
+                            "name": "TransferredBy",
+                            "type": "string",
+                            "required": null,
+                            "description": "Userid of the user who transferred inventory Valid values - 0-9, a-z Example - Admin",
+                            "children": []
+                        },
+                        {
+                            "name": "TransferredOn",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date of Transfer for inventory cards Format: yyyy-mm-ddThh:mm:ss Example: 2017-09-26T00:00:00",
+                            "children": []
+                        },
+                        {
+                            "name": "SourceBranchName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Source Branch Name Valid values - a-z, 0-9 Example: meca way Branch",
+                            "children": []
+                        },
+                        {
+                            "name": "SourceBranchNameCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Source  Branch Code Valid values - 0-9, a-z Example - C8745",
+                            "children": []
+                        },
+                        {
+                            "name": "DestinationBranchName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Destination Branch Name Valid values - a-z, 0-9 Example: meca way Branch",
+                            "children": []
+                        },
+                        {
+                            "name": "DestinationBranchNameCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Destination Branch Code Valid values - 0-9, a-z Example - C8745",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNumberFrom",
+                            "type": "string",
+                            "required": null,
+                            "description": "Beginning Range  of Card number Valid values: 0-9 Example: 4601001741741741",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNumberTo",
+                            "type": "string",
+                            "required": null,
+                            "description": "Ending range of card number Valid values: 0-9 Example: 4610017417417416",
+                            "children": []
+                        },
+                        {
+                            "name": "ProxyNumberFrom",
+                            "type": "string",
+                            "required": null,
+                            "description": "Beginning range of Proxy Number. Valid values: 0-9 Example: 1001741741741",
+                            "children": []
+                        },
+                        {
+                            "name": "ProxyNumberTo",
+                            "type": "string",
+                            "required": null,
+                            "description": "The Proxy number till where a transaction shall be initiated Valid values: 0-9 Example: 1001741741741",
+                            "children": []
+                        },
+                        {
+                            "name": "ShippingMode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Shipping Method to send cards valid values 0=Standard 1=Priority 2=Overnight Example : 0",
+                            "children": []
+                        },
+                        {
+                            "name": "AWBNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Air Way Bill Number of an inventory transfer Valid values: 0-9 Example: 156463",
+                            "children": []
+                        },
+                        {
+                            "name": "ReceiptStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of the inventory Valid values: Transfer Received Transfer - Lost in Transit Transfer - Damaged in Transit Transfer Received with Return Example: Transfer Received",
+                            "children": []
+                        },
+                        {
+                            "name": "ReceiptStatusDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date on which inventory marked received or lost in transit Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": ""
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "InventoryTransferReceiptDetailsModelList": [
+                {
+                    "OrderID": "194467",
+                    "ProductID": 1739,
+                    "ProductName": "Convenient Access Visa Prepaid Card - AC155",
+                    "Quantity": 2,
+                    "TransferredBy": "demo",
+                    "TransferredOn": "2020-02-10T00:00:00",
+                    "SourceBranchName": "Convenient Card Top branch",
+                    "SourceBranchNameCode": "CC10000",
+                    "DestinationBranchName": "Bank A",
+                    "DestinationBranchNameCode": "BankA2000",
+                    "CardNumberFrom": "406684******2702",
+                    "CardNumberTo": "406684******2710",
+                    "ProxyNumberFrom": "1316570",
+                    "ProxyNumberTo": "1316571",
+                    "ShippingMode": "Standard",
+                    "AWBNumber": "",
+                    "ReceiptStatus": "Transfer Received",
+                    "ReceiptStatusDate": "2020-02-10T00:00:00"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Inventory",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1225&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1043"
+    }
+}

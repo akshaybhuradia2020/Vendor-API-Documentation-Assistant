@@ -1,0 +1,326 @@
+{
+    "metadata": {
+        "name": "MerchantRateTable",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/MerchantManagement/MerchantRateTable",
+        "description": "To get details of Merchant Rate Table."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "UpdateFlag",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates whether request is an insert request or update request 1: for Update request 0: for Insert request"
+        },
+        {
+            "name": "InstitutionId",
+            "type": "integer",
+            "required": false,
+            "description": "Unique identification number for Institution. Valid Values:0-9 Format:XXXX Example:Fixed value needs to pass which is provided by Corecard."
+        },
+        {
+            "name": "MRTID",
+            "type": "string",
+            "required": null,
+            "description": "Merchant rate table ID is mendatory when request is an update request Valid Values:0-9,A-Z Format: XXX Example: 561 Condition: Mandatory when its an update request Allowable Values: 19"
+        },
+        {
+            "name": "MerchantRateTable",
+            "type": "string",
+            "required": null,
+            "description": "This tag refers  to the Rate table of that plan. Valid Values:A-Z, 0-9 Format:XXXXXX Example:6 Months No Interest if Paid in Full Allowable Values: 20"
+        },
+        {
+            "name": "MerchantRateParentName",
+            "type": "string",
+            "required": false,
+            "description": "It is used to provide Parent to inherit Merchant Rate Table Valid Values:0-9, A-Z Format: XXXX Example: MRT1 Allowable Values: 20"
+        },
+        {
+            "name": "FeeType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of Fee included - 0: Discount 1: Participation Valid Values:0,1 Format:X Example:0,1"
+        },
+        {
+            "name": "DiscountFeeTiming",
+            "type": "integer",
+            "required": false,
+            "description": "Frequency of Discount Fee- 0: Daily 1: Weekly 2: Cycle 3: Per Transaction Valid Values:0,1,2,3 Format: X Example: 0,1,2,3"
+        },
+        {
+            "name": "FeeCalculationBasis",
+            "type": "integer",
+            "required": false,
+            "description": "On what basis the fee will calculated as - 0: Count 1: Amount 2: Both Valid Values:0,1,2 Format: X Example: 0,1,2"
+        },
+        {
+            "name": "VolumeType",
+            "type": "integer",
+            "required": false,
+            "description": "Volume Type 0: Daily 1: Weekly Valid Values:0,1 Format: X Example: 0,1"
+        },
+        {
+            "name": "FeeCalculation",
+            "type": "string",
+            "required": null,
+            "description": "Fee Calculation 0: Percent of volume amount Valid Values:0 Format: X Example: 0 Allowable Values: 20"
+        },
+        {
+            "name": "AmountPerVolume",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount Per Volume Valid Values:0-9 Format: XX.XX Example: 245.22"
+        },
+        {
+            "name": "AmountPerTransaction",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount per transaction. Valid Values:0-9 Format: XX.XX Example: 245.22"
+        },
+        {
+            "name": "TransactionCode",
+            "type": "string",
+            "required": false,
+            "description": "Transaction Code for the posting of Single Transaction. Valid Values: 427248 = Principal Adjustment Allowable Values: 20"
+        },
+        {
+            "name": "MRTDetailList",
+            "type": "array",
+            "required": false,
+            "description": "MRTDetailList"
+        },
+        {
+            "name": "FICOScore",
+            "type": "integer",
+            "required": null,
+            "description": "Fico score value range Valid Values:0-9 Format:XXX Example:620"
+        },
+        {
+            "name": "FixedRate1",
+            "type": "decimal",
+            "required": false,
+            "description": "Fixed rate1 Valid Values:0-9 Format: XX.XX Example: 245.22"
+        },
+        {
+            "name": "FixedRate2",
+            "type": "decimal",
+            "required": false,
+            "description": "Fixed rate2 Valid Values:0-9 Format: XX.XX Example: 245.22"
+        },
+        {
+            "name": "FixedRate3",
+            "type": "decimal",
+            "required": false,
+            "description": "Fixed rate3 Valid Values:0-9 Format: XX.XX Example: 245.22"
+        },
+        {
+            "name": "FixedRate4",
+            "type": "decimal",
+            "required": false,
+            "description": "Fixed rate4 Valid Values:0-9 Format: XX.XX Example: 245.22"
+        },
+        {
+            "name": "FixedRate5",
+            "type": "decimal",
+            "required": false,
+            "description": "Fixed rate5 Valid Values:0-9 Format: XX.XX Example: 245.22"
+        },
+        {
+            "name": "TierLimitIndicator",
+            "type": "string",
+            "required": false,
+            "description": "It indicates the Tier Limit as follows 0: Balances in each limit 1: Highest limit where balance falls Valid Values:0,1 Format: X Example: 0,1 Allowable Values: 19"
+        },
+        {
+            "name": "TierMaxBalance1",
+            "type": "decimal",
+            "required": false,
+            "description": "Tier Maximum Balance1 Valid Values:0-9 Format: XX.XX Example: 245.22"
+        },
+        {
+            "name": "TierMaxBalance2",
+            "type": "decimal",
+            "required": false,
+            "description": "Tier Maximum Balance1 Valid Values:0-9 Format: XX.XX Example: 245.22"
+        },
+        {
+            "name": "TierMaxBalance3",
+            "type": "decimal",
+            "required": false,
+            "description": "Tier Maximum Balance1 Valid Values:0-9 Format: XX.XX Example: 245.22"
+        },
+        {
+            "name": "TierMaxBalance4",
+            "type": "decimal",
+            "required": false,
+            "description": "Tier Maximum Balance1 Valid Values:0-9 Format: XX.XX Example: 245.22"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number indicates that API responded.Response ID is unique.This value will be null if no authentication information was passed. Response ID can be used for tracking",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "UpdateFlag": 0,
+        "InstitutionId": 3235,
+        "MRTID": "",
+        "MerchantRateTable": null,
+        "MerchantRateParentName": "",
+        "FeeType": 1,
+        "DiscountFeeTiming": 0,
+        "FeeCalculationBasis": 0,
+        "VolumeType": 0,
+        "FeeCalculation": "0",
+        "AmountPerVolume": 1.0,
+        "AmountPerTransaction": 1.0,
+        "TransactionCode": "02",
+        "MRTDetailList": [
+            {
+                "FICOScore": 10,
+                "FixedRate1": 20.0,
+                "FixedRate2": 23.0,
+                "FixedRate3": 33.0,
+                "FixedRate4": 43.0,
+                "FixedRate5": null,
+                "TierLimitIndicator": "0",
+                "TierMaxBalance1": null,
+                "TierMaxBalance2": null,
+                "TierMaxBalance3": null,
+                "TierMaxBalance4": null
+            }
+        ]
+    },
+    "sample_response": {
+        "Message": "MRT Inserted  Successfully",
+        "Status": true,
+        "ErrorCode": "ERR01158",
+        "ResponseData": {
+            "ResponseID": "56742560"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Merchant Rate Table",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=121&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=21"
+    }
+}

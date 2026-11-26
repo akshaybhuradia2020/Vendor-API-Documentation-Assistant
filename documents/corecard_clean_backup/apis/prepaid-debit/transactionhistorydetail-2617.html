@@ -1,0 +1,749 @@
+
+
+
+<!DOCTYPE html>
+<!-- Template by quackit.com -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+    <title>Core Card Api Quick Start</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/lib/bootstrap/dist/css/bootstrap.css?639312943776389856" rel="stylesheet" />
+    <link href="/css/style.css?639312943776389904" rel="stylesheet" />
+    <link href="/css/font-awesome.css?639312943776389933" rel="stylesheet" />
+    <script src="/lib/jquery/dist/jquery.js?639312943776389977"></script>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?639312943776390003"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            //$(".toggle").click(function () {
+            //    $(".flex-left").addClass("closebar");
+            //    $(".flex-right").removeClass("closebar");
+            //    $("#panel-close1").click(function () {
+            //        $(".flex-right").addClass("closebar");
+            //    });
+            //});
+
+            if ($('.flex-right')[0]) {
+                $('.flex-center').addClass("center-box");
+
+            } else {
+                $('.flex-center').removeClass("center-box");
+                $(".right-btn").parent('li').addClass("btn-cc");
+            }
+
+
+
+            $(".flex-center table").wrap("<div class='table-divbox'></div>")
+
+            var strleftLinkname = $("#btnCategoryName").val();
+            var strcenterLinkname = $("#h4APIName").text();
+            var strrightLinkname = $("#spnTryItOut").val();
+
+            if ($.trim(strleftLinkname) != "") {
+                $("#leftLink").text($.trim(strleftLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#leftLink").html("Category");
+            }
+
+            if ($.trim(strcenterLinkname) != "") {
+                $("#centerLink").text($.trim(strcenterLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#centerLink").html("Content");
+            }
+            if ($.trim(strrightLinkname) != "") {
+                $("#rightLink").text($.trim(strrightLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#rightLink").html("API List");
+            }
+
+            $(".left-btn").click(function () {
+
+                $(".flex-left").removeClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".center-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").removeClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".left-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".right-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").removeClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .left-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            var btn = $('#top-button');
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+        });
+        $(document).ready(function () {
+            //$(".toggle1").click(function () {
+            //    $(".flex-right").addClass("closebar");
+            //    $(".flex-left").removeClass("closebar");
+            //    $("#panel-close").click(function () {
+            //        $(".flex-left").addClass("closebar");
+            //    });
+            //});
+            //$(".dark-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#789db7", "color": "#fff" });
+            //});
+            //$(".light-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#f9f6f1", "color": "#212529"});
+            //});
+
+            $(".dark-mode").click(function () {
+                $(".dark-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".light-mode").css({ "background-color": "#f9f6f1", "color": "#032d55" });
+
+                $(".dark-modereq, .dark-moderes").parent().css({ "background-color": "#000000", "color": "#fff" });
+            });
+            $(".light-mode").click(function () {
+                $(".light-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".dark-mode").css({ "background-color": "#f5f6f8", "color": "#032d55" });
+
+                $(".light-modereq, .light-moderes").parent().css({ "background-color": "#f5f6f8", "color": "#032d55" });
+            });
+
+
+
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <header id="header">
+
+        <nav class="navbar navbar-expand-lg navbar-light top-header">
+            <a class="navbar-brand" href="#">
+                <img class="logo-img" src="/images/Logo.png" />
+            </a>
+            <!--<div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/GuidePage">Guide</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link hd-cool-link active-headerlink" href="/CoreCardApiReference">API Guide</a>
+                </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link hd-cool-link active-apiheaderlink" href="/WEBHook/CoreCardWEBHook">WEB Hook</a>
+            </li>-->
+            <!--</ul>
+            </div>-->
+
+            <div class="search-float">
+                <div class="search-anchor">
+                    <form id="search-form" action="Search/Index" class="form-inline my-2 my-lg-0">
+                        <input type="text" class="search-bar" placeholder="Search" name="searchTerm">
+                        <input type="text" class="search-bar" placeholder="Search" name="regionId" hidden value="1,1">
+                        <input class="search-submit" type="submit">
+                        <div class="search-toggle"></div>
+                    </form>
+
+                </div>
+            </div>
+
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <div class="navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav pt-2 custom-mob-nav">
+                    <li class="nav-item dropdown">
+
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Credit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=1&regionId=1">Core API</a>
+                                    <a class="dropdown-item" href="/CoreCardWEBHook?menuid=1&regionId=1">WEB Hook</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Prepaid/Debit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=2&regionId=1">Core API</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+                <ul class="navbar-nav pt-2 ml-auto custom-mob-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">US</a>
+                        <div class="dropdown-menu dropdown-menu-country">
+                            <a id="1" class="dropdown-item" href="/CoreCardApiReference?regionId=1">US</a>
+                            <a id="2" class="dropdown-item" href="/CoreCardApiReference?regionId=2">Global</a>
+
+                        </div>
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+        </nav>
+
+
+        <div class="mobile-btns-layout">
+            <ul class="btn-list-inline">
+                <li><a href="javascript:void(0);" id="leftLink" class="left-btn">Category List</a></li>
+                <li class="current-menu"><a href="javascript:void(0);" id="centerLink" class="center-btn">Content</a></li>
+                <li><a href="javascript:void(0);" id="rightLink" class="right-btn">API List</a></li>
+                <div class="clearfix"></div>
+            </ul>
+
+        </div>
+    </header>
+
+    <div class="container-fluid nopadding">
+        <div>
+            <a id="top-button"></a>
+
+
+
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Ed2qi4xb2JCm_4tCcgxuBc6wZMh3YmOv_RtLof0rNBwe6WxEpgxYi7ccTXf5teCg-fbG3rBjSYM4lLJTJKYtiCoyhTZeg-tM9x5_cAX1E7y--dAHDHxL0SXq5CJKw2bbHJzSE3iY4O17gqSRqJku_Y" />
+<script>
+    (function ($) {
+        if (!$) { return; }
+        $(document).ajaxSend(function (event, xhr, settings) {
+            var method = (settings.type || 'GET').toUpperCase();
+            if (method === 'GET' || method === 'HEAD' || method === 'OPTIONS' || method === 'TRACE') { return; }
+            if (settings.crossDomain) { return; } // never send the token to another origin
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            if (token) { xhr.setRequestHeader('XSRF-TOKEN', token); }
+        });
+
+        // Destructive links (delete user/role/category/menu) are POST-only. Mark them with data-method="post"
+        // (optional data-confirm="..."); they are submitted as a POST form carrying the antiforgery token.
+        // A generated form is used because these links can sit inside other <form> elements.
+        $(document).on('click', 'a[data-method="post"]', function (e) {
+            e.preventDefault();
+            var message = $(this).attr('data-confirm');
+            if (message && !window.confirm(message)) { return; }
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            var form = $('<form method="post" style="display:none"></form>').attr('action', $(this).attr('href'));
+            form.append($('<input type="hidden" name="__RequestVerificationToken" />').val(token));
+            $('body').append(form);
+            form.trigger('submit');
+        });
+    })(window.jQuery);
+</script>
+
+            <script src="/js/svg-diagram-links.js?v=rhKKoQLmGKC2Pm3Utr9UDhdU4GmCNRW_Yl5EzzGtiBA"></script>
+            <div class="">
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/css/style.css?639312943776384937" rel="stylesheet" />
+    <link href="/css/swagger-ui.css?639312943776385047" rel="stylesheet" />
+    <script src="/js/cdn/jquery-ui.min.js?639312943776385080"></script>
+    <style>
+        .crepreMenu {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .hd-cool-link.active-headerlink::after {
+            width: 100%;
+        }
+
+        .sopblock-post {
+            border-color: #49cc90;
+            background: rgba(73,204,144,.1)
+        }
+
+        .sopblock-put {
+            border-color: #fca130;
+            background: rgba(252,161,48,.1);
+        }
+
+        .sopblock-delete {
+            border-color: #f93e3e;
+            background: rgba(249,62,62,.1);
+        }
+
+        .sopblock-get {
+            border-color: #61affe;
+            background: rgba(97,175,254,.1);
+        }
+
+        .sopblock {
+            margin: 0 0 15px;
+            border: 1px solid #49cc90;
+            border-radius: 4px;
+            -webkit-box-shadow: 0 0 3px rgba(0,0,0,.19);
+            box-shadow: 0 0 3px rgba(0,0,0,.19);
+        }
+
+        .sopblock-summary {
+            border-color: #49cc90;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .sopblock-summary-method {
+            background: #49cc90;
+            font-size: 14px;
+            font-weight: 700;
+            min-width: 80px;
+            padding: 6px 15px;
+            text-align: center;
+            border-radius: 3px;
+            text-shadow: 0 1px 0 rgba(0,0,0,.1);
+            font-family: Titillium Web,sans-serif;
+            color: #fff;
+        }
+
+        .sopblock-summary-path {
+            font-size: 16px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 0 10px;
+            font-family: Source Code Pro,monospace;
+            font-weight: 600;
+            color: #3b4151;
+        }
+    </style>
+</head>
+<body id="apiBody">
+    <div class="flex-left closebar">
+        <div class="parent-div-left">
+            <a href="#" id="panel-close" class="close-panel"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <nav class="left-column">
+                <div class="accordion" id="rightaccordion">
+                    <div class="card">
+                        <div class="card-header" id="rightheading">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#rightcollapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <a href="/GuidePage?id=27&amp;type=Category&amp;menuid=2&amp;regionId=1">Transactions</a>
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div>
+
+                            <div class="card-body">
+                                <h2 class="mb-0 rightlist-link">
+                                    <button id="btnCategoryName" value="Transaction History Detail" class="btn btn-link" type="button" data-toggle="collapse" data-target="#rightcollapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <a href="/GuidePage?id=27&amp;type=Category&amp;menuid=2&amp;regionId=1">Transaction History Detail</a>
+                                    </button>
+                                </h2>
+                                            <div class="card">
+                                                <div class="card-header subCatHighLight" id="TransactionHistoryDetail">
+                                                    <a href="/GuidePageApiDetail?id=2617&amp;type=ApiDetail&amp;menuid=2&amp;regionId=1&amp;subid=2137">TransactionHistoryDetail</a>
+                                                </div>
+                                            </div>
+
+                                <div class="card-header" id="rightheading">
+                                    <h2 class="mb-0">
+                                            <a class="btn apibtn-link" href="/GuidePage?id=1028&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Bank to Card Transfer
+                                            </a>
+                                            <a class="btn apibtn-link" href="/GuidePage?id=1027&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Card to Bank Transfer
+                                            </a>
+                                            <a class="btn apibtn-link" href="/GuidePage?id=1025&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Load
+                                            </a>
+                                            <a class="btn apibtn-link" href="/GuidePage?id=1044&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Other Miscellaneous Functions
+                                            </a>
+                                            <a class="btn apibtn-link" href="/GuidePage?id=1026&amp;type=SubCategory&amp;menuid=2&amp;regionId=1">
+                                                Unload
+                                            </a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+
+                                    <div class="card">
+                                        <div class="card-header" id="AccountHolder16">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AccountHolder" aria-expanded="false" aria-controls="AccountHolder">
+                                                        <a href="/GuidePage?id=16&amp;type=Category&amp;menuid=2&amp;regionId=1">Account Holder</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="AccountManagement17">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AccountManagement" aria-expanded="false" aria-controls="AccountManagement">
+                                                        <a href="/GuidePage?id=17&amp;type=Category&amp;menuid=2&amp;regionId=1">Account Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="AlertManagement18">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AlertManagement" aria-expanded="false" aria-controls="AlertManagement">
+                                                        <a href="/GuidePage?id=18&amp;type=Category&amp;menuid=2&amp;regionId=1">Alert Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Authorizations19">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Authorizations" aria-expanded="false" aria-controls="Authorizations">
+                                                        <a href="/GuidePage?id=19&amp;type=Category&amp;menuid=2&amp;regionId=1">Authorizations</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="BeneficiaryManagement20">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#BeneficiaryManagement" aria-expanded="false" aria-controls="BeneficiaryManagement">
+                                                        <a href="/GuidePage?id=20&amp;type=Category&amp;menuid=2&amp;regionId=1">Beneficiary Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="BillPay21">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#BillPay" aria-expanded="false" aria-controls="BillPay">
+                                                        <a href="/GuidePage?id=21&amp;type=Category&amp;menuid=2&amp;regionId=1">BillPay</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="BranchManagement22">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#BranchManagement" aria-expanded="false" aria-controls="BranchManagement">
+                                                        <a href="/GuidePage?id=22&amp;type=Category&amp;menuid=2&amp;regionId=1">Branch Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="CardManagement23">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#CardManagement" aria-expanded="false" aria-controls="CardManagement">
+                                                        <a href="/GuidePage?id=23&amp;type=Category&amp;menuid=2&amp;regionId=1">Card Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="DigitalWallets24">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#DigitalWallets" aria-expanded="false" aria-controls="DigitalWallets">
+                                                        <a href="/GuidePage?id=24&amp;type=Category&amp;menuid=2&amp;regionId=1">Digital Wallets</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Dispute30">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Dispute" aria-expanded="false" aria-controls="Dispute">
+                                                        <a href="/GuidePage?id=30&amp;type=Category&amp;menuid=2&amp;regionId=1">Dispute</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="InventoryManagement25">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#InventoryManagement" aria-expanded="false" aria-controls="InventoryManagement">
+                                                        <a href="/GuidePage?id=25&amp;type=Category&amp;menuid=2&amp;regionId=1">Inventory Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Statement26">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Statement" aria-expanded="false" aria-controls="Statement">
+                                                        <a href="/GuidePage?id=26&amp;type=Category&amp;menuid=2&amp;regionId=1">Statement</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="Token29">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Token" aria-expanded="false" aria-controls="Token">
+                                                        <a href="/GuidePage?id=29&amp;type=Category&amp;menuid=2&amp;regionId=1">Token Authentication</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="UserManagement28">
+
+                                                <h2>
+                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#UserManagement" aria-expanded="false" aria-controls="UserManagement">
+                                                        <a href="/GuidePage?id=28&amp;type=Category&amp;menuid=2&amp;regionId=1">User Management</a>
+                                                    </button>
+                                                </h2>
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="flex-center center-new">
+        <div class="mobile-btns">
+            <p class="btn-p toggle1"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>Category links</p>
+            <p class="btn-p toggle">API Links<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></p>
+            <div class="clearfix"></div>
+        </div>
+        <main id="center" class="">
+            <article>
+                            <div id="TransactionHistoryDetail" class="target-div">
+                                <h4 class="h4-name" id="h4APIName" value="TransactionHistoryDetail">
+                                    TransactionHistoryDetail
+                                </h4>
+                            </div>
+                            <div class="action-url">
+                                <p class="">
+                                    <strong class="">Action:</strong> <code class="">POST</code>
+                                </p>
+                                <p class="">
+                                    <strong class="">Endpoint:</strong> <code class="">/api/TransactionHistoryDetail</code>
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="">Use this API to fetch transaction details.</p>
+                            </div>
+                            <h5 class="h5-heading">
+                                Request fields detail
+                            </h5>
+                            <table class="api-info table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Fields</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <h5 class="req-head">
+                                Sample request body
+                            </h5>
+                            <pre class="pre-req"><button class="dark-mode dark-modereq">Dark</button><button class="light-mode light-modereq">Light</button>{&#xD;&#xA;  &quot;APIVersion&quot;: &quot;1.3&quot;,&#xD;&#xA;  &quot;IPAddress&quot;: &quot;10.206.2.70&quot;,&#xD;&#xA;  &quot;Source&quot;: &quot;WEB&quot;,&#xD;&#xA;  &quot;CallerID&quot;: &quot;&quot;,&#xD;&#xA;  &quot;CalledID&quot;: &quot;&quot;,&#xD;&#xA;  &quot;SessionID&quot;: &quot;&quot;,&#xD;&#xA;  &quot;ANI&quot;: &quot;&quot;,&#xD;&#xA;  &quot;DNS&quot;: &quot;&quot;,&#xD;&#xA;  &quot;Language&quot;: &quot;en&quot;,&#xD;&#xA;  &quot;RequestDate&quot;: &quot;&quot;,&#xD;&#xA;  &quot;TransactionId&quot;: &quot;2177254091&quot;&#xD;&#xA;}</pre>
+                            <h5 class="h5-heading">
+                                Response fields detail
+                            </h5>
+                            <table class="api-info table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Fields</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                            <h3 class="res-head">
+                                Sample response body
+                            </h3>
+                            <pre class="pre-res"><button class="dark-mode dark-moderes">Dark</button><button class="light-mode light-moderes">Light</button>{&#xD;&#xA;  &quot;Message&quot;: &quot;Successful.&quot;,&#xD;&#xA;  &quot;Status&quot;: true,&#xD;&#xA;  &quot;ErrorCode&quot;: &quot;00000&quot;,&#xD;&#xA;  &quot;ResponseData&quot;: {&#xD;&#xA;    &quot;POSTING_DETAIL&quot;: {&#xD;&#xA;      &quot;ACCOUNT&quot;: [&#xD;&#xA;        {&#xD;&#xA;          &quot;CardNumberLast4Digits&quot;: &quot;4386&quot;,&#xD;&#xA;          &quot;CurrencyCode&quot;: &quot;840&quot;,&#xD;&#xA;          &quot;AccountAvailableBalance&quot;: &quot;$ 100.50&quot;,&#xD;&#xA;          &quot;AccountCurrentBalance&quot;: &quot;$ 5425.00&quot;&#xD;&#xA;        }&#xD;&#xA;      ],&#xD;&#xA;      &quot;TRANSACTION&quot;: [&#xD;&#xA;        {&#xD;&#xA;          &quot;TransactionId&quot;: &quot;2154684348&quot;,&#xD;&#xA;          &quot;TransactionAmount&quot;: &quot;$ 100.11&quot;,&#xD;&#xA;          &quot;FeeWavied&quot;: &quot;No&quot;,&#xD;&#xA;          &quot;WaviedFeeAmount&quot;: &quot;$ 0.00&quot;,&#xD;&#xA;          &quot;TransactionCode&quot;: &quot;PS00D043R = Sign Purchase - REVERSAL&quot;,&#xD;&#xA;          &quot;TransactionDescription&quot;: &quot; PS00D043R - Sign Purchase - REVERSAL&quot;,&#xD;&#xA;          &quot;DEBITCREDIT&quot;: &quot;Credit&quot;,&#xD;&#xA;          &quot;LogicModule&quot;: &quot;43 = PURCHASE DEBIT REVERSAL&quot;,&#xD;&#xA;          &quot;EffectiveDateandTime&quot;: &quot;2020-02-10T00:00:00&quot;,&#xD;&#xA;          &quot;PostingDateandTime&quot;: &quot;2020-02-10T00:00:00&quot;,&#xD;&#xA;          &quot;PostingFlag&quot;: &quot;0,1&quot;,&#xD;&#xA;          &quot;InvoiceNumber&quot;: &quot;987567757&quot;,&#xD;&#xA;          &quot;PostingReference&quot;: &quot;TransactionPosted Successfully&quot;,&#xD;&#xA;          &quot;PostingTransactionSource&quot;: &quot;17 = Visa SMS&quot;,&#xD;&#xA;          &quot;OriginalTransactionSource&quot;: &quot;17 = Visa SMS&quot;,&#xD;&#xA;          &quot;PhysicalSource&quot;: &quot;Visa&quot;,&#xD;&#xA;          &quot;Authorization&quot;: &quot;Yes&quot;,&#xD;&#xA;          &quot;MessageIndicator&quot;: &quot;SMS&quot;,&#xD;&#xA;          &quot;ReversalTransactionId&quot;: &quot;147852369&quot;,&#xD;&#xA;          &quot;UserId&quot;: &quot;Sam&quot;,&#xD;&#xA;          &quot;StoreNumber&quot;: &quot;14622&quot;,&#xD;&#xA;          &quot;AcquirerNetworkID&quot;: &quot;Visa programs, Private Label and non-Visa Authorization Gateway Services&quot;,&#xD;&#xA;          &quot;AcquiringInstitutionCountryCode&quot;: &quot;840 = United States&quot;,&#xD;&#xA;          &quot;ThreeDSAuthenticationStatus&quot;: &quot; Product Not Enrolled&quot;,&#xD;&#xA;          &quot;FraudSystemRecommendation&quot;: &quot;&quot;,&#xD;&#xA;          &quot;FraudSystemScore&quot;: &quot;&quot;,&#xD;&#xA;          &quot;FraudLabel&quot;: &quot;None&quot;,&#xD;&#xA;          &quot;FirstFraudRuleandAction&quot;: &quot;PSD2 - Article - 18&quot;,&#xD;&#xA;          &quot;OtherFraudRulesandActions&quot;: &quot;txnaspctoflim&quot;&#xD;&#xA;        }&#xD;&#xA;      ],&#xD;&#xA;      &quot;LinkedTransactionList&quot;: [&#xD;&#xA;        {&#xD;&#xA;          &quot;TransactionID&quot;: &quot;2154684348&quot;,&#xD;&#xA;          &quot;WalletorSavingPocketName&quot;: &quot;Australian Dollar&quot;,&#xD;&#xA;          &quot;Amount&quot;: &quot;200.00&quot;,&#xD;&#xA;          &quot;PostingWallet&quot;: &quot;Yes&quot;&#xD;&#xA;        }&#xD;&#xA;      ]&#xD;&#xA;    },&#xD;&#xA;    &quot;Authorization&quot;: {&#xD;&#xA;      &quot;GENERAL&quot;: {&#xD;&#xA;        &quot;Repeat&quot;: &quot;No&quot;,&#xD;&#xA;        &quot;TransactionId&quot;: &quot;2154684348&quot;,&#xD;&#xA;        &quot;SystemTraceAuditNumber&quot;: &quot;000001&quot;,&#xD;&#xA;        &quot;MessageTypeIdentifier&quot;: &quot;0420 = Acquirer Reversal/Reversal Advice&quot;,&#xD;&#xA;        &quot;LocalTransactionDateTime&quot;: &quot;2020-02-10T00:00:00&quot;,&#xD;&#xA;        &quot;RetrievalTraceReferenceNumber&quot;: &quot;000000000001&quot;,&#xD;&#xA;        &quot;PostingDateAndTime&quot;: &quot;2020-02-10T00:00:00&quot;,&#xD;&#xA;        &quot;ProcessingCode&quot;: &quot;Goods/Service purchase POS transaction only&quot;,&#xD;&#xA;        &quot;ExpirationDate&quot;: &quot;2020-02-10T00:00:00&quot;,&#xD;&#xA;        &quot;SettlementDate&quot;: &quot;2020-02-10T00:00:00&quot;,&#xD;&#xA;        &quot;RequestResponseCode&quot;: &quot;&quot;,&#xD;&#xA;        &quot;AdditionalResponseData&quot;: &quot;&quot;,&#xD;&#xA;        &quot;ConversionDate&quot;: &quot;2020-02-10T00:00:00&quot;,&#xD;&#xA;        &quot;RecordData&quot;: &quot;&quot;,&#xD;&#xA;        &quot;AdviceResponseCode&quot;: &quot;&quot;,&#xD;&#xA;        &quot;AuthExpiration&quot;: &quot;&quot;,&#xD;&#xA;        &quot;FinancialNetworkCode&quot;: &quot;&quot;,&#xD;&#xA;        &quot;CardSequenceNumber&quot;: &quot;00&quot;,&#xD;&#xA;        &quot;TransactionLifeCycleUniqueId&quot;: &quot;22788314&quot;,&#xD;&#xA;        &quot;AcquirerNetworkID&quot;: &quot;&quot;,&#xD;&#xA;        &quot;InterChangeGroupIdentifier&quot;: &quot;57820cf1f2f3f1f2f3f1f2f3f1f2f1&quot;,&#xD;&#xA;        &quot;ARNNumber&quot;: &quot;&quot;,&#xD;&#xA;        &quot;SchemeTransactionID&quot;: &quot;&quot;,&#xD;&#xA;        &quot;SwitchSerialNumber&quot;: &quot;&quot;,&#xD;&#xA;        &quot;Decision&quot;: {&#xD;&#xA;          &quot;AuthorizationCode&quot;: &quot;568130&quot;,&#xD;&#xA;          &quot;AuthorizationStatus&quot;: &quot;Matched&quot;,&#xD;&#xA;          &quot;InternalResponseCode&quot;: &quot;Successful approval&quot;,&#xD;&#xA;          &quot;ResponseCode&quot;: &quot;Approved or Completed successfully&quot;,&#xD;&#xA;          &quot;ForcePost&quot;: &quot;No&quot;,&#xD;&#xA;          &quot;CVVResponse&quot;: &quot;CVV was not verified&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;AuthDecisionControlLogDetails&quot;: {&#xD;&#xA;          &quot;ADCLog&quot;: [&#xD;&#xA;            {&#xD;&#xA;              &quot;ControlId&quot;: &quot;101128&quot;,&#xD;&#xA;              &quot;ControlName&quot;: &quot;EMV:ARQC Verification&quot;,&#xD;&#xA;              &quot;Response&quot;: &quot;Decline&quot;&#xD;&#xA;            }&#xD;&#xA;          ]&#xD;&#xA;        },&#xD;&#xA;        &quot;OriginalDataElements&quot;: {&#xD;&#xA;          &quot;OriginalMessageType&quot;: &quot;0200 = Financial Request&quot;,&#xD;&#xA;          &quot;OriginalSystemTraceAuditNumber&quot;: &quot;000001&quot;,&#xD;&#xA;          &quot;OriginalTransmission&quot;: &quot;03/06/2024 10:45:27 PM&quot;,&#xD;&#xA;          &quot;OriginalDateTime&quot;: &quot;&quot;,&#xD;&#xA;          &quot;OriginalAcquirerInstitutionIDCode&quot;: &quot;00000000000&quot;,&#xD;&#xA;          &quot;OriginalForwardingId&quot;: &quot;00000000000&quot;,&#xD;&#xA;          &quot;OriginalSequenceNumber&quot;: &quot;&quot;,&#xD;&#xA;          &quot;OriginalCaptureDate&quot;: &quot;2020-02-10T00:00:00&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;AddressVerificationDetails&quot;: {&#xD;&#xA;          &quot;AVSCheckAndAuthData&quot;: &quot;N&quot;,&#xD;&#xA;          &quot;AVSResponse&quot;: &quot;N&quot;,&#xD;&#xA;          &quot;AddressLine1&quot;: &quot;1 meca way&quot;,&#xD;&#xA;          &quot;CalculatedCardholderAddressData&quot;: &quot;&quot;,&#xD;&#xA;          &quot;ZipCode&quot;: &quot;30093&quot;,&#xD;&#xA;          &quot;ReceivedAddressData&quot;: &quot;&quot;,&#xD;&#xA;          &quot;ReceivedZipCode&quot;: &quot;&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;TokenDetails&quot;: {&#xD;&#xA;          &quot;TokenNumber&quot;: &quot;&quot;,&#xD;&#xA;          &quot;TokenAssuranceLevel&quot;: &quot;&quot;,&#xD;&#xA;          &quot;TokenRequestorID&quot;: &quot;01234567890&quot;,&#xD;&#xA;          &quot;TokenReferenceID&quot;: &quot;DNITHE3021189657412&quot;,&#xD;&#xA;          &quot;TokenExpiryDate&quot;: &quot;&quot;,&#xD;&#xA;          &quot;DeviceID&quot;: &quot;12349&quot;,&#xD;&#xA;          &quot;DeviceName&quot;: &quot;iPhone 13 Pro&quot;,&#xD;&#xA;          &quot;DeviceNumber&quot;: &quot;&quot;,&#xD;&#xA;          &quot;DeviceType&quot;: &quot;05&quot;&#xD;&#xA;        }&#xD;&#xA;      },&#xD;&#xA;      &quot;POS_MERCHANT&quot;: {&#xD;&#xA;        &quot;Merchant&quot;: {&#xD;&#xA;          &quot;MerchantType&quot;: &quot;5411 = Grocery Stores And Supermarkets&quot;,&#xD;&#xA;          &quot;MerchantName&quot;: &quot;ACQUIRER NAME&quot;,&#xD;&#xA;          &quot;MerchantNameandAddress&quot;: &quot;CARD ACCEPTOR  ACQUIRER NAME&quot;,&#xD;&#xA;          &quot;MerchantCity&quot;: &quot;Atlanta&quot;,&#xD;&#xA;          &quot;State&quot;: &quot;21546&quot;,&#xD;&#xA;          &quot;Country&quot;: &quot;US&quot;,&#xD;&#xA;          &quot;AcquiringInstitutionCountryCode&quot;: &quot;GB = United Kingdom of Great Britain and Ireland&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;POS&quot;: {&#xD;&#xA;          &quot;POSEntryMode&quot;: &quot;Mag stripe read-track 1/2 included&quot;,&#xD;&#xA;          &quot;POSConditionCode&quot;: &quot;00&quot;,&#xD;&#xA;          &quot;POSPINCaptureCode&quot;: &quot;&quot;,&#xD;&#xA;          &quot;CardAcceptorTerminalIDCode&quot;: &quot;ATM01&quot;,&#xD;&#xA;          &quot;CardAcceptorIDCode&quot;: &quot;CARD ACCEPTOR&quot;,&#xD;&#xA;          &quot;CardAcceptorNameLocation&quot;: &quot;ACQUIRER NAME CITY NAME GB&quot;,&#xD;&#xA;          &quot;AcquirerTraceData&quot;: &quot;&quot;,&#xD;&#xA;          &quot;MasterCardAssignedID&quot;: &quot;1234569&quot;,&#xD;&#xA;          &quot;PINSignatureAuthIdentifier&quot;: &quot;Signature&quot;,&#xD;&#xA;          &quot;CardExpirationDate&quot;: &quot;1115&quot;,&#xD;&#xA;          &quot;HoldAmount&quot;: &quot;60.30&quot;,&#xD;&#xA;          &quot;HoldDate&quot;: &quot;2020-02-10T00:00:00&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;DataCode&quot;: {&#xD;&#xA;          &quot;CardDataInputCapability&quot;: &quot;&quot;,&#xD;&#xA;          &quot;CardholderAuthMethod&quot;: &quot;1 = Pin&quot;,&#xD;&#xA;          &quot;CardholderAuthCapability&quot;: &quot;&quot;,&#xD;&#xA;          &quot;CardholderAuthEntity&quot;: &quot;1 = Integrated cir card&quot;,&#xD;&#xA;          &quot;CardCaptureCapability&quot;: &quot;0 = Terminal/opera does not have card capture capability&quot;,&#xD;&#xA;          &quot;CardDataOutputCapability&quot;: &quot;1 = Not capable&quot;,&#xD;&#xA;          &quot;OperatingEnvironment&quot;: &quot;1 = On premises of acceptor, attended&quot;,&#xD;&#xA;          &quot;TerminalOutputCapability&quot;: &quot;&quot;,&#xD;&#xA;          &quot;CardholderPresent&quot;: &quot;Populate Code and Name Both.&quot;,&#xD;&#xA;          &quot;TerminalOperator&quot;: &quot;&quot;,&#xD;&#xA;          &quot;CardPresent&quot;: &quot;0=Not present&quot;,&#xD;&#xA;          &quot;TerminalType&quot;: &quot;A= Contactless rea capability via magstripe run&quot;,&#xD;&#xA;          &quot;CardDataInputMode&quot;: &quot;&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;POSGeographicData&quot;: {&#xD;&#xA;          &quot;StateCode&quot;: &quot;US&quot;,&#xD;&#xA;          &quot;CountryCode&quot;: &quot;US&quot;,&#xD;&#xA;          &quot;PostalServiceCode&quot;: &quot;30093&quot;,&#xD;&#xA;          &quot;Country&quot;: &quot;GB = United Kingdom of Great Britain and Ireland&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;EntryMode&quot;: {&#xD;&#xA;          &quot;PANEntryMode&quot;: &quot;90 = Mag stripe read-track 1/2 included&quot;,&#xD;&#xA;          &quot;PANEntryCapability&quot;: &quot;0 = Unknown or Terminal not used&quot;&#xD;&#xA;        }&#xD;&#xA;      },&#xD;&#xA;      &quot;AMOUNTS&quot;: {&#xD;&#xA;        &quot;Amount&quot;: {&#xD;&#xA;          &quot;TransactionCurrencyCode&quot;: &quot;840 = U.S.Dollar&quot;,&#xD;&#xA;          &quot;SettlementCurrencyCode&quot;: &quot;840&quot;,&#xD;&#xA;          &quot;CardholderBillingAmount&quot;: &quot;215.11&quot;,&#xD;&#xA;          &quot;CardholderBillingFee&quot;: &quot;11.11&quot;,&#xD;&#xA;          &quot;TranProcessingFeeAmount&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;TransactionFeeIndicator&quot;: &quot;D= $ 4.00&quot;,&#xD;&#xA;          &quot;TransactionFeeAmount&quot;: &quot;D= $ 4.00&quot;,&#xD;&#xA;          &quot;SettlementFeeIndicator&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;SettlementFeeAmount&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;CountryCode&quot;: &quot;840 = U.S.Dollar&quot;,&#xD;&#xA;          &quot;TransactionAmount&quot;: &quot;200.000&quot;,&#xD;&#xA;          &quot;TransactionSourceAmount&quot;: &quot;200.000&quot;,&#xD;&#xA;          &quot;SettlementProcessingFeeAmount&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;AdditionalFees&quot;: &quot;10&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;ReplacementAmount&quot;: {&#xD;&#xA;          &quot;ActualAmountTransaction&quot;: &quot;200.000&quot;,&#xD;&#xA;          &quot;ActualAmountCardholderBilling&quot;: &quot;200.000&quot;,&#xD;&#xA;          &quot;ActualAmountSettlement&quot;: &quot;200.000&quot;,&#xD;&#xA;          &quot;TransactionFeeIndicator&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;TransactionFeeAmount&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;SettlementFeeIndicator&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;SettlementFeeAmount&quot;: &quot;Populate Fee and Amount Both.&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;AdditionalAmount&quot;: [&#xD;&#xA;          {&#xD;&#xA;            &quot;AmountTypes&quot;: &quot;&quot;,&#xD;&#xA;            &quot;Amount&quot;: &quot;200.00&quot;&#xD;&#xA;          }&#xD;&#xA;        ]&#xD;&#xA;      }&#xD;&#xA;    },&#xD;&#xA;    &quot;Completion&quot;: {&#xD;&#xA;      &quot;GENERAL&quot;: {&#xD;&#xA;        &quot;Repeat&quot;: &quot;No&quot;,&#xD;&#xA;        &quot;TransactionId&quot;: &quot;2154684348&quot;,&#xD;&#xA;        &quot;SystemTraceAuditNumber&quot;: &quot;000001&quot;,&#xD;&#xA;        &quot;MessageTypeIndentifier&quot;: &quot;0420 = Acquirer Reversal/Reversal Advice&quot;,&#xD;&#xA;        &quot;LocalTransactionDateTime&quot;: &quot;2020-02-10T00:00:00&quot;,&#xD;&#xA;        &quot;RetrievalTraceReferenceNumber&quot;: &quot;000000000001&quot;,&#xD;&#xA;        &quot;PostingDateAndTime&quot;: &quot;2020-02-10T00:00:00&quot;,&#xD;&#xA;        &quot;ProcessingCode&quot;: &quot;Goods/Service purchase POS transaction only&quot;,&#xD;&#xA;        &quot;ExpirationDate&quot;: &quot;2020-02-10T00:00:00&quot;,&#xD;&#xA;        &quot;SettlementDate&quot;: &quot;2020-02-10T00:00:00&quot;,&#xD;&#xA;        &quot;RequestResponseCode&quot;: &quot;&quot;,&#xD;&#xA;        &quot;AdditionalResponseData&quot;: &quot;&quot;,&#xD;&#xA;        &quot;ConversionDate&quot;: &quot;2020-02-10T00:00:00&quot;,&#xD;&#xA;        &quot;RecordData&quot;: &quot;&quot;,&#xD;&#xA;        &quot;AdviceResponseCode&quot;: &quot;&quot;,&#xD;&#xA;        &quot;AVSCheckandAuthData&quot;: &quot;&quot;,&#xD;&#xA;        &quot;FinancialNetworkCode&quot;: &quot;&quot;,&#xD;&#xA;        &quot;CardSequenceNumber&quot;: &quot;00&quot;,&#xD;&#xA;        &quot;TransactionLifeCycleUniqueId&quot;: &quot;22788314&quot;,&#xD;&#xA;        &quot;AcquirerNetworkID&quot;: &quot;&quot;,&#xD;&#xA;        &quot;InterChangeGroupIdentifier&quot;: &quot;57820cf1f2f3f1f2f3f1f2f3f1f2f1&quot;,&#xD;&#xA;        &quot;ARNNumber&quot;: &quot;&quot;,&#xD;&#xA;        &quot;SchemeTransactionID&quot;: &quot;&quot;,&#xD;&#xA;        &quot;SwitchSerialNumber&quot;: &quot;&quot;,&#xD;&#xA;        &quot;Decision&quot;: {&#xD;&#xA;          &quot;AuthorizationCode&quot;: &quot;568130&quot;,&#xD;&#xA;          &quot;AuthorizationStatus&quot;: &quot;Matched&quot;,&#xD;&#xA;          &quot;InternalResponseCode&quot;: &quot;Successful approval&quot;,&#xD;&#xA;          &quot;ResponseCode&quot;: &quot;Approved or Completed successfully&quot;,&#xD;&#xA;          &quot;ForcePost&quot;: &quot;No&quot;,&#xD;&#xA;          &quot;CVVResponse&quot;: &quot;CVV was not verified&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;AuthDecisionControlLogDetails&quot;: {&#xD;&#xA;          &quot;ADCLog&quot;: [&#xD;&#xA;            {&#xD;&#xA;              &quot;ControlId&quot;: &quot;101128&quot;,&#xD;&#xA;              &quot;ControlName&quot;: &quot;EMV:ARQC Verification&quot;,&#xD;&#xA;              &quot;Response&quot;: &quot;Decline&quot;&#xD;&#xA;            }&#xD;&#xA;          ]&#xD;&#xA;        },&#xD;&#xA;        &quot;OriginalDataElements&quot;: {&#xD;&#xA;          &quot;OriginalMessageType&quot;: &quot;0200 = Financial Request&quot;,&#xD;&#xA;          &quot;OriginalSystemTraceAuditNumber&quot;: &quot;000001&quot;,&#xD;&#xA;          &quot;OriginalTransmission&quot;: &quot;03/06/2024 10:45:27 PM&quot;,&#xD;&#xA;          &quot;OriginalDateTime&quot;: &quot;&quot;,&#xD;&#xA;          &quot;OriginalAcquirerInstitutionIDCode&quot;: &quot;00000000000&quot;,&#xD;&#xA;          &quot;OriginalForwardingId&quot;: &quot;00000000000&quot;,&#xD;&#xA;          &quot;OriginalSequenceNumber&quot;: &quot;&quot;,&#xD;&#xA;          &quot;OriginalCaptureDate&quot;: &quot;2020-02-10T00:00:00&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;AddressVerificationDetails&quot;: {&#xD;&#xA;          &quot;AVSCheckAndAuthData&quot;: &quot;N&quot;,&#xD;&#xA;          &quot;AVSResponse&quot;: &quot;N&quot;,&#xD;&#xA;          &quot;AddressLine1&quot;: &quot;1 meca way&quot;,&#xD;&#xA;          &quot;CalculatedCardholderAddressData&quot;: &quot;&quot;,&#xD;&#xA;          &quot;ZipCode&quot;: &quot;30093&quot;,&#xD;&#xA;          &quot;ReceivedAddressData&quot;: &quot;&quot;,&#xD;&#xA;          &quot;ReceivedZipCode&quot;: &quot;&quot;&#xD;&#xA;        }&#xD;&#xA;      },&#xD;&#xA;      &quot;POS_MERCHANT&quot;: {&#xD;&#xA;        &quot;Merchant&quot;: {&#xD;&#xA;          &quot;MerchantType&quot;: &quot;5411 = Grocery Stores And Supermarkets&quot;,&#xD;&#xA;          &quot;MerchantName&quot;: &quot;ACQUIRER NAME&quot;,&#xD;&#xA;          &quot;MerchantNameandAddress&quot;: &quot;CARD ACCEPTOR  ACQUIRER NAME&quot;,&#xD;&#xA;          &quot;MerchantCity&quot;: &quot;Atlanta&quot;,&#xD;&#xA;          &quot;State&quot;: &quot;21546&quot;,&#xD;&#xA;          &quot;Country&quot;: &quot;US&quot;,&#xD;&#xA;          &quot;AcquiringInstitutionCountryCode&quot;: &quot;GB = United Kingdom of Great Britain and Ireland&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;POS&quot;: {&#xD;&#xA;          &quot;POSEntryMode&quot;: &quot;Mag stripe read-track 1/2 included&quot;,&#xD;&#xA;          &quot;POSConditionCode&quot;: &quot;00&quot;,&#xD;&#xA;          &quot;POSPINCaptureCode&quot;: &quot;&quot;,&#xD;&#xA;          &quot;CardAcceptorTerminalIDCode&quot;: &quot;ATM01&quot;,&#xD;&#xA;          &quot;CardAcceptorIDCode&quot;: &quot;CARD ACCEPTOR&quot;,&#xD;&#xA;          &quot;CardAcceptorNameLocation&quot;: &quot;ACQUIRER NAME CITY NAME GB&quot;,&#xD;&#xA;          &quot;AcquirerTraceData&quot;: &quot;&quot;,&#xD;&#xA;          &quot;MasterCardAssignedID&quot;: &quot;1234569&quot;,&#xD;&#xA;          &quot;PINSignatureAuthIdentifier&quot;: &quot;Signature&quot;,&#xD;&#xA;          &quot;CardExpirationDate&quot;: &quot;1115&quot;,&#xD;&#xA;          &quot;HoldAmount&quot;: &quot;60.30&quot;,&#xD;&#xA;          &quot;HoldDate&quot;: &quot;2020-02-10T00:00:00&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;DataCode&quot;: {&#xD;&#xA;          &quot;CardDataInputCapability&quot;: &quot;&quot;,&#xD;&#xA;          &quot;CardholderAuthMethod&quot;: &quot;1 = Pin&quot;,&#xD;&#xA;          &quot;CardholderAuthCapability&quot;: &quot;&quot;,&#xD;&#xA;          &quot;CardholderAuthEntity&quot;: &quot;1 = Integrated cir card&quot;,&#xD;&#xA;          &quot;CardCaptureCapability&quot;: &quot;0 = Terminal/opera does not have card capture capability&quot;,&#xD;&#xA;          &quot;CardDataOutputCapability&quot;: &quot;1 = Not capable&quot;,&#xD;&#xA;          &quot;OperatingEnvironment&quot;: &quot;1 = On premises of acceptor, attended&quot;,&#xD;&#xA;          &quot;TerminalOutputCapability&quot;: &quot;&quot;,&#xD;&#xA;          &quot;CardholderPresent&quot;: &quot;Populate Code and Name Both.&quot;,&#xD;&#xA;          &quot;TerminalOperator&quot;: &quot;&quot;,&#xD;&#xA;          &quot;CardPresent&quot;: &quot;0=Not present&quot;,&#xD;&#xA;          &quot;TerminalType&quot;: &quot;A= Contactless rea capability via magstripe run&quot;,&#xD;&#xA;          &quot;CardDataInputMode&quot;: &quot;&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;POSGeographicData&quot;: {&#xD;&#xA;          &quot;StateCode&quot;: &quot;US&quot;,&#xD;&#xA;          &quot;CountryCode&quot;: &quot;US&quot;,&#xD;&#xA;          &quot;PostalServiceCode&quot;: &quot;30093&quot;,&#xD;&#xA;          &quot;Country&quot;: &quot;GB = United Kingdom of Great Britain and Ireland&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;EntryMode&quot;: {&#xD;&#xA;          &quot;PANEntryMode&quot;: &quot;90 = Mag stripe read-track 1/2 included&quot;,&#xD;&#xA;          &quot;PANEntryCapability&quot;: &quot;0 = Unknown or Terminal not used&quot;&#xD;&#xA;        }&#xD;&#xA;      },&#xD;&#xA;      &quot;AMOUNTS&quot;: {&#xD;&#xA;        &quot;Amount&quot;: {&#xD;&#xA;          &quot;TransactionCurrencyCode&quot;: &quot;840 = U.S.Dollar&quot;,&#xD;&#xA;          &quot;SettlementCurrencyCode&quot;: &quot;840&quot;,&#xD;&#xA;          &quot;CardholderBillingAmount&quot;: &quot;215.11&quot;,&#xD;&#xA;          &quot;CardholderBillingFee&quot;: &quot;11.11&quot;,&#xD;&#xA;          &quot;TranProcessingFeeAmount&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;TransactionFeeIndicator&quot;: &quot;D= $ 4.00&quot;,&#xD;&#xA;          &quot;TransactionFeeAmount&quot;: &quot;D= $ 4.00&quot;,&#xD;&#xA;          &quot;SettlementFeeIndicator&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;SettlementFeeAmount&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;CountryCode&quot;: &quot;840 = U.S.Dollar&quot;,&#xD;&#xA;          &quot;TransactionAmount&quot;: &quot;200.000&quot;,&#xD;&#xA;          &quot;TransactionSourceAmount&quot;: &quot;200.000&quot;,&#xD;&#xA;          &quot;SettlementProcessingFeeAmount&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;AdditionalFees&quot;: &quot;10&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;ReplacementAmount&quot;: {&#xD;&#xA;          &quot;ActualAmountTransaction&quot;: &quot;200.000&quot;,&#xD;&#xA;          &quot;ActualAmountCardholderBilling&quot;: &quot;200.000&quot;,&#xD;&#xA;          &quot;ActualAmountSettlement&quot;: &quot;200.000&quot;,&#xD;&#xA;          &quot;TransactionFeeIndicator&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;TransactionFeeAmount&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;SettlementFeeIndicator&quot;: &quot;Populate Fee and Amount Both.&quot;,&#xD;&#xA;          &quot;SettlementFeeAmount&quot;: &quot;Populate Fee and Amount Both.&quot;&#xD;&#xA;        },&#xD;&#xA;        &quot;AdditionalAmount&quot;: [&#xD;&#xA;          {&#xD;&#xA;            &quot;AmountTypes&quot;: &quot;&quot;,&#xD;&#xA;            &quot;Amount&quot;: &quot;200.00&quot;&#xD;&#xA;          }&#xD;&#xA;        ]&#xD;&#xA;      }&#xD;&#xA;    },&#xD;&#xA;    &quot;Settlement&quot;: {&#xD;&#xA;      &quot;Merchant&quot;: {&#xD;&#xA;        &quot;CardAcceptorIdCode&quot;: &quot;687555537877464&quot;,&#xD;&#xA;        &quot;MerchantCategoryCode&quot;: &quot;687555537877464&quot;,&#xD;&#xA;        &quot;OriginalTransactionDate&quot;: &quot;2022-09-06T00:00:00&quot;,&#xD;&#xA;        &quot;TransactionAmount&quot;: &quot;$ 100.11&quot;,&#xD;&#xA;        &quot;MerchantName&quot;: &quot;Midwest Emporium&quot;,&#xD;&#xA;        &quot;MerchantCity&quot;: &quot;Columbia&quot;,&#xD;&#xA;        &quot;MerchantStateOrCountry&quot;: &quot;USA&quot;,&#xD;&#xA;        &quot;AuthorizationDateAndTime&quot;: &quot;2027-07-05T00:00:00&quot;,&#xD;&#xA;        &quot;ApprovalCode&quot;: &quot;039819&quot;,&#xD;&#xA;        &quot;SystemTraceAuditNumber&quot;: &quot;000001&quot;&#xD;&#xA;      },&#xD;&#xA;      &quot;POS&quot;: {&#xD;&#xA;        &quot;TransactionIdNumber&quot;: &quot;123456789012&quot;,&#xD;&#xA;        &quot;OriginalPostDate&quot;: &quot;2027-07-05T00:00:00&quot;,&#xD;&#xA;        &quot;ProcCode&quot;: &quot;00 = Purchase(of goods or services)&quot;,&#xD;&#xA;        &quot;PANEntryMode&quot;: &quot;81 = Radio Frequency Identification Indicator &#x2013; Magnetic Stripe&quot;,&#xD;&#xA;        &quot;PINentryMode&quot;: &quot;1 = PIN entry capability&quot;,&#xD;&#xA;        &quot;POSDeviceAttendanceIndicator&quot;: &quot;1&quot;,&#xD;&#xA;        &quot;POSPartialApprovalIndicator&quot;: &quot;I&quot;,&#xD;&#xA;        &quot;POSDeviceLocationIndicator&quot;: &quot;I&quot;,&#xD;&#xA;        &quot;POSCardholderPresenceIndicator&quot;: &quot;I&quot;,&#xD;&#xA;        &quot;POSCardCaptureCapabilityIndicator&quot;: &quot;0 = Terminal/operator has no card capture capability&quot;,&#xD;&#xA;        &quot;POSTransactionStatusIndicator&quot;: &quot;I = Incremental Authorizations&quot;,&#xD;&#xA;        &quot;POSTransactionSecurityIndicator&quot;: &quot;N&quot;,&#xD;&#xA;        &quot;POSDeviceCardDataInputModeCapabilityIndicator&quot;: &quot;2&quot;,&#xD;&#xA;        &quot;NetworkReferenceId&quot;: &quot;123456789088&quot;,&#xD;&#xA;        &quot;ResponseCode&quot;: &quot;00 = Approved or Completed successfully&quot;&#xD;&#xA;      }&#xD;&#xA;    }&#xD;&#xA;  }&#xD;&#xA;}</pre>
+            </article>
+
+        </main>
+
+    </div>
+
+    <div class="flex-right new-right closebar">
+        <div class=" parent-div-right">
+            <a href="#" id="panel-close1" class="close-panel"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <span id="btn-swagger-TransactionHistoryDetail">
+                        <div class="sopblock sopblock-post">
+                            <div class="sopblock-summary sopblock-summary-POST">
+                                <span class="sopblock-summary-method">POST</span>
+                                <span class="sopblock-summary-path" data-path="/api/CoreCredit/MerchantManagement/UpdateMSR">
+                                    <a class="nostyle">
+                                        <span>/api/TransactionHistoryDetail</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </span>
+                    <div id="swagger-TransactionHistoryDetail"></div>
+        </div>
+    </div>
+    <input type="hidden" id="spnTryItOut" name="spnTryItOut" value="Try It Out" />
+    <!-- The Modal 1-->
+    <script src="/js/googleapis/jquery.min.js"></script>
+    <script src="/lib/dist/swagger-ui-bundle.js"></script>
+
+    <script src="/lib/dist/swagger-ui-standalone-preset.js"></script>
+
+
+    <div id="cms-tryout" data-enabled="false" hidden></div>
+
+        <script src='/lib/dist/v1_USPrepaidTransactions_swaggerFilter.js?v=20261106'></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            //$("#loading").show().delay(5000).fadeOut();
+
+            $(".rmvClass, .close").click(function () {
+                $(".svg-modal.modal").removeClass("active");
+            });
+
+            $('.flex-right .card-body ul li').click(function (event) {
+                $('.active-rightlink').removeClass('active-rightlink');
+                $(this).addClass('active-rightlink');
+                event.preventDefault();
+            });
+
+        });
+        $(document).ready(function () {
+            var $menu = $(".apimenuul");
+            var $menu_a = $("a", $menu);
+            var id = false;
+            var sections = [];
+            var hash = function (h) {
+                if (history.pushState) {
+                    history.pushState(null, null, h);
+                } else {
+                    location.hash = h;
+                }
+            };
+
+
+            $menu_a.each(function () {
+                sections.push($($(this).attr("href")));
+            });
+
+            $(window).scroll(function (event) {
+                var scrolling = $(this).scrollTop() + $(this).height() / 3;
+                var scroll_id;
+                for (var i in sections) {
+                    var section = sections[i];
+                    if (scrolling > section.offset().top) {
+                        scroll_id = section.attr("id");
+                    }
+                }
+                if (scroll_id !== id) {
+                    id = scroll_id;
+                    $menu_a.removeClass("apiliactive");
+                    $("a[href='#" + id + "']", $menu).addClass("apiliactive");
+                }
+            });
+
+            $('#btn-swagger-TransactionHistoryDetail').click();
+        });
+
+    </script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"e68766ac58634d3bac78aacb71fbb169","spa":2}' crossorigin="anonymous"></script>
+</body>
+
+
+</html>
+
+
+</div>
+
+
+
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-txt">
+            Copyright &copy; 2026 CoreCard Software, Inc. All rights reserved
+        </p>
+    </footer>
+</body>
+
+</html>

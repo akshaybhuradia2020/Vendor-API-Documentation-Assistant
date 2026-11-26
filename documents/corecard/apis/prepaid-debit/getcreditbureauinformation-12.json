@@ -1,0 +1,278 @@
+{
+    "metadata": {
+        "name": "GetCreditBureauInformation",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetCreditBureauInformation",
+        "description": "This API fetch the Credit Bureau Information of the customer."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": true,
+            "description": "Card Holder's Account number. Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 8000000000000037 Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ApplicantInformation",
+                    "type": "array",
+                    "required": null,
+                    "description": "All Credit Bureau Info for Applicant will be displayed under this section",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantInformation",
+                    "type": "array",
+                    "required": null,
+                    "description": "All Credit Bureau Info for CoApplicant will be displayed under this section",
+                    "children": [
+                        {
+                            "name": "FICO",
+                            "type": "integer",
+                            "required": null,
+                            "description": "FICO Score of cardholder and coapplicant Valid Values:0-9 Format:xxxx Example:0758",
+                            "children": []
+                        },
+                        {
+                            "name": "Income",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Cardholder's and CoApplicant's income Valid Values: 0-9 Format: xxxx.xx Example: 98754.22",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalRevolvingBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Balance under revolving plan. Valid Values: 0-9 Format:xxxx.xx Example: 5443.11",
+                            "children": []
+                        },
+                        {
+                            "name": "RentAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Rental Income Valid Values: 0-9 Format: xxxx.xx Example: 2020.00",
+                            "children": []
+                        },
+                        {
+                            "name": "DebtToIncomeRatio",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The ratio of Debt to Income Valid Values:0-9 Format: xx.xx Example:0.71",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumCreditLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The maximum credit limit assigned. Valid Values: 0-9 Format:xxxx Example: 16496",
+                            "children": []
+                        },
+                        {
+                            "name": "Factor1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Factor affecting credit bureau (1) Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "Factor2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Factor affecting credit bureau (2) Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "Factor3",
+                            "type": "string",
+                            "required": null,
+                            "description": "Factor affecting credit bureau (3) Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "Factor4",
+                            "type": "string",
+                            "required": null,
+                            "description": "Factor affecting credit bureau (4) Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "Factor5",
+                            "type": "string",
+                            "required": null,
+                            "description": "Factor affecting credit bureau (5) Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalMortgageTrades",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Mortgage",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "WEB",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "8000000000000011"
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "ApplicantInformation": [
+                {
+                    "FICO": 850,
+                    "Income": 99000.0,
+                    "TotalRevolvingBalance": 571.0,
+                    "RentAmount": 0.0,
+                    "DebtToIncomeRatio": 0.18,
+                    "MaximumCreditLimit": 25000.0,
+                    "Factor1": null,
+                    "Factor2": null,
+                    "Factor3": null,
+                    "Factor4": null,
+                    "Factor5": "Too many inquiries within the past 12 months",
+                    "TotalMortgageTrades": 0
+                }
+            ],
+            "CoApplicantInformation": [
+                {
+                    "FICO": 850,
+                    "Income": 99000.0,
+                    "TotalRevolvingBalance": 571.0,
+                    "RentAmount": 0.0,
+                    "DebtToIncomeRatio": 0.18,
+                    "MaximumCreditLimit": 25000.0,
+                    "Factor1": null,
+                    "Factor2": null,
+                    "Factor3": null,
+                    "Factor4": null,
+                    "Factor5": "Too many inquiries within the past 12 months",
+                    "TotalMortgageTrades": 0
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "External Parties",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=12&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=5"
+    }
+}

@@ -1,0 +1,794 @@
+{
+    "metadata": {
+        "name": "CustomerInquiry",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/CustomerInquiry",
+        "description": "The purpose of this API is to display account information to external merchants."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": true,
+            "description": "Account number whose information is required. Valid Values: 0-9 Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "MerchantName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name of the Merchant where account is opened. Valid Values: A-Z, 0-9 Format: XXXXXX Example:Merchant 1 Allowable Values: 40",
+                    "children": []
+                },
+                {
+                    "name": "MerchantID",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Specific ID Assigned to a Merchant. Valid Values: 0-9 Format: XXXX Example:11111111",
+                    "children": []
+                },
+                {
+                    "name": "ApplicationID",
+                    "type": "int64",
+                    "required": null,
+                    "description": "This tag reflects the Application ID. Valid Values:0-9 Format:XXXXXXXXXX Example:133973",
+                    "children": []
+                },
+                {
+                    "name": "LastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card holder's last name. Valid Values:A-Z Example:John Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "FirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card holder's first name. Valid Values:A-Z Example:Smith Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "ProductName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Reflects the name of product for the account. Valid Values: a-z Format:xxxxxx Example:Abc revolving Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "OpenToBuy",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Remaining Credit Limit which can be used for further posting. Valid Values: 0-9 Format: XXXXXXX.XX Example:200.00",
+                    "children": []
+                },
+                {
+                    "name": "CreditLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Credit Limit of account. Valid Values: 0-9 Format: XXX.XX Example:500.00",
+                    "children": []
+                },
+                {
+                    "name": "ApplicationDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date when the Application was Submitted. Valid Values:0-9 Format:MM/DD/YYYY Example:02/01/2020",
+                    "children": []
+                },
+                {
+                    "name": "BlockedPosting",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Based on the higher priority status of the account if posting is allowed or not. Valid Values:as per Posting of Transactions field Format:X Example: 0 - No - Posting is allowed 1 - Yes - Posting is not allowed.",
+                    "children": []
+                },
+                {
+                    "name": "EmailID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Primary Account Holder Email address. Valid Values: 0-9, A-Z Format: [email protected] Example: [email protected] Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "MobilePhoneNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Primary Account Holder Mobile phone. Valid Values: 0-9 Format:XXXXXXXXXX Example:987567757 Allowable Values: 15",
+                    "children": []
+                },
+                {
+                    "name": "HomePhoneNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Primary Account Holder Home phone. Valid Values: 0-9 Format:XXXXXXXXXX Example:7895463214 Allowable Values: 15",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantFirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co- Applicant’s First Name. Valid Values:A-Z,0-9 Example:Bob Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantLastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Co- Applicant’s Last Name. Valid Values:A-Z,0-9 Example:Dylan Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "AddressLine1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Debtor Address Line 1. Valid Values: A-Z, 0-9 Example:123 HWY Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "City",
+                    "type": "string",
+                    "required": null,
+                    "description": "Debtor City. Valid Values:Alphabets, numbers, symbol Format: XXXXXXX Example:Los Angeles Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "State",
+                    "type": "string",
+                    "required": null,
+                    "description": "Address State of the Card Holder. Valid Values: a-z Format: XXX Example:MO Allowable Values: 3",
+                    "children": []
+                },
+                {
+                    "name": "PostalCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Postal code of the applicant’s address. Valid Values: 0-9 Format: XXXXX Example:46206 Allowable Values: 9",
+                    "children": []
+                },
+                {
+                    "name": "ArrayOfAllTransactions",
+                    "type": "array",
+                    "required": null,
+                    "description": "Array of all purchase and refund transactions including the following transaction fields.",
+                    "children": [
+                        {
+                            "name": "TransactionDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Transaction post date. Valid Values: 0-9 Format: MM/DD/YYYY Example: 11/01/2021",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditPlanNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Plan Number. Valid Values: 0-9,A-Z Format: XXXXX Example: 35216 Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditPlanDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Plan description. Valid Values:A-z,0-9 Format:XXX Example:6 Months No Interest if Paid in Full",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of Transaction (purchase, payment etc.) Valid Values: Purchase, Payment Format:XXXXXXX Example:Purchase Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Transaction Valid Values: 0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Shows status of transaction, if its was a success or  failed Valid Values: success, fail. Format:XXXXXX Example:success Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Number for the transaction being posted. Valid Values:0-9 a-z. Format:XXXXXXXXXXXXXXXX Example:123372036854802129 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "User defined description of transaction if entered by user explicitly.If not entered by the user, then system will generate it. Valid Values: A-Z,0-9 Format: xxxxxxxx Example:Purchase/Payment. Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "APR",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Annual Percentage Rate charged on plan Valid Values: Decimal values Format:XX.XX% Example:15.99%",
+                            "children": []
+                        },
+                        {
+                            "name": "RefundFlag",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag to display return status Valid Values:  0 = No Refund, 1 = Yes, 2 = Partial refund , 3 = Reversed Format: X Example: 1 = Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "PartialRefundAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Transaction for partial return Valid Values: 0-9 Format:  XXX.XX Example:  200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "OriginalPurchaseTransactionID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction ID of the original purchase. Valid Values: A-Z 0-9 Format: xxxxx Example: 12345678 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "PrintReceiptPromotionText",
+                            "type": "string",
+                            "required": null,
+                            "description": "The description displayed on Print Receipt against Promotion. Valid Values: A-Z 0-9 Format: xxxxx Example: Text Allowable Values: 1000",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "MSRNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "MSR Contact number. Valid Values: 0-9 Format: XXXXXXXXX Example:784565412 Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "MSREmail",
+                    "type": "string",
+                    "required": null,
+                    "description": "MSR's email1. Valid Values:A-Z, 0-9 Format: XXXXXXXXX Example: [email protected] Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "MerchantAddressLine1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Address Line 1 of Merchant. Valid Values: A-Z, 0-9 Example: 51st Street Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "MerchantAddressLine2",
+                    "type": "string",
+                    "required": null,
+                    "description": "Address Line 2 of Merchant. Valid Values: A-Z, 0-9 Example: 3rd Block, Main-street Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "MerchantCity",
+                    "type": "string",
+                    "required": null,
+                    "description": "City of Merchant. Valid Values:a-z Format: XXXX Example: Atlanta Allowable Values: 10",
+                    "children": []
+                },
+                {
+                    "name": "MerchantState",
+                    "type": "string",
+                    "required": null,
+                    "description": "State of Merchant. Valid Values:a-z Format: XXXXX Example: California Allowable Values: 6",
+                    "children": []
+                },
+                {
+                    "name": "MerchantPostalCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Postal Code for merchant address. Valid Values:0-9 Format: XXX Example: 1234 Allowable Values: 10",
+                    "children": []
+                },
+                {
+                    "name": "StoreID",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Unique Number which is assgined to a Store. Valid Values:0-9 Format: XXX Example: 1234",
+                    "children": []
+                },
+                {
+                    "name": "AccountActivationStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Indicates the account activation status. Valid Values: 1 = Activated, 0 = Not Activated Format: XX Example:0 Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "ActivationResponseDateTime",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "DateTime of the Activation Response. Valid Values: 0-9 Format: mm/dd/yyyy hh:mm:ss Example: 12/24/2021 11:15:23",
+                    "children": []
+                },
+                {
+                    "name": "ActivationResponseChannel",
+                    "type": "string",
+                    "required": null,
+                    "description": "Channel of the Activation response. Valid Values: 1 = Email, 2 = SMS, 3 = CSR Format: xxxx Example: 1 Allowable Values: 10",
+                    "children": []
+                },
+                {
+                    "name": "EmailIdOfActivationRequest",
+                    "type": "string",
+                    "required": null,
+                    "description": "Email ID of the customer for Activation Request. Valid Values: 0-9 A-Z Example: [email protected] Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "EmailDeliveryStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Status of email delivery. Valid Values: 1 = Delivered, 0 = Undelivered Format: xxx Example: 1 Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "EmailDeliveryDateTime",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "DateTime of Email Delivery. Valid Values: 0-9 Format: mm/dd/yyyy hh:mm:ss Example: 12/24/2021 11:15:23",
+                    "children": []
+                },
+                {
+                    "name": "MobileNumberOfActivationRequest",
+                    "type": "string",
+                    "required": null,
+                    "description": "Mobile number of the Activation Request. Valid Values:  0-9 Format: xxxxxxxxxxx Example: 78984547845 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "SMSDeliveryStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Status of SMS delivery. Valid Values: 1 = Delivered, 0 = Undelivered Format: xxx Example: 1 Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "SMSDeliveryDateTime",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "DateTime of SMS Delivery. Valid Values:0-9 Format: mm/dd/yyyy hh:mm:ss Example: 12/24/2021 11:15:23",
+                    "children": []
+                },
+                {
+                    "name": "ValidEmailAddress",
+                    "type": "string",
+                    "required": null,
+                    "description": "Flag for valid email address. Valid Values:True / False Example: True",
+                    "children": []
+                },
+                {
+                    "name": "ValidMobilePhone",
+                    "type": "string",
+                    "required": null,
+                    "description": "Flag for valid Mobile Phone. Valid Values:True / False Example: True",
+                    "children": []
+                },
+                {
+                    "name": "MobilePhoneLineType",
+                    "type": "string",
+                    "required": null,
+                    "description": "Type of Mobile Phone Line. Valid Values:Mobile / Landline Example: Mobile",
+                    "children": []
+                },
+                {
+                    "name": "ActivationMTAConsolidationFlag",
+                    "type": "string",
+                    "required": null,
+                    "description": "Indicates whether account activation and MTA Consolidation process is enabled for the merchant or not. Valid Values:1 = Yes , 0 = No Example: 0",
+                    "children": []
+                },
+                {
+                    "name": "ArrayOfAllAuthorizations",
+                    "type": "array",
+                    "required": null,
+                    "description": "Array of all authorizations on account including the following authorization fields.",
+                    "children": [
+                        {
+                            "name": "AuthTranTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Auth transaction date and time. Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 10:10:01",
+                            "children": []
+                        },
+                        {
+                            "name": "AuthorizationStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Must return Authorization Status. Valid Values: Outstanding = If Transaction Authorization is Outstanding ,Rejected = If Transaction Authorization is Rejected,Expired = If Transaction Authorization is Aged-Off,Decline = If Manual Auth from CC is Declined,Matched = If the Transaction Authorization is Accepted Example:Outstanding",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Transaction of the Auth. Valid Values:0-9 Format: XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "RejectReason",
+                            "type": "string",
+                            "required": null,
+                            "description": "Must display the Reject reason only for transaction  type ‘Cleared’ Rejected’ and must be updated with the latest Response. Valid Values: Did Not Authorize, Services Not Yet Scheduled, Services Scheduled Beyond 30 Days, Wrong Amount, and Wrong Plan or Cancelled by Provider Example:Wrong Plan Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Number for the transaction being posted. Valid Values: 0-9, a-z Format: XXXXXXXXXXXXXXXX Example:23654789 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditPlanDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Plan description corresponding to the Auth. Valid Values: A-z,0-9 Format: XXX Example: 6 Months No Interest if Paid in Full",
+                            "children": []
+                        },
+                        {
+                            "name": "ADCResponse",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This value corresponds to the response code provided in the return authorization. Valid Values: 03 = Invalid Card Number, 07 = Trancode Mapping Not Found ,10 = Duplicate Transmission Detected ,09 = Invalid Transaction Amount ,72 = Insufficient Funds,05 = Do Not Honor,01 = Refer To Card Issuer,49 = Account Status Is Overlimit,50 = Account Status Is Auto Close,52 = Account Status Is Fraud,53 = Account Status Is Stolen,54 = Account Status Is Lost Card,55 = Account Status Is Blocked,56 = Account Status Is Closed,57 = Account Status Is Initial Charge-off,58 = Account Status Is Closed By Customer,05 = Do Not Honor,107 = Auths to B-Bankruptcy Account; Decline,80 = Exceeds Daily Purchase Limit,48 = Account Status Is Delinquent Format: XX Example: 54",
+                            "children": []
+                        },
+                        {
+                            "name": "AuthorizationResponseDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "DateTime of the Authorization Response. Valid Values: 0-9 Format: mm/dd/yyyy hh:mm:ss Example: 12/24/2021 11:15:23",
+                            "children": []
+                        },
+                        {
+                            "name": "AuthorizationChannel",
+                            "type": "string",
+                            "required": null,
+                            "description": "Channel of the Authorization response. Valid Values: 1 = Email, 2 = SMS, 3 = CSR Format: xxxx Example: 1 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "EmailIdOfAuthorizationRequest",
+                            "type": "string",
+                            "required": null,
+                            "description": "Email ID of the customer for Authorization Request. Valid Values: 0-9 A-Z Format: [email protected] Example: [email protected] Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "EmailDeliveryStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of email delivery. Valid Values: 1 = Delivered, 0 = Undelivered Format: xxx Example: 1 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "EmailDeliveryDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "DateTime of Email Delivery. Valid Values: 0-9 Format: mm/dd/yyyy hh:mm:ss Example: 12/24/2021 11:15:23",
+                            "children": []
+                        },
+                        {
+                            "name": "MobileNumberOfAuthorizationRequest",
+                            "type": "string",
+                            "required": null,
+                            "description": "Mobile number of the Authorization Request. Valid Values: 0-9 Format: xxxxxxxxxxx Example: 78984547845 Allowable Values: 11",
+                            "children": []
+                        },
+                        {
+                            "name": "SMSDeliveryStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of SMS delivery. Valid Values: 0-9 A-Z Format: xxx Example: 1 = Delivered, 0 = Undelivered Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "SMSDeliveryDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "DateTime of SMS Delivery. Valid Values: 0-9 Format: mm/dd/yyyy hh:mm:ss Example: 12/24/2021 11:15:23",
+                            "children": []
+                        },
+                        {
+                            "name": "ValidEmailAddress",
+                            "type": "string",
+                            "required": null,
+                            "description": "Flag for valid email address. Valid Values: True / False Example: True",
+                            "children": []
+                        },
+                        {
+                            "name": "ValidMobilePhone",
+                            "type": "string",
+                            "required": null,
+                            "description": "Flag for valid Mobile Phone. Valid Values: True / False Example: True",
+                            "children": []
+                        },
+                        {
+                            "name": "MobilePhoneLineType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of Mobile Phone Line. Valid Values: Mobile / Landline Example: Mobile",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "PendingActivationAuth",
+                    "type": "",
+                    "required": null,
+                    "description": "PendingActivationAuth.",
+                    "children": [
+                        {
+                            "name": "DateTimeOfPendingActivationAuth",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Indicates the DateTime of submission of the Pending Activation Auth. Valid Values:0-9 Format: mm/dd/yyyy hh:mm:ss Example: 12/12/2021 11:12:13",
+                            "children": []
+                        },
+                        {
+                            "name": "PendingActivationAuthStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the status of pending activation auth. Valid Values: Outstanding,Expired , Converted Cancelled Format: Example: 0 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "PendingActivationAuthID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Pending activation Auth transaction number. Valid Values: 0-9 Format: xxxxxxxxxxxxxxxx Example: 23654789 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAmount",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Amount. Valid Values: 0-9 Format: xx Example: 50 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "PlanDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Description of the plan. Valid Values: a-z 0-9 Format: abcd Example: 12 Month Regular Revolving Allowable Values: 50",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "8000000000000128"
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "MerchantName": "Merchant 1",
+            "MerchantID": 11111111,
+            "MSRNumber": "1234567890",
+            "MSREmail": "[email protected]",
+            "MerchantAddressLine1": "One Meca Way",
+            "MerchantAddressLine2": null,
+            "MerchantCity": "Norcross",
+            "MerchantState": null,
+            "MerchantPostalCode": "12345",
+            "StoreID": 11698,
+            "ApplicationID": 133973,
+            "LastName": null,
+            "FirstName": null,
+            "ProductName": "abc",
+            "OpenToBuy": 4999.0,
+            "CreditLimit": 6999.0,
+            "ApplicationDate": "01/15/2017 00:00:00",
+            "BlockedPosting": 0,
+            "EmailID": "[email protected]",
+            "MobilePhoneNumber": "7896541236",
+            "HomePhoneNumber": "7896541236",
+            "CoApplicantFirstName": "JUDY",
+            "CoApplicantLastName": "STEPIEN",
+            "AddressLine1": "267 CHANDLER ST",
+            "City": "WASHINGTON",
+            "State": "NC",
+            "PostalCode": "190183429",
+            "AccountActivationStatus": "1",
+            "ActivationResponseDateTime": "04/06/2017 09:04:53",
+            "ActivationResponseChannel": "2",
+            "EmailIdOfActivationRequest": "[email protected]",
+            "EmailDeliveryStatus": "1",
+            "EmailDeliveryDateTime": "11/01/2021 16:11:19",
+            "MobileNumberOfActivationRequest": "9898987445",
+            "SMSDeliveryStatus": "2",
+            "SMSDeliveryDateTime": null,
+            "ValidEmailAddress": "True",
+            "ValidMobilePhone": "False",
+            "MobilePhoneLineType": "Fixed VOIP",
+            "ActivationMTAConsolidationFlag": null,
+            "ArrayOfAllTransactions": [
+                {
+                    "TransactionDate": "01/16/2017 00:00:00",
+                    "CreditPlanNumber": "6053",
+                    "CreditPlanDescription": "12 Months No Interest if Paid in Full",
+                    "TransactionType": "Settled",
+                    "TransactionAmount": 2000.0,
+                    "TransactionStatus": "Success",
+                    "TransactionID": "123372036854802129",
+                    "TransactionDescription": "3020 = DOMESTIC SALE (THIRD PARTY)",
+                    "APR": 29.99,
+                    "RefundFlag": 2,
+                    "PartialRefundAmount": 500.0,
+                    "OriginalPurchaseTransactionID": "123372036855074781",
+                    "PrintReceiptPromotionText": "Interest will be charged on this promotional purchase at a reduced 4.99% APR for 36 months after the transaction date shown above (the promotional period).  36-fixed monthly payments are required on this promotional purchase. Any promotional purchase balance when the promotional period ends is subject to 29.99% APR and to the other terms in your Cardholder Agreement.  Minimum interest charge is $2.00."
+                }
+            ],
+            "ArrayOfAllAuthorizations": [
+                {
+                    "AuthTranTime": "01/16/2017 00:00:00",
+                    "AuthorizationStatus": "Outstanding",
+                    "TransactionAmount": 2000.0,
+                    "RejectReason": "Wrong Plan",
+                    "TransactionID": "23654789",
+                    "CreditPlanDescription": "Fixed APR of 3.99%-28.99% for 24 Months",
+                    "ADCResponse": 54,
+                    "AuthorizationResponseDateTime": "03/30/2017 00:00:58",
+                    "AuthorizationChannel": null,
+                    "EmailIdOfAuthorizationRequest": "[email protected]",
+                    "EmailDeliveryStatus": "1",
+                    "EmailDeliveryDateTime": "11/10/2021 14:14:40",
+                    "MobileNumberOfAuthorizationRequest": "9898987445",
+                    "SMSDeliveryStatus": "0",
+                    "SMSDeliveryDateTime": "07/13/2021 23:00:02",
+                    "ValidEmailAddress": "True",
+                    "ValidMobilePhone": "False",
+                    "MobilePhoneLineType": null
+                }
+            ],
+            "PendingActivationAuth": {
+                "DateTimeOfPendingActivationAuth": "04/08/2017 14:14:24",
+                "PendingActivationAuthStatus": "0",
+                "PendingActivationAuthID": "123372036855159790",
+                "TransactionAmount": "500.0000",
+                "PlanDescription": "Fixed APR of 3.99%-28.99% for 24 Months"
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1001",
+        "document_id": "1096",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1096&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1001&regionId=1"
+    }
+}

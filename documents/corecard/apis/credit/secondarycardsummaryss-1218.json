@@ -1,0 +1,269 @@
+{
+    "metadata": {
+        "name": "SecondaryCardSummarySS",
+        "http_method": "POST",
+        "endpoint": "/api/SecondaryCardSummarySS",
+        "description": "Use this API to fetch information of secondary card including Manual card status and Limit."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "SecondaryFlag",
+            "type": "string",
+            "required": true,
+            "description": "Secondary Card Flag to indicate type of card Valid values 0 = Regular Card 1 = Virtual Card 2 = Family Card Allowable Values: 5"
+        },
+        {
+            "name": "SecondaryCardType",
+            "type": "string",
+            "required": false,
+            "description": "Type of secondary card Valid Values:0-2 0 = Regular Card 1 = Virtual Card 2 = Family Card Example: 0 (Regular Card) Allowable Values: 5"
+        },
+        {
+            "name": "CardUserId",
+            "type": "string",
+            "required": false,
+            "description": "User ID of Cardholder Valid Values: A-Z,a-z,0-9. Example :  max Allowable Values: 32"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893",
+                    "children": []
+                },
+                {
+                    "name": "ManualCardStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Manual Card Status Refer Appendix section : Card Status Values Example : Active",
+                    "children": []
+                },
+                {
+                    "name": "CardType",
+                    "type": "string",
+                    "required": null,
+                    "description": "Type of card Valid Values: 0 = Regular Card 1 = Virtual Card 2 = Family Card Example : 0",
+                    "children": []
+                },
+                {
+                    "name": "ActualLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Actual limit of  the Secondary card. Valid Values: 0-9 Format: XXX.XX Example: 1000:00",
+                    "children": []
+                },
+                {
+                    "name": "AvailableLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Remaining Secondary Card limit Exmaple: 50.00",
+                    "children": []
+                },
+                {
+                    "name": "CardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001",
+                    "children": []
+                },
+                {
+                    "name": "CardDetails",
+                    "type": "array",
+                    "required": null,
+                    "description": "CardDetails",
+                    "children": [
+                        {
+                            "name": "CardNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001",
+                            "children": []
+                        },
+                        {
+                            "name": "ProxyNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "NumberOfAllowedTransaction",
+                    "type": "string",
+                    "required": null,
+                    "description": "Number Of  Transaction Allowed on the card. Example:5",
+                    "children": []
+                },
+                {
+                    "name": "FirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder First Name Valid Values: A-Z, a-z Example: Andrew",
+                    "children": []
+                },
+                {
+                    "name": "MiddleName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder Middle Name Valid values are A-Z, a-z, 0-9 Example: Charles",
+                    "children": []
+                },
+                {
+                    "name": "LastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder Last Name Valid values:A-Z, a-z Example: Hudson",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "ProxyNumber": "1316751",
+        "CardNumber": "",
+        "SecondaryFlag": "0",
+        "SecondaryCardType": "0",
+        "CardUserId": "max"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "AccountNumber": "60000000013984",
+            "ManualCardStatus": "Active",
+            "CardType": "1",
+            "ActualLimit": 240.01,
+            "AvailableLimit": 120.01,
+            "CardNumber": "4066850001000935",
+            "CardDetails": [
+                {
+                    "CardNumber": "1316728",
+                    "ProxyNumber": "4066850001000935"
+                }
+            ],
+            "NumberOfAllowedTransaction": "",
+            "FirstName": "Steve",
+            "MiddleName": "",
+            "LastName": "Smith"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1218&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1041"
+    }
+}

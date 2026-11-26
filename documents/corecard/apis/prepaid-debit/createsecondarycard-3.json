@@ -1,0 +1,781 @@
+{
+    "metadata": {
+        "name": "CreateSecondaryCard",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountHolders/CreateSecondaryCard",
+        "description": "This API is use to create secondary/Virtual card."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of Card holder under which secondary card need to be created. Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 8000000000000037 Condition: Any one from Admin Number or Account Number is mandatory Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid). Valid Values:0-9 Format:XXXXX Example:12345 Condition:Any one from Admin Number or Account Number is mandatory"
+        },
+        {
+            "name": "SecondaryCardType",
+            "type": "string",
+            "required": false,
+            "description": "Type of Secondary Card. Valid Values: 0 -Regular Secondary Card 1- Virtual Card Allowable Values: 25"
+        },
+        {
+            "name": "Title",
+            "type": "string",
+            "required": false,
+            "description": "Title of the cardholder. Example: Mr Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's First name. Example:John Condition:Required only when HoldEmbossing tag value is 0(NO), means physical card need to be generate Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's Middle Name. Example: LEE Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's Last Name. Valid Values:A-Z Example:Smith Condition: Required only when HoldEmbossing tag value is 0(NO), means physical card need to be generate Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "SurnameSuffix",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder's surname-suffix. Valid Values:Sr/Jr Example:Sr Allowable Values: 25"
+        },
+        {
+            "name": "DateOfBirth",
+            "type": "datetime",
+            "required": null,
+            "description": "Card Holder's Date of Birth Valid Values: 0-9 Format: MM/DD/YYYY Example: 02/01/2020 Condition: Required if the parameter is been set as mandatory on product and card type is regular secondary card."
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's address line 1. Valid Values:A-Z, 0-9 Format: Example:123 HWY Condition: Required only when SecondaryCardType = 0(Regular Secondary Card) Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's address line 2. Valid Values: A-Z, 0-9 Format: Example:Park Avenue Condition: Required only when SecondaryCardType = 0(Regular Secondary Card) Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": null,
+            "description": "City name of the Card holder's address. Example: Los Angeles Condition: Required only when SecondaryCardType = 0(Regular Secondary Card) Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 25"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": null,
+            "description": "Indicates shipping Country Valid Values: A-B,0-9 Example : USA Condition: Required if the parameter is been set as mandatory on product and card type is regular secondary card. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Postal code of the card holder's address. Valid Values:0-9 Format:XXXXX Example:46206 Condition: Required only when SecondaryCardType = 0(Regular Secondary Card) Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": null,
+            "description": "Indicates shipping State. Valid Values:A-B,0-9 Format:XXXXX Example: Virginia Condition: Required if the parameter is been set as mandatory on product and card type is regular secondary card. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30"
+        },
+        {
+            "name": "ShippingAddressFlag",
+            "type": "integer",
+            "required": false,
+            "description": "This Flag is getting used differently for Regular Secondary and Virtual Cards. For Regular Secondary Cards: It determines the shipping address for the new card: Valid Values: 0 = Ship to Existing Address: The card will be shipped to the existing address on file. 1 = Ship to Alternate Address: The card will be shipped to a different, specified address. 2 = Ship to Primary Cardholder's Existing Address: Applicable only for Authorized Users or Secondary Cards, the card will be shipped to the Primary Cardholder's address. Example:If the value is set to \"0,\" the card will be shipped to the existing address on file. For Virtual Cards: This flag determines whether the Virtual Card should be created with the Primary Cardholder's information or new information captured during the creation process: Valid Values: 0 = Other: The Virtual Card will be created with new information. 1 = Same as Primary Cardholder: The Virtual Card will be created with the Primary Cardholder's information."
+        },
+        {
+            "name": "HomePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card holder Home Phone number. Valid Values:0-9 Format:XXXXXXXXXX Example:7895463214 Condition: Required only when SecondaryCardType = 0(Regular Secondary Card) Allowable Values: 15"
+        },
+        {
+            "name": "WorkPhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card holder Work phone number. Valid Values:0-9 Format:XXXXXXXXXXX Example:5678909876 Allowable Values: 15"
+        },
+        {
+            "name": "MobilePhoneNumber",
+            "type": "string",
+            "required": false,
+            "description": "Card holder Mobile Phone Number. Valid Values:0-9 Format:XXXXXXXXXX Example:987567757 Allowable Values: 15"
+        },
+        {
+            "name": "MobileCarrier",
+            "type": "string",
+            "required": false,
+            "description": "Carrier of Mobile Phone number. Valid Values:a-z,0-9 Format:XXXXXX Example: T-Mobile Allowable Values: 50"
+        },
+        {
+            "name": "LanguageIndicator",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder's preferred Language Valid Values: a-z Format: xx Example: English Allowable Values: 50"
+        },
+        {
+            "name": "EmailID",
+            "type": "string",
+            "required": false,
+            "description": "Card Holder's  email Address Format: XXX @xx.com Example:ABC @gmail.com Condition: Required if the parameter is been set as mandatory on product and card type is regular secondary card. Allowable Values: 256"
+        },
+        {
+            "name": "SSN",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's Social Security Number. Format:AAAGGSSSS Example:078051120 Allowable Values: 9"
+        },
+        {
+            "name": "IDNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's Government ID Number. Format:AAAGGSSSS Example: 078051120 Condition: Required if the parameter is been set as mandatory on product and card type is regular secondary card. Allowable Values: 50"
+        },
+        {
+            "name": "MotherMaidenName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's mother Maiden Name. Valid ValuesA-Z, 0-9 Format:XXXX Example:Theresa Allowable Values: 50"
+        },
+        {
+            "name": "IDTypeCode",
+            "type": "integer",
+            "required": null,
+            "description": "Type of Government issued identification. Valid Values: Refer Appendix section 5.2 Example: 10 Condition: This field will become mandatory basis following two conditions: 1.For US State Cards This field is mandatory only when ID Type on product is set as Yes for Card Type=Primary. 2.For Non-US State cards This field is mandatory only when ID Type (Non-US) on product is set as Yes for Card Type=Primary."
+        },
+        {
+            "name": "IDIssueDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Issue date of ID card. Valid Values:0-9 Format:MM/DD/YYYY Example:02/01/2020 Condition: Required when ID number is filled."
+        },
+        {
+            "name": "IDExpirationDate",
+            "type": "DateTime",
+            "required": null,
+            "description": "Government issued identification expiration date. Valid Values:MM/DD/YYYY Example:02/01/2020 Condition: Required when ID number is filled."
+        },
+        {
+            "name": "IDCountry",
+            "type": "string",
+            "required": null,
+            "description": "Issue Country of Identification proof. Valid Values:a-z, 0-9 Example: Canada Condition:Required when ID number is filled. Allowable Values: 50"
+        },
+        {
+            "name": "IDIssueState",
+            "type": "string",
+            "required": null,
+            "description": "Issue state of Identification proof Valid Values:a-z, 0-9 Example: AL Condition: Required when ID number is filled. Allowable Values: 50"
+        },
+        {
+            "name": "NameOnCard",
+            "type": "string",
+            "required": false,
+            "description": "Name to be printed on the card. Valid Values:A-Z, 0-9 Example:John J Condition:If not given then First Name + Last Name will be printed Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "EmbossingLine4",
+            "type": "string",
+            "required": false,
+            "description": "Embossing line4- Data goes in embossing file. Valid Values:a-z, 0-9 Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 20"
+        },
+        {
+            "name": "HoldEmbossing",
+            "type": "integer",
+            "required": false,
+            "description": "Hold Embossing indicator Valid Values:1= YES, 0 = NO Format:  X Example: 1"
+        },
+        {
+            "name": "CardImageID",
+            "type": "string",
+            "required": false,
+            "description": "Art/Template ID based on this Card’s Image will be displayed Valid Values:0-9, a-z Format:XXXX Example:30abc Allowable Values: 50"
+        },
+        {
+            "name": "NameOnTrack",
+            "type": "string",
+            "required": false,
+            "description": "Name on Track echo in embossing file. Valid Values : 0-9,A-Z Example : N Noel Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 26"
+        },
+        {
+            "name": "ActivationCode",
+            "type": "string",
+            "required": false,
+            "description": "Code which is provided at the time of Account Creation/Registration should be pass as a user validation. Valid Values : 0-9, A-Z Example - 123 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": false,
+            "description": "Indicate Client Id and echo in embossing file Valid Values: 0-9 Format:XXXXX Example: 5558547 Allowable Values: 50"
+        },
+        {
+            "name": "VirtualCardExpOption",
+            "type": "string",
+            "required": null,
+            "description": "Virtual card expiration option. Valid Values: 0 = Card expire after no.of transactions. 1 = Card expire on particular duration. 2 = Card expire on particular date. 3 = Card expiry date is same as Primary Card. Condition: This field is mandatory when Secondary Card Type is '1'(Virtual). Allowable Values: 50"
+        },
+        {
+            "name": "VirtualCardExpAfterTxn",
+            "type": "integer",
+            "required": null,
+            "description": "Virtual card expiration option after certain number of transaction. 0 = Card expire after no.of transactions. 1 = Card expire on particular duration. 2 = Card expire on particular date. 3 = Card expiry date is same as Primary Card. Condition: This field is mandatory when Secondary Card Type is '1'(Virtual) and VirtualCardExpOption = 0"
+        },
+        {
+            "name": "VirtualCardExpDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Virtual card expiration option at exact date. Valid Values: 0-9 Format: MM/DD/YYYY Example: 01/01/2024 Condition: This field is mandatory when Secondary Card Type is '1'(Virtual) and VirtualCardExpOption = 2"
+        },
+        {
+            "name": "VirtualCardExpDuration",
+            "type": "string",
+            "required": null,
+            "description": "Virtual card expiration duration like hour, minute, day etc Valid Values: 0 = Minutes 1 = Hour 2 = Day 3 = Week 4 = Month 5 = Year Condition: This field is mandatory when Secondary Card Type is '1'(Virtual) and VirtualCardExpOption = 1 Allowable Values: 50"
+        },
+        {
+            "name": "VirtualCardExpDurationValue",
+            "type": "integer",
+            "required": null,
+            "description": "Virtual card expiration Duration Value. Valid Values:0-9 Format:XXX Example:Virtual Card Expiry duration is 4(month) then this field value can be of 1-12. Condition:This field is mandatory when Secondary Card Type is '1'(Virtual) and VirtualCardExpOption = 1"
+        },
+        {
+            "name": "VirtualCardLimit",
+            "type": "decimal",
+            "required": false,
+            "description": "Card limit of Virtual card. It can be 0 or Null. If it is 0 or Null then card will use Account's Credit Limit. Valid Values: 0-9 Format: XXXX.XX Example: 1000.00"
+        },
+        {
+            "name": "VirtualCardResetAllow",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to allow or not allow reset on Virtual card. Valid Values:0 = Yes, 1 = No Example:0 Condition: This field is mandatory when Secondary Card Type is '1'(Virtual)."
+        },
+        {
+            "name": "QRCode",
+            "type": "string",
+            "required": false,
+            "description": "This tag is to capture the QR code image file URL. Valid Values:  0-9,a-z Format: https/abc.com Example: https/abc.com Allowable Values: 100"
+        },
+        {
+            "name": "SignatureID",
+            "type": "string",
+            "required": false,
+            "description": "This tag is to capture the user signature image file in URL. Valid Values:  0-9,a-z Format: https/abc.com Example: https/abc.com Allowable Values: 100"
+        },
+        {
+            "name": "DeliveryMechanism",
+            "type": "string",
+            "required": false,
+            "description": "Shipment delivery mechanism.By Default Setting must be for standard Delivery and Usually overnight delivery involves card fee in credit environment. Valid Values: 0-Standard 1-Priority 2-Overnight 3-Standard Exp 4-Priority Exp 5-Overnight Exp Example:0 1.Condition:Values 3,4,5 are onlyapplicablefor Perfect PlasticCard Vendor Allowable Values: 5"
+        },
+        {
+            "name": "SharedCreditLimit",
+            "type": "integer",
+            "required": false,
+            "description": "This tag defines whether the same credit limit of the Primary borrower will be shared with the Secondary card or a different limit. Valid Values: 0-No,1-Yes Example:1 Condition: If no value sent in this tag, then system should by default consider the value as 'Yes'. If 'Yes' is selected, then Secondary Card holder will have same credit limit as Primary Applicant."
+        },
+        {
+            "name": "SecondaryCardUsageLimit",
+            "type": "decimal",
+            "required": null,
+            "description": "The usage limit defined for the secondary card. This limit is shared limit with the Primary Card. Valid Values: 0-9 Example:1000 Condition: If SharedCreditLimit is set as 'No' then this field is mandatory. If amount entered in this field is greater than Primary Borrower’s Credit limit, or less than set amount on the product, then an error message to be triggered."
+        },
+        {
+            "name": "CardRelationship",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates the Secondary Card relation to the Primary Card. Valid Values: 0- Authorized User (Default Value) and 1-Co-Owner Example:0"
+        },
+        {
+            "name": "ShippingAddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Shipping address line 1 Example: 2354 Main road Condition: If ShippingAddressFlag is 1 then it is mandatory Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "ShippingAddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Shipping address line 2 Example:xyz Avenue Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "ShippingCity",
+            "type": "string",
+            "required": null,
+            "description": "Shipping address city name Example: chicago Condition: If ShippingAddressFlag is 1 then it is mandatory Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 25"
+        },
+        {
+            "name": "ShippingState",
+            "type": "string",
+            "required": null,
+            "description": "State of the shipping address For Input Values Refer Appendix Section 5.6 for State Name Codes Valid Values: a-z Format:XXX Example:MO Condition: If ShippingAddressFlag is 1 then it is mandatory Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30"
+        },
+        {
+            "name": "ShippingCountry",
+            "type": "string",
+            "required": null,
+            "description": "Shipping address Country name For Input Values Refer Appendix Section 5.1 for Country Name Codes Valid Values: a-z Format:XXX Example:US Condition: If ShippingAddressFlag is 1 then it is mandatory Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "ShippingPostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Zip code of the shipping address. Valid Values: 0-9 Example - 46227 Condition: If ShippingAddressFlag is 1 then it is mandatory Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "CardLevelUserFieldValue1",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue2",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue3",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue4",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue5",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue6",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value, When Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue7",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value, When Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue8",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value, When Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue9",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value, When Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "CardLevelUserFieldValue10",
+            "type": "string",
+            "required": null,
+            "description": "Card Level User Field value, When Card Level User Field is defined as Drop Down of Text Type then Valid value of Drop Down should be retrieved using GetUserFieldDetails API and then provided in this field. Valid Values: A-Z,0-9 Example: Yes Allowable Values: 256"
+        },
+        {
+            "name": "UniqueId",
+            "type": "string",
+            "required": false,
+            "description": "Unique ID is a transaction specific unique ID. This ID is unique for every transaction. If multiple calls are made by client for a specific transaction, the value of this tag will always be the same for a specific transaction. (GUID and UUID datatypes are supported for this tag). Valid Values: A-Z, 0-9 Example: F965C56F-C58F-EC11-B80E-A4BF010A357E Condition:For API user, if API Idempotency Applicable is set as Yes on CoreCredit, field is mandatory. The UniqueId is valid for 7 days from first submission of the request. Same request can be retried for 7 days without performing the same action twice.Idempotency will be checked at the belongingOwning Partner and Merchant Level. Allowable Values: 40"
+        },
+        {
+            "name": "SecondaryCardCashUsageLimit",
+            "type": "decimal",
+            "required": null,
+            "description": "The Cash usage limit defined for the secondary card. This Cash usage limit is shared with the Primary Card. Valid Values: 0-9 Example:1000 Condition: If SharedCreditLimit is set as 'No' then this field is mandatory. If amount entered in this field is greater than Primary Borrower’s Credit limit, or less than set amount on the product, then an error message to be triggered."
+        },
+        {
+            "name": "ShareSpendLimitswithPrimary",
+            "type": "integer",
+            "required": false,
+            "description": "This tag defines whether the same Spend limits of the Primary borrower will be shared with the Secondary card or a different spend limit. Valid Values: 0-No,1-Yes Example:1 Condition: If no value sent in this tag, then an error message will be displayed 'Please provide value for Share Spend Limits with Primary' If 'Yes' is selected, then Secondary Card holder will have same spend limit as Primary Applicant."
+        },
+        {
+            "name": "VirtualCardAutoReset",
+            "type": "integer",
+            "required": null,
+            "description": "Flag to decide if Virtual Card Limit will get auto-reset or not. Valid Values: 0 = Yes (Virtual Card Limit will be Auto-Reset) 1 = No(Virtual Card Limit will not be Auto-Reset) Format: X Example: 0,1 Condition: Allowed only if- 1. Virtual Card Limit has a value except 0 or NULL. 2. ‘Usage Reset Frequency’ is set to Billing Cycle at Product Level. 3. If no value is passed, then by default null will be considered as no auto-reset applicable."
+        },
+        {
+            "name": "Count",
+            "type": "integer",
+            "required": false,
+            "description": "Count"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "CardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card Number of account holder. Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:123654789632587 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account number of the cardholder. Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:8000000000000037 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "AdminNumber",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Admin number associated with the embossing account. Valid Values:0-9 Format:XXXXX Example:12345",
+                    "children": []
+                },
+                {
+                    "name": "SecondaryCardType",
+                    "type": "string",
+                    "required": null,
+                    "description": "Type of secondary card. Valid Values: 0 = Physical Card 1 = Virtual Card Example: 0 Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "CardStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Status of the requested card Example: New Card Pending Activation, Cancelled etc Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "FirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card holder's First name. Example:John Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "LastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card holder's last name. Example:Smith Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "NameOnCard",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name to be printed on the card. Valid Values:A-Z, 0-9 Format:XXXX Example:John J Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "PrimaryExpiryDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Expiry date of the primary card. Format: MM/DD/YYYY HH:MM Example: 01/01/2020 11:05:05",
+                    "children": []
+                },
+                {
+                    "name": "ValidFrom",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Card creation date of the requested card. Format: MM/DD/YYYY HH:MM Example: 01/01/2020",
+                    "children": []
+                },
+                {
+                    "name": "ValidTo",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Expiry date of the requested card. Format: MM/DD/YYYY HH:MM Example: 01/01/2022",
+                    "children": []
+                },
+                {
+                    "name": "CVC",
+                    "type": "string",
+                    "required": null,
+                    "description": "3-digit security number printed on the back of the card. Valid Values: 0-9 Format: XXX Example: 456 Allowable Values: 3",
+                    "children": []
+                },
+                {
+                    "name": "CardExpirationDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Expiry date of the requested card. Valid Values: 0-9 Format: MM/DD/YYYY HH:MM Example: 01/01/2020 11:05:05",
+                    "children": []
+                },
+                {
+                    "name": "CloseDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Card close or cancellation date. Format: MM/DD/YYYY HH:MM Example: 01/01/2020",
+                    "children": []
+                },
+                {
+                    "name": "CurrentCardBalance",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Available balance on the card. Valid Values:0-9 Format:XXX.XX Example:2000.00",
+                    "children": []
+                },
+                {
+                    "name": "ActivationRequired",
+                    "type": "boolean",
+                    "required": null,
+                    "description": "Flag to identify whether activation is required or no of card Valid Values: 0-1 Format:X",
+                    "children": []
+                },
+                {
+                    "name": "CustomerID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Unique ID associated with the customer. Valid Values: 0-9 a-z Example:12345 Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "CardNumberLast4Digit",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last 4 digits of the generated secondary card. Valid Value: 0-9 Example:0098 Allowable Values: 4",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "700000000785214",
+        "AdminNumber": 100989,
+        "SecondaryCardType": "0",
+        "Title": null,
+        "FirstName": "John",
+        "MiddleName": "K",
+        "LastName": "Peter",
+        "SurnameSuffix": null,
+        "DateOfBirth": "04/04/1990 00:00:00",
+        "AddressLine1": "address1",
+        "AddressLine2": null,
+        "City": "bhopal",
+        "Country": "US",
+        "PostalCode": "12345",
+        "State": "AL",
+        "ShippingAddressFlag": null,
+        "HomePhoneNumber": "7684534354",
+        "WorkPhoneNumber": null,
+        "MobilePhoneNumber": null,
+        "MobileCarrier": null,
+        "LanguageIndicator": null,
+        "EmailID": null,
+        "SSN": "147852369",
+        "IDNumber": null,
+        "MotherMaidenName": null,
+        "IDTypeCode": null,
+        "IDIssueDate": null,
+        "IDExpirationDate": null,
+        "IDCountry": null,
+        "IDIssueState": null,
+        "NameOnCard": null,
+        "EmbossingLine4": null,
+        "HoldEmbossing": 0,
+        "CardImageID": null,
+        "NameOnTrack": null,
+        "ActivationCode": null,
+        "ClientID": null,
+        "VirtualCardExpOption": null,
+        "VirtualCardExpAfterTxn": null,
+        "VirtualCardExpDate": null,
+        "VirtualCardExpDuration": null,
+        "VirtualCardExpDurationValue": null,
+        "VirtualCardLimit": null,
+        "VirtualCardResetAllow": null,
+        "QRCode": null,
+        "SignatureID": null,
+        "DeliveryMechanism": null,
+        "SharedCreditLimit": null,
+        "SecondaryCardUsageLimit": null,
+        "CardRelationship": null,
+        "ShippingAddressLine1": null,
+        "ShippingAddressLine2": null,
+        "ShippingCity": null,
+        "ShippingState": null,
+        "ShippingCountry": null,
+        "ShippingPostalCode": null,
+        "CardLevelUserFieldValue1": "YES",
+        "CardLevelUserFieldValue2": "YES",
+        "CardLevelUserFieldValue3": "YES",
+        "CardLevelUserFieldValue4": "YES",
+        "CardLevelUserFieldValue5": "YES",
+        "CardLevelUserFieldValue6": "YES",
+        "CardLevelUserFieldValue7": "YES",
+        "CardLevelUserFieldValue8": "YES",
+        "CardLevelUserFieldValue9": "YES",
+        "CardLevelUserFieldValue10": "YES",
+        "UniqueId": null,
+        "SecondaryCardCashUsageLimit": null,
+        "ShareSpendLimitswithPrimary": null,
+        "VirtualCardAutoReset": null,
+        "Count": null
+    },
+    "sample_response": {
+        "Message": "Card created successfully",
+        "Status": true,
+        "ErrorCode": "ERR01070",
+        "ResponseData": {
+            "CardNumber": "XXXXXXXXXXXXXXX",
+            "AccountNumber": "45444832544444",
+            "AdminNumber": 6467487544,
+            "SecondaryCardType": "0",
+            "CardStatus": "New Card Pending Activation",
+            "FirstName": "John",
+            "LastName": "Miller",
+            "NameOnCard": "John Miller",
+            "PrimaryExpiryDate": "11/02/2022 00:00:00",
+            "ValidFrom": "11/02/2020 00:00:00",
+            "ValidTo": "11/02/2022 00:00:00",
+            "CVC": "XXX",
+            "CardExpirationDate": "11/02/2020 00:00:00",
+            "CloseDate": "11/02/2020 00:00:00",
+            "CurrentCardBalance": 1050.0,
+            "ActivationRequired": true,
+            "CustomerID": null,
+            "CardNumberLast4Digit": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "New Cards",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=3&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1"
+    }
+}

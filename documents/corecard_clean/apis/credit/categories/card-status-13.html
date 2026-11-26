@@ -1,0 +1,1196 @@
+
+
+
+<!DOCTYPE html>
+<!-- Template by quackit.com -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+    <title>Core Card Api Quick Start</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/lib/bootstrap/dist/css/bootstrap.css?639312960678528125" rel="stylesheet" />
+    <link href="/css/style.css?639312960678528180" rel="stylesheet" />
+    <link href="/css/font-awesome.css?639312960678528209" rel="stylesheet" />
+    <script src="/lib/jquery/dist/jquery.js?639312960678528242"></script>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?639312960678528271"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            //$(".toggle").click(function () {
+            //    $(".flex-left").addClass("closebar");
+            //    $(".flex-right").removeClass("closebar");
+            //    $("#panel-close1").click(function () {
+            //        $(".flex-right").addClass("closebar");
+            //    });
+            //});
+
+            if ($('.flex-right')[0]) {
+                $('.flex-center').addClass("center-box");
+
+            } else {
+                $('.flex-center').removeClass("center-box");
+                $(".right-btn").parent('li').addClass("btn-cc");
+            }
+
+
+
+            $(".flex-center table").wrap("<div class='table-divbox'></div>")
+
+            var strleftLinkname = $("#btnCategoryName").val();
+            var strcenterLinkname = $("#h4APIName").text();
+            var strrightLinkname = $("#spnTryItOut").val();
+
+            if ($.trim(strleftLinkname) != "") {
+                $("#leftLink").text($.trim(strleftLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#leftLink").html("Category");
+            }
+
+            if ($.trim(strcenterLinkname) != "") {
+                $("#centerLink").text($.trim(strcenterLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#centerLink").html("Content");
+            }
+            if ($.trim(strrightLinkname) != "") {
+                $("#rightLink").text($.trim(strrightLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#rightLink").html("API List");
+            }
+
+            $(".left-btn").click(function () {
+
+                $(".flex-left").removeClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".center-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").removeClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".left-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".right-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").removeClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .left-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            var btn = $('#top-button');
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+        });
+        $(document).ready(function () {
+            //$(".toggle1").click(function () {
+            //    $(".flex-right").addClass("closebar");
+            //    $(".flex-left").removeClass("closebar");
+            //    $("#panel-close").click(function () {
+            //        $(".flex-left").addClass("closebar");
+            //    });
+            //});
+            //$(".dark-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#789db7", "color": "#fff" });
+            //});
+            //$(".light-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#f9f6f1", "color": "#212529"});
+            //});
+
+            $(".dark-mode").click(function () {
+                $(".dark-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".light-mode").css({ "background-color": "#f9f6f1", "color": "#032d55" });
+
+                $(".dark-modereq, .dark-moderes").parent().css({ "background-color": "#000000", "color": "#fff" });
+            });
+            $(".light-mode").click(function () {
+                $(".light-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".dark-mode").css({ "background-color": "#f5f6f8", "color": "#032d55" });
+
+                $(".light-modereq, .light-moderes").parent().css({ "background-color": "#f5f6f8", "color": "#032d55" });
+            });
+
+
+
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <header id="header">
+
+        <nav class="navbar navbar-expand-lg navbar-light top-header">
+            <a class="navbar-brand" href="#">
+                <img class="logo-img" src="/images/Logo.png" />
+            </a>
+            <!--<div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/GuidePage">Guide</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link hd-cool-link active-headerlink" href="/CoreCardApiReference">API Guide</a>
+                </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link hd-cool-link active-apiheaderlink" href="/WEBHook/CoreCardWEBHook">WEB Hook</a>
+            </li>-->
+            <!--</ul>
+            </div>-->
+
+            <div class="search-float">
+                <div class="search-anchor">
+                    <form id="search-form" action="Search/Index" class="form-inline my-2 my-lg-0">
+                        <input type="text" class="search-bar" placeholder="Search" name="searchTerm">
+                        <input type="text" class="search-bar" placeholder="Search" name="regionId" hidden value="1,1">
+                        <input class="search-submit" type="submit">
+                        <div class="search-toggle"></div>
+                    </form>
+
+                </div>
+            </div>
+
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <div class="navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav pt-2 custom-mob-nav">
+                    <li class="nav-item dropdown">
+
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Credit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=1&regionId=1">Core API</a>
+                                    <a class="dropdown-item" href="/CoreCardWEBHook?menuid=1&regionId=1">WEB Hook</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Prepaid/Debit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=2&regionId=1">Core API</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+                <ul class="navbar-nav pt-2 ml-auto custom-mob-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">US</a>
+                        <div class="dropdown-menu dropdown-menu-country">
+                            <a id="1" class="dropdown-item" href="/CoreCardApiReference?regionId=1">US</a>
+                            <a id="2" class="dropdown-item" href="/CoreCardApiReference?regionId=2">Global</a>
+
+                        </div>
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+        </nav>
+
+
+        <div class="mobile-btns-layout">
+            <ul class="btn-list-inline">
+                <li><a href="javascript:void(0);" id="leftLink" class="left-btn">Category List</a></li>
+                <li class="current-menu"><a href="javascript:void(0);" id="centerLink" class="center-btn">Content</a></li>
+                <li><a href="javascript:void(0);" id="rightLink" class="right-btn">API List</a></li>
+                <div class="clearfix"></div>
+            </ul>
+
+        </div>
+    </header>
+
+    <div class="container-fluid nopadding">
+        <div>
+            <a id="top-button"></a>
+
+
+
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Ed2qi4xb2JCm_4tCcgxuBeOXXGQ3ry6ZEuyq4zcEvX8y_iSBVhz6MImMvs6iSk91VBJXv7fZ8kaJ5ATUcoAoodz3hmGwykoGKu-t1Vino1ZhUANlAOUeX1kO322zyhFRApqdKQ932lfeJmmp82vvuw" />
+<script>
+    (function ($) {
+        if (!$) { return; }
+        $(document).ajaxSend(function (event, xhr, settings) {
+            var method = (settings.type || 'GET').toUpperCase();
+            if (method === 'GET' || method === 'HEAD' || method === 'OPTIONS' || method === 'TRACE') { return; }
+            if (settings.crossDomain) { return; } // never send the token to another origin
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            if (token) { xhr.setRequestHeader('XSRF-TOKEN', token); }
+        });
+
+        // Destructive links (delete user/role/category/menu) are POST-only. Mark them with data-method="post"
+        // (optional data-confirm="..."); they are submitted as a POST form carrying the antiforgery token.
+        // A generated form is used because these links can sit inside other <form> elements.
+        $(document).on('click', 'a[data-method="post"]', function (e) {
+            e.preventDefault();
+            var message = $(this).attr('data-confirm');
+            if (message && !window.confirm(message)) { return; }
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            var form = $('<form method="post" style="display:none"></form>').attr('action', $(this).attr('href'));
+            form.append($('<input type="hidden" name="__RequestVerificationToken" />').val(token));
+            $('body').append(form);
+            form.trigger('submit');
+        });
+    })(window.jQuery);
+</script>
+
+            <script src="/js/svg-diagram-links.js?v=rhKKoQLmGKC2Pm3Utr9UDhdU4GmCNRW_Yl5EzzGtiBA"></script>
+            <div class="">
+
+
+<!DOCTYPE html>
+<link href="/css/style.css?639312960678518337" rel="stylesheet" />
+<link href="/css/swagger-ui.css?639312960678518484" rel="stylesheet" />
+<script src="/js/cdn/jquery-ui.min.js?639312960678518517"></script>
+<style>
+    .crepreMenu {
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+
+    .green {
+        color: green;
+    }
+
+    .blue {
+        color: blue;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .hd-cool-link.active-headerlink::after {
+        width: 100%;
+    }
+
+    .sopblock-post {
+        border-color: #49cc90;
+        background: rgba(73,204,144,.1)
+    }
+
+    .sopblock-put {
+        border-color: #fca130;
+        background: rgba(252,161,48,.1);
+    }
+
+    .sopblock-delete {
+        border-color: #f93e3e;
+        background: rgba(249,62,62,.1);
+    }
+
+    .sopblock-get {
+        border-color: #61affe;
+        background: rgba(97,175,254,.1);
+    }
+
+    .sopblock {
+        margin: 0 0 15px;
+        border: 1px solid #49cc90;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 0 3px rgba(0,0,0,.19);
+        box-shadow: 0 0 3px rgba(0,0,0,.19);
+    }
+
+    .sopblock-summary {
+        border-color: #49cc90;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    .sopblock-summary-method {
+        background: #49cc90;
+        font-size: 14px;
+        font-weight: 700;
+        min-width: 80px;
+        padding: 6px 15px;
+        text-align: center;
+        border-radius: 3px;
+        text-shadow: 0 1px 0 rgba(0,0,0,.1);
+        font-family: Titillium Web,sans-serif;
+        color: #fff;
+    }
+
+    .sopblock-summary-path {
+        font-size: 16px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 0 10px;
+        font-family: Source Code Pro,monospace;
+        font-weight: 600;
+        color: #3b4151;
+    }
+</style>
+<body id="apiBody">
+    <div class="flex-left closebar">
+
+        <div class="parent-div-left">
+            <a href="#" id="panel-close" class="close-panel"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <nav class="left-column">
+                    
+                <div class="accordion" id="leftaccordion">
+                            <div class="card">
+                                <div class="card-header" id="AccountHolders1">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AccountHolders" aria-expanded="false" aria-controls="AccountHolders">
+                                                <a href="/GuidePage?id=1&amp;type=Category&amp;menuid=1&amp;RegionId=1">Account Holders</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="AccountHolders" class="collapse " aria-labelledby="AccountHolders1" data-parent="#AccountHolders1">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">New Cards</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="AccountManagement2">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AccountManagement" aria-expanded="false" aria-controls="AccountManagement">
+                                                <a href="/GuidePage?id=2&amp;type=Category&amp;menuid=1&amp;RegionId=1">Account Management</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="AccountManagement" class="collapse " aria-labelledby="AccountManagement2" data-parent="#AccountManagement2">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=2&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Account Balances</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="AccountManagement" class="collapse " aria-labelledby="AccountManagement2" data-parent="#AccountManagement2">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=3&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Account Control Parameters</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="AccountManagement" class="collapse " aria-labelledby="AccountManagement2" data-parent="#AccountManagement2">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=4&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Account Details</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="AccountManagement" class="collapse " aria-labelledby="AccountManagement2" data-parent="#AccountManagement2">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=6&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Activity Log</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="AccountManagement" class="collapse " aria-labelledby="AccountManagement2" data-parent="#AccountManagement2">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=8&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Compromised Account</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="AccountManagement" class="collapse " aria-labelledby="AccountManagement2" data-parent="#AccountManagement2">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=7&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Documents</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="AccountManagement" class="collapse " aria-labelledby="AccountManagement2" data-parent="#AccountManagement2">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=5&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">External Parties</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="AccountManagement" class="collapse " aria-labelledby="AccountManagement2" data-parent="#AccountManagement2">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1001&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Other Miscellaneous Functions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="AccountManagementAlert3">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AccountManagementAlert" aria-expanded="false" aria-controls="AccountManagementAlert">
+                                                <a href="/GuidePage?id=3&amp;type=Category&amp;menuid=1&amp;RegionId=1">Account Management Alert</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="AccountManagementAlert" class="collapse " aria-labelledby="AccountManagementAlert3" data-parent="#AccountManagementAlert3">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1002&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Alert</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="Authorizations4">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Authorizations" aria-expanded="false" aria-controls="Authorizations">
+                                                <a href="/GuidePage?id=4&amp;type=Category&amp;menuid=1&amp;RegionId=1">Authorizations</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="Authorizations" class="collapse " aria-labelledby="Authorizations4" data-parent="#Authorizations4">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=9&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Manual Authorization</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Authorizations" class="collapse " aria-labelledby="Authorizations4" data-parent="#Authorizations4">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1003&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Other Miscellaneous Functions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Authorizations" class="collapse " aria-labelledby="Authorizations4" data-parent="#Authorizations4">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=10&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Release OTB</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="CardManagement5">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#CardManagement" aria-expanded="false" aria-controls="CardManagement">
+                                                <a href="/GuidePage?id=5&amp;type=Category&amp;menuid=1&amp;RegionId=1">Card Management</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement5" data-parent="#CardManagement5">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=12&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Card Details</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement5" data-parent="#CardManagement5">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=11&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Card Registration</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement5" data-parent="#CardManagement5">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link subCatHighLight">
+                                                        <a href="/GuidePage?id=13&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Card Status</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="CardManagement" class="collapse " aria-labelledby="CardManagement5" data-parent="#CardManagement5">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1004&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Other Miscellaneous Functions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="ControlParameters6">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#ControlParameters" aria-expanded="false" aria-controls="ControlParameters">
+                                                <a href="/GuidePage?id=6&amp;type=Category&amp;menuid=1&amp;RegionId=1">Control Parameters</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="ControlParameters" class="collapse " aria-labelledby="ControlParameters6" data-parent="#ControlParameters6">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1005&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Control Parameters</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="DigitalWallets7">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#DigitalWallets" aria-expanded="false" aria-controls="DigitalWallets">
+                                                <a href="/GuidePage?id=7&amp;type=Category&amp;menuid=1&amp;RegionId=1">Digital Wallets</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="DigitalWallets" class="collapse " aria-labelledby="DigitalWallets7" data-parent="#DigitalWallets7">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=14&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Get Token</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="DigitalWallets" class="collapse " aria-labelledby="DigitalWallets7" data-parent="#DigitalWallets7">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1006&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Push Provisioning</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="DigitalWallets" class="collapse " aria-labelledby="DigitalWallets7" data-parent="#DigitalWallets7">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=15&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Update Token Status</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="Dispute8">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Dispute" aria-expanded="false" aria-controls="Dispute">
+                                                <a href="/GuidePage?id=8&amp;type=Category&amp;menuid=1&amp;RegionId=1">Dispute</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="Dispute" class="collapse " aria-labelledby="Dispute8" data-parent="#Dispute8">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=17&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Dispute Resolution</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Dispute" class="collapse " aria-labelledby="Dispute8" data-parent="#Dispute8">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1007&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Other Miscellaneous Functions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Dispute" class="collapse " aria-labelledby="Dispute8" data-parent="#Dispute8">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=16&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Raise Dispute</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="MerchantManagement9">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#MerchantManagement" aria-expanded="false" aria-controls="MerchantManagement">
+                                                <a href="/GuidePage?id=9&amp;type=Category&amp;menuid=1&amp;RegionId=1">Merchant Management</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="MerchantManagement" class="collapse " aria-labelledby="MerchantManagement9" data-parent="#MerchantManagement9">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=20&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Merchant Offering</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="MerchantManagement" class="collapse " aria-labelledby="MerchantManagement9" data-parent="#MerchantManagement9">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=21&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Merchant Rate Table</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="MerchantManagement" class="collapse " aria-labelledby="MerchantManagement9" data-parent="#MerchantManagement9">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=18&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Merchant/Store/Register</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="MerchantManagement" class="collapse " aria-labelledby="MerchantManagement9" data-parent="#MerchantManagement9">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=19&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Network</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="MerchantManagement" class="collapse " aria-labelledby="MerchantManagement9" data-parent="#MerchantManagement9">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1008&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Other Miscellaneous Functions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="RejectedTransactions15">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#RejectedTransactions" aria-expanded="false" aria-controls="RejectedTransactions">
+                                                <a href="/GuidePage?id=15&amp;type=Category&amp;menuid=1&amp;RegionId=1">Rejected Transactions</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="RejectedTransactions" class="collapse " aria-labelledby="RejectedTransactions15" data-parent="#RejectedTransactions15">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1012&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Rejected Transactions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="Rewards10">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Rewards" aria-expanded="false" aria-controls="Rewards">
+                                                <a href="/GuidePage?id=10&amp;type=Category&amp;menuid=1&amp;RegionId=1">Rewards</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="Rewards" class="collapse " aria-labelledby="Rewards10" data-parent="#Rewards10">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=25&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Negative Reward Collection</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Rewards" class="collapse " aria-labelledby="Rewards10" data-parent="#Rewards10">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1009&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Other Miscellaneous Functions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Rewards" class="collapse " aria-labelledby="Rewards10" data-parent="#Rewards10">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=24&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Reward Adjustment</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Rewards" class="collapse " aria-labelledby="Rewards10" data-parent="#Rewards10">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=22&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Reward Summary</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Rewards" class="collapse " aria-labelledby="Rewards10" data-parent="#Rewards10">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=23&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Reward Transactions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="Statement11">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Statement" aria-expanded="false" aria-controls="Statement">
+                                                <a href="/GuidePage?id=11&amp;type=Category&amp;menuid=1&amp;RegionId=1">Statement</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="Statement" class="collapse " aria-labelledby="Statement11" data-parent="#Statement11">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1013&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Reprint and Amortize Statement</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Statement" class="collapse " aria-labelledby="Statement11" data-parent="#Statement11">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=26&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Statement List</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Statement" class="collapse " aria-labelledby="Statement11" data-parent="#Statement11">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=27&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Statement Metadata</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="Token12">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Token" aria-expanded="false" aria-controls="Token">
+                                                <a href="/GuidePage?id=12&amp;type=Category&amp;menuid=1&amp;RegionId=1">Token Authentication</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="Token" class="collapse " aria-labelledby="Token12" data-parent="#Token12">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=32&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Token</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="Transactions13">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Transactions" aria-expanded="false" aria-controls="Transactions">
+                                                <a href="/GuidePage?id=13&amp;type=Category&amp;menuid=1&amp;RegionId=1">Transactions</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="Transactions" class="collapse " aria-labelledby="Transactions13" data-parent="#Transactions13">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=29&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Adjustments</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Transactions" class="collapse " aria-labelledby="Transactions13" data-parent="#Transactions13">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1010&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Other Miscellaneous Functions</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div id="Transactions" class="collapse " aria-labelledby="Transactions13" data-parent="#Transactions13">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=28&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">Purchases</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="UserManagement14">
+
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#UserManagement" aria-expanded="false" aria-controls="UserManagement">
+                                                <a href="/GuidePage?id=14&amp;type=Category&amp;menuid=1&amp;RegionId=1">Self-Service User Management</a>
+                                            </button>
+                                        </h2>
+                                </div>
+                                        <div id="UserManagement" class="collapse " aria-labelledby="UserManagement14" data-parent="#UserManagement14">
+                                            <div class="card-body">
+                                                <ul>
+                                                    <li class="cool-link ">
+                                                        <a href="/GuidePage?id=1011&amp;type=SubCategory&amp;menuid=1&amp;RegionId=1">SS User Management</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                            </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class='flex-center css-SubCategory'>
+        <div class="mobile-btns">
+            <p class="btn-p toggle1"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>Category links</p>
+            <p class="btn-p toggle">API Links<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></p>
+            <div class="clearfix"></div>
+        </div>
+        <main id="center" class="">
+            <article>
+                    <h1 class="h1-box">
+                        Introduction
+                    </h1>
+                    <p>
+                        Use CoreCard’s Core API to launch and manage your company’s payment card program.
+                    </p>
+
+                <!-- Start of Category Description Section -->
+
+                <!-- End of Category Description Section -->
+                <!-- Start of Sub Category Description Section -->
+                            <div>
+                                
+                            </div>
+                            <div>
+                                
+                            </div>
+                            <div>
+                                
+                            </div>
+                            <div>
+                                
+                            </div>
+                            <div>
+                                
+                            </div>
+
+            </article>
+
+        </main>
+
+    </div>
+
+
+
+
+        <!-- The Modal 6-->
+        <div class="svg-modal modal fade" id="myModal6">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/SubCategoryImages/" class="img_mv" />
+                        </p>
+
+                        <h4 class="modal-title text-center titie-hid"> Card Status</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal 7-->
+        <div class="svg-modal modal fade" id="myModal7">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/SubCategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Card Status</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal 8-->
+        <div class="svg-modal modal fade" id="myModal8">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/SubCategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Card Status</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal 9-->
+        <div class="svg-modal modal fade" id="myModal9">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/SubCategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Card Status</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- The Modal 10-->
+        <div class="svg-modal modal fade" id="myModal10">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="rmvClass expand-icon">
+                            <img alt="img-icon" src="/images/SubCategoryImages/" class="img_mv" />
+                        </p>
+                        <h4 class="modal-title text-center titie-hid"> Card Status</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="svg-tip">** Click on hyperlinks below the buttons **</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <input type="hidden" id="spnTryItOut" name="spnTryItOut" value="API List" />
+    <!-- The Modal 1-->
+
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            //$("#loading").show().delay(5000).fadeOut();
+
+            $(".rmvClass, .close").click(function () {
+                $(".svg-modal.modal").removeClass("active");
+            });
+
+            $('.flex-right .card-body ul li').click(function (event) {
+                $('.active-rightlink').removeClass('active-rightlink');
+                $(this).addClass('active-rightlink');
+                event.preventDefault();
+            });
+
+        });
+        $(document).ready(function () {
+            var $menu = $(".apimenuul");
+            var $menu_a = $("a", $menu);
+            var id = false;
+            var sections = [];
+            var hash = function (h) {
+                if (history.pushState) {
+                    history.pushState(null, null, h);
+                } else {
+                    location.hash = h;
+                }
+            };
+
+
+            $menu_a.each(function () {
+                sections.push($($(this).attr("href")));
+            });
+
+            $(window).scroll(function (event) {
+                var scrolling = $(this).scrollTop() + $(this).height() / 3;
+                var scroll_id;
+                for (var i in sections) {
+                    var section = sections[i];
+                    if (scrolling > section.offset().top) {
+                        scroll_id = section.attr("id");
+                    }
+                }
+                if (scroll_id !== id) {
+                    id = scroll_id;
+                    $menu_a.removeClass("apiliactive");
+                    $("a[href='#" + id + "']", $menu).addClass("apiliactive");
+                }
+            });
+
+            $('.carousel').carousel({
+                wrap: false
+            });
+            function debounce(func, wait, immediate) {
+                var timeout;
+                return function () {
+                    var context = this,
+                        args = arguments;
+                    var later = function () {
+                        timeout = null;
+                        if (!immediate) func.apply(context, args);
+                    };
+                    var callNow = immediate && !timeout;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                    if (callNow) func.apply(context, args);
+                };
+            }
+
+            //var slider = document.getElementById("demo");
+            var onScroll = debounce(function (direction, fieldId) {
+                //console.log(direction);
+                if (direction == false) {
+                    $('#' + fieldId + 'carousel1').click();
+                } else {
+                    $('#' + fieldId + 'carousel2').click();
+                }
+            }, 10, true);
+
+            $('[data-id="demo"]').each(function (iField, field) {
+                field.addEventListener("wheel", function (e) {
+                    var fieldId = $(field).attr("id")
+                    e.preventDefault();
+                    var delta;
+                    if (event.wheelDelta) {
+                        delta = event.wheelDelta;
+                    } else {
+                        delta = -1 * event.deltaY;
+                    }
+
+                    onScroll(delta >= 0, fieldId);
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"e68766ac58634d3bac78aacb71fbb169","spa":2}' crossorigin="anonymous"></script>
+</body>
+
+
+</div>
+
+
+
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-txt">
+            Copyright &copy; 2026 CoreCard Software, Inc. All rights reserved
+        </p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,422 @@
+{
+    "metadata": {
+        "name": "GetEmbossingDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/CardManagement/GetEmbossingDetails",
+        "description": "This API is used to transfer the embossing details to the client on request."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": false,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of cardholder Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896541236 Condition:At least one of CardNumber/AdminNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Admin number is a unique identifier of card in the system ,returned in the response of Account creation. Valid Values:0-9 Format:XXXXX Example:12345 Condition:At least one of CardNumber/AdminNumber is required."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder Account number. Format: XXXXXXXXXXXXXXXX Example: 8000000000000037 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "AdminNumber",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Admin number is a unique identifier of card in the system ,returned in the response of Account creation. Valid Values:0-9 Format:XXXXX Example:12345",
+                    "children": []
+                },
+                {
+                    "name": "CardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card Number of cardholder Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896541236 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "CardLast4Digit",
+                    "type": "string",
+                    "required": null,
+                    "description": "Last 4 digits of card number Valid Values:0-9 Format:XXXX Example:1234 Allowable Values: 4",
+                    "children": []
+                },
+                {
+                    "name": "CardSequenceNumber",
+                    "type": "integer",
+                    "required": null,
+                    "description": "This tag reflects the Sequence Number of the Card. Example: 2",
+                    "children": []
+                },
+                {
+                    "name": "CardExpirationDate",
+                    "type": "string",
+                    "required": null,
+                    "description": "Date on which card will expire. Valid Values: 0-9 Format: MMYY Example:0121 Allowable Values: 4",
+                    "children": []
+                },
+                {
+                    "name": "NameOnCard",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name to be printed on the card. Valid Values:A-Z, 0-9 Example: John J Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "Title",
+                    "type": "string",
+                    "required": null,
+                    "description": "Title of the cardholder. Format: A-Z Example: Mr Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "FirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder First name. Valid Values:A-Z Example:User1 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "MiddleName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder Middle Name Valid Values:A-Z Example: LEE Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "LastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder last name. Valid Values:A-Z Example:Smith Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "AddressLine1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder address line 1. Valid Values:A-Z, 0-9 Example:123 HWY Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "AddressLine2",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder address line 2. Valid Values:A-Z, 0-9 Example:Park Avenue Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "City",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflects the City name of the cardholder address. Example:Los Angeles Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "State",
+                    "type": "string",
+                    "required": null,
+                    "description": "State of cardholder address Valid Values: a-z Format:XXX Example:MO Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30",
+                    "children": []
+                },
+                {
+                    "name": "PostalCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Postal code of the cardholder address. Valid Values: 0-9 Format:XXXXX Example:46206 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9",
+                    "children": []
+                },
+                {
+                    "name": "Country",
+                    "type": "string",
+                    "required": null,
+                    "description": "Country name of the cardholder address Example:USA Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "CompanyName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Company Name Valid Values:A-Z,0-9 Example: Company LLC Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 26",
+                    "children": []
+                },
+                {
+                    "name": "CreditLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Credit Limit of account Valid Values:0-9 Format:XXX.XX Example:500.00",
+                    "children": []
+                },
+                {
+                    "name": "CashLimit",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "CashLimit Valid Values:0-9 Format:XXX.XX Example:500.00",
+                    "children": []
+                },
+                {
+                    "name": "CVC",
+                    "type": "string",
+                    "required": null,
+                    "description": "3 digit number used in certain transactions. Valid Values:0-9 Format:XXX Example:018 Allowable Values: 3",
+                    "children": []
+                },
+                {
+                    "name": "CVV2",
+                    "type": "string",
+                    "required": null,
+                    "description": "3 digit number used in transaction and printed on back of the card. Valid Values:0-9 Format:XXX Example:788 Allowable Values: 3",
+                    "children": []
+                },
+                {
+                    "name": "iCVV",
+                    "type": "string",
+                    "required": null,
+                    "description": "3 digit security number used in some transactions. Valid Values:0-9 Format:XXX Example:285 Allowable Values: 3",
+                    "children": []
+                },
+                {
+                    "name": "PIN",
+                    "type": "string",
+                    "required": null,
+                    "description": "Personal Identification Number of Card Valid Values: 0-9 Format:XXXX Example:2014 Allowable Values: 4",
+                    "children": []
+                },
+                {
+                    "name": "PinOffset",
+                    "type": "string",
+                    "required": null,
+                    "description": "PinOffset Valid Values: 0-9 Format:XXXX Example:2014 Allowable Values: 4",
+                    "children": []
+                },
+                {
+                    "name": "Track1Data",
+                    "type": "string",
+                    "required": null,
+                    "description": "Track1Data Valid Values: 0-9,a-z Format:XXXX Example:B5288981432934738^LAST/FIRST^22012010101839350000000000 Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "Track2Data",
+                    "type": "string",
+                    "required": null,
+                    "description": "Track2Data Valid Values: 0-9,a-z Format:XXXX Example:5288981432934738=22012010101839350000 Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "Track2EquivalentData",
+                    "type": "string",
+                    "required": null,
+                    "description": "Track2EquivalentData Valid Values: 0-9,a-z Format:XXXX Example:5288981432934738=22012010100039350000 Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "ActivationCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Code which is provided at the time of Account Creation/Registration, should be passed as a user validation. Example: 123456 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number indicates that API responded.Response ID is unique.This value will be null if no authentication information was passed. Response ID can be used for tracking Valid Values:0-9,a-z Format:xxx Example:200 Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "Track1DiscretionaryData",
+                    "type": "string",
+                    "required": null,
+                    "description": "Track1 Discretionary Data Example:0152624720000000000 Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "EmbossingLine4",
+                    "type": "string",
+                    "required": null,
+                    "description": "Embossing Line4 Valid Values:A-Z Example:ABC Allowable Values: 20",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": null,
+        "CardNumber": null,
+        "AdminNumber": 129419
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "AccountNumber": "9000000500000311",
+            "AdminNumber": 129567,
+            "CardNumber": "5288980515107907",
+            "CardLast4Digit": "7907",
+            "CardSequenceNumber": 1,
+            "CardExpirationDate": "2201",
+            "NameOnCard": "first12 last12",
+            "Title": null,
+            "FirstName": "first12",
+            "MiddleName": null,
+            "LastName": "last12",
+            "AddressLine1": "lineone",
+            "AddressLine2": "linetwo",
+            "City": "city",
+            "State": "AK",
+            "PostalCode": "456201",
+            "Country": "US",
+            "CompanyName": "Joe",
+            "CreditLimit": 50000.0,
+            "CashLimit": 0.0,
+            "CVC": "199",
+            "CVV2": "551",
+            "iCVV": "337",
+            "PIN": "0938",
+            "PinOffset": "0938",
+            "Track1Data": "B5288980515107907^LAST12/FIRST12^22012010119909380000000000",
+            "Track2Data": "5288980515107907=22012010119909380000",
+            "Track2EquivalentData": "5288980515107907=22012010100009380000",
+            "ActivationCode": "fc444d5a3faf45d0ac97b204474a47bf",
+            "ResponseID": "56891588",
+            "Track1DiscretionaryData": "0152624720000000000",
+            "EmbossingLine4": "ABC"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1004",
+        "document_id": "1100",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1100&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1004&regionId=1"
+    }
+}

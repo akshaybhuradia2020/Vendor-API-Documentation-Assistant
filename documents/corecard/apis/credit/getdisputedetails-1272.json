@@ -1,0 +1,344 @@
+{
+    "metadata": {
+        "name": "GetDisputeDetails",
+        "http_method": "POST",
+        "endpoint": "/api/GetDisputeDetails",
+        "description": "Use this API to fetch the Dispute Transaction Details."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CaseID",
+            "type": "Int64",
+            "required": null,
+            "description": "ID which is generated against the Dispute request. Valid Values: 0-9 Format: XXXXXXX Example:9856198 Condition: At least one of Case ID or TransactionID is required. Allowable Values: 10"
+        },
+        {
+            "name": "TransactionID",
+            "type": "string",
+            "required": null,
+            "description": "Unique number assigned to a transaction and is used to track the transaction posted in CoreCard System Example:147852369 Condition: At least one of Case ID or TransactionID is required. Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "TransactionAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Transaction Amount Valid Values: 0-9 Example:100.11",
+                    "children": []
+                },
+                {
+                    "name": "TransactionID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Unique number assigned to a transaction and is used to track the transaction posted in CoreCard System Valid alues: 0-9 Example: 147852369",
+                    "children": []
+                },
+                {
+                    "name": "TransactionCurrencyCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Transaction Currency Code Valid Values:0-9 Example:840 Appendix Section: Refer Appendix Section: Primary Currency Code",
+                    "children": []
+                },
+                {
+                    "name": "MerchantName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name of the merchant and its location from where the transaction initiated",
+                    "children": []
+                },
+                {
+                    "name": "Association",
+                    "type": "string",
+                    "required": null,
+                    "description": "Name of network of transaction. Example: Visa, MasterCard, Discover, Pulse, Star",
+                    "children": []
+                },
+                {
+                    "name": "TransactionDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date of  transaction posted on account Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                    "children": []
+                },
+                {
+                    "name": "DisputeDetailList",
+                    "type": "array",
+                    "required": null,
+                    "description": "",
+                    "children": [
+                        {
+                            "name": "CaseID",
+                            "type": "Int64",
+                            "required": null,
+                            "description": "ID which is generated against the Dispute request. Valid Values: 0-9 Format: XXXXXXX Example:9856198",
+                            "children": []
+                        },
+                        {
+                            "name": "ReasonCodeCategory",
+                            "type": "string",
+                            "required": null,
+                            "description": "Reason Code Category for Dispute. Please refer appendix Section : Reason Code Category",
+                            "children": []
+                        },
+                        {
+                            "name": "ReasonCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Reason Code for Dispute. Please refer appendix Section : Reason Code",
+                            "children": []
+                        },
+                        {
+                            "name": "ChargebackType",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Chargeback Type shows the Dispute Amount is Full or Partial. Example: 1 = Full and 2 = partial",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Disputed amount on the card. Example:600.30",
+                            "children": []
+                        },
+                        {
+                            "name": "CaseStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Shows the current case status.",
+                            "children": []
+                        },
+                        {
+                            "name": "NoteReason",
+                            "type": "string",
+                            "required": null,
+                            "description": "Predefined Memo Reasons. Please refer appendix Section : Memo Reason",
+                            "children": []
+                        },
+                        {
+                            "name": "Notes",
+                            "type": "string",
+                            "required": null,
+                            "description": "Notes entered by the user Valid Values : A-Z,0-9, special characters Example : Dispute Raised",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeStatusDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Shows the current dispute status.",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeResolveAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The amount for which dispute is resolved. Valid Values: 0-9 Format: xxx Example: 300",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeInitiationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date on which dispute is raised for the transaction. Valid Values: 0-9 Format:MM/DD/YYYY HH:MM:SS Example: 01/01/2020 08:25:54",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeClosedDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date on which dispute is closed for the transaction. Valid Values: 0-9 Format:MM/DD/YYYY HH:MM:SS Example: 01/01/2020 08:25:54",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeStage",
+                            "type": "string",
+                            "required": null,
+                            "description": "Stage of Dispute case. Valid Values: 0-9 A-Z Example: Initiate Dispute",
+                            "children": []
+                        },
+                        {
+                            "name": "ProvisionalCredit",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Provisional Credit is provided to Cardholder or not Valid Values: 0 and 1 Format:X Example:0 = No ,1= Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "ProvisionalCreditReversal",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Provisional Credit reversal is done on Cardholder account or not Valid Values: 0 and 1 Format:X Example:0 = No ,1= Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "ProvisionalCreditAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Provisional Credit amount Provided to Cardholder Valid Values: 0 to 9 Format:XXX Example:$15",
+                            "children": []
+                        },
+                        {
+                            "name": "ProvisionalCreditReversalAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Provisional Credit reversal amount Valid Values: 0 to 9 Format:XXX Example:$15",
+                            "children": []
+                        },
+                        {
+                            "name": "FraudLabel",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Fraud Label of a Transaction. Valid Value:- 1 - Fraudulent 0 - Not Fraudulent Example:- 1",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CaseID": 9856198,
+        "TransactionID": ""
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "TransactionAmount": 100.11,
+            "TransactionID": "926200438",
+            "TransactionCurrencyCode": "USD",
+            "MerchantName": "BRIGHTSPARK TRAVEL INC",
+            "Association": "PULSE",
+            "TransactionDate": "2020-12-22T00:00:00",
+            "DisputeDetailList": [
+                {
+                    "CaseID": 9856198,
+                    "ReasonCodeCategory": "1",
+                    "ReasonCode": "2",
+                    "ChargebackType": 1,
+                    "DisputeAmount": 10.0,
+                    "CaseStatus": "Open",
+                    "NoteReason": "Disputed Transaction",
+                    "Notes": "raising a dispute",
+                    "DisputeStatusDescription": "Initiate Dispute",
+                    "DisputeResolveAmount": 10.0,
+                    "DisputeInitiationDate": "2020-12-22T00:00:00",
+                    "DisputeClosedDate": "2020-12-22T00:00:00",
+                    "DisputeStage": "Initiate Dispute",
+                    "ProvisionalCredit": 0,
+                    "ProvisionalCreditReversal": 0,
+                    "ProvisionalCreditAmount": 0.0,
+                    "ProvisionalCreditReversalAmount": 0.0,
+                    "FraudLabel": 1
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Dispute",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1272&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1046"
+    }
+}

@@ -1,0 +1,242 @@
+{
+    "metadata": {
+        "name": "GetTemplateHistory",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/MerchantManagement/GetTemplateHistory",
+        "description": "This API is to list down the history of a template with respect to its version ID."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "TemplateID",
+            "type": "string",
+            "required": true,
+            "description": "Unique ID assigned to template when created Valid Values:0-9, A-Z Format:XXXX Example:MOT1001 Allowable Values: 100"
+        },
+        {
+            "name": "TemplateVersionID",
+            "type": "string",
+            "required": null,
+            "description": "Template Version ID , if any changes made on template it changes Valid Values:0-9, A-Z Format:XXXX Example:Template V1 Conditinon: It is mandatory when Indicator = 1. Allowable Values: 100"
+        },
+        {
+            "name": "TemplateHistoryIndicator",
+            "type": "integer",
+            "required": true,
+            "description": "Tag to check what the result of API should display 0 - List of template history 1 - List of CPM,MRT for that template version Valid Values:0-1 Format:X Example:0,1"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "MerchantTempalteHistory",
+                    "type": "array",
+                    "required": null,
+                    "description": "Array of history of template version.",
+                    "children": [
+                        {
+                            "name": "TemplateHistoryUniqueKey",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Unique ID for template history Valid Values:0-9",
+                            "children": []
+                        },
+                        {
+                            "name": "TemplateVersionID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Template Version ID , if any changes made on template it changes Valid Values:0-9, A-Z Format:XXXX Example:Template V1",
+                            "children": []
+                        },
+                        {
+                            "name": "LogDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date and time when any action performed on the template and saved Valid Values:0-9, A-Z Format:MM/dd/yyyy HH:mm:ss Example:03/04/2020 09:48:15",
+                            "children": []
+                        },
+                        {
+                            "name": "UserID",
+                            "type": "string",
+                            "required": null,
+                            "description": "User ID of the user who  action on the template Valid Values:0-9, A-Z Format:XXXX Example: User1",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "MerchantTempalteHistoryDetails",
+                    "type": "array",
+                    "required": null,
+                    "description": "Array of history of template version.",
+                    "children": [
+                        {
+                            "name": "TemplateHistoryUniqueKey",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Unique ID for template history detail Valid Values:0-9",
+                            "children": []
+                        },
+                        {
+                            "name": "IsChecked",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Selected Merchant Offering Valid Values: 0-1 Format: x Example: 0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditPlanMaster",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Plan name associated with the card account. Valid Values:A-Z, 0-9 Format:XXXXXX Example:6 Months No Interest if Paid in Full",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantRateTable",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag refers to the Rate table of that plan assigned to the plan Valid Values:1-9 Format:XXXXXX Example:4.5-7.5%",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "WEB",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "TemplateID": "MOT1001",
+        "TemplateVersionID": null,
+        "TemplateHistoryIndicator": 0
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "MerchantTempalteHistory": [
+                {
+                    "TemplateHistoryUniqueKey": 1,
+                    "TemplateVersionID": "Template V 1",
+                    "LogDateTime": "04/30/2020 01:55:39",
+                    "UserID": "user123"
+                }
+            ],
+            "MerchantTempalteHistoryDetails": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=126&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1008"
+    }
+}

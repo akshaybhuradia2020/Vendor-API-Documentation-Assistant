@@ -1,0 +1,320 @@
+{
+    "metadata": {
+        "name": "GetInstalmentLoanDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetInstalmentLoanDetails",
+        "description": "This API will fetch you details of loan on the account. Details like loan term, interest rate, EMI amount etc will be returned as response in this API."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": false,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345"
+        },
+        {
+            "name": "CPMID",
+            "type": "string",
+            "required": false,
+            "description": "Unique identifier for credit plan master applied on account. Allowable Values: 500"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Transaction Amount Valid Values:0-9 Format:XXX.XX Example:200.00"
+        },
+        {
+            "name": "LowRate",
+            "type": "decimal",
+            "required": null,
+            "description": "Low Rate of CreditPlanMaster (This will contain APR for Deferred plan if this is Deferred Plan). Valid Values:0-9 Format:XXX Example:29.9900"
+        },
+        {
+            "name": "HighRate",
+            "type": "decimal",
+            "required": null,
+            "description": "High Rate of CreditPlanMaster (This will not have any value if it is a deferred plan) Valid Values:0-9 Format:XXXExample:29.9900"
+        },
+        {
+            "name": "BillingTable",
+            "type": "integer",
+            "required": false,
+            "description": "Billing Table ID in which Account to be assign after transfer. Valid Values:0-9 Format:XXXXX Example:12365 Allowable Values: 25"
+        },
+        {
+            "name": "MerchantID",
+            "type": "string",
+            "required": false,
+            "description": "Unique number of merchant account. Valid Values:0-9 Format:XXXXX Example:12345"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "CurrencySymbol",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the currency symbol",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "CPMDetails",
+                    "type": "array",
+                    "required": null,
+                    "description": "CPMDetails",
+                    "children": [
+                        {
+                            "name": "AccountID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345",
+                            "children": []
+                        },
+                        {
+                            "name": "CPMID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique identifier for credit plan master applied on account.",
+                            "children": []
+                        },
+                        {
+                            "name": "LoanTerm",
+                            "type": "string",
+                            "required": null,
+                            "description": "Total tenure of loan in months Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstPaymentDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "First Payment Due Date.",
+                            "children": []
+                        },
+                        {
+                            "name": "FinalPaymentDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Final Payment Due Date.",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstCycleDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Start date when cycle starts.",
+                            "children": []
+                        },
+                        {
+                            "name": "NetPrincipal",
+                            "type": "string",
+                            "required": null,
+                            "description": "Total amount due minus the fees or penalties or charges levied on account.",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestRate",
+                            "type": "string",
+                            "required": null,
+                            "description": "Rate of Interest charged on account for this plan.",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalInterestAmount",
+                            "type": "string",
+                            "required": null,
+                            "description": "Total Interest charged on account in amount.",
+                            "children": []
+                        },
+                        {
+                            "name": "EMIAmount",
+                            "type": "string",
+                            "required": null,
+                            "description": "Amount charged as equal monthly installment.",
+                            "children": []
+                        },
+                        {
+                            "name": "DefermentPeriod",
+                            "type": "string",
+                            "required": null,
+                            "description": "Period in months for which interest will be deferred",
+                            "children": []
+                        },
+                        {
+                            "name": "OptionalPymtToAvoidInterest",
+                            "type": "string",
+                            "required": null,
+                            "description": "Optional Amount to be paid to avoid interest.",
+                            "children": []
+                        },
+                        {
+                            "name": "RequiredPayment",
+                            "type": "string",
+                            "required": null,
+                            "description": "Payment due",
+                            "children": []
+                        },
+                        {
+                            "name": "PromoPlanName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of promoplan applied on the account Allowable Values: 20",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountID": 167509,
+        "CPMID": "6065,6059",
+        "TransactionAmount": 1000.0,
+        "LowRate": null,
+        "HighRate": null,
+        "BillingTable": null,
+        "MerchantID": null
+    },
+    "sample_response": {
+        "Message": "Installment Loan details have been return successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01095",
+        "ResponseData": {
+            "CPMDetails": [
+                {
+                    "AccountID": 167509,
+                    "CPMID": "6065",
+                    "LoanTerm": "60",
+                    "FirstPaymentDate": "05/12/2017 00:00:00",
+                    "FinalPaymentDate": "04/17/2017 00:00:00",
+                    "FirstCycleDate": "04/17/2017 00:00:00",
+                    "NetPrincipal": "$ 1000.00",
+                    "InterestRate": "12.9900",
+                    "TotalInterestAmount": "358.05",
+                    "EMIAmount": "$ 22.63",
+                    "DefermentPeriod": null,
+                    "OptionalPymtToAvoidInterest": null,
+                    "RequiredPayment": "10",
+                    "PromoPlanName": "Fixed APR of 12.99% for 60 Months"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=59&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4"
+    }
+}

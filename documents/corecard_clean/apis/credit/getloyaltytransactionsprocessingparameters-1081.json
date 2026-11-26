@@ -1,0 +1,501 @@
+{
+    "metadata": {
+        "name": "GetLoyaltyTransactionsProcessingParameters",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/GetLoyaltyTransactionsProcessingParameters",
+        "description": "This API is used to get the details of loyalty calculation parameters."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MonetaryTransactionCodeGroupID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique ID for  Monetary transaction code group Valid Values: Fixed value provided by Corecard"
+        },
+        {
+            "name": "MonetaryTransactionCodeID",
+            "type": "integer",
+            "required": true,
+            "description": "Code associated to uniquely identify  the transaction. Valid Values:0-9 Example: 3742 =Purchase return reversal"
+        },
+        {
+            "name": "LoyaltyTransactionCodeGroupID",
+            "type": "integer",
+            "required": true,
+            "description": "Code of the Loyalty Group which is having mapping of all the Loyalty transactions. Valid Values:Fixed value provided by CoreCard. Example:4563"
+        },
+        {
+            "name": "LoyaltyTransactionCodeID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique ID of the loyalty transaction code. Valid Values: Fixed value provided by Corecard Format:XXXX Example: 3801"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "LoyaltyTxnParameters",
+                    "type": "",
+                    "required": null,
+                    "description": "Group of Loyalty transactions parameters",
+                    "children": [
+                        {
+                            "name": "Amount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The fixed number of points that are earned each time the corresponding transaction is posted against a loyalty participating amount. Valid Values: 0-9 Format:XXX.XX Example: 200.00 Condition: This field is only valid if the Calculation Method field is set to Use Amount.",
+                            "children": []
+                        },
+                        {
+                            "name": "Percent",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The percent of the loyalty transaction. Format: XXX Example: 100 Condition: This field is only valid if the Calculation Method field is set to Use Percent.",
+                            "children": []
+                        },
+                        {
+                            "name": "RoundingUnit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "When Rounding Method is set a value other than None, this field is used to indicate the number of decimal places that is acknowledged for the points. Valid Values: 0-9 Format :XX.XX Example: 0.00",
+                            "children": []
+                        },
+                        {
+                            "name": "CalculationMethod",
+                            "type": "string",
+                            "required": null,
+                            "description": "The method used to calculate the loyalty transaction. Valid Values:  0-9, A-Z Use Amount - Use the value in the Amount field Use Percent - Use the values in the Percent, Rounding Method and Rounding Unit fields. Use Tiers - Use the values in the Transaction Tiers group.",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyTransactionCodeDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Descriptive name of loyalty transaction  code. Valid Values: 0-9, A-Z Example: Loyalty Credit",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyTransactionCodeGroupDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Group for Loyalty . Valid Values:A-Z, 0-9 Example:Loyalty Group",
+                            "children": []
+                        },
+                        {
+                            "name": "MonetaryTransactionCodeDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Descriptive name of Monetary Transaction Code. Valid Values: 0-9, A-Z Example: 3742 =Purchase return reversal",
+                            "children": []
+                        },
+                        {
+                            "name": "MonetaryTransactionCodeGroupDesc",
+                            "type": "string",
+                            "required": null,
+                            "description": "Monetary transaction code group for the loyalty transaction. There is a one-to-one match between loyalty transaction codes and monetary transaction codes; duplicates are not allowed. Valid Values: 0-9, A-Z",
+                            "children": []
+                        },
+                        {
+                            "name": "PointsPerUnit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates points per unit Valid Values: 0-9,a-z Format: XX Example: 2 Allowable Values: 6",
+                            "children": []
+                        },
+                        {
+                            "name": "RoundingMethod",
+                            "type": "string",
+                            "required": null,
+                            "description": "Defines how fractional transaction amounts are rounded into the point amount. Valid Values: Round down to next rounding unit Round up or down to next rounding unit Round up to next rounding unit None Format: XXXX Example: Round down to next rounding unit Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyMerchantCategoryCodeList",
+                            "type": "array",
+                            "required": null,
+                            "description": "Array for Merchant category code",
+                            "children": [
+                                {
+                                    "name": "MCCCategory",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Name of the Merchant Category Code Valid Values:Refer 'Merchant Category Code Category' section for the valid values. Example: Airlines Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MCCStatus",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Status of the Merchant Category Code Valid Values: 0-Inactive 1-Active Example: 0 Allowable Values: 20",
+                                    "children": []
+                                },
+                                {
+                                    "name": "CalculationMethod",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "The method used to calculate the loyalty transaction. Valid Values: None Use Amount - Use the value in the Amount field Use Percent - Use the values in the Percent, Rounding Method and Rounding Unit fields. Use Tiers - Use the values in the Transaction Tiers group. Allowable Values: 100",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "The fixed number of points that are earned each time the corresponding transaction is posted against a loyalty participating amount. Valid Values: 0-9 Format:XXX.XX Example: 200.00 Condition: This field is only valid if the Calculation Method field is set to Use Amount.",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Percent",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "The percent of the loyalty transaction. Format: XXX Example: 100 Condition: This field is only valid if the Calculation Method field is set to Use Percent.",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RoundingMethod",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Defines how fractional transaction amounts are rounded into the point amount. Valid Values: Round down to next rounding unit Round up or down to next rounding unit Round up to next rounding unit None Format: XXXX Example: Round down to next rounding unit Allowable Values: 50",
+                                    "children": []
+                                },
+                                {
+                                    "name": "RoundingUnit",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "When Rounding Method is set a value other than None, this field is used to indicate the number of decimal places that is acknowledged for the points. Valid Values: 0-9 Format :XX.XX Example: 0.00",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "TransactionTiers",
+                            "type": "",
+                            "required": null,
+                            "description": "Defines point calculations based on tiered values. The first tier is the top end of the value range and each additional tier limit takes its beginning value from the ending value of the previous tier. The corresponding tier amount provides the loyalty points for that transaction amount. The initial tier begins at 0 and there are 10 tiers. Fields of this group are only valid if the Calculation Method field is set to Use Tiers.",
+                            "children": [
+                                {
+                                    "name": "Tier1Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier1Amount",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier1Limit",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier1Limit",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier2Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier2Amount",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier2Limit",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier2Limit",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier3Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier3Amount",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier3Limit",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier3Limit",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier4Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier4Amount",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier4Limit",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier4Limit",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier5Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier5Amount",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier5Limit",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier5Limit",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier6Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier6Amount",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier6Limit",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier6Limit",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier7Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier7Amount",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier7Limit",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier7Limit",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier8Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier8Amount",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier8Limit",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier8Limit",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier9Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier9Amount",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier9Limit",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier9Limit",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier10Amount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier10_Amount",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Tier10Limit",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Tier10_Limit",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MonetaryTransactionCodeGroupID": 6,
+        "MonetaryTransactionCodeID": 10241,
+        "LoyaltyTransactionCodeGroupID": 7,
+        "LoyaltyTransactionCodeID": 10479
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "LoyaltyTxnParameters": {
+                "Amount": null,
+                "Percent": 100.0,
+                "RoundingUnit": 0.0,
+                "CalculationMethod": "2",
+                "LoyaltyTransactionCodeDesc": "602 = LOYALTY DEBIT",
+                "LoyaltyTransactionCodeGroupDesc": "Loyalty MTC",
+                "MonetaryTransactionCodeDesc": "6244 = PURCHASE REVERSAL INTERNATIONAL",
+                "MonetaryTransactionCodeGroupDesc": "abc",
+                "PointsPerUnit": null,
+                "RoundingMethod": "0",
+                "LoyaltyMerchantCategoryCodeList": [
+                    {
+                        "MCCCategory": null,
+                        "MCCStatus": null,
+                        "CalculationMethod": null,
+                        "Amount": null,
+                        "Percent": null,
+                        "RoundingMethod": null,
+                        "RoundingUnit": null
+                    }
+                ],
+                "TransactionTiers": {
+                    "Tier1Amount": null,
+                    "Tier1Limit": null,
+                    "Tier2Amount": null,
+                    "Tier2Limit": null,
+                    "Tier3Amount": null,
+                    "Tier3Limit": null,
+                    "Tier4Amount": null,
+                    "Tier4Limit": null,
+                    "Tier5Amount": null,
+                    "Tier5Limit": null,
+                    "Tier6Amount": null,
+                    "Tier6Limit": null,
+                    "Tier7Amount": null,
+                    "Tier7Limit": null,
+                    "Tier8Amount": null,
+                    "Tier8Limit": null,
+                    "Tier9Amount": null,
+                    "Tier9Limit": null,
+                    "Tier10Amount": null,
+                    "Tier10Limit": null
+                }
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Control Parameters",
+        "category_id": "1005",
+        "document_id": "1081",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1081&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005&regionId=1"
+    }
+}

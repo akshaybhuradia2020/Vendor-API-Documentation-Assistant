@@ -1,0 +1,599 @@
+{
+    "metadata": {
+        "name": "GetInterestCharge",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/GetInterestCharge",
+        "description": "This API is to get the different Interest Charges defined for a merchant on different plans."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": true,
+            "description": "Specific ID Assigned to a Merchant, Mandatory If Merchant Number not Inputted in API Request. Valid Values: 0-9 Format: XXXX Example: 562489"
+        },
+        {
+            "name": "InterestPlanID",
+            "type": "integer",
+            "required": true,
+            "description": "Interest Plan Id defined on Intreset Tables . Valid Values:0-9, A-z Format:XX Example:abc_IP_22.99"
+        },
+        {
+            "name": "InterestPlanParent",
+            "type": "integer",
+            "required": false,
+            "description": "Parent Name of Interest Plan Valid Values:0-9, A-z Format:XX Example:1234"
+        },
+        {
+            "name": "InterestTransactionCode",
+            "type": "string",
+            "required": false,
+            "description": "Transaction Code for Interest Valid Values:0-9, A-z Format:XX Example:2000-Intreset Charge Allowable Values: 20"
+        },
+        {
+            "name": "MonetaryTransactionControlGroup",
+            "type": "integer",
+            "required": false,
+            "description": "Group defined on a product for its monetary transaction like defining Fees, Interest, Transactioncodes etc. Valid Values:0-9 Format:XX Example:abc_MTCG"
+        },
+        {
+            "name": "PrimaryCurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Code for PrimaryCurrency. Valid Values: XXX Format: 0-9 Example: 1234 Allowable Values: 3"
+        },
+        {
+            "name": "ProductType",
+            "type": "string",
+            "required": false,
+            "description": "It provides a description of the type of card being processed Valid Values:0-9, a-z Format:XXXXX Example:BankCard Allowable Values: 5"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "InterestChargeDetails",
+                    "type": "",
+                    "required": null,
+                    "description": "list of Interest Charges defined on a Merchant.",
+                    "children": [
+                        {
+                            "name": "PrimaryCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Primary Currency Code for that Product. Valid Values:0-9, A-z Format:XX Example:US Dollar Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlanParent",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Interest Plan Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MonetaryTransactionControlGroup",
+                            "type": "string",
+                            "required": null,
+                            "description": "Group defined on a product for its monetary transaction like defining Fees, Interest, Transactioncodes etc. Valid Values:0-9 Format:XX Example:abc_MTCG Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestTransactionCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Transaction Code for Interest Valid Values:0-9, A-z Format:XX Example:2000-Intreset Charge Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Merchant Valid Values:A-Z, 0-9 Format:XXXXXX Example: XYZ LLC Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductType",
+                            "type": "string",
+                            "required": null,
+                            "description": "It provides a description of the type of card being processed Valid Values:0-9, a-z Format:XXXXX Example:BankCard Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestonAnnualFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for  Interest on Annual Fees defined on Interest Plan as 0- Yes or 1- No Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestonInsufficientFundsFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for  Interest on InsufficientFunds Fees defined on Interest Plan as 0- Yes or1- No Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestonInterest",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag to define the  Interest on Interest  for Interest Plan as 0- Yes or 1- No Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestonTransactionFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for  Interest on Transaction Fees defined on Interest Plan as 0- Yes or 1- No Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestonOverlimitFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for  Interest on Overlimit Fees defined on Interest Plan as 0- Yes or 1- No Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestonInsurance",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for Interest on Insurance defined on Interest Plan as 0- Yes or 1- No Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestonCollectionFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for  Interest on Collection Fees defined on Interest Plan as 0- Yes or 1- No Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestonRecoveryFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for  Interest on Recovery Fees defined on Interest Plan as 0- Yes or 1- No Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestonLateFees",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Flag for Interest on Late Fees defined on Interest Plan as 0- Yes or 1- No Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestStartDebit",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Interest Controls configuration for  Interest Start Debit defined on Interest Plan as 0\tCycle Day 1\tEffective Date 2\tPosting Date 4\tEffective Date if Previous Balance 5\tPosting Date if Previous Balance 6\tNone Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestStartCredit",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Interest Controls configuration for  Interest Start credit defined on Interest Plan as 0 Effective Date 1 Posting Date Valid Values:0-1 Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestNextStatement",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Interest Controls configuration for  Interest Next Statement defined on Interest Plan as 0\tAccrue/earn based on Next Statement Method 1\tDo not accrue interest 2\tNormal Interest Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestNextStatementMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Interest Controls configuration for  Interest Next Statement defined on Interest Plan as 0\tWaive on New Transactions 1\tEarn on New Transactions 2\tWaive on New Transactions if Current, Earn if Past Due 3\tWaive on Revolving if Current, Earn if Past Due 4\tWaive on New and Revolving if Current, Earn if Past Due 5\tNone 6\tDefer on New Transactions Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "YearBase",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Interest Controls configuration for  Year Base defined on Interest Plan as 0-\t365/366 1-\t365 2-\t360 Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "AccuralMethod",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Interest Controls configuration for  Accural Method defined on Interest Plan as 0-Daily 1-Daily based on Past due 2-Monthly using Average Daily Balance 3-Monthly based on Past Due Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestCalculationRounding",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Interest Controls configuration for  Interest Calculation Rounding defined on Interest Plan as 0-Standard Rounding 1-Round Up(Reserved for future development) 2-Truncate(Reserved for future development) Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "DeliquencyLevel",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Interest Controls configuration for  Deliquency Level defined on Interest Plan as 0-Nothing Due 1-Current Due 2-Past Due 3-1 Cycle Past Due 4-2 Cycles Past Due 5-3 Cycles Past Due 6-4 Cycles Past Due 7-5 Cycles Past Due 8-6 Cycles Past Due 9-7 Cycles Past Due Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestRateType",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Rate Controls Configuration for Interest Rate Type defined on Interest Plan as 0\tFixed 1\tVariable 2\tTiered Variable 3\tTiered Fixed 4\tInterest Free Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumInterestRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Rate Controls Configuration for Minimum Interest Rate defined on Interest Plan Valid Values:0-9 Example:10.1",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumInterestRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Rate Controls Configuration for Maximum Interest Rate defined on Interest Plan Valid Values:0-9 Example:10.1",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumRateDecrease",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Rate Controls Configuration for Maximum Rate Decrease defined on Interest Plan Valid Values:0-9 Example:10.1",
+                            "children": []
+                        },
+                        {
+                            "name": "MaximumRateIncrease",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Rate Controls Configuration for Maximum Rate Increase defined on Interest Plan Valid Values:0-9 Example:10.1",
+                            "children": []
+                        },
+                        {
+                            "name": "FixedRate1",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Interest Setting for Fixed Rate (1-4) defined on Interest Plan as Valid Values:0-9 Example:10.1",
+                            "children": []
+                        },
+                        {
+                            "name": "FixedRate2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Interest Setting for Fixed Rate (1-4) defined on Interest Plan as Valid Values:0-9 Example:10.1",
+                            "children": []
+                        },
+                        {
+                            "name": "FixedRate3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Interest Setting for Fixed Rate (1-4) defined on Interest Plan as Valid Values:0-9 Example:10.1",
+                            "children": []
+                        },
+                        {
+                            "name": "FixedRate4",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Interest Setting for Fixed Rate (1-4) defined on Interest Plan as Valid Values:0-9 Example:10.1",
+                            "children": []
+                        },
+                        {
+                            "name": "TierLimitIndicatorFixedRate",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag is to define the tier limit indicator for Fixed rate on Interest Plan 0\tBalances in each limit 1\tHighest limit where balance falls Valid Values:0-1 Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Tiermaximumbalance1FixedRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag is to define the tier Maximum balance (1-3) for Fixed rate on Interest Plan Valid Values:0-9 Example:10.2",
+                            "children": []
+                        },
+                        {
+                            "name": "Tiermaximumbalance2FixedRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag is to define the tier Maximum balance (1-3) for Fixed rate on Interest Plan Valid Values:0-9 Example:10.2",
+                            "children": []
+                        },
+                        {
+                            "name": "Tiermaximumbalance3FixedRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag is to define the tier Maximum balance (1-3) for Fixed rate on Interest Plan Valid Values:0-9 Example:10.2",
+                            "children": []
+                        },
+                        {
+                            "name": "IndexRateParent",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag is to define the Index rate for Variable rate on Interest Plan Valid Values:Check Appendix for options. Example:2009-\tAOC Index Parent",
+                            "children": []
+                        },
+                        {
+                            "name": "MarginRateParent",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag is to define the Margin rate Parent (2-4) for Variable rate on Interest Plan Valid Values:Check Appendix for options. Example:2098-abc_Auto_Margin_15.24",
+                            "children": []
+                        },
+                        {
+                            "name": "MarginRateParent2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag is to define the Margin rate Parent (2-4) for Variable rate on Interest Plan Valid Values:Check Appendix for options. Example:2098-abc_Auto_Margin_15.24",
+                            "children": []
+                        },
+                        {
+                            "name": "MarginRateParent3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag is to define the Margin rate Parent (2-4) for Variable rate on Interest Plan Valid Values:Check Appendix for options. Example:2098-abc_Auto_Margin_15.24",
+                            "children": []
+                        },
+                        {
+                            "name": "MarginRateParent4",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag is to define the Margin rate Parent (2-4) for Variable rate on Interest Plan Valid Values:Check Appendix for options. Example:2098-abc_Auto_Margin_15.24",
+                            "children": []
+                        },
+                        {
+                            "name": "IndexRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag is to define the Index rate for Variable rate on Interest Plan Valid Values:0-9 Example:20.1",
+                            "children": []
+                        },
+                        {
+                            "name": "MarginRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag is to define the Margin (2-4)  rate for Variable rate on Interest Plan Valid Values:0-9 Example:20.1",
+                            "children": []
+                        },
+                        {
+                            "name": "MarginRate2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag is to define the Margin (2-4)  rate for Variable rate on Interest Plan Valid Values:0-9 Example:20.1",
+                            "children": []
+                        },
+                        {
+                            "name": "MarginRate3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag is to define the Margin (2-4)  rate for Variable rate on Interest Plan Valid Values:0-9 Example:20.1",
+                            "children": []
+                        },
+                        {
+                            "name": "MarginRate4",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag is to define the Margin (2-4)  rate for Variable rate on Interest Plan Valid Values:0-9 Example:20.1",
+                            "children": []
+                        },
+                        {
+                            "name": "TierLimitIndicatorVariableRate",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag is to define the tier limit indicator for Variable rate on Interest Plan 0\tBalances in each limit 1\tHighest limit where balance falls Valid Values:0-1 Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "Tiermaximumbalance1VariableRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag is to define the tier Maximum balance (1-3) for Variable rate on Interest Plan Valid Values:0-9 Example:10.2",
+                            "children": []
+                        },
+                        {
+                            "name": "Tiermaximumbalance2VariableRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag is to define the tier Maximum balance (1-3) for Variable rate on Interest Plan Valid Values:0-9 Example:10.2",
+                            "children": []
+                        },
+                        {
+                            "name": "Tiermaximumbalance3VariableRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This tag is to define the tier Maximum balance (1-3) for Variable rate on Interest Plan Valid Values:0-9 Example:10.2",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MerchantID": 7031,
+        "InterestPlanID": 1231,
+        "InterestPlanParent": null,
+        "InterestTransactionCode": null,
+        "MonetaryTransactionControlGroup": null,
+        "PrimaryCurrencyCode": null,
+        "ProductType": null
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "InterestChargeDetails": {
+                "PrimaryCurrencyCode": "US Dollar",
+                "InterestPlanParent": "Template Record",
+                "MonetaryTransactionControlGroup": "abc MTC",
+                "InterestTransactionCode": "6614 = INTEREST CHARGES",
+                "MerchantName": "7031",
+                "ProductType": "Bankcard",
+                "InterestonAnnualFees": 1,
+                "InterestonInsufficientFundsFees": 1,
+                "InterestonInterest": 1,
+                "InterestonTransactionFees": 1,
+                "InterestonOverlimitFees": 1,
+                "InterestonInsurance": 1,
+                "InterestonCollectionFees": 1,
+                "InterestonRecoveryFees": 1,
+                "InterestonLateFees": 1,
+                "InterestStartDebit": 1,
+                "InterestStartCredit": 0,
+                "InterestNextStatement": 2,
+                "InterestNextStatementMethod": 5,
+                "YearBase": 0,
+                "AccuralMethod": 2,
+                "InterestCalculationRounding": 0,
+                "DeliquencyLevel": 0,
+                "InterestRateType": 1,
+                "MinimumInterestRate": 0.0,
+                "MaximumInterestRate": 0.0,
+                "MaximumRateDecrease": 0.0,
+                "MaximumRateIncrease": 0.0,
+                "FixedRate1": 17.9,
+                "FixedRate2": 0.0,
+                "FixedRate3": 0.0,
+                "FixedRate4": 0.0,
+                "TierLimitIndicatorFixedRate": 0,
+                "Tiermaximumbalance1FixedRate": 0.0,
+                "Tiermaximumbalance2FixedRate": 0.0,
+                "Tiermaximumbalance3FixedRate": 0.0,
+                "IndexRateParent": 2000,
+                "MarginRateParent": 2000,
+                "MarginRateParent2": null,
+                "MarginRateParent3": null,
+                "MarginRateParent4": null,
+                "IndexRate": 3.5,
+                "MarginRate": 14.5,
+                "MarginRate2": 0.0,
+                "MarginRate3": 0.0,
+                "MarginRate4": 0.0,
+                "TierLimitIndicatorVariableRate": 0,
+                "Tiermaximumbalance1VariableRate": 0.0,
+                "Tiermaximumbalance2VariableRate": 0.0,
+                "Tiermaximumbalance3VariableRate": 0.0
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Control Parameters",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1030&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005"
+    }
+}

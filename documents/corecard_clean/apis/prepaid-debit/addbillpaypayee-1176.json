@@ -1,0 +1,287 @@
+{
+    "metadata": {
+        "name": "AddBillPayPayee",
+        "http_method": "POST",
+        "endpoint": "/api/AddBillPayPayee",
+        "description": "Use this API to allow the Service Consumer to add a new Payee or Transfer account for a specific subscriber."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "SubscriberID",
+            "type": "Int64",
+            "required": true,
+            "description": "This is the Service Provider's (iPay Solutions) identifier  for the Cardholder User. Example : 12345678"
+        },
+        {
+            "name": "PayeeName",
+            "type": "string",
+            "required": true,
+            "description": "This is the name of the Payee Example: Andrew Allowable Values: 20"
+        },
+        {
+            "name": "PayeeNickname",
+            "type": "string",
+            "required": false,
+            "description": "This is the nickname for the Payee. Example: Andy Allowable Values: 20"
+        },
+        {
+            "name": "PhoneNumber",
+            "type": "string",
+            "required": true,
+            "description": "This is the phone number, including area code, for the Payee. This is a numeric field that will not accept hyphens.                                                                                                                                                                                                                          Valid Values: 0-9 Example: 9812338769 Allowable Values: 15"
+        },
+        {
+            "name": "PhoneType",
+            "type": "string",
+            "required": true,
+            "description": "This is the type of phone number for the payee. Valid Values: Work, SMS Example :Work, SMS Allowable Values: 10"
+        },
+        {
+            "name": "EmailAddress",
+            "type": "string",
+            "required": false,
+            "description": "This is the email address of the Payee. Valid Values: A-Z, a-z, 0-9. Example: sem_pp1 @gmail.com Allowable Values: 50"
+        },
+        {
+            "name": "EmailType",
+            "type": "string",
+            "required": false,
+            "description": "This element specifies to whom the email address applies. Valid values : Prim - Primary owner(Individual subscriber) default Secd - Secondary account holder(for Individual subscriber accounts only) Allowable Values: 10"
+        },
+        {
+            "name": "RoutingNumber",
+            "type": "string",
+            "required": false,
+            "description": "This is the Bank Routing Number (ABA number) of the Individual Payee's bank (deposit) account Valid Values:0-9 Example: 0110000015 Allowable Values: 50"
+        },
+        {
+            "name": "AccountType",
+            "type": "string",
+            "required": null,
+            "description": "This is the type of funding account. Valid values are: D - Checking(default value) S - Savings Example: D, S. Condition: This field is mandatory when the 'PayeeClsf' is 'Indv'(Individual/Person) Allowable Values: 10"
+        },
+        {
+            "name": "NameOfAccount",
+            "type": "string",
+            "required": false,
+            "description": "This is the account name (given by the Cardholder User)for the default Bill Pay funding account(‘pay from account’) to be used to make payments to the specified Payee or Transfer account. Example: Andrew_123 Allowable Values: 20"
+        },
+        {
+            "name": "P2PType",
+            "type": "string",
+            "required": false,
+            "description": "This is the type of communication method to be used for person-to-person Payee contact. Valid Values: SMS , Email. Example: SMS , Email. Allowable Values: 10"
+        },
+        {
+            "name": "PayeeClsf",
+            "type": "string",
+            "required": true,
+            "description": "This is the type of communication method to be used for person-to-person Payee contact. Valid Values: Comp(Company), Indv(Individual/Person) Example: Comp, Indv. Allowable Values: 50"
+        },
+        {
+            "name": "AddressModel",
+            "type": "",
+            "required": false,
+            "description": "This model is to add address like address 1,2 state and Postal code."
+        },
+        {
+            "name": "CategoryId",
+            "type": "Int32",
+            "required": false,
+            "description": "This is the name of the category assigned to the Payee or Transfer account Valid Values:0-9 Example: 2"
+        },
+        {
+            "name": "PayeeAccountNumber",
+            "type": "string",
+            "required": true,
+            "description": "This is the individual Payee's bank account number. Valid Values:0-9 Example: 1122345678 Allowable Values: 19"
+        },
+        {
+            "name": "AddressType",
+            "type": "string",
+            "required": false,
+            "description": "This is the  address  type for the payee. The Payee’s primary (i.e., payment remittance) address is required when adding a new Payee. Valid values are: Prim - Primary(default) Rush - Rush Allowable Values: 10"
+        },
+        {
+            "name": "Addressline1",
+            "type": "string",
+            "required": true,
+            "description": "This is the street address for the payee. Example: One Main St Allowable Values: 100"
+        },
+        {
+            "name": "Addressline2",
+            "type": "string",
+            "required": false,
+            "description": "This is the second line of the street address for the payee. Example: Apt A Allowable Values: 100"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": true,
+            "description": "This is the city for the payee. Valid Values: A-Z, a-z, 0-9 Example: Norcross Allowable Values: 75"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": true,
+            "description": "This is the 2-character alpha code approved by the USPS which represents a state for the payee. Example: GA Valid values are A-Z, a-z Allowable Values: 5"
+        },
+        {
+            "name": "Postalcode",
+            "type": "string",
+            "required": false,
+            "description": "This is the postal or ZIP code for the payee. (ZIP+4 is supported.) Valid Values: A-Z,a-z,0-9 Example: 30093 Allowable Values: 10"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "PayeeId",
+                    "type": "Int64",
+                    "required": null,
+                    "description": "This is the Payee identifier associated with the Payee or Transfer account for the Bill Pay Services API. Valid Values: 0-9 Example: 20",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "::1",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "SubscriberID": 1468196126,
+        "PayeeName": "John smith",
+        "PayeeNickname": "JS",
+        "PhoneNumber": "8895642536",
+        "PhoneType": "work",
+        "EmailAddress": "[email protected]",
+        "EmailType": "Prim",
+        "RoutingNumber": "011000206",
+        "AccountType": "D",
+        "NameOfAccount": "Andrew",
+        "P2PType": "SMS",
+        "PayeeClsf": "Indv",
+        "AddressModel": {
+            "AddressType": "primary",
+            "Addressline1": "221 Kiely Blvd",
+            "Addressline2": "64A Streets",
+            "City": "Santa Clara",
+            "State": "CA",
+            "Postalcode": "95051"
+        },
+        "CategoryId": 1,
+        "PayeeAccountNumber": "90000000456"
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "",
+        "ResponseData": {
+            "PayeeId": 2
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "BillPay",
+        "category_id": "1039",
+        "document_id": "1176",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1176&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1039&regionId=1"
+    }
+}

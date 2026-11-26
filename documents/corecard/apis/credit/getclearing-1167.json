@@ -1,0 +1,233 @@
+{
+    "metadata": {
+        "name": "GetClearing",
+        "http_method": "POST",
+        "endpoint": "/api/GetClearing",
+        "description": "Use this API to post Debit or credit adjustments to account. If due to any check transction is declined then force post option can be used to bypass the check."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "BranchCode",
+            "type": "string",
+            "required": false,
+            "description": "Branch code from where the card was issued. Valid Values:0-9 Example:1006 Allowable Values: 20"
+        },
+        {
+            "name": "TransactionCode",
+            "type": "string",
+            "required": true,
+            "description": "This tag indicates the transction code that is displayed after a transaction is executed. Example: ABC14433222 Allowable Values: 20"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": true,
+            "description": "Transaction Amount Valid Values: 0-9 Example:100.11"
+        },
+        {
+            "name": "TransactionCurrencyCode",
+            "type": "string",
+            "required": true,
+            "description": "Transaction Currency Code Valid Values:0-9 Example:840 Please Refer Appendix Section: Primary Currency Code Allowable Values: 3"
+        },
+        {
+            "name": "Notes",
+            "type": "string",
+            "required": false,
+            "description": "Notes entered by the user Valid Values : A-Z,0-9 Example : Card found Allowable Values: 2000"
+        },
+        {
+            "name": "NotesReason",
+            "type": "string",
+            "required": false,
+            "description": "PreDefined Memo Reasons. Please refer appendix Section : Memo Reason Allowable Values: 5"
+        },
+        {
+            "name": "TransactionReference",
+            "type": "string",
+            "required": null,
+            "description": "Transaction ID of the transaction which needs to be reversed or adjustment is posted against that transaction Condition: It must contain TransactionID of the Original transaction when CMTTranType is either 38,35 or 43. For other  CMTTranType it should be Null. Allowable Values: 19"
+        },
+        {
+            "name": "AllowForcePost",
+            "type": "string",
+            "required": false,
+            "description": "Provides facility to allow force post as per the value passed. Valid values: 0 = Normal posting with all validations 1 = Only Overdarft ADC, OD Opt in status and Available balance validation will be done 2 =  Force Post transaction (no validations) Example: 0 Allowable Values: 1"
+        },
+        {
+            "name": "RetrievalReferenceNumber",
+            "type": "string",
+            "required": false,
+            "description": "Indicates unique reference number throughout the system. Example: 012541 Allowable Values: 12"
+        },
+        {
+            "name": "WalletID",
+            "type": "Int32",
+            "required": false,
+            "description": "Wallet ID of wallet mapped on account Valid values:0-9 Example:1005 Condition: Mandatory when card product supports MCC wallets."
+        },
+        {
+            "name": "CardAcceptorNameLocation",
+            "type": "string",
+            "required": false,
+            "description": "Name and location details of merchant Valid Values: a-z A-Z Example: Dental merchant, Nashua Allowable Values: 40"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "TransactionID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Unique number assigned to a transaction and is used to track the transaction posted in CoreCard System Example :  147852369",
+                    "children": []
+                },
+                {
+                    "name": "AvailableBalance",
+                    "type": "string",
+                    "required": null,
+                    "description": "In case of the non wallet product,  account available balance will be returned whereas in case of the multi wallet product, wallet available balance will be returned. Valid Values: 0-9 Example: 52.25",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.5",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "4066846120012785",
+        "ProxyNumber": "1316608",
+        "BranchCode": "",
+        "TransactionCode": "37",
+        "TransactionAmount": 11.0,
+        "TransactionCurrencyCode": "840",
+        "Notes": "abcd",
+        "NotesReason": "10",
+        "TransactionReference": "",
+        "AllowForcePost": "0",
+        "RetrievalReferenceNumber": "",
+        "WalletID": 0,
+        "CardAcceptorNameLocation": "Nashua"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "TransactionID": "2153606434",
+            "AvailableBalance": "163.01"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Clearing",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1167&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1037"
+    }
+}

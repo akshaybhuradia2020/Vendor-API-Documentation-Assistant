@@ -1,0 +1,996 @@
+{
+    "metadata": {
+        "name": "GetBillingTableDetail",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/GetBillingTableDetail",
+        "description": "This API is to get the Billing table details defined on the Merchant."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "BillingTableId",
+            "type": "integer",
+            "required": true,
+            "description": "Unique ID of Billing table assigned to defined for a Merchant Valid Values:0-9, a-z Format:XXXX Example:123"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique number of merchant account Valid Values:0-9 Format:XXXXX Example:12345"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "BillingTableDetails",
+                    "type": "",
+                    "required": null,
+                    "description": "billingTableDetails",
+                    "children": [
+                        {
+                            "name": "AllowProgParameterUpdateCI",
+                            "type": "string",
+                            "required": null,
+                            "description": "AllowProgParameterUpdateCI",
+                            "children": []
+                        },
+                        {
+                            "name": "AllowProgParameterUpdateRole",
+                            "type": "string",
+                            "required": null,
+                            "description": "AllowProgParameterUpdateRole",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductType",
+                            "type": "string",
+                            "required": null,
+                            "description": "It provides a description of the type of card being processed Valid Values:0-9, a-z Format:XXXXX Example:BankCard Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "MonetaryTransactionControlGroup",
+                            "type": "string",
+                            "required": null,
+                            "description": "Group defined on a product for its monetary transaction like defining Fees, Interest, Transactioncodes etc. Valid Values:0-9 Format:XX Example:abc_MTCG Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "BillingTableParent",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Billing Table Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "PrimaryCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Primary Currency Code for that Product. Valid Values:0-9, A-z Format:XX Example:US Dollar Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition:At least one of CardNumber/AdminNumber/AccountNumber/AccountID is required.",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Merchant Valid Values:A-Z, 0-9 Format:XXXXXX Example:abc Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "NegativeRewardBalanceToCharge",
+                            "type": "string",
+                            "required": null,
+                            "description": "Configuration for Waive Active Inactive Fees For Valid Values: Refer Appendix Format: XX Example: \"None\",\"Clear Negative Points\", \"Clear Negative Points and Post Debit Transaction\" Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "CardVendorID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique ID of Card Vendor Valid Values:0-9 Format:XXXXXX Example:1234 Allowable Values: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "CardProduct",
+                            "type": "string",
+                            "required": null,
+                            "description": "Product on the Card Valid Values:0-9, a-z Format:XXXXXX Example: Revolving Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductConfigurationID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique ID Product configuration Valid Values:0-9, a-z Format:XXXXXX Example: 1234",
+                            "children": []
+                        },
+                        {
+                            "name": "ServiceChargePlanName",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Service Charge Plan Name. Valid Values: 0-9 A-Z Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountControlTableName",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Account Controls like Interest, Payment , Processing Parameters defined etc when defining any Product. Valid Values:0-9, A-z Format:XX Example:2",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9 Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan4",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan5",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan6",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan7",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan8",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan9",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan10",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan11",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan12",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan13",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan14",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan15",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan16",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan17",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan18",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan19",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan20",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan21",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan22",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan23",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "InterestPlan24",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Name of Interest Plans defined on Intreset Tables . (InterestPlan1- InterestPlan24) Valid Values:0-9,a-z Format:XX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod4",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod5",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod6",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod7",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod8",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod9",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod10",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod11",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod12",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod13",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod14",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod15",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod16",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod17",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod18",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod19",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod20",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod21",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod22",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod23",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "RatificationMethod24",
+                            "type": "string",
+                            "required": null,
+                            "description": "Ratification Method (1-24) defined on Interest Tables as 0-Normal 1-Grandfathered 2-Statement Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "InsurancePlan1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Insurance Plan(1-6) defined on Billing Table as 0-None 1-Template Record 2-CBC Bank Group Base 3-CBC Bank Group Plus 4-PL Group Base 5-PL Group Plus 1000-All Insurance Product Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "InsurancePlan2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Insurance Plan(1-6) defined on Billing Table as 0-None 1-Template Record 2-CBC Bank Group Base 3-CBC Bank Group Plus 4-PL Group Base 5-PL Group Plus 1000-All Insurance Product Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "InsurancePlan3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Insurance Plan(1-6) defined on Billing Table as 0-None 1-Template Record 2-CBC Bank Group Base 3-CBC Bank Group Plus 4-PL Group Base 5-PL Group Plus 1000-All Insurance Product Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "InsurancePlan4",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Insurance Plan(1-6) defined on Billing Table as 0-None 1-Template Record 2-CBC Bank Group Base 3-CBC Bank Group Plus 4-PL Group Base 5-PL Group Plus 1000-All Insurance Product Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "InsurancePlan5",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Insurance Plan(1-6) defined on Billing Table as 0-None 1-Template Record 2-CBC Bank Group Base 3-CBC Bank Group Plus 4-PL Group Base 5-PL Group Plus 1000-All Insurance Product Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "InsurancePlan6",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Insurance Plan(1-6) defined on Billing Table as 0-None 1-Template Record 2-CBC Bank Group Base 3-CBC Bank Group Plus 4-PL Group Base 5-PL Group Plus 1000-All Insurance Product Valid Values:0-9 Format:XX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "FstYrCapOnCL",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It provides a Credit Limit Valid Values:0-9 Format:XXXXX Example:10.00 Allowable Values: 7",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstYCapOn",
+                            "type": "string",
+                            "required": null,
+                            "description": "It provides a First Year Cap Initiation On Valid Values:0-9, a-z Format:XXXXX Example:BankCard Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstYGraceDays",
+                            "type": "integer",
+                            "required": null,
+                            "description": "It provides a First Year Grace Days Valid Values:0-9 Format:XXXXX Example:10.00 Allowable Values: 7",
+                            "children": []
+                        },
+                        {
+                            "name": "FstYrCapInterest",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Interest Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "FstYrCapAnlFee",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Annual Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "FstYrCapTsnFeeAcctBs",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Transaction Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "FstYrCapInsurance",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Insurance Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "FstYrCapColltnFee",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Collection Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "FstYrCapRevFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Recovery Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "FstYrCapLateFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Late Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "FstYrCapOvrlmtFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of OverLimit Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "FstYrCapInsffFndFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Insufficient Funds Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "CARBenefitEndPriorNoticeDays",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Configuration for Benefit Ending Notice prior to Valid Values: Refer Appendix Format: XX Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "MLACapOnOtstAmt",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It provides a Credit Limit Valid Values:0-9 Format:XXXXX Example:10.00 Allowable Values: 7",
+                            "children": []
+                        },
+                        {
+                            "name": "MLACapInterest",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Interest Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "MLAAnlFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Annual Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "MLATsnFeeAcctBs",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Transaction Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "MLAInsurance",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Insurance Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "MLAColtnFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Collection Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "MLARevFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Recovery Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "MLALateFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Late Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "MLAOvrlmtFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of OverLimit Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "MLAInsffFndFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Insufficient Funds Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRACapOnOtstAmt",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It provides a SCRA Cap On Outset Amount(ADB) Valid Values:0-9 Format:XXXXX Example:10.00 Allowable Values: 7",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRAIntRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It provides a SCRA Interest Rate Valid Values:0-9 Format:XXXXX Example:10.00 Allowable Values: 7",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRABckDtBhvr",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Backdated SCRA Behaviour Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRAExtendedTerms",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Extended Term Cycle Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRAInterest",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Interest Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRAAnlFee",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Annual Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRATsnFeeAcctBs",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Transaction Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRAInsurance",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Insurance Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRAColtnFee",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Collection Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRARevFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Recovery Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRALtFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Late Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRAOvrlmtFees",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of OverLimit Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRAInsffFndFee",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent Name of Insufficient Funds Fees Valid Values:0-9, A-z Format:XX Example:Template Record Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "SCRAEndNotificationModelLst",
+                            "type": "array",
+                            "required": null,
+                            "description": "Parent Name of SCRA End Notification List Valid Values:0-9, A-z Format:XX Example:Template Record",
+                            "children": [
+                                {
+                                    "name": "State",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Parent Name of State Valid Values:0-9, A-z Format:XX Example:Template Record",
+                                    "children": []
+                                },
+                                {
+                                    "name": "Exclude",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Parent Name of Exclude Valid Values:0-9, A-z Format:XX Example:Template Record",
+                                    "children": []
+                                },
+                                {
+                                    "name": "NotificationDays",
+                                    "type": "integer",
+                                    "required": null,
+                                    "description": "Parent Name of Notification Days Valid Values:0-9 Format:XX Example:60",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "DefaultNotificationDays",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Parent Name of Default Notification Days Valid Values:0-9, A-z Format:XX Example:Template Record",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "BillingTableID": 2181,
+        "MerchantID": 7031
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "BillingTableDetails": {
+                "AllowProgParameterUpdateCI": null,
+                "AllowProgParameterUpdateRole": null,
+                "ProductType": "Bankcard",
+                "MonetaryTransactionControlGroup": "abc MTC",
+                "BillingTableParent": "Template Record",
+                "PrimaryCurrencyCode": "US Dollar",
+                "AccountID": 2181,
+                "MerchantName": "Final",
+                "NegativeRewardBalanceToCharge": "None",
+                "CardVendorID": null,
+                "CardProduct": null,
+                "ProductConfigurationID": "1231",
+                "ServiceChargePlanName": 141,
+                "AccountControlTableName": 2061,
+                "InterestPlan1": 1231,
+                "InterestPlan2": 1241,
+                "InterestPlan3": null,
+                "InterestPlan4": null,
+                "InterestPlan5": null,
+                "InterestPlan6": null,
+                "InterestPlan7": null,
+                "InterestPlan8": null,
+                "InterestPlan9": null,
+                "InterestPlan10": null,
+                "InterestPlan11": null,
+                "InterestPlan12": null,
+                "InterestPlan13": null,
+                "InterestPlan14": null,
+                "InterestPlan15": null,
+                "InterestPlan16": null,
+                "InterestPlan17": null,
+                "InterestPlan18": null,
+                "InterestPlan19": null,
+                "InterestPlan20": null,
+                "InterestPlan21": null,
+                "InterestPlan22": null,
+                "InterestPlan23": null,
+                "InterestPlan24": null,
+                "RatificationMethod1": 0,
+                "RatificationMethod2": 0,
+                "RatificationMethod3": 0,
+                "RatificationMethod4": 0,
+                "RatificationMethod5": null,
+                "RatificationMethod6": null,
+                "RatificationMethod8": null,
+                "RatificationMethod9": null,
+                "RatificationMethod10": null,
+                "RatificationMethod11": null,
+                "RatificationMethod12": null,
+                "RatificationMethod13": null,
+                "RatificationMethod14": null,
+                "RatificationMethod15": null,
+                "RatificationMethod16": null,
+                "RatificationMethod17": null,
+                "RatificationMethod18": null,
+                "RatificationMethod19": null,
+                "RatificationMethod20": null,
+                "RatificationMethod21": null,
+                "RatificationMethod22": null,
+                "RatificationMethod23": null,
+                "RatificationMethod24": null,
+                "InsurancePlan1": null,
+                "InsurancePlan2": null,
+                "InsurancePlan3": null,
+                "InsurancePlan4": null,
+                "InsurancePlan5": null,
+                "InsurancePlan6": null,
+                "CARBenefitEndPriorNoticeDays": null
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Control Parameters",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1032&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005"
+    }
+}

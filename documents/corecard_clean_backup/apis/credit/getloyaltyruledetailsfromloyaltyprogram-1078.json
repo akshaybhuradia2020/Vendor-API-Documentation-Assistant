@@ -1,0 +1,219 @@
+{
+    "metadata": {
+        "name": "GetLoyaltyRuleDetailsFromLoyaltyProgram",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/GetLoyaltyRuleDetailsFromLoyaltyProgram",
+        "description": "This API is used to get the details of all the loyalty rule applicable on loyalty program."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "LoyaltyProgramID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique ID of Program. Valid Values: 0-9"
+        },
+        {
+            "name": "ApplicableRuleType",
+            "type": "integer",
+            "required": false,
+            "description": "Identifies the loyalty rule applicable on purchase, rule applicable on return etc. Valid Values: '1' - Purchase '2' - Return '3' - Payment '4' - Other Debit '5' - Other Credit '6' - Statement '7' - Reward Redeem '8' - Reward Earn '9' - Non-Monetary Example: '1' - Purchase"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "RuleDetailsFromLoyaltyList",
+                    "type": "array",
+                    "required": null,
+                    "description": "RuleDetailsFromLoyaltyList List.",
+                    "children": [
+                        {
+                            "name": "Priority",
+                            "type": "string",
+                            "required": null,
+                            "description": "Decided the priority of loyalty rule. Valid Values: 0-9 Example: 1 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Loyalty Rule. Valid Values:A-Z,a-z,0-9 Example: Base Rule Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "Status",
+                            "type": "string",
+                            "required": null,
+                            "description": "A loyalty rule is considered for the evaluation only when its status is 'Active' at both the places i.e. on 'Loyalty Rule Setup' and on 'Rule Mapping' on Loyalty Program. Valid Values: Active Inactive Example: Active Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "StartDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This is an optional field where if required the user can provide a future date from where the rule in context should start evaluating the loyalty. Valid Values: Format: MM/DD/YYYY HH:MM:SS Example: 01/20/2020 10:11:01",
+                            "children": []
+                        },
+                        {
+                            "name": "Enddate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This is an optional field where if required the user can provide a future date when the rule in context should end evaluating the loyalty. Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 01/20/2020 10:11:01",
+                            "children": []
+                        },
+                        {
+                            "name": "NextAction",
+                            "type": "string",
+                            "required": null,
+                            "description": "Decide if system need to look for other loyalty rule or not. Valid Values: Stop - If the rule suffice the loyalty rule parameter and applied on the transaction then system will stop looking for other loyalty rule. Continue - If the rule suffice the loyalty rule parameter and applied on the transaction then also system look for other rule as well. Example: Stop Allowable Values: 40",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "LoyaltyProgramID": 14,
+        "ApplicableRuleType": null
+    },
+    "sample_response": {
+        "Message": "Record Found",
+        "Status": true,
+        "ErrorCode": "ERR01520",
+        "ResponseData": {
+            "RuleDetailsFromLoyaltyList": [
+                {
+                    "Priority": "2",
+                    "RuleName": "Student Loan Base Reward Rule(Return)",
+                    "Status": "Active",
+                    "StartDate": null,
+                    "Enddate": null,
+                    "NextAction": "Stop"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Control Parameters",
+        "category_id": "1005",
+        "document_id": "1078",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1078&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005&regionId=1"
+    }
+}

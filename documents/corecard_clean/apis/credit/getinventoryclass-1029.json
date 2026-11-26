@@ -1,0 +1,239 @@
+{
+    "metadata": {
+        "name": "GetInventoryClass",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/ControlParameters/GetInventoryClass",
+        "description": "This API is to get the defined inventory class for inventory codes used for sales transaction."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "InventoryCode",
+            "type": "string",
+            "required": false,
+            "description": "These are unique ID for Inventory codes defined for any products/inventory to make post sales transaction. Valid Values:0-9, A-Z Format: Example:35519 Allowable Values: 255"
+        },
+        {
+            "name": "InventoryClass",
+            "type": "string",
+            "required": false,
+            "description": "These are the classes  defined for any products/inventory to make post sales transaction. Valid Values:0-9 Format: Example:1234 Allowable Values: 255"
+        },
+        {
+            "name": "InternalInventoryClass",
+            "type": "string",
+            "required": false,
+            "description": "These are the internal ID for classes made based on Inventory Codes defined for any products/inventory to make post sales transaction. Valid Values:0-9, A-Z Example:6049 - Accessories Allowable Values: 255"
+        },
+        {
+            "name": "InventoryClassDescription",
+            "type": "string",
+            "required": false,
+            "description": "These are the description given for classes made based on Inventory Codes defined for any products/inventory to make post sales transaction. Valid Values:0-9, A-Z Example:Bags,Belts Allowable Values: 255"
+        },
+        {
+            "name": "BatchSize",
+            "type": "integer",
+            "required": false,
+            "description": "BatchSize"
+        },
+        {
+            "name": "PageIndex",
+            "type": "integer",
+            "required": false,
+            "description": "PageIndex"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "InventoryClassList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Inventory Class List",
+                    "children": [
+                        {
+                            "name": "InventoryCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "These are unique ID for Inventory codes defined for any products/inventory to make post sales transaction. Valid Values:0-9, A-Z Example:35519 Allowable Values: 255",
+                            "children": []
+                        },
+                        {
+                            "name": "InventoryClass",
+                            "type": "string",
+                            "required": null,
+                            "description": "These are the classes  defined for any products/inventory to make post sales transaction. Valid Values:0-9 Format: Example:1234 Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "InternalInventoryClass",
+                            "type": "string",
+                            "required": null,
+                            "description": "These are the internal ID for classes made based on Inventory Codes defined for any products/inventory to make post sales transaction. Valid Values:0-9, A-Z Example:6049 - Accessories Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "InventoryClassDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "These are the description given for classes made based on Inventory Codes defined for any products/inventory to make post sales transaction. Valid Values:0-9, A-Z Example:Bags,Belts Allowable Values: 95",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "TotalCount",
+                    "type": "integer",
+                    "required": null,
+                    "description": "This tag will show the total count of the Inventory Class wiith the respective search made. Valid Values:0-9 Example:12",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "InventoryCode": "35519",
+        "InventoryClass": null,
+        "InternalInventoryClass": "1030",
+        "InventoryClassDescription": null,
+        "BatchSize": null,
+        "PageIndex": null
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "InventoryClassList": [
+                {
+                    "InventoryCode": "35519",
+                    "InventoryClass": "Andrisen",
+                    "InternalInventoryClass": "1030 = inventoryclass1",
+                    "InventoryClassDescription": "inventoryclass1"
+                }
+            ],
+            "TotalCount": 1
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Control Parameters",
+        "category_id": "1005",
+        "document_id": "1029",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1029&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1005&regionId=1"
+    }
+}

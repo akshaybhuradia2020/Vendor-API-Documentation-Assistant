@@ -1,0 +1,218 @@
+{
+    "metadata": {
+        "name": "GetTAVSignature",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/DigitalWallets/GetTAVSignature",
+        "description": "The purpose of this API is to get TAV signature for MDES Push Provisioning."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Admin Number of Primary  Account Number Valid Values: 0-9 Format:XXXXX Example:12345 Condition:At least one account identifier is required."
+        },
+        {
+            "name": "CardExpirationDate",
+            "type": "string",
+            "required": false,
+            "description": "Expiration date and month of PAN Valid Values: 0-9 Format:MMYY Example:0121 Allowable Values: 4"
+        },
+        {
+            "name": "TavVersionNumber",
+            "type": "string",
+            "required": true,
+            "description": "TAV Format Valid Values:3 Format:X Example:3 Allowable Values: 1"
+        },
+        {
+            "name": "DataValidUntilTimestamp",
+            "type": "string",
+            "required": true,
+            "description": "ISO 8601 format of the date and  time(with Time Zone) the TAV expires and will no longer be honored Valid Values:0-9 Example:2019-12-27T10:05:45-05:00 Allowable Values: 29"
+        },
+        {
+            "name": "FinancialAccountInformation",
+            "type": "string",
+            "required": false,
+            "description": "Identifier of the financial account being tokenized Valid Values:0-9,a-z Example:1235abcd Allowable Values: 78"
+        },
+        {
+            "name": "TokenUniqueReference",
+            "type": "string",
+            "required": false,
+            "description": "Token Unique Reference associated with the token. Valid Values:0-9,a-z Example: D313958EB444F9A887E96F98483D6FF4E198815DC7BF4C72322E473E9CEF83E27E2F9BCA8762E3121D4FD1FD32B, Allowable Values: 64"
+        },
+        {
+            "name": "IdentifierToken",
+            "type": "string",
+            "required": null,
+            "description": "A generated token that is not expired can be used as an input field to access API. If we are passing this field in input, user should not pass any other account identifier. Condition:At least one account identifier is required. Allowable Values: 800"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AdminNumber",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Admin Number of Primary Account Number Valid Values: 0-9 Format:XXXX Example:200",
+                    "children": []
+                },
+                {
+                    "name": "IncludedFieldsInOrder",
+                    "type": "string",
+                    "required": null,
+                    "description": "Concatenated string of fields in TAV signature, separated by “|”,in their order in signature. Example:dataValidUntilTimestamp|accountNumber|accountExpiry|financialAccountInformation|tokenUniqueReference",
+                    "children": []
+                },
+                {
+                    "name": "DigitalSignature",
+                    "type": "string",
+                    "required": null,
+                    "description": "Digital signature calculated over a concatenated string of the included field values separated by a | delimiter, in the same order as specified in the IncludedFieldsInOrder field. Example:6523026E6214927059B98F8DC859EF5B2B6F7F6D9E7DAC13B38DCE6F0991F5F37DB7F9B95BD4BA8F9E6157CA1A5C8B5F880E044DD1A0D0F667F0D80619AE2637EF04BE80C4A05A8C98AA090A15EA29A43BC0846D6074724105839E8D7FC582F607C0CC40C29BF2586AE4CBE29E43E32665923838ED331CD56A557322B",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AdminNumber": 129432,
+        "CardExpirationDate": "0423",
+        "TavVersionNumber": "3",
+        "DataValidUntilTimestamp": "2019-12-27T10:05:45-05:00",
+        "FinancialAccountInformation": null,
+        "TokenUniqueReference": null,
+        "IdentifierToken": null
+    },
+    "sample_response": {
+        "Message": "Signature generated successfully",
+        "Status": true,
+        "ErrorCode": "ERR01620",
+        "ResponseData": {
+            "AdminNumber": 129432,
+            "IncludedFieldsInOrder": "dataValidUntilTimestamp|accountNumber|accountExpiry|financialAccountInformation|tokenUniqueReference",
+            "DigitalSignature": "6523026E6214927059B98F8DC859EF5B2B6F7F6D9E7DAC13B38DCE6F0991F5F37DB7F9B95BD4BA8F9E6157CA1A5C8B5F880E044DD1A0D0F667F0D80619AE2637EF04BE80C4A05A8C98AA090A15EA29A3BC0846D6074724105839E8D7FC582F607C0CC40C29BF2586AE4CBE29E43E32665923838ED331CD56A557322B7CCC296D9DC3B14A39377F928A668FF393CF46B8A4972A0905076AAF8115D16BCC87131906E9E09C4273389FB2EB474AFCA61958D377D415CE8E9ADECF0D011FC3C084ACC5EA3AF9CA5300960BA9C668972086CB08D4D313958EB444F9A887E96F98483D6FF4E198815DC7BF4C72322E473E9CEF83E27E2F9BCA8762E3121D4FD1FD32B"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Push Provisioning",
+        "category_id": "1006",
+        "document_id": "1105",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1105&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1006&regionId=1"
+    }
+}

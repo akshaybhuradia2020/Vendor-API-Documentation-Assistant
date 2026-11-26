@@ -1,0 +1,311 @@
+{
+    "metadata": {
+        "name": "GetBilledNotPaid",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetBilledNotPaid",
+        "description": "Populates field value which contributes to Balance subject Finance Charge."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder/AccountHolder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one of AccountNumber or AccountID is required. Allowable Values: 19"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Valid values:0-9 Example:12345 Condition: At least one of AccountNumber or AccountID is required."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "TransactionFeesBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates transaction fee subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "AnnualFeesBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Annual fee subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "LateFeesBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Late fees subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "InterestBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates interest subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "RecoveryFeesBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Recovery fees subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "InsufficientFundsFeesBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates fee subject to finance charge due to insufficient funds in account, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "CollectionFeesBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Collection fees subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "InsuranceFeeBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Insurance and GST fees subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "OverlimitFeesBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Overlimit fees subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "TxnFeesPendingBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates pending transaction fee which is subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "MembershipFeePendingBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates pending Annual fee subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "LateFeesPendingBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates pending Late fees subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "InterestPendingBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates pending interest subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "RecoveryFeesPendingBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates pending Recovery fees subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "InsufficientFundsFeesPendingBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates pending fee subject to finance charge due to insufficient funds in account, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "CollectionFeesPendingBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates pending Collection fees subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "InsurancePendingBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates pending Insurance and GST fees subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "OverlimitFeesPendingBNP",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates pending Overlimit fees subject to finance charge, depending on interest setup Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                },
+                {
+                    "name": "Principal",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Principal amount of loan on the account Valid Values:0-9 Format:XXX.00 Example: 300.00",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "WEB",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "8110000000000109",
+        "AccountID": null
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "TransactionFeesBNP": 0.0,
+            "AnnualFeesBNP": 0.0,
+            "LateFeesBNP": 0.0,
+            "InterestBNP": 0.0,
+            "RecoveryFeesBNP": 0.0,
+            "InsufficientFundsFeesBNP": 0.0,
+            "CollectionFeesBNP": 0.0,
+            "InsuranceFeeBNP": 0.0,
+            "OverlimitFeesBNP": 0.0,
+            "TxnFeesPendingBNP": 0.0,
+            "MembershipFeePendingBNP": 0.0,
+            "LateFeesPendingBNP": 0.0,
+            "InterestPendingBNP": 0.0,
+            "RecoveryFeesPendingBNP": 0.0,
+            "InsufficientFundsFeesPendingBNP": 0.0,
+            "CollectionFeesPendingBNP": 0.0,
+            "InsurancePendingBNP": 0.0,
+            "OverlimitFeesPendingBNP": 0.0,
+            "Principal": 1500.48
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1001",
+        "document_id": "1072",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1072&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1001&regionId=1"
+    }
+}

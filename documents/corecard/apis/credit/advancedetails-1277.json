@@ -1,0 +1,272 @@
+{
+    "metadata": {
+        "name": "AdvanceDetails",
+        "http_method": "POST",
+        "endpoint": "/api/AdvanceDetails",
+        "description": "Use this API to check Advance amount details and repayment schedule on the cardholder account using card/proxy number/account along with the transaction id."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893 Condition:At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition: At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition: At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "TransactionID",
+            "type": "string",
+            "required": true,
+            "description": "Unique number assigned to a transaction and is used to track the transaction posted in CoreCard System Valid values : 0-9 Example :  147852369 Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "DirectDepositAdvanceAmountTotal",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Display direct deposit Advance total amount given to cardholder Valid Values:0-9 Example: 500.00",
+                    "children": []
+                },
+                {
+                    "name": "DirectDepositAdvanceAmountRemaining",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Display direct deposit Advance remaining amount after repayment Valid Values:0-9 Example: 500.00",
+                    "children": []
+                },
+                {
+                    "name": "NumberofInstallmentOpted",
+                    "type": "Int32",
+                    "required": null,
+                    "description": "Display number of installment opted by cardholder to repay Advance taken Valid Values: Blank(No installment), 4, 8 and 12 Example: 4",
+                    "children": []
+                },
+                {
+                    "name": "RepaymentSchedule",
+                    "type": "array",
+                    "required": null,
+                    "description": "",
+                    "children": [
+                        {
+                            "name": "InstallmentSequence",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Installment Sequence Valid Values:1-12 Example: 4",
+                            "children": []
+                        },
+                        {
+                            "name": "InstallmentAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Installment Amount Valid Values: 0-9 Example: 400.00",
+                            "children": []
+                        },
+                        {
+                            "name": "InstallmentStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of installment Valid Values : Scheduled, Partially Paid, Paid, Partial Write-off, Write-off. Example : Paid",
+                            "children": []
+                        },
+                        {
+                            "name": "PaidAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Paid amount Valid Values:0-9 Example: 125.00",
+                            "children": []
+                        },
+                        {
+                            "name": "PaidAmountDetails",
+                            "type": "array",
+                            "required": null,
+                            "description": "",
+                            "children": [
+                                {
+                                    "name": "TransactionID",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Unique number assigned to a transaction and is used to track the transaction posted in CoreCard System Valid values : 0-9 Example :  147852369",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionDateTime",
+                                    "type": "datetime",
+                                    "required": null,
+                                    "description": "Date and Time of Transaction. Format:YYYY-MM-DDTHH:mm:ss Example:2015-12-11T13:05:10",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionDescription",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Description of transaction Valid Values: A-Z,a-z Example: Load",
+                                    "children": []
+                                },
+                                {
+                                    "name": "TransactionAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Transaction Amount Valid Values: 0-9 Example:100.11",
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.70",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "",
+        "RequestDate": "",
+        "AccountNumber": "",
+        "CardNumber": "",
+        "ProxyNumber": "1310459",
+        "TransactionID": "2154381871"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "DirectDepositAdvanceAmountTotal": 1000.0,
+            "DirectDepositAdvanceAmountRemaining": 1000.0,
+            "NumberofInstallmentOpted": 4,
+            "RepaymentSchedule": [
+                {
+                    "InstallmentSequence": 1,
+                    "InstallmentAmount": 250.0,
+                    "InstallmentStatus": "paid",
+                    "PaidAmount": 250.0,
+                    "PaidAmountDetails": [
+                        {
+                            "TransactionID": "125463",
+                            "TransactionDateTime": "2020-08-31T00:00:00",
+                            "TransactionDescription": "Load",
+                            "TransactionAmount": 100.0
+                        },
+                        {
+                            "TransactionID": "125464",
+                            "TransactionDateTime": "2020-09-01T00:00:00",
+                            "TransactionDescription": "Load",
+                            "TransactionAmount": 150.0
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1277&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1044"
+    }
+}

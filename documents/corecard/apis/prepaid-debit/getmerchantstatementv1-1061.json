@@ -1,0 +1,625 @@
+{
+    "metadata": {
+        "name": "GetMerchantStatementV1",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/MerchantManagement/GetMerchantStatementV1",
+        "description": "This API is Used to Get the Merchant Statement details."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique number of merchant account. Valid Values:0-9 Example:17588 Condition: Mandatory If MerchantNumber not Inputted in API Request."
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Number which is assgined to a Merchant. Valid Values:0-9 Example:205136549 Condition: Mandatory If MerchantID not Inputted in API Request. Allowable Values: 9"
+        },
+        {
+            "name": "MerchantStatementDate",
+            "type": "datetime",
+            "required": true,
+            "description": "Date for which Merchant statement is  generated Valid Values: 0-9 Format: MM/DD/YYYY HH:mm:ss Example: 05/01/2020 23:00:02"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique number of merchant account. Valid Values:0-9 Example:17588 Condition: Mandatory If MerchantNumber not Inputted in API Request."
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Number which is assgined to a Merchant. Valid Values:0-9 Example:205136549 Condition: Mandatory If MerchantID not Inputted in API Request. Allowable Values: 9"
+        },
+        {
+            "name": "MerchantStatementDate",
+            "type": "datetime",
+            "required": true,
+            "description": "Date for which Merchant statement is  generated Valid Values: 0-9 Format: MM/DD/YYYY HH:mm:ss Example: 05/01/2020 23:00:02"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "NewSales",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates amount of New Sales for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "InStoreOtherCredits",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates amount of In Store Other Credits for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "InStoreOtherDebits",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates amount of In Store Other Debits for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "Discount",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates amount of Total Discount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "NewReturnsOrCredits",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates amount of New Returns or Credits for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "NetThisReport",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates Net amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "LessInStorePayments",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates Less instore payments amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "NetActivitythisreport",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates Net Activity amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "ChangeReservePreviousBilling",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates the Change in Reserve Amount than Previous Billing Cycle Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "BaseFee",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates Base Fee amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "AccountsFee",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates Accounts Fee amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "PrimeRateAdjustments",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates Prime Rate Adjustments amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "OtherCharges",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates Other Charges amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "NetthisProcessing",
+            "type": "decimal",
+            "required": null,
+            "description": "Net Amount for this processing period for the Merchant Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "BalanceforwardPreviousSettlement",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates Balance Forwarded from Previous Settlements amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "NetSettlement",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates Net Settlement amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "CurrentReserve",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates Current Reserve amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "PreviousReserve",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates Previous Reserve amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "OutstandingBalanceAccounts",
+            "type": "decimal",
+            "required": null,
+            "description": "Indicates Outstanding Balance on Accounts amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "PrimeRateKicker",
+            "type": "decimal",
+            "required": null,
+            "description": "Prime Rate Kicker Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+            "children": []
+        },
+        {
+            "name": "PrimeRateFloor",
+            "type": "string",
+            "required": null,
+            "description": "Prime Rate Floor Valid Values:0-9 Format: $XXX.XX Example: $500.00 Allowable Values: 5",
+            "children": []
+        },
+        {
+            "name": "MerchantStatementDate",
+            "type": "datetime",
+            "required": null,
+            "description": "Date for which Merchant statement is generated Valid Values:0-9 Format:MM/DD/YYYY Example:05/01/2020",
+            "children": []
+        },
+        {
+            "name": "MerchantFeeBreakdownList",
+            "type": "array",
+            "required": null,
+            "description": "Header of Merchant Fee Breakdown Details",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "NewSales",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates amount of New Sales for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "InStoreOtherCredits",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates amount of In Store Other Credits for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "InStoreOtherDebits",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates amount of In Store Other Debits for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "Discount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates amount of Total Discount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "NewReturnsOrCredits",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates amount of New Returns or Credits for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "NetThisReport",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Net amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "LessInStorePayments",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Less instore payments amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "NetActivitythisreport",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Net Activity amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "ChangeReservePreviousBilling",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates the Change in Reserve Amount than Previous Billing Cycle Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "BaseFee",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Base Fee amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "AccountsFee",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Accounts Fee amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "PrimeRateAdjustments",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Prime Rate Adjustments amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "OtherCharges",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Other Charges amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "NetthisProcessing",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Net Amount for this processing period for the Merchant Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "BalanceforwardPreviousSettlement",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Balance Forwarded from Previous Settlements amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "NetSettlement",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Net Settlement amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "CurrentReserve",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Current Reserve amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "PreviousReserve",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Previous Reserve amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "OutstandingBalanceAccounts",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Indicates Outstanding Balance on Accounts amount for the Statement Period Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "PrimeRateKicker",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Prime Rate Kicker Valid Values:0-9 Format: $XXX.XX Example: $500.00",
+                    "children": []
+                },
+                {
+                    "name": "PrimeRateFloor",
+                    "type": "string",
+                    "required": null,
+                    "description": "Prime Rate Floor Valid Values:0-9 Format: $XXX.XX Example: $500.00 Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "MerchantStatementDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date for which Merchant statement is generated Valid Values:0-9 Format:MM/DD/YYYY Example:05/01/2020",
+                    "children": []
+                },
+                {
+                    "name": "MerchantFeeBreakdownList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Header of Merchant Fee Breakdown Details",
+                    "children": [
+                        {
+                            "name": "CreditPlanMaster",
+                            "type": "string",
+                            "required": null,
+                            "description": "Plan Name associated with the card account. Valid Values:0-9, A-Z Format:XXXXX Example:6 Months No Interest if Paid in Full Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Merchant Discount Rate applicable for the Merchant as per the Merchant Rate set for the Credit Plan Master Valid Values:0-9 Format:XX.XX Example: 5.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionsVolume",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Transactions Volume amount for the Credit Plan Master as on statement date. Valid Values:0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Merchant Fee Amount set for the Credit Plan Master Valid Values:0-9 Format:XXX.XX Example:200.00",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MerchantID": 11269,
+        "MerchantNumber": null,
+        "MerchantStatementDate": "01/13/2017 23:00:02"
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "NewSales": 39466.27,
+            "InStoreOtherCredits": 0.0,
+            "InStoreOtherDebits": 0.0,
+            "Discount": 236.8,
+            "NewReturnsOrCredits": 12324.67,
+            "NetThisReport": 26904.8,
+            "LessInStorePayments": 12487.76,
+            "NetActivitythisreport": 14417.04,
+            "ChangeReservePreviousBilling": 0.0,
+            "BaseFee": 0.0,
+            "AccountsFee": 0.0,
+            "PrimeRateAdjustments": 0.0,
+            "OtherCharges": 0.0,
+            "NetthisProcessing": 0.0,
+            "BalanceforwardPreviousSettlement": -1201.33,
+            "NetSettlement": 13215.71,
+            "CurrentReserve": 0.0,
+            "PreviousReserve": 246989.82,
+            "OutstandingBalanceAccounts": 591928.87,
+            "PrimeRateKicker": 4.25,
+            "PrimeRateFloor": "5.50",
+            "MerchantStatementDate": "01/13/2017 23:00:02",
+            "MerchantFeeBreakdownList": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1061&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1008"
+    }
+}

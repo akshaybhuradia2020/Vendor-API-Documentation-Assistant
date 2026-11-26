@@ -1,0 +1,385 @@
+{
+    "metadata": {
+        "name": "ManualAuth",
+        "http_method": "POST",
+        "endpoint": "/api/ManualAuth",
+        "description": "Use this API to perform manual authorizations (MTI 0100,0200,0220,0120,0400) by providing account details, card details, and transaction details. The API returns the approval code and transaction ID if manual authorization is approved."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "CardSequenceNumber",
+            "type": "Int32",
+            "required": true,
+            "description": "Card Sequence Number Valid Values:0-9 Example: 03 Allowable Values: 3"
+        },
+        {
+            "name": "MerchantType",
+            "type": "string",
+            "required": false,
+            "description": "Merchant Type. Example : 3021=Air Algerie Please refer Appendix Merchant Type. Allowable Values: 25"
+        },
+        {
+            "name": "MerchantCity",
+            "type": "string",
+            "required": false,
+            "description": "Merchant City Valid Values: a-z, A-Z Example:Atlanta Allowable Values: 50"
+        },
+        {
+            "name": "InvoiceNumber",
+            "type": "string",
+            "required": false,
+            "description": "Invoice Number for Transaction Valid Values: A-Z 0-9 Format:XXXXXXXXXX Example: AB987567757 Allowable Values: 50"
+        },
+        {
+            "name": "CardAcceptorIDCode",
+            "type": "string",
+            "required": false,
+            "description": "Card Acceptor ID Code Valid Values:0-9 Example:123654789654123 Allowable Values: 15"
+        },
+        {
+            "name": "CardAcceptorNameLocation",
+            "type": "string",
+            "required": false,
+            "description": "Name and location details of merchant Valid Values: a-z A-Z Example: Dental merchant, Nashua Allowable Values: 40"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": true,
+            "description": "Transaction Amount Valid Values: 0-9 Example:100.11"
+        },
+        {
+            "name": "TransactionDescription",
+            "type": "string",
+            "required": false,
+            "description": "Description of transaction Valid Values:A-Z,a-z Example: Load Allowable Values: 20"
+        },
+        {
+            "name": "TransmissionDateTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Date and Time of transaction. Format:MM/DD/YYYY HH:MM:SS Example:12/11/2020 11:00:00"
+        },
+        {
+            "name": "ResponseCode",
+            "type": "string",
+            "required": false,
+            "description": "Result of API processing. Valid Values: 0-9 Example: 00 Allowable Values: 2"
+        },
+        {
+            "name": "PreAuthorizationAging",
+            "type": "string",
+            "required": false,
+            "description": "If no matching completion/settlement record is received in this defined time then authorization hold will be released by the system. Valid Values:1 to 9 Format:XX Example:5\" Allowable Values: 3"
+        },
+        {
+            "name": "PreAuthorizationAgingFrame",
+            "type": "string",
+            "required": false,
+            "description": "Time Frame for PreAuthorization Aging in Days/Hours/Minutes Valid Values: 1 : Minutes, 2 :Hours, 3 :Days Example: 1 Allowable Values: 1"
+        },
+        {
+            "name": "AuthorizationType",
+            "type": "string",
+            "required": true,
+            "description": "Type of transaction Valid Values :  0100 : Authorization Request 0200 : Financial Request 0220 Completion 0420 Reversal Example : 0100 Allowable Values: 4"
+        },
+        {
+            "name": "ApprovalCode",
+            "type": "Int32",
+            "required": false,
+            "description": "Approval Code of a transaction Valid Values: 0-9 Example:632563"
+        },
+        {
+            "name": "CoreAuthTranIdRev",
+            "type": "decimal",
+            "required": false,
+            "description": "Transaction id  of  transaction to be reversed. Valid Values:0-9 Example:457896 Condition : Mandatory when AuthorizationType = 0420"
+        },
+        {
+            "name": "WalletID",
+            "type": "Int32",
+            "required": null,
+            "description": "Wallet ID of wallet mapped on account Valid values:0-9 Example:1005 Condition:Mandatory when card product structure is multi wallet."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "PostingReference",
+                    "type": "string",
+                    "required": null,
+                    "description": "Posting description of transaction Example:Approved Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "InternalResponseCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Internal Response code Valid Values:   0-9 Example: 00,55 Allowable Values: 10",
+                    "children": []
+                },
+                {
+                    "name": "ResponseCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Result of API processing. Valid Values: 0-9 Example: 00 Allowable Values: 10",
+                    "children": []
+                },
+                {
+                    "name": "ApprovalCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Approval Code of a transaction Valid Values: 0-9 Example:632563 Allowable Values: 10",
+                    "children": []
+                },
+                {
+                    "name": "RetrievalRefNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Unique Reference Number assigned to transaction Example : 012541 Allowable Values: 12",
+                    "children": []
+                },
+                {
+                    "name": "SystemTraceAuditNumber",
+                    "type": "Int32",
+                    "required": null,
+                    "description": "Unique number captured in request used for identification of transaction. Valid values : 0-9 Example:1050741741741417",
+                    "children": []
+                },
+                {
+                    "name": "AuthStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "This field indicates the authorization Status. Valid Values: Refer Appendix section Authorization Status Example: 1 Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "EmbAcctId",
+                    "type": "string",
+                    "required": null,
+                    "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "MessageIndicator",
+                    "type": "string",
+                    "required": null,
+                    "description": "Manual Auth message indicator Valid Values : 1,3 1 - when AuthorizationType = 0100 or 0420 3 - when AuthorizationType = 0220 Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "TranType",
+                    "type": "string",
+                    "required": null,
+                    "description": "Transaction Code which indicates type of transaction Valid Values: 0-9 Format:1238 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "PurgeDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date after which transaction will not be displayed in coreissue authrization log panel. Format: yyyy-mm-ddThh:mm:ss Example:2017-09-26T00:00:00",
+                    "children": []
+                },
+                {
+                    "name": "TranCodeInternal",
+                    "type": "string",
+                    "required": null,
+                    "description": "Internal Transaction code generated by system Valid Values: 0-9 Example: 5896 Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "TransactionAmount",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Transaction Amount Valid Values: 0-9 Example:100.11",
+                    "children": []
+                },
+                {
+                    "name": "CoreAuthTranId",
+                    "type": "Int32",
+                    "required": null,
+                    "description": "Transaction identifier of CoreAuth module Valid values : 0-9 Example:1050741741741417 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "CalcOTB",
+                    "type": "decimal",
+                    "required": null,
+                    "description": "Available Balance of account Valid Values:0-9 Example : 100.00",
+                    "children": []
+                },
+                {
+                    "name": "InvoiceNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Invoice Number for Transaction Valid Values: A-Z 0-9 Example: AB987567757 Allowable Values: 10",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.4",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "ProxyNumber": "1316605",
+        "CardNumber": "",
+        "CardSequenceNumber": 1,
+        "MerchantType": "",
+        "MerchantCity": "",
+        "InvoiceNumber": "",
+        "CardAcceptorIDCode": "",
+        "CardAcceptorNameLocation": "",
+        "TransactionAmount": 20.0,
+        "TransactionDescription": "MA",
+        "TransmissionDateTime": "2020-12-01T00:00:00",
+        "ResponseCode": "",
+        "PreAuthorizationAging": "",
+        "PreAuthorizationAgingFrame": "",
+        "AuthorizationType": "0100",
+        "ApprovalCode": 85746956,
+        "CoreAuthTranIdRev": 43543267.0,
+        "WalletID": 1012
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "PostingReference": "Approved",
+            "InternalResponseCode": "00",
+            "ResponseCode": "00",
+            "ApprovalCode": "892407",
+            "RetrievalRefNumber": "",
+            "SystemTraceAuditNumber": 306585,
+            "AuthStatus": "0",
+            "EmbAcctId": "1316605",
+            "MessageIndicator": "1",
+            "TranType": "93",
+            "PurgeDate": "2020-02-10T00:00:00",
+            "TranCodeInternal": "11169",
+            "TransactionAmount": 20.0,
+            "CoreAuthTranId": 42772091,
+            "CalcOTB": 210.0,
+            "InvoiceNumber": ""
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Manual Authorization",
+        "category_id": "1029",
+        "document_id": "1166",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1166&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1029&regionId=1"
+    }
+}

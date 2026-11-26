@@ -1,0 +1,518 @@
+{
+    "metadata": {
+        "name": "CardReplacement",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/CardManagement/CardReplacement",
+        "description": "The purpose of this API is to perform card replacement process on an account which includes the shipment and embossing details."
+    },
+    "request_fields": [
+        {
+            "name": "QRCode",
+            "type": "string",
+            "required": false,
+            "description": "This tag is to to capture the QR Code image file URL. Valid Values: a-z,0-9 Format: url format Example: https://test/qr/d969e78921 Allowable Values: 50"
+        },
+        {
+            "name": "SignatureID",
+            "type": "string",
+            "required": false,
+            "description": "This tag is to to capture the user signature image file URL. Valid Values: a-z,0-9 Format:url format Example: https://test/qr/d969e78921 Allowable Values: 50"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345 Condition:At least one account identifier is required."
+        },
+        {
+            "name": "Reason",
+            "type": "integer",
+            "required": false,
+            "description": "Reason to identify why we are requesting card replacement. Possible Values: 1- Stolen 2- Lost 3- Damaged(Status will be marked Closed) 9- ReIssue 10- Breach 11- Other 13- Physical Card 14- Virtual Card Replacement 15- Generate New Card Valid Values:0-9 Format:XX Example:1,9"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "integer",
+            "required": true,
+            "description": "Flag to decide if new card need to be generated with different card number or new plastic with same embossing information. 1- New card with different card number 0- New card with same  embossing information. Valid Values: 0,1 Format:X Example:1,0"
+        },
+        {
+            "name": "DeliveryMechanism",
+            "type": "string",
+            "required": null,
+            "description": "Shipment delivery mechanism. By Default Setting must be for standard Delivery and Usually overnight delivery involves card fee in credit environment. (2-Overnight, 1-Priority , 0-Standard) Valid Values: 0,1,2 Format:xxxx Example:0,1,2 3-Standard Exp 4-Priority Exp 5-Overnight Exp Condition:i. Default value for this tag is '0-Standard'. Condition:Values 3,4,5 are only applicable for Perfect Plastic Card Vendor Allowable Values: 9"
+        },
+        {
+            "name": "CardFee",
+            "type": "integer",
+            "required": null,
+            "description": "Fee on Card Shipment. If the value is 1 then fees will be charged and if this is 0 then fees will not be charged. Valid Values: 0-1 Format:xxxx Example:0,1 Condition:Delivery Mechanism = 2(Overnight) then fees will always be charged"
+        },
+        {
+            "name": "InstantPersonalize",
+            "type": "string",
+            "required": false,
+            "description": "This flag decides if we want to generate a new card or if want to personalize a card from stack. Valid Values: 0,1 Format:xxxx Example:0,1 Condition: Should be 1 when Decision Flag is 1 Allowable Values: 1"
+        },
+        {
+            "name": "ShippingAddressFlag",
+            "type": "integer",
+            "required": false,
+            "description": "This flag decides if we want to ship the new card to existing address or alternate address or Primary card's address. (Auth User/Secondary Cards only) Valid Values: 0 = Ship to Existing Address 1 = Enter Shipping Address 2 = Ship to Primary Cardholder’s Address Example:2 Condition: 1.Default value would be 0 for Primary cards. 2.Default value would be 2 for Auth User or Secondary Cards"
+        },
+        {
+            "name": "ShippingAddressCompanyName",
+            "type": "string",
+            "required": null,
+            "description": "Indicates Company Name for alternate address which need  to be added. Valid Values: 0-9,A-z Format:xxxx Example: XYZ Ltd Condition:This is mandatory only when HoldEmbossing tag value is 0(NO) and ShippingAddressFlag as 1 Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "ShippingAddressContactName",
+            "type": "string",
+            "required": null,
+            "description": "Indicates shipping Contact Name for alternate address which need  to be added, Valid Values: 0-9,A-z Format:xxxx Example:XYZ Condition: This is mandatory only when HoldEmbossing tag value is 0(NO) and ShippingAddressFlag as 1. Allowable Values: 152"
+        },
+        {
+            "name": "AdditionalAddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Indicates shipping AddressLine1 for alternate address which need  to be added. Valid Values: 0 - 9, a-z Format: XXXXX Example: XYZ Condition:This is mandatory only when HoldEmbossing tag value is 0(NO) and ShippingAddressFlag as 1. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "AdditionalAddressLine2",
+            "type": "string",
+            "required": null,
+            "description": "Indicates shipping AddressLine2 for alternate address which need  to be added. Valid Values: 0 - 9, a-z Format: XXXXX Example: XYZ Condition:This is mandatory only when HoldEmbossing tag value is 0(NO) and ShippingAddressFlag as 1 or Country selected as Non-US. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "AdditionalAddressCity",
+            "type": "string",
+            "required": null,
+            "description": "Indicates shipping Address City for alternate address which need  to be added. Valid Values: 0-9 a-z Format:xxxx Example:kansas Condition:This is mandatory only when HoldEmbossing tag value is 0(NO) and ShippingAddressFlag as 1 or Country selected as Non-US. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 25"
+        },
+        {
+            "name": "AdditionalAddressCountry",
+            "type": "string",
+            "required": null,
+            "description": "Indicates shipping Address Country for alternate address which need  to be added. Valid Values:0-9 a-z Format:xxxx Example:US Condition:This is mandatory only when HoldEmbossing tag value is 0(NO) and ShippingAddressFlag as 1 Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 20"
+        },
+        {
+            "name": "AdditionalAddressState",
+            "type": "string",
+            "required": null,
+            "description": "Indicates shipping Address State for alternate address which need  to be added Valid Values: 0-9 a-z Format: xxxx Example: GA Condition:This is mandatory only when HoldEmbossing tag value is 0(NO),ShippingAddressFlag as 1 or Country selected as Non-US. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30"
+        },
+        {
+            "name": "AdditionalAddressPostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Indicates shipping Address PostalCode for alternate address which need  to be added. Valid Values:0-9 a-z Format:xxxx Example:123456 Condition:This is mandatory only when HoldEmbossing tag value is 0(NO),ShippingAddressFlag as 1 or Country selected as Non-US. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "CardImageID",
+            "type": "string",
+            "required": false,
+            "description": "Art/Template ID based on this Card’s Image will be displayed. Valid Values:0-9, a-z Format:XXXX(String) Example:30abc Allowable Values: 100"
+        },
+        {
+            "name": "NameOnCard",
+            "type": "string",
+            "required": false,
+            "description": "Name to be printed on the card. Valid Values:A-Z, 0-9 Format:XXXX Example:John J Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "NameOnTrack",
+            "type": "string",
+            "required": false,
+            "description": "Details to be provided in the Magnetic Strip (mostly derived from Last Name and First name of the Card Holder). Valid Values:a-z Format:XXXX Example:John J Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 26"
+        },
+        {
+            "name": "ActivationCode",
+            "type": "string",
+            "required": false,
+            "description": "At the time of Account creation/Registration user provide activation code, Present in Account  Parameter accordion which is saved in EmbossingAccounts table. Valid Values: A-Z 0-9 Example: AB12345 Condition: This shall be a mandatory tag, if Card Activation Parameter on product is set as 'Activation Code'. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "HoldEmbossing",
+            "type": "integer",
+            "required": false,
+            "description": "Hold Embossing indicator. Valid Values:1= YES, 0 = NO Format:  X Example: 1"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's First name. Valid Values:A-Z Format:XXXXX Example:User1 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's last name. Valid Values:A-Z Format:XXXXX Example:Smith Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's Middle Name Valid Values: A-Z Format:XXX Example: LEE Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "ReplacementOriginalCardStatus",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates the Status of the original card  when request of card replacemnet is made. Possible values are : 1 = Close Existing Card Immediately 3 = Close Existing When New Card Is Activated Default value is 3- Close Existing When New Card Is Activated Valid Values: 1,3 Format: X Example: 1,3"
+        },
+        {
+            "name": "ReplacementOriginalCardAction",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates the Replacement Original Card Action Possible values are 1 = Cancel 2 = Closed Default value is 1(Cancel) Valid Values: 1,2 Format: X Example: 1,2"
+        },
+        {
+            "name": "QRCode",
+            "type": "string",
+            "required": false,
+            "description": "This tag is to to capture the QR Code image file URL. Valid Values: a-z,0-9 Format: url format Example: https://test/qr/d969e78921 Allowable Values: 50"
+        },
+        {
+            "name": "SignatureID",
+            "type": "string",
+            "required": false,
+            "description": "This tag is to to capture the user signature image file URL. Valid Values: a-z,0-9 Format:url format Example: https://test/qr/d969e78921 Allowable Values: 50"
+        },
+        {
+            "name": "IdentifierToken",
+            "type": "string",
+            "required": null,
+            "description": "A generated token that is not expired can be used as an input field to access API. If we are passing this field in input, user should not pass any other account identifier. Condition:At least one account identifier is required. Allowable Values: 800"
+        },
+        {
+            "name": "EmbossingLine4",
+            "type": "string",
+            "required": false,
+            "description": "Embossing line4 Valid Values: A-Z Example: XYZ Condition:Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 20"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "MaskCardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Masked number of the newly generated card. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19",
+            "children": []
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Admin Number of the newly generated card and this field will populated only when request creating new embossing. Valid Values:0-9 Format:XXXXX Example:12345",
+            "children": []
+        },
+        {
+            "name": "CardExpirationDate",
+            "type": "string",
+            "required": null,
+            "description": "Card Expiration Date of requested card Valid Values: 0-9 Format: MMYY Example: 0119",
+            "children": []
+        },
+        {
+            "name": "CVV",
+            "type": "string",
+            "required": null,
+            "description": "This tag refer the CVV of the card Valid Values:0-9 Format:XXX Example:123 Allowable Values: 3",
+            "children": []
+        },
+        {
+            "name": "ResponseID",
+            "type": "string",
+            "required": null,
+            "description": "This number indicates that API responded.Response ID is unique.This value will be null if no authentication information was passed. Response ID can be used for tracking Valid Values:0-9,a-z Format:xxx Example:200 Allowable Values: 20",
+            "children": []
+        },
+        {
+            "name": "ManualCardStatus",
+            "type": "string",
+            "required": null,
+            "description": "Card Status when request creating new embossing Valid Values:0-9 Format:XXXXX Example:12345 Allowable Values: 50",
+            "children": []
+        },
+        {
+            "name": "OriginalAdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Admin number of the original old card. Valid Values:0-9 Format:XXXXX Example:12345",
+            "children": []
+        },
+        {
+            "name": "OldCardManualStatus",
+            "type": "string",
+            "required": null,
+            "description": "Manual status of the old  card. Valid Values: 0-9,a-z Format:XXXXX Example:Active,pending Allowable Values: 50",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "MaskCardNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Masked number of the newly generated card. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "AdminNumber",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Admin Number of the newly generated card and this field will populated only when request creating new embossing. Valid Values:0-9 Format:XXXXX Example:12345",
+                    "children": []
+                },
+                {
+                    "name": "CardExpirationDate",
+                    "type": "string",
+                    "required": null,
+                    "description": "Card Expiration Date of requested card Valid Values: 0-9 Format: MMYY Example: 0119",
+                    "children": []
+                },
+                {
+                    "name": "CVV",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag refer the CVV of the card Valid Values:0-9 Format:XXX Example:123 Allowable Values: 3",
+                    "children": []
+                },
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number indicates that API responded.Response ID is unique.This value will be null if no authentication information was passed. Response ID can be used for tracking Valid Values:0-9,a-z Format:xxx Example:200 Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "CardStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "status of the new card Valid Values:0-9,a-z Format:XXXXX Example:Active,pending Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "OriginalAdminNumber",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Admin number of the original old card. Valid Values:0-9 Format:XXXXX Example:12345",
+                    "children": []
+                },
+                {
+                    "name": "OldCardStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "status of the old card Valid Values: 0-9,a-z Format:XXXXX Example:Active,pending Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CardSequenceNumber",
+                    "type": "integer",
+                    "required": null,
+                    "description": "This tag reflects the Sequence Number of the Card. Valid Values: 0-9 Example: 2",
+                    "children": []
+                },
+                {
+                    "name": "CardDetails",
+                    "type": "array",
+                    "required": null,
+                    "description": "This Array is applicable only for the Product where Dual Card Support=Yes.",
+                    "children": [
+                        {
+                            "name": "CardExpirationDate",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card Expiration Date of requested card Valid Values: 0-9 Format: MMYY Example: 0119",
+                            "children": []
+                        },
+                        {
+                            "name": "CVV",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag refer the CVV of the card Valid Values:0-9 Format:XXX Example:123",
+                            "children": []
+                        },
+                        {
+                            "name": "CardSequenceNumber",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag reflects the Sequence Number of the Card. Valid Values: 0-9 Example: 2",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": null,
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.205.0.56",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AdminNumber": 5666,
+        "Reason": 2,
+        "DecisionFlag": 0,
+        "DeliveryMechanism": "0",
+        "CardFee": 0,
+        "InstantPersonalize": null,
+        "ShippingAddressFlag": 0,
+        "ShippingAddressCompanyName": "isc",
+        "ShippingAddressContactName": "John",
+        "AdditionalAddressLine1": "Address123",
+        "AdditionalAddressLine2": "Add2",
+        "AdditionalAddressCity": "Alaska",
+        "AdditionalAddressCountry": "US",
+        "AdditionalAddressState": "AK",
+        "AdditionalAddressPostalCode": "46321",
+        "CardImageID": null,
+        "NameOnCard": null,
+        "NameOnTrack": null,
+        "ActivationCode": null,
+        "HoldEmbossing": null,
+        "FirstName": null,
+        "LastName": null,
+        "MiddleName": null,
+        "ReplacementOriginalCardStatus": null,
+        "ReplacementOriginalCardAction": null,
+        "QRCode": null,
+        "SignatureID": null,
+        "IdentifierToken": null,
+        "EmbossingLine4": "ABC"
+    },
+    "sample_response": {
+        "Message": "Request accepted: Card reported as Lost / Stolen",
+        "Status": true,
+        "ErrorCode": "ERR01080",
+        "ResponseData": {
+            "MaskCardNumber": "533087XXXXXX5618",
+            "AdminNumber": 1411015,
+            "CardExpirationDate": "0321",
+            "CVV": "XXX",
+            "ResponseID": "1000610101",
+            "CardStatus": "New Card Pending Activation",
+            "OriginalAdminNumber": 566767,
+            "OldCardStatus": "Active",
+            "CardSequenceNumber": 2,
+            "CardDetails": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1004",
+        "document_id": "1015",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1015&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1004&regionId=1"
+    }
+}

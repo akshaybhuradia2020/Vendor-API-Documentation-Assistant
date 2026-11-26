@@ -1,0 +1,313 @@
+{
+    "metadata": {
+        "name": "MDESPushProvisioning",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/DigitalWallets/MDESPushProvisioning",
+        "description": "The purpose of this API is to provide TAV data which is required for Push Provisioning a card into wallets."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": true,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values: 0-9 Format:XXXXX Example:12345"
+        },
+        {
+            "name": "WalletApplication",
+            "type": "string",
+            "required": true,
+            "description": "This value identifies the type of Wallet Valid Values: 01=Google 02=Samsung 03=Apple Example:01 Allowable Values: 2"
+        },
+        {
+            "name": "TavVersionNumber",
+            "type": "string",
+            "required": true,
+            "description": "TAV Format Valid Values:3 Format:X Example:3 Allowable Values: 1"
+        },
+        {
+            "name": "DataValidUntilTimestamp",
+            "type": "string",
+            "required": true,
+            "description": "ISO 8601 format of the date and time(with Time Zone) the TAV expires and will no longer be honored Valid Values:0-9 Allowable Values: 29"
+        },
+        {
+            "name": "PANUniqueReference",
+            "type": "string",
+            "required": false,
+            "description": "PAN Unique Reference associated with the token Valid Values:0-9 Allowable Values: 64"
+        },
+        {
+            "name": "TokenUniqueReference",
+            "type": "string",
+            "required": false,
+            "description": "Token Unique Reference associated with the token. Valid Values:0-9 Allowable Values: 64"
+        },
+        {
+            "name": "FinancialAccountInformation",
+            "type": "string",
+            "required": false,
+            "description": "Identifier of the financial account being tokenized Valid Values:0-9 Allowable Values: 78"
+        },
+        {
+            "name": "AccountExpiry",
+            "type": "string",
+            "required": false,
+            "description": "Expiration Year and month of PAN as required with communication with MasterCard for Push Provisioning Valid Values: 0-9 Format:MMYY Example:0822 Allowable Values: 4"
+        },
+        {
+            "name": "CardholderName",
+            "type": "string",
+            "required": false,
+            "description": "Name of the Card holder Example: John Joe Condition: Name of the cardholder in the format lastname/firstname or firstname lastname. Allowable Values: 27"
+        },
+        {
+            "name": "BillingAddress",
+            "type": "",
+            "required": false,
+            "description": "BillingAddress"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's address line 1 Valid Values:A-Z, 0-9 Example: 123 HWY Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's address line 2 Valid Values:A-Z, 0-9 Example: Park Avenue Allowable Values: 50"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": false,
+            "description": "Card holder's City Valid Values:A-Z Example: Los Angeles Allowable Values: 25"
+        },
+        {
+            "name": "CountrySubdivision",
+            "type": "string",
+            "required": false,
+            "description": "Country subdivision of billing address Valid Values:A-Z Example: US Allowable Values: 12"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": false,
+            "description": "Postal code of the card holder's address. Valid Values:0-9 Example: 46206 Allowable Values: 9"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": false,
+            "description": "Address Country of the Card Holder Valid Values: Refer Appendix Section 5.1 for Country Name Codes Example: US Allowable Values: 3"
+        },
+        {
+            "name": "RequiredApplePaySpecificEncryption",
+            "type": "string",
+            "required": false,
+            "description": "Encrypts sensitive cardholder and device information using Apple-specified encryption standards. This ensures the payload can only be decrypted and processed by Apple, maintaining end-to-end security. Example: 01 Allowable Values: 2"
+        },
+        {
+            "name": "Nonce",
+            "type": "string",
+            "required": false,
+            "description": "In Apple Pay, the Nonce is generated by the device and included in the tokenization request to verify that the request is new and has not been reused. Condition: WalletApplication = 03 and RequiredApplePaySpecificEncryption = 01 Allowable Values: 256"
+        },
+        {
+            "name": "NonceSignature",
+            "type": "string",
+            "required": false,
+            "description": "It ensures the integrity and authenticity of the Nonce, proving it was generated by a legitimate, trusted device and has not been tampered with. Condition: WalletApplication = 03 and RequiredApplePaySpecificEncryption = 01 Allowable Values: 512"
+        },
+        {
+            "name": "LeafCertificate",
+            "type": "string",
+            "required": false,
+            "description": "Used to verify the authenticity of the NonceSignature, ensuring it originated from a valid Apple device. Condition: WalletApplication = 03 and RequiredApplePaySpecificEncryption = 01 Allowable Values: 4000"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AdminNumber",
+                    "type": "int64",
+                    "required": null,
+                    "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values: 0-9 Format:XXXXX Example:12345",
+                    "children": []
+                },
+                {
+                    "name": "TAV",
+                    "type": "string",
+                    "required": null,
+                    "description": "Tokenization Authentication Value Allowable Values: 8000",
+                    "children": []
+                },
+                {
+                    "name": "CardInfo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Required when The EphemeralPublicKey is a temporary public key used in Apple Pay's secure end-to-end encryption process during token provisioning. Returned when WalletApplication = 01 or 02 or 03 and RequiredApplePaySpecificEncryption = 01 Allowable Values: 8000",
+                    "children": []
+                },
+                {
+                    "name": "EphemeralPublicKey",
+                    "type": "string",
+                    "required": null,
+                    "description": "The EphemeralPublicKey is a temporary public key used in Apple Pay's secure end-to-end encryption process during token provisioning. Returned when WalletApplication = 03 and RequiredApplePaySpecificEncryption = 01",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AdminNumber": 129432,
+        "WalletApplication": "01",
+        "TavVersionNumber": "3",
+        "DataValidUntilTimestamp": "2019-12-27T10:05:45-05:00",
+        "PANUniqueReference": null,
+        "TokenUniqueReference": null,
+        "FinancialAccountInformation": null,
+        "AccountExpiry": "0423",
+        "CardholderName": "John Joe",
+        "BillingAddress": {
+            "AddressLine1": "123 HWY",
+            "AddressLine2": "Park Avenue ",
+            "City": "Los Angeles",
+            "CountrySubdivision": "US",
+            "PostalCode": "45781",
+            "Country": "US"
+        },
+        "RequiredApplePaySpecificEncryption": null,
+        "Nonce": null,
+        "NonceSignature": null,
+        "LeafCertificate": null
+    },
+    "sample_response": {
+        "Message": "Push Provisioning data generated successfully",
+        "Status": true,
+        "ErrorCode": "ERR05116",
+        "ResponseData": {
+            "AdminNumber": 129432,
+            "TAV": "eyJ2ZXJzaW9uIjoiMyIsInNpZ25hdHVyZUFsZ29yaXRobSI6IlJTQS1TSEEyNTYiLCJkYXRhVmFsaWRVbnRpbFRpbWVzdGFtcCI6IjIwMjAtMDYtMjhUMjM6NTk6NTctMDU6MDAiLCJpbmNsdWRlZEZpZWxkc0luT3JkZXIiOiJkYXRhVmFsaWRVbnRpbFRpbWVzdGFtcHxhY2NvdW50TnVtYmVyIiwic2lnbmF0dXJlIjoiWWpMM0grMmpZcFdjbTFQNHNIUCs1bGZYWE0veldDQncwV1hJQ2w4SGNoaGpwVDhtNU5QZVdqZGJCWWljaityRmdQVUNCbkpERWUyOUd6UlJCM2t4Rm1pQWYraHZSMFh2QjFUT1JDbFJGKy9HZG5henlWaDBTa0o1aDJVTkdLSTFpbk43dHZqNjVYRmdBWnNOL3VQRWt6cnlzbzlKTys4S0VrS0diVTV2NEZwQWg1a2x6dnB3YU5uTUtBRzhxcUxuRlNEbzJsdHVGRzVUUktFcWl0UXRzeStSSlRjWXgwSDZhOVNGVGJWVllQWmNKZ3lCOC90ajFOTnlUTXV5enNDMEVZbkJCOTllNHFKWmhTeElQbG9nelpJOXB3aUxFMzFocU56czZUNUQ0TExlMGxNSlhnSkwvL3NBd04zMGtLalkyMU03bzRCYTRtb0xlUXcvbHdMRDhRPT0ifQ",
+            "CardInfo": "eyJwYW5VbmlxdWVSZWZlcmVuY2UiOiIxMjM0NTYiLCJ0b2tlblVuaXF1ZVJlZmVyZW5jZUZvclBhbkluZm8iOm51bGwsInB1YmxpY0tleUZpbmdlcnByaW50IjoiNEM0RUFENTkyN0YwREY4MTE3RjE3OEVFQTkzMDhEQUE1OEUyN0MyQiIsImVuY3J5cHRlZEtleSI6IjVBMTU4OThDQUREMEUyQUYzNUNDNUZDQTE2QUVCODI2NURDQUM4MjYwMjFCOEVFODkwNDYzMDlGNEI1QzYxOEZCRTczRjk5Rjg1QjEyODgxODkxQTlCRjA1RkJDMTZCMzg2QzhCQzA2MDRGM0ZCN0VCRjk1NkQyMUUwRjU5QkVCRTFEQjAxOUEzMzFCMjRCOTcwQzUxNUQ2NDEzODk0MkQ1OUYzOUE5MTU5MTIyNTE1RDhDOTU4MEE3RUZDRjIwRTdFOEIyREYxMDc2Q0ZFMTBERDhDQkFBNUVGRjJBN0VDMkRCNkEzNkNBRURCMTEyODMwMUY3QzY5NEI4MThCRTM1NEE4ODRBNjlBRUUzNDJCQkM4RUI0NUVBOTQyOUNGQTM3NjE1NTg3QjBDNzA5Q0RENjg5MDMyMEIxNTE3NURGMUQ1NEQ3NjczQjYyMDYwM0IyMkVBRjU3NUI5NTY1RTE5RUNGQTQ4NDU4Q0Y5ODlGNzdGRDg5NDAzNTE4Qzk0N0FBRENERTFDNTRERDNFMkRBMDFBMzgwMEUxQzUwNUFGNzBENTc0NDhCNTE5OTBGQTE0RjhGRjQyQUE3QjkyRjgwMTZDNTcxODM4RTlEMUE2RDkzQkY3MkVFNUNCMTE4NTM0NDhGQTJEMzc0RTI3RkIyQzNGQzU3NjVFNzI2ODczIiwib2FlcEhhc2hpbmdBbGdvcml0aG0iOiJTSEEyNTYiLCJpdiI6IjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwiZW5jcnlwdGVkRGF0YSI6IjI5MjREMzg2NTM1",
+            "EphemeralPublicKey": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Push Provisioning",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1106&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1006"
+    }
+}

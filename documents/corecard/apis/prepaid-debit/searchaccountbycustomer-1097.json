@@ -1,0 +1,391 @@
+{
+    "metadata": {
+        "name": "SearchAccountByCustomer",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/SearchAccountByCustomer",
+        "description": "The purpose of this is API to search the Accounts by Customer."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "CustomerID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123 Condition: Mandatory if no other parameter inputted"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's First name. Valid Values:A-Z Format:XXXXX Example:User1 Condition: Mandatory if no other parameter inputted Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's last name. Valid Values:A-Z Format:XXXXX Example:Smith Condition: Mandatory if no other parameter inputted Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "SSNLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's last four digit of SSN Valid Values:1120 Format:XXXX Example:1120 Condition: Mandatory if no other parameter inputted Allowable Values: 4"
+        },
+        {
+            "name": "EmailID",
+            "type": "string",
+            "required": null,
+            "description": "Card holder  Email ID Format: [email protected] Example: [email protected] Condition: Mandatory if no other parameter inputted Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 256"
+        },
+        {
+            "name": "MobilePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Mobile Phone Number Valid Values:0-9 Format:XXXXXXXXXX Example:987567757 Condition: Mandatory if no other parameter inputted Allowable Values: 15"
+        },
+        {
+            "name": "SSUserID",
+            "type": "string",
+            "required": null,
+            "description": "Self Service User ID of the Account Holder Valid Values: A-Z 0-9 Format:XXXXXXXXXX Example:abc123 Condition: Mandatory if no other parameter inputted Allowable Values: 50"
+        },
+        {
+            "name": "BatchSize",
+            "type": "integer",
+            "required": false,
+            "description": "Number of Transaction which can be view in one Batch Valid Values:0-9 Format:XX Example:20"
+        },
+        {
+            "name": "PageIndex",
+            "type": "integer",
+            "required": false,
+            "description": "Number of page Valid Values:0-9 Format:XX Example:12"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "SearchResult",
+                    "type": "array",
+                    "required": null,
+                    "description": "This tag refer to the any search list .",
+                    "children": [
+                        {
+                            "name": "MerchantName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Merchant Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductName",
+                            "type": "string",
+                            "required": null,
+                            "description": "The tag reflects the product name Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CustomerID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123 Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account number of cardholder/AccountHolder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one account identifier is required. Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "ApplicationNumber",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Unique Number generated for the Account creation Application . Valid Values:0-9 Example:8002201421",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's First name. Valid Values:A-Z Format:XXXXX Example:User1 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "LastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's last name. Valid Values:A-Z Format:XXXXX Example:Smith Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CosignerFirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the cosigner first name. Example:John Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CosignerLastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the cosigner last name. Example:Smith Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CosignerSNSuffix",
+                            "type": "string",
+                            "required": null,
+                            "description": "Manually assigned status on account Valid Values:  Closed, Active Format: XXXXX Example: Active Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountManualStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Manually assigned status on account Valid Values:  Closed, Active Format: XXXXX Example: Active Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountGeneratedStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Gets or sets the generated status.",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Current balance of account/Debtor Owing Valid Values:0-9 Format:XXXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "IsCoApplicant",
+                            "type": "string",
+                            "required": null,
+                            "description": "Flag to decide if a Account is having Co-Applicant or not. Valid Values:0, 1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "OpenToBuy",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Remaining Credit Limit which can be used for further posting. Valid Values:0-9 Format: XXXXXXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Name Valid Values:A-Z,0-9 Format:XXXXXX Example:ABC Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 26",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Number Valid Values: 0-9 Format:XXXX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "CorporateAccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Corporate Account Number Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:8000000000000037 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "IsApplicationPending",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates whether application is pending or not",
+                            "children": []
+                        },
+                        {
+                            "name": "SysOrgId",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Used for authentication and issued by Core Card. This is a static value to represent institution. Valid Values:0-9 Example:5",
+                            "children": []
+                        },
+                        {
+                            "name": "PrimaryCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "3 digit Code assiciated with the Currency Valid Values: Refer' Primary Currency Code' section of Appendix Format: XXX Example: 840 Allowable Values: 3",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "CustomerID": 167252,
+        "FirstName": "John",
+        "LastName": "Sons",
+        "SSNLast4Digits": "3214",
+        "EmailID": null,
+        "MobilePhoneNumber": null,
+        "SSUserID": null,
+        "BatchSize": 50,
+        "PageIndex": 0
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "SearchResult": [
+                {
+                    "MerchantName": "ABC_Bank_CAD",
+                    "ProductName": "Avidia Bank_CAD",
+                    "CustomerID": "167252",
+                    "AccountID": 167413,
+                    "AccountNumber": "6000000200000013",
+                    "ApplicationNumber": 0,
+                    "FirstName": null,
+                    "LastName": null,
+                    "CosignerFirstName": null,
+                    "CosignerLastName": null,
+                    "CosignerSNSuffix": null,
+                    "AccountManualStatus": "Active",
+                    "AccountGeneratedStatus": "Active",
+                    "CurrentBalance": 0.0,
+                    "IsCoApplicant": "No",
+                    "OpenToBuy": 10000.0,
+                    "CompanyName": "Ch1",
+                    "CompanyNumber": "0000111",
+                    "CorporateAccountNumber": "2113456325678121",
+                    "IsApplicationPending": "Yes",
+                    "SysOrgId": 7,
+                    "PrimaryCurrencyCode": "840"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1097&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1001"
+    }
+}

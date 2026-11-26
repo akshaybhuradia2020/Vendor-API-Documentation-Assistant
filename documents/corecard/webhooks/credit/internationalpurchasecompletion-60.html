@@ -1,0 +1,3767 @@
+
+
+
+<!DOCTYPE html>
+<!-- Template by quackit.com -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+    <title>Core Card Api Quick Start</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/lib/bootstrap/dist/css/bootstrap.css?639312906350797393" rel="stylesheet" />
+    <link href="/css/style.css?639312906350797459" rel="stylesheet" />
+    <link href="/css/font-awesome.css?639312906350797485" rel="stylesheet" />
+    <script src="/lib/jquery/dist/jquery.js?639312906350797514"></script>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.js?639312906350797551"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            //$(".toggle").click(function () {
+            //    $(".flex-left").addClass("closebar");
+            //    $(".flex-right").removeClass("closebar");
+            //    $("#panel-close1").click(function () {
+            //        $(".flex-right").addClass("closebar");
+            //    });
+            //});
+
+            if ($('.flex-right')[0]) {
+                $('.flex-center').addClass("center-box");
+
+            } else {
+                $('.flex-center').removeClass("center-box");
+                $(".right-btn").parent('li').addClass("btn-cc");
+            }
+
+
+
+            $(".flex-center table").wrap("<div class='table-divbox'></div>")
+
+            var strleftLinkname = $("#btnCategoryName").val();
+            var strcenterLinkname = $("#h4APIName").text();
+            var strrightLinkname = $("#spnTryItOut").val();
+
+            if ($.trim(strleftLinkname) != "") {
+                $("#leftLink").text($.trim(strleftLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#leftLink").html("Category");
+            }
+
+            if ($.trim(strcenterLinkname) != "") {
+                $("#centerLink").text($.trim(strcenterLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#centerLink").html("Content");
+            }
+            if ($.trim(strrightLinkname) != "") {
+                $("#rightLink").text($.trim(strrightLinkname)); /* SEC-020: text, not HTML */
+            }
+            else {
+                $("#rightLink").html("API List");
+            }
+
+            $(".left-btn").click(function () {
+
+                $(".flex-left").removeClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".center-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").addClass("closebar");
+                $(".flex-center").removeClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".left-btn, .right-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            $(".right-btn").click(function () {
+                $(".flex-left").addClass("closebar");
+                $(".flex-right").removeClass("closebar");
+                $(".flex-center").addClass("closebar");
+                $(this).parent('li').addClass('current-menu');
+                $(".center-btn, .left-btn").parent('li').removeClass('current-menu');
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+
+            var btn = $('#top-button');
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 300) {
+                    btn.addClass('show');
+                } else {
+                    btn.removeClass('show');
+                }
+            });
+
+            btn.on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, '300');
+            });
+
+        });
+        $(document).ready(function () {
+            //$(".toggle1").click(function () {
+            //    $(".flex-right").addClass("closebar");
+            //    $(".flex-left").removeClass("closebar");
+            //    $("#panel-close").click(function () {
+            //        $(".flex-left").addClass("closebar");
+            //    });
+            //});
+            //$(".dark-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#789db7", "color": "#fff" });
+            //});
+            //$(".light-mode").click(function () {
+
+            //    $(this).parent().css({ "background-color": "#f9f6f1", "color": "#212529"});
+            //});
+
+            $(".dark-mode").click(function () {
+                $(".dark-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".light-mode").css({ "background-color": "#f9f6f1", "color": "#032d55" });
+
+                $(".dark-modereq, .dark-moderes").parent().css({ "background-color": "#000000", "color": "#fff" });
+            });
+            $(".light-mode").click(function () {
+                $(".light-mode").css({ "background-color": "#032d55", "color": "#fff" });
+                $(".dark-mode").css({ "background-color": "#f5f6f8", "color": "#032d55" });
+
+                $(".light-modereq, .light-moderes").parent().css({ "background-color": "#f5f6f8", "color": "#032d55" });
+            });
+
+
+
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <header id="header">
+
+        <nav class="navbar navbar-expand-lg navbar-light top-header">
+            <a class="navbar-brand" href="#">
+                <img class="logo-img" src="/images/Logo.png" />
+            </a>
+            <!--<div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/GuidePage">Guide</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link hd-cool-link active-headerlink" href="/CoreCardApiReference">API Guide</a>
+                </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link hd-cool-link active-apiheaderlink" href="/WEBHook/CoreCardWEBHook">WEB Hook</a>
+            </li>-->
+            <!--</ul>
+            </div>-->
+
+            <div class="search-float">
+                <div class="search-anchor">
+                    <form id="search-form" action="Search/Index" class="form-inline my-2 my-lg-0">
+                        <input type="text" class="search-bar" placeholder="Search" name="searchTerm">
+                        <input type="text" class="search-bar" placeholder="Search" name="regionId" hidden value="1">
+                        <input class="search-submit" type="submit">
+                        <div class="search-toggle"></div>
+                    </form>
+
+                </div>
+            </div>
+
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <div class="navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav pt-2 custom-mob-nav">
+                    <li class="nav-item dropdown">
+
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Credit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=1&regionId=1">Core API</a>
+                                    <a class="dropdown-item" href="/CoreCardWEBHook?menuid=1&regionId=1">WEB Hook</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Prepaid/Debit</a>
+                        <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="/GuidePage?menuid=2&regionId=1">Core API</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+                <ul class="navbar-nav pt-2 ml-auto custom-mob-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">US</a>
+                        <div class="dropdown-menu dropdown-menu-country">
+                            <a id="1" class="dropdown-item" href="/CoreCardApiReference?regionId=1">US</a>
+                            <a id="2" class="dropdown-item" href="/CoreCardApiReference?regionId=2">Global</a>
+
+                        </div>
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+        </nav>
+
+
+        <div class="mobile-btns-layout">
+            <ul class="btn-list-inline">
+                <li><a href="javascript:void(0);" id="leftLink" class="left-btn">Category List</a></li>
+                <li class="current-menu"><a href="javascript:void(0);" id="centerLink" class="center-btn">Content</a></li>
+                <li><a href="javascript:void(0);" id="rightLink" class="right-btn">API List</a></li>
+                <div class="clearfix"></div>
+            </ul>
+
+        </div>
+    </header>
+
+    <div class="container-fluid nopadding">
+        <div>
+            <a id="top-button"></a>
+
+
+
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Ed2qi4xb2JCm_4tCcgxuBdTDQQ0R8dIcTvSnpj8OBy0sw4eXLxMRipWqiJH7NdW3JfnblTgp1ImvpBi-9XQKj1s1exsLCGnIGaR_-IV5SghiAt79q-2lfPHdbPaW8cpxTwH5_oL2Oqm2KC-NSbZz0I" />
+<script>
+    (function ($) {
+        if (!$) { return; }
+        $(document).ajaxSend(function (event, xhr, settings) {
+            var method = (settings.type || 'GET').toUpperCase();
+            if (method === 'GET' || method === 'HEAD' || method === 'OPTIONS' || method === 'TRACE') { return; }
+            if (settings.crossDomain) { return; } // never send the token to another origin
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            if (token) { xhr.setRequestHeader('XSRF-TOKEN', token); }
+        });
+
+        // Destructive links (delete user/role/category/menu) are POST-only. Mark them with data-method="post"
+        // (optional data-confirm="..."); they are submitted as a POST form carrying the antiforgery token.
+        // A generated form is used because these links can sit inside other <form> elements.
+        $(document).on('click', 'a[data-method="post"]', function (e) {
+            e.preventDefault();
+            var message = $(this).attr('data-confirm');
+            if (message && !window.confirm(message)) { return; }
+            var token = $('input:hidden[name="__RequestVerificationToken"]').first().val();
+            var form = $('<form method="post" style="display:none"></form>').attr('action', $(this).attr('href'));
+            form.append($('<input type="hidden" name="__RequestVerificationToken" />').val(token));
+            $('body').append(form);
+            form.trigger('submit');
+        });
+    })(window.jQuery);
+</script>
+
+            <script src="/js/svg-diagram-links.js?v=rhKKoQLmGKC2Pm3Utr9UDhdU4GmCNRW_Yl5EzzGtiBA"></script>
+            <div class="">
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/swagger-ui.css" rel="stylesheet" />
+    <script src="/js/cdn/jquery-ui.min.js"></script>
+    <style>
+        .green {
+            color: green;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .hd-cool-link.active-headerlink::after {
+            width: 100%;
+        }
+
+        .sopblock-post {
+            border-color: #49cc90;
+            background: rgba(73,204,144,.1)
+        }
+
+        .sopblock-put {
+            border-color: #fca130;
+            background: rgba(252,161,48,.1);
+        }
+
+        .sopblock-delete {
+            border-color: #f93e3e;
+            background: rgba(249,62,62,.1);
+        }
+
+        .sopblock-get {
+            border-color: #61affe;
+            background: rgba(97,175,254,.1);
+        }
+
+        .sopblock {
+            margin: 0 0 15px;
+            border: 1px solid #49cc90;
+            border-radius: 4px;
+            -webkit-box-shadow: 0 0 3px rgba(0,0,0,.19);
+            box-shadow: 0 0 3px rgba(0,0,0,.19);
+        }
+
+        .sopblock-summary {
+            border-color: #49cc90;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .sopblock-summary-method {
+            background: #49cc90;
+            font-size: 14px;
+            font-weight: 700;
+            min-width: 80px;
+            padding: 6px 15px;
+            text-align: center;
+            border-radius: 3px;
+            text-shadow: 0 1px 0 rgba(0,0,0,.1);
+            font-family: Titillium Web,sans-serif;
+            color: #fff;
+        }
+
+        .sopblock-summary-path {
+            font-size: 16px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 0 10px;
+            font-family: Source Code Pro,monospace;
+            font-weight: 600;
+            color: #3b4151;
+        }
+    </style>
+</head>
+<body id="apiBody">
+    <div class="flex-left closebar">
+        <div class="parent-div-left">
+            <a href="#" id="panel-close" class="close-panel"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <nav class="left-column">
+                <div class="accordion" id="rightaccordion">
+                    <div class="card">
+                        <div class="card-header" id="rightheading">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#rightcollapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <a href="/CoreCardWEBHook?id=3&amp;type=Category&amp;menuid=1">ClearingAuthIntegrationNotification</a>
+                                </button>
+
+                            </h2>
+
+                        </div>
+
+
+                        <div>
+                            <div class="card-body">
+
+                                            <div class="card">
+                                                <div class="card-header" id="DomesticPurchaseCompletion  59 60">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=59&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">DomesticPurchaseCompletion</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header subCatHighLight" id="InternationalPurchaseCompletion">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=60&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">InternationalPurchaseCompletion</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="InternationalPurchaseClearing  61 60">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=61&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">InternationalPurchaseClearing</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="InternationalPurchaseReversalClearing  62 60">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=62&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">InternationalPurchaseReversalClearing</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="DomesticPurchaseClearing  63 60">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=63&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">DomesticPurchaseClearing</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="DomesticPurchaseReversal  64 60">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=64&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">DomesticPurchaseReversal</a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="WalletPurchaseCompletion  65 60">
+
+
+
+                                                    <a href="/WEBHookPageApiDetail?id=65&amp;type=ApiDetail&amp;menuid=1&amp;regionId=1">WalletPurchaseCompletion</a>
+
+
+                                                </div>
+                                            </div>
+
+
+                            </div>
+                        </div>
+                        <div class="card-header" id="rightheading">
+                            <h2 class="mb-0">
+                            </h2>
+                        </div>
+
+                    </div>
+                                <div class="card">
+                                    <div class="card-header" id="AlertNotification1">
+
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AlertNotification" aria-expanded="false" aria-controls="AlertNotification">
+                                                    <a href="/CoreCardWEBHook?id=1&amp;type=Category&amp;menuid=1">AlertNotification</a>
+                                                </button>
+                                            </h2>
+                                    </div>
+
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="AuthIntegrationNotification2">
+
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#AuthIntegrationNotification" aria-expanded="false" aria-controls="AuthIntegrationNotification">
+                                                    <a href="/CoreCardWEBHook?id=2&amp;type=Category&amp;menuid=1">AuthIntegrationNotification</a>
+                                                </button>
+                                            </h2>
+                                    </div>
+
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="CollectionNotification4">
+
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#CollectionNotification" aria-expanded="false" aria-controls="CollectionNotification">
+                                                    <a href="/CoreCardWEBHook?id=4&amp;type=Category&amp;menuid=1">CollectionNotification</a>
+                                                </button>
+                                            </h2>
+                                    </div>
+
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="RewardsRedemptionNotification5">
+
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#RewardsRedemptionNotification" aria-expanded="false" aria-controls="RewardsRedemptionNotification">
+                                                    <a href="/CoreCardWEBHook?id=5&amp;type=Category&amp;menuid=1">RewardsRedemptionNotification</a>
+                                                </button>
+                                            </h2>
+                                    </div>
+
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="UpdateNotification6">
+
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#UpdateNotification" aria-expanded="false" aria-controls="UpdateNotification">
+                                                    <a href="/CoreCardWEBHook?id=6&amp;type=Category&amp;menuid=1">UpdateNotification</a>
+                                                </button>
+                                            </h2>
+                                    </div>
+
+                                </div>
+                </div>
+                <div class="accordion" id="leftaccordion">
+
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="flex-center center-new">
+        <div class="mobile-btns">
+            <p class="btn-p toggle1"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>Category links</p>
+            <p class="btn-p toggle">API Links<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></p>
+            <div class="clearfix"></div>
+        </div>
+        <main id="center" class="">
+            <article>
+                            <div id="InternationalPurchaseCompletion" class="target-div">
+                                <h4 class="h4-name">
+                                    InternationalPurchaseCompletion
+                                </h4>
+                            </div>
+                            <div class="action-url">
+                                <p class="">
+                                    <strong class="">Action:</strong> <code class="">POST</code>
+                                </p>
+                                <p class="">
+                                    <strong class="">Endpoint:</strong> <code class="">/api/WebHookNotification/ClearingAuthIntegrationNotification/InternationalPurchaseCompletion</code>
+                                </p>
+                            </div>
+                            <div class="">
+                                <p class="">This webhook is triggered when  send completions received from network to the client's URL for international purchase.</p>
+                            </div>
+                                <h5 class="h5-heading">
+                                    Request fields detail
+                                </h5>
+                                <table class="api-info table">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Fields</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">user_id</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Used for authentication 
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">128</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">password</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Used for authentication 
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">15</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">request_id</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        CoreCard's Unique id of transaction (Tranid)
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">19</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">admin_number</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Proxy Card Number
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">10</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">last4_card_number</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Card's number last 4 digits
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">4</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">transaction_amount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Amount of Transaction
+Example: 23.50
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">post_time</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        CoreCard Post time of transaction 
+Format: MMDDYYYYhhmmss
+Example: 01162017204958
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">14</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">local_tran_time</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Local transaction time of transaction where its originated.
+Format: MMDDYYYYhhmmss
+Example: 01162017202243
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">8</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Transmission_Date_Time</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        MC will not send transmissiondate time in IPM, this is a BIT12 (Date and Time, Local Transaction).
+Format: MMDDYYYYHHMMSS
+Example: 01162017202243       
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">14</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">local_currencycode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Local Transaction Currency code (Transaction Currency Code).
+Example: USD       
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">3</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Local_Transaction_Amount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Transaction amount in Local Currency.
+Example: 200.8000
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">11</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Issuer_Currency_Code</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Primary Currency Code Cardholder.
+Example:USD     
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">20</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Transaction_Time_Zone</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                         Local Transaction Time Zone.
+Example:ZoneCode1 or ZoneCode2     
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">20</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Time_Zone_Country_Name</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                         Country Name of Local Transaction Time Zone.            
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">70</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Time_Zone_Olson</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        A uniform naming convention for time zones.      
+Example: America/New_York, America/Costa_Rica
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">70</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Time_Zone_Details</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Time Zone Name.      
+Example: EST / PST / IST
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">200</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Time_Zone_Value</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Value of the Time Zone.      
+Example:  UTC/DST
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">50</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">OriginalTransactionAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        The second DE 54 occurrence will represent the original transaction amount.      
+Example: 200.8000      
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionCurrencyCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 51. TransactionCurrencyCode.      
+Example: USD      
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">3</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">merchant_category_code</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 18 Merchant Category Code     
+Example: 4511      
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">4</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">MerchantCategoryCodeDescription</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Merchant Category Code Description.    
+Example: Inbound Telemarketing Merchants      
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">100</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">MerchantCity</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 43 Merchant City.   
+Example: NY  
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">13</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">card_acceptor_id_code</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 42 Merchant type of transaction.   
+Example: ABC123TESTMTF19  
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">15</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">card_acceptor_terminal_id</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 41 Card Acceptor Terminal ID. 
+Example: Reg00004  
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">16</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">cardacceptor_name_location</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 43 Card Acceptor Location. 
+Example:  Midwest Emporium 1234  
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">card_entry_mode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 22 (Point of Service [POS] Entry Mode) is a set of codes used to identify terminal capability, terminal environment, and Point-of-Interaction (POI) security data.
+Subfield 1 indicates the terminal capabilities for transferring the card data into the terminal.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">available_balance</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Available Balance of Account 
+Example: 100.000
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">mti</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        It is a four-digit numeric field which indicates the overall function of the message.
+Example: 0220 for Clearing, 0420 for Reversal
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">4</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">stan</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        System Trace Audit Number of transactions.
+Example: 0000111
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">6</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">rrn</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Retrieval Reference number of transactions.
+Example: 123456789012
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">12</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">response_code</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Authorization Response Code.
+Example: 00
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AuthLifeCycleUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        A Unique ID for Transaction Life Cycle.
+Example: A1234BC
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">19</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CrossBorderIndicator</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        PDS 0177 Subfield 1 (Cross-border Indicator) identifies whether the transaction qualified as a Crossborder transaction and could be subject to Cross-border transaction pricing guidelines.
+Valid Values: Y= Qualifies as a Cross-border transaction, N=Does not qualify as a Cross-border transaction
+Example: Y
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AuthExpirationDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        An Authorization remains valid until its expiration date.
+Format: YYYYMMDDhhmmss
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">14</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AmountAuthorized_9F02</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 55 Authorized Transaction Amount. When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+Example: 100 
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ApplicationCryptogram_9F26</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.DE 55 is used to transport ICC data.This data element utilisesthe Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">16</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ApplicationInterchangeProfile_82</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip  transaction, then this data elements must be present.DE 55 is used to transport ICC data.This data element utilisesthe Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">4</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">cardSequenceTerminalNumber_5F34</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Identifies and differentiates cards with the same PAN.
+Example: 1
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ApplicationTransactionCounter_9F36</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">4</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TerminalCountryCode_9F1A</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">4</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TerminalVerificationResults_95</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionDate_9A</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+ DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements
+ 
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionCurrencyCode_5F2A</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">4</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionType_9C</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">UnpredictabNumber_9F37</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">8</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AmountOther_9F03</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ApplicationUsageControl_9F07</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates issuer's specified restrictions on the geographic usage and services allowed for the application. Tag for future reference.        
+Condition: Will be available if present in request.
+Length: 2
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ApplicationVersionNumber_9F08</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Version number assigned by the payment system for the application. Tag for future reference.        
+Condition: Will be available if present in request.
+Length: 2
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ApplicationVersionNumber_9F09</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present. 
+DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">16</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CardholderVerificationMethod_9F34</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present. 
+DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">6</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CryptogramInformationData_9F27</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present. 
+DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">16</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">DedicatedFileName_84</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present. 
+DE 55 is used to transport ICC data.This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">32</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">FormFactorIndicator_9F6E</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">InterfaceDeviceSerialNumber_9F1E</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 55 is used to transport ICC data. This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements.
+When customers send DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">6</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">IssuerApplicationData_9F10</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 55 is used to transport ICC data. This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements.
+When customers send DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">64</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">IssuerScriptResults_9F5B</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">POSEntryMode_9F39</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        This Field will be available during EMV Chip Transaction.
+ DE 22 It contains Start sentinel, PAN, Expiration Date, Service code, End sentinel.       
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TerminalCapabilities_9F33</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                         DE 55 is used to transport ICC data. This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements.
+ When customers send DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">6</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TerminalCapabilityFlag_FF20</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                         Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TerminalType_9F35</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+DE 55 is used to transport ICC data. This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements.      
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">3</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Track2Data_57</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        It is a series of codes that identify terminal capability, terminal environment, and point-of-interaction (POI) security data. 
+This Field will be available during EMV Chip Transaction.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionSequenceCounter_9F41</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 55 is used to transport ICC data. This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements. 
+When Payment scheme sends DE 55 in clearing messages related to a chip transaction, then this data elements must be present.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">8</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AdditionalTerminalCapabilities_9F40</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ApplicationIdentifier_4F</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ApplicationIdentifierTerminal_9F06</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ApplicationPreferredName_9F12</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ApplicationLabel_50</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ApplicationPriorityIndicator_87</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ContactlessCapability_FF22</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">IssuerCountryCode_9F57</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 21 Issuer Country Code. This Field will be available during EMV Chip Transaction.
+Example: US
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">SoftwareVersions_FF21</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionCategoryCode_9F53</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 55 is used to transport ICC data. This data element utilises the Tag, Length, Value (TLV) structure to delineate different sub-elements.
+When customers send DE 55 in clearing messages related to a chip transaction, then this data elements must be present. 
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">20</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionStatusInformation_9B</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionTime_9F21</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AccountNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Account Number of transactions.
+Example: 7000000000000104
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">19</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CustomerId</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Customer id related to the transaction.
+Example: 167281
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">25</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">MCCCategoryCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 26—Card Acceptor Business Code (MCC).
+Example: 5311
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">100</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">POSCardholderPresenceInd</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 22, Subfield 5. Pos Card Holder Presence Indicator.        
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">1</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">PostingRef</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        It will show Posting Ref of  Auth processing.        
+Example: Transaction posted successfully.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">250</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">SettlementAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 5. Will be available if present in request.     
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CardHolderBillingAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 6. Cardholder Billing Amount.        
+Example: 49.00
+Condition: Will be available if present in request.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CardHolderBillingCurrencycode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 51. Cardholder Billing Currency code.        
+Example: 840
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">25</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ConversionRateCardholderBilling</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 10 (Conversion Rate, Cardholder Billing) is the factor used in converting transaction amount to cardholder billing amount.The value gets populated in case of multicurrency.The rate of conversion.Data Field: Fixed length, 8 positions
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">SettlementDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 15. Settlement Date is a six-digit subfield in the format YYMMDD that identifies the date that the settlement service initiates settlement for the message.   
+Format: MMDDYY
+Example: 122521
+Condition: Will be available if present in request.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ConversionDate</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Conversion Date.   
+Format: MMDDYY
+Example: 122521
+Condition: Will be available if present in request.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">POSTerminalPANEntryMode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Subfield 7—Card Data: Input Mode DE 22 (Point of Service [POS] Entry Mode), subfield 7 indicates how the card data was entered at the terminal.
+Value: 0 = Unspecified; data unavailable, 1 = Manual input; no terminal  
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">POSTerminalPINEntryMode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 22 Subfield 8—Cardholder Authentication Method, (Point of Service [POS] Entry Mode), subfield 8 indicates the method by which the cardholder's identity was verified at the point of service.   
+Values: 0 = Not authenticated, 1 = PIN, 2 = Electronic signature analysis     
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">merchantId</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 42 (Card Acceptor ID Code) identifies the card acceptor ID assigned by the acquirer.   
+Values: AB123   
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">16</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">merchantRawName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.          
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">merchantState</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 43. Merchant State.     
+Example: California
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">3</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">merchantZipcode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 43. Merchant Zip Code.     
+Example: 24157
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">10</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">merchantNameClean</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.             
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">merchantCityClean</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.             
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">10</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">merchantCleanConfidenceLevel</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.             
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">cleanupReasonCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.             
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">6</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">SettlementIndicator</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.             
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">1</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">PointOfServiceConditionCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.             
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AcquirerReferenceData</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 31 (Acquirer Reference Data) is data an acquirer supplies in an acquirer-originated message that may be required for an issuer to return to the acquirer in a subsequent message.     
+Example: 05299009269092700000105
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">MessageNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 71 monitors the integrity and continuity of the files being exchanged.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">8</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">NetworkReferenceNumber</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 63, Subfield 2. Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">9</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AuthorizingAgentIdCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Authorizing Agent Institution Id Code.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">11</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransacOriginatorInstIDCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">11</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">MessageReasonCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Message Reason Code.
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">4</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">NetworkReferenceID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">15</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ProcCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Processing Code.
+Example: Refer Appendix.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ProcCodeFrom</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Proc Code From
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ProcCodeTo</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Proc Code To
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">PosTransactionStatusIndicator</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionSourceAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">RewardInfo</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        RewardInfo
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AdditionalAmounts</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">array</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Array Data element to  hold Additional Amount.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TicketAndTransportDetail</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">array</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Array Data element to  hold Ticket And Transport Detail.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">VehicleRentalDetail</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        VehicleRentalDetail.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">LodgingSummary</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        LodgingSummary.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TemporaryServices</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        TemporaryServices.
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ShippingCourierServices</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        ShippingCourierServices
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">PaymentTransactionDetail</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        PaymentTransactionDetail
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TelephonyBillingSummary</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        TelephonyBillingSummary
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TelephonyBillingDetail</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TravelAgencyDetail</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">LodgedAccountDetail</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ElectronicInvoiceTransactionData</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ElectronicInvoicePartyInformation</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CorporateCardCommonDataRequirements</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CorporateFleetTransactionInformation</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CorporateLineItemDetail</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">GenericDetail</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Healthcare</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">PlanInfo</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;"></span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">User</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        User Name
+Format: xxxxx
+Example: System
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">DateandTime</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Date and time.
+Format: YYYY-MM-DD hh:nn:ss ET
+Example: 2017-01-16 21:26:15
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">25</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Source</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Source Name
+Valid Values: MSMQ/Clearing
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">20</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ServiceName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">40</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CardValidationCodeResult</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.   
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">1</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionDestinationInstitutionIDCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 32 Acquiring Institution ID Code.   
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CurrencyConversionAssessmentAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 111 (Amount, Currency Conversion Assessment) is the amount based on the result of applying the multi-currency conversion rate (Currency Conversion Assessment) adjustment to the currency conversion rate used to convert DE 4 (Amount, Transaction) to DE 6 (Amount, Cardholder Billing) for qualified transactions. 
+Valid Values:All currency amounts are expressed in the minor unit of currency without a decimal separator in accordance with ISO standards for currency notation.
+Example: a cardholder billing amount of USD 212.50 is expressed as 000000021250.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">6</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionOriginatorInstitutionIDCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 33 Acquiring Institution ID Code
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">11</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ServiceCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        DE 40 (Service Code) provides codes that increase issuers' flexibility in defining card acceptance parameters.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">3</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">Devicetype</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        PDS 0198 (Device Type) provides information about the form factor of the cardholder device used to initiate a transaction.
+Valid Values: 00 = Card, 01 = Mobile Phone, 02 = Key Fob, 03 = Watch using contactless chip, 04 = Mobile Tag, 05 = Wristband
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">NewOTB</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        OTB after Transaction posting.
+Example: 100.00000
+Condition: Will be available if present in request.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CardCycleGroupIdentifier</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Card Cycle Group Identifier
+Example: 1510
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AccountUniversalUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Account Universal Unique ID
+Example: 8638-b87b-48d0-8e13-0ebb5643577
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">64</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CardUniversalUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Card Universal Unique ID
+Example: 8638-b87b-48d0-8e13-0ebb5643577
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">64</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionUniversalUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Transaction Universal Unique ID
+Example: 8638-b87b-48d0-8e13-0ebb5643577
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">64</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">LoyaltyTransactionUniversalUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Universal Unique ID for a Loyalty Transaction
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">64</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionLifeCycleUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Transaction LifeCycle Universal Unique ID
+Format: xxxxxxxxxxxxxxxxxxx
+Example: 8638-b87b-48d0-8e13-0ebb5643577
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">64</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">MerchantName</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Name of Merchant
+Example: Midwest Emporium
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">22</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">MerchantStreetAddress</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Merchant Street Address
+Example: 1234 Main Street
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">48</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">MerchantCountryCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Merchant Country Code
+Example: USA
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">3</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">PlanType</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">5</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CurrentBalance</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Current Balance for Retail Auth product.
+Example: 100.0000
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ClientId</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Corecard's Client ID
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">64</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">RequestUniversalUniqueID</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Universal Unique ID Request
+Example: 8638-b87b-48d0-8e13-0ebb5643577
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">64</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AlertType</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Alert Type.
+Valid Values: RealTime or ReTry
+Example: RealTime
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">15</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CardCategory</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Card category
+Example: Digital
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">10</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AuthTimestamp</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">datetime</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Authorization Time stamp. (24 hour Format)
+Format: MMDDYYYYhhmmss ET
+Example: 01162017210346
+Condition: Will be available if present in request.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">24</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionType</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">FraudBlob</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionSource</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        TransactionSource of transaction.
+Valid Values: For retail :  
+29 - RetailManualAuth-Installment
+39 - RetailManualAuth-Revolver
+For IPM
+IPM
+Example: IPM
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">PostalCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                         PDS 0593 (Party Postal Information) contains the city, state/province, country code, and postal code of the party identified on the invoice. Subfield 4 (Postal Code) contains the postal code of the party identified on the invoice.
+ This subfield must be a fixed length of 015 and must be left-justified. 
+ It cannot contain all low values, all high values, all spaces, or all zeros.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">10</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">DBIndicator</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicators for the type of transaction.
+Valid Value: Credit(For all credit transactions), Debit(For all debit transactions)
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">InstitutionId</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Insitution ID of the Account
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">ProductId</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Product ID of Account
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">IBFeeIndicator</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                         Interchange Rate Indicator 
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">2</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">IBFeeAmount</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">decimal</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Interchange Fee Amount 
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">AlertRecipientType</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Type of reciepient to which alert need to be sent
+Valid Values: 1 = Primary Applicant, 2 = Cosigner, 3 = BOTH
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">MessageReversalIndicator</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates if it is a reversal. Possible values 0=No,1=Yes
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">MultipleCompletionIndicator</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">integer</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Indicates if it is one of the multiple completions. Possible values 0=No,1=Yes
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">CustomerExclusiveData_9F7C</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Tag for future reference.
+
+                    </p>
+                        <p class=""><strong class="">Allowable Values:</strong></p>
+                        <p class="">99</p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+            <tr>
+                <td class=" td-body" style="padding-left:25px!important">
+                    <p class="">
+                        <span class="">TransactionCode</span>
+                    </p>
+                    <p class="">
+                        <span class="" style="font-style: italic;">string</span>
+                    </p>
+                </td>
+                <td class="td-body">
+                    <p class="">
+                        Transaction Code
+Example: 24240
+
+                    </p>
+                </td> <!-- Assuming Description is part of the model -->
+            </tr>
+                                    </tbody>
+                                </table>
+                            <h5 class="req-head">
+                                Sample request body
+                            </h5>
+                            <pre class="pre-req"><button class="dark-mode dark-modereq">Dark</button><button class="light-mode light-modereq">Light</button>{&#xD;&#xA;  &quot;user_id&quot;: &quot;TestUser&quot;,&#xD;&#xA;  &quot;password&quot;: &quot;TestPwd&quot;,&#xD;&#xA;  &quot;request_id&quot;: 1120121234,&#xD;&#xA;  &quot;admin_number&quot;: 701234,&#xD;&#xA;  &quot;last4_card_number&quot;: &quot;3038&quot;,&#xD;&#xA;  &quot;transaction_amount&quot;: 16.2,&#xD;&#xA;  &quot;post_time&quot;: null,&#xD;&#xA;  &quot;local_tran_time&quot;: null,&#xD;&#xA;  &quot;Transmission_Date_Time&quot;: null,&#xD;&#xA;  &quot;local_currencycode&quot;: &quot;GBP&quot;,&#xD;&#xA;  &quot;Local_Transaction_Amount&quot;: 11.0,&#xD;&#xA;  &quot;Issuer_Currency_Code&quot;: &quot;USD&quot;,&#xD;&#xA;  &quot;Transaction_Time_Zone&quot;: &quot;GMT&quot;,&#xD;&#xA;  &quot;Time_Zone_Country_Name&quot;: &quot;United Kingdom&quot;,&#xD;&#xA;  &quot;Time_Zone_Olson&quot;: &quot;Europe / London&quot;,&#xD;&#xA;  &quot;Time_Zone_Details&quot;: &quot;Greenwich Mean Time&quot;,&#xD;&#xA;  &quot;Time_Zone_Value&quot;: &quot;UTC &#x2B; 00 = 00&quot;,&#xD;&#xA;  &quot;OriginalTransactionAmount&quot;: 11.7,&#xD;&#xA;  &quot;TransactionCurrencyCode&quot;: &quot;GBP&quot;,&#xD;&#xA;  &quot;merchant_category_code&quot;: 5812,&#xD;&#xA;  &quot;MerchantCategoryCodeDescription&quot;: &quot;Eating Places Restaurants&quot;,&#xD;&#xA;  &quot;MerchantCity&quot;: &quot;CAMBRIDGE CB2&quot;,&#xD;&#xA;  &quot;card_acceptor_id_code&quot;: &quot;878259871234&quot;,&#xD;&#xA;  &quot;card_acceptor_terminal_id&quot;: &quot;06397012&quot;,&#xD;&#xA;  &quot;cardacceptor_name_location&quot;: &quot;KINEYA MURIMARU 17 PETTY CURY CAMBRIDGE CB2CB2 3NE GBR&quot;,&#xD;&#xA;  &quot;card_entry_mode&quot;: &quot;M&quot;,&#xD;&#xA;  &quot;available_balance&quot;: 309.77,&#xD;&#xA;  &quot;mti&quot;: 220,&#xD;&#xA;  &quot;stan&quot;: &quot;476973&quot;,&#xD;&#xA;  &quot;rrn&quot;: &quot;063970671902&quot;,&#xD;&#xA;  &quot;response_code&quot;: 0,&#xD;&#xA;  &quot;AuthLifeCycleUniqueID&quot;: 2851012,&#xD;&#xA;  &quot;CrossBorderIndicator&quot;: &quot;Y&quot;,&#xD;&#xA;  &quot;AuthExpirationDate&quot;: null,&#xD;&#xA;  &quot;AmountAuthorized_9F02&quot;: null,&#xD;&#xA;  &quot;ApplicationCryptogram_9F26&quot;: null,&#xD;&#xA;  &quot;ApplicationInterchangeProfile_82&quot;: null,&#xD;&#xA;  &quot;cardSequenceTerminalNumber_5F34&quot;: null,&#xD;&#xA;  &quot;ApplicationTransactionCounter_9F36&quot;: null,&#xD;&#xA;  &quot;TerminalCountryCode_9F1A&quot;: null,&#xD;&#xA;  &quot;TerminalVerificationResults_95&quot;: null,&#xD;&#xA;  &quot;TransactionDate_9A&quot;: null,&#xD;&#xA;  &quot;TransactionCurrencyCode_5F2A&quot;: null,&#xD;&#xA;  &quot;TransactionType_9C&quot;: null,&#xD;&#xA;  &quot;UnpredictabNumber_9F37&quot;: null,&#xD;&#xA;  &quot;AmountOther_9F03&quot;: null,&#xD;&#xA;  &quot;ApplicationUsageControl_9F07&quot;: null,&#xD;&#xA;  &quot;ApplicationVersionNumber_9F08&quot;: null,&#xD;&#xA;  &quot;ApplicationVersionNumber_9F09&quot;: null,&#xD;&#xA;  &quot;CardholderVerificationMethod_9F34&quot;: null,&#xD;&#xA;  &quot;CryptogramInformationData_9F27&quot;: null,&#xD;&#xA;  &quot;CustomerExclusiveData_9F7C&quot;: null,&#xD;&#xA;  &quot;DedicatedFileName_84&quot;: null,&#xD;&#xA;  &quot;FormFactorIndicator_9F6E&quot;: null,&#xD;&#xA;  &quot;InterfaceDeviceSerialNumber_9F1E&quot;: null,&#xD;&#xA;  &quot;IssuerApplicationData_9F10&quot;: null,&#xD;&#xA;  &quot;IssuerScriptResults_9F5B&quot;: null,&#xD;&#xA;  &quot;POSEntryMode_9F39&quot;: null,&#xD;&#xA;  &quot;TerminalCapabilities_9F33&quot;: null,&#xD;&#xA;  &quot;TerminalCapabilityFlag_FF20&quot;: null,&#xD;&#xA;  &quot;TerminalType_9F35&quot;: null,&#xD;&#xA;  &quot;Track2Data_57&quot;: null,&#xD;&#xA;  &quot;TransactionSequenceCounter_9F41&quot;: null,&#xD;&#xA;  &quot;AdditionalTerminalCapabilities_9F40&quot;: null,&#xD;&#xA;  &quot;ApplicationIdentifier_4F&quot;: null,&#xD;&#xA;  &quot;ApplicationIdentifierTerminal_9F06&quot;: null,&#xD;&#xA;  &quot;ApplicationPreferredName_9F12&quot;: null,&#xD;&#xA;  &quot;ApplicationLabel_50&quot;: null,&#xD;&#xA;  &quot;ApplicationPriorityIndicator_87&quot;: null,&#xD;&#xA;  &quot;ContactlessCapability_FF22&quot;: null,&#xD;&#xA;  &quot;IssuerCountryCode_9F57&quot;: null,&#xD;&#xA;  &quot;SoftwareVersions_FF21&quot;: null,&#xD;&#xA;  &quot;TransactionCategoryCode_9F53&quot;: null,&#xD;&#xA;  &quot;TransactionStatusInformation_9B&quot;: null,&#xD;&#xA;  &quot;TransactionTime_9F21&quot;: null,&#xD;&#xA;  &quot;AccountNumber&quot;: &quot;9000000500381810&quot;,&#xD;&#xA;  &quot;CustomerId&quot;: &quot;406715&quot;,&#xD;&#xA;  &quot;MCCCategoryCode&quot;: &quot;Restaurants&quot;,&#xD;&#xA;  &quot;POSCardholderPresenceInd&quot;: &quot;0&quot;,&#xD;&#xA;  &quot;PostingRef&quot;: &quot;Transaction posted successfully&quot;,&#xD;&#xA;  &quot;SettlementAmount&quot;: null,&#xD;&#xA;  &quot;CardHolderBillingAmount&quot;: null,&#xD;&#xA;  &quot;CardHolderBillingCurrencycode&quot;: null,&#xD;&#xA;  &quot;ConversionRateCardholderBilling&quot;: 1.38205099105835,&#xD;&#xA;  &quot;SettlementDate&quot;: null,&#xD;&#xA;  &quot;ConversionDate&quot;: null,&#xD;&#xA;  &quot;POSTerminalPANEntryMode&quot;: &quot;4&quot;,&#xD;&#xA;  &quot;POSTerminalPINEntryMode&quot;: null,&#xD;&#xA;  &quot;merchantId&quot;: &quot;878259877883&quot;,&#xD;&#xA;  &quot;merchantRawName&quot;: null,&#xD;&#xA;  &quot;MerchantState&quot;: null,&#xD;&#xA;  &quot;MerchantZipcode&quot;: &quot;CB2 3NE&quot;,&#xD;&#xA;  &quot;merchantNameClean&quot;: null,&#xD;&#xA;  &quot;merchantCityClean&quot;: null,&#xD;&#xA;  &quot;merchantCleanConfidenceLevel&quot;: null,&#xD;&#xA;  &quot;cleanupReasonCode&quot;: null,&#xD;&#xA;  &quot;SettlementIndicator&quot;: null,&#xD;&#xA;  &quot;PointOfServiceConditionCode&quot;: null,&#xD;&#xA;  &quot;AcquirerReferenceData&quot;: &quot;55203341191532018151234&quot;,&#xD;&#xA;  &quot;MessageNumber&quot;: null,&#xD;&#xA;  &quot;NetworkReferenceNumber&quot;: null,&#xD;&#xA;  &quot;AuthorizingAgentIdCode&quot;: null,&#xD;&#xA;  &quot;TransacOriginatorInstIDCode&quot;: null,&#xD;&#xA;  &quot;MessageReasonCode&quot;: null,&#xD;&#xA;  &quot;NetworkReferenceID&quot;: null,&#xD;&#xA;  &quot;ProcCode&quot;: &quot;00&quot;,&#xD;&#xA;  &quot;ProcCodeFrom&quot;: &quot;00&quot;,&#xD;&#xA;  &quot;ProcCodeTo&quot;: &quot;00&quot;,&#xD;&#xA;  &quot;PosTransactionStatusIndicator&quot;: null,&#xD;&#xA;  &quot;TransactionSourceAmount&quot;: null,&#xD;&#xA;  &quot;RewardInfo&quot;: {&#xD;&#xA;    &quot;CoreIssueTranID&quot;: 1120120613.0,&#xD;&#xA;    &quot;CoreAuthTranID&quot;: 28510368.0,&#xD;&#xA;    &quot;RewardTranID&quot;: 1120918127.0,&#xD;&#xA;    &quot;TotalRewardAmt&quot;: 0.0,&#xD;&#xA;    &quot;TotalRewardPoints&quot;: 0.0,&#xD;&#xA;    &quot;CurrencyCode&quot;: &quot;USD&quot;,&#xD;&#xA;    &quot;RewardDetail&quot;: null&#xD;&#xA;  },&#xD;&#xA;  &quot;AdditionalAmounts&quot;: null,&#xD;&#xA;  &quot;TicketAndTransportDetail&quot;: null,&#xD;&#xA;  &quot;VehicleRentalDetail&quot;: null,&#xD;&#xA;  &quot;LodgingSummary&quot;: null,&#xD;&#xA;  &quot;TemporaryServices&quot;: null,&#xD;&#xA;  &quot;ShippingCourierServices&quot;: null,&#xD;&#xA;  &quot;PaymentTransactionDetail&quot;: null,&#xD;&#xA;  &quot;TelephonyBillingSummary&quot;: null,&#xD;&#xA;  &quot;TelephonyBillingDetail&quot;: null,&#xD;&#xA;  &quot;TravelAgencyDetail&quot;: null,&#xD;&#xA;  &quot;LodgedAccountDetail&quot;: null,&#xD;&#xA;  &quot;ElectronicInvoiceTransactionData&quot;: null,&#xD;&#xA;  &quot;ElectronicInvoicePartyInformation&quot;: null,&#xD;&#xA;  &quot;CorporateCardCommonDataRequirements&quot;: null,&#xD;&#xA;  &quot;CorporateFleetTransactionInformation&quot;: null,&#xD;&#xA;  &quot;CorporateLineItemDetail&quot;: null,&#xD;&#xA;  &quot;GenericDetail&quot;: null,&#xD;&#xA;  &quot;Healthcare&quot;: null,&#xD;&#xA;  &quot;PlanInfo&quot;: {&#xD;&#xA;    &quot;PlanId&quot;: null,&#xD;&#xA;    &quot;PlanUUID&quot;: null,&#xD;&#xA;    &quot;PlanType&quot;: null,&#xD;&#xA;    &quot;OTBReleaseAmount&quot;: 0.0,&#xD;&#xA;    &quot;OTBReleaseAllRemaining&quot;: null,&#xD;&#xA;    &quot;OtbAmountHeld&quot;: 0.0,&#xD;&#xA;    &quot;LastPaymentAmount&quot;: 0.0,&#xD;&#xA;    &quot;TotalInterestPaid&quot;: 0.0,&#xD;&#xA;    &quot;TotalAmount&quot;: 0.0,&#xD;&#xA;    &quot;StartDate&quot;: null,&#xD;&#xA;    &quot;DueDate&quot;: null,&#xD;&#xA;    &quot;LoanEndDate&quot;: null,&#xD;&#xA;    &quot;PaymentsToDateAmount&quot;: null,&#xD;&#xA;    &quot;MonthlyPaymentAmount&quot;: null,&#xD;&#xA;    &quot;Term&quot;: null,&#xD;&#xA;    &quot;APR&quot;: null,&#xD;&#xA;    &quot;ReverseRewards&quot;: null,&#xD;&#xA;    &quot;ReverseMDR&quot;: null,&#xD;&#xA;    &quot;OrderNumber&quot;: null,&#xD;&#xA;    &quot;InvoiceNumber&quot;: null,&#xD;&#xA;    &quot;PaidOffDate&quot;: null,&#xD;&#xA;    &quot;RMADateTime&quot;: null,&#xD;&#xA;    &quot;RMAGroupId&quot;: null,&#xD;&#xA;    &quot;InstallmentsBalance&quot;: null,&#xD;&#xA;    &quot;InstallmentsPendingPurchases&quot;: null,&#xD;&#xA;    &quot;StatementRemainingBalanceWithInstallmentDue&quot;: null,&#xD;&#xA;    &quot;PlanDescription&quot;: null,&#xD;&#xA;    &quot;PerMonthPayment&quot;: null,&#xD;&#xA;    &quot;FirstMonthPayment&quot;: null,&#xD;&#xA;    &quot;LastMonthPayment&quot;: null,&#xD;&#xA;    &quot;OrignalEndDate&quot;: null,&#xD;&#xA;    &quot;RevisedTerm&quot;: null,&#xD;&#xA;    &quot;Principal&quot;: null,&#xD;&#xA;    &quot;TotalDue&quot;: null,&#xD;&#xA;    &quot;LateFeesBNP&quot;: null,&#xD;&#xA;    &quot;InterestBNP&quot;: null,&#xD;&#xA;    &quot;RecoveryFeesBNP&quot;: null,&#xD;&#xA;    &quot;InsufficientFundsFeesBNP&quot;: null,&#xD;&#xA;    &quot;CollectionFeesBNP&quot;: null,&#xD;&#xA;    &quot;InsuranceBNP&quot;: null,&#xD;&#xA;    &quot;OverlimitFeesBNP&quot;: null,&#xD;&#xA;    &quot;CycleDue&quot;: null,&#xD;&#xA;    &quot;CurrentDue&quot;: null,&#xD;&#xA;    &quot;PastDue&quot;: null,&#xD;&#xA;    &quot;OneCyclePastDue&quot;: null,&#xD;&#xA;    &quot;TwoCyclesPastDue&quot;: null,&#xD;&#xA;    &quot;ThreeCyclesPastDue&quot;: null,&#xD;&#xA;    &quot;FourCyclesPastDue&quot;: null,&#xD;&#xA;    &quot;FiveCyclesPastDue&quot;: null,&#xD;&#xA;    &quot;SixCyclesPastDue&quot;: null,&#xD;&#xA;    &quot;SevenCyclesPastDue&quot;: null,&#xD;&#xA;    &quot;Payments&quot;: null&#xD;&#xA;  },&#xD;&#xA;  &quot;User&quot;: &quot;System&quot;,&#xD;&#xA;  &quot;DateandTime&quot;: null,&#xD;&#xA;  &quot;Source&quot;: &quot;Clearing&quot;,&#xD;&#xA;  &quot;ServiceName&quot;: null,&#xD;&#xA;  &quot;CardValidationCodeResult&quot;: null,&#xD;&#xA;  &quot;TransactionDestinationInstitutionIDCode&quot;: 19363,&#xD;&#xA;  &quot;CurrencyConversionAssessmentAmount&quot;: &quot;0.03&quot;,&#xD;&#xA;  &quot;TransactionOriginatorInstitutionIDCode&quot;: null,&#xD;&#xA;  &quot;ServiceCode&quot;: null,&#xD;&#xA;  &quot;Devicetype&quot;: null,&#xD;&#xA;  &quot;NewOTB&quot;: 293.57,&#xD;&#xA;  &quot;CardCycleGroupIdentifier&quot;: 0,&#xD;&#xA;  &quot;AccountUniversalUniqueID&quot;: &quot;6adc8f89 - cefd - 48f9 - 96b0 - 9698a6660d32&quot;,&#xD;&#xA;  &quot;CardUniversalUniqueID&quot;: &quot;5e2e8a71 - e83d - 4b42 - a32e - 690bcf07f86a&quot;,&#xD;&#xA;  &quot;TransactionUniversalUniqueID&quot;: &quot;c2a0156c - 7cea - 4cb0 - be4c - e9526b902726&quot;,&#xD;&#xA;  &quot;LoyaltyTransactionUniversalUniqueID&quot;: &quot;ee003578 - b97c - 4d62 - ae6b - ee8ca6b2d919&quot;,&#xD;&#xA;  &quot;TransactionLifeCycleUniqueID&quot;: &quot;b1a4d04b - 86a0 - 492a - a94f - a82d50631b4a&quot;,&#xD;&#xA;  &quot;MerchantName&quot;: &quot;KINEYA MURIMARU&quot;,&#xD;&#xA;  &quot;MerchantStreetAddress&quot;: &quot;17 PETTY CURY&quot;,&#xD;&#xA;  &quot;MerchantCountryCode&quot;: &quot;GBR&quot;,&#xD;&#xA;  &quot;PlanType&quot;: null,&#xD;&#xA;  &quot;CurrentBalance&quot;: 1215.75,&#xD;&#xA;  &quot;ClientId&quot;: null,&#xD;&#xA;  &quot;RequestUniversalUniqueID&quot;: &quot;43a81a1e - e3a1 - 4fae - 94b8 - e7f716855e9b&quot;,&#xD;&#xA;  &quot;AlertType&quot;: &quot;RealTime&quot;,&#xD;&#xA;  &quot;CardCategory&quot;: null,&#xD;&#xA;  &quot;AuthTimestamp&quot;: null,&#xD;&#xA;  &quot;TransactionType&quot;: null,&#xD;&#xA;  &quot;FraudBlob&quot;: null,&#xD;&#xA;  &quot;TransactionSource&quot;: &quot;IPM&quot;,&#xD;&#xA;  &quot;TransactionCode&quot;: null,&#xD;&#xA;  &quot;PostalCode&quot;: null,&#xD;&#xA;  &quot;DBIndicator&quot;: null,&#xD;&#xA;  &quot;InstitutionId&quot;: 5949,&#xD;&#xA;  &quot;ProductId&quot;: 5907,&#xD;&#xA;  &quot;IBFeeIndicator&quot;: &quot;29&quot;,&#xD;&#xA;  &quot;IBFeeAmount&quot;: 0.04,&#xD;&#xA;  &quot;AlertRecipientType&quot;: 1,&#xD;&#xA;  &quot;MessageReversalIndicator&quot;: null,&#xD;&#xA;  &quot;MultipleCompletionIndicator&quot;: null&#xD;&#xA;}</pre>
+            </article>
+
+        </main>
+
+    </div>
+
+    <div class="flex-right new-right">
+        <div class="parent-div-right">
+            <a href="#" id="panel-close1" class="close-panel"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <span id="btn-swagger-InternationalPurchaseCompletion">
+                        <div class="sopblock sopblock-post">
+                            <div class="sopblock-summary sopblock-summary-POST">
+                                <span class="sopblock-summary-method">POST</span>
+                                <span class="sopblock-summary-path" data-path="/api/CoreCredit/MerchantManagement/UpdateMSR">
+                                    <a class="nostyle">
+                                        <span>/api/WebHookNotification/ClearingAuthIntegrationNotification/InternationalPurchaseCompletion</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </span>
+                    <div id="swagger-InternationalPurchaseCompletion"></div>
+        </div>
+    </div>
+
+    <!-- The Modal 1-->
+    <script src="/js/googleapis/jquery.min.js"></script>
+    <script src="/lib/dist/swagger-ui-bundle.js"></script>
+
+    <script src="/lib/dist/swagger-ui-standalone-preset.js"></script>
+
+
+    <div id="cms-tryout" data-enabled="false" hidden></div>
+
+        <script src='/lib/dist/Webhook/v1_ClearingAuthIntegrationNotification_swaggerFilter.js?v=20261106'></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            //$("#loading").show().delay(5000).fadeOut();
+
+            $(".rmvClass, .close").click(function () {
+                $(".svg-modal.modal").removeClass("active");
+            });
+
+            $('.flex-right .card-body ul li').click(function (event) {
+                $('.active-rightlink').removeClass('active-rightlink');
+                $(this).addClass('active-rightlink');
+                event.preventDefault();
+            });
+
+        });
+        $(document).ready(function () {
+            var $menu = $(".apimenuul");
+            var $menu_a = $("a", $menu);
+            var id = false;
+            var sections = [];
+            var hash = function (h) {
+                if (history.pushState) {
+                    history.pushState(null, null, h);
+                } else {
+                    location.hash = h;
+                }
+            };
+
+
+            $menu_a.each(function () {
+                sections.push($($(this).attr("href")));
+            });
+
+            $(window).scroll(function (event) {
+                var scrolling = $(this).scrollTop() + $(this).height() / 3;
+                var scroll_id;
+                for (var i in sections) {
+                    var section = sections[i];
+                    if (scrolling > section.offset().top) {
+                        scroll_id = section.attr("id");
+                    }
+                }
+                if (scroll_id !== id) {
+                    id = scroll_id;
+                    $menu_a.removeClass("apiliactive");
+                    $("a[href='#" + id + "']", $menu).addClass("apiliactive");
+                }
+            });
+
+            $('#btn-swagger-InternationalPurchaseCompletion').click();
+            });
+
+    </script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"e68766ac58634d3bac78aacb71fbb169","spa":2}' crossorigin="anonymous"></script>
+</body>
+
+
+</html>
+
+</div>
+
+
+
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-txt">
+            Copyright &copy; 2026 CoreCard Software, Inc. All rights reserved
+        </p>
+    </footer>
+</body>
+
+</html>

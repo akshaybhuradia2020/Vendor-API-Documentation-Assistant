@@ -1,0 +1,272 @@
+{
+    "metadata": {
+        "name": "DisplayEditMyInfo",
+        "http_method": "POST",
+        "endpoint": "/api/DisplayEditMyInfo",
+        "description": "Use this API to display  cardholder's PII (personal identification information), address information, and additional information (if applicable)."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition:At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "FirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder First Name Valid Values: A-Z, a-z Example: Andrew",
+                    "children": []
+                },
+                {
+                    "name": "MiddleName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder Middle Name Valid values are A-Z, a-z, 0-9 Example: Charles",
+                    "children": []
+                },
+                {
+                    "name": "LastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder Last Name Valid values:A-Z, a-z Example: Hudson",
+                    "children": []
+                },
+                {
+                    "name": "DateOfBirth",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date of Birth of cardholder Format: YYYY-MM-DDTHH:MM:SS Example: 2021-04-01T00:00:00",
+                    "children": []
+                },
+                {
+                    "name": "EmailAddress1",
+                    "type": "string",
+                    "required": null,
+                    "description": "E Mail Address 1 of Cardholder Valid Values: A-Z, a-z, 0-9 @ . Example: [email protected]",
+                    "children": []
+                },
+                {
+                    "name": "SecondaryEmailAddress",
+                    "type": "string",
+                    "required": null,
+                    "description": "Secondary E Mail Address 1 of Cardholder Valid Values: A-Z, a-z, 0-9 @ . Example: [email protected]",
+                    "children": []
+                },
+                {
+                    "name": "AddressLine1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Address Line 1 of the Cardholder Valid values : A-Z, a-z, 0-9 Example: 15 Penang Street Point",
+                    "children": []
+                },
+                {
+                    "name": "AddressLine2",
+                    "type": "string",
+                    "required": null,
+                    "description": "Address Line 2 of the Cardholder Valid values: A-Z, a-z, 0-9 Example: 1 mecca way",
+                    "children": []
+                },
+                {
+                    "name": "State",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder State of residence Valid values are A-Z, a-z Example: GA Please refer Appendix Section : State Codes (US)",
+                    "children": []
+                },
+                {
+                    "name": "City",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder's City of residence Valid values: A-Z, a-z, 0-9 Example: Norcross",
+                    "children": []
+                },
+                {
+                    "name": "Country",
+                    "type": "string",
+                    "required": null,
+                    "description": "Two Character Country Code Valid values :A-Z, a-z Example: US Refer Appendix section : Country Code Values",
+                    "children": []
+                },
+                {
+                    "name": "PostalCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder Postal Code of Residence Valid Values:A-Z,a-z,0-9 Example: 30093",
+                    "children": []
+                },
+                {
+                    "name": "Phone",
+                    "type": "string",
+                    "required": null,
+                    "description": "Phone number of cardholder Valid Values: 0-9 Example: 9876543210",
+                    "children": []
+                },
+                {
+                    "name": "WorkPhoneNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder  Work Phone Number Valid values:0-9 Example:9632581470",
+                    "children": []
+                },
+                {
+                    "name": "MobilePhoneNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cardholder's Mobile Phone Number Valid Values: 0-9 Example: 9876543210",
+                    "children": []
+                },
+                {
+                    "name": "PrimaryEmailAddressRequired",
+                    "type": "string",
+                    "required": null,
+                    "description": "",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "",
+        "ProxyNumber": "1316315"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "FirstName": "CHRISTOPHER",
+            "MiddleName": "",
+            "LastName": "BOLLMAN",
+            "DateOfBirth": "1994-05-01T00:00:00",
+            "EmailAddress1": "[email protected]",
+            "SecondaryEmailAddress": "[email protected]",
+            "AddressLine1": "23 PLANT LN",
+            "AddressLine2": "",
+            "State": "CA",
+            "City": "LA MESA",
+            "Country": "US",
+            "PostalCode": "91942",
+            "Phone": "1085551212",
+            "WorkPhoneNumber": "1095551212",
+            "MobilePhoneNumber": "1085551212"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1045",
+        "document_id": "1260",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1260&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1045&regionId=1"
+    }
+}

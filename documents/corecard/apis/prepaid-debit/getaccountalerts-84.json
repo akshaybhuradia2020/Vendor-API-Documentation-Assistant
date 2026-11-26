@@ -1,0 +1,379 @@
+{
+    "metadata": {
+        "name": "GetAccountAlerts",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagementAlert/GetAccountAlerts",
+        "description": "The purpose of this API is to get all the cardholder alerts."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder's Account number. Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 8000000000000037 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of account holder. Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 1236547896325874 Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Admin number. Valid Values: 0-9 Example: 12345"
+        },
+        {
+            "name": "BatchSize",
+            "type": "integer",
+            "required": false,
+            "description": "Number of Transaction which can be view in one Batch Default Value would be 50. Valid Values:0-9 Format:XX Example:20"
+        },
+        {
+            "name": "PageIndex",
+            "type": "integer",
+            "required": false,
+            "description": "Number of page Default value would be 0 Valid Values:0-9 Format:XX Example:12"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AlertStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "It shows current Alert status for particular user account. 1 - Active Alert and 2 - Stop Alert. Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "PeriodAlertsCount",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Total Period Self Service Group returned count",
+                    "children": []
+                },
+                {
+                    "name": "MonetaryAlertsCount",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Total Monetary Self Service Group returned count",
+                    "children": []
+                },
+                {
+                    "name": "SecurityAlertsCount",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Total Security Self Service Group returned count",
+                    "children": []
+                },
+                {
+                    "name": "CardAlertsCount",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Total Cards Self Service Group returned count",
+                    "children": []
+                },
+                {
+                    "name": "StatusAlertsCount",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Total Status Self Service Group returned count",
+                    "children": []
+                },
+                {
+                    "name": "MobileNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Mobile Phone Number in which SMS Alert need to be send Allowable Values: 10",
+                    "children": []
+                },
+                {
+                    "name": "MobileCarrier",
+                    "type": "string",
+                    "required": null,
+                    "description": "Carrier of Mobile Phone number Allowable Values: 30",
+                    "children": []
+                },
+                {
+                    "name": "MarketingSource",
+                    "type": "string",
+                    "required": null,
+                    "description": "Marketing Source Allowable Values: 1",
+                    "children": []
+                },
+                {
+                    "name": "AlertDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date in which alert setup process being invoke",
+                    "children": []
+                },
+                {
+                    "name": "EmailID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Email Id in which Email Alerts need to be send Allowable Values: 300",
+                    "children": []
+                },
+                {
+                    "name": "AlertList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Account Alerts List",
+                    "children": [
+                        {
+                            "name": "MessageID",
+                            "type": "string",
+                            "required": null,
+                            "description": "A unique message id to identify each alert Allowable Values: 6",
+                            "children": []
+                        },
+                        {
+                            "name": "MessageCategory",
+                            "type": "string",
+                            "required": null,
+                            "description": "Category of Alert Example: Status, Monetary, Period, Cards, Security Allowable Values: 8",
+                            "children": []
+                        },
+                        {
+                            "name": "MessageStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Current Status of Alert whether it is active or not Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "MessageTemplate",
+                            "type": "string",
+                            "required": null,
+                            "description": "Template information which is present under a category. Valid Values: A-Z, 0-9 Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "Operand",
+                            "type": "string",
+                            "required": null,
+                            "description": "Operand to define condition of Alerts Allowable Values: 30",
+                            "children": []
+                        },
+                        {
+                            "name": "Amount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount to define condition of Alerts",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusCHUpdateCondition",
+                            "type": "string",
+                            "required": null,
+                            "description": "StatusCHUpdateCondition",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusThresholdCHUpdate",
+                            "type": "string",
+                            "required": null,
+                            "description": "StatusThresholdCHUpdate",
+                            "children": []
+                        },
+                        {
+                            "name": "AtWhatTime",
+                            "type": "string",
+                            "required": null,
+                            "description": "Time when Alert should get trigger Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusCHUpdate",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "It shows whether a Cardholder can over write this alert or not",
+                            "children": []
+                        },
+                        {
+                            "name": "ThresholdDays",
+                            "type": "string",
+                            "required": null,
+                            "description": "Applicable only for MessageCategory Status and Monetary to decide alert send threshold date Allowable Values: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "IsEmailAlert",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Indicator for Email type of Alerts",
+                            "children": []
+                        },
+                        {
+                            "name": "IsMobileAlert",
+                            "type": "boolean",
+                            "required": null,
+                            "description": "Indicator for SMS type of Alerts",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "9000000500000170",
+        "CardNumber": null,
+        "AdminNumber": null,
+        "BatchSize": null,
+        "PageIndex": null
+    },
+    "sample_response": {
+        "Message": "Record Found",
+        "Status": true,
+        "ErrorCode": "ERR01520",
+        "ResponseData": {
+            "AlertStatus": "0",
+            "PeriodAlertsCount": 2,
+            "MonetaryAlertsCount": 14,
+            "SecurityAlertsCount": 4,
+            "CardAlertsCount": 6,
+            "StatusAlertsCount": 7,
+            "MobileNumber": "",
+            "MobileCarrier": null,
+            "MarketingSource": null,
+            "AlertDate": null,
+            "EmailID": " [email protected] ",
+            "AlertList": [
+                {
+                    "MessageID": "1036",
+                    "MessageCategory": "MONETARY",
+                    "MessageStatus": "Active",
+                    "MessageTemplate": "Transaction activity",
+                    "Operand": "GREATER THAN",
+                    "Amount": -1.0,
+                    "StatusCHUpdateCondition": null,
+                    "StatusThresholdCHUpdate": null,
+                    "AtWhatTime": "",
+                    "StatusCHUpdate": false,
+                    "ThresholdDays": null,
+                    "IsEmailAlert": false,
+                    "IsMobileAlert": false
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Alert",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=84&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1002"
+    }
+}

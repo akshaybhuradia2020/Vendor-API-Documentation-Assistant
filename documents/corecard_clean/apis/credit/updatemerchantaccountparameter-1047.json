@@ -1,0 +1,452 @@
+{
+    "metadata": {
+        "name": "UpdateMerchantAccountParameter",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/MerchantManagement/UpdateMerchantAccountParameter",
+        "description": "This API is Used to update the Merchant Account Parameters."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique number of merchant account Valid Values:0-9 Format:XXXXX Example:12345 Condition: Mandatory If MerchantNumber not Inputted in API Request"
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Number which is assgined to a Merchant Valid Values:0-9 Format:XXXXX Example:205136549 Condition: Mandatory If MerchantNumber not Inputted in API Request"
+        },
+        {
+            "name": "BillingCycle",
+            "type": "integer",
+            "required": false,
+            "description": "The Billing Cycle Assigned for the Merchant Valid Values: refer the Appendix section 5.13 Billing Cycle"
+        },
+        {
+            "name": "StatementPrintingSequence",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates in what Sequence/order the Statement must be Printed Valid Values: '0' = Account Number Order and '1' = ZIP Code Order Format: X Example: 0 Condition: If kept Blank Default Value will be considered as '0' = Account Number Order"
+        },
+        {
+            "name": "StatementForm",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates the Statement printed will be as a Form or Custom Made Valid Values: '0' = Form and '1' = Custom Format: X Example: 0 Condition: If kept Blank Default Value will be considered as '0' = Form"
+        },
+        {
+            "name": "CreditLimitOTBDisplay",
+            "type": "integer",
+            "required": false,
+            "description": "Determines if the Credit Limit and OTB will be Displayed on Merchant Statement or Not. Valid Values: 0-Display on Statement 1-Do not display on Statement Format: X Example: 0 Condition: If kept Blank Default Value will be considered as '0' = Display on Statement"
+        },
+        {
+            "name": "DefaultCreditLimit",
+            "type": "decimal",
+            "required": false,
+            "description": "Default Credit Limit Assigned for the Merchant Valid Values: 0-9 Format: XXX.XX Example: 1000.00"
+        },
+        {
+            "name": "MSRPolicyIdentifier",
+            "type": "integer",
+            "required": false,
+            "description": "Credit Policy on the Merchant Valid Values: '1' = Grandfathered and '2' = Standard Format: X Example: 0 Condition: If kept Blank Default Value will be considered as '1' = Grandfathered"
+        },
+        {
+            "name": "MSRLineAssignmentPolicy",
+            "type": "integer",
+            "required": false,
+            "description": "Line Assignment Policy on the Merchant Valid Values: '1' = Grandfathered and '2' = Standard Format: X Example: 0"
+        },
+        {
+            "name": "ProductMapping",
+            "type": "string",
+            "required": true,
+            "description": "Determine the Products Mapped on the Merchant, Multiple Products can be mapped on the Merchant by Inputting Product IDs comma Seperated Check the Product IDs provided by CoreCARD Valid Values: 0-9 Format:XXXXXX, XXXXX Example: 12345, 5432 Allowable Values: 100"
+        },
+        {
+            "name": "HoldAccountStatus1",
+            "type": "integer",
+            "required": false,
+            "description": "Account with status set on the Field, the Statement generated for Account with this Status will be Sent to the Merchant and Not the Account Holder and such Accounts will be eligible of Reserve Calculation, Reserve Calculation conditon, the same status must be in the Included Status Field and also Add Unmailed to Reserve Filed must be set to Yes in Merchant Reserve Parameters Valid Values: Refer Appendix Section 5.21 Card/Account Statuses"
+        },
+        {
+            "name": "HoldAccountStatus2",
+            "type": "integer",
+            "required": false,
+            "description": "Account with status set on the Field, the Statement generated for Account with this Status will be Sent to the Merchant and Not the Account Holder and such Accounts will be eligible of Reserve Calculation, Reserve Calculation conditon, the same status must be in the Included Status Field and also Add Unmailed to Reserve Filed must be set to Yes in Merchant Reserve Parameters Valid Values: Refer Appendix Section 5.21 Card/Account Statuses"
+        },
+        {
+            "name": "HoldAccountStatus3",
+            "type": "integer",
+            "required": false,
+            "description": "Account with status set on the Field, the Statement generated for Account with this Status will be Sent to the Merchant and Not the Account Holder and such Accounts will be eligible of Reserve Calculation, Reserve Calculation conditon, the same status must be in the Included Status Field and also Add Unmailed to Reserve Filed must be set to Yes in Merchant Reserve Parameters Valid Values: Refer Appendix Section 5.21 Card/Account Statuses"
+        },
+        {
+            "name": "HoldAccountStatus4",
+            "type": "integer",
+            "required": false,
+            "description": "Account with status set on the Field, the Statement generated for Account with this Status will be Sent to the Merchant and Not the Account Holder and such Accounts will be eligible of Reserve Calculation, Reserve Calculation conditon, the same status must be in the Included Status Field and also Add Unmailed to Reserve Filed must be set to Yes in Merchant Reserve Parameters Valid Values: Refer Appendix Section 5.21 Card/Account Statuses"
+        },
+        {
+            "name": "HoldCreditBalances",
+            "type": "integer",
+            "required": false,
+            "description": "If Set to Yes then if All account available under the Merchant with Negative Current Balance will be Eligible for Reserve calculations, Condition this field will be honoured for the Account only if the status of the Account is not in one of the HoldAccountStatus fields in Merchant Account Parameters and also in IncludedStatus fields in Merchant Reserve Parameters Valid Values: '0' = Yes and '1' = No Format: X Example: 0 Condition: If kept Blank Default Value will be considered as '0' = Yes"
+        },
+        {
+            "name": "DebitBalancesUnder",
+            "type": "decimal",
+            "required": false,
+            "description": "If any Account has Current Balance Greater than 0 and Lower than the Amount set this field/tag, then it will be Eligible for Reserve calculations, Condition this field will be honoured if HoldCreditBalances is set to No and if the status of the Account is not in one of the HoldAccountStatus fields in Merchant Account Parameters and also in IncludedStatus fields in Merchant Reserve Parameters. Valid Values:0-9 Format: XXX.XX Example: 500.00"
+        },
+        {
+            "name": "FromAccountNumber",
+            "type": "string",
+            "required": false,
+            "description": "If any Account Number falls between from This Account Number to Account Number set in ToAccountNumber, it will be eligible for Reserve calculations, Condition this field will be honoured if HoldCreditBalances is set to 'No' and if the status of the Account is not in one of the 'HoldAccountStatus' fields in Merchant Account Parameters and also in 'IncludedStatus' fields in Merchant Reserve Parameters Valid Values:0-9 Format: XXXXXXXXXXXXXXXXXXXX Example: 9000000111111222222333 Allowable Values: 19"
+        },
+        {
+            "name": "ToAccountNumber",
+            "type": "string",
+            "required": false,
+            "description": "If any Account Number falls between the  Account Number in FromAccountNUmber to Account Number set in ToAccountNumber, it will be eligible for Reserve calculations, Condition this field will be honoured if HoldCreditBalances is set to No and if the status of the Account is not in one of the HoldAccountStatus fields in Merchant Account Parameters and also in IncludedStatus fields in Merchant Reserve Parameters Valid Values:0-9 Format: XXXXXXXXXXXXXXXXXXXX Example: 90000001111112222 Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumberGenerationFlag",
+            "type": "integer",
+            "required": false,
+            "description": "If Set To Yes then Account Number will be Auto Generated for the Accounts Created Under this Merchant Valid Values: '0' = Yes and '1' = No Format: X Example: 0"
+        },
+        {
+            "name": "AccountNumberBegin",
+            "type": "string",
+            "required": null,
+            "description": "For internally-generated account numbers, this is the first account number that can be issued for this Merchant. This number is added to the number in the Increment By field to generate the first account number. Valid Values:0-9 Format: XXXXXXXXXXXXXXX Example: 0000000000001000 Condition:Required only if AccountNumberGenerationflag is Set to Yes Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumberEnd",
+            "type": "string",
+            "required": null,
+            "description": "For internally-generated card numbers, this is the last account number that can be issued for this Merchant Valid Values:0-9 Format: XXXXXXXXXXXXXXX Example: 0000000000001000 Condition:Required only if AccountNumberGenerationflag is Set to Yes Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumberIncrementBy",
+            "type": "integer",
+            "required": null,
+            "description": "The Begin Number is added to this number to generate the first account number. Subsequent account numbers are generated by adding the Last Used Account Number to this number. Condition:Required only if AccountNumberGenerationflag is Set to Yes"
+        },
+        {
+            "name": "AccountNumberLastUsed",
+            "type": "string",
+            "required": null,
+            "description": "The last generated account number displays in this field/Tag, which is used to generate the next account number by adding the value in the Increment By field to this number. Valid Values:0-9 Format: XXXXXXXXXXXXXXX Example: 0000000000001000 Condition:Required only if AccountNumberGenerationflag is Set to Yes Allowable Values: 19"
+        },
+        {
+            "name": "AccountNumberCheckDigitRoutine",
+            "type": "integer",
+            "required": null,
+            "description": "Determines the Modulous formula applied for Check Digit Routine Valid Values: '0'= Mod10, '1' = Mod11 and '2' = None Format: X Example: 2 Condition:Required only if AccountNumberGenerationflag is Set to Yes"
+        },
+        {
+            "name": "IsForwardedToUCA",
+            "type": "boolean",
+            "required": false,
+            "description": "Field : MerchantPLAccounts.IsForwardedToUCA LookUp: CCardLookup; LutId = 'IsForwardedToUCA '"
+        },
+        {
+            "name": "TransactionDescriptionMandatory",
+            "type": "boolean",
+            "required": false,
+            "description": "Field : MerchantPLAccounts.TransactionDescriptionMandatory"
+        },
+        {
+            "name": "AccountActivationEnabled",
+            "type": "string",
+            "required": false,
+            "description": "Field : MerchantPLAccounts.AccountActivationEnabled"
+        },
+        {
+            "name": "ExcludeFlashScreen",
+            "type": "string",
+            "required": false,
+            "description": "Field : MerchantPLAccounts.ExcludeFlashScreen"
+        },
+        {
+            "name": "SuppressPrequalReminderMails",
+            "type": "boolean",
+            "required": false,
+            "description": "Field : MerchantPLAccounts.SuppressPrequalReminderMails LookUp: CCardLookup; LutId = 'SuppressPrequalReminderMails '"
+        },
+        {
+            "name": "MerchantLogo",
+            "type": "string",
+            "required": false,
+            "description": "File Name for the Logo File Valid Values:0-1 A-Z Format:XXXX Example:LogoFile1 Allowable Values: 50"
+        },
+        {
+            "name": "TimeToContactFrom",
+            "type": "string",
+            "required": false,
+            "description": "Contact Number of the Distribution Partner Valid Values:0-1 Format:XXXX Example:8:30 Allowable Values: 25"
+        },
+        {
+            "name": "TimeToContactTo",
+            "type": "string",
+            "required": false,
+            "description": "Contact Number of the Distribution Partner Valid Values:0-1 Format:XXXX Example:6 Allowable Values: 25"
+        },
+        {
+            "name": "SiteURL",
+            "type": "string",
+            "required": false,
+            "description": "URL of the site Valid Values:0-1 A-Z Format:XXXX Example:mysite.com/card Allowable Values: 50"
+        },
+        {
+            "name": "Motto",
+            "type": "string",
+            "required": false,
+            "description": "Motto Valid Values:0-1 A-Z Format:XXXX Example:Be Independent Allowable Values: 30"
+        },
+        {
+            "name": "CardActivationURL",
+            "type": "string",
+            "required": false,
+            "description": "Motto Valid Values:0-1 A-Z Format:XXXX Example:Be Independent Allowable Values: 100"
+        },
+        {
+            "name": "Disclosure",
+            "type": "string",
+            "required": false,
+            "description": "Motto Valid Values:0-1 A-Z Format:XXXX Example:Be Independent Allowable Values: 30"
+        },
+        {
+            "name": "ContactNumber",
+            "type": "string",
+            "required": false,
+            "description": "Contact Number of the Distribution Partner Valid Values:0-1 Format:XXXX Example:02245879654 Allowable Values: 11"
+        },
+        {
+            "name": "WeekDayHours",
+            "type": "string",
+            "required": false,
+            "description": "Contact Number of the Distribution Partner Valid Values:0-1 Format:XXXX Example:8:30 Allowable Values: 40"
+        },
+        {
+            "name": "WeekendHours",
+            "type": "string",
+            "required": false,
+            "description": "Contact Number of the Distribution Partner Valid Values:0-1 Format:XXXX Example:6 Allowable Values: 40"
+        },
+        {
+            "name": "CardDescription",
+            "type": "string",
+            "required": false,
+            "description": "This field will be used to provide the description of the card Allowable Values: 30"
+        },
+        {
+            "name": "DaystoDisplaySplashPage",
+            "type": "string",
+            "required": false,
+            "description": "DaystoDisplaySplashPage Valid Values:0-1 Format:XX Example:30 Allowable Values: 5"
+        },
+        {
+            "name": "CompanyID",
+            "type": "string",
+            "required": false,
+            "description": "Will determine Unique ID of Company Valid Values:0-9 Example:1234 Allowable Values: 10"
+        },
+        {
+            "name": "CompanyName",
+            "type": "string",
+            "required": false,
+            "description": "Company Name Valid Values:A-Z Example: abc Allowable Values: 16"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "CurrencySymbol",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the currency symbol",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "SplashEndDate",
+                    "type": "string",
+                    "required": null,
+                    "description": "SplashEndDate",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MerchantID": 11510,
+        "MerchantNumber": null,
+        "BillingCycle": null,
+        "StatementPrintingSequence": null,
+        "StatementForm": null,
+        "CreditLimitOTBDisplay": null,
+        "DefaultCreditLimit": null,
+        "MSRPolicyIdentifier": null,
+        "MSRLineAssignmentPolicy": null,
+        "ProductMapping": null,
+        "HoldAccountStatus1": null,
+        "HoldAccountStatus2": null,
+        "HoldAccountStatus3": null,
+        "HoldAccountStatus4": null,
+        "HoldCreditBalances": null,
+        "DebitBalancesUnder": null,
+        "FromAccountNumber": null,
+        "ToAccountNumber": null,
+        "AccountNumberGenerationFlag": null,
+        "AccountNumberBegin": null,
+        "AccountNumberEnd": null,
+        "AccountNumberIncrementBy": null,
+        "AccountNumberLastUsed": null,
+        "AccountNumberCheckDigitRoutine": null,
+        "MerchantLogo": null,
+        "WeekDayHours": null,
+        "WeekendHours": null,
+        "SiteURL": null,
+        "Motto": null,
+        "CardDescription": null,
+        "CardActivationURL": null,
+        "Disclosure": null,
+        "ContactNumber": null,
+        "DaystoDisplaySplashPage": null,
+        "CompanyID": null,
+        "CompanyName": null
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": null
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1008",
+        "document_id": "1047",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1047&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1008&regionId=1"
+    }
+}

@@ -1,0 +1,346 @@
+{
+    "metadata": {
+        "name": "GetLoyaltyRuleonAccount",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Rewards/GetLoyaltyRuleonAccount",
+        "description": "The purpose of this API is to return all the Loyalty Rules which are either applicable to the account( i.e via which Account can earn rewards) or which are already applied to the account( i.e via which account is already earnning rewards)."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Condition:At least one of AdminNumber/CardNumber/AccountNumber/AccountID is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtain by admin number (Embossing Acct-id) Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Condition:At least one of AdminNumber/CardNumber/AccountNumber/AccountID is required."
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of account holder. Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896541236 Condition:At least one of AdminNumber/CardNumber/AccountNumber/AccountID is required. Allowable Values: 19"
+        },
+        {
+            "name": "DecisionFlag",
+            "type": "integer",
+            "required": false,
+            "description": "This flag decide if loyalty rules applicable to the account should return or the already applied rules should return. Valid Values: 1 = Applied Rule on Accounts 2 = Applicable Rule on Accounts 3 = Both(Applied and Applicable) rule on Account. 4 = Expired Rule on Accounts Example:3"
+        },
+        {
+            "name": "StartDate",
+            "type": "datetime",
+            "required": false,
+            "description": "StartDate(Activities will be fetched from given date). If not provided then default start date is Account Creation Date. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05"
+        },
+        {
+            "name": "EndDate",
+            "type": "datetime",
+            "required": false,
+            "description": "EndDate(Activities will be fetched from given date). If not provided then default End date is Current Date. Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "AccountNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Account number of cardholder. Allowable Values: 19",
+                    "children": []
+                },
+                {
+                    "name": "AppliedRuleDetails",
+                    "type": "array",
+                    "required": null,
+                    "description": "Applied RuleDetails",
+                    "children": []
+                },
+                {
+                    "name": "ApplicableRuleDetails",
+                    "type": "array",
+                    "required": null,
+                    "description": "Applicable RuleDetails",
+                    "children": []
+                },
+                {
+                    "name": "ExpiredRuleDetails",
+                    "type": "array",
+                    "required": null,
+                    "description": "Expired RuleDetails",
+                    "children": [
+                        {
+                            "name": "RuleID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "ID of LoyaltyRule. Valid Values: 0-9(Value provided by Corecard) Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Loyalty Rule. Valid Values: A-Z,a-z,0-9 Example: Base Rule",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Loyalty Rule. Valid Values: A-Z,a-z,0-9 Example: Base Rule",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleType",
+                            "type": "string",
+                            "required": null,
+                            "description": "Flag to decide the type of Loyalty Rule. Possible Values : 0:Base 1:Promotional 2:Advance Promotional 3:Exclusion Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleApplication",
+                            "type": "string",
+                            "required": null,
+                            "description": "Type of transaction on which the Loyalty rule should trigger for the Account. Example : Purchase",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleSetupOn",
+                            "type": "string",
+                            "required": null,
+                            "description": "Addtional criteria on which Loyalty rule should trigger for the Account. Example : None",
+                            "children": []
+                        },
+                        {
+                            "name": "RuleStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of Loyalty Rule. Example: Active",
+                            "children": []
+                        },
+                        {
+                            "name": "StartDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Start Date of Loyalty Program.",
+                            "children": []
+                        },
+                        {
+                            "name": "EndDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "End Date of Loyalty Program",
+                            "children": []
+                        },
+                        {
+                            "name": "RewardPercent",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Reflect the percent of the loyalty transaction.",
+                            "children": []
+                        },
+                        {
+                            "name": "RewardAmountPoints",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Reflect the flat rewards points",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalAmountSpent",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This column will show the total amount the account has spent Valid Values: 0-9 Example - 450.00",
+                            "children": []
+                        },
+                        {
+                            "name": "NumberofTransaction",
+                            "type": "string",
+                            "required": null,
+                            "description": "This will show the number of Tranact Valid Values: 0-9 Example - 6",
+                            "children": []
+                        },
+                        {
+                            "name": "RewardGenerateOn",
+                            "type": "DateTime",
+                            "required": null,
+                            "description": "Date on which the applied rule is applicable to provide to reward. Format: MM/DD/YYYY HH:mm:ss Example - 02/04/2021",
+                            "children": []
+                        },
+                        {
+                            "name": "NumberofGoodPaymentsRequired",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag will show number of consecutive good payments required to earn the reward. Valid Values: 0-9 Example - 6",
+                            "children": []
+                        },
+                        {
+                            "name": "NumberofGoodPaymentsMade",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag will show number of consecutive good payments made by the customer to earn the reward. Valid Values: 0-9 Example - 3",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "8110000000000125",
+        "AdminNumber": 167550,
+        "CardNumber": null,
+        "DecisionFlag": 1,
+        "StartDate": null,
+        "EndDate": null
+    },
+    "sample_response": {
+        "Message": "Rule Details Returned Successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01135",
+        "ResponseData": {
+            "AccountNumber": "8110000000000125",
+            "AppliedRuleDetails": [
+                {
+                    "RuleID": 1458,
+                    "RuleName": null,
+                    "RuleDescription": null,
+                    "RuleType": null,
+                    "RuleApplication": null,
+                    "RuleSetupOn": null,
+                    "RuleStatus": null,
+                    "StartDate": "01/01/2020 00:00:00",
+                    "EndDate": "02/01/2020 00:00:00",
+                    "RewardPercent": null,
+                    "RewardAmountPoints": null,
+                    "TotalAmountSpent": 450.0,
+                    "NumberofTransaction": "6",
+                    "RewardGenerateOn": "3/10/2021 12:00:00 AM",
+                    "NumberofGoodPaymentsRequired": "6",
+                    "NumberofGoodPaymentsMade": "3"
+                }
+            ],
+            "ApplicableRuleDetails": null,
+            "ExpiredRuleDetails": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1139&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1009"
+    }
+}

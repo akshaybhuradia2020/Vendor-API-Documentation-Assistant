@@ -1,0 +1,448 @@
+{
+    "metadata": {
+        "name": "GetPortfolioIDHistory",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetPortfolioIDHistory",
+        "description": "This API fetches history of Portfolio IDs for the account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": true,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one account identifier is required. Allowable Values: 19"
+        },
+        {
+            "name": "BatchSize",
+            "type": "integer",
+            "required": false,
+            "description": "Number of Transaction which can be view in one Batch Valid Values: 0-9 Format: XX Example: 20"
+        },
+        {
+            "name": "PageIndex",
+            "type": "integer",
+            "required": false,
+            "description": "Number of page Valid Values:0-9 Format: XX Example: 12 Condition: Default value would be 0"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": true,
+            "description": "Account number of cardholder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19"
+        },
+        {
+            "name": "BatchSize",
+            "type": "integer",
+            "required": false,
+            "description": "Number of Transaction which can be view in one Batch Valid Values: 0-9 Format: XX Example: 20"
+        },
+        {
+            "name": "PageIndex",
+            "type": "integer",
+            "required": false,
+            "description": "Number of page Valid Values:0-9 Format: XX Example: 12 Condition: Default value would be 0"
+        },
+        {
+            "name": "PlanSegmentID",
+            "type": "integer",
+            "required": false,
+            "description": "Indicates the unique ID generated for each plan segment added to an account. Valid Values:0-9 Format:XXXXXXXXXX Example:98756775"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "PortfolioIDTotalCount",
+            "type": "integer",
+            "required": null,
+            "description": "Description: It displays total portfolio IDs fetched for the account Valid Values: 0-9 Format: XX Example: 2",
+            "children": []
+        },
+        {
+            "name": "GetPortfolioHistoryList",
+            "type": "array",
+            "required": null,
+            "description": "Description: It displays total portfolio IDs fetched for the account Valid Values:0-9 Format:XX Example:2",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "PortfolioIDTotalCount",
+                    "type": "integer",
+                    "required": null,
+                    "description": "It displays total portfolio IDs fetched for the account Valid Values: 0-9 Format: XX Example: 2",
+                    "children": []
+                },
+                {
+                    "name": "GetPortfolioHistoryList",
+                    "type": "array",
+                    "required": null,
+                    "description": "It displays portfolio IDs History for the account",
+                    "children": [
+                        {
+                            "name": "MerchantName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Name which is assigned to a Merchant Valid Values:A-Z Format: XXXXXX Example: ABCD LLC Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Reflects the name of product for the account Valid Values: a-z Format: xxxxxx Example: abcsolutionsrevolving Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "InstitutionID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Unique identification number for Institution Valid  Values: 0-9 Format: XXXX Example: Fixed value needs to pass which is provided by Corecard.",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account number of cardholder. Valid Values: 0-9 Format: XXXXXXXXXX Example: 7314145404 Condition: At least one account identifier is required. Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's First name. Valid Values: A-Z Format:XXXXX Example:User1 Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "LastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's last name. Valid Values:A-Z Format:XXXXX Example:Smith Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "PortfolioID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Portfolio Id assigned on account Valid Values: Valid Portfolio ID value Format: XXXX Example: Midland Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "PIDEffectiveDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date Time stamp when PID was effective on the account Valid Values: Valid date Format: mm/dd/yyyy hh:mm:ss Example: 01/17/2017 12:40:40",
+                            "children": []
+                        },
+                        {
+                            "name": "PortfolioDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "A string field providing brief description of Portfolio ID Valid Values: a-z Format: XXXXXX Example: Midland States Bank for ABC Allowable Values: 200",
+                            "children": []
+                        },
+                        {
+                            "name": "LocationID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Related to Portfolio ID associated with account. Indicates location ID. Valid Values: 0-9 Format: XX Example: 10 Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "ReceivableOwner",
+                            "type": "string",
+                            "required": null,
+                            "description": "Collateral ID to track legal receivable ownership of the Account. Valid Values: Collateral ID set as Receivable Owner on the PorfolioID of the Account. Example: Midland Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountOwner",
+                            "type": "string",
+                            "required": null,
+                            "description": "Collateral ID setup as 'Account Owner' of the Porfolio ID set on the Account. Valid Values: Collateral ID set as Receivable Owner on the PorfolioID of the Account. Example: Midland Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PlanSegmentID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Description: Indicates the unique ID generated for each plan segment added to an account. Valid Values:0-9 Format:XXXXXXXXXX Example:98756775",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "GetAccountCollateralIDHistoryList",
+                    "type": "array",
+                    "required": null,
+                    "description": "It displays Account Collateral ID History",
+                    "children": [
+                        {
+                            "name": "UserID",
+                            "type": "string",
+                            "required": null,
+                            "description": "The ID of the user who made the change. Valid Values:0-9,A-Z Format:XXXX",
+                            "children": []
+                        },
+                        {
+                            "name": "InstitutionID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Unique identification number for Institution Valid  Values:0-9 Format: XXXX Example: Fixed value needs to pass which is provided by Corecard.",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountCIDEffectiveDateTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date Time stamp when Account Collateral ID was effective on the Account Valid Values: Valid date Format: mm/dd/yyyy hh:mm:ss Example: 01/17/2017 12:40:40",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountCollateralID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Collateral ID to track legal ownership of account separately from receivable ownership at Portfolio ID. Valid Values: Valid Collateral ID set as Account Owner on Portfolio ID. Example: Midland Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountCollateralIDDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "A string field providing brief description of Account Collateral ID Valid Values: a-z Format: XXXXXX Example: Midland States Bank for ABC Allowable Values: 200",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "8000000000000326",
+        "BatchSize": 50,
+        "PageIndex": 0,
+        "PlanSegmentID": null
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "ERR0000",
+        "ResponseData": {
+            "PortfolioIDTotalCount": null,
+            "GetPortfolioHistoryList": [
+                {
+                    "MerchantName": "HighLineMerchant",
+                    "ProductName": "ABC Patient Solutions Installment",
+                    "InstitutionID": 3235,
+                    "AccountNumber": "8000000000000326",
+                    "FirstName": "JOY",
+                    "LastName": "KEYTON",
+                    "PortfolioID": "MSB_ECP",
+                    "PIDEffectiveDateTime": "05/03/2019 06:45:01",
+                    "PortfolioDescription": "Midland Bank",
+                    "LocationID": "00000013",
+                    "ReceivableOwner": "Midland",
+                    "AccountOwner": "Midland",
+                    "PlanSegmentID": 101416
+                }
+            ],
+            "GetAccountCollateralIDHistoryList": [
+                {
+                    "UserID": "bcadmin",
+                    "InstitutionID": 3255,
+                    "AccountCIDEffectiveDateTime": "07/15/2020 09:30:00",
+                    "AccountCollateralID": "Vehicle",
+                    "AccountCollateralIDDescription": "Midland Bank"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Account Details",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=23&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4"
+    }
+}

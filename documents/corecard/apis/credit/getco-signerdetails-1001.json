@@ -1,0 +1,533 @@
+{
+    "metadata": {
+        "name": "GetCo-signerDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountHolders/GetCosignerDetails",
+        "description": "Purpose of this API is used to get the Cosigner's details."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountID",
+            "type": "string",
+            "required": true,
+            "description": "Account ID represents Unique Identity of Account Format:XXXXX Example:12345 Allowable Values: 25"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "CosignerAddress1",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner's Address Line 1 Allowable Values: 50",
+            "children": []
+        },
+        {
+            "name": "CosignerAddress2",
+            "type": "string",
+            "required": null,
+            "description": "Cosigner's Address Line 2 Allowable Values: 50",
+            "children": []
+        },
+        {
+            "name": "CeaseAndDesistCommunication",
+            "type": "string",
+            "required": null,
+            "description": "Values: All Communication Litigation Phone and Email Phone and Mail Email and Mail Phone Only Email Only Mail Only ATTO Allowable Values: 20",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "CustomerID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123 Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "CosignerTitle",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Title like MR or MRS. Valid Values:Refer Appendix section 5.7 Format: xx Example: 01 = MR, 16 = Col, 17 = Judge Allowable Values: 15",
+                    "children": []
+                },
+                {
+                    "name": "CosignerFirstName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's First Name Valid Values:A-Z,0-9 Format:XXXXX Example:User1 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CosignerMiddleName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Middle Name Valid Values:A-Z,0-9 Format:XXXXX Example:User1 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CosignerLastName",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Last Name Valid Values:A-Z,0-9 Format:XXXXX Example:User1 Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CosignerCity",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's City. Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "CosignerState",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner’s State Valid Values:A-Z,0-9 Format:XXXXX Example:abcd Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "CosignerCountry",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner’s Country Valid Values:A-Z,0-9 Format:XXXXX Example:abcd Allowable Values: 15",
+                    "children": []
+                },
+                {
+                    "name": "CosignerPostalCode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner’s Postal code Valid Values:0-9 Format:XXXXX Example:99501 Allowable Values: 9",
+                    "children": []
+                },
+                {
+                    "name": "CosignerHomePhoneNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Home Phone Number Valid Values:0-9 Format:XXXXXXXXX Example:7548264758 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "CosignerWorkPhoneNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's work phone number Valid Values:0-9 Format:XXXXXXXXX Example:784565412 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "CosignerMobileNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Mobile phone number Valid Values:0-9 Format:XXXXXXXXX Example:784565412 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "CosignerOtherPhoneNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Other phone number Valid Values:0-9 Format:XXXXXXXXX Example:784565412 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "CosignerFaxNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Fax number Valid Values:0-9 Format:XXXXXXXXX Example:784565412 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "CosignerCreditFilePhone",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Credit File Phone number. Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "CosignerAlternatePhone",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Alternate phone number Valid Values:0-9 Format:XXXXXXXXX Example:784565412 Allowable Values: 11",
+                    "children": []
+                },
+                {
+                    "name": "CosignerEmailID",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's email ID associated with additional address details Valid Values: 0-9 a-z Format: [email protected] Example: [email protected] Allowable Values: 30",
+                    "children": []
+                },
+                {
+                    "name": "CosignerDateofBirth",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Cosigner’s Date of Birth Valid Values: Format:MM/DD/YYYY Example:01/02/1988",
+                    "children": []
+                },
+                {
+                    "name": "CosignerResidenceType",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner residence type Valid Values: Refer Appendix section 5.15 Format: xxxx Example: Own Allowable Values: 10",
+                    "children": []
+                },
+                {
+                    "name": "CosignerBadAddress",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Identifies the Cosigner's provided address is a bad address. Valid Values:0 or 1 Format: x Example: 1",
+                    "children": []
+                },
+                {
+                    "name": "CosignerMaritalStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Marital Status Valid Values: 0,1 Format: x Example: 0- No, 1 - Yes Allowable Values: 1",
+                    "children": []
+                },
+                {
+                    "name": "CosignerSSN",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner’s Social Security Number Valid Values:0-9 Format:XXXXXXXXX Example:XXXXX8796 Allowable Values: 12",
+                    "children": []
+                },
+                {
+                    "name": "CosignerGender",
+                    "type": "string",
+                    "required": null,
+                    "description": "Gender of Cosigner Valid Values: A-Z Format: xxxxxxx Example: Male Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "CosignerCeaseAndDesist",
+                    "type": "integer",
+                    "required": null,
+                    "description": "This tag reflects whenever Cosigner is ceased or desist the CoreCOLLECT user need not follow up the mapped account holder thus all the credentials of the mapped account holders are erased from the dialer file using this flag. Valid Values: 0 or 1 Format: x Example: 1 Allowable Values: 1",
+                    "children": []
+                },
+                {
+                    "name": "CosignerBankruptcy",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Cosigner's Flag for Bankruptcy Valid Values: 0,1 Format: x Example: 0-no, 1-yes Allowable Values: 1",
+                    "children": []
+                },
+                {
+                    "name": "CosignerBankruptcyNotificationDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Cosigner's bankruptcy notification date. Valid Values: 0-9 Format:MM/DD/YYYY HH:MM:SS Example:12/20/2019 12:18:19",
+                    "children": []
+                },
+                {
+                    "name": "CosignerDeceased",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Flag to mark deceased.",
+                    "children": []
+                },
+                {
+                    "name": "CosignerDeceasedNotificationDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Date when deceased is notified Format:MM/DD/YYYY Example:02/20/2020 Condition: Mandatory for deceased account",
+                    "children": []
+                },
+                {
+                    "name": "HomePhoneNumberTechType",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Tech Type of Home Phone Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129",
+                    "children": []
+                },
+                {
+                    "name": "MobileNumberTechType",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Tech Type of Mobile Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129",
+                    "children": []
+                },
+                {
+                    "name": "WorkPhoneNumberTechType",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Tech Type of Work Phone Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129",
+                    "children": []
+                },
+                {
+                    "name": "OtherPhoneNumberTechType",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Tech Type of other  Phone Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129",
+                    "children": []
+                },
+                {
+                    "name": "FaxNumberTechType",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Tech Type of Fax Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129",
+                    "children": []
+                },
+                {
+                    "name": "CreditFilePhoneTechType",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Tech Type of Credit File Phone Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129",
+                    "children": []
+                },
+                {
+                    "name": "AlternatePhoneTechType",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Tech Type of Alternate Phone Number. Valid Values: 0 / 1 Format: x Example: 0 = Mobile, 1 = Landline Condition:I6129",
+                    "children": []
+                },
+                {
+                    "name": "CosignerConsumerInformationIndicator",
+                    "type": "string",
+                    "required": null,
+                    "description": "CosignerConsumerInformationIndicator Allowable Values: 15",
+                    "children": []
+                },
+                {
+                    "name": "CosignerFraudVictim",
+                    "type": "boolean",
+                    "required": null,
+                    "description": "Identifies the Cosigner as Fraud victim. Valid Values:0 or 1 Format: x Example: 1",
+                    "children": []
+                },
+                {
+                    "name": "CosignerAddressLine1",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Surname Suffix Valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CosignerAddressLine2",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Address line2 Valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "CosignerCeaseDesistCommunication",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Cease and Desist communication Valid Values: Available in Appendix section 5.37 Format: xxxxxx Example: litigation, Phone and Mail etc Allowable Values: 20",
+                    "children": []
+                },
+                {
+                    "name": "CosignerMobileCarrier",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflect the co-signer Mobile carrier company Valid Values:A-z, 0-9 Format:XXXXXXXX Example:Vodafone Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "CosignerStatus",
+                    "type": "string",
+                    "required": null,
+                    "description": "Status of Cosigner Valid Values: 0-1 Format: 0 Example: 1 Allowable Values: 1",
+                    "children": []
+                },
+                {
+                    "name": "CosignerSNSuffix",
+                    "type": "string",
+                    "required": null,
+                    "description": "Cosigner's Address line1 Valid Values:A-Z, 0-9 Example:123 HWY Allowable Values: 50",
+                    "children": []
+                },
+                {
+                    "name": "SupressEmail",
+                    "type": "string",
+                    "required": null,
+                    "description": "SupressEmail Valid Values: 0/1 Example: 0",
+                    "children": []
+                },
+                {
+                    "name": "EmailMarketingOptOutPA",
+                    "type": "string",
+                    "required": null,
+                    "description": "EmailMarketingOptOutPA Valid Values: 0/1 Example: 0",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountID": "167573"
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "CustomerID": "167383",
+            "CosignerTitle": null,
+            "CosignerFirstName": "Bhushan",
+            "CosignerMiddleName": null,
+            "CosignerLastName": "Waje",
+            "CosignerSNSuffix": "ii",
+            "CosignerAddressLine1": "ISC Software Private Limited",
+            "CosignerAddressLine2": "kush",
+            "CosignerCity": "Navi Mumbai",
+            "CosignerState": "AS",
+            "CosignerCountry": "US",
+            "CosignerPostalCode": "400614",
+            "CosignerHomePhoneNumber": "5698756891",
+            "CosignerWorkPhoneNumber": "5871458796",
+            "CosignerMobileNumber": "5698758795",
+            "CosignerOtherPhoneNumber": null,
+            "CosignerFaxNumber": null,
+            "CosignerCreditFilePhone": null,
+            "CosignerAlternatePhone": null,
+            "CosignerEmailID": "[email protected]",
+            "CosignerDateofBirth": "08/03/1993 00:00:00",
+            "CosignerResidenceType": "O",
+            "CosignerBadAddress": 0,
+            "CosignerMaritalStatus": null,
+            "CosignerSSN": null,
+            "CosignerGender": null,
+            "CosignerCeaseAndDesist": 0,
+            "CosignerCeaseDesistCommunication": null,
+            "CosignerBankruptcy": 0,
+            "CosignerBankruptcyNotificationDate": null,
+            "CosignerDeceased": 0,
+            "CosignerDeceasedNotificationDate": null,
+            "CosignerMobileCarrier": null,
+            "HomePhoneNumberTechType": null,
+            "MobileNumberTechType": null,
+            "WorkPhoneNumberTechType": null,
+            "OtherPhoneNumberTechType": null,
+            "FaxNumberTechType": null,
+            "CreditFilePhoneTechType": null,
+            "AlternatePhoneTechType": null,
+            "SupressEmail": "0",
+            "EmailMarketingOptOutPA": "0",
+            "CosignerConsumerInformationIndicator": null,
+            "CosignerFraudVictim": false,
+            "CosignerStatus": "1"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "New Cards",
+        "category_id": "1",
+        "document_id": "1001",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1001&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1&regionId=1"
+    }
+}

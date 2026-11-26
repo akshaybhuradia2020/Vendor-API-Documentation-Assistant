@@ -1,0 +1,1845 @@
+{
+    "metadata": {
+        "name": "GetUserFieldDetails",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetUserFieldDetails",
+        "description": "This API is used to get the details of  user fields which has been defined on a product. These fields are dynamic and can be changed as per the product."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Valid values:0-9 Example:12345"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder/AccountHolder. Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "UserFieldsList",
+                    "type": "array",
+                    "required": null,
+                    "description": "List of all the dynamic user fields which are defined on the product",
+                    "children": [
+                        {
+                            "name": "TitleUF1",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF1",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF1",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF1",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF2",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF2",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF2",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF3",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF3",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF3",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF4",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF4",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF4",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF4",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF4",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF4",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF5",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF5",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF5",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF5",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF5",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF5",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF6",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF6",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF6",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF6",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF6",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF6",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF7",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF7",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF7",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF7",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF7",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF7",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF8",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF8",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF8",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF8",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF8",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF8",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF9",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF9",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF9",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF9",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF9",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF9",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF10",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF10",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF10",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF10",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF10",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF10",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF11",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF11",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF11",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF11",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF11",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF11",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF12",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF12",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF12",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF12",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF12",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF12",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF13",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF13",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF13",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF13",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF13",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF13",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF14",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF14",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF14",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF14",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF14",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF14",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF15",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF15",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF15",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined.Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF15",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF15",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF15",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF16",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF16",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF16",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF16",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF16",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF16",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF17",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF17",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF17",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF17",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF17",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF17",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF18",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF18",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF18",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF18",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF18",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF18",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF19",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF19",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF19",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF19",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF19",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF19",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF20",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF20",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF20",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextUF20",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateUF20",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyUF20",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF21",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any account level user field Valid Values:0-9, A-Z Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF21",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF21 to StatusUF25 Valid Values: 0 - Active 1 - Inactive Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF21",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF21 to TypeUF25 Valid Values: 0 - Boolean 1 - Text Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "DDValueUF21",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the Drop-Down value of the account level user field . Valid Values:0-9,A-Z Example:Second Level User",
+                            "children": []
+                        },
+                        {
+                            "name": "BooleanUF21",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Boolean- Valid Values: Yes, No Example: Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF22",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any account level user field Valid Values:0-9, A-Z Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF22",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF21 to StatusUF25 Valid Values: 0 - Active 1 - Inactive Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF22",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF21 to TypeUF25 Valid Values: 0 - Boolean 1 - Text Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "DDValueUF22",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the Drop-Down value of the account level user field . Valid Values:0-9,A-Z Example:Second Level User",
+                            "children": []
+                        },
+                        {
+                            "name": "BooleanUF22",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Boolean- Valid Values: Yes, No Example: Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF23",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any account level user field Valid Values:0-9, A-Z Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF23",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF21 to StatusUF25 Valid Values: 0 - Active 1 - Inactive Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF23",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF21 to TypeUF25 Valid Values: 0 - Boolean 1 - Text Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "DDValueUF23",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the Drop-Down value of the account level user field . Valid Values:0-9,A-Z Example:Second Level User",
+                            "children": []
+                        },
+                        {
+                            "name": "BooleanUF23",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Boolean- Valid Values: Yes, No Example: Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF24",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any account level user field Valid Values:0-9, A-Z Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF24",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF21 to StatusUF25 Valid Values: 0 - Active 1 - Inactive Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF24",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF21 to TypeUF25 Valid Values: 0 - Boolean 1 - Text Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "DDValueUF24",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the Drop-Down value of the account level user field . Valid Values:0-9,A-Z Example:Second Level User",
+                            "children": []
+                        },
+                        {
+                            "name": "BooleanUF24",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Boolean- Valid Values: Yes, No Example: Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleUF25",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any account level user field Valid Values:0-9, A-Z Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusUF25",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF21 to StatusUF25 Valid Values: 0 - Active 1 - Inactive Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeUF25",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF21 to TypeUF25 Valid Values: 0 - Boolean 1 - Text Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "DDValueUF25",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the Drop-Down value of the account level user field . Valid Values:0-9,A-Z Example:Second Level User",
+                            "children": []
+                        },
+                        {
+                            "name": "BooleanUF25",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Boolean- Valid Values: Yes, No Example: Yes",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "CardLevelUserFieldsList",
+                    "type": "array",
+                    "required": null,
+                    "description": "List of all the dynamic user fields which are defined on the product",
+                    "children": [
+                        {
+                            "name": "AdminNumber",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values: 0-9 Format: XXXXX Example: 12345",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNumberLast4Digit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Last 4 digits of card number Valid Values: 0-9 Format: XXXX Example: 1234",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleCardUF1",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any card level user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusCardUF1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeCardUF1",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextCardUF1",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateCardUF1",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyCardUF1",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleCardUF2",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any card level user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusCardUF2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeCardUF2",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextCardUF2",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateCardUF2",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyCardUF2",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleCardUF3",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any card level user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusCardUF3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeCardUF3",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextCardUF3",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateCardUF3",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyCardUF3",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleCardUF4",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any card level user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusCardUF4",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeCardUF4",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextCardUF4",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateCardUF4",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyCardUF4",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleCardUF5",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any card level user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusCardUF5",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeCardUF5",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Currency 1 - Date 2 - Text Valid Values:0-9 Format:XXXXX Example:0,1,2",
+                            "children": []
+                        },
+                        {
+                            "name": "TextCardUF5",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is textUF1 to TextUF20 Valid Values:0-9,A-Z Format:XXXXX Example:abcd Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "DateCardUF5",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Date- DateUF1 to DateUF20 Valid Values:MMDDYYYY Format:XXXXX Example:07202020",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrencyCardUF5",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleCardUF6",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag is to provide the label name for any card level user field Valid Values:0-9, A-Z Format:XXXXX Example:Field_AAA Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusCardUF6",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeCardUF6",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Boolean 1 - Text Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "DDValueCardUF6",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the Drop-Down value of the card level user field Valid Values:0-9,A-Z Format:XXXXX Example:Second Level User Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "BooleanCardUF6",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Boolean- Valid Values: Yes, No Format:XXXXX Example: Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleCardUF7",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusCardUF7",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeCardUF7",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Boolean 1 - Text Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "DDValueCardUF7",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the Drop-Down value of the card level user field Valid Values:0-9,A-Z Format:XXXXX Example:Second Level User Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "BooleanCardUF7",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Boolean- Valid Values: Yes, No Format:XXXXX Example: Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleCardUF8",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusCardUF8",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeCardUF8",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Boolean 1 - Text Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "DDValueCardUF8",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the Drop-Down value of the card level user field Valid Values:0-9,A-Z Format:XXXXX Example:Second Level User Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "BooleanCardUF8",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Boolean- Valid Values: Yes, No Format:XXXXX Example: Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleCardUF9",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusCardUF9",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeCardUF9",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Boolean 1 - Text Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "DDValueCardUF9",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the Drop-Down value of the card level user field Valid Values:0-9,A-Z Format:XXXXX Example:Second Level User Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "BooleanCardUF9",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Boolean- Valid Values: Yes, No Format:XXXXX Example: Yes",
+                            "children": []
+                        },
+                        {
+                            "name": "TitleCardUF10",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Currency- CurrencyUF1 to CurrencyUF20 Valid Values:0-9 Format:XXXXX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "StatusCardUF10",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag  shows the status of the user field which has been defined. Values for StatusUF1 to StatusUF20: 0 - Active 1 - Inactive Valid Values:0-1 Format:XXXXX Example:0,1",
+                            "children": []
+                        },
+                        {
+                            "name": "TypeCardUF10",
+                            "type": "integer",
+                            "required": null,
+                            "description": "This tag shows the datatype of the user field defined. Values for TypeUF1 to TypeUF20: 0 - Boolean 1 - Text Valid Values:0-1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "DDValueCardUF10",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the Drop-Down value of the card level user field Valid Values:0-9,A-Z Format:XXXXX Example:Second Level User Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "BooleanCardUF10",
+                            "type": "string",
+                            "required": null,
+                            "description": "It contains the value of the field if its data type is Boolean- Valid Values: Yes, No Format:XXXXX Example: Yes",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "UserFieldDropdownValueList",
+                    "type": "array",
+                    "required": null,
+                    "description": "List of all the dropdownfields value of fieldtitle in  user fields which are defined on the product",
+                    "children": [
+                        {
+                            "name": "FieldTitle",
+                            "type": "string",
+                            "required": null,
+                            "description": "FieldTitle",
+                            "children": []
+                        },
+                        {
+                            "name": "Value",
+                            "type": "string",
+                            "required": null,
+                            "description": "Value",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFieldType",
+                            "type": "string",
+                            "required": null,
+                            "description": "UserFieldType",
+                            "children": []
+                        },
+                        {
+                            "name": "UserFieldName",
+                            "type": "string",
+                            "required": null,
+                            "description": "UserFieldName",
+                            "children": []
+                        },
+                        {
+                            "name": "Code",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Code",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductId",
+                            "type": "integer",
+                            "required": null,
+                            "description": "ProductId",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "WEB",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountID": 45436,
+        "AccountNumber": null
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "UserFieldsList": [
+                {
+                    "TitleUF1": "Block Code2",
+                    "StatusUF1": 0,
+                    "TypeUF1": 2,
+                    "TextUF1": "W",
+                    "DateUF1": null,
+                    "CurrencyUF1": 0.0,
+                    "TitleUF2": null,
+                    "StatusUF2": null,
+                    "TypeUF2": null,
+                    "TextUF2": null,
+                    "DateUF2": null,
+                    "CurrencyUF2": null,
+                    "TitleUF3": null,
+                    "StatusUF3": null,
+                    "TypeUF3": null,
+                    "TextUF3": null,
+                    "DateUF3": null,
+                    "CurrencyUF3": null,
+                    "TitleUF4": null,
+                    "StatusUF4": null,
+                    "TypeUF4": null,
+                    "TextUF4": null,
+                    "DateUF4": null,
+                    "CurrencyUF4": null,
+                    "TitleUF5": null,
+                    "StatusUF5": null,
+                    "TypeUF5": null,
+                    "TextUF5": null,
+                    "DateUF5": null,
+                    "CurrencyUF5": null,
+                    "TitleUF6": null,
+                    "StatusUF6": null,
+                    "TypeUF6": null,
+                    "TextUF6": null,
+                    "DateUF6": null,
+                    "CurrencyUF6": null,
+                    "TitleUF7": null,
+                    "StatusUF7": null,
+                    "TypeUF7": null,
+                    "TextUF7": null,
+                    "DateUF7": null,
+                    "CurrencyUF7": null,
+                    "TitleUF8": null,
+                    "StatusUF8": null,
+                    "TypeUF8": null,
+                    "TextUF8": null,
+                    "DateUF8": null,
+                    "CurrencyUF8": null,
+                    "TitleUF9": null,
+                    "StatusUF9": null,
+                    "TypeUF9": null,
+                    "TextUF9": null,
+                    "DateUF9": null,
+                    "CurrencyUF9": null,
+                    "TitleUF10": null,
+                    "StatusUF10": null,
+                    "TypeUF10": null,
+                    "TextUF10": null,
+                    "DateUF10": null,
+                    "CurrencyUF10": null,
+                    "TitleUF11": null,
+                    "StatusUF11": null,
+                    "TypeUF11": null,
+                    "TextUF11": null,
+                    "DateUF11": null,
+                    "CurrencyUF11": null,
+                    "TitleUF12": null,
+                    "StatusUF12": null,
+                    "TypeUF12": null,
+                    "TextUF12": null,
+                    "DateUF12": null,
+                    "CurrencyUF12": null,
+                    "TitleUF13": null,
+                    "StatusUF13": null,
+                    "TypeUF13": null,
+                    "TextUF13": null,
+                    "DateUF13": null,
+                    "CurrencyUF13": null,
+                    "TitleUF14": null,
+                    "StatusUF14": null,
+                    "TypeUF14": null,
+                    "TextUF14": null,
+                    "DateUF14": null,
+                    "CurrencyUF14": null,
+                    "TitleUF15": null,
+                    "StatusUF15": null,
+                    "TypeUF15": null,
+                    "TextUF15": null,
+                    "DateUF15": null,
+                    "CurrencyUF15": null,
+                    "TitleUF16": null,
+                    "StatusUF16": null,
+                    "TypeUF16": null,
+                    "TextUF16": null,
+                    "DateUF16": null,
+                    "CurrencyUF16": null,
+                    "TitleUF17": null,
+                    "StatusUF17": null,
+                    "TypeUF17": null,
+                    "TextUF17": null,
+                    "DateUF17": null,
+                    "CurrencyUF17": null,
+                    "TitleUF18": null,
+                    "StatusUF18": null,
+                    "TypeUF18": null,
+                    "TextUF18": null,
+                    "DateUF18": null,
+                    "CurrencyUF18": null,
+                    "TitleUF19": null,
+                    "StatusUF19": null,
+                    "TypeUF19": null,
+                    "TextUF19": null,
+                    "DateUF19": null,
+                    "CurrencyUF19": null,
+                    "TitleUF20": null,
+                    "StatusUF20": null,
+                    "TypeUF20": null,
+                    "TextUF20": null,
+                    "DateUF20": null,
+                    "CurrencyUF20": null,
+                    "TitleUF21": null,
+                    "StatusUF21": null,
+                    "TypeUF21": null,
+                    "DDValueUF21": null,
+                    "BooleanUF21": null,
+                    "TitleUF22": null,
+                    "StatusUF22": null,
+                    "TypeUF22": null,
+                    "DDValueUF22": null,
+                    "BooleanUF22": null,
+                    "TitleUF23": null,
+                    "StatusUF23": null,
+                    "TypeUF23": null,
+                    "DDValueUF23": null,
+                    "BooleanUF23": null,
+                    "TitleUF24": null,
+                    "StatusUF24": null,
+                    "TypeUF24": null,
+                    "DDValueUF24": null,
+                    "BooleanUF24": null,
+                    "TitleUF25": null,
+                    "StatusUF25": null,
+                    "TypeUF25": null,
+                    "DDValueUF25": null,
+                    "BooleanUF25": null
+                }
+            ],
+            "CardLevelUserFieldsList": [
+                {
+                    "AdminNumber": 129443,
+                    "CardNumberLast4Digit": "4853",
+                    "TitleCardUF1": "Field_AAA",
+                    "StatusCardUF1": 0,
+                    "TypeCardUF1": 2,
+                    "TextCardUF1": "abcd",
+                    "DateCardUF1": null,
+                    "CurrencyCardUF1": null,
+                    "TitleCardUF2": null,
+                    "StatusCardUF2": null,
+                    "TypeCardUF2": null,
+                    "TextCardUF2": null,
+                    "DateCardUF2": null,
+                    "CurrencyCardUF2": null,
+                    "TitleCardUF3": null,
+                    "StatusCardUF3": null,
+                    "TypeCardUF3": null,
+                    "TextCardUF3": null,
+                    "DateCardUF3": null,
+                    "CurrencyCardUF3": null,
+                    "TitleCardUF4": null,
+                    "StatusCardUF4": null,
+                    "TypeCardUF4": null,
+                    "TextCardUF4": null,
+                    "DateCardUF4": null,
+                    "CurrencyCardUF4": null,
+                    "TitleCardUF5": null,
+                    "StatusCardUF5": null,
+                    "TypeCardUF5": null,
+                    "TextCardUF5": null,
+                    "DateCardUF5": null,
+                    "CurrencyCardUF5": null,
+                    "TitleCardUF6": null,
+                    "StatusCardUF6": null,
+                    "TypeCardUF6": null,
+                    "DDValueCardUF6": null,
+                    "BooleanCardUF6": null,
+                    "TitleCardUF7": null,
+                    "StatusCardUF7": null,
+                    "TypeCardUF7": null,
+                    "DDValueCardUF7": null,
+                    "BooleanCardUF7": null,
+                    "TitleCardUF8": null,
+                    "StatusCardUF8": null,
+                    "TypeCardUF8": null,
+                    "DDValueCardUF8": null,
+                    "BooleanCardUF8": null,
+                    "TitleCardUF9": null,
+                    "StatusCardUF9": null,
+                    "TypeCardUF9": null,
+                    "DDValueCardUF9": null,
+                    "BooleanCardUF9": null,
+                    "TitleCardUF10": null,
+                    "StatusCardUF10": null,
+                    "TypeCardUF10": null,
+                    "DDValueCardUF10": null,
+                    "BooleanCardUF10": null
+                }
+            ],
+            "UserFieldDropdownValueList": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1004&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1001"
+    }
+}

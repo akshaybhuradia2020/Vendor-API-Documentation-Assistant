@@ -1,0 +1,268 @@
+{
+    "metadata": {
+        "name": "GetMCCPlanLimit",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/CardManagement/GetMCCPlanLimit",
+        "description": "This API is used to get the MCC Plan Limit applied on the Card."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": true,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values: 0-9 Format: XXXX Example: 1234"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "listMCCPlanLimitResponseModel",
+                    "type": "array",
+                    "required": null,
+                    "description": "listMCCPlanLimitResponseModel",
+                    "children": [
+                        {
+                            "name": "CardType",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag will define the Card Type Valid Values:1-Primary,2-Seconday,3-All Format: X Example:1",
+                            "children": []
+                        },
+                        {
+                            "name": "MCCGroup",
+                            "type": "string",
+                            "required": null,
+                            "description": "MCC Group. Valid Values: a-z 0-9 Format:xxxx Example:xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "MCCPlan",
+                            "type": "string",
+                            "required": null,
+                            "description": "MCCPlan Valid Values: a-z 0-9 Format:xxxx Example:xxxx",
+                            "children": []
+                        },
+                        {
+                            "name": "SingleTransactionLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Use this tag to provide the single transaction limit. Valid Values: 0-9 Format: X Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyMCCPlanLimitCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Use this tag to update daily MCC Plan limit count. Valid Values: 0-9 Format: X Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "DailyMCCPlanLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Use this tag to update daily MCC Plan limit amount. Valid Values: 0-9 Format: X Example:500",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyMCCPlanLimitCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Use this tag to update Weekly MCC Plan limit count. Valid Values: 0-9 Format: X Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "WeeklyMCCPlanLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Use this tag to update weekly MCC Plan limit amount. Valid Values: 0-9 Format: X Example:500",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlyMCCPlanLimitCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Use this tag to update monthly MCC Plan limit count. Valid Values: 0-9 Format: X Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "MonthlyMCCPlanLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Use this tag to update Monthly MCC Plan limit amount. Valid Values: 0-9 Format: X Example:500",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyMCCPlanLimitCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Use this tag to update Yearly MCC Plan limit count. Valid Values: 0-9 Format: X Example:10",
+                            "children": []
+                        },
+                        {
+                            "name": "YearlyMCCPlanLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Use this tag to update Yearly MCC Plan limit Amount. Valid Values: 0-9 Format: X Example:500",
+                            "children": []
+                        },
+                        {
+                            "name": "Status",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag indicates whether MCC Group is active or not. Valid Values:1=Active, 2=Inactive Format: X Example:1",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AdminNumber": 129308
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "listMCCPlanLimitResponseModel": [
+                {
+                    "CardType": "1",
+                    "MCCGroup": "xxx",
+                    "MCCPlan": "xxx",
+                    "SingleTransactionLimit": 10.0,
+                    "DailyMCCPlanLimitCount": 10,
+                    "DailyMCCPlanLimitAmount": 500.0,
+                    "WeeklyMCCPlanLimitCount": 10,
+                    "WeeklyMCCPlanLimitAmount": 500.0,
+                    "MonthlyMCCPlanLimitCount": 10,
+                    "MonthlyMCCPlanLimitAmount": 500.0,
+                    "YearlyMCCPlanLimitCount": 10,
+                    "YearlyMCCPlanLimitAmount": 500.0,
+                    "Status": "1"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Card Registration",
+        "category_id": "11",
+        "document_id": "1405",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1405&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=11&regionId=1"
+    }
+}

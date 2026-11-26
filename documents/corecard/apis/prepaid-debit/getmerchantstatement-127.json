@@ -1,0 +1,606 @@
+{
+    "metadata": {
+        "name": "GetMerchantStatement",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/MerchantManagement/GetMerchantStatement",
+        "description": "The purpose of this API is Used to get the details of the Merchant Statement."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": null,
+            "description": "Specific ID Assigned to a Merchant, Mandatory If Merchant Number not Inputted in API Request Valid Values: 0-9 Format: XXXXXXXXX Example: 205136549"
+        },
+        {
+            "name": "MerchantStatementDate",
+            "type": "datetime",
+            "required": true,
+            "description": "Date for which Merchant statement is  generated Valid Values: 0-9 Format: MM/DD/YYYY Example: 05/01/2020"
+        },
+        {
+            "name": "ProductName",
+            "type": "string",
+            "required": true,
+            "description": "Reflects the name of product for the account Valid Values: a-z Format: xxxxxx Example: abcsolutionsrevolving Allowable Values: 50"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "MerchantID",
+            "type": "integer",
+            "required": null,
+            "description": "Specific ID Assigned to a Merchant, Mandatory If Merchant Number not Inputted in API Request. Valid Values: 0-9 Format: XXXXXXXXX Example: 205136549"
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "string",
+            "required": null,
+            "description": "Merchant Number which is assigned to a Merchant, Mandatory If Merchant ID not Inputted in API Request. Valid Values:0-9 Format: XXXXXXXXX Example: 205136549 Allowable Values: 9"
+        },
+        {
+            "name": "MerchantStatementDate",
+            "type": "datetime",
+            "required": true,
+            "description": "Date for which Merchant statement is  generated Valid Values: 0-9 Format: MM/DD/YYYY Example: 05/01/2020"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": true,
+            "description": "ID assigned to a Program. Valid Values:0-9 Example:Fixed value provided by CoreCard."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "MerchantStatementAdjustmentList",
+            "type": "array",
+            "required": null,
+            "description": "Header of Merchant Statement Adjustment Group Which will contain all details Adjustements as a",
+            "children": []
+        },
+        {
+            "name": "MerchantFeeBreakdownList",
+            "type": "array",
+            "required": null,
+            "description": "Header of Merchant Fee Breakdown Details",
+            "children": []
+        },
+        {
+            "name": "GrandTotalList",
+            "type": "array",
+            "required": null,
+            "description": "Header of Grand Total List, contains the Grand Totals for Transaction Volume, Transaction Counts and Merchant Fee",
+            "children": []
+        },
+        {
+            "name": "MerchantStatementHistoryList",
+            "type": "array",
+            "required": null,
+            "description": "Header of Merchant Statement History array Which will contain all details for Each Transaction occured for the Merchant in an array.",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "MerchantStatementAdjustmentList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Header of Merchant Statement Adjustment Group Which will contain all details Adjustements as a",
+                    "children": [
+                        {
+                            "name": "MerchantName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Name which is assigned to a Merchant Valid Values: A-Z Format: XXXXXX Example: ABCD LLC Allowable Values: 9",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant Number which is assgined to a Merchant, Mandatory If Merchant Number not Inputted in API Request Valid Values: 0-9 Format: XXXXXXXXX Example: 205136549 Allowable Values: 9",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantStatementDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date for which Merchant statement is  generated Valid Values: 0-9 Format: MM/DD/YYYY Example: 05/01/2020",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantStatementFromDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "From Date of the Merchant statement Valid Values: 0-9 Format: MM/DD/YYYY Example: 05/01/2020",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantStatementToDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "To Date of the Merchant statement Valid Values: 0-9 Format: MM/DD/YYYY Example: 05/01/2020",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductName",
+                            "type": "string",
+                            "required": null,
+                            "description": "The tag reflects the product name Valid  Values: a-z Format: xxxxxx Example: abcsolutionsrevolving Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "GrossSalesCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of Gross Sales Valid Values: 0-9 Format: XXXX Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "ReturnReversalsCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of Sales Returns and Reversals Valid Values: 0-9 Format: XXXX Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "GrossSalesAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Gross Sales amount. Valid Values: 0-9 Format: $XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "ReturnReversalsAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Returns and Reversals amount. Valid Values: 0-9 Format: $XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Merchant Fee amount Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantFeeReversal",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Merchant Fee Reversal Amount. Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "NetAmountDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total Net amount due as on statement date. Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalAmountDue",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total amount due as on statement date. Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TotalAmountDueCount",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of Total Amount Due Valid Values: 0-9 Format: XXXX Example: 5",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "MerchantFeeBreakdownList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Header of Merchant Fee Breakdown Details",
+                    "children": [
+                        {
+                            "name": "CreditPlanMaster",
+                            "type": "string",
+                            "required": null,
+                            "description": "Plan Name associated with the card account. Valid Values: 0-9,A-Z Format: XXXXX Example: 6 Months No Interest if Paid in Full Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionCounts",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Count of Transactions * for the Credit Plan Master as on statement date Valid Values: 0-9 Format: XXXX Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Merchant Discount Rate applicable for the Merchant *Merchant Rate set for  the Credit Plan Master Valid Values: 0-9 Format: XX.XX % Example: 5.00%",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionsVolume",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Transactions Volume amount * for the Credit Plan Master as on statement date. Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Merchant Fee amount *Merchant Fee Amount set for  the Credit Plan Master Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "GrandTotalList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Header of Grand Total List, contains the Grand Totals for Transaction Volume, Transaction Counts and Merchant Fee",
+                    "children": [
+                        {
+                            "name": "GrandTotalTransactionsVolume",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Grand Total Transactions Volume amount Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "GrandTotalTransactionCounts",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Grand Total Count of Transactions Valid Values: 0-9 Format: XXXX Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "GrandTotalMerchantFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Grand Total Amount of Merchant Fee Valid Values: 0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "MerchantStatementHistoryList",
+                    "type": "array",
+                    "required": null,
+                    "description": "Header of Merchant Statement History array Which will contain all details for Each Transaction occured for the Merchant in an array.",
+                    "children": [
+                        {
+                            "name": "PurchaseTranID",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Transaction ID generated for The Purchase Transaction For Return Transaction also the Transaction ID will be returned in this tag and User must check the Transaction Description Valid Values: 0-9 Format: XXXXXX Example: 122390308",
+                            "children": []
+                        },
+                        {
+                            "name": "ReversalTranID",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Transaction ID generated for The Reversal Transaction Valid Values: 0-9 Format: XXXXXX Example: 122390308",
+                            "children": []
+                        },
+                        {
+                            "name": "Transactiontime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Time stamp when Transaction occured Valid Values: 0-9 Format: MMDDYYYYHHMMSS Example: 01012020110505",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionPostTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Actual datetime timestamp when transaction was posted. Valid Values: 0-9 Format: MMDDYYYYHHMMSS Example: 01012020110505",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Time stamp when Transaction occured Valid Values: 0-9 Format: MMDDYYYYHHMMSS Example: 01012020110505",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantFee",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Merchant Fee amount Valid  Values:0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditPlanMaster",
+                            "type": "string",
+                            "required": null,
+                            "description": "Plan name associated with the card account. Valid Values: A-Z, 0-9 Format: XXXXXX Example: 6 Months No Interest if Paid in Full Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CPMID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Identifier to get Credit Plan Master applicable on the account Valid Values: 0-9 Format: XXXX Example: 251215",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "User defined description of transaction if entered by user explicitly. If not entered by the user, then system will generate it. Valid  Values:A-Z Format: Example: Purchase/Payment Allowable Values: 80",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantRate",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Merchant Discount Rate applicable for the Merchant *Merchant Rate set for  the Credit Plan Master Valid  Values:0-9 Format: XX.XX % Example: 5.00%",
+                            "children": []
+                        },
+                        {
+                            "name": "NetSettlementAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount Calculated after Deductions if Any from the Transaction Amount Valid Values: 0-9 Format: $XXX.XX Example: 200.00",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "MerchantID": 11629,
+        "MerchantNumber": null,
+        "MerchantStatementDate": "03/31/2016 00:00:00",
+        "ProductID": 3399
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "ERR0000",
+        "ResponseData": {
+            "MerchantStatementAdjustmentList": [
+                {
+                    "MerchantName": "Andrisen Morton",
+                    "MerchantNumber": "35519",
+                    "MerchantStatementDate": "12/25/2015 00:00:00",
+                    "MerchantStatementFromDate": null,
+                    "MerchantStatementToDate": "12/25/2015 00:00:00",
+                    "ProductName": "ABC ECO",
+                    "GrossSalesCount": 48,
+                    "ReturnReversalsCount": 22,
+                    "GrossSalesAmount": 107665.37,
+                    "ReturnReversalsAmount": 84968.24,
+                    "MerchantFee": 538.32,
+                    "MerchantFeeReversal": 0.0,
+                    "NetAmountDue": 107127.05,
+                    "TotalAmountDue": 22158.81,
+                    "TotalAmountDueCount": 70
+                }
+            ],
+            "MerchantFeeBreakdownList": [
+                {
+                    "CreditPlanMaster": "Fixed APR of 3.99%-28.99% for 24 Months - 4.90",
+                    "TransactionCounts": 1,
+                    "MerchantRate": 4.9,
+                    "TransactionsVolume": 2000.0,
+                    "MerchantFee": -98.0
+                }
+            ],
+            "GrandTotalList": [
+                {
+                    "GrandTotalTransactionsVolume": 4054.0,
+                    "GrandTotalTransactionCounts": 4,
+                    "GrandTotalMerchantFee": -214.48
+                }
+            ],
+            "MerchantStatementHistoryList": [
+                {
+                    "PurchaseTranID": 1.2337203685480192e+17,
+                    "ReversalTranID": null,
+                    "Transactiontime": "01/15/2017 06:32:33",
+                    "TransactionPostTime": "01/15/2017 06:32:33",
+                    "TransactionAmount": 2000.0,
+                    "MerchantFee": -98.0,
+                    "CreditPlanMaster": "Fixed APR of 3.99%-28.99% for 24 Months - ",
+                    "CPMID": 6067,
+                    "TransactionDescription": "Purchase",
+                    "MerchantRate": 4.9,
+                    "NetSettlementAmount": 1902.0
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=127&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1008"
+    }
+}

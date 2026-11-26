@@ -1,0 +1,1168 @@
+{
+    "metadata": {
+        "name": "SearchAccount",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/SearchAccount",
+        "description": "The purpose of this is API is to search the account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Debtor File # or Client Account # Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one account identifier is required. Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Number of account holder Valid Values: 0-9 Format:XXXXXXXXXXXXXXXX Example:1236547896325874 Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values:0-9 Format:XXXXX Example:12345"
+        },
+        {
+            "name": "CompanyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Company Number Valid Values: 0-9 Format:XXXX Example:1234 Allowable Values: 7"
+        },
+        {
+            "name": "ApplicationNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Unique Number generated for the Account creation Application . Valid Values:0-9 Example:8002201421"
+        },
+        {
+            "name": "SearchByCoApplicant",
+            "type": "string",
+            "required": null,
+            "description": "Flag to decide if Search can be perform by CoApplicant or not. Valid Values: 0 and 1 Allowable Values: 2"
+        },
+        {
+            "name": "CorporateAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Corporate Account Number Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:8000000000000037 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumberLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Last 4 digits of card number Valid Values:0-9 Format:XXXX Example:1234 Allowable Values: 4"
+        },
+        {
+            "name": "MerchantNumber",
+            "type": "integer",
+            "required": null,
+            "description": "Merchant Number which is assgined to a Merchant. Valid Values- 0-9 Format:XXXXXX Example:11642"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's First name. Valid Values:A-Z Format:XXXXX Example:User1 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's last name. Valid Values:A-Z Format:XXXXX Example:Smith Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "EmailID",
+            "type": "string",
+            "required": null,
+            "description": "Card holder  Email ID Format: [email protected] Example: [email protected] Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 256"
+        },
+        {
+            "name": "DateOfBirth",
+            "type": "datetime",
+            "required": null,
+            "description": "Card Holder's Date of Birth Valid Values: 0-9 Format: MM/DD/YYYY Example: 02/01/2020"
+        },
+        {
+            "name": "WorkPhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card holder Work phone number Valid Values:0-9 Format:XXXXXXXXXXX Example:5678909876 Allowable Values: 19"
+        },
+        {
+            "name": "MobilePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Mobile Phone Number Valid Values:0-9 Format:XXXXXXXXXX Example:987567757 Allowable Values: 15"
+        },
+        {
+            "name": "HomePhoneNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card holder Home Phone number Valid Values:0-9 Format:XXXXXXXXXX Example:7895463214 Allowable Values: 20"
+        },
+        {
+            "name": "SSNLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Card holder's last four digit of SSN Valid Values:1120 Format:XXXX Example:1120 Allowable Values: 4"
+        },
+        {
+            "name": "TransactionID",
+            "type": "int64",
+            "required": null,
+            "description": "Transaction Number for transaction being posted. Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:23654789"
+        },
+        {
+            "name": "SecondaryIDNumber",
+            "type": "string",
+            "required": null,
+            "description": "get or set SecondaryIdNumber Allowable Values: 128"
+        },
+        {
+            "name": "CustomerID",
+            "type": "integer",
+            "required": null,
+            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123 Allowable Values: 25"
+        },
+        {
+            "name": "CompanyName",
+            "type": "string",
+            "required": null,
+            "description": "Company Name Valid Values:A-Z,0-9 Format:XXXXXX Example:ABC Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 26"
+        },
+        {
+            "name": "InvoiceNumber",
+            "type": "string",
+            "required": null,
+            "description": "Incoice Number for Transaction Valid Values:0-9 Format:XXXXXXXXXX Example:987567757 Allowable Values: 28"
+        },
+        {
+            "name": "CustomerType",
+            "type": "string",
+            "required": null,
+            "description": "This tag reflects the customer type, like Individual, organisation etc Valid Values: 01- Individual 02- Organization 07- Owning Partner 08- Partner Store 09- Purged 10- Register Example: 01 Allowable Values: 5"
+        },
+        {
+            "name": "AccountType",
+            "type": "string",
+            "required": null,
+            "description": "Type of Account / Credit Report Details Account Type Valid Values: 0-Company 1-Cardholder 2-Holding Account 3-Relationship Allowable Values: 2"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": null,
+            "description": "Postal code of the card holder's address. Valid Values:0-9 Format:XXXXX Example:46206 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "AddressLine1",
+            "type": "string",
+            "required": null,
+            "description": "Debtor Address Line 1 Valid Values:A-Z, 0-9 Example:123 HWY Condition:This is mandatory only when HoldEmbossing tag value is 0(NO) Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "AddressLine2",
+            "type": "string",
+            "required": null,
+            "description": "Debtor Address Line 2 Valid Values:A-Z,0-9 Example:Park Avenue Condition:This is mandatory only when HoldEmbossing tag value is 0(NO) and Country selected as Non-US. Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": null,
+            "description": "Debtor City Example:Los Angeles Condition: CBR\" Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 25"
+        },
+        {
+            "name": "State",
+            "type": "string",
+            "required": null,
+            "description": "State of the card holder address. Format:XXXXX Example: MO Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": null,
+            "description": "Country name of the Card holder's address Example:USA Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "ClientID",
+            "type": "integer",
+            "required": null,
+            "description": "get or set ClientID"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": null,
+            "description": "Product ID Valid Values:0-9 Format:XXXX Example:1234"
+        },
+        {
+            "name": "StoreID",
+            "type": "integer",
+            "required": null,
+            "description": "Store ID Valid Values:XXX Format:0-9 Example:1234"
+        },
+        {
+            "name": "BatchSize",
+            "type": "integer",
+            "required": false,
+            "description": "This Tag Defines how many number of Records will be Fetched in One Batch/Page If User didn’t Input any Value, then the Default Value as per System will be 50 Max Value Inputted can be 500 Valid Values:0-9 Format:XXX Example:50 Condition: Default Value will be 50 and Max Value Inputted must not exceed 500"
+        },
+        {
+            "name": "PageIndex",
+            "type": "integer",
+            "required": false,
+            "description": "This Tag Defines which Page Number of the Index of which the Records must be Fetched Valid Values:0-9 Format:XX Example:12 Condition: Default value would be 0"
+        },
+        {
+            "name": "ReferenceID",
+            "type": "string",
+            "required": false,
+            "description": "get or set ReferenceID Allowable Values: 64"
+        },
+        {
+            "name": "SearchByCosigner",
+            "type": "string",
+            "required": false,
+            "description": "Flag to decide if search can be performed by cosigner. Valid Values: 0 and 1 Allowable Values: 2"
+        },
+        {
+            "name": "MerchantNumberlist",
+            "type": "string",
+            "required": null,
+            "description": "User can input one or multiple merchant numbers and get the results accordingly. Valid Values- A-Z, 0-9 Example:\"1234,2345,3456\" Condition: any one search criteria required"
+        },
+        {
+            "name": "AccountLevelUF1Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF1Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF2Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF2Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF3Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF3Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF4Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF4Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF5Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF5Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF6Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF6Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF7Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF7Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF8Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF8Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF9Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF9Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF10Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF10Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF11Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF11Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF12Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF12Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF13Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF13Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF14Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF14Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF15Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF15Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF16Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF16Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF17Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF17Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF18Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF18Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF19Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF19Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF20Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF20Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "AccountLevelUF21Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF21Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account"
+        },
+        {
+            "name": "AccountLevelUF22Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF22Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account"
+        },
+        {
+            "name": "AccountLevelUF23Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF23Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account"
+        },
+        {
+            "name": "AccountLevelUF24Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF24Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account"
+        },
+        {
+            "name": "AccountLevelUF25Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Account Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "AccountLevelUF25Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account"
+        },
+        {
+            "name": "CardLevelUF1Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Card Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "CardLevelUF1Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "CardLevelUF2Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Card Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "CardLevelUF2Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "CardLevelUF3Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Card Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "CardLevelUF3Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "CardLevelUF4Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Card Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "CardLevelUF4Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "CardLevelUF5Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Card Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "CardLevelUF5Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account, For Any Date Value Please enter date in MM/DD/YYYY Format"
+        },
+        {
+            "name": "CardLevelUF6Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Card Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "CardLevelUF6Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account"
+        },
+        {
+            "name": "CardLevelUF7Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Card Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "CardLevelUF7Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account"
+        },
+        {
+            "name": "CardLevelUF8Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Card Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "CardLevelUF8Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account"
+        },
+        {
+            "name": "CardLevelUF9Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Card Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "CardLevelUF9Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account"
+        },
+        {
+            "name": "CardLevelUF10Title",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Card Level User Defined Field Title used to display the field and its data. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:Primary Owner"
+        },
+        {
+            "name": "CardLevelUF10Value",
+            "type": "string",
+            "required": false,
+            "description": "This Tag Defines Search Criteria Value based on which search will be executed. Valid Values: a-z A-Z 0-9 Format:XXXXXX Example:28.00, Primary Account"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "SearchResult",
+                    "type": "array",
+                    "required": null,
+                    "description": "This tag refer to the any search list .",
+                    "children": [
+                        {
+                            "name": "AccountID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Format:XXXXX Example:12345 Condition:At least one of CardNumber/AdminNumber/AccountNumber/AccountID is required.",
+                            "children": []
+                        },
+                        {
+                            "name": "ClientName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of client / institution Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "ProductName",
+                            "type": "string",
+                            "required": null,
+                            "description": "The tag reflects the product name Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CustomerID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Unique ID associated with Customer Valid Values: 0-9 a-z Format: xxxx Example: abc2123 Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Debtor File # or Client Account # Valid Values:0-9 Format:XXXXXXXXXX Example:7314145404 Condition: At least one account identifier is required. Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "FirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's First name. Valid Values:A-Z Format:XXXXX Example:User1 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "LastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card holder's last name. Valid Values:A-Z Format:XXXXX Example:Smith Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountManualStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Manually assigned status on account Valid Values:  Closed, Active Format: XXXXX Example: Active Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CurrentBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Current balance of account/Debtor Owing Valid Values:0-9 Format:XXXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Name Valid Values:A-Z,0-9 Format:XXXXXX Example:ABC Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 26",
+                            "children": []
+                        },
+                        {
+                            "name": "CompanyNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Company Number Valid Values: 0-9 Format:XXXX Example:1234",
+                            "children": []
+                        },
+                        {
+                            "name": "CorporateAccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Corporate Account Number Valid Values:0-9 Format:XXXXXXXXXXXXXXXX Example:8000000000000037 Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountGeneratedStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Gets or sets the generated status.",
+                            "children": []
+                        },
+                        {
+                            "name": "PrimaryCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag reflects the primary currency code Allowable Values: 25",
+                            "children": []
+                        },
+                        {
+                            "name": "ApplicationNumber",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Unique Number generated for the Account creation Application . Valid Values:0-9 Example:8002201421",
+                            "children": []
+                        },
+                        {
+                            "name": "IsCoApplicant",
+                            "type": "string",
+                            "required": null,
+                            "description": "Flag to decide if a Account is having Co-Applicant or not. Valid Values:0, 1 Example:0",
+                            "children": []
+                        },
+                        {
+                            "name": "OpenToBuy",
+                            "type": "string",
+                            "required": null,
+                            "description": "Remaining Credit Limit which can be used for further posting. Valid Values:0-9 Format: XXXXXXX.XX Example:200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "CosignerFirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the cosigner first name. Example:John Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CosignerLastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Indicates the cosigner last name. Example:Smith Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of the Merchant Valid Values:A-Z,0-9 Format: XXXXXX Example:abc Allowable Values: 40",
+                            "children": []
+                        },
+                        {
+                            "name": "MID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Entities created within an Institution Valid Values:Numeric Format: XXXXXXXXXX Example:549847634",
+                            "children": []
+                        },
+                        {
+                            "name": "AddressLine1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Debtor Address Line 1 Valid Values:A-Z,0-9 Example:123 HWY Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CreditLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Credit line applicable of account Valid Values:0-9 Format:$XX.XX Example:$100.00",
+                            "children": []
+                        },
+                        {
+                            "name": "ApplicationDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when the Application was Submitted Valid Values:0-9 Format:MM/DD/YYY Example:02/01/2020",
+                            "children": []
+                        },
+                        {
+                            "name": "MobilePhoneNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Mobile Phone Number Valid Values:0-9 Format: XXXXXXXXXX Example: 1987567757 Allowable Values: 15",
+                            "children": []
+                        },
+                        {
+                            "name": "DateOfBirth",
+                            "type": "DateTime",
+                            "required": null,
+                            "description": "Card Holder's Date of Birth Valid Values:0-9 Format: MM/dd/yyyy Example: 02/01/2020",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountOpenDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when account was opened Valid Values:0-9 Format:mm/dd/yyyy Example:01/02/2020 Condition: Valid date",
+                            "children": []
+                        },
+                        {
+                            "name": "BlockedPosting",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Based on the higher priority status of the account if posting is allowed or not Valid Values:0 – No   1 - Yes Format:X Example: 0 – No – Posting is allowed 1 – Yes - Posting is not allowed",
+                            "children": []
+                        },
+                        {
+                            "name": "CoApplicantFirstName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Co- Applicant’s First Name Valid Values:A-Z,0-9 Format:XXXXX Example:User1 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "CoApplicantLastName",
+                            "type": "string",
+                            "required": null,
+                            "description": "This tag reflects the co-applicant Last Name Valid Values:a-z Format:xxx Example:Tower Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "ApplicationID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "This tag reflects the ApplicationID Valid Values:0-9 Format:XXXXXXXXXX Example:1234569875",
+                            "children": []
+                        },
+                        {
+                            "name": "GenNewCardsTape",
+                            "type": "string",
+                            "required": null,
+                            "description": "Generate New Cards Tape",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "6000000200000013",
+        "AdminNumber": null,
+        "CompanyNumber": null,
+        "ApplicationNumber": null,
+        "SearchByCoApplicant": null,
+        "CorporateAccountNumber": null,
+        "CardNumberLast4Digits": "4959",
+        "MerchantNumber": null,
+        "MerchantNumberlist": null,
+        "FirstName": null,
+        "LastName": null,
+        "EmailID": null,
+        "DateOfBirth": null,
+        "WorkPhoneNumber": null,
+        "MobilePhoneNumber": null,
+        "HomePhoneNumber": null,
+        "SSNLast4Digits": null,
+        "TransactionID": null,
+        "SecondaryIDNumber": null,
+        "CustomerID": null,
+        "CompanyName": null,
+        "InvoiceNumber": null,
+        "CustomerType": null,
+        "AccountType": null,
+        "PostalCode": null,
+        "AddressLine1": null,
+        "AddressLine2": null,
+        "City": null,
+        "State": null,
+        "Country": null,
+        "ClientID": null,
+        "ProductID": null,
+        "StoreID": null,
+        "BatchSize": 100,
+        "PageIndex": null,
+        "ReferenceID": null,
+        "SearchByCosigner": null,
+        "AccountLevelUF1Title": null,
+        "AccountLevelUF1Value": null,
+        "AccountLevelUF2Title": null,
+        "AccountLevelUF2Value": null,
+        "AccountLevelUF3Title": null,
+        "AccountLevelUF3Value": null,
+        "AccountLevelUF4Title": null,
+        "AccountLevelUF4Value": null,
+        "AccountLevelUF5Title": null,
+        "AccountLevelUF5Value": null,
+        "AccountLevelUF6Title": null,
+        "AccountLevelUF6Value": null,
+        "AccountLevelUF7Title": null,
+        "AccountLevelUF7Value": null,
+        "AccountLevelUF8Title": null,
+        "AccountLevelUF8Value": null,
+        "AccountLevelUF9Title": null,
+        "AccountLevelUF9Value": null,
+        "AccountLevelUF10Title": null,
+        "AccountLevelUF10Value": null,
+        "AccountLevelUF11Title": null,
+        "AccountLevelUF11Value": null,
+        "AccountLevelUF12Title": null,
+        "AccountLevelUF12Value": null,
+        "AccountLevelUF13Title": null,
+        "AccountLevelUF13Value": null,
+        "AccountLevelUF14Title": null,
+        "AccountLevelUF14Value": null,
+        "AccountLevelUF15Title": null,
+        "AccountLevelUF15Value": null,
+        "AccountLevelUF16Title": null,
+        "AccountLevelUF16Value": null,
+        "AccountLevelUF17Title": null,
+        "AccountLevelUF17Value": null,
+        "AccountLevelUF18Title": null,
+        "AccountLevelUF18Value": null,
+        "AccountLevelUF19Title": null,
+        "AccountLevelUF19Value": null,
+        "AccountLevelUF20Title": null,
+        "AccountLevelUF20Value": null,
+        "AccountLevelUF21Title": null,
+        "AccountLevelUF21Value": null,
+        "AccountLevelUF22Title": null,
+        "AccountLevelUF22Value": null,
+        "AccountLevelUF23Title": null,
+        "AccountLevelUF23Value": null,
+        "AccountLevelUF24Title": null,
+        "AccountLevelUF24Value": null,
+        "AccountLevelUF25Title": null,
+        "AccountLevelUF25Value": null,
+        "CardLevelUF1Title": null,
+        "CardLevelUF1Value": null,
+        "CardLevelUF2Title": null,
+        "CardLevelUF2Value": null,
+        "CardLevelUF3Title": null,
+        "CardLevelUF3Value": null,
+        "CardLevelUF4Title": null,
+        "CardLevelUF4Value": null,
+        "CardLevelUF5Title": null,
+        "CardLevelUF5Value": null,
+        "CardLevelUF6Title": null,
+        "CardLevelUF6Value": null,
+        "CardLevelUF7Title": null,
+        "CardLevelUF7Value": null,
+        "CardLevelUF8Title": null,
+        "CardLevelUF8Value": null,
+        "CardLevelUF9Title": null,
+        "CardLevelUF9Value": null,
+        "CardLevelUF10Title": null,
+        "CardLevelUF10Value": null
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "SearchResult": [
+                {
+                    "AccountID": 167413,
+                    "ClientName": "ABC_Bank_CAD",
+                    "ProductName": "Avidia Bank_CAD",
+                    "CustomerID": "167252",
+                    "AccountNumber": "6000000200000013",
+                    "FirstName": null,
+                    "LastName": null,
+                    "AccountManualStatus": "Active",
+                    "CurrentBalance": 0.0,
+                    "CompanyName": "Ch1",
+                    "CompanyNumber": "0000111",
+                    "CorporateAccountNumber": "2113456325678121",
+                    "AccountGeneratedStatus": "Active",
+                    "PrimaryCurrencyCode": "124",
+                    "ApplicationNumber": 0,
+                    "IsCoApplicant": "No",
+                    "OpenToBuy": "10000.0000",
+                    "CosignerFirstName": null,
+                    "CosignerLastName": null,
+                    "MerchantName": "XYZ_CAD",
+                    "MID": "31",
+                    "AddressLine1": "Address1",
+                    "CreditLimit": 10000.0,
+                    "ApplicationDate": null,
+                    "MobilePhoneNumber": null,
+                    "DateOfBirth": null,
+                    "AccountOpenDate": "01/15/2017 00:00:00",
+                    "BlockedPosting": 0,
+                    "CoApplicantFirstName": null,
+                    "CoApplicantLastName": null,
+                    "ApplicationID": null,
+                    "GenNewCardsTape": null
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Account Details",
+        "category_id": "4",
+        "document_id": "33",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=33&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=4&regionId=1"
+    }
+}

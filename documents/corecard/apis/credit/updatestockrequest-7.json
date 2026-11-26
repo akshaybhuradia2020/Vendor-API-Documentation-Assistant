@@ -1,0 +1,272 @@
+{
+    "metadata": {
+        "name": "UpdateStockRequest",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountHolders/UpdateStockRequest",
+        "description": "This API is used to update the request parameters of an existing stock request."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "OrderID",
+            "type": "integer",
+            "required": null,
+            "description": "Order ID of the Bulk card order. Valid Values:0-9 Example: 12345 Condition:Either of one identifier is mandatory from:OrderID, BulkCardUUID"
+        },
+        {
+            "name": "BulkCardUUID",
+            "type": "string",
+            "required": null,
+            "description": "Unique number Bulk card order Valid Values:0-9 Example: 12345 Condition:Either of one identifier is mandatory from:OrderID, BulkCardUUID Allowable Values: 64"
+        },
+        {
+            "name": "ShippingAddressLine1",
+            "type": "string",
+            "required": false,
+            "description": "Shipping address line 1. Valid Values:A-Z, 0-9 Example:2354 Main road Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "ShippingAddressLine2",
+            "type": "string",
+            "required": false,
+            "description": "Shipping address line 2 Valid Values: A-Z, 0-9 Example:xyz Avenue Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "ShippingCity",
+            "type": "string",
+            "required": false,
+            "description": "Shipping address city name. Example:Los Angeles Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 25"
+        },
+        {
+            "name": "ShippingPostalCode",
+            "type": "string",
+            "required": false,
+            "description": "Zip code of the shipping address. Valid Values:0-9 Format:XXXXX Example:46206 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 9"
+        },
+        {
+            "name": "ShippingCountry",
+            "type": "string",
+            "required": false,
+            "description": "Shipping address Country name. Example:US Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "ShippingState",
+            "type": "string",
+            "required": false,
+            "description": "State of the shipping address. Format:XXXXX Example: AL Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 30"
+        },
+        {
+            "name": "Title",
+            "type": "string",
+            "required": false,
+            "description": "Title of Person to whom stock is shipped. Example:Mr Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 5"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": false,
+            "description": "First name of Person to whom stock is shipped. Example:User1 Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "MiddleName",
+            "type": "string",
+            "required": false,
+            "description": "Middle Name of Person to whom stock is shipped. Example: LEE Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": false,
+            "description": "Last name of Person to whom stock is shipped. Example: Smith Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "NameOnCard",
+            "type": "string",
+            "required": false,
+            "description": "Name to be printed on the card. Valid Values:A-Z, 0-9 Example:John J Condition:If not given then First Name + Last Name will be printed Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 50"
+        },
+        {
+            "name": "EmbossingLine4",
+            "type": "string",
+            "required": false,
+            "description": "Embossing line4. Condition: Please refer Appendix Section 5.50 (Vendor wise field length) for field length supported by embossing vendor. Allowable Values: 20"
+        },
+        {
+            "name": "HoldEmbossing",
+            "type": "integer",
+            "required": false,
+            "description": "Hold Embossing indicator Valid Values:1= YES, 0 = NO Format:  X Example: 1"
+        },
+        {
+            "name": "DeliveryMechanism",
+            "type": "integer",
+            "required": false,
+            "description": "Shipment delivery mechanism.By Default Setting must be for standard Delivery Valid Values: Standard = 0, Priority = 1, Overnight = 2 Example:0"
+        },
+        {
+            "name": "NumberOFCard",
+            "type": "integer",
+            "required": false,
+            "description": "Embossing quantity for request made. Valid Values:0-9 Example:10"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ResponseID",
+                    "type": "string",
+                    "required": null,
+                    "description": "This number indicates that API responded. Response ID is unique.",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.0",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "OrderID": 4015,
+        "BulkCardUUID": null,
+        "ShippingAddressLine1": null,
+        "ShippingAddressLine2": null,
+        "ShippingCity": null,
+        "ShippingPostalCode": null,
+        "ShippingCountry": null,
+        "ShippingState": null,
+        "Title": null,
+        "FirstName": "John",
+        "MiddleName": null,
+        "LastName": "Smith",
+        "NameOnCard": null,
+        "EmbossingLine4": null,
+        "HoldEmbossing": null,
+        "DeliveryMechanism": null,
+        "NumberOFCard": null
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "ResponseID": "108410544"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "New Cards",
+        "category_id": "1",
+        "document_id": "7",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=7&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1&regionId=1"
+    }
+}

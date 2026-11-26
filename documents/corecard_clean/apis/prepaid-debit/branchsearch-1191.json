@@ -1,0 +1,297 @@
+{
+    "metadata": {
+        "name": "BranchSearch",
+        "http_method": "POST",
+        "endpoint": "/api/BranchSearch",
+        "description": "Use this API to search a branch using fields like Branch Name, Branch Code, Branch Location and Branch Status."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "Int32",
+            "required": true,
+            "description": "Institution ID of product. Valid Values:0-9 Example : 1230 Allowable Values: 4"
+        },
+        {
+            "name": "BranchName",
+            "type": "string",
+            "required": false,
+            "description": "Branch name Valid values:- A-Z, a-z, 0-9 Example : Georgia Branch Allowable Values: 100"
+        },
+        {
+            "name": "BranchCode",
+            "type": "string",
+            "required": false,
+            "description": "Code assigned to branch from where the card was issued. Valid Values:0-9, A-Z Example:C1006 Allowable Values: 20"
+        },
+        {
+            "name": "BranchStatus",
+            "type": "string",
+            "required": false,
+            "description": "whether the branch is Open or close Valid value 1 to 5 1 - Opened 2 - InActive 3 - Deleted 4 - Closed 5 - Moved Example : 1 Allowable Values: 2"
+        },
+        {
+            "name": "BranchLocation",
+            "type": "string",
+            "required": false,
+            "description": "Location of the branch. Valid values : A-Z, a-z Example: Houston Allowable Values: 100"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "BranchSearchRecords",
+                    "type": "array",
+                    "required": null,
+                    "description": "",
+                    "children": [
+                        {
+                            "name": "BranchID",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Branch ID Valid values: 0-9 Example: 1001",
+                            "children": []
+                        },
+                        {
+                            "name": "BranchName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Branch name Valid values:- A-Z, a-z, 0-9 Example : Georgia Branch",
+                            "children": []
+                        },
+                        {
+                            "name": "BranchCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Code assigned to branch from where the card was issued. Valid Values:0-9, A-Z Example:C1006",
+                            "children": []
+                        },
+                        {
+                            "name": "ParentBranchID",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Parent branch ID Valid values - 0-9 Example: 5727",
+                            "children": []
+                        },
+                        {
+                            "name": "ParentBranchName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Parent branch name Valid Values - a-z Example: CC Parent Branch Name",
+                            "children": []
+                        },
+                        {
+                            "name": "ParentBranchCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Code of the parent branch. Valid values :A-Z, a-z, 0-9 Example: 0895",
+                            "children": []
+                        },
+                        {
+                            "name": "BranchStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "whether the branch is Open or close Valid value 1 to 5 1 - Opened 2 - InActive 3 - Deleted 4 - Closed 5 - Moved Example : 1",
+                            "children": []
+                        },
+                        {
+                            "name": "BranchStatusDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of a branch Valid values : Opened InActive Deleted Closed Moved Example: Opened",
+                            "children": []
+                        },
+                        {
+                            "name": "BranchLocation",
+                            "type": "string",
+                            "required": null,
+                            "description": "Location of the branch. Valid values : A-Z, a-z Example: Houston",
+                            "children": []
+                        },
+                        {
+                            "name": "AddressLine1",
+                            "type": "string",
+                            "required": null,
+                            "description": "Address Line 1 of the Branch Valid values : A-Z, a-z, 0-9 Example: 15 Penang Street Point",
+                            "children": []
+                        },
+                        {
+                            "name": "AddressLine2",
+                            "type": "string",
+                            "required": null,
+                            "description": "Address Line 2 of the Branch Valid values: A-Z, a-z, 0-9 Example: 1 mecca way",
+                            "children": []
+                        },
+                        {
+                            "name": "StateorProvince",
+                            "type": "string",
+                            "required": null,
+                            "description": "State or the province code of the branch Example: TX Note: This should be lute code for Example Texas will be TX",
+                            "children": []
+                        },
+                        {
+                            "name": "City",
+                            "type": "string",
+                            "required": null,
+                            "description": "City of Branch Valid values: A-Z, a-z, 0-9 Example: Norcross",
+                            "children": []
+                        },
+                        {
+                            "name": "Country",
+                            "type": "string",
+                            "required": null,
+                            "description": "Two Character Country Code Valid values :A-Z, a-z Example: US Refer Appendix section : Country Code Values",
+                            "children": []
+                        },
+                        {
+                            "name": "PostalCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Postal Code of Branch Valid Values:A-Z,a-z,0-9 Example: 30093",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "InstitutionID": 1230,
+        "BranchName": "Convenient Card Top branch",
+        "BranchCode": "CC10000",
+        "BranchStatus": "1",
+        "BranchLocation": ""
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "BranchSearchRecords": [
+                {
+                    "BranchID": 5737,
+                    "BranchName": "Convenient Card Top branch",
+                    "BranchCode": "CC10000",
+                    "ParentBranchName": "Convenient Card Top branch(CC10000)",
+                    "ParentBranchCode": "CC10000",
+                    "BranchStatus": "1",
+                    "BranchStatusDescription": "Opened",
+                    "BranchLocation": "CC10000",
+                    "AddressLine1": "Addrress1",
+                    "AddressLine2": "Addrress2",
+                    "StateorProvince": "NY",
+                    "City": "New York City",
+                    "Country": "US",
+                    "PostalCode": "12345"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Branch",
+        "category_id": "1040",
+        "document_id": "1191",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1191&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1040&regionId=1"
+    }
+}

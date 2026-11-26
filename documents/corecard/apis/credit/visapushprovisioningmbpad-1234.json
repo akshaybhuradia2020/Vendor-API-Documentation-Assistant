@@ -1,0 +1,170 @@
+{
+    "metadata": {
+        "name": "VISAPUSHProvisioningMBPAD",
+        "http_method": "POST",
+        "endpoint": "/api/VISAPUSHProvisioningMBPAD",
+        "description": "Use this API to generate encrypted payload for Push provisioning of a Visa Card Authentication data  in the Payment APP(Apple pay)."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition : At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition : At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "expiry",
+            "type": "string",
+            "required": true,
+            "description": "Expiration Date of the card. Valid Values: 0-9 DateFormat : MMYY Example : 0925 Allowable Values: 4"
+        },
+        {
+            "name": "datetime",
+            "type": "string",
+            "required": true,
+            "description": "Date and Time in GMT when issuer constructs the Provisioning Authentication Data. Format:yyyymmddhhmmss Example:20191204224500 Allowable Values: 16"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "AuthenticationData",
+                    "type": "string",
+                    "required": null,
+                    "description": "Authentication data formatted in below format. type-version-keyscheme-keysetidentifier-ephemeralkey-algorithm-encryptedinformation. E.g. MBPAD-1-FK-123456.1-TDEA-7AF291C91F3ED4EF92C1D45EFF127C1F9ABC12347E",
+                    "children": []
+                },
+                {
+                    "name": "ProxyNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "",
+        "ProxyNumber": "1319647",
+        "expiry": "0220",
+        "datetime": "20191204224500"
+    },
+    "sample_response": {
+        "Message": "Encrypted payload generated successfully.",
+        "Status": true,
+        "ErrorCode": "90057",
+        "ResponseData": {
+            "AuthenticationData": "TUJQQUQtMS1GSy00MDY2ODMuMS0tVERFQS03NTI4MjI0OTEzOEQ2ODMwNUFBNTk3QUJCMkU3OEZENENFOTQ4RkY1MkY1RjNEQUY0MjY4ODM3NTY3N0M0QjgxRjBCQTkxRUY2NEY4NTJDMDUzQ0I0NzcyMzcyRTc4MDlGMUZBODRGMTk0QzA5NDNCODQ2NzIwRTlDRDA5MTY3MUFBNTQ3NUZERTdGMEE1NUQ=",
+            "ProxyNumber": "1319647"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Push Provisioning",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1234&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1042"
+    }
+}

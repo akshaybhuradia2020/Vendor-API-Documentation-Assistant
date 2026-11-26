@@ -1,0 +1,306 @@
+{
+    "metadata": {
+        "name": "MasterCardPushProvisioning",
+        "http_method": "POST",
+        "endpoint": "/api/MasterCardPushProvisioning",
+        "description": "Use this API to generate encrypted payload for Push provisioning of a Mastercard Card details in the Payment APP(Google pay, Apple pay etc.)."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition : At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition : At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "AccountExpiry",
+            "type": "string",
+            "required": true,
+            "description": "Expiration Date of the Card. Valid Values: 0-9 DateFormat : MMYY Example : 0925 Allowable Values: 4"
+        },
+        {
+            "name": "WalletApplication",
+            "type": "string",
+            "required": true,
+            "description": "Type of Wallet Valid Values: 01=Google 02=Samsung 03=Apple Example:01 Allowable Values: 2"
+        },
+        {
+            "name": "TavVersionNumber",
+            "type": "string",
+            "required": true,
+            "description": "Token Authentication Value Format Valid Value : 3 Allowable Values: 1"
+        },
+        {
+            "name": "DataValidUntilTimestamp",
+            "type": "string",
+            "required": true,
+            "description": "ISO 8601 format of the date and time (with Time Zone) the TAV expires and will no longer be honored Allowable Values: 29"
+        },
+        {
+            "name": "FinancialAccountInformation",
+            "type": "string",
+            "required": false,
+            "description": "Financial account being tokenized Allowable Values: 64"
+        },
+        {
+            "name": "TokenUniqueReference",
+            "type": "string",
+            "required": false,
+            "description": "Token Unique Reference associated with the token. Allowable Values: 64"
+        },
+        {
+            "name": "PANUniqueReference",
+            "type": "string",
+            "required": false,
+            "description": "PAN Unique Reference associated with the token. Allowable Values: 64"
+        },
+        {
+            "name": "CardholderName",
+            "type": "string",
+            "required": false,
+            "description": "Full Name of Cardholder. Format: lastname/firstname or firstname lastname. Example: Jacob B Jonas Allowable Values: 27"
+        },
+        {
+            "name": "BillingAddress",
+            "type": "",
+            "required": false,
+            "description": "BillingAddress"
+        },
+        {
+            "name": "Line1",
+            "type": "string",
+            "required": false,
+            "description": "Address Line 1 for billing address Valid values: A-Z, a-z, 0-9 Example: 1 Meca Way Allowable Values: 50"
+        },
+        {
+            "name": "Line2",
+            "type": "string",
+            "required": false,
+            "description": "Address Line 2 for billing address Valid values: A-Z, a-z, 0-9 Example:15 Penang Street Point Allowable Values: 50"
+        },
+        {
+            "name": "City",
+            "type": "string",
+            "required": false,
+            "description": "City for billing  address Valid values: A-Z, a-z, 0-9 Example: Norcross Allowable Values: 25"
+        },
+        {
+            "name": "CountrySubdivision",
+            "type": "string",
+            "required": false,
+            "description": "Country subdivision of billing address Allowable Values: 12"
+        },
+        {
+            "name": "PostalCode",
+            "type": "string",
+            "required": false,
+            "description": "Cardholder Postal Code of billing address Valid Values:A-Z,a-z,0-9 Example: 30093 Allowable Values: 9"
+        },
+        {
+            "name": "Country",
+            "type": "string",
+            "required": false,
+            "description": "Country of billing address . Valid values :Valid values :A-Z, a-z Example: USA Allowable Values: 3"
+        },
+        {
+            "name": "Nonce",
+            "type": "string",
+            "required": null,
+            "description": "This tag should containg the nonce value received from Apple wallet Allowable Values: 4000"
+        },
+        {
+            "name": "NonceSignature",
+            "type": "string",
+            "required": null,
+            "description": "This tag should containg the nonce signature received from Apple wallet Allowable Values: 4000"
+        },
+        {
+            "name": "LeafCertificate",
+            "type": "string",
+            "required": null,
+            "description": "This tag should containg the certificate received from Apple wallet Allowable Values: 4000"
+        },
+        {
+            "name": "RequiredApplePaySpecificEncryption",
+            "type": "Int32",
+            "required": false,
+            "description": "RequiredApplePaySpecificEncryption valid value : 1/0 if WalletApplication =03 Allowable Values: 1"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "ProxyNumber",
+                    "type": "string",
+                    "required": null,
+                    "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005",
+                    "children": []
+                },
+                {
+                    "name": "CardInfo",
+                    "type": "string",
+                    "required": null,
+                    "description": "Mandatory for WalletApplication =01 and 02. For walletapplication =03 Card info will not be delivered.",
+                    "children": []
+                },
+                {
+                    "name": "TAV",
+                    "type": "string",
+                    "required": null,
+                    "description": "Digital signature calculated over a concatenated string of the included field values separated by a | delimiter, in the same order as specified in the IncludedFieldsInOrder field.",
+                    "children": []
+                },
+                {
+                    "name": "EphemeralPublicKey",
+                    "type": "string",
+                    "required": null,
+                    "description": "EphemeralPublicKey value generated by Corecard.",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "4066846120001101",
+        "ProxyNumber": "1310358",
+        "AccountExpiry": "0122",
+        "WalletApplication": "02",
+        "TavVersionNumber": "3",
+        "DataValidUntilTimestamp": "2025-05-19T11:05:45-04:00",
+        "FinancialAccountInformation": "ACC123456789JL",
+        "TokenUniqueReference": "DWSP1234567890",
+        "PANUniqueReference": "PLSP1234567890",
+        "Nonce": "c5846fb5",
+        "NonceSignature": "4061d9d63ed34825f285d953274a6c5e06ebe011bf91d79660e1f7c6f6d21427abb3a62e6352e430abff987f6ec37e5dff9f3dbe40275156d03eeb594ab191d2792f37ef13ac528a65f56165c1d753463f",
+        "LeafCertificate": "MIIEEjCCA7igAwIBAgIIEccnFAKsD+UwCgYIKoZIzj0EAwIwgYExOzA5BgNVBAMMMlRlc3QgQXBwbGUgV29ybGR3aWRlIERldmV\r\n                                 sb3BlcnMgUmVsYXRpb25zIENBIC0gRUNDMSAwHgYDVQQLDBdDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTETMBEGA1UECgwKQXBwbGUgSW5jLjELMAkGA1UEBhMCVVMwHhcNMTkwODA3MjA1NzA5WhcNMjEwNzEzMDI1ODAwWjBtMTYwNAYDVQQDDC1lY2MtY3J5cHRvLXNlcnZpY2VzLWVuY2lwaGVybWVudF9VQzYtSW5NZ\r\n                                 W1vcnkxETAPBgNVBAsMCEFwcGxlUGF5MRMwEQYDVQQKDApBcHBsZSBJbmMuMQswCQYDVQQGEwJVUzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABC4 +\r\n                                 XM9rmrBL56IvP6zP3nPIfocVU5SjSBVAiolsoYo3TaxmmvO/YiD8hjdn9K9HUHxbwiH8ShmHTa85tAdOPrijggIrMIICJzAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaA\r\n                                 FNbW1Vrl//3CfDTDQ969aHZcNqm+ME8GCCsGAQUFBwEBBEMwQTA/BggrBgEFBQcwAYYzaHR0cDovL29jc3AtdWF0LmNvcnAuYXBwbGUuY29tL29jc3AwNC10ZX\r\n                                 N0d3dkcmNhZWNjMIIBHQYDVR0gBIIBFDCCARAwggEMBgkqhkiG92NkBQEwgf4wgcMGCCsGAQUFBwICMIG2DIGzUmVsaWFuY2Ugb24gdGhpcyBjZXJ0aWZpY2F0\r\n                                 ZSBieSBhbnkgcGFydHkgYXNzdW1lcyBhY2NlcHRhbmNlIG9mIHRoZSB0aGVuIGFwcGxpY2FibGUgc3RhbmRhcmQgdGVybXMgYW5kIGNvbmRpdGlvbnMgb2YgdXNlL\r\n                                 CBjZXJ0aWZpY2F0ZSBwb2xpY3kgYW5kIGNlcnRpZmljYXRpb24gcHJhY3RpY2Ugc3RhdGVtZW50cy4wNgYIKwYBBQUHAgEWKmh0dHA6Ly93d3cuYXBwbGUuY29tL2\r\n                                 NlcnRpZmljYXRlYXV0aG9yaXR5LzBBBgNVHR8EOjA4MDagNKAyhjBodHRwOi8vY3JsLXVhdC5jb3JwLmFwcGxlLmNvbS9hcHBsZXd3ZHJjYWVjYy5jcmwwHQYDVR0O\r\n                                 BBYEFK0uo8t+NMLt7kNoTicRH8xJMznQMA4GA1UdDwEB/wQEAwIDKDASBgkqhkiG92NkBicBAf8EAgUAMAoGCCqGSM49BAMCA0gAMEUCIQCKEXnIsY2PZqMF2\r\n                                 xHKehKgp/ZywZ/9/TZ+AnpOA6mI/AIgTI94NSaIn7DLd47QTK760WILDOr0EdOHiExJMZwYp7c=",
+        "RequiredApplePaySpecificEncryption": 1,
+        "CardholderName": "",
+        "BillingAddress": {
+            "Line1": "Link road",
+            "Line2": "abc",
+            "City": "Chicago",
+            "CountrySubdivision": "",
+            "PostalCode": "12452",
+            "Country": "USA"
+        }
+    },
+    "sample_response": {
+        "Message": "Push Provisioning data generated successfully",
+        "Status": true,
+        "ErrorCode": "70202",
+        "ResponseData": {
+            "ProxyNumber": "1310358",
+            "CardInfo": "eyJwYW5VbmlxdWVSZWZlcmVuY2UiOm51bGwsInRva2VuVW5pcXVlUmVmZXJlbmNlRm9yUGFuSW5mbyI6IkRXU1AxMjM0NTY3ODkwIiwicHVibGljS2V5RmluZ2VycHJpbnQiOiI0QzRFQUQ1OTI3RjBERjgxMTdGMTc4RUVBOTMwOERBQTU4RTI3QzJCIiwiZW5jcnlwdGVkS2V5IjoiQUQ2MUIyODg4RTY1RDE3QzYwQjg5NjREMEEzMENDQkYwMDJEMDgzN0U4RjNBNzRGNjgxRURBMEI1NDQ5NjA4M0U1Q0Q5MjA5QTkwOEI0NjJEREI2MTVEODI1MjI4REQyQjBBMjhBRUFDRjQ0OUUwRDJGRkI1MzczNUZEMUUyQTlCQTc4RDAwNzk5NTZGN0IyMjQ0M0YzRTcwOUNDNTNENzBEOEJCODNFMzM3ODgyMjZGRjY5ODU2NTk4OEZERTM4MzBCQUE1MjczMzRGM0ZBREI1RUI2NDkyQThEOEMwODgzNzkwNzdENEJGMUZGNzk5Rjc5RUQ0RjkzRjA0NTczRDU1RjQ5OEEwNUUwNTFFOTI1QjFGNDJGM0RGMjkxRTQ2N0Y5OUY4NTAyQTFDMEIzRUUxRTBGNkZBODA0QzI1MjY1QzU2ODg4RDE5ODFCOTA3RjIwMDg5OEU2Nzc5NzREMTlENUIwMjlGODgzRTM4RDQyNzc5QjZBNjRFMzIzMjIzODU2OTA3OTExQTIzMzE0NzZDNjA3NzU5NTVEODQyMjY4RDU0NDRBM0VGMEY0M0MxMTIxRkJDQjBGRTZCRjVDQjk4NDg0QkFGRDk5Nzg0ODJENEI0NjI4Rjc5NEYzMEFBNjM1NTBCRUJERUE0MjY3NEIzQzc1NDZFMERCQzg3REMiLCJvYWVwSGFzaGluZ0FsZ29yaXRobSI6IlNIQTI1NiIsIml2IjoiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLCJlbmNyeXB0ZWREYXRhIjoiQUEzQTM4NEMyOUY4RTc1NTQ1NjVBRUFDN0RCRDBBOTMwMjU2Nzc2RUZBQ0JBMzIwREMzODYxOTM1NEU3QjM4NzlBQjI0QUE5MzcwRDExM0Y3OTBFQkI3RDc1MDU2OTI0MEFEQzEyODhCRkI0NDk1QzRFQThBRjE1N0NEQzJGMkVEMzQyODBCQjlERjU0MDFFQTg0MDhEOEVDMjhCMTNFQUEzNTI5OTM5OEIzRkZBODhEN0FBNEEzOUQ4MDM2MTAwQzg4Nzg4MjhFQUMxQTI2MkM3RkE4NUM0NzUyMDczNjI0MkQ5MTNCNEIxODM3OEJBODUxRTQ5MkQyQTRDRjkzRCJ9",
+            "TAV": "eyJ2ZXJzaW9uIjoiMyIsInNpZ25hdHVyZUFsZ29yaXRobSI6IlJTQS1TSEEyNTYiLCJkYXRhVmFsaWRVbnRpbFRpbWVzdGFtcCI6IjIwMTctMDEtMTlUMjA6MzU6NDUrMDU6MzAiLCJpbmNsdWRlZEZpZWxkc0luT3JkZXIiOiJkYXRhVmFsaWRVbnRpbFRpbWVzdGFtcHx0b2tlblVuaXF1ZVJlZmVyZW5jZSIsInNpZ25hdHVyZSI6IkdIdzduU1Q3RzhTY3RuSkcrZDNwTnRFM0FiR3diSnpIa2NsOWU4UlJIcTlndEltb2JNNy95VENtMHk2NkdwbTdPczVmMnZiWERGamN0bEs3aWQrZ2tZU1hGeEhyR1dpVWlmL0JhL0N6UmY1Ym5pWFloanNyMHFEL0l5NVliUEFOQWhVbGlKSUhqcnUwZVlpWEk0T2JBeVpOeUJWMTROR0d4TkJFTDJkL3Rmamw4aGRZMnB3Q1NzWVZ5NnY0Z0pDT2xxd3Z5c2Y5cHhaQkdUTGUvS0lMNkRJSThUQmRLWEx1MTlaSFQvNWMvSjVFQWxPUnUwbDBpSGJpdnNxY2NhcFY4bVI3ZytINUNuQXpzSis5cTBTWmlCejdZRXFyWFhQWnJBMEZvbmRLdXppT0pxQVNRVGdRVE12OVVmVkxxQ0JzdE1SVHhJUDE1NmFMZGFZZ2RUQVRFUT09In0=",
+            "EphemeralPublicKey": "042E3E5CCF6B9AB04BE7A22F3FACCFDE73C87E87155394A34815408A896CA18A374DAC669AF3BF6220FC863767F4AF47507C5BC221FC4A19874DAF39B4074E3EB8"
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Push Provisioning",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1220&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1042"
+    }
+}

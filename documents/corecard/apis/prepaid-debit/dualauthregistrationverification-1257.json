@@ -1,0 +1,227 @@
+{
+    "metadata": {
+        "name": "DualAuthRegistrationVerification",
+        "http_method": "POST",
+        "endpoint": "/api/DualAuthRegistrationVerification",
+        "description": "Use this API to register your card for Dual Authentication."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition: At least one of Card Number/Proxy Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition: At least one of Card Number/Proxy Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "DualAuthFlag",
+            "type": "string",
+            "required": true,
+            "description": "Decision flag to decides whether Register/Validate/Enroll for Dual Authentication. Valid Values: 1 = Register the Dual Authentication paramters. 2 = Validate the Dual Authentication parameters. 3 = Enroll for Dual Authentication. Example: 1"
+        },
+        {
+            "name": "DateOfBirth",
+            "type": "string",
+            "required": null,
+            "description": "Date of Birth of cardholder Format: MM/DD/YYYY Valid Values: 0-9 Example:- 03/26/1986 Condition : If DOB is already present  and set as one of the authenticationparameter ,then  to be entered  mandatorily. If DOB is not present and set as one of the authentication parameters, then needs to be registered mandatorily."
+        },
+        {
+            "name": "SSNLast4Digits",
+            "type": "string",
+            "required": null,
+            "description": "Last 4 digits of Social Security Number of a Cardholder Valid values :0-9 Example: 6789 Condition : If SSN is already present  and set as one of the authenticationparameter ,then  to be entered  mandatorily. If SSN is not present and set as one of the authentication parameters, then needs to be registered mandatorily. Allowable Values: 9"
+        },
+        {
+            "name": "CVCorCVV",
+            "type": "string",
+            "required": null,
+            "description": "Three digit printed on  the back of  the card . Valid Values - 0-9 Example: 213 Condition : mandatory to answer if set as one of the authentication parameters. Allowable Values: 3"
+        },
+        {
+            "name": "CurrentPIN",
+            "type": "string",
+            "required": null,
+            "description": "Four Digit Current PIN Valid Values: 0-9 Example: 1346 Condition : mandatory to answer if set as one of the authentication parameters. Allowable Values: 4"
+        },
+        {
+            "name": "ProfilePassword",
+            "type": "string",
+            "required": null,
+            "description": "Current profile password Valid Values: A-Z, a-z,0-9, Special characters. Example: Test123! Condition : mandatory to answer if set as one of the authentication parameters. Allowable Values: 15"
+        },
+        {
+            "name": "IsUserEnabledinDualAuth",
+            "type": "string",
+            "required": null,
+            "description": "whether user wants to enable Dual Authentication or not. Valid Values : 1 = Enable 0 = Disabled. Condition: TAG IsUserEnabledinDualAuth is mandatory only when tag DualAuthFlag = 3 and Product Field Force Opt In = No."
+        },
+        {
+            "name": "AuthenticationCode",
+            "type": "string",
+            "required": null,
+            "description": "Authentication code received by the cardholder. Condition : mandatory to answer if set as one of the authentication parameters. Allowable Values: 6"
+        },
+        {
+            "name": "Email",
+            "type": "string",
+            "required": null,
+            "description": "E Mail Address of Cardholder Valid Values: A-Z, a-z, 0-9 @ . Example: [email protected] Condition : mandatory to answer if set as one of the authentication parameters."
+        },
+        {
+            "name": "MobileNumber",
+            "type": "string",
+            "required": null,
+            "description": "Cardholder's Mobile Phone Number Valid Values: 0-9 Example: 9876543210 Condition : Mandatory when mobile number set as one of the dual authentication parameter."
+        },
+        {
+            "name": "UniqueID",
+            "type": "string",
+            "required": false,
+            "description": "Unique ID of Authentication Code"
+        },
+        {
+            "name": "SocialSecurityNumber",
+            "type": "string",
+            "required": false,
+            "description": "Social Security Number of Cardholder Valid Values:0-9 Example:123456789 Allowable Values: 9"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": []
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "123456******0026",
+        "ProxyNumber": "1316315",
+        "DualAuthFlag": "1",
+        "DateOfBirth": "01/01/1990",
+        "SSNLast4Digits": "1234",
+        "CVCorCVV": "234",
+        "CurrentPIN": "1234",
+        "ProfilePassword": "A@1234",
+        "IsUserEnabledinDualAuth": "1",
+        "AuthenticationCode": "1",
+        "Email": "[email protected]",
+        "MobileNumber": "1234567891",
+        "UniqueID": "10",
+        "SocialSecurityNumber": "154696523"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {}
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1045",
+        "document_id": "1257",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1257&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1045&regionId=1"
+    }
+}

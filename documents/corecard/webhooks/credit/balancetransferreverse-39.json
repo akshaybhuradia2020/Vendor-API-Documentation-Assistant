@@ -1,0 +1,285 @@
+{
+    "metadata": {
+        "name": "BalanceTransferReverse",
+        "http_method": "POST",
+        "endpoint": "/api/WebHookNotification/AlertNotification/BalanceTransferReverse",
+        "description": "This webhook is triggered when confirmed balance transfer transaction is reversed by cardholder."
+    },
+    "request_fields": [
+        {
+            "name": "InfoAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "Tab",
+            "type": "string",
+            "required": null,
+            "description": "Indicates tab in system under which this webhook is available\nValid Values:Status, Period, Monetary, Security and Cards Allowable Values: 40"
+        },
+        {
+            "name": "Category",
+            "type": "string",
+            "required": null,
+            "description": "Indicates category of alert triggered Allowable Values: 40"
+        },
+        {
+            "name": "SubCategory",
+            "type": "string",
+            "required": null,
+            "description": "Indicates subcategory of Category of alert triggered Allowable Values: 40"
+        },
+        {
+            "name": "FirstName",
+            "type": "string",
+            "required": null,
+            "description": "First name of Account holder Allowable Values: 50"
+        },
+        {
+            "name": "LastName",
+            "type": "string",
+            "required": null,
+            "description": "Last Name of Account holder Allowable Values: 50"
+        },
+        {
+            "name": "BTStatusCode",
+            "type": "string",
+            "required": null,
+            "description": "Status Code for BT process\nValid Values:0, null Allowable Values: 19"
+        },
+        {
+            "name": "PayeeAccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of Payee Account Allowable Values: 19"
+        },
+        {
+            "name": "PayeeAccountType",
+            "type": "string",
+            "required": null,
+            "description": "Account Type of Payee account Allowable Values: 10"
+        },
+        {
+            "name": "RequestedBalanceTransferAmount",
+            "type": "string",
+            "required": null,
+            "description": "Amount for which Balance Transfer is requested Allowable Values: 50"
+        },
+        {
+            "name": "BTStatusMessage",
+            "type": "string",
+            "required": null,
+            "description": "Status message for Balance Transfer Allowable Values: 100"
+        },
+        {
+            "name": "DateOfCancellation",
+            "type": "datetime",
+            "required": null,
+            "description": "Date when initiated Balance Transfer process is reversed or canceled\nFormat: dd/mm/yyyy hh:mm:ss:sss"
+        },
+        {
+            "name": "CurrentBalance",
+            "type": "decimal",
+            "required": null,
+            "description": "Current Balance of Account"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Card Holder Account Number\nValid Values: 0-9\nFormat: XXXXXXXXXXXXXXXX\nExample: 8000000000000037 Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "string",
+            "required": null,
+            "description": "Admin Number associated with the event\nValid Values:0-9\nFormat:XXXXX\nExample:12345"
+        },
+        {
+            "name": "RequestID",
+            "type": "string",
+            "required": null,
+            "description": "Primary Key for API\nFormat:XXXXXXXXXXXXXXXX\nExample:12345 Allowable Values: 19"
+        },
+        {
+            "name": "Mode",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the type of activity performed which triggered this webhook Allowable Values: 10"
+        },
+        {
+            "name": "AccountUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Universal Unique ID for Account\nFormat:XXXXXXXXXX\nExample:9894f28b-d051-4eaa-9e48-a3a7d5b4a6f7 Allowable Values: 64"
+        },
+        {
+            "name": "CardUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "Universal Unique ID for Admin\nFormat:XXXXXXXXXX\nExample:9894f28b-d051-4eaa-9e48-a3a7d5b4a6f7 Allowable Values: 64"
+        },
+        {
+            "name": "ClientID",
+            "type": "string",
+            "required": null,
+            "description": "Corecard's Client ID\nValid Values: 0-9\nFormat: XXXXX\nExample: 578455 Allowable Values: 64"
+        },
+        {
+            "name": "RequestUniversalUniqueID",
+            "type": "string",
+            "required": null,
+            "description": "UniversalUniqueID Request\nValid Values: 0-9 A-Z\nExample: 8638-b87b-48d0-8e13-0ebb5643577 Allowable Values: 64"
+        },
+        {
+            "name": "User",
+            "type": "string",
+            "required": null,
+            "description": "User ID of the user who triggered the webhook event. \nValid Values: CoreCredit user, API user, System Allowable Values: 40"
+        },
+        {
+            "name": "DateandTime",
+            "type": "DateTime",
+            "required": null,
+            "description": "Timestamp when notification was sent\nMM-DD-YYYY hh:mm:ss:sss \n(24-hour Format) \nException: For Auth Age Off alert the format of this tag is \"YYYY-MM-DD \nhh:mm:ss.SSS"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Indicates the source from where the activity was performed by user or triggered by system.\nValid Values: CoreCredit, External API, Self Service, CoreCollect, IVR, System, CoreIssue Allowable Values: 50"
+        },
+        {
+            "name": "ServiceName",
+            "type": "string",
+            "required": null,
+            "description": "Name of API service (webhook) triggered\nExample: svcName Allowable Values: 40"
+        },
+        {
+            "name": "AlertType",
+            "type": "string",
+            "required": null,
+            "description": "Indicates type of Alert\nValid Values:RealTime or Re Try (due to time-out) Allowable Values: 15"
+        },
+        {
+            "name": "TransactionSource",
+            "type": "string",
+            "required": null,
+            "description": "Transaction Source of transaction\nValid Values:IPM, Retail Manual Auth-Installment, Retail Manual Auth-Revolver etc. Allowable Values: 40"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by Corecard for Institution"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": null,
+            "description": "A unique identifier assigned by Corecard for Product"
+        },
+        {
+            "name": "AlertRecipientType",
+            "type": "integer",
+            "required": null,
+            "description": "Type of recipient to which alert needs to be sent\nValid Values:1=Primary Applicant,2=Cosigner,3=Applicant and Cosigner,4=Auth User,5=Applicant and Auth User"
+        },
+        {
+            "name": "UpdateCallList",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "MonetaryLog",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "RewardsRedemption",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "Reward",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "RewardInfo",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "InfoCollectionAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        },
+        {
+            "name": "InfoAgeOffAlert",
+            "type": "",
+            "required": null,
+            "description": "Group of fields passed in webhook"
+        }
+    ],
+    "response_fields": null,
+    "sample_request": {
+        "InfoAlert": {
+            "Tab": "Monetary",
+            "Category": "Balance Transfer",
+            "SubCategory": null,
+            "FirstName": "Johny",
+            "LastName": "Sanders",
+            "BTStatusCode": "00",
+            "PayeeAccountNumber": "XXXXXXXXXXXXXXXX",
+            "PayeeAccountType": "2",
+            "RequestedBalanceTransferAmount": "200.00",
+            "BTStatusMessage": "Balance Transfer Job Reversed",
+            "DateOfCancellation": "07/13/2021 11:00:02:02",
+            "CurrentBalance": 10045.95
+        },
+        "AccountNumber": "8110000000001234",
+        "AdminNumber": "121234",
+        "RequestID": "1980",
+        "Mode": "ALERT",
+        "AccountUniversalUniqueID": "95eb415c-a16f-463f-b561-6d0e0cf25942",
+        "CardUniversalUniqueID": "b23bd351-a3ec-460a-8b1c-13de4304b2fe",
+        "ClientId": null,
+        "RequestUniversalUniqueID": "27b8f907-e852-4a87-a799-f4a09336b556",
+        "MonetaryLog": null,
+        "UpdateCallList": null,
+        "RewardsRedemption": null,
+        "Reward": null,
+        "RewardInfo": null,
+        "InfoCollectionAlert": null,
+        "InfoAgeOffAlert": null,
+        "User": "System",
+        "DateandTime": "06/16/2021 10:03:56",
+        "Source": "System",
+        "ServiceName": null,
+        "AlertType": "RealTime",
+        "TransactionSource": null,
+        "InstitutionId": null,
+        "ProductId": null,
+        "AlertRecipientType": 1
+    },
+    "sample_response": null,
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "webhook",
+        "section": "webhooks/credit",
+        "category": "Alert Notification",
+        "category_id": "1",
+        "document_id": "39",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/WEBHookPageApiDetail?id=39&type=ApiDetail&menuid=1&regionId=1"
+    }
+}

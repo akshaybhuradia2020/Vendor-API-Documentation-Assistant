@@ -1,0 +1,314 @@
+{
+    "metadata": {
+        "name": "GetRewardSummary",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Rewards/GetRewardSummary",
+        "description": "The purpose of this API is to get the summary of rewards points which get  accumulated/expired/forfeited for the Account."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Example:8000000000000037 Condition:At least one of AdminNumber/AccountNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number  (Embossing Account id) Valid Values:0-9 Example:82432455 Condition:At least one of AdminNumber/AccountNumber is required."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "ListRewardsSummary",
+                    "type": "array",
+                    "required": null,
+                    "description": "ListRewardsSummary",
+                    "children": [
+                        {
+                            "name": "ListRewardYearWise",
+                            "type": "array",
+                            "required": null,
+                            "description": "Reward summary list year wise.",
+                            "children": [
+                                {
+                                    "name": "Year",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Year for reward details is listed. Valid Values:2020, 1990 Example: 0",
+                                    "children": []
+                                },
+                                {
+                                    "name": "LoyaltyPointsEarned",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Total loyalty points earned on the Account. Valid Values:0-9 Format: XXX.XX Example:250",
+                                    "children": []
+                                },
+                                {
+                                    "name": "LoyaltyAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "Amount equivalent to total points earned in the Year. Valid Values:  0-9 Format: $XX.XX Example: $20.00",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "LoyaltyProgramID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "ID of Loyalty Program. Valid Values:0-9 Example:2345( Value shared by Corecard).",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyProgramName",
+                            "type": "string",
+                            "required": null,
+                            "description": "Name of Loyalty Program. Example : Card Loyalty Program",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyAmountEarned",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount equivalent to reward points earned on the Account. Valid Values:0-9 Example:250.50",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyAmountRedeemed",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount equivalent to reward points which got redeemed. Valid Values:0-9 Example:250.50",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyPointsExpired",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total loyalty points which got expired as never redeemed. Valid Values:0-9 Example:90.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyPointsForfeited",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Total loyalty points which got deleted for the account(It may be happened due to bad status of Account). Valid Values:0-9 Example:90.00",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyPointsRecovered",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Loyalty Points which got recovered on the account. Valid Values:0-9 Example:50",
+                            "children": []
+                        },
+                        {
+                            "name": "LoyaltyPointsAbandoned",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Loyalty Points which expired and never redeemed. Valid Values:0-9 Example:50",
+                            "children": []
+                        },
+                        {
+                            "name": "PendingRedeemPoints",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Loyalty points which are parked to redeem but yet not redeemed. Valid Values:0-9 Example:50",
+                            "children": []
+                        },
+                        {
+                            "name": "ApprovedRedeemPoints",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Approved Reward points Redeemed in statement cycle. Valid Values:0-9 Example:50.00",
+                            "children": []
+                        },
+                        {
+                            "name": "BeginningLoyaltyBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Loyalty Amount Balance at start of the month. Valid Values:0-9 Example:250.20",
+                            "children": []
+                        },
+                        {
+                            "name": "RemainingLoyaltyBalance",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Remaining loyalty Amount which a customer can redeem. Valid Values:0-9 Example:250.20",
+                            "children": []
+                        },
+                        {
+                            "name": "MinimumDisbursment",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Disbursement Minimum Amount as applicable on Loyalty Program Valid Values:0-9 Example: 0.01",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "LoyaltyProgramCount",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Provide count of Loyalty Programs listed in the Array. Valid Values:  0-9 Format: XX Example:2",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountNumber": "700000000785214",
+        "AdminNumber": 100989
+    },
+    "sample_response": {
+        "Message": "Loyalty points processed successfully.",
+        "Status": true,
+        "ErrorCode": "ERR01022",
+        "ResponseData": {
+            "ListRewardsSummary": [
+                {
+                    "ListRewardYearWise": [
+                        {
+                            "Year": "2020",
+                            "LoyaltyPointsEarned": 250.0,
+                            "LoyaltyAmount": 100.0
+                        }
+                    ],
+                    "LoyaltyProgramID": 1,
+                    "LoyaltyProgramName": "Card Loyalty Program",
+                    "LoyaltyAmountEarned": 105.0,
+                    "LoyaltyAmountRedeemed": 20.0,
+                    "LoyaltyPointsExpired": 10.0,
+                    "LoyaltyPointsForfeited": 30.0,
+                    "LoyaltyPointsRecovered": 10.0,
+                    "LoyaltyPointsAbandoned": 15.0,
+                    "PendingRedeemPoints": 42.0,
+                    "ApprovedRedeemPoints": 20.0,
+                    "BeginningLoyaltyBalance": 100.0,
+                    "RemainingLoyaltyBalance": 102.0,
+                    "MinimumDisbursment": 0.01
+                }
+            ],
+            "LoyaltyProgramCount": 1
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Reward Summary",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=142&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=22"
+    }
+}

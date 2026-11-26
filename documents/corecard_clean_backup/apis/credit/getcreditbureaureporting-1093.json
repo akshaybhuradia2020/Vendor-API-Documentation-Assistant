@@ -1,0 +1,365 @@
+{
+    "metadata": {
+        "name": "GetCreditBureauReporting",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/AccountManagement/GetCreditBureauReporting",
+        "description": "This API is used to Get Credit Bureau report."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "AccountID",
+            "type": "integer",
+            "required": null,
+            "description": "Account ID represents Unique Identity of Account (CoreCard Bsegment Entitity, i.e., the Account ID of program card account). Valid Values : 0-9 Example: 12345 Condition: At least one of AccountID/AdminNumber/AccountNumber is required."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account number of cardholder. Valid Values:0-9 Example:7314145404 Condition: At least one of AccountID/AdminNumber/AccountNumber is required. Allowable Values: 19"
+        },
+        {
+            "name": "AdminNumber",
+            "type": "int64",
+            "required": null,
+            "description": "Details can be obtained by admin number (Embossing Acctid) Valid Values: 0-9 Format: XXXXX Example: 12345 Condition: At least one of AccountID/AdminNumber/AccountNumber is required."
+        },
+        {
+            "name": "ApplicantType",
+            "type": "integer",
+            "required": false,
+            "description": "Selects the type of Applicants. Valid Values: 1,2,3,4 Example: 1 = Applicant, 2 = Co-Applicant , 3 = Cosigner , 4 = Secondary Card"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "CBRIndicator",
+                    "type": "string",
+                    "required": null,
+                    "description": "Indicates the CBR value Valid Values: 0-9 Format: xx Example: 1 = Yes",
+                    "children": []
+                },
+                {
+                    "name": "ECOACode",
+                    "type": "string",
+                    "required": null,
+                    "description": "Credit Report Details Association Code (ECOA) Valid Values: Refer Appendix section 5.36 Format: xx Example:  1",
+                    "children": []
+                },
+                {
+                    "name": "CBRDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Indicates the Credit Bureau Reporting  date Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                    "children": []
+                },
+                {
+                    "name": "SpecialCommentsOverrideValue",
+                    "type": "string",
+                    "required": null,
+                    "description": "Displays the special comments Valid Values: Refer Appendix section 5.58 Format: xx Example: A = Account acquired by FDIC/NCUA. Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "SpecialCommentsDerivedValue",
+                    "type": "string",
+                    "required": null,
+                    "description": "Displayes the derived value of Compliance Condition Code Valid Values: a-z Format: xx Example:A = Account acquired by FDIC/NCUA. Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "SpecialCommentsLastReportedValue",
+                    "type": "string",
+                    "required": null,
+                    "description": "Displayes the Last Reported value of special comment. Valid Values: a-z Format: xx Example: A = Account acquired by FDIC/NCUA. Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "ComplianceConditionCodeOverrideValue",
+                    "type": "string",
+                    "required": null,
+                    "description": "Displays the Compliance code Valid Values: Refer Appendix section 5.59 Format: xx Example: NO = NONE Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "ComplianceConditionCodeDerivedValue",
+                    "type": "string",
+                    "required": null,
+                    "description": "Displayes the derived value of Compliance Condition Code. Valid Values: a-z Format: xx Example: NO = NONE Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "ComplianceConditionCodeLastReportedValue",
+                    "type": "string",
+                    "required": null,
+                    "description": "Displays the Compliance code Valid Values: a-z Format: xx Example: NO = NONE Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "CustomerInformationIndicator",
+                    "type": "string",
+                    "required": null,
+                    "description": "Indicates the Customer Information Valid Values: 0-9 a-z Format: xx Example:1A Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "AuthorizedUserCBRIndicator",
+                    "type": "string",
+                    "required": null,
+                    "description": "Indicates the authorised user Valid Values: 0-1, Null Format:x Example: 0 = No, 1 = Yes Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "ClientId",
+                    "type": "string",
+                    "required": null,
+                    "description": "Client ID of the client. Valid Values: 0-9 Format:XXXXX Example: 5558547 Allowable Values: 25",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantDeceased",
+                    "type": "integer",
+                    "required": null,
+                    "description": "This tag reflects whether the card holder is deceased or not . Valid Values:0- No, 1 - Yes Example: 0",
+                    "children": []
+                },
+                {
+                    "name": "BankruptcyNotificationDate",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "Indicates Bankrupt notification date Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                    "children": []
+                },
+                {
+                    "name": "CoApplicantCBRConsumerInfoIndicator",
+                    "type": "string",
+                    "required": null,
+                    "description": "This tag reflect the Co-Applicant consumer information indicator. Valid Values: Format:xx Example:1A Allowable Values: 2",
+                    "children": []
+                },
+                {
+                    "name": "CbBnkrptNotifDate",
+                    "type": "string",
+                    "required": null,
+                    "description": "Indicates Bankrupt notification date Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                    "children": []
+                },
+                {
+                    "name": "Deceased",
+                    "type": "string",
+                    "required": null,
+                    "description": "Flag for card holder is deceased or not Valid Values: 0- No, 1 - Yes, Null Format: x Example: 0 Allowable Values: 5",
+                    "children": []
+                },
+                {
+                    "name": "FCRA1stDateOfDelinquency",
+                    "type": "datetime",
+                    "required": null,
+                    "description": "1st date of delinquency (Fair Credit Reporting Act) Valid Values: 0 - 9 Format: MM/DD/YYYY HH:MM:SS Example: 01/01/2020 11:05:05",
+                    "children": []
+                },
+                {
+                    "name": "CardRelationship",
+                    "type": "string",
+                    "required": null,
+                    "description": "Indicates the Secondary Card relation to the Primary Card. Valid Values: 0- Authorized User (Default Value) , 1 -Co-Owner Example:0 Allowable Values: 100",
+                    "children": []
+                },
+                {
+                    "name": "DateAccountClosed",
+                    "type": "DateTime",
+                    "required": null,
+                    "description": "Indicates the date when account was closed. Format: MM/DD/YYYY Example: 01/01/2020",
+                    "children": []
+                },
+                {
+                    "name": "BankruptcyDischargeDate",
+                    "type": "DateTime",
+                    "required": null,
+                    "description": "Description: Indicates the date when bankruptcy was discharged. Format: MM/DD/YYYY Example: 01/01/2020",
+                    "children": []
+                },
+                {
+                    "name": "SendK1Segment",
+                    "type": "integer",
+                    "required": null,
+                    "description": "This flag specifies if K1 Segment need to be included in Credit Bureau Reporting or not. 1 = Yes. 0 = No. Valid Values: 0,1 Example: 1",
+                    "children": []
+                },
+                {
+                    "name": "K1OriginalCreditorName",
+                    "type": "string",
+                    "required": null,
+                    "description": "The name of the company/creditor that originally opened the account for the consumer. Valid Values: A-Z Example: Excel Finance LLC Allowable Values: 30",
+                    "children": []
+                },
+                {
+                    "name": "K1CreditorClassification",
+                    "type": "string",
+                    "required": null,
+                    "description": "Contains a code which must be reported to indicate the general type of business for the Original Creditor Name. Valid Values: 01 = Retail 02 = Medical/Health Care Required when reporting medical debts... 03 = Oil Company 04 = Government 05 = Personal Services 06 = Insurance 07 = Educational 08 = Banking 09 = Rental/Leasing 10 = Utilities 11 = Cable/Cellular 12 = Financial (other non-banking financial institutions) 13 = Credit Union 14 =  Automotive 15 = Check Guarantee Example: 02 Allowable Values: 30",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "AccountID": 167555,
+        "AccountNumber": "8110000000000174",
+        "AdminNumber": 129424,
+        "ApplicantType": 1
+    },
+    "sample_response": {
+        "Message": "Credit bureau information returned successfully",
+        "Status": true,
+        "ErrorCode": "ERR01014",
+        "ResponseData": {
+            "CBRIndicator": "1",
+            "ECOACode": null,
+            "CBRDate": "02/28/2017 00:00:00",
+            "SpecialCommentsOverrideValue": "B",
+            "SpecialCommentsDerivedValue": null,
+            "SpecialCommentsLastReportedValue": null,
+            "ComplianceConditionCodeOverrideValue": "XH",
+            "ComplianceConditionCodeDerivedValue": "",
+            "ComplianceConditionCodeLastReportedValue": "",
+            "CustomerInformationIndicator": null,
+            "AuthorizedUserCBRIndicator": null,
+            "ClientId": "1234",
+            "CoApplicantDeceased": 0,
+            "BankruptcyNotificationDate": null,
+            "CoApplicantCBRConsumerInfoIndicator": null,
+            "CbBnkrptNotifDate": null,
+            "Deceased": null,
+            "FCRA1stDateOfDelinquency": null,
+            "CardRelationship": null,
+            "DateAccountClosed": null,
+            "BankruptcyDischargeDate": "01/01/2020",
+            "SendK1Segment": null,
+            "K1OriginalCreditorName": null,
+            "K1CreditorClassification": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/credit",
+        "category": "Other Miscellaneous Functions",
+        "category_id": "1001",
+        "document_id": "1093",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1093&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1001&regionId=1"
+    }
+}

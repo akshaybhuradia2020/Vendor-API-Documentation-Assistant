@@ -1,0 +1,298 @@
+{
+    "metadata": {
+        "name": "GetBillPaySchedPayment",
+        "http_method": "POST",
+        "endpoint": "/api/GetBillPaySchedPayment",
+        "description": "Use this API to retrieve the scheduled payments."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "SubscriberID",
+            "type": "Int64",
+            "required": true,
+            "description": "This is the Service Provider's (iPay Solutions) identifier  for the Cardholder User. Example : 12345678"
+        },
+        {
+            "name": "PayeeId",
+            "type": "Int64",
+            "required": false,
+            "description": "This is the Payee identifier associated with the Payee or Transfer account for the Bill Pay Services API. Valid Values: 0-9 Example: 20"
+        },
+        {
+            "name": "StartDate",
+            "type": "datetime",
+            "required": false,
+            "description": "This is the date that designates the starting point for eBill[Due] date selections. If no Start Date is specified, the Bill Pay Services API will return all available eBills that have a Due Date that is less than the specified End Date. Format : YYYY-MM-DDTHH:mm:ss Example :2015-12-11T00:00:00"
+        },
+        {
+            "name": "EndDate",
+            "type": "datetime",
+            "required": false,
+            "description": "This is the date that designates the ending point for eBill[Due] date selections. If no End Date is specified, the Bill Pay Services API will return all available eBills that have a Due Date that is greater than the specified Start Date. Format : YYYY-MM-DDTHH:mm:ss Example :2015-12-11T00:00:00"
+        },
+        {
+            "name": "MaxRecord",
+            "type": "Int32",
+            "required": false,
+            "description": "This is  the maximum number of records to return in the response. If no number, or an invalid number, is provided in the search request, the Service Provider(iPay Solutions) will default this value to 50, and return a maximum of 50 records in the response. Example: 10,20,50."
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "BillPayPaymentList",
+                    "type": "array",
+                    "required": null,
+                    "description": "",
+                    "children": [
+                        {
+                            "name": "PaymentId",
+                            "type": "Int64",
+                            "required": null,
+                            "description": "This is the payment ID which is generated by Bill Payment Services. Valid Values:0-9 Example: 120 Note : PaymentID will be generated for only recurring payments.",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeId",
+                            "type": "Int64",
+                            "required": null,
+                            "description": "This is the Payee identifier associated with the Payee or Transfer account for the Bill Pay Services API. Valid Values: 0-9 Example: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeName",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the name of the Payee Example: Andrew Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PayeeNickName",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the nickname for the Payee. Example: Andy",
+                            "children": []
+                        },
+                        {
+                            "name": "CategoryId",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "This is the name of the category assigned to the Payee or Transfer account Valid Values:0-9 Example: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentProccessDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This is the date the currently scheduled payment or Transfer is scheduled to be processed. Example: 2015-12-11T00:00:00 Format: YYYY-MM-DDTHH:mm:ss",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "This is the date the currently scheduled payment or Transfer is estimated to be delivered to the Payee. Example: 2015-12-11T00:00:00 Format: YYYY-MM-DDTHH:mm:ss",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "This is the amount of the scheduled single or recurring payment(s) or Transfer(s). Example : 10.25",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "The status of the payment or Transfer. Valid Values :  All – All(default) Sched – Scheduled Pend – Pending PendSkip - Pending Skip PmtApprvReq - Payment Approval Required Stop - Payment Stop Example: Sched Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentMethod",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the payment method for the Payee or Transfer account associated with the scheduled payment or Transfer. Example: Chk, Elec. Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentFrequencyType",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the payment frequency for a recurring payment or recurring Transfer series. Example: Weekly, Monthly etc Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentFrequencyValue",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the payment frequency for a recurring payment or recurring Transfer series. Example: wed etc Allowable Values: 50",
+                            "children": []
+                        },
+                        {
+                            "name": "P2PType",
+                            "type": "string",
+                            "required": null,
+                            "description": "This is the type of communication method to be used for person-to-person Payee contact. Valid Values: SMS , Email. Example: SMS , Email. Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "PaymentIntentType",
+                            "type": "string",
+                            "required": null,
+                            "description": "This represents the payment intention for the Payment(s) or Transfer(s). Valid Value - PayBill , Payment for a bill(default) Example: PayBill Allowable Values: 20",
+                            "children": []
+                        },
+                        {
+                            "name": "ISeBill",
+                            "type": "string",
+                            "required": null,
+                            "description": "This payment is an eBill payment. Valid Values: true, false. Example: true, false. Allowable Values: 20",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "::1",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "SubscriberID": 1468196126,
+        "PayeeId": 1,
+        "StartDate": "2021-11-25T00:00:00",
+        "EndDate": "2021-11-30T00:00:00",
+        "MaxRecord": 1
+    },
+    "sample_response": {
+        "Message": "Success",
+        "Status": true,
+        "ErrorCode": "",
+        "ResponseData": {
+            "BillPayPaymentList": [
+                {
+                    "PaymentId": 1,
+                    "PayeeId": 1,
+                    "PayeeName": "JOHN SMITH",
+                    "PayeeNickName": "JS",
+                    "CategoryId": 1,
+                    "PaymentProccessDate": "2021-12-08T00:00:00",
+                    "PaymentDate": "2021-12-10T00:00:00",
+                    "TransactionAmount": 20.0,
+                    "PaymentStatus": "Sched",
+                    "PaymentMethod": "Elec",
+                    "PaymentFrequencyType": "Once",
+                    "PaymentFrequencyValue": "Once",
+                    "P2PType": "false",
+                    "PaymentIntentType": "PayBill",
+                    "ISeBill": "false"
+                }
+            ]
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "document_type": "api",
+        "section": "apis/prepaid-debit",
+        "category": "BillPay",
+        "category_id": "1039",
+        "document_id": "1180",
+        "region_id": "1",
+        "region": "USA",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1180&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1039&regionId=1"
+    }
+}

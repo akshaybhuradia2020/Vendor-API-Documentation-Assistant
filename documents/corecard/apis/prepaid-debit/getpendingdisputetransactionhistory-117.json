@@ -1,0 +1,540 @@
+{
+    "metadata": {
+        "name": "GetPendingDisputeTransactionHistory",
+        "http_method": "POST",
+        "endpoint": "/api/CoreCredit/Dispute/GetPendingDisputeTransactionHistory",
+        "description": "This API is used to Get Pending Dispute Transaction History."
+    },
+    "request_fields": [
+        {
+            "name": "Source",
+            "type": "string",
+            "required": null,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Currency Code Ex. 840 = US Doller. Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language ==  en: means use English ---- es: means Spanish Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": null,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": null,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": true,
+            "description": "Description: Unique identification number for Institution Valid Values: 0-9 Format: XXXX Example: Fixed value needs to pass which is provided by Corecard."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": false,
+            "description": "Description: Account number of cardholder. Valid Values: 0-9 Format: XXXXXXXXXX Example: 7314145404 Condition: At least one account identifier is required. Allowable Values: 19"
+        },
+        {
+            "name": "CardNumberLast4Digit",
+            "type": "string",
+            "required": false,
+            "description": "Description: Last 4 digits of card number Valid Values: 0 - 9 Format: XXXX Example: 1234 Allowable Values: 10"
+        },
+        {
+            "name": "FromDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Description: Starting date of transaction search.Used as a criteria for Transaction Filter. Valid Values: 0 - 9 Format: MMDDYYY Example: 02012020"
+        },
+        {
+            "name": "ToDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Description: End date of transaction search.Used as a criteria for Transaction Filter Valid Values: 0 - 9 Format: MMDDYYY Example: 02012020"
+        },
+        {
+            "name": "DisputeStage",
+            "type": "string",
+            "required": false,
+            "description": "Description: Code of the stage of Dispute case . Valid Values: 0-9 Example: 0,2 Allowable Values: 5"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": false,
+            "description": "Description: Product ID Valid Values: 0-9 Format: XXXX Example: 1234"
+        },
+        {
+            "name": "ClientID",
+            "type": "integer",
+            "required": false,
+            "description": "Description - Client ID of the client. Valid Values: 1422245 Format: XXXXX Example: 5558547"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Description - Amount of Transaction Valid Values: 0 - 9 Format: XXX.XX Example: 200.00"
+        },
+        {
+            "name": "BatchSize",
+            "type": "integer",
+            "required": false,
+            "description": "Description: Number of Transaction which can be view in one Batch Valid Values: 0-9 Format: XX Example: 20"
+        },
+        {
+            "name": "PageIndex",
+            "type": "integer",
+            "required": false,
+            "description": "Description: Number of page Valid Values: 0 - 9 Format: XX Example: 12"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source of API Consumer For external system expected sources will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": false,
+            "description": "IP Address of Client / Application Hosting Server Example: 10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "DateFormat",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Values are: 1 : MM/dd/yyyy HH:MM:SS (Default) 2 : MM/dd/yy HH:MM:SS 3 : dd/MM/yyyy HH:MM:SS Allowable Values: 25"
+        },
+        {
+            "name": "CurrencyCode",
+            "type": "string",
+            "required": false,
+            "description": "Currency Code Place Holder for Future Use. Valid Values: Refer Appendix Section - Currency Code Example:840 = US Dollar Condition:If no value is passed, default value = 840 Allowable Values: 10"
+        },
+        {
+            "name": "CurrencySymbolType",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. CurrencySymbolType: 1: Currency Sign like $ 2: 3 ALPHA Currency Code like USD Allowable Values: 10"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Place Holder for Future Use. Language: en: means use English Default: en - English Allowable Values: 10"
+        },
+        {
+            "name": "ExternalIP",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of end user of API Allowable Values: 50"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Session identifier of the API Example: 000028;026;1349906692 Allowable Values: 100"
+        },
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked. Example: 2.0 API Version Current Version 2.0 Allowable Values: 10"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller ID of source from where API is initiated it is End User Caller ID Example: 7204454214 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called ID of destination for which API is initiated It is Destination Called ID Example: 7314145404 (phone number applicable in Case of IVR) Allowable Values: 20"
+        },
+        {
+            "name": "RequestTime",
+            "type": "datetime",
+            "required": false,
+            "description": "Request Date Time of API Format: MM/dd/yyyy HH:mm:ss Example:01/15/2020 10:05:23"
+        },
+        {
+            "name": "InstitutionID",
+            "type": "integer",
+            "required": true,
+            "description": "Unique identification number for Institution Valid Values: 0-9 Format: XXXX Example: Fixed value needs to pass which is provided by Corecard."
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": false,
+            "description": "Account number of cardholder. Valid Values: 0-9 Format: XXXXXXXXXX Example: 7314145404 Condition: At least one account identifier is required. Allowable Values: 19"
+        },
+        {
+            "name": "CardNumberLast4Digit",
+            "type": "string",
+            "required": false,
+            "description": "Last 4 digits of card number Valid Values: 0 - 9 Format: XXXX Example: 1234 Allowable Values: 4"
+        },
+        {
+            "name": "FromDate",
+            "type": "datetime",
+            "required": false,
+            "description": "Starting date of transaction search.Used as a criteria for Transaction Filter. Valid Values: 0 - 9 Format: MMDDYYY Example: 02012020"
+        },
+        {
+            "name": "ToDate",
+            "type": "datetime",
+            "required": false,
+            "description": "End date of transaction search.Used as a criteria for Transaction Filter Valid Values: 0 - 9 Format: MMDDYYY Example: 02012020"
+        },
+        {
+            "name": "DisputeStage",
+            "type": "string",
+            "required": false,
+            "description": "Code of the stage of Dispute case . Valid Values: 0-9 Example: 0,2 Allowable Values: 5"
+        },
+        {
+            "name": "ProductID",
+            "type": "integer",
+            "required": false,
+            "description": "Product ID Valid Values: 0-9 Format: XXXX Example: 1234"
+        },
+        {
+            "name": "ClientID",
+            "type": "integer",
+            "required": false,
+            "description": "Client ID of the client. Valid Values: 1422245 Format: XXXXX Example: 5558547"
+        },
+        {
+            "name": "TransactionAmount",
+            "type": "decimal",
+            "required": false,
+            "description": "Amount of Transaction Valid Values: 0 - 9 Format: XXX.XX Example: 200.00"
+        },
+        {
+            "name": "BatchSize",
+            "type": "integer",
+            "required": false,
+            "description": "Number of Transaction which can be view in one Batch Valid Values: 0-9 Format: XX Example: 20"
+        },
+        {
+            "name": "PageIndex",
+            "type": "integer",
+            "required": false,
+            "description": "Number of page Valid Values: 0 - 9 Format: XX Example: 12"
+        },
+        {
+            "name": "WarehousedAutoWriteOff",
+            "type": "integer",
+            "required": false,
+            "description": "AutoWriteOff Transaction which is warehoused as per warehousing days Valid Values:  0 - 1 Format: X Example: 1"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "PendingDisputeTransactionList",
+            "type": "array",
+            "required": null,
+            "description": "Description: List all the dispute transactions.",
+            "children": []
+        },
+        {
+            "name": "TotalRecordCount",
+            "type": "integer",
+            "required": null,
+            "description": "Description: Total number of records in an Array. Valid Values: 0-9 Example: 10",
+            "children": []
+        },
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "API Response Message Allowable Values: 200",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "API Status Example: Success - true, Error - false",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Response Message Error Code Allowable Values: 10",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "Contains all Response properties",
+            "children": [
+                {
+                    "name": "PendingDisputeTransactionList",
+                    "type": "array",
+                    "required": null,
+                    "description": "List all the dispute transactions.",
+                    "children": [
+                        {
+                            "name": "TransactionID",
+                            "type": "int64",
+                            "required": null,
+                            "description": "Transaction Number for transaction being posted. Valid Values: 0-9 Format: XXXXXXXXXXXXXXXX Example: 23654789",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeAutoResolveDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date on which Dispute is marked as Resolved. Format: YYYYMMDDHHMMSS Example: 20200202122000",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionPostTime",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Actual time when transaction was posted. Valid Values: 0-9 Format: MM/DD/YYYY HH:MM:SS Example: 09/09/201 21:09:10",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionDescription",
+                            "type": "string",
+                            "required": null,
+                            "description": "User defined description of transaction if entered by user explicitly. If not entered by the user, then system will generate it. Valid Values: A-Z,0-9 Example: Purchase/Payment. Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionCurrencyCode",
+                            "type": "string",
+                            "required": null,
+                            "description": "Currency code of Transaction amount. Valid Values: 0-9 Format:XXX Example: 840 Allowable Values: 3",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Amount of Transaction Valid Values:0-9 Format: XXX.XX Example: 200.00",
+                            "children": []
+                        },
+                        {
+                            "name": "TransactionSource",
+                            "type": "string",
+                            "required": null,
+                            "description": "Ttransaction source like ACH, manual etc Valid Values: Please refer Format: X or XX Example: 5=IPM, For  Retail =29(Installment Purchase) Retail =39(Credit Purchase)  Retail=23 (Manual Auth) Allowable Values: 10",
+                            "children": []
+                        },
+                        {
+                            "name": "CardAcceptorNameLocation",
+                            "type": "string",
+                            "required": null,
+                            "description": "Merchant name and location Valid Values: A-Z, 0-9 Allowable Values: 100",
+                            "children": []
+                        },
+                        {
+                            "name": "AccountNumber",
+                            "type": "string",
+                            "required": null,
+                            "description": "Account number of cardholder. Valid Values:0-9 Format: XXXXXXXXXX Example: 7314145404 Condition: At least one account identifier is required. Allowable Values: 19",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNumberLast4Digits",
+                            "type": "string",
+                            "required": null,
+                            "description": "Last 4 digits of card number Valid Values: 0-9 Format: XXXX Example: 1234 Allowable Values: 4",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeStatus",
+                            "type": "string",
+                            "required": null,
+                            "description": "Status of disputed transaction. Example: Resolve in favor of Cardholder Allowable Values: 2",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeInitiateDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date on which Dispute is raised for the Transaction. Format:Format: YYYYMMDDHHMMSS Example: 20200202122000",
+                            "children": []
+                        },
+                        {
+                            "name": "LastUpdatedDate",
+                            "type": "datetime",
+                            "required": null,
+                            "description": "Date when the record was last updated. Format: YYYYMMDDHHMMSS Example: 20200507082705",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "The amount for which the Dispute is raised on the Transaction. Valid Values:0-9 Format: XXX.XX Example: 20.00",
+                            "children": []
+                        },
+                        {
+                            "name": "UserID",
+                            "type": "string",
+                            "required": null,
+                            "description": "User ID of the user who take action on the dispute case. Example: DisputeAdminOne Allowable Values: 65",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantID",
+                            "type": "integer",
+                            "required": null,
+                            "description": "Unique number of merchant account Valid Values: 0-9 Format: XXXXX Example: 12345",
+                            "children": []
+                        },
+                        {
+                            "name": "DisputeReason",
+                            "type": "string",
+                            "required": null,
+                            "description": "Reason through which Dispute resolution needs to take place. Allowable Values: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "TokenWalletID",
+                            "type": "string",
+                            "required": null,
+                            "description": "Token generated at the time of Digital wallet enrollment. Valid Values: 0-1, A-Z Example: 0- any string Token Allowable Values: 4",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "TotalRecordCount",
+                    "type": "integer",
+                    "required": null,
+                    "description": "Total number of records in an Array. Valid Values: 0-9 Example: 10",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "Source": "Web",
+        "IPAddress": "10.120.0.1",
+        "DateFormat": null,
+        "CurrencyCode": null,
+        "CurrencySymbolType": null,
+        "Language": null,
+        "ExternalIP": "10.120.0.0",
+        "SessionID": null,
+        "APIVersion": "2.0",
+        "CallerID": null,
+        "CalledID": null,
+        "RequestTime": null,
+        "InstitutionID": 3185,
+        "AccountNumber": null,
+        "CardNumberLast4Digit": null,
+        "FromDate": null,
+        "ToDate": null,
+        "DisputeStage": null,
+        "ProductID": null,
+        "ClientID": null,
+        "TransactionAmount": null,
+        "BatchSize": 50,
+        "PageIndex": 0,
+        "WarehousedAutoWriteOff": 0
+    },
+    "sample_response": {
+        "Message": "Success.",
+        "Status": true,
+        "ErrorCode": "Err00017",
+        "ResponseData": {
+            "PendingDisputeTransactionList": [
+                {
+                    "TransactionID": 23654789,
+                    "DisputeAutoResolveDate": "03/31/2016 00:00:00",
+                    "TransactionPostTime": "03/31/2016 00:00:00",
+                    "TransactionDescription": "Purchase/Payment.",
+                    "TransactionCurrencyCode": "840",
+                    "TransactionAmount": 200.0,
+                    "TransactionSource": "Retail = 23(Manual Auth)",
+                    "CardAcceptorNameLocation": null,
+                    "AccountNumber": "7000000000000070",
+                    "CardNumberLast4Digits": "1234",
+                    "DisputeStatus": "Resolve in favor of Cardholder",
+                    "DisputeInitiateDate": "03/31/2016 00:00:00",
+                    "LastUpdatedDate": "03/31/2016 00:00:00",
+                    "DisputeAmount": 20.0,
+                    "UserID": "John",
+                    "MerchantID": 12345,
+                    "DisputeReason": "This is Test",
+                    "TokenWalletID": null
+                }
+            ],
+            "TotalRecordCount": null
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "prepaid-debit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=117&type=ApiDetail&menuid=1&RegionId=1&PlatformMappingId=1&subid=1007"
+    }
+}

@@ -1,0 +1,633 @@
+{
+    "metadata": {
+        "name": "GetCardholderSpendLimits",
+        "http_method": "POST",
+        "endpoint": "/api/GetCardholderSpendLimits",
+        "description": "Use this API to View the card level spend limits."
+    },
+    "request_fields": [
+        {
+            "name": "APIVersion",
+            "type": "string",
+            "required": true,
+            "description": "Version of the API to be invoked Example: 1.3 Allowable Values: 10"
+        },
+        {
+            "name": "IPAddress",
+            "type": "string",
+            "required": true,
+            "description": "IP Address of sender Example:  10.206.0.204 Allowable Values: 15"
+        },
+        {
+            "name": "Source",
+            "type": "string",
+            "required": true,
+            "description": "Source from where API Call is initiated. CoreCard have multiple value of source for internal system (CoreMoney, SelfService, IVR, MobileSelfService) For external system expected source will be WEB. Allowable Values: 50"
+        },
+        {
+            "name": "CallerID",
+            "type": "string",
+            "required": false,
+            "description": "Caller Id of source from where API is initiated. It is End User phone number. Example: 7204454214 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "CalledID",
+            "type": "string",
+            "required": false,
+            "description": "Called Id of destination for which API is initiated. It is Corecard IVR number. Example: 7314145404 Condition - applicable in Case of IVR Allowable Values: 20"
+        },
+        {
+            "name": "SessionID",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 50"
+        },
+        {
+            "name": "ANI",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "DNS",
+            "type": "string",
+            "required": false,
+            "description": "Reserved for future use Allowable Values: 0"
+        },
+        {
+            "name": "Language",
+            "type": "string",
+            "required": false,
+            "description": "Flag to retrieve error message in specific language Example: 'en' for English Allowable Values: 2"
+        },
+        {
+            "name": "RequestDate",
+            "type": "string",
+            "required": false,
+            "description": "Request Date Time of API Format: MM-DD-YYYYTHH:MM:SS Example:- 11-12-2021T13:05:10 Allowable Values: 19"
+        },
+        {
+            "name": "CardNumber",
+            "type": "string",
+            "required": null,
+            "description": "Clear Card Number of the cardholder Valid values: 0-9 Example: 123456******0001 Condition: At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 16"
+        },
+        {
+            "name": "AccountNumber",
+            "type": "string",
+            "required": null,
+            "description": "Account Number of the cardholder. Valid values: 0-9 Example: 2000000000000396893 Condition: At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 19"
+        },
+        {
+            "name": "ProxyNumber",
+            "type": "string",
+            "required": null,
+            "description": "Proxy Number of the cardholder Valid values:0-9 Example:1005 Condition: At least one of Card Number/Proxy Number/Account Number is required. Allowable Values: 19"
+        }
+    ],
+    "response_fields": [
+        {
+            "name": "Message",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Message in case of Error.",
+            "children": []
+        },
+        {
+            "name": "Status",
+            "type": "boolean",
+            "required": null,
+            "description": "Returns result of API processing. If any error is found then value will be 'false' else 'true'.",
+            "children": []
+        },
+        {
+            "name": "ErrorCode",
+            "type": "string",
+            "required": null,
+            "description": "Returns Error Code in case of Error.",
+            "children": []
+        },
+        {
+            "name": "ResponseData",
+            "type": "",
+            "required": null,
+            "description": "This is group of below data elements.",
+            "children": [
+                {
+                    "name": "ViewAccountSpendRuleResult",
+                    "type": "",
+                    "required": null,
+                    "description": "",
+                    "children": [
+                        {
+                            "name": "InternationalUseAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "International Use allowed or not. Valid values: 0 = Yes 1= No Example: 0 Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "CashAccessAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Cash access Transaction allowed or not. Valid values: 0 = No, 1= Yes Example: 1 Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "PINPurchaseAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Pin Transaction allowed or not. Valid values: 0 = No, 1= Yes Example: 1 Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "OnlineTransactionsAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Online Transactions allowed or not. Valid values: 0 = No, 1= Yes Example: 1 Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "POSTransactionsAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "POS Transactions allowed or not. Valid values: 0 = No, 1= Yes Example: 1 Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "BypassCardMonetaryLimit",
+                            "type": "string",
+                            "required": null,
+                            "description": "Bypass limits set for the card Valid Values 0 = Yes 1 = No Example: 1 Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "BypassCardMonetaryPeriod",
+                            "type": "string",
+                            "required": null,
+                            "description": "Period for which limits will be bypassed. Valid Values: 0 = For next Transaction 1 = For next Day 2 = For One Month 3 = Forever Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "BypassMerchantCategoryRestrictions",
+                            "type": "string",
+                            "required": null,
+                            "description": "Bypass Merchant Category based restrictions set for the card Valid values: 0 = No, 1= Yes Example: 1 Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "BypassMerchantCategoryPeriod",
+                            "type": "string",
+                            "required": null,
+                            "description": "Period for which Merchant Category based restrictions will be bypassed. Valid Values: 0 = For next Transaction 1 = For next Day 2 = For One Month 3 = Forever Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "CardSingleTransactionLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Single Transaction Limit Example: 120",
+                            "children": []
+                        },
+                        {
+                            "name": "CardDailySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Daily allowed transaction count Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "CardDailySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Daily allowed transaction amount Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "CardWeeklySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Weekly allowed transaction count Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "CardWeeklySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Weekly allowed transaction amount Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "CardMonthlySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Monthly allowed transaction count Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "CardMonthlySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Monthly allowed transaction amount Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNotPresentCardSingleTransactionLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Single Transaction Limit for card not present transaction Example: 120",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNotPresentCardDailySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Daily allowed transaction count for card not present transaction Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNotPresentCardDailySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Daily allowed transaction amount for card not present transaction Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNotPresentCardWeeklySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Weekly allowed transaction count for card not present transaction Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNotPresentCardWeeklySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Weekly allowed transaction amount for card not present transaction Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNotPresentCardMonthlySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Monthly allowed transaction count for card not present transaction Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNotPresentCardMonthlySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Monthly allowed transaction amount for card not present transaction Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "PINPOSCardSingleTransactionLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Single Transaction Limit for Pin POS transaction Example: 120",
+                            "children": []
+                        },
+                        {
+                            "name": "PINPOSCardDailySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Daily allowed transaction count for Pin POS transaction Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "PINPOSCardDailySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Daily allowed transaction amount for Pin POS transaction Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "PINPOSCardWeeklySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Weekly allowed transaction count for Pin POS transaction Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "PINPOSCardWeeklySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Weekly allowed transaction amount for Pin POS transaction Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "PINPOSCardMonthlySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Monthly allowed transaction count for Pin POS transaction Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "PINPOSCardMonthlySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Monthly allowed transaction amount for Pin POS transaction Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "SignaturePOSCardSingleTransactionLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Single Transaction Limit for Signature POS transaction Example: 120",
+                            "children": []
+                        },
+                        {
+                            "name": "SignaturePOSCardDailySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Daily allowed transaction count for Signature POS transaction Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "SignaturePOSCardDailySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Daily allowed transaction amount for Signature POS transaction Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "SignaturePOSCardWeeklySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Weekly allowed transaction count for Signature POS transaction Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "SignaturePOSCardWeeklySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Weekly allowed transaction amount for Signature POS transaction Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "SignaturePOSCardMonthlySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Monthly allowed transaction count for Signature POS transaction Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "SignaturePOSCardMonthlySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Monthly allowed transaction amount for Signature POS transaction Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "ContactlessCardSingleTransactionLimit",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Single Transaction Limit for contactless transaction Example: 120",
+                            "children": []
+                        },
+                        {
+                            "name": "ContactlessCardDailySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Daily allowed transaction count  for contactless transaction Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "ContactlessCardDailySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Daily allowed transaction amount for contactless transaction Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "ContactlessCardWeeklySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Weekly allowed transaction count for contactless transaction Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "ContactlessCardWeeklySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Weekly allowed transaction amount for contactless transaction Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "ContactlessCardMonthlySpendLimitCount",
+                            "type": "Int32",
+                            "required": null,
+                            "description": "Monthly allowed transaction count for contactless transaction Example: 5",
+                            "children": []
+                        },
+                        {
+                            "name": "ContactlessCardMonthlySpendLimitAmount",
+                            "type": "decimal",
+                            "required": null,
+                            "description": "Monthly allowed transaction amount for contactless transaction Example: 150",
+                            "children": []
+                        },
+                        {
+                            "name": "RecurringTransactionAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Recurring Transactions allowed or not. Valid values: 0 = No, 1 = Yes Example: 1 Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "MerchantCategory",
+                            "type": "array",
+                            "required": null,
+                            "description": "MerchantCategory",
+                            "children": [
+                                {
+                                    "name": "MerchantCategoryCodePlan",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Merchant Category Code Plan Valid values:0-9 Example: 5,6 Allowable Values: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MerchantCategoryCodePlanSelection",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Merchant Category Code plan value Valid values: 0 = MCC Limits will not be considered 1 = MCC Limits will be considered Allowable Values: 1",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MCCDailyPlanLimitCount",
+                                    "type": "Int32",
+                                    "required": null,
+                                    "description": "MCC Daily allowed transaction count Example :  5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MCCDailyPlanLimitAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "MCC Daily allowed transaction amount Valid Values: 0-9 Example: 120",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MCCMonthlyPlanLimitCount",
+                                    "type": "Int32",
+                                    "required": null,
+                                    "description": "MCC Monthly allowed transaction count Valid Values: 0-9 Example: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MCCMonthlyPlanLimitAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "MCC Monthly allowed transaction amount Valid Values: 0-9 Example: 120",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MCCWeeklyPlanLimitCount",
+                                    "type": "Int32",
+                                    "required": null,
+                                    "description": "MCC Weekly allowed transaction count Valid Values: 0-9 Example: 5",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MCCWeeklyPlanLimitAmount",
+                                    "type": "decimal",
+                                    "required": null,
+                                    "description": "MCC Weekly allowed transaction amount Valid Values: 0-9 Example: 120",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MCCDescription",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Merchant Category Code Plan Example: 5 = Fuel 6 = Ground Travel Allowable Values: 20",
+                                    "children": []
+                                },
+                                {
+                                    "name": "MCCPlanDescription",
+                                    "type": "string",
+                                    "required": null,
+                                    "description": "Merchant Types which belongs to Merchant Category Code Plan Example: MCC Description = 'Meals' will contain Caterers, eating, drinking places, fast food restaurants, convenience stores Allowable Values: 20",
+                                    "children": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "ContactlessTransactionAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Contactless Transaction allowed or not. Valid values: 0 = No, 1 = Yes Example: 1 Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "CardNotPresentTransactionAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Card not present Transaction allowed or not. Valid values: 0 = No, 1 = Yes Example: 1 Allowable Values: 1",
+                            "children": []
+                        },
+                        {
+                            "name": "PurchasewithCashbackAllowed",
+                            "type": "string",
+                            "required": null,
+                            "description": "Purchase with Cashback Allowed. Valid values: 0 = No, 1 = Yes Example: 1 Allowable Values: 1",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sample_request": {
+        "APIVersion": "1.3",
+        "IPAddress": "10.206.2.197",
+        "Source": "WEB",
+        "CallerID": "",
+        "CalledID": "",
+        "SessionID": "",
+        "ANI": "",
+        "DNS": "",
+        "Language": "en",
+        "RequestDate": "",
+        "CardNumber": "",
+        "AccountNumber": "",
+        "ProxyNumber": "1314932"
+    },
+    "sample_response": {
+        "Message": "Successful.",
+        "Status": true,
+        "ErrorCode": "00000",
+        "ResponseData": {
+            "ViewAccountSpendRuleResult": {
+                "InternationalUseAllowed": "0",
+                "CashAccessAllowed": "1",
+                "PINPurchaseAllowed": "",
+                "OnlineTransactionsAllowed": "1",
+                "POSTransactionsAllowed": "1",
+                "BypassCardMonetaryLimit": "1",
+                "BypassCardMonetaryPeriod": "",
+                "BypassMerchantCategoryRestrictions": "1",
+                "BypassMerchantCategoryPeriod": "",
+                "CardSingleTransactionLimit": 5500.0,
+                "CardDailySpendLimitCount": 100,
+                "CardDailySpendLimitAmount": 5500.0,
+                "CardWeeklySpendLimitCount": 120,
+                "CardWeeklySpendLimitAmount": 5600.0,
+                "CardMonthlySpendLimitCount": 130,
+                "CardMonthlySpendLimitAmount": 5700.0,
+                "CardNotPresentCardSingleTransactionLimit": 5500.0,
+                "CardNotPresentCardDailySpendLimitCount": 10,
+                "CardNotPresentCardDailySpendLimitAmount": 5500.0,
+                "CardNotPresentCardWeeklySpendLimitCount": 12,
+                "CardNotPresentCardWeeklySpendLimitAmount": 5500.0,
+                "CardNotPresentCardMonthlySpendLimitCount": 11,
+                "CardNotPresentCardMonthlySpendLimitAmount": 5600.0,
+                "PINPOSCardSingleTransactionLimit": 100.0,
+                "PINPOSCardDailySpendLimitCount": 1,
+                "PINPOSCardDailySpendLimitAmount": 200.0,
+                "PINPOSCardWeeklySpendLimitCount": 2,
+                "PINPOSCardWeeklySpendLimitAmount": 400.0,
+                "PINPOSCardMonthlySpendLimitCount": 5,
+                "PINPOSCardMonthlySpendLimitAmount": 500.0,
+                "SignaturePOSCardSingleTransactionLimit": 200.0,
+                "SignaturePOSCardDailySpendLimitCount": 11,
+                "SignaturePOSCardDailySpendLimitAmount": 200.0,
+                "SignaturePOSCardWeeklySpendLimitCount": 12,
+                "SignaturePOSCardWeeklySpendLimitAmount": 250.0,
+                "SignaturePOSCardMonthlySpendLimitCount": 13,
+                "SignaturePOSCardMonthlySpendLimitAmount": 350.0,
+                "ContactlessCardSingleTransactionLimit": 200.0,
+                "ContactlessCardDailySpendLimitCount": 11,
+                "ContactlessCardDailySpendLimitAmount": 200.0,
+                "ContactlessCardWeeklySpendLimitCount": 12,
+                "ContactlessCardWeeklySpendLimitAmount": 250.0,
+                "ContactlessCardMonthlySpendLimitCount": 13,
+                "ContactlessCardMonthlySpendLimitAmount": 350.0,
+                "RecurringTransactionAllowed": "0",
+                "MerchantCategory": [
+                    {
+                        "MerchantCategoryCodePlan": "44",
+                        "MerchantCategoryCodePlanSelection": "0",
+                        "MCCDailyPlanLimitCount": 1,
+                        "MCCDailyPlanLimitAmount": 100.0,
+                        "MCCMonthlyPlanLimitCount": 2,
+                        "MCCMonthlyPlanLimitAmount": 200.0,
+                        "MCCWeeklyPlanLimitCount": 3,
+                        "MCCWeeklyPlanLimitAmount": 300.0,
+                        "MCCDescription": "Eating Places And Restaurants",
+                        "MCCPlanDescription": "Eating Places And Restaurants"
+                    }
+                ],
+                "ContactlessTransactionAllowed": "0",
+                "CardNotPresentTransactionAllowed": "0",
+                "PurchasewithCashbackAllowed": "1"
+            }
+        }
+    },
+    "source": {
+        "vendor": "CoreCard",
+        "section": "credit",
+        "category": "Other Miscellaneous Functions",
+        "url": "https://developer.corecard.com/GuidePageApiDetail?id=1161&type=ApiDetail&menuid=2&RegionId=1&PlatformMappingId=2&subid=1035"
+    }
+}
