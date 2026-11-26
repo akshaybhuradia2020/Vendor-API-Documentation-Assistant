@@ -1,0 +1,394 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.internal/schemas/vendor-api-normalization/1.2.json",
+  "title": "Vendor API Normalization Schema v1.2",
+  "description": "Validates normalized vendor API documents. Selected by document_type: 'api' or 'webhook'. This validates produced output, so re-ingestion metadata (document_key, hashes, parser_version, normalized_at, original_file) must be populated.",
+  "oneOf": [
+    { "$ref": "#/$defs/apiDocument" },
+    { "$ref": "#/$defs/webhookDocument" }
+  ],
+  "$defs": {
+    "nullableString": { "type": ["string", "null"] },
+    "nullableBoolean": { "type": ["boolean", "null"] },
+    "stringArray": { "type": "array", "items": { "type": "string" } },
+
+    "timestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$",
+      "description": "ISO-8601 timestamp with explicit timezone."
+    },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+
+    "sourceReference": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "source_file": { "type": ["string", "null"] },
+        "section": { "type": ["string", "null"] },
+        "table_index": { "type": ["integer", "null"], "minimum": 0 },
+        "row_index": { "type": ["integer", "null"], "minimum": 0 },
+        "heading": { "type": ["string", "null"] },
+        "anchor": { "type": ["string", "null"] }
+      }
+    },
+
+    "constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "value", "fields", "description", "raw_text"],
+      "properties": {
+        "kind": {
+          "enum": [
+            "min_length", "max_length", "minimum", "maximum", "pattern",
+            "conditional", "any_of", "one_of", "other"
+          ]
+        },
+        "value": {},
+        "fields": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "array", "items": { "type": "string" }, "minItems": 2 }
+          ]
+        },
+        "description": { "type": ["string", "null"] },
+        "raw_text": { "type": ["string", "null"] }
+      },
+      "if": { "properties": { "kind": { "enum": ["any_of", "one_of"] } }, "required": ["kind"] },
+      "then": { "properties": { "fields": { "type": "array" } } },
+      "else": { "properties": { "fields": { "type": "null" } } }
+    },
+    "constraintList": { "type": "array", "items": { "$ref": "#/$defs/constraint" } },
+
+    "fieldCore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "type_raw", "children", "items"],
+      "properties": {
+        "name": { "type": ["string", "null"] },
+        "type": { "enum": ["string", "integer", "number", "boolean", "object", "array", null] },
+        "type_raw": { "type": ["string", "null"] },
+        "description": { "type": ["string", "null"] },
+        "required": { "$ref": "#/$defs/nullableBoolean" },
+        "nullable": { "$ref": "#/$defs/nullableBoolean" },
+        "format": { "type": ["string", "null"] },
+        "default": {},
+        "constraints": { "$ref": "#/$defs/constraintList" },
+        "allowed_values": { "type": "array" },
+        "example": {},
+        "children": { "type": "array", "items": { "$ref": "#/$defs/field" } },
+        "items": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/itemSchema" }
+          ]
+        },
+        "source_reference": { "$ref": "#/$defs/sourceReference" },
+        "extensions": { "type": "object" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "array" } }, "required": ["type"] },
+          "then": { "properties": { "items": { "type": "object" } } },
+          "else": { "properties": { "items": { "type": "null" } } }
+        },
+        {
+          "if": {
+            "properties": { "type": { "enum": ["string", "integer", "number", "boolean", "array"] } },
+            "required": ["type"]
+          },
+          "then": { "properties": { "children": { "maxItems": 0 } } }
+        }
+      ]
+    },
+
+    "field": {
+      "description": "A named field. Name is required and must be a string.",
+      "allOf": [
+        { "$ref": "#/$defs/fieldCore" },
+        { "properties": { "name": { "type": "string", "minLength": 1 } } }
+      ]
+    },
+    "itemSchema": {
+      "description": "Array item schema. Name is null unless the source explicitly names the item.",
+      "$ref": "#/$defs/fieldCore"
+    },
+    "fieldList": { "type": "array", "items": { "$ref": "#/$defs/field" } },
+
+    "parameter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "location", "type", "type_raw"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "location": { "enum": ["path", "query", "header", "cookie"] },
+        "type": { "enum": ["string", "integer", "number", "boolean", "object", "array", null] },
+        "type_raw": { "type": ["string", "null"] },
+        "description": { "type": ["string", "null"] },
+        "required": { "$ref": "#/$defs/nullableBoolean" },
+        "nullable": { "$ref": "#/$defs/nullableBoolean" },
+        "format": { "type": ["string", "null"] },
+        "default": {},
+        "constraints": { "$ref": "#/$defs/constraintList" },
+        "allowed_values": { "type": "array" },
+        "example": {},
+        "source_reference": { "$ref": "#/$defs/sourceReference" },
+        "extensions": { "type": "object" }
+      }
+    },
+    "parameterList": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "query", "header", "cookie"],
+      "properties": {
+        "path": { "type": "array", "items": { "allOf": [{ "$ref": "#/$defs/parameter" }, { "properties": { "location": { "const": "path" } } }] } },
+        "query": { "type": "array", "items": { "allOf": [{ "$ref": "#/$defs/parameter" }, { "properties": { "location": { "const": "query" } } }] } },
+        "header": { "type": "array", "items": { "allOf": [{ "$ref": "#/$defs/parameter" }, { "properties": { "location": { "const": "header" } } }] } },
+        "cookie": { "type": "array", "items": { "allOf": [{ "$ref": "#/$defs/parameter" }, { "properties": { "location": { "const": "cookie" } } }] } }
+      }
+    },
+
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status_code", "fields"],
+      "properties": {
+        "status_code": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string", "pattern": "^[1-5][0-9]{2}$" }
+          ]
+        },
+        "description": { "type": ["string", "null"] },
+        "content_types": { "$ref": "#/$defs/stringArray" },
+        "headers": { "type": "array" },
+        "fields": { "$ref": "#/$defs/fieldList" },
+        "source_reference": { "$ref": "#/$defs/sourceReference" },
+        "extensions": { "type": "object" }
+      }
+    },
+
+    "exampleBase": {
+      "type": "object",
+      "required": ["name", "value", "redacted"],
+      "properties": {
+        "name": { "type": "string" },
+        "content_type": { "type": ["string", "null"] },
+        "value": {},
+        "redacted": { "type": "boolean" },
+        "description": { "type": ["string", "null"] },
+        "source_reference": { "$ref": "#/$defs/sourceReference" }
+      }
+    },
+    "requestExample": {
+      "allOf": [{ "$ref": "#/$defs/exampleBase" }],
+      "unevaluatedProperties": false
+    },
+    "responseExample": {
+      "allOf": [
+        { "$ref": "#/$defs/exampleBase" },
+        {
+          "properties": {
+            "status_code": {
+              "oneOf": [
+                { "type": "null" },
+                { "type": "string", "pattern": "^[1-5][0-9]{2}$" }
+              ]
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "messageExample": {
+      "allOf": [{ "$ref": "#/$defs/exampleBase" }],
+      "unevaluatedProperties": false
+    },
+
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "http_status_code": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string", "pattern": "^[1-5][0-9]{2}$" }
+          ]
+        },
+        "error_code": { "type": ["string", "null"] },
+        "message": { "type": ["string", "null"] },
+        "description": { "type": ["string", "null"] },
+        "condition": { "type": ["string", "null"] },
+        "resolution": { "type": ["string", "null"] },
+        "source_reference": { "$ref": "#/$defs/sourceReference" }
+      }
+    },
+
+    "apiInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "operation_id": { "type": ["string", "null"] },
+        "summary": { "type": ["string", "null"] },
+        "description": { "type": ["string", "null"] },
+        "version": { "type": ["string", "null"] },
+        "tags": { "$ref": "#/$defs/stringArray" }
+      }
+    },
+    "endpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "method"],
+      "properties": {
+        "path": { "type": ["string", "null"] },
+        "method": { "enum": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS", null] },
+        "base_url": { "type": ["string", "null"] },
+        "servers": { "type": "array" }
+      }
+    },
+    "authentication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requirements", "security_schemes"],
+      "properties": {
+        "requirements": { "type": "array" },
+        "security_schemes": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "behavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pagination": {},
+        "rate_limits": { "type": "array" },
+        "idempotency": {},
+        "deprecation": {}
+      }
+    },
+
+    "sourceMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "document_type is intentionally NOT allowed here; it lives at top level only.",
+      "required": [
+        "vendor", "region", "region_id", "original_file",
+        "document_key", "source_hash", "content_hash", "parser_version", "normalized_at"
+      ],
+      "properties": {
+        "vendor": { "type": "string", "minLength": 1 },
+        "section": { "type": ["string", "null"] },
+        "category": { "type": ["string", "null"] },
+        "category_id": { "type": ["string", "integer", "null"] },
+        "document_id": { "type": ["string", "integer", "null"] },
+        "region": { "type": "string" },
+        "region_id": { "type": "integer" },
+        "source_url": { "type": ["string", "null"] },
+        "original_file": { "type": "string", "minLength": 1 },
+        "retrieved_at": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/timestamp" }] },
+        "document_key": { "type": "string", "minLength": 1 },
+        "source_hash": { "$ref": "#/$defs/sha256" },
+        "content_hash": { "$ref": "#/$defs/sha256" },
+        "parser_version": { "type": "string", "minLength": 1 },
+        "normalized_at": { "$ref": "#/$defs/timestamp" }
+      },
+      "if": { "properties": { "vendor": { "const": "CoreCard" } }, "required": ["vendor"] },
+      "then": {
+        "properties": {
+          "region": { "const": "USA" },
+          "region_id": { "const": 1 }
+        }
+      }
+    },
+
+    "apiDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version", "document_type", "api_info", "endpoint", "request",
+        "responses", "authentication", "examples", "errors", "behavior",
+        "source_metadata", "extensions"
+      ],
+      "properties": {
+        "schema_version": { "const": "1.2" },
+        "document_type": { "const": "api" },
+        "api_info": { "$ref": "#/$defs/apiInfo" },
+        "endpoint": { "$ref": "#/$defs/endpoint" },
+        "request": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["parameters", "body", "unresolved_fields"],
+          "properties": {
+            "parameters": { "$ref": "#/$defs/parameterList" },
+            "body": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["required", "content_types", "fields", "constraints"],
+              "properties": {
+                "required": { "$ref": "#/$defs/nullableBoolean" },
+                "content_types": { "$ref": "#/$defs/stringArray" },
+                "fields": { "$ref": "#/$defs/fieldList" },
+                "constraints": { "$ref": "#/$defs/constraintList" }
+              }
+            },
+            "unresolved_fields": { "$ref": "#/$defs/fieldList" }
+          }
+        },
+        "responses": { "type": "array", "items": { "$ref": "#/$defs/response" } },
+        "authentication": { "$ref": "#/$defs/authentication" },
+        "examples": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["request", "response"],
+          "properties": {
+            "request": { "type": "array", "items": { "$ref": "#/$defs/requestExample" } },
+            "response": { "type": "array", "items": { "$ref": "#/$defs/responseExample" } }
+          }
+        },
+        "errors": { "type": "array", "items": { "$ref": "#/$defs/error" } },
+        "behavior": { "$ref": "#/$defs/behavior" },
+        "source_metadata": { "$ref": "#/$defs/sourceMetadata" },
+        "extensions": { "type": "object" }
+      }
+    },
+
+    "webhookDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version", "document_type", "api_info", "endpoint", "message",
+        "authentication", "examples", "errors", "behavior",
+        "source_metadata", "extensions"
+      ],
+      "properties": {
+        "schema_version": { "const": "1.2" },
+        "document_type": { "const": "webhook" },
+        "api_info": { "$ref": "#/$defs/apiInfo" },
+        "endpoint": { "$ref": "#/$defs/endpoint" },
+        "message": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["content_type", "fields", "constraints"],
+          "properties": {
+            "content_type": { "type": ["string", "null"] },
+            "fields": { "$ref": "#/$defs/fieldList" },
+            "constraints": { "$ref": "#/$defs/constraintList" }
+          }
+        },
+        "authentication": { "$ref": "#/$defs/authentication" },
+        "examples": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["message"],
+          "properties": {
+            "message": { "type": "array", "items": { "$ref": "#/$defs/messageExample" } }
+          }
+        },
+        "errors": { "type": "array", "items": { "$ref": "#/$defs/error" } },
+        "behavior": { "$ref": "#/$defs/behavior" },
+        "source_metadata": { "$ref": "#/$defs/sourceMetadata" },
+        "extensions": { "type": "object" }
+      }
+    }
+  }
+}
